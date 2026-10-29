@@ -218,6 +218,7 @@ body {
       aside[class*='figure'],
       aside[class*='article'],
       aside[class*='section'],
+      aside[class*='fieldset'], //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
       aside[class*='division'],
       aside[class*='navigation'] {
         width: 100vw;
@@ -238,7 +239,8 @@ body {
         }
         //--|===|--\\
         aside[class*='label'],
-        aside[class*='button'] {
+        aside[class*='button'],
+        aside[class*='fieldset'] { //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
           @include Mixins.layering-position;
         }
       }
@@ -255,7 +257,8 @@ body {
         }
         //--|===|--\\
         aside[class*='label'],
-        aside[class*='button'] {
+        aside[class*='button'],
+        aside[class*='fieldset'] { //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
           @include Mixins.layering-position;
         }
       }

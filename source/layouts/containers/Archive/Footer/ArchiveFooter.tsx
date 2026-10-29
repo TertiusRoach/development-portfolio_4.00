@@ -246,6 +246,24 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
+      {/*--|🠊 AI Code: Review Please 2026-10-29 17:15 🠈|--*/}
+      {/*--|🠊 <Fieldset> 🠈|--*/}
+      <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Fieldset_Radio>', '<Fieldset_Segment>', '<Fieldset_Otp>', '<Fieldset_Multiselect>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+        }}
+        info={{
+          labelName: 'fieldset',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
+        }}
+      />
       {/*--|🠊 <Figure> 🠈|--*/}
       <MenuSwipe
         cases={{
@@ -267,7 +285,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Label_Toggle>', '<Label_Select>'] as Array<string>,
+          titles: ['<Label_Toggle>', '<Label_Select>', '<Label_Checkbox>', '<Label_Input>', '<Label_Number>', '<Label_Textarea>', '<Label_Range>', '<Label_Combobox>', '<Label_Upload>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-10-29 16:44 🠈|--\\
         }}
         info={{
           labelName: 'label',

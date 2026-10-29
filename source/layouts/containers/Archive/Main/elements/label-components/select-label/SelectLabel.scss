@@ -246,40 +246,40 @@
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
     display: grid;
-    //--|🠊 AI Code: Review Please 2026-10-29 14:15 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-10-29 16:48 · Two columns like the desktop sides: ~dark~ on the left, ~light~ on the right, one colour per row 🠈|--\\
     label[class*='dar'] {
       align-self: center; //--|🠈 <LabelSelect> has a fixed height, so it sits in the middle of its row 🠈|--\\
       justify-self: center; //--|🠈 <LabelSelect> is 75% wide, so it sits in the middle of its cell 🠈|--\\
       &[class*='mon'] {
-        grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='red'] {
         grid-area: 4 / 3 / 5 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='gre'] {
-        grid-area: 4 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='blu'] {
-        grid-area: 4 / 5 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 6 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='pur'] {
-        grid-area: 4 / 6 / 5 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 7 / 3 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       //--|===|--\\
       &[class*='ora'] {
-        grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 8 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='pin'] {
-        grid-area: 5 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 9 / 3 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='yel'] {
-        grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 10 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='bro'] {
-        grid-area: 5 / 5 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 11 / 3 / 12 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='tur'] {
-        grid-area: 5 / 6 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 12 / 3 / 13 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     button[id*='dar'] {
@@ -287,125 +287,124 @@
         grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='red'] {
-        grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='gre'] {
-        grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='blu'] {
-        grid-area: 3 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='pur'] {
-        grid-area: 3 / 6 / 4 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 7 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       //--|===|--\\
       &[id*='ora'] {
-        grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='pin'] {
-        grid-area: 6 / 3 / 7 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 9 / 2 / 10 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='yel'] {
-        grid-area: 6 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 10 / 2 / 11 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='bro'] {
-        grid-area: 6 / 5 / 7 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 11 / 2 / 12 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='tur'] {
-        grid-area: 6 / 6 / 7 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 12 / 2 / 13 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     //--|===|--\\
 
-    //--|🠊 AI Code: Review Please 2026-10-29 14:15 🠈|--\\
     label[class*='lig'] {
       align-self: center; //--|🠈 <LabelSelect> has a fixed height, so it sits in the middle of its row 🠈|--\\
       justify-self: center; //--|🠈 <LabelSelect> is 75% wide, so it sits in the middle of its cell 🠈|--\\
       &[class*='mon'] {
-        grid-area: 9 / 2 / 10 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='red'] {
-        grid-area: 9 / 3 / 10 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 4 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='gre'] {
-        grid-area: 9 / 4 / 10 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 5 / 4 / 6 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='blu'] {
-        grid-area: 9 / 5 / 10 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 6 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='pur'] {
-        grid-area: 9 / 6 / 10 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 7 / 4 / 8 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       //--|===|--\\
       &[class*='ora'] {
-        grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      &[class*='pin'] {
-        grid-area: 8 / 3 / 9 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      &[class*='yel'] {
         grid-area: 8 / 4 / 9 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
+      &[class*='pin'] {
+        grid-area: 9 / 4 / 10 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='yel'] {
+        grid-area: 10 / 4 / 11 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
       &[class*='bro'] {
-        grid-area: 8 / 5 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 11 / 4 / 12 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[class*='tur'] {
-        grid-area: 8 / 6 / 9 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 12 / 4 / 13 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     button[id*='lig'] {
       &[id*='mon'] {
-        grid-area: 10 / 2 / 11 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 3 / 5 / 4 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='red'] {
-        grid-area: 10 / 3 / 11 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 4 / 5 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='gre'] {
-        grid-area: 10 / 4 / 11 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 5 / 5 / 6 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='blu'] {
-        grid-area: 10 / 5 / 11 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 6 / 5 / 7 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='pur'] {
-        grid-area: 10 / 6 / 11 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 7 / 5 / 8 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       //--|===|--\\
       &[id*='ora'] {
-        grid-area: 7 / 2 / 8 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 8 / 5 / 9 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='pin'] {
-        grid-area: 7 / 3 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 9 / 5 / 10 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='yel'] {
-        grid-area: 7 / 4 / 8 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 10 / 5 / 11 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='bro'] {
-        grid-area: 7 / 5 / 8 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 11 / 5 / 12 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
       &[id*='tur'] {
-        grid-area: 7 / 6 / 8 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 12 / 5 / 13 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
     //--|===|--\\
 
-    //--|🠊 AI Code: Review Please 2026-10-29 14:15 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-10-29 16:48 · The copy buttons size their own columns (auto), the gutters are the Mixins.scss portrait gutters 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
-      repeat(2, 6rem) repeat(8, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
-      / 64px repeat(5, 1fr) 64px; //--|🠈 columns 🠈|--\\
+      repeat(2, 6rem) repeat(10, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 64px auto repeat(2, 1fr) auto 64px; //--|🠈 columns 🠈|--\\
     @media screen and (max-width: 768px) {
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
-        repeat(2, 5rem) repeat(8, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--//
-        / 48px repeat(5, 1fr) 48px; //--|🠈 columns 🠈|--\\
+        repeat(2, 5rem) repeat(10, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        / 48px auto repeat(2, 1fr) auto 48px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 480px) {
       grid-template: //--|🠋 Height: 854px 🠋|--\\
-        repeat(2, 3rem) repeat(8, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-        / 32px repeat(5, 1fr) 32px; //--|🠈 columns 🠈|--\\
+        repeat(2, 3rem) repeat(10, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px auto repeat(2, 1fr) auto 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 360px) {
       grid-template: //--|🠋 Height: 640px 🠋|--\\
-        repeat(2, 2rem) repeat(8, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-        / 24px repeat(5, 1fr) 24px; //--|🠈 columns 🠈|--\\
+        repeat(2, 2rem) repeat(10, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px auto repeat(2, 1fr) auto 24px; //--|🠈 columns 🠈|--\\
     }
   }
   //--|===|--\\

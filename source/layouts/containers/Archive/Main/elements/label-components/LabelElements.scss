@@ -1,6 +1,13 @@
 //--|🠊 LabelElements.scss 🠈|--\\
 @use './toggle-label/ToggleLabel.scss';
 @use './select-label/SelectLabel.scss';
+@use './checkbox-label/CheckboxLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 15:45 🠈|--\\
+@use './input-label/InputLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 15:49 🠈|--\\
+@use './number-label/NumberLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 15:51 🠈|--\\
+@use './textarea-label/TextareaLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
+@use './range-label/RangeLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 15:56 🠈|--\\
+@use './combobox-label/ComboboxLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 16:02 🠈|--\\
+@use './upload-label/UploadLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-29 16:44 🠈|--\\
 
 section[class*='label-main'] {
   div[class*='fullscreen'] {
@@ -13,6 +20,27 @@ section[class*='label-main'] {
           &[class*='select'] {
             @include SelectLabel.desktop-landscape;
           }
+          &[class*='upload'] {
+            @include UploadLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 16:44 🠈|--\\
+          }
+          &[class*='combobox'] {
+            @include ComboboxLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 16:02 🠈|--\\
+          }
+          &[class*='range'] {
+            @include RangeLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 15:56 🠈|--\\
+          }
+          &[class*='textarea'] {
+            @include TextareaLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
+          }
+          &[class*='number'] {
+            @include NumberLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 15:51 🠈|--\\
+          }
+          &[class*='input'] {
+            @include InputLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 15:49 🠈|--\\
+          }
+          &[class*='checkbox'] {
+            @include CheckboxLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 15:45 🠈|--\\
+          }
         }
         @media screen and (orientation: portrait) {
           &[class*='toggle'] {
@@ -20,6 +48,27 @@ section[class*='label-main'] {
           }
           &[class*='select'] {
             @include SelectLabel.mobile-portrait;
+          }
+          &[class*='upload'] {
+            @include UploadLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 16:44 🠈|--\\
+          }
+          &[class*='combobox'] {
+            @include ComboboxLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 16:02 🠈|--\\
+          }
+          &[class*='range'] {
+            @include RangeLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 15:56 🠈|--\\
+          }
+          &[class*='textarea'] {
+            @include TextareaLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
+          }
+          &[class*='number'] {
+            @include NumberLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 15:51 🠈|--\\
+          }
+          &[class*='input'] {
+            @include InputLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 15:49 🠈|--\\
+          }
+          &[class*='checkbox'] {
+            @include CheckboxLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 15:45 🠈|--\\
           }
         }
       }

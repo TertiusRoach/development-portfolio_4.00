@@ -83,8 +83,8 @@
     transition: background-color 250ms $tint-fade;
   }
   &:hover,
-  &:focus-within {
-    //--|🠊 Flips on hover like <Button>, and stays flipped while the list is open 🠈|--\\
+  &.highlight {
+    //--|🠊 AI Code: Review Please 2026-10-29 17:04 · Flips on hover, and on .highlight: the script sets it for keyboard focus only, so a mouse click reverts when the mouse leaves 🠈|--\\
     &::before {
       opacity: 0;
     }
@@ -99,66 +99,132 @@
   %desk-flex {
     //--|🠊 Size & Curve 🠈|--\\
     /*--|🠋
-      AI Code: Review Please 2026-10-29 · Every size comes from the height (h): radius = h / 2 (on the <label>), padding = h / 2 on the left and h on the right for the
-      arrow. Heights match <LabelToggle> so the two line up in a form row.
+      AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on the text side and h on the caret side.
+      style.view sets the side: the caret end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px). Heights match <LabelToggle> so the two line up in a form row.
     🠉|--*/
     @at-root label[class*='select-default'] {
       height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
       select[class='event'] {
         height: 44px;
         font-size: 18px;
-        padding-left: 22px;
-        padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
       }
       span[class='arrow'] {
-        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
         width: 24px;
         height: 24px;
       }
       @media screen and (max-height: 768px) {
         height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 40px;
           font-size: 16px;
-          padding-left: 20px;
-          padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 22px;
           height: 22px;
         }
       }
       @media screen and (max-height: 480px) {
         height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 24px;
           font-size: 12px;
-          padding-left: 12px;
-          padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 14px;
           height: 14px;
         }
       }
       @media screen and (max-height: 360px) {
         height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 16px;
           font-size: 10px;
-          padding-left: 8px;
-          padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 10px;
           height: 10px;
+        }
+      }
+      &[class*=' rig'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 768px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 480px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 360px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*=' lef'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 768px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 480px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 360px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
         }
       }
     }
@@ -186,61 +252,127 @@
     //--|🠊 Size & Curve 🠈|--\\
     @at-root label[class*='select-default'] {
       height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
       select[class='event'] {
         height: 44px;
         font-size: 18px;
-        padding-left: 22px;
-        padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
       }
       span[class='arrow'] {
-        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
         width: 24px;
         height: 24px;
       }
       @media screen and (max-width: 768px) {
         height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 40px;
           font-size: 16px;
-          padding-left: 20px;
-          padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 22px;
           height: 22px;
         }
       }
       @media screen and (max-width: 480px) {
         height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 24px;
           font-size: 12px;
-          padding-left: 12px;
-          padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 14px;
           height: 14px;
         }
       }
       @media screen and (max-width: 360px) {
         height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 16px;
           font-size: 10px;
-          padding-left: 8px;
-          padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 10px;
           height: 10px;
+        }
+      }
+      &[class*=' rig'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 768px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 480px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 360px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*=' lef'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 768px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 480px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 360px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
         }
       }
     }
@@ -270,122 +402,254 @@
       @media screen and (orientation: landscape) {
         //--|🠊 Desktop 🠈|--\\
         height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 44px;
           font-size: 18px;
-          padding-left: 22px;
-          padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 24px;
           height: 24px;
         }
         @media screen and (max-width: 1920px) {
           height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 40px;
             font-size: 16px;
-            padding-left: 20px;
-            padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 22px;
             height: 22px;
           }
         }
         @media screen and (max-width: 1366px) {
           height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 24px;
             font-size: 12px;
-            padding-left: 12px;
-            padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 14px;
             height: 14px;
           }
         }
         @media screen and (max-width: 854px) {
           height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 16px;
             font-size: 10px;
-            padding-left: 8px;
-            padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 10px;
             height: 10px;
+          }
+        }
+        &[class*=' rig'] {
+          //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+          border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 22px;
+            padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+          @media screen and (max-width: 1920px) {
+            border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 20px;
+              padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+          @media screen and (max-width: 1366px) {
+            border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 12px;
+              padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+          @media screen and (max-width: 854px) {
+            border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 8px;
+              padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+        }
+        &[class*=' lef'] {
+          //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+          border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 22px;
+          }
+          span[class='arrow'] {
+            left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+          @media screen and (max-width: 1920px) {
+            border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 20px;
+            }
+            span[class='arrow'] {
+              left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
+          }
+          @media screen and (max-width: 1366px) {
+            border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 12px;
+            }
+            span[class='arrow'] {
+              left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
+          }
+          @media screen and (max-width: 854px) {
+            border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 8px;
+            }
+            span[class='arrow'] {
+              left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
           }
         }
       }
       @media screen and (orientation: portrait) {
         //--|🠊 Mobile 🠈|--\\
         height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-        border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
         select[class='event'] {
           height: 44px;
           font-size: 18px;
-          padding-left: 22px;
-          padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
         }
         span[class='arrow'] {
-          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
           width: 24px;
           height: 24px;
         }
         @media screen and (max-height: 1920px) {
           height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 40px;
             font-size: 16px;
-            padding-left: 20px;
-            padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 22px;
             height: 22px;
           }
         }
         @media screen and (max-height: 1366px) {
           height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 24px;
             font-size: 12px;
-            padding-left: 12px;
-            padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 14px;
             height: 14px;
           }
         }
         @media screen and (max-height: 854px) {
           height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
-          border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
           select[class='event'] {
             height: 16px;
             font-size: 10px;
-            padding-left: 8px;
-            padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
           }
           span[class='arrow'] {
-            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
             width: 10px;
             height: 10px;
+          }
+        }
+        &[class*=' rig'] {
+          //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+          border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 22px;
+            padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+          @media screen and (max-height: 1920px) {
+            border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 20px;
+              padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+          @media screen and (max-height: 1366px) {
+            border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 12px;
+              padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+          @media screen and (max-height: 854px) {
+            border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+            select[class='event'] {
+              padding-left: 8px;
+              padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            }
+            span[class='arrow'] {
+              right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            }
+          }
+        }
+        &[class*=' lef'] {
+          //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+          border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 22px;
+          }
+          span[class='arrow'] {
+            left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+          @media screen and (max-height: 1920px) {
+            border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 20px;
+            }
+            span[class='arrow'] {
+              left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
+          }
+          @media screen and (max-height: 1366px) {
+            border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 12px;
+            }
+            span[class='arrow'] {
+              left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
+          }
+          @media screen and (max-height: 854px) {
+            border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+            select[class='event'] {
+              padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+              padding-right: 8px;
+            }
+            span[class='arrow'] {
+              left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+            }
           }
         }
       }
@@ -446,7 +710,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -488,7 +752,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -537,7 +801,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -579,7 +843,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -628,7 +892,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -670,7 +934,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -719,7 +983,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -761,7 +1025,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -810,7 +1074,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -852,7 +1116,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -901,7 +1165,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -943,7 +1207,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -992,7 +1256,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1034,7 +1298,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1083,7 +1347,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1125,7 +1389,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1174,7 +1438,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1216,7 +1480,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1265,7 +1529,7 @@
       background-color: $neoLig;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
@@ -1307,7 +1571,7 @@
       background-color: $blaDar;
     }
     &:hover,
-    &:focus-within {
+    &.highlight {
       select[class='event'] {
         color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\

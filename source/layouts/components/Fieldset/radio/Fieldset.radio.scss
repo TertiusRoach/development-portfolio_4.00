@@ -1,0 +1,993 @@
+//--|🠊 Fieldset.radio.scss 🠈|--\\
+@use 'sass:color';
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠊 AI Code: Review Please 2026-10-29 17:16 🠈|--\\
+@mixin radio-flexbox {
+  //--|🠋 Global (Flex) 🠋|--\\
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the parent size it 🠈|--\\
+  border-style: none; //--|🠈 No browser frame, every option draws its own 🠈|--\\
+  align-items: center;
+  justify-content: center;
+  label[class='option'] {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; //--|🠈 A circle at every size, the fade layers inherit it 🠈|--\\
+    input[class='event'] {
+      //--|🠊 Hidden, but still focusable and read aloud; clicking the <label> picks it, like <LabelToggle> 🠈|--\\
+      width: 0;
+      height: 0;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    &:has(input[class='event']:checked) span[class='dot'] {
+      opacity: 1; //--|🠈 The browser keeps the choice, the dot only follows it 🠈|--\\
+    }
+  }
+  span[class='dot'] {
+    opacity: 0;
+    border-radius: 50%;
+    pointer-events: none; //--|🠈 Clicks fall through to the <label> 🠈|--\\
+  }
+}
+@mixin radio-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+  //--|🠋 Crossfade Layers 🠋|--\\
+  /*--|🠋
+    Why: A browser can't fade one gradient into another, it snaps.
+    It can fade opacity. How: ::before holds the resting gradient,
+    ::after the flipped one (Set in *-tint), like <LabelSelect>.
+    Note: Every inner <label> carries its own two layers, so each option fades on its own.
+  🠉|--*/
+  label[class='option'] {
+    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers inside each option 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+    }
+    &::before {
+      transition: opacity 750ms $tint-fade;
+    }
+    &::after {
+      opacity: 0;
+      transition: opacity 750ms $tint-fade;
+    }
+    span[class='dot'] {
+      transition:
+        opacity 250ms $tint-fade,
+        background-color 250ms $tint-fade;
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      //--|🠊 Flips on hover like <LabelCheckbox> and on keyboard focus; after a mouse click it reverts when the mouse leaves 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+//--|===|--\\
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Radio) 🠋|--\\
+  %desk-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    /*--|🠋
+      AI Code: Review Please 2026-10-29 17:16 · Every size comes from the height (h): each option is an h × h circle like <LabelCheckbox>, the dot is h / 2,
+      and the gap between options is h / 4. Heights match <LabelToggle> so they line up in a form row.
+    🠉|--*/
+    @at-root fieldset[class*='radio-default'] {
+      column-gap: 11px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+      label[class='option'] {
+        width: 44px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+        height: 44px;
+      }
+      span[class='dot'] {
+        width: 22px; //--|🠈 Half the circle 🠈|--\\
+        height: 22px;
+      }
+      @media screen and (max-height: 768px) {
+        column-gap: 10px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 40px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 40px;
+        }
+        span[class='dot'] {
+          width: 20px; //--|🠈 Half the circle 🠈|--\\
+          height: 20px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        column-gap: 6px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 24px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 24px;
+        }
+        span[class='dot'] {
+          width: 12px; //--|🠈 Half the circle 🠈|--\\
+          height: 12px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        column-gap: 4px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 16px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 16px;
+        }
+        span[class='dot'] {
+          width: 8px; //--|🠈 Half the circle 🠈|--\\
+          height: 8px;
+        }
+      }
+    }
+  }
+  %desk-grid {
+    /*--|🠋
+      <FieldsetRadio> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %desk-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      radio-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %desk-flex;
+  @extend %desk-grid;
+  @extend %desk-tint;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Radio) 🠋|--\\
+  %mobi-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root fieldset[class*='radio-default'] {
+      column-gap: 11px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+      label[class='option'] {
+        width: 44px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+        height: 44px;
+      }
+      span[class='dot'] {
+        width: 22px; //--|🠈 Half the circle 🠈|--\\
+        height: 22px;
+      }
+      @media screen and (max-width: 768px) {
+        column-gap: 10px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 40px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 40px;
+        }
+        span[class='dot'] {
+          width: 20px; //--|🠈 Half the circle 🠈|--\\
+          height: 20px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        column-gap: 6px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 24px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 24px;
+        }
+        span[class='dot'] {
+          width: 12px; //--|🠈 Half the circle 🠈|--\\
+          height: 12px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        column-gap: 4px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 16px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 16px;
+        }
+        span[class='dot'] {
+          width: 8px; //--|🠈 Half the circle 🠈|--\\
+          height: 8px;
+        }
+      }
+    }
+  }
+  %mobi-grid {
+    /*--|🠋
+      <FieldsetRadio> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %mobi-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      radio-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %mobi-flex;
+  @extend %mobi-grid;
+  @extend %mobi-tint;
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Radio) 🠋|--\\
+  %tabl-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root fieldset[class*='radio-default'] {
+      @media screen and (orientation: landscape) {
+        //--|🠊 Desktop 🠈|--\\
+        column-gap: 11px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 44px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 44px;
+        }
+        span[class='dot'] {
+          width: 22px; //--|🠈 Half the circle 🠈|--\\
+          height: 22px;
+        }
+        @media screen and (max-width: 1920px) {
+          column-gap: 10px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 40px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 40px;
+          }
+          span[class='dot'] {
+            width: 20px; //--|🠈 Half the circle 🠈|--\\
+            height: 20px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          column-gap: 6px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 24px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 24px;
+          }
+          span[class='dot'] {
+            width: 12px; //--|🠈 Half the circle 🠈|--\\
+            height: 12px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          column-gap: 4px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 16px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 16px;
+          }
+          span[class='dot'] {
+            width: 8px; //--|🠈 Half the circle 🠈|--\\
+            height: 8px;
+          }
+        }
+      }
+      @media screen and (orientation: portrait) {
+        //--|🠊 Mobile 🠈|--\\
+        column-gap: 11px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+        label[class='option'] {
+          width: 44px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+          height: 44px;
+        }
+        span[class='dot'] {
+          width: 22px; //--|🠈 Half the circle 🠈|--\\
+          height: 22px;
+        }
+        @media screen and (max-height: 1920px) {
+          column-gap: 10px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 40px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 40px;
+          }
+          span[class='dot'] {
+            width: 20px; //--|🠈 Half the circle 🠈|--\\
+            height: 20px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          column-gap: 6px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 24px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 24px;
+          }
+          span[class='dot'] {
+            width: 12px; //--|🠈 Half the circle 🠈|--\\
+            height: 12px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          column-gap: 4px; //--|🠈 A quarter of the height between the dots 🠈|--\\
+          label[class='option'] {
+            width: 16px; //--|🠈 A circle, so it sizes itself like <LabelCheckbox> 🠈|--\\
+            height: 16px;
+          }
+          span[class='dot'] {
+            width: 8px; //--|🠈 Half the circle 🠈|--\\
+            height: 8px;
+          }
+        }
+      }
+    }
+  }
+  %tabl-grid {
+    /*--|🠋
+      <FieldsetRadio> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %tabl-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      radio-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %tabl-flex;
+  @extend %tabl-grid;
+  @extend %tabl-tint;
+}
+//--|===|--\\
+//--|🠊 AI Code: Review Please 2026-10-29 17:16 · Same recipe as <LabelSelect>: resting reads like an unchecked toggle, flipped like a checked one 🠈|--\\
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_red'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_red'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    label[class='option'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+
+fieldset[class*='radio-default'] {
+  @include radio-flexbox();
+  @include radio-colors();
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

@@ -6,8 +6,9 @@ import type { TheseProps } from './Label.select'; //--|🠈 The props are writte
 function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <LabelSelect> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
+  const classView = createView(style.view); //--|🠈 AI Code: Review Please 2026-10-29 17:04 · A third class, so the colour class stays second 🠈|--\\
 
-  return `${classColor}`;
+  return `${classColor} ${classView}`;
 }
 
 //--|🠋 Generate Abbreviations 🠋|--\\
@@ -41,5 +42,22 @@ const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['sty
   }
 
   return `${classShade}_${classColor}`;
+};
+//--|🠊 AI Code: Review Please 2026-10-29 17:04 🠈|--\\
+const createView = (view: TheseProps['style']['view']): string => {
+  const viewMap: Record<TheseProps['style']['view'], string> = {
+    //--|🠊 Map view options to class abbreviations, the side the caret sits on 🠈|--\\
+    '-left-': 'lef',
+    '-right-': 'rig',
+  };
+
+  const classView = viewMap[view];
+
+  if (!classView) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid -${stripBrackets(view, '--')}- 🠈|`);
+  }
+
+  return classView;
 };
 export default createClass;

@@ -1,0 +1,43 @@
+//--|🠊 FieldsetElements.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-29 17:15 · Copied from LabelElements.scss 🠈|--\\
+@use './radio-fieldset/RadioFieldset.scss'; //--|🠈 AI Code: Review Please 2026-10-29 17:16 🠈|--\\
+@use './segment-fieldset/SegmentFieldset.scss'; //--|🠈 AI Code: Review Please 2026-10-29 17:21 🠈|--\\
+@use './otp-fieldset/OtpFieldset.scss'; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+@use './multiselect-fieldset/MultiselectFieldset.scss'; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+
+section[class*='fieldset-main'] {
+  div[class*='fullscreen'] {
+    div.fieldset-main_container {
+      aside[class*='fieldset'] {
+        @media screen and (orientation: landscape) {
+          &[class*='radio'] {
+            @include RadioFieldset.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 17:16 🠈|--\\
+          }
+          &[class*='segment'] {
+            @include SegmentFieldset.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 17:21 🠈|--\\
+          }
+          &[class*='otp'] {
+            @include OtpFieldset.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+          }
+          &[class*='multiselect'] {
+            @include MultiselectFieldset.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+          }
+        }
+        @media screen and (orientation: portrait) {
+          &[class*='radio'] {
+            @include RadioFieldset.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 17:16 🠈|--\\
+          }
+          &[class*='segment'] {
+            @include SegmentFieldset.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 17:21 🠈|--\\
+          }
+          &[class*='otp'] {
+            @include OtpFieldset.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+          }
+          &[class*='multiselect'] {
+            @include MultiselectFieldset.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-29 17:22 🠈|--\\
+          }
+        }
+      }
+    }
+  }
+}

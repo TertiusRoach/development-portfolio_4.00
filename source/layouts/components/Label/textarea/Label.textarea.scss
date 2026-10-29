@@ -1,0 +1,1181 @@
+//--|🠊 Label.textarea.scss 🠈|--\\
+@use 'sass:color';
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠊 AI Code: Review Please 2026-10-29 17:04 🠈|--\\
+@mixin textarea-flexbox {
+  //--|🠋 Global (Flex) 🠋|--\\
+  width: 100%; //--|🠈 Fills its parent, the layout decides the size 🠈|--\\
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  textarea[class='event'] {
+    width: 100%;
+    appearance: none;
+    cursor: text;
+    font-family: inherit;
+    border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
+    font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
+    border-style: none;
+    &:focus {
+      outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+    }
+    height: 100%;
+    resize: none; //--|🠈 The browser's resize grip can't be coloured, the parent sets the size instead 🠈|--\\
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+@mixin textarea-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+  //--|🠋 Crossfade Layers 🠋|--\\
+  /*--|🠋
+    Why: A browser can't fade one gradient into another, it snaps.
+    It can fade opacity. How: ::before holds the resting gradient,
+    ::after the flipped one (Set in *-tint). On hover or focus ::before
+    fades out while ::after fades in, so the gradients blend, like <Button>.
+    Note: An <textarea> can't hold ::before or ::after, so the <label> carries
+    both layers and the <textarea> stays see-through on top of them.
+  🠉|--*/
+  isolation: isolate; //--|🠈 Keeps the z-index: -1 layers above the parent, behind the <textarea> 🠈|--\\
+  &::before,
+  &::after {
+    content: '';
+    inset: 0;
+    z-index: -1;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+  }
+  &::before {
+    opacity: 0.25; //--|🠈 See-through, the page shows behind the text 🠈|--\\
+    transition: opacity 750ms $tint-fade;
+  }
+  &::after {
+    opacity: 0;
+    transition: opacity 750ms $tint-fade;
+  }
+  textarea[class='event'] {
+    background: none;
+    transition:
+      color 500ms $tint-fade,
+      box-shadow 750ms $tint-fade, //--|🠈 The frame fades with the layers 🠈|--\\
+      text-shadow 500ms $tint-fade;
+    &::placeholder {
+      transition: color 500ms $tint-fade;
+    }
+  }
+  &:hover,
+  &:has(:focus-visible) {
+    //--|🠊 Flips on hover like <Button> and on keyboard focus, so it stays flipped while you type and reverts after a mouse click 🠈|--\\
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      opacity: 0.25;
+    }
+  }
+}
+//--|===|--\\
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Textarea) 🠋|--\\
+  %desk-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    /*--|🠋
+      AI Code: Review Please 2026-10-29 17:04 · Fills its parent (width & height 100%), so the layout grid decides its size. The font and line-height
+      still step with the height (h) of one line, so a single line matches <LabelInput>. Corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
+    🠉|--*/
+    @at-root label[class*='textarea-default'] {
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 18px;
+        line-height: 22px; //--|🠈 One line + padding = 44px, the height of a <LabelInput> 🠈|--\\
+        padding: 11px 22px;
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 16px;
+          line-height: 20px; //--|🠈 One line + padding = 40px, the height of a <LabelInput> 🠈|--\\
+          padding: 10px 20px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 12px;
+          line-height: 16px; //--|🠈 One line + padding = 24px, the height of a <LabelInput> 🠈|--\\
+          padding: 4px 12px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 10px;
+          line-height: 12px; //--|🠈 One line + padding = 16px, the height of a <LabelInput> 🠈|--\\
+          padding: 2px 8px;
+        }
+      }
+    }
+  }
+  %desk-grid {
+    /*--|🠋
+      <LabelTextarea> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %desk-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      textarea-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %desk-flex;
+  @extend %desk-grid;
+  @extend %desk-tint;
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Textarea) 🠋|--\\
+  %mobi-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root label[class*='textarea-default'] {
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 18px;
+        line-height: 22px; //--|🠈 One line + padding = 44px, the height of a <LabelInput> 🠈|--\\
+        padding: 11px 22px;
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 16px;
+          line-height: 20px; //--|🠈 One line + padding = 40px, the height of a <LabelInput> 🠈|--\\
+          padding: 10px 20px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 12px;
+          line-height: 16px; //--|🠈 One line + padding = 24px, the height of a <LabelInput> 🠈|--\\
+          padding: 4px 12px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 10px;
+          line-height: 12px; //--|🠈 One line + padding = 16px, the height of a <LabelInput> 🠈|--\\
+          padding: 2px 8px;
+        }
+      }
+    }
+  }
+  %mobi-grid {
+    /*--|🠋
+      <LabelTextarea> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %mobi-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      textarea-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %mobi-flex;
+  @extend %mobi-grid;
+  @extend %mobi-tint;
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Textarea) 🠋|--\\
+  %tabl-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root label[class*='textarea-default'] {
+      @media screen and (orientation: landscape) {
+        //--|🠊 Desktop 🠈|--\\
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 18px;
+          line-height: 22px; //--|🠈 One line + padding = 44px, the height of a <LabelInput> 🠈|--\\
+          padding: 11px 22px;
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 16px;
+            line-height: 20px; //--|🠈 One line + padding = 40px, the height of a <LabelInput> 🠈|--\\
+            padding: 10px 20px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 12px;
+            line-height: 16px; //--|🠈 One line + padding = 24px, the height of a <LabelInput> 🠈|--\\
+            padding: 4px 12px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 10px;
+            line-height: 12px; //--|🠈 One line + padding = 16px, the height of a <LabelInput> 🠈|--\\
+            padding: 2px 8px;
+          }
+        }
+      }
+      @media screen and (orientation: portrait) {
+        //--|🠊 Mobile 🠈|--\\
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 18px;
+          line-height: 22px; //--|🠈 One line + padding = 44px, the height of a <LabelInput> 🠈|--\\
+          padding: 11px 22px;
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 16px;
+            line-height: 20px; //--|🠈 One line + padding = 40px, the height of a <LabelInput> 🠈|--\\
+            padding: 10px 20px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 12px;
+            line-height: 16px; //--|🠈 One line + padding = 24px, the height of a <LabelInput> 🠈|--\\
+            padding: 4px 12px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          textarea[class='event'] {
+            font-size: 10px;
+            line-height: 12px; //--|🠈 One line + padding = 16px, the height of a <LabelInput> 🠈|--\\
+            padding: 2px 8px;
+          }
+        }
+      }
+    }
+  }
+  %tabl-grid {
+    /*--|🠋
+      <LabelTextarea> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %tabl-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      textarea-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %tabl-flex;
+  @extend %tabl-grid;
+  @extend %tabl-tint;
+}
+//--|===|--\\
+//--|🠊 AI Code: Review Please 2026-10-29 17:04 · <LabelSelect> fades + the <Form> frame: resting reads like an unchecked toggle, hovered or typing like a checked one 🠈|--\\
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_red'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_red'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    textarea[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+        inset 0 0 0 2px $blaDar,
+        inset 0 0.125em 0.25em $blaDar;
+      &::placeholder {
+        color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+          inset 0 0 0.5em $neoLig;
+        &::placeholder {
+          color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    }
+    textarea[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
+        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
+        inset 0 0 0.5em $neoLig;
+      &::placeholder {
+        color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+        opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+      }
+      scrollbar-color: $blaDar transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      textarea[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        &::placeholder {
+          color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
+          opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+        scrollbar-color: $neoLig transparent; //--|🠈 Only the thumb takes the tint, the track shows the fade layers 🠈|--\\
+      }
+    }
+  }
+}
+
+label[class*='textarea-default'] {
+  @include textarea-flexbox();
+  @include textarea-colors();
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

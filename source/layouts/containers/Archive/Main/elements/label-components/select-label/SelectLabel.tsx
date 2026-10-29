@@ -36,6 +36,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(mono)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -50,6 +51,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(red)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -64,6 +66,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(green)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -78,6 +81,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(blue)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -92,6 +96,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(purple)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -106,6 +111,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(orange)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -120,6 +126,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(pink)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -134,6 +141,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(yellow)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -148,6 +156,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(brown)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -162,6 +171,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~dark~',
             color: '(turquoise)',
+            view: '-left-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: voidspireList,
@@ -177,6 +187,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(mono)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -191,6 +202,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(red)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -205,6 +217,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(green)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -219,6 +232,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(blue)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -233,6 +247,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(purple)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -247,6 +262,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(orange)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -261,6 +277,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(pink)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -275,6 +292,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(yellow)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -289,6 +307,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(brown)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
@@ -303,6 +322,7 @@ const SelectLabel: React.FC<InfoProps> = ({ info }) => {
           style={{
             shade: '~light~',
             color: '(turquoise)',
+            view: '-right-', //--|🠈 AI Code: Review Please 2026-10-29 17:05 · Dark caret on the left, light on the right 🠈|--\\
           }}
           cases={{
             list: silverveilList,
