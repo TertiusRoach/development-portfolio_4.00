@@ -63,6 +63,7 @@ function OvertimeOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(green)',
                 view: '-center-',
               }}
               cases={{
@@ -105,6 +106,7 @@ function OvertimeOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(green)',
                 view: '-center-',
               }}
               cases={{

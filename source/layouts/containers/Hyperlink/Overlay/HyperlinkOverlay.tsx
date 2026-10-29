@@ -62,6 +62,7 @@ function HyperlinkOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(red)',
                 view: '-center-',
               }}
               cases={{
@@ -104,6 +105,7 @@ function HyperlinkOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(red)',
                 view: '-center-',
               }}
               cases={{

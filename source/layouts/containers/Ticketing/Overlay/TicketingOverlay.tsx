@@ -62,6 +62,7 @@ function TicketingOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(blue)',
                 view: '-center-',
               }}
               cases={{
@@ -104,6 +105,7 @@ function TicketingOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(blue)',
                 view: '-center-',
               }}
               cases={{

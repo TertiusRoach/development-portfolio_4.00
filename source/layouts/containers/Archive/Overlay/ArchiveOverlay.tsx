@@ -63,6 +63,7 @@ function ArchiveOverlay({ info }: InfoProps): JSX.Element {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(mono)',
                 view: '-center-',
               }}
               cases={{
@@ -104,6 +105,7 @@ function ArchiveOverlay({ info }: InfoProps): JSX.Element {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(mono)',
                 view: '-center-',
               }}
               cases={{

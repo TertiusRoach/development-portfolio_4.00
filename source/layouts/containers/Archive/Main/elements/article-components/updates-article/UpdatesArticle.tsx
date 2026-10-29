@@ -20,7 +20,8 @@ const UpdatesArticle: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
-
+  //--|🠊 Random color, so all ten are tested 🠈|--\\
+  const colors = ['(mono)', '(red)', '(green)', '(blue)', '(yellow)', '(purple)', '(orange)', '(pink)', '(brown)', '(turquoise)'] as const;
   return (
     <aside className="updates-article">
       <section className={`${blockName}-foreground`}>
@@ -33,6 +34,7 @@ const UpdatesArticle: React.FC<InfoProps> = ({ info }) => {
           style={{
             size: '<h6>',
             shade: '~dark~',
+            color: colors[Math.floor(Math.random() * colors.length)],
             view: '-justify-',
           }}
           cases={{

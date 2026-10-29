@@ -62,6 +62,7 @@ function LandingOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(mono)',
                 view: '-center-',
               }}
               cases={{
@@ -104,6 +105,7 @@ function LandingOverlay({ info }: InfoProps) {
               style={{
                 size: '<h6>',
                 shade: '~dark~',
+                color: '(mono)',
                 view: '-center-',
               }}
               cases={{
