@@ -184,6 +184,7 @@ throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stri
 ### Props and Events
 
 - **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). `info.labelAria` is optional and is read aloud when a button has no visible text; other components add it when they need it.
+- **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.select';` and uses `TheseProps['style']['shade']`. `<LabelSelect>` is the first to follow this; the others move over as they're refactored.
 - **Every `<Button>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
 
 Smaller components keep everything in one `.scss` file and split it with placeholders instead: `%desk-flex`, `%desk-grid`, `%desk-tint` and their `mobi-` and `tabl-` versions (see [Scaling Pattern](#6-scaling-pattern)).
@@ -208,7 +209,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
 - **One main function, exported twice.** A file with one main function declares it as `export function`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
 - **Several main functions, no default.** A file of equal utilities (like `scripts.ts`) uses named exports only, so a default export always means "the one this file is about".
 - **Values inside a function.** A flag worked out once per render is a `let` with its type written out, and its reason as a trailing comment: `let styleImage: boolean = /\.(png|jpe?g)$/i.test(…); //--|🠈 … 🠈|--\\`. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
-- **Types are shared, not copied.** `Button_default.ts` exports `StyleProps` by name, and `Button.default.tsx` imports it.
+- **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)). Older files still do it the other way round, with `Button_default.ts` exporting `StyleProps` for `Button.default.tsx`.
 
 `<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. Older files are being moved to this order as they're refactored.
 

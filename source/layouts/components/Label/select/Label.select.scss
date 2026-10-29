@@ -1,826 +1,1337 @@
 //--|🠊 Label.select.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠊 AI Code: Review Please 2026-10-29 🠈|--\\
+@mixin select-flexbox {
+  //--|🠋 Global (Flex) 🠋|--\\
+  width: 75%; //--|🠈 Three quarters of its parent container 🠈|--\\
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  select[class='event'] {
+    width: 100%;
+    //--|🠊 The browser's arrow is hidden, span.arrow draws its own 🠈|--\\
+    appearance: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
+    border-style: none;
+    &:focus {
+      outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+    }
+  }
+  span[class='arrow'] {
+    //--|🠊 The caret-down from <Menu>, painted in the tint like a <ButtonDefault> silhouette 🠈|--\\
+    top: 0;
+    bottom: 0;
+    margin: auto 0; //--|🠈 Centres the caret between top and bottom 🠈|--\\
+    position: absolute;
+    pointer-events: none; //--|🠈 Clicks fall through to the <select> 🠈|--\\
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+}
+@mixin select-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+  //--|🠋 Crossfade Layers 🠋|--\\
+  /*--|🠋
+    Why: A browser can't fade one gradient into another, it snaps.
+    It can fade opacity. How: ::before holds the resting gradient,
+    ::after the flipped one (Set in *-tint). On hover or focus ::before
+    fades out while ::after fades in, so the gradients blend, like <Button>.
+    Note: A <select> can't hold ::before or ::after, so the <label> carries
+    both layers and the <select> stays see-through on top of them.
+  🠉|--*/
+  isolation: isolate; //--|🠈 Keeps the z-index: -1 layers above the parent, behind the <select> 🠈|--\\
+  &::before,
+  &::after {
+    content: '';
+    inset: 0;
+    z-index: -1;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+  }
+  &::before {
+    transition: opacity 750ms $tint-fade;
+  }
+  &::after {
+    opacity: 0;
+    transition: opacity 750ms $tint-fade;
+  }
+  select[class='event'] {
+    background: none;
+    transition:
+      color 500ms $tint-fade,
+      text-shadow 500ms $tint-fade;
+  }
+  span[class='arrow'] {
+    transition: background-color 250ms $tint-fade;
+  }
+  &:hover,
+  &:focus-within {
+    //--|🠊 Flips on hover like <Button>, and stays flipped while the list is open 🠈|--\\
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+//--|===|--\\
 @mixin desktop-landscape {
   //--|🠋 Desktop (Select) 🠋|--\\
+  %desk-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    /*--|🠋
+      AI Code: Review Please 2026-10-29 · Every size comes from the height (h): radius = h / 2 (on the <label>), padding = h / 2 on the left and h on the right for the
+      arrow. Heights match <LabelToggle> so the two line up in a form row.
+    🠉|--*/
+    @at-root label[class*='select-default'] {
+      height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      select[class='event'] {
+        height: 44px;
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-height: 768px) {
+        height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 40px;
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 24px;
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 16px;
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+  %desk-grid {
+    /*--|🠋
+      <LabelSelect> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %desk-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      select-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %desk-flex;
+  @extend %desk-grid;
+  @extend %desk-tint;
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Select) 🠋|--\\
+  %mobi-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root label[class*='select-default'] {
+      height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      select[class='event'] {
+        height: 44px;
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-width: 768px) {
+        height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 40px;
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 24px;
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 16px;
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+  %mobi-grid {
+    /*--|🠋
+      <LabelSelect> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %mobi-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      select-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %mobi-flex;
+  @extend %mobi-grid;
+  @extend %mobi-tint;
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Select) 🠋|--\\
+  %tabl-flex {
+    //--|🠊 Size & Curve 🠈|--\\
+    @at-root label[class*='select-default'] {
+      @media screen and (orientation: landscape) {
+        //--|🠊 Desktop 🠈|--\\
+        height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 44px;
+          font-size: 18px;
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 24px;
+          height: 24px;
+        }
+        @media screen and (max-width: 1920px) {
+          height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 40px;
+            font-size: 16px;
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 22px;
+            height: 22px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 24px;
+            font-size: 12px;
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 14px;
+            height: 14px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 16px;
+            font-size: 10px;
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+      @media screen and (orientation: portrait) {
+        //--|🠊 Mobile 🠈|--\\
+        height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        select[class='event'] {
+          height: 44px;
+          font-size: 18px;
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the arrow 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          width: 24px;
+          height: 24px;
+        }
+        @media screen and (max-height: 1920px) {
+          height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 40px;
+            font-size: 16px;
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 22px;
+            height: 22px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 24px;
+            font-size: 12px;
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 14px;
+            height: 14px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+          border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+          select[class='event'] {
+            height: 16px;
+            font-size: 10px;
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the arrow 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  }
+  %tabl-grid {
+    /*--|🠋
+      <LabelSelect> has no grid of its own, the parent places it.
+      Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  %tabl-tint {
+    /*--|🠋
+      Colours don't change between screens, so every tint lives in
+      select-colors. Kept so every orientation has the same shape.
+    🠉|--*/
+  }
+  //--|===|--\\
+  @extend %tabl-flex;
+  @extend %tabl-grid;
+  @extend %tabl-tint;
+}
+//--|===|--\\
+//--|🠊 AI Code: Review Please 2026-10-29 · Resting reads like an unchecked toggle, hovered or open like a checked one 🠈|--\\
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_red'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_red'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    select[class='event'] {
+      color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+      text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $blaDar,
+        0 0 0.25em rgba($blaDar, 0.6);
+      option {
+        background: $darMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $neoLig;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $neoLig;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $blaDar;
+      }
+    }
+  }
+  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    &::before {
+      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
+    }
+    &::after {
+      background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+    }
+    select[class='event'] {
+      color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+      text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+        0 0 0.04em $neoLig,
+        0 0 0.25em rgba($neoLig, 0.6);
+      option {
+        background: $ligMed; //--|🠈 The OS draws the open list, so it only takes flat colours 🠈|--\\
+        color: $blaDar;
+      }
+    }
+    span[class='arrow'] {
+      background-color: $blaDar;
+    }
+    &:hover,
+    &:focus-within {
+      select[class='event'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='arrow'] {
+        background-color: $neoLig;
+      }
+    }
+  }
 }
 
 label[class*='select-default'] {
+  @include select-flexbox();
+  @include select-colors();
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }
-}
-
-//--|===|--\\
-@mixin mon-tint {
-  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_mon'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-light, 0) 0%,
-          rgba(Palettes.$gray-light, 0.28) 55%,
-          rgba(Palettes.$gray-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_mon'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-dark, 0) 0%,
-          rgba(Palettes.$gray-dark, 0.3) 55%,
-          rgba(Palettes.$gray-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin red-tint {
-  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_red'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$red-light, 0) 0%,
-          rgba(Palettes.$red-light, 0.28) 55%,
-          rgba(Palettes.$red-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_red'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(180deg, rgba(Palettes.$red-dark, 0) 0%, rgba(Palettes.$red-dark, 0.3) 55%, rgba(Palettes.$red-dark, 0.64) 100%);
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin gre-tint {
-  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_gre'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-light, 0) 0%,
-          rgba(Palettes.$green-light, 0.28) 55%,
-          rgba(Palettes.$green-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_gre'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-dark, 0) 0%,
-          rgba(Palettes.$green-dark, 0.3) 55%,
-          rgba(Palettes.$green-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin blu-tint {
-  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_blu'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-light, 0) 0%,
-          rgba(Palettes.$blue-light, 0.28) 55%,
-          rgba(Palettes.$blue-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_blu'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-dark, 0) 0%,
-          rgba(Palettes.$blue-dark, 0.3) 55%,
-          rgba(Palettes.$blue-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin pur-tint {
-  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_pur'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-light, 0) 0%,
-          rgba(Palettes.$purple-light, 0.28) 55%,
-          rgba(Palettes.$purple-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_pur'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-dark, 0) 0%,
-          rgba(Palettes.$purple-dark, 0.3) 55%,
-          rgba(Palettes.$purple-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin ora-tint {
-  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_ora'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-light, 0) 0%,
-          rgba(Palettes.$orange-light, 0.28) 55%,
-          rgba(Palettes.$orange-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_ora'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-dark, 0) 0%,
-          rgba(Palettes.$orange-dark, 0.3) 55%,
-          rgba(Palettes.$orange-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin pin-tint {
-  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_pin'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-light, 0) 0%,
-          rgba(Palettes.$pink-light, 0.28) 55%,
-          rgba(Palettes.$pink-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_pin'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-dark, 0) 0%,
-          rgba(Palettes.$pink-dark, 0.3) 55%,
-          rgba(Palettes.$pink-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin yel-tint {
-  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_yel'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-light, 0) 0%,
-          rgba(Palettes.$yellow-light, 0.28) 55%,
-          rgba(Palettes.$yellow-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_yel'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-dark, 0) 0%,
-          rgba(Palettes.$yellow-dark, 0.3) 55%,
-          rgba(Palettes.$yellow-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin bro-tint {
-  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_bro'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-light, 0) 0%,
-          rgba(Palettes.$brown-light, 0.28) 55%,
-          rgba(Palettes.$brown-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_bro'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-dark, 0) 0%,
-          rgba(Palettes.$brown-dark, 0.3) 55%,
-          rgba(Palettes.$brown-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
-  }
-}
-@mixin tur-tint {
-  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
-  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_tur'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background:
-          linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(white, 1));
-      &::after {
-        filter: drop-shadow(0 0 4px black);
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-light, 0) 0%,
-          rgba(Palettes.$turquoise-light, 0.28) 55%,
-          rgba(Palettes.$turquoise-light, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_tur'] {
-    input[class='event'] {
-      &:not(:checked) + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &:checked + span[class='switch'] {
-        background: linear-gradient(180deg, rgba(#000, 0.18) 0%, rgba(#000, 0) 42%, rgba(#000, 0.2) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-light, 0.18);
-      }
-    }
-    span[class='switch'] {
-      filter: drop-shadow(0 0 2px rgba(black, 1));
-      &::after {
-        filter: drop-shadow(0 0 2px rgba(white, 1));
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-dark, 0) 0%,
-          rgba(Palettes.$turquoise-dark, 0.3) 55%,
-          rgba(Palettes.$turquoise-dark, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &:hover::after {
-        filter: drop-shadow(0 0 2px rgba(black, 1));
-      }
-    }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
   }
 }

@@ -1,12 +1,9 @@
 //--|🠊 Label_select.ts 🠈|--\\
 import { stripBrackets } from '../../../../scripts';
+import type { TheseProps } from './Label.select'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
-export interface StyleProps {
-  shade: '~dark~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
-}
 //--|🠋 Functions 🠋|--\\
-function createClass(style: StyleProps): string {
+function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <LabelSelect> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
 
@@ -14,14 +11,14 @@ function createClass(style: StyleProps): string {
 }
 
 //--|🠋 Generate Abbreviations 🠋|--\\
-const createColor = (shade: StyleProps['shade'], color: StyleProps['color']): string => {
-  const shadeMap: Record<StyleProps['shade'], string> = {
+const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
+  const shadeMap: Record<TheseProps['style']['shade'], string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
     '~light~': 'lig',
   };
 
-  const colorMap: Record<StyleProps['color'], string> = {
+  const colorMap: Record<TheseProps['style']['color'], string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
     '(mono)': 'mon',
     '(red)': 'red',
