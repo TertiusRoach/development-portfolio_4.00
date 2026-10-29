@@ -341,20 +341,38 @@ Every colour comes in five tones (`-dark`, `-medium`, `-light`, `-neon`, plus `-
 
 ### The RGB Toggles
 
-Three on/off toggles mix the first colours like light does:
+`<DivisionColourize>` has four on/off toggles: **Mono**, **Red**, **Green** and **Blue**. Red, green and blue mix the colours like light does, and Mono switches between two sets of mixes, so all ten colours can be picked:
 
-| Red | Green | Blue | Result    |
-| --- | ----- | ---- | --------- |
-| Off | Off   | Off  | Mono      |
-| On  | Off   | Off  | Red       |
-| Off | On    | Off  | Green     |
-| Off | Off   | On   | Blue      |
-| On  | On    | Off  | Yellow    |
-| On  | Off   | On   | Purple    |
-| Off | On    | On   | Turquoise |
-| On  | On    | On   | Mono      |
+| Mono | Red | Green | Blue | Result    |
+| ---- | --- | ----- | ---- | --------- |
+| Off  | Off | Off   | Off  | Mono      |
+| Off  | On  | Off   | Off  | Red       |
+| Off  | Off | On    | Off  | Green     |
+| Off  | Off | Off   | On   | Blue      |
+| Off  | On  | On    | Off  | Orange    |
+| Off  | On  | Off   | On   | Purple    |
+| Off  | Off | On    | On   | Turquoise |
+| Off  | On  | On    | On   | Brown     |
+| On   | Off | Off   | Off  | Mono      |
+| On   | On  | Off   | Off  | Pink      |
+| On   | Off | On    | Off  | Green     |
+| On   | Off | Off   | On   | Blue      |
+| On   | On  | On    | Off  | Yellow    |
+| On   | On  | Off   | On   | Purple    |
+| On   | Off | On    | On   | Turquoise |
+| On   | On  | On    | On   | Mono      |
 
-Three toggles give eight combinations, so orange, pink and brown can't come from them. How they're picked is still being designed.
+The map is `tintMap` in `components/Division/colourize/Division_colourize.ts`. It returns the colour's abbreviation (`mon`, `red`, `pin` …), and each layout decides what to do with it through `cases.task`:
+
+```tsx
+<DivisionColourize
+  info={{ pageName: pageName, blockName: blockName, labelName: labelName }}
+  style={{ shade: '~dark~' }}
+  cases={{ task: [(tint) => updateArticle(tint)] }}
+/>
+```
+
+The function a layout passes in lives in its own `*Functions.ts`, never in the component. `updateArticle` in `UpdatesFunctions.ts` keeps the shade and swaps the colour: `dar_mon` becomes `dar_red`.
 
 ### Adding a Colour to a Component
 
@@ -410,7 +428,6 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | What                                    | Where it's headed                                                                                     |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Smooth fades between colours            | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first |
-| Picking orange, pink and brown          | The Archive needs a way to select all ten colours                                                     |
 | `(opaque)`                              | Mixing several colour toggles at once, on `<Button>`                                                  |
 | `<ButtonRouting>` effects               | Special animations when it's inside `<NavigationDefault>`                                             |
 | Log a Ticket                            | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                          |

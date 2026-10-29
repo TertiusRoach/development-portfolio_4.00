@@ -26,7 +26,7 @@ function toggleColors(element: HTMLElement): string {
     'true-false-true-false': 'gre',
     'true-false-false-true': 'blu',
     'true-true-true-false': 'yel',
-    'true-true-false-true': 'pin',
+    'true-true-false-true': 'pur',
     'true-false-true-true': 'tur',
     'true-true-true-true': 'mon',
   };

@@ -5,8 +5,7 @@
   //--|🠋 Desktop (Colourize) 🠋|--\\
   height: 100%;
   flex-direction: column;
-  background: rgba(darkred, 0.25);
-
+  //--|===|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
@@ -27,19 +26,21 @@
   //--|🠋 Mobile (Colourize) 🠋|--\\
   width: 100%;
   flex-direction: row;
-
+  //--|===|--\\
   $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
   $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  background: rgba(darkblue, 0.25);
+  height: calc($high-mobi / 2);
   @media screen and (max-width: 768px) {
+    height: calc($test-mobi / 2);
   }
   @media screen and (max-width: 480px) {
     height: calc($misc-mobi / 2);
   }
   @media screen and (max-width: 360px) {
+    height: calc($tiny-mobi / 2);
   }
 }
 
