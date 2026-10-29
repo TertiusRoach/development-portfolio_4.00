@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './SelectMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SelectFunctions';

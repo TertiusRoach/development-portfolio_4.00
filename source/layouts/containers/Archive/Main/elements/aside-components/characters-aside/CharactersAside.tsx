@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './CharactersAside.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';

@@ -10,7 +10,6 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 import LoadingArticle from './loading-article/LoadingArticle';
 
 //--|🠋 Styles 🠋|--\\
-import './ArticleElements.scss';
 import UpdatesArticle from './updates-article/UpdatesArticle';
 
 interface InfoProps {

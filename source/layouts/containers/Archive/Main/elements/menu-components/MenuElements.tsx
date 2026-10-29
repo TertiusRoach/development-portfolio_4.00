@@ -8,7 +8,6 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 //--|🠋 Elements 🠋|--\\
 
 //--|🠋 Styles 🠋|--\\
-import './MenuElements.scss';
 import SwipeMenu from './swipe-menu/SwipeMenu';
 import ScrollMenu from './scroll-menu/ScrollMenu';
 import SelectMenu from './select-menu/SelectMenu';

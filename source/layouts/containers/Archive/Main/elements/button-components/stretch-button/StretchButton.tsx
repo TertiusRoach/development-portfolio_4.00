@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './StretchButton.scss';
 
 //--|🠋 Functions 🠋|--\\
 

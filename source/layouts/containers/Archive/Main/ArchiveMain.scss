@@ -1,6 +1,17 @@
 //--|🠊 ArchiveMain.scss 🠈|--\\
 @use '../../../styles/Palettes.scss' as Palettes;
 
+@use './elements/article-components/ArticleElements.scss';
+@use './elements/aside-components/AsideElements.scss';
+@use './elements/button-components/ButtonElements.scss';
+@use './elements/division-components/DivisionElements.scss';
+@use './elements/figure-components/FigureElements.scss';
+@use './elements/menu-components/MenuElements.scss';
+@use './elements/navigation-components/NavigationElements.scss';
+@use './elements/section-components/SectionElements.scss';
+@use './elements/table-components/TableElements.scss';
+@use './elements/time-components/TimeElements.scss';
+
 @mixin desktop-landscape {
   //--|🠋 Desktop: Components Main 🠋|--\\
   section[class*='main-fore'] {

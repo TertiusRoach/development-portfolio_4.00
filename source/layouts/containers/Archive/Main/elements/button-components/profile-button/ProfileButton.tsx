@@ -11,7 +11,6 @@ import { toggleColors } from './ProfileFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
-import './ProfileButton.scss';
 
 interface InfoProps {
   info: {

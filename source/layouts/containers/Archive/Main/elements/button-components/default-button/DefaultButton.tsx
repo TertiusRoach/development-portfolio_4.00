@@ -13,7 +13,6 @@ import copyCode, { toggleColors } from './DefaultFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
-import './DefaultButton.scss';
 
 interface InfoProps {
   info: {

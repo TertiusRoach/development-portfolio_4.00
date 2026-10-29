@@ -12,7 +12,6 @@ import ProfileButton from './profile-button/ProfileButton';
 import StretchButton from './stretch-button/StretchButton';
 
 //--|🠋 Styles 🠋|--\\
-import './ButtonElements.scss';
 
 interface InfoProps {
   info: {

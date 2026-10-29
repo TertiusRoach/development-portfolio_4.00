@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './UpdatesArticle.scss';
 
 //--|🠋 Functions 🠋|--\\
 import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';

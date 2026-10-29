@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './SwipeMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SwipeFunctions';

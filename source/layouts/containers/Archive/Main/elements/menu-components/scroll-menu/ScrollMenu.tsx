@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './ScrollMenu.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './ScrollFunctions';

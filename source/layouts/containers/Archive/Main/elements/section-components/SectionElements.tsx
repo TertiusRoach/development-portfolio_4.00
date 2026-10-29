@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './SectionElements.scss';
 
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';

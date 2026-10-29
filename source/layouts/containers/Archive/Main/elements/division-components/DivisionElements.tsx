@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './DivisionElements.scss';
 
 //--|🠋 Elements 🠋|--\\
 import TestingDivision from './testing-division/TestingDivision';

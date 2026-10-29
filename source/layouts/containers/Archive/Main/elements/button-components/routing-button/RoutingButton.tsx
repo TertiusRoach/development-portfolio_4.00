@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Styles 🠋|--\\
-import './RoutingButton.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './RoutingFunctions';
