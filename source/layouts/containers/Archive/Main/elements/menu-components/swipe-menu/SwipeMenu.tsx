@@ -43,7 +43,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               view: '-lef-',
               color: '(mono)',
-              shade: '~light~',
+              shade: '~dark~',
             }}
             cases={{
               axis: '[x]',
@@ -231,7 +231,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               size: '<h5>',
               view: '-icon-',
-              shade: '~dark~',
+              shade: '~light~',
               color: '(mono)',
               image: copyImage,
             }}
@@ -245,7 +245,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               size: '<h5>',
               view: '-icon-',
-              shade: '~dark~',
+              shade: '~light~',
               color: '(mono)',
               image: copyImage,
             }}
@@ -259,7 +259,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               size: '<h5>',
               view: '-icon-',
-              shade: '~dark~',
+              shade: '~light~',
               color: '(mono)',
               image: copyImage,
             }}
@@ -273,7 +273,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
             style={{
               size: '<h5>',
               view: '-icon-',
-              shade: '~dark~',
+              shade: '~light~',
               color: '(mono)',
               image: copyImage,
             }}

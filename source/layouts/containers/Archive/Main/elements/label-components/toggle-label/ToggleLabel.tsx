@@ -5,10 +5,10 @@ import React from 'react';
 
 //--|🠋 Components 🠋|--\\
 import LabelToggle from '../../../../../../components/Label/toggle/Label.toggle';
-import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
+// import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
-import { toggleColors } from './ToggleFunctions';
+// import { toggleColors } from './ToggleFunctions';
 
 interface InfoProps {
   info: {
@@ -24,6 +24,7 @@ const ToggleLabel: React.FC<InfoProps> = ({ info }) => {
   return (
     <aside className="toggle-label">
       <section className={`${blockName}-foreground`}>
+        {/*
         <div className="toggle-darkside">
           <LabelToggle
             info={{
@@ -70,19 +71,9 @@ const ToggleLabel: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </div>
-        <DivisionColourize
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-          }}
-          cases={{
-            task: [(tint) => toggleColors(tint)], //--|🠈 Recolors both sides with the tint from the toggles 🠈|--\\
-          }}
-        />
+        */}
+
+        {/*
         <div className="toggle-lightside">
           <LabelToggle
             info={{
@@ -129,12 +120,10 @@ const ToggleLabel: React.FC<InfoProps> = ({ info }) => {
             }}
           />
         </div>
+        */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}>
-        <section className="left-side"></section>
-        <section className="right-side"></section>
-      </div>
+      <div className={`${blockName}-background`}></div>
     </aside>
   );
 };

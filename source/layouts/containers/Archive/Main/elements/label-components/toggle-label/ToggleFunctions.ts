@@ -1,5 +1,6 @@
 //--|🠊 toggle-label/ToggleFunctions.ts 🠈|--\\
 //--|🠋 Label Color Toggle 🠋|--\\
+/*
 export const toggleColors = (tint: string): void => {
   updateLabels(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into every <LabelToggle> on both sides 🠈|--\\
 };
@@ -17,3 +18,4 @@ let updateLabels = (color: string) => {
     labelElements[i].classList.replace(prevClass, nextClass);
   }
 };
+*/
