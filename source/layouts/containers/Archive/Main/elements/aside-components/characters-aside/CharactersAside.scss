@@ -12,40 +12,20 @@
     aside[class*='_dar_'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    div[class*='toggle'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
+    div[class*='colourize'] {
+      display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
+      justify-self: center; //--|🠈 Centres the fixed-width division in the 1fr column 🠈|--\\
       grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      label:nth-child(1) {
-        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(2) {
-        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(3) {
-        grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
 
-      margin: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
-      grid-template: //--|🠋 Width: 1920px 🠋|--\\
-        8rem repeat(3, 1fr) 8rem //--|🠈 rows 🠈|--//
-        / 1fr; //--|🠈 columns 🠈|--\\
+      padding: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
       @media screen and (max-height: 768px) {
-        margin: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
-        grid-template: //--|🠋 Width: 1366px 🠋|--\\
-          6rem repeat(3, 1fr) 6rem //--|🠈 rows 🠈|--//
-          / 1fr; //--|🠈 columns 🠈|--\\
+        padding: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
       }
       @media screen and (max-height: 480px) {
-        margin: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
-        grid-template: //--|🠋 Width: 854px 🠋|--\\
-          4rem repeat(3, 1fr) 4rem //--|🠈 rows 🠈|--//
-          / 1fr; //--|🠈 columns 🠈|--\\
+        padding: $misc-desk 0; //--|🠋 48px (Left & Right) for Design 🠋|--\\
       }
       @media screen and (max-height: 360px) {
-        margin: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
-        grid-template: //--|🠋 Width: 640px 🠋|--\\
-          3rem repeat(3, 1fr) 3rem //--|🠈 rows 🠈|--//
-          / 1fr; //--|🠈 columns 🠈|--\\
+        padding: $tiny-desk 0; //--|🠋 32px (Left & Right) for Design 🠋|--\\
       }
     }
     aside[class*='_lig_'] {
@@ -84,29 +64,21 @@
     aside[class*='_dar_'] {
       grid-area: 1 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-    div[class*='toggle'] {
-      display: inherit; //--|🠈 display: grid; 🠈|--\\
-      grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\\
-      grid-template-columns: 1fr;
-      label:nth-child(1) {
-        grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(2) {
-        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
-      label:nth-child(3) {
-        grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      }
+    div[class*='colourize'] {
+      display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
+      height: 100%; //--|🠈 Full column, not the component's row height 🠈|--\\
+      flex-direction: column; //--|🠈 The middle column is narrow, so the toggles stack 🠈|--\\
+      grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-      grid-template-rows: $high-mobi repeat(3, 1fr) $high-mobi; //--|🠈 Height: 1920px 🠈|--\\
+      padding: $high-mobi 0; //--|🠈 Height: 1920px 🠈|--\\
       @media screen and (max-width: 768px) {
-        grid-template-rows: $test-mobi repeat(3, 1fr) $test-mobi; //--|🠈 Height: 1366px 🠈|--\\
+        padding: $test-mobi 0; //--|🠈 Height: 1366px 🠈|--\\
       }
       @media screen and (max-width: 480px) {
-        grid-template-rows: $misc-mobi repeat(3, 1fr) $misc-mobi; //--|🠈 Height: 854px 🠈|--\\
+        padding: $misc-mobi 0; //--|🠈 Height: 854px 🠈|--\\
       }
       @media screen and (max-width: 360px) {
-        grid-template-rows: $tiny-mobi repeat(3, 1fr) $tiny-mobi; //--|🠈 Height: 640px 🠈|--\\
+        padding: $tiny-mobi 0; //--|🠈 Height: 640px 🠈|--\\
       }
     }
     aside[class*='_lig_'] {
