@@ -7,14 +7,14 @@
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     article[class*='updates'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
     //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
   }
 }
@@ -25,13 +25,13 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   // display: none !important;
-  section[class*='foreground'] {
+  section[class*='main-fore'] {
     article[class*='updates'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='main-mid'] {
   }
-  div[class*='background'] {
+  div[class*='main-back'] {
   }
 }

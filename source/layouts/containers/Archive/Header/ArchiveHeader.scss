@@ -8,7 +8,7 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
-  section[class*='foreground'] {
+  section[class*='header-fore'] {
     div[class*='conveyor'] {
       z-index: 1;
       background: rgba(darkred, 0.5);
@@ -29,9 +29,9 @@
       z-index: 0;
     }
   }
-  figure[class*='midground'] {
+  figure[class*='header-mid'] {
   }
-  div[class*='background'] {
+  div[class*='header-back'] {
     header {
       grid-area: 1 / 1 / 2 / 4;
       background: rgba(red, 0.25);
@@ -47,7 +47,7 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
-  section[class*='foreground'] {
+  section[class*='header-fore'] {
     menu[class*='select'] {
       grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: rgba(darkgreen, 0.5);
@@ -64,9 +64,9 @@
       }
     }
   }
-  figure[class*='midground'] {
+  figure[class*='header-mid'] {
   }
-  div[class*='background'] {
+  div[class*='header-back'] {
     header {
       grid-area: 1 / 1 / 2 / 4;
       background: rgba(green, 0.25);

@@ -3,24 +3,24 @@
 
 @mixin desktop-landscape {
   //--|🠊 Desktop <Rightbar> 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='rightbar-fore'] {
   }
-  figure[class*='midground'] {
+  figure[class*='rightbar-mid'] {
   }
-  div[class*='background'] {
+  div[class*='rightbar-back'] {
     background: rgba(green, 0.25);
   }
 }
 @mixin mobile-portrait {
   //--|🠊 Mobile <Rightbar> 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='rightbar-fore'] {
     menu[class*='select'] {
       grid-area: 2 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='rightbar-mid'] {
   }
-  div[class*='background'] {
+  div[class*='rightbar-back'] {
     background: rgba(blue, 0.25);
   }
 }

@@ -10,7 +10,7 @@
     // height: inherit; //--|🠈 height: 100%; 🠈|--\\
 
     //--|🠋 Desktop (Layers) 🠋|--\\
-    section[class*='foreground'] {
+    section[class*='main-fore'] {
       // background: rgba(darkgreen, 0.5);
       h1 {
         display: flex;
@@ -19,9 +19,9 @@
         grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
-    figure[class*='midground'] {
+    figure[class*='main-mid'] {
     }
-    div[class*='background'] {
+    div[class*='main-back'] {
     }
   }
 }
@@ -34,11 +34,11 @@
     height: inherit; //--|🠈 height: 100%; 🠈|--\\
 
     //--|🠋 Mobile (Layers) 🠋|--\\
-    section[class*='foreground'] {
+    section[class*='main-fore'] {
     }
-    figure[class*='midground'] {
+    figure[class*='main-mid'] {
     }
-    div[class*='background'] {
+    div[class*='main-back'] {
     }
   }
 }

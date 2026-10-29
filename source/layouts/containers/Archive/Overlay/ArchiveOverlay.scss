@@ -3,15 +3,15 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Overlay) 🠋|--\\
-  section[class*='foreground'] {
+  section[class*='overlay-fore'] {
   }
-  figure[class*='midground'] {
+  figure[class*='overlay-mid'] {
     article[class*='loading'],
     article[class*='updates'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  div[class*='background'] {
+  div[class*='overlay-back'] {
     background: linear-gradient(
       220deg,
       rgba(Palettes.$indexLand-light, 0.75) 0%,
@@ -22,15 +22,15 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Overlay) 🠋|--\\
-  section[class*='foreground'] {
+  section[class*='overlay-fore'] {
   }
-  figure[class*='midground'] {
+  figure[class*='overlay-mid'] {
     article[class*='loading'],
     article[class*='updates'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  div[class*='background'] {
+  div[class*='overlay-back'] {
     background: linear-gradient(
       55deg,
       rgba(Palettes.$indexLand-light, 0.75) 0%,
