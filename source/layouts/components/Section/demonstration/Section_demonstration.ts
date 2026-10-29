@@ -63,7 +63,6 @@ export const createClass = (style: StyleProps): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Shade Abbr 🠈|--\\
     '~dark~': 'dar',
-    '~medium~': 'med',
     '~light~': 'lig',
   };
   return `${shadeMap[style.shade]}_${colorMap[style.color]}`;

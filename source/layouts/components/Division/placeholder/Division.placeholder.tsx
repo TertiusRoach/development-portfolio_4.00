@@ -16,7 +16,7 @@ interface TheseProps {
     labelName: string;
   };
   style: {
-    shade: '~dark~' | '~medium~' | '~light~';
+    shade: '~dark~' | '~light~';
     view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };

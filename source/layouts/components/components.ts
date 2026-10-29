@@ -30,12 +30,11 @@ export let abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '
 
   return `${classView}`;
 };
-export let abbrShade = (shade: '~dark~' | '~medium~' | '~light~'): string => {
+export let abbrShade = (shade: '~dark~' | '~light~'): string => {
   const shadeMap: Record<string, string> = {
     //--|🠊 Map of types to abbreviations 🠈|--\\
     '~dark~': 'dar',
     '~light~': 'lig',
-    '~medium~': 'med',
   };
 
   const classShade = shadeMap[shade];

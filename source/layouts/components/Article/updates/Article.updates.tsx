@@ -3,7 +3,7 @@
 // import './Article.updates.scss';
 
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../components';
+import { createClass } from './Article_updates';
 
 //--|🠋 Components 🠋|--\\
 
@@ -19,6 +19,7 @@ interface TheseProps {
 
   style: {
     shade: '~dark~' | '~light~';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
     view: '-justify-' | '-center-' | '-left-' | '-right-';
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
@@ -36,10 +37,6 @@ const ArticleUpdates: React.FC<TheseProps> = ({ info, style, cases }) => {
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
-  const shadeClass: Record<TheseProps['style']['shade'], string> = {
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
   const sizeClass: Record<TheseProps['style']['size'], string> = {
     '<h1>': 'one',
     '<h2>': 'two',
@@ -56,17 +53,19 @@ const ArticleUpdates: React.FC<TheseProps> = ({ info, style, cases }) => {
     '-justify-': 'jus',
   };
   return (
-    <article className={`${info.labelName}-${info.blockName}_updates-default`}>
-      <div className={`wrapper_${shadeClass[style.shade]}`}>
-        <header className="logo">
-          <img src={cases.image} alt="" />
-        </header>
-        <section className="title">
-          <h1>{cases.title}</h1>
-        </section>
-        <footer className="description">
-          <p className={`${sizeClass[style.size]}_${viewClass[style.view]}`}>{cases.description}</p>
-        </footer>
+    <article className={`${info.labelName}-${info.blockName}_updates-default ${createClass(style)}`}>
+      <div className="wrap-card">
+        <span className="branding">
+          <img
+            alt={cases.title}
+            style={{
+              maskImage: `url(${cases.image})`,
+              WebkitMaskImage: `url(${cases.image})`,
+            }}
+          ></img>
+        </span>
+        <h1 className="title">{cases.title}</h1>
+        <p className={`description ${sizeClass[style.size]}_${viewClass[style.view]}`}>{cases.description}</p>
       </div>
     </article>
   );

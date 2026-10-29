@@ -32,7 +32,6 @@ export function createClass(style: StyleProps): string {
   const shadeMap: Record<string, string> = {
     //--|🠊 Shade Abbr 🠈|--\\
     '~dark~': 'dar',
-    '~medium~': 'med',
     '~light~': 'lig',
   };
   return `${viewMap[style.view]}_${shadeMap[style.shade]}_${colorMap[style.color]}`;
