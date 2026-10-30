@@ -740,7 +740,7 @@ export const romanToArabic = (romanNumeral: string | undefined): number => {
       return 156;
   }
 };
-export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '--' | '~~'): string => {
+export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '{}' | '⟨⟩' | '--' | '~~'): string => {
   switch (wrapType) {
     case '[]':
       //--|🠊 Associated with [pageName] 🠈|--\\
@@ -756,6 +756,9 @@ export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '
     case '{}':
       //--|🠊 Associated with {style.type} 🠈|--\\
       return thisText.replace(/[{}]/g, '');
+    case '⟨⟩':
+      //--|🠊 Associated with {clarity.type} 🠈|--\\
+      return thisText.replace(/[⟨⟩]/g, '');
     case '--':
       //--|🠊 Associated with -style.view- 🠈|--\\
       return thisText.replace(/[--]/g, '');

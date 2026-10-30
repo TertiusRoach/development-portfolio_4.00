@@ -3,10 +3,10 @@ import { stripBrackets } from '../../../../scripts';
 
 export interface StyleProps {
   shade: '~dark~' | '~light~';
+  clarity: '⟨opaque⟩' | '⟨lucid⟩';
   size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
   color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
-
   text?: string;
   image?: string | null;
 }
