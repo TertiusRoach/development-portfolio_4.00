@@ -8,15 +8,9 @@ import React from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import ToggleLabel from './toggle-label/ToggleLabel';
-import SelectLabel from './select-label/SelectLabel';
-import CheckboxLabel from './checkbox-label/CheckboxLabel'; //--|🠈 AI Code: Review Please 2026-10-29 15:45 🠈|--\\
-import InputLabel from './input-label/InputLabel'; //--|🠈 AI Code: Review Please 2026-10-29 15:49 🠈|--\\
-import NumberLabel from './number-label/NumberLabel'; //--|🠈 AI Code: Review Please 2026-10-29 15:51 🠈|--\\
-import TextareaLabel from './textarea-label/TextareaLabel'; //--|🠈 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
-import RangeLabel from './range-label/RangeLabel'; //--|🠈 AI Code: Review Please 2026-10-29 15:56 🠈|--\\
-import ComboboxLabel from './combobox-label/ComboboxLabel'; //--|🠈 AI Code: Review Please 2026-10-29 16:02 🠈|--\\
-import UploadLabel from './upload-label/UploadLabel'; //--|🠈 AI Code: Review Please 2026-10-29 16:44 🠈|--\\
+import SwitchingLabel from './switching-label/SwitchingLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+import TextareaLabel from './textarea-label/TextareaLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+import SelectionLabel from './selection-label/SelectionLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 
 interface InfoProps {
   info: {
@@ -30,22 +24,10 @@ function LabelComponents({ info }: InfoProps) {
   const blockName = info.blockName;
   return (
     <>
-      <ToggleLabel info={{ labelName: 'toggle' as string, pageName: pageName, blockName: blockName }} />
-      <SelectLabel info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 15:45 🠈|--*/}
-      <CheckboxLabel info={{ labelName: 'checkbox' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 15:49 🠈|--*/}
-      <InputLabel info={{ labelName: 'input' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 15:51 🠈|--*/}
-      <NumberLabel info={{ labelName: 'number' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--*/}
+      {/*--|🠊 AI Code: Review Please 2026-10-30 · Three pages, a dropdown will pick the type later 🠈|--*/}
+      <SwitchingLabel info={{ labelName: 'switching' as string, pageName: pageName, blockName: blockName }} />
       <TextareaLabel info={{ labelName: 'textarea' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 15:56 🠈|--*/}
-      <RangeLabel info={{ labelName: 'range' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 16:02 🠈|--*/}
-      <ComboboxLabel info={{ labelName: 'combobox' as string, pageName: pageName, blockName: blockName }} />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 16:44 🠈|--*/}
-      <UploadLabel info={{ labelName: 'upload' as string, pageName: pageName, blockName: blockName }} />
+      <SelectionLabel info={{ labelName: 'selection' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 }

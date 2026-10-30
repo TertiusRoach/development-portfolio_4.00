@@ -19,7 +19,6 @@ import FigureElements from './elements/figure-components/FigureElements';
 import ButtonElements from './elements/button-components/ButtonElements';
 import ArticleElements from './elements/article-components/ArticleElements';
 import SectionElements from './elements/section-components/SectionElements';
-import FieldsetElements from './elements/fieldset-components/FieldsetElements'; //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
 import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
@@ -112,14 +111,6 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName,
           blockName: blockName,
           labelName: 'division' as string,
-        }}
-      />
-      {/*--|🠊 AI Code: Review Please 2026-10-29 17:15 🠈|--*/}
-      <FieldsetElements
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: 'fieldset' as string,
         }}
       />
       <FigureElements

@@ -73,22 +73,22 @@ The full explanation is in [CONTAINERS.md](CONTAINERS.md#naming).
 A component's outer element gets two classes: who placed it, then what it looks like.
 
 ```tsx
-<label className={`${info.labelName}-${info.blockName}_select-default ${createClass(style)}`}>
-//--|🠈 default-main_select-default dar_red 🠈|--\\
+<label className={`${info.labelName}-${info.blockName}_selection-${stripBrackets(cases.type, '{}')} ${createClass(style, cases)}`}>
+//--|🠈 default-main_selection-select nul_sel_mc_dar_red_luc_def 🠈|--\\
 ```
 
-| Part                             | Example           | Comes from                                      |
-| -------------------------------- | ----------------- | ----------------------------------------------- |
-| `${labelName}-${blockName}`      | `default-main`    | The caller's `info`                             |
-| `_${variant}-default`            | `_select-default` | The component's own folder name                 |
-| `${createClass(style)}`          | `dar_red`         | The style props, always the **second** class    |
+| Part                             | Example             | Comes from                                      |
+| -------------------------------- | ------------------- | ----------------------------------------------- |
+| `${labelName}-${blockName}`      | `default-main`      | The caller's `info`                             |
+| `_${variant}-${type}`            | `_selection-select` | The component's folder name, then `cases.type` in full. A component without `cases.type` ends in `-default` |
+| `${createClass(style, cases)}`   | `nul_sel_mc_dar_red_luc_def` | The props, always the **second** class (see [Bracket Syntax](#5-bracket-syntax)) |
 
-- **The colour class stays second.** The `*Functions.ts` files swap colours with `classList[1]`, so nothing may be added between the two classes.
-- **The root selector matches the variant part, not just the variant name:** `label[class*='select-default']`, never `label[class*='select']`. The first half of the class comes from the caller, so a `labelName` like `select` would otherwise pull the wrong styles onto a `<LabelToggle>`.
+- **The props class stays second.** The `*Functions.ts` files swap colours with `classList[1]`, so nothing may be added between the two classes. They rebuild it with `.split('_')`, so a new slot in the class moves every index after it: adding `_luc_` to `<Button>` meant `[4]` became the clarity and `[5]` the variant.
+- **The root selector matches the variant part, not just the variant name:** `label[class*='_selection-']`, never `label[class*='select']`. The first half of the class comes from the caller, so a `labelName` like `select` would otherwise pull the wrong styles onto another `<Label>`. Each case is then `&[class*='selection-select']` inside it.
 - **`labelName` is required** (`labelName: string`) wherever it builds the class, and callers write it bare: `'default'`, not `'(default)'`. Components don't strip its brackets, so they'd end up in the class.
-- **Repeating a class is fine.** `<DivisionColourize>` renders four `<LabelToggle>`s with the same class. That's why components don't use `labelName` as an `id`.
+- **Repeating a class is fine.** `<DivisionColourize>` renders four `{toggle}` `<LabelSwitching>`s with the same class. That's why components don't use `labelName` as an `id`.
 
-**The exception is `<Button>`:** its class is `${variant}-button` (`default-button thr_lef_dar_blu_def`) and `info.labelName` becomes its `id`. The three `_division-${variant}` names (`colourize`, `testing`, `placeholder`) are older and are renamed one at a time (see [Parked for Later](#10-parked-for-later)).
+**The exception is `<Button>`:** its class is `${variant}-button` (`default-button thr_lef_dar_blu_luc_def`) and `info.labelName` becomes its `id`. The three `_division-${variant}` names (`colourize`, `testing`, `placeholder`) are older and are renamed one at a time (see [Parked for Later](#10-parked-for-later)).
 
 ### Files
 
@@ -127,7 +127,7 @@ When a script needs something to look different, give the look a state class in 
 demoCard.classList.add('conceal'); //--|🠈 not demoCard.style.opacity = '0' 🠈|--\\
 ```
 
-The `style={{ … }}` props on components (`color`, `view`, `shade`, `image`) aren't inline styles. They're turned into class names, so they're fine.
+The `style={{ … }}` props on components (`color`, `view`, `shade`, `clarity`, `image`) aren't inline styles. They're turned into class names, so they're fine.
 
 ### Git
 
@@ -143,7 +143,7 @@ Components are the building blocks in `source/layouts/components/`. Every compon
 components/Button/default/
 ├── Button.default.tsx          # Markup and props
 ├── Button.default.scss         # Imports the pipeline and applies it per screen
-├── Button_default.ts           # createClass() and the shared StyleProps type
+├── Button_default.ts           # createClass(), reading TheseProps from the .tsx
 └── pipeline/
     ├── Button_flex.scss        # Flex alignment and padding
     ├── Button_grid.scss        # Grid placement (top, bottom, left, right, center)
@@ -153,6 +153,8 @@ components/Button/default/
 ```
 
 `<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline.
+
+The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`) use a shorter pipeline: `Switching_flex.scss`, `Switching_size.scss` and `Switching_tint.scss`. They have no grid or corners of their own, and their flex and tint never change per screen, so those two files only hold the global `*-flexbox` and `*-colors` mixins. Only `*_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`. Inside every mixin, each case sits under its own `&[class*='switching-toggle']`, so one look per case stays readable. `<LabelTextarea>`'s three cases share one set of tints, because `{text}`, `{input}` and `{block}` look the same; `[class='event']` matches the `<input>` and the `<textarea>`.
 
 ### Pipeline Files
 
@@ -184,8 +186,11 @@ throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stri
 ### Props and Events
 
 - **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). `info.labelAria` is optional and is read aloud when a button has no visible text; other components add it when they need it.
-- **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.select';` and uses `TheseProps['style']['shade']`. `<LabelSelect>` is the first to follow this; the others move over as they're refactored.
-- **Every `<Button>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
+- **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.selection';` and uses `TheseProps['style']['shade']`. The three `<Label>`s follow this; the others move over as they're refactored.
+- **`cases.type` decides what a component is, `style` decides how it looks.** One component covers several elements with a classic `switch (cases.type)`, and each `case` calls its own function that returns that element's HTML: `caseText()`, `caseInput()`, `caseBlock()`. Props only one case needs are optional and marked with a trailing comment (`min?: number; //--|🠈 {slider} only 🠈|--\\`). Hooks stay at the top of the component, above the `switch`, because React needs them in the same order on every render.
+- **Every `<Button>` and `<Label>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick` on a `<Button>`, `onChange` on a `<Label>`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
+- **An event is typed with every element the cases render.** `<LabelSelection>` renders a `<select>` or an `<input>`, so its handler is `React.ChangeEvent<HTMLInputElement | HTMLSelectElement>`. The limit: the handler gets the union, so a caller that needs something only one element has (`.selectedIndex`) checks `event.target` first. One handler per element would avoid that, but it would also undo the merge.
+- **A `<Label>` inherits from its parent through `data-` attributes, never its class.** `previewParent()` reads the nearest `<fieldset>` or `<form>` after the first render and returns its "genes": `data-group` (the name every `{option}` radio in it shares) and `data-input` (`'{password}'`, `'{email}'` … for an `{input}`, `'{text}'` when missing). A class changes as styles change; a `data-` attribute doesn't, so `.split('_')` never touches it. **The one exception:** the first `{option}` in a `<fieldset>` or `<form>` without a `data-group` writes one, the only place a component writes to an element it doesn't own. It's limited to those two tags. It lives in `Label_switching.ts` and `Label_textarea.ts`, the two that use it, written out in both. It moves to `scripts.ts` once something outside the `<Label>`s needs it.
 
 Smaller components keep everything in one `.scss` file and split it with placeholders instead: `%desk-flex`, `%desk-grid`, `%desk-tint` and their `mobi-` and `tabl-` versions (see [Scaling Pattern](#6-scaling-pattern)).
 
@@ -209,7 +214,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
 - **One main function, exported twice.** A file with one main function declares it as `export function`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
 - **Several main functions, no default.** A file of equal utilities (like `scripts.ts`) uses named exports only, so a default export always means "the one this file is about".
 - **Values inside a function.** A flag worked out once per render is a `let` with its type written out, and its reason as a trailing comment: `let styleImage: boolean = /\.(png|jpe?g)$/i.test(…); //--|🠈 … 🠈|--\\`. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
-- **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)). Older files still do it the other way round, with `Button_default.ts` exporting `StyleProps` for `Button.default.tsx`.
+- **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)).
 
 `<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. Older files are being moved to this order as they're refactored.
 
@@ -219,20 +224,23 @@ Inside the `<button>` tag, attributes come in three groups split by `//--|===|--
 
 ## 5. Bracket Syntax
 
-Props are written with brackets that show their type at a glance. `stripBrackets()` in `source/scripts.ts` removes them, and `createClass()` turns style props into short class names.
+Props are written with brackets that show their type at a glance. `stripBrackets()` in `source/scripts.ts` removes them, and `createClass()` turns style props (and `cases.type`) into short class names.
 
-| Wrapper | Prop          | Example                       | Becomes             |
-| ------- | ------------- | ----------------------------- | ------------------- |
-| `[ ]`   | `pageName`    | `'[components]'`              | `components`        |
-| `< >`   | `blockName`   | `'<main>'`                    | `main`              |
-| `< >`   | `style.size`  | `'<h1>'` … `'<p>'`            | `one` … `par`       |
-| `- -`   | `style.view`  | `'-top-'` · `'-left-'`        | `top` · `lef`       |
-| `~ ~`   | `style.shade` | `'~dark~'` · `'~light~'`      | `dar` · `lig`       |
-| `( )`   | `style.color` | `'(blue)'` · `'(mono)'`       | `blu` · `mon`       |
-| `( )`   | `style.role`  | `'(manager)'`                 | `manager`           |
-| `{ }`   | `style.type`  | `'{toggle}'` · `'{select}'`   | `toggle` · `select` |
+| Wrapper | Prop            | Example                       | Becomes             |
+| ------- | --------------- | ----------------------------- | ------------------- |
+| `[ ]`   | `pageName`      | `'[components]'`              | `components`        |
+| `< >`   | `blockName`     | `'<main>'`                    | `main`              |
+| `< >`   | `style.size`    | `'<h1>'` … `'<p>'`            | `one` … `par`, missing or `null` is `nul` |
+| `- -`   | `style.view`    | `'-top-'` · `'-left-'`        | `top` · `lef`       |
+| `~ ~`   | `style.shade`   | `'~dark~'` · `'~light~'`      | `dar` · `lig`       |
+| `( )`   | `style.color`   | `'(blue)'` · `'(mono)'`       | `blu` · `mon`       |
+| `( )`   | `style.role`    | `'(manager)'`                 | `manager`           |
+| `⟨ ⟩`   | `style.clarity` | `'⟨opaque⟩'` · `'⟨lucid⟩'`    | `opa` · `luc`       |
+| `{ }`   | `cases.type`    | `'{toggle}'` · `'{select}'`   | `tog` · `sel`, the first three letters |
 
-For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `class="default-button thr_lef_dar_blu_def"`. The last part of the class is a toggle between a variant's two looks:
+`style.clarity` is required everywhere. `⟨lucid⟩` makes the whole element 0.75 opaque, slightly see-through; `⟨opaque⟩` keeps it solid. On a `<Button>` it's only a class for now. `<LabelTextarea>`s are written `⟨opaque⟩`, `<LabelSelection>`s, `<LabelSwitching>`s and `<Button>`s `⟨lucid⟩`.
+
+For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an image produces `class="default-button thr_lef_dar_blu_luc_def"`. A `<Label>` writes its class in the same order with `cases.type` added after the size, `size_type_view_shade_color_clarity_def`: `nul_tog_mc_dar_mon_luc_def`. Its view is a `<ButtonRouting>` position (below), the only style prop that may be left out (missing is `'mid-cen'`, `mc`). It places the `<label>` inside its parent with auto margins, so the parent has to be a flex or grid box for top and bottom to work. On `<LabelSelection>` it also picks the caret's side: the left column puts it on the left, every other position on the right. A `<Label>`'s `_def` is a placeholder for now. On a `<Button>`, the last part of the class is a toggle between a variant's two looks:
 
 | Variant           | `.svg`                 | `.png` / `.jpg`            | No image        |
 | ----------------- | ---------------------- | -------------------------- | --------------- |
@@ -242,9 +250,9 @@ For example, `<h3>` + `-left-` + `~dark~` + `(blue)` with an image produces `cla
 
 A silhouette is the `.svg` used as a mask, painted in the button's colours. A picture is shown as it is.
 
-There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>` has no `style.type`: the browser's default `type` is fine.
+There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>` has no `cases.type`: the browser's default `type` is fine.
 
-`<ButtonRouting>` places itself with a position instead of a `- -` view: `'top-lef'`, `'mid-cen'`, `'bot-rig'` and so on, row then column, three letters each. Every position name in the project uses that form.
+`<ButtonRouting>` and every `<Label>` place themselves with a position instead of a `- -` view: `'top-lef'`, `'mid-cen'`, `'bot-rig'` and so on, row then column, three letters each, which become `tl`, `mc`, `br`. Every position name in the project uses that form.
 
 ---
 
@@ -430,7 +438,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 
 ## 9. Testing
 
-**Visually:** the **Archive** page (`#components-body`) is the testing surface. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`.
+**Visually:** the **Archive** page (`#components-body`) is the testing surface. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
 **Rules:** test the application rules with the characters in [CHARACTERS.md](CHARACTERS.md). Each one lists the rules it exists to break.
 
@@ -452,7 +460,7 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | What                                    | Where it's headed                                                                                     |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Smooth fades between colours            | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first |
-| `(opaque)`                              | Mixing several colour toggles at once, on `<Button>`                                                  |
+| `⟨opaque⟩` · `⟨lucid⟩` on `<Button>`    | `style.clarity` is only a class for now (`…_luc_def`); its toggles and look come later               |
 | `<ButtonRouting>` effects               | Special animations when it's inside `<NavigationDefault>`                                             |
 | `_division-${variant}` classes          | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
 | Bracketed `labelName`s                  | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored  |

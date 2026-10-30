@@ -2,17 +2,25 @@
 import React from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import createClass, { StyleProps } from './Button_default';
+import createClass from './Button_default';
 import { stripBrackets } from '../../../../scripts';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
+    ariaName?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
     labelName?: string;
-    labelAria?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
   };
-  style: StyleProps;
+  style: {
+    shade: '~dark~' | '~light~';
+    clarity: '⟨opaque⟩' | '⟨lucid⟩';
+    size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
+    view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
+    text?: string;
+    image?: string | null;
+  };
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -61,7 +69,7 @@ export function ButtonDefault({ info, style, onClick, onMouseEnter, onMouseLeave
       onMouseLeave={onMouseLeave}
       onDoubleClick={onDoubleClick}
       //--|===|--\\
-      aria-label={info.labelAria}
+      aria-label={info.ariaName}
     >
       <div className="text">
         <CallSize className={parentFont[style.size]}>

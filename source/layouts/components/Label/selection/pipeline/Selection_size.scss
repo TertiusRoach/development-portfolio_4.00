@@ -1,0 +1,1678 @@
+//--|🠊 selection/pipeline/Selection_size.scss 🠈|--\\
+@mixin desktop-size {
+  //--|🠋 Desktop (Size) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on the text side and h on the caret side.
+    style.view sets the side: the caret end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px). Heights match <LabelToggle> so the two line up in a form row.
+  🠉|--*/
+  &[class*='selection-select'] {
+    height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    select[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='arrow'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='arrow'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='arrow'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='arrow'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+      select[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+      select[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:04 · Half {input}, half {select}: every size comes from the height (h), padding = h / 2 on the text side and h on the
+    caret side. style.view sets the side: the caret end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px).
+  🠉|--*/
+  &[class*='selection-combo'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='arrow'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='arrow'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='arrow'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='arrow'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+      input[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+      input[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on the text side and h on the carets side, each caret h / 2 high.
+    style.view sets the side: the carets end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px).
+  🠉|--*/
+  &[class*='selection-number'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='up'],
+    span[class='down'] {
+      width: 24px;
+      height: 22px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 22px;
+        height: 20px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 14px;
+        height: 12px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 10px;
+        height: 8px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the carets sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+      input[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the carets sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+      input[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+}
+@mixin mobile-size {
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='selection-select'] {
+    height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    select[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='arrow'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='arrow'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='arrow'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='arrow'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+      select[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+      select[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='selection-combo'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='arrow'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='arrow'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='arrow'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='arrow'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+      input[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+      input[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='selection-number'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+    }
+    span[class='up'],
+    span[class='down'] {
+      width: 24px;
+      height: 22px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 22px;
+        height: 20px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 14px;
+        height: 12px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 10px;
+        height: 8px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+    }
+    &[class*='_tc_'],
+    &[class*='_mc_'],
+    &[class*='_bc_'],
+    &[class*='_tr_'],
+    &[class*='_mr_'],
+    &[class*='_br_'] {
+      //--|🠊 -right-: the carets sits on the right, that end is round and the text end sharp 🠈|--\\
+      border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+      input[class='event'] {
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_tl_'],
+    &[class*='_ml_'],
+    &[class*='_bl_'] {
+      //--|🠊 -left-: mirrored, the carets sits on the left 🠈|--\\
+      border-radius: 22px 8px 8px 22px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+      input[class='event'] {
+        padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        padding-right: 22px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px 6px 6px 20px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 20px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px 4px 4px 12px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 12px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px 2px 2px 8px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 8px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+    }
+  }
+}
+@mixin tablet-size {
+  //--|🠋 Tablet (Size) 🠋|--\\
+  &[class*='selection-select'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='arrow'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='arrow'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='arrow'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='arrow'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      height: 44px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      select[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='arrow'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='arrow'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='arrow'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px; //--|🠈 Same as the <select>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        select[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='arrow'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        select[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          select[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        select[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+  }
+  &[class*='selection-combo'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='arrow'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='arrow'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='arrow'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='arrow'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='arrow'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='arrow'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='arrow'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='arrow'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the caret sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+        input[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the caret 🠈|--\\
+          input[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the caret sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the caret, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+  }
+  &[class*='selection-number'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 24px;
+        height: 22px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 22px;
+          height: 20px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 14px;
+          height: 12px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 10px;
+          height: 8px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the carets sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the carets sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      span[class='up'],
+      span[class='down'] {
+        width: 24px;
+        height: 22px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 22px;
+          height: 20px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 14px;
+          height: 12px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          width: 10px;
+          height: 8px; //--|🠈 Each caret takes half the height, so both are easy to hit 🠈|--\\
+        }
+      }
+      &[class*='_tc_'],
+      &[class*='_mc_'],
+      &[class*='_bc_'],
+      &[class*='_tr_'],
+      &[class*='_mr_'],
+      &[class*='_br_'] {
+        //--|🠊 -right-: the carets sits on the right, that end is round and the text end sharp 🠈|--\\
+        border-radius: 8px 22px 22px 8px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+        input[class='event'] {
+          padding-left: 22px;
+          padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px 20px 20px 6px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 20px;
+            padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px 12px 12px 4px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 12px;
+            padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px 8px 8px 2px; //--|🠈 Sharp where you type, round around the carets 🠈|--\\
+          input[class='event'] {
+            padding-left: 8px;
+            padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_tl_'],
+      &[class*='_ml_'],
+      &[class*='_bl_'] {
+        //--|🠊 -left-: mirrored, the carets sits on the left 🠈|--\\
+        border-radius: 22px 8px 8px 22px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+        input[class='event'] {
+          padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 22px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px 6px 6px 20px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 20px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px 4px 4px 12px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 12px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px 2px 2px 8px; //--|🠈 Round around the carets, sharp where you type 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 8px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+      }
+    }
+  }
+}

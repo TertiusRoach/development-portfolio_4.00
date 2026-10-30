@@ -1,0 +1,106 @@
+//--|🠊 textarea/pipeline/Textarea_flex.scss 🠈|--\\
+@mixin textarea-flexbox {
+  &[class*='textarea-text'] {
+    //--|🠋 Global (Flex) 🠋|--\\
+    width: 100%; //--|🠈 Fills its parent, the layout decides the size 🠈|--\\
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    textarea[class='event'] {
+      width: 100%;
+      appearance: none;
+      cursor: text;
+      font-family: inherit;
+      border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
+      font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
+      border-style: none;
+      &:focus {
+        outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+      }
+      height: 100%;
+      resize: none; //--|🠈 The browser's resize grip can't be coloured, the parent sets the size instead 🠈|--\\
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+  }
+  &[class*='textarea-input'] {
+    //--|🠋 Global (Flex) 🠋|--\\
+    width: 75%; //--|🠈 Three quarters of its parent container 🠈|--\\
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    input[class='event'] {
+      width: 100%;
+      appearance: none;
+      cursor: text;
+      font-family: inherit;
+      border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
+      font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
+      border-style: none;
+      &:focus {
+        outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+      }
+      //--|🠊 Search: the browser draws its own ✕, which takes no colour, so it is hidden 🠈|--\\
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button {
+        appearance: none;
+      }
+      //--|🠊 Can't be matched: autofill (:-webkit-autofill) paints the browser's own background behind saved emails & passwords 🠈|--\\
+    }
+  }
+  &[class*='textarea-block'] {
+    //--|🠋 Global (Flex) 🠋|--\\
+    //--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
+    display: flex;
+    flex: 0 0 auto; //--|🠈 Keeps its square inside a flex row 🠈|--\\
+    position: relative;
+    input[class='event'] {
+      width: 100%;
+      appearance: none;
+      cursor: text;
+      text-align: center;
+      font-family: inherit;
+      border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
+      font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
+      border-style: none;
+      &:focus {
+        outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+      }
+    }
+  }
+  //--|🠋 Global (View) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-30 · style.view places the <label> inside its parent with auto margins, the same nine positions as <ButtonRouting>.
+    The top & bottom margins only work when the parent is a flex or grid box. Missing = mid-cen.
+  🠉|--*/
+  &[class*='_tl_'] {
+    margin: 0 auto auto 0;
+  }
+  &[class*='_tc_'] {
+    margin: 0 auto auto;
+  }
+  &[class*='_tr_'] {
+    margin: 0 0 auto auto;
+  }
+  &[class*='_ml_'] {
+    margin: auto auto auto 0;
+  }
+  &[class*='_mc_'] {
+    margin: auto;
+  }
+  &[class*='_mr_'] {
+    margin: auto 0 auto auto;
+  }
+  &[class*='_bl_'] {
+    margin: auto auto 0 0;
+  }
+  &[class*='_bc_'] {
+    margin: auto auto 0;
+  }
+  &[class*='_br_'] {
+    margin: auto 0 0 auto;
+  }
+}

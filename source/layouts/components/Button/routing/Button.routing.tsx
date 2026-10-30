@@ -2,16 +2,23 @@
 import React from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import createClass, { StyleProps } from './Button_routing';
+import createClass from './Button_routing';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
     labelName?: string;
     labelAria?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
   };
-  style: StyleProps;
+  style: {
+    shade: '~dark~' | '~light~';
+    clarity: '⟨opaque⟩' | '⟨lucid⟩'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+    size: '<h1>' | '<h4>' | '<p>';
+    view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
+    image?: string | null;
+  };
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void;

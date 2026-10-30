@@ -113,6 +113,7 @@ const VerticalButtons = (
               size: '<h1>',
               color: style.color,
               shade: style.shade,
+              clarity: '⟨lucid⟩',
               image: cases.image?.[index] as string,
               view: path as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef',
             }}
@@ -138,6 +139,7 @@ const VerticalButtons = (
               view: style.view,
               color: style.color,
               shade: style.shade,
+              clarity: '⟨lucid⟩',
               image: style.image as string,
             }}
             info={{

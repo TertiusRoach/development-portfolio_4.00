@@ -66,7 +66,6 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
                   loadAsset('-svg-', '/project-pages/components-page/aside-element'),
                   loadAsset('-svg-', '/project-pages/components-page/button-element'),
                   loadAsset('-svg-', '/project-pages/components-page/division-element'),
-                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/regular/sliders'), //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
                   loadAsset('-svg-', '/project-pages/components-page/figure-element'),
                   loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/tags'),
                   loadAsset('-svg-', '/project-pages/components-page/menu-element'),
@@ -77,14 +76,13 @@ function ArchiveRightbar({ info }: InfoProps): JSX.Element {
                 ],
               }}
               cases={{
-                pages: 12, //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
+                pages: 11,
                 axis: '[y]',
                 link: [
                   'article',
                   'aside',
                   'button',
                   'division',
-                  'fieldset', //--|🠈 AI Code: Review Please 2026-10-29 17:15 🠈|--\\
                   'figure',
                   'label',
                   'menu',

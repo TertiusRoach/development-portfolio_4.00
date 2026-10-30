@@ -42,6 +42,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -52,6 +53,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -62,6 +64,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -72,6 +75,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -82,6 +86,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -92,6 +97,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -117,6 +123,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -127,6 +134,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -137,6 +145,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -147,6 +156,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -157,6 +167,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -167,6 +178,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -186,6 +198,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -196,6 +209,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -206,6 +220,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -216,6 +231,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -226,6 +242,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -236,6 +253,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~dark~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -261,6 +279,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -271,6 +290,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -281,6 +301,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-square-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -291,6 +312,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h1>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -301,6 +323,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<h4>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}
@@ -311,6 +334,7 @@ function ProfileButton({ info }: InfoProps) {
                 size: '<p>',
                 color: '(mono)',
                 shade: '~light~',
+                clarity: '⟨lucid⟩',
                 view: '-circle-',
                 image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
               }}

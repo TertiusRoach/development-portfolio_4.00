@@ -36,6 +36,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-center-',
           text: '<Main>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/house') as string,
         }}
@@ -55,6 +56,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-center-',
           text: '<Header>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/head-side') as string,
         }}
@@ -73,6 +75,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-center-',
           text: '<Footer>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/shoe-prints') as string,
         }}
@@ -92,6 +95,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-center-',
           text: '<Overlay>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/layer-group') as string,
         }}
@@ -110,6 +114,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-left-',
           text: '<Leftbar>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/left-to-line') as string,
         }}
@@ -128,6 +133,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           view: '-right-',
           text: '<Rightbar>',
           shade: style.shade,
+          clarity: '⟨lucid⟩',
           color: style.color,
           image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/right-to-line') as string,
         }}

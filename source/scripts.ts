@@ -754,10 +754,10 @@ export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '
       //--|🠊 Associated with (style.color), (style.role) 🠈|--\\
       return thisText.replace(/[()]/g, '');
     case '{}':
-      //--|🠊 Associated with {style.type} 🠈|--\\
+      //--|🠊 Associated with {cases.type} 🠈|--\\ //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
       return thisText.replace(/[{}]/g, '');
     case '⟨⟩':
-      //--|🠊 Associated with {clarity.type} 🠈|--\\
+      //--|🠊 Associated with ⟨style.clarity⟩ 🠈|--\\ //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
       return thisText.replace(/[⟨⟩]/g, '');
     case '--':
       //--|🠊 Associated with -style.view- 🠈|--\\

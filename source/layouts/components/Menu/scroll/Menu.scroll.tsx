@@ -55,6 +55,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 view: '-icon-',
                 color: style.color,
                 shade: style.shade,
+                clarity: '⟨lucid⟩',
                 image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
               }}
               info={{
@@ -75,6 +76,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 view: '-icon-',
                 color: style.color,
                 shade: style.shade,
+                clarity: '⟨lucid⟩',
                 image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
               }}
               info={{

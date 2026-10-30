@@ -109,6 +109,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -123,6 +124,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -137,6 +139,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -151,6 +154,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -232,6 +236,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -246,6 +251,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -260,6 +266,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}
@@ -274,6 +281,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
               size: '<h5>',
               view: '-icon-',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               image: copyImage,
             }}

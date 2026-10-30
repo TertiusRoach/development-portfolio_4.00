@@ -315,6 +315,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -329,6 +330,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -343,6 +345,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -357,6 +360,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -371,6 +375,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -385,6 +390,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -399,6 +405,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -413,6 +420,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -427,6 +435,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -446,6 +455,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -460,6 +470,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -474,6 +485,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -488,6 +500,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -502,6 +515,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -516,6 +530,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -530,6 +545,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -544,6 +560,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -558,6 +575,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -582,6 +600,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -596,6 +615,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -610,6 +630,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -624,6 +645,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -638,6 +660,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -652,6 +675,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -666,6 +690,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -680,6 +705,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -694,6 +720,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -713,6 +740,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -727,6 +755,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -741,6 +770,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -755,6 +785,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -769,6 +800,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -783,6 +815,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -797,6 +830,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -811,6 +845,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -825,6 +860,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -849,6 +885,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -863,6 +900,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -877,6 +915,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -891,6 +930,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -905,6 +945,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -919,6 +960,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -933,6 +975,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -947,6 +990,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -961,6 +1005,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~dark~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -980,6 +1025,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -994,6 +1040,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-down'),
             }}
@@ -1008,6 +1055,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'top-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -1022,6 +1070,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -1036,6 +1085,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/star'),
             }}
@@ -1050,6 +1100,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'mid-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}
@@ -1064,6 +1115,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-lef',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-right'),
             }}
@@ -1078,6 +1130,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-cen',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-up'),
             }}
@@ -1092,6 +1145,7 @@ let ViewPar = ({ info }: InfoProps) => {
               size: '<p>',
               color: '(mono)',
               shade: '~light~',
+              clarity: '⟨lucid⟩',
               view: 'bot-rig',
               image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/arrow-circle-left'),
             }}

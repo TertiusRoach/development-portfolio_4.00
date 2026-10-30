@@ -1,0 +1,631 @@
+//--|🠊 textarea/pipeline/Textarea_size.scss 🠈|--\\
+@mixin desktop-size {
+  //--|🠋 Desktop (Size) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:04 · Fills its parent (width & height 100%), so the layout grid decides its size. The font and line-height
+    still step with the height (h) of one line, so a single line matches {input}. Corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
+  🠉|--*/
+  &[class*='textarea-text'] {
+    border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+    textarea[class='event'] {
+      font-size: 18px;
+      line-height: 22px; //--|🠈 One line + padding = 44px, the height of a {input} 🠈|--\\
+      padding: 11px 22px;
+    }
+    @media screen and (max-height: 768px) {
+      border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 16px;
+        line-height: 20px; //--|🠈 One line + padding = 40px, the height of a {input} 🠈|--\\
+        padding: 10px 20px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 12px;
+        line-height: 16px; //--|🠈 One line + padding = 24px, the height of a {input} 🠈|--\\
+        padding: 4px 12px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 10px;
+        line-height: 12px; //--|🠈 One line + padding = 16px, the height of a {input} 🠈|--\\
+        padding: 2px 8px;
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on both sides, corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
+    Heights and fonts match {select} so the two line up in a form row.
+  🠉|--*/
+  &[class*='textarea-input'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
+    The gap between the boxes belongs to the parent <fieldset> or <form>.
+  🠉|--*/
+  &[class*='textarea-block'] {
+    &[class*='nul_'],
+    &[class*='par_'] {
+      width: 44px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+      height: 44px;
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      @media screen and (max-height: 768px) {
+        width: 40px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 40px;
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        width: 24px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 24px;
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        width: 16px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 16px;
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+      }
+    }
+    &[class*='one_'] {
+      width: 88px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+      height: 88px;
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 88px;
+        font-size: 40px;
+      }
+      @media screen and (max-height: 768px) {
+        width: 80px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 80px;
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 80px;
+          font-size: 32px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        width: 48px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 48px;
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 48px;
+          font-size: 24px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        width: 32px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 32px;
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 32px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@mixin mobile-size {
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='textarea-text'] {
+    border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+    textarea[class='event'] {
+      font-size: 18px;
+      line-height: 22px; //--|🠈 One line + padding = 44px, the height of a {input} 🠈|--\\
+      padding: 11px 22px;
+    }
+    @media screen and (max-width: 768px) {
+      border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 16px;
+        line-height: 20px; //--|🠈 One line + padding = 40px, the height of a {input} 🠈|--\\
+        padding: 10px 20px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 12px;
+        line-height: 16px; //--|🠈 One line + padding = 24px, the height of a {input} 🠈|--\\
+        padding: 4px 12px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 10px;
+        line-height: 12px; //--|🠈 One line + padding = 16px, the height of a {input} 🠈|--\\
+        padding: 2px 8px;
+      }
+    }
+  }
+  &[class*='textarea-input'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      font-size: 18px;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        font-size: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        font-size: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        font-size: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
+    The gap between the boxes belongs to the parent <fieldset> or <form>.
+  🠉|--*/
+  &[class*='textarea-block'] {
+    &[class*='nul_'],
+    &[class*='par_'] {
+      width: 44px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+      height: 44px;
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 40px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 40px;
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        width: 24px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 24px;
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        width: 16px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 16px;
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+        }
+      }
+    }
+    &[class*='one_'] {
+      width: 88px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+      height: 88px;
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 88px;
+        font-size: 40px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 80px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 80px;
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 80px;
+          font-size: 32px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        width: 48px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 48px;
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 48px;
+          font-size: 24px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        width: 32px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 32px;
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 32px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@mixin tablet-size {
+  //--|🠋 Tablet (Size) 🠋|--\\
+  &[class*='textarea-text'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 18px;
+        line-height: 22px; //--|🠈 One line + padding = 44px, the height of a {input} 🠈|--\\
+        padding: 11px 22px;
+      }
+      @media screen and (max-width: 1920px) {
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 16px;
+          line-height: 20px; //--|🠈 One line + padding = 40px, the height of a {input} 🠈|--\\
+          padding: 10px 20px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 12px;
+          line-height: 16px; //--|🠈 One line + padding = 24px, the height of a {input} 🠈|--\\
+          padding: 4px 12px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 10px;
+          line-height: 12px; //--|🠈 One line + padding = 16px, the height of a {input} 🠈|--\\
+          padding: 2px 8px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      textarea[class='event'] {
+        font-size: 18px;
+        line-height: 22px; //--|🠈 One line + padding = 44px, the height of a {input} 🠈|--\\
+        padding: 11px 22px;
+      }
+      @media screen and (max-height: 1920px) {
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 16px;
+          line-height: 20px; //--|🠈 One line + padding = 40px, the height of a {input} 🠈|--\\
+          padding: 10px 20px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 12px;
+          line-height: 16px; //--|🠈 One line + padding = 24px, the height of a {input} 🠈|--\\
+          padding: 4px 12px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        textarea[class='event'] {
+          font-size: 10px;
+          line-height: 12px; //--|🠈 One line + padding = 16px, the height of a {input} 🠈|--\\
+          padding: 2px 8px;
+        }
+      }
+    }
+  }
+  &[class*='textarea-input'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
+    The gap between the boxes belongs to the parent <fieldset> or <form>.
+  🠉|--*/
+  &[class*='textarea-block'] {
+    @media screen and (orientation: landscape) {
+      &[class*='nul_'],
+      &[class*='par_'] {
+        width: 44px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 44px;
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 44px;
+          font-size: 18px;
+        }
+        @media screen and (max-width: 1920px) {
+          width: 40px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 40px;
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 40px;
+            font-size: 16px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          width: 24px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 24px;
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 24px;
+            font-size: 12px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          width: 16px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 16px;
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 16px;
+            font-size: 10px;
+          }
+        }
+      }
+      &[class*='one_'] {
+        width: 88px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 88px;
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 88px;
+          font-size: 40px;
+        }
+        @media screen and (max-width: 1920px) {
+          width: 80px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 80px;
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 80px;
+            font-size: 32px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          width: 48px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 48px;
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 48px;
+            font-size: 24px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          width: 32px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 32px;
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 32px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      &[class*='nul_'],
+      &[class*='par_'] {
+        width: 44px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 44px;
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 44px;
+          font-size: 18px;
+        }
+        @media screen and (max-height: 1920px) {
+          width: 40px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 40px;
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 40px;
+            font-size: 16px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          width: 24px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 24px;
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 24px;
+            font-size: 12px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          width: 16px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 16px;
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 16px;
+            font-size: 10px;
+          }
+        }
+      }
+      &[class*='one_'] {
+        width: 88px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+        height: 88px;
+        border-radius: 8px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 88px;
+          font-size: 40px;
+        }
+        @media screen and (max-height: 1920px) {
+          width: 80px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 80px;
+          border-radius: 6px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 80px;
+            font-size: 32px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          width: 48px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 48px;
+          border-radius: 4px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 48px;
+            font-size: 24px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          width: 32px; //--|🠈 A square box, as wide as it is high 🠈|--\\
+          height: 32px;
+          border-radius: 2px; //--|🠈 <ButtonDefault> corners, the fade layers inherit it 🠈|--\\
+          input[class='event'] {
+            height: 32px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

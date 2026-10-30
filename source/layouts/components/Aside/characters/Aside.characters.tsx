@@ -67,6 +67,7 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       style={{
                         view: '-square-',
                         shade: style.shade,
+                        clarity: '⟨lucid⟩',
                         color: style.color,
                         size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
@@ -100,6 +101,7 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       style={{
                         view: '-square-',
                         shade: style.shade,
+                        clarity: '⟨lucid⟩',
                         color: style.color,
                         size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),

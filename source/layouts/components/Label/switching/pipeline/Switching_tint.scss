@@ -1,0 +1,4135 @@
+//--|🠊 switching/pipeline/Switching_tint.scss 🠈|--\\
+@use 'sass:color';
+@use '../../../../styles/Palettes.scss' as Palettes;
+
+@mixin switching-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+  //--|🠋 Clarity 🠋|--\\
+  //--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
+  &[class*='_luc_'] {
+    opacity: 0.75; //--|🠈 ⟨lucid⟩: slightly see-through 🠈|--\\
+  }
+  &[class*='_opa_'] {
+    opacity: 1; //--|🠈 ⟨opaque⟩: solid 🠈|--\\
+  }
+  &[class*='switching-chip'] {
+    //--|🠋 Crossfade Layers 🠋|--\\
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the flipped one (Set in *-tint), like {select}.
+      Note: Every {chip} & {option} is its own <label>, so each one fades on its own.
+    🠉|--*/
+    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers inside the <label> 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+    }
+    &::before {
+      transition: opacity 750ms $tint-fade;
+    }
+    &::after {
+      opacity: 0;
+      transition: opacity 750ms $tint-fade;
+    }
+    span[class='text'] {
+      transition:
+        color 500ms $tint-fade,
+        text-shadow 500ms $tint-fade;
+    }
+    span[class='plus'],
+    span[class='times'] {
+      transition:
+        opacity 250ms $tint-fade,
+        background-color 250ms $tint-fade;
+    }
+    &:hover {
+      //--|🠊 Hover previews the flip at half strength 🠈|--\\
+      &::before {
+        opacity: 1;
+      }
+      &::after {
+        opacity: 0.5;
+      }
+    }
+    &:has(:focus-visible) {
+      //--|🠊 Keyboard focus previews it the same way 🠈|--\\
+      &::before {
+        opacity: 1;
+      }
+      &::after {
+        opacity: 0.5;
+      }
+    }
+    &:has(:checked) {
+      //--|🠊 The chosen one is fully flipped, like a checked {toggle}; it comes last, so it wins 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠋 Crossfade Layers 🠋|--\\
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the flipped one (Set in *-tint). On hover or focus ::before
+      fades out while ::after fades in, so the gradients blend, like <Button>.
+      Note: The <input> is hidden, so the <label> carries both layers
+      and the marks sit on top of them.
+    🠉|--*/
+    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers above the parent, behind the marks 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+    }
+    &::before {
+      transition: opacity 750ms $tint-fade;
+    }
+    &::after {
+      opacity: 0;
+      transition: opacity 750ms $tint-fade;
+    }
+    span[class='check'],
+    span[class='minus'] {
+      transition:
+        opacity 250ms $tint-fade,
+        background-color 250ms $tint-fade;
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      //--|🠊 AI Code: Review Please 2026-10-29 16:41 · Flips on hover like <Button> and on keyboard focus; after a mouse click it reverts when the mouse leaves 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠋 Fades 🠋|--\\
+    span[class='switch'] {
+      //--|🠊 AI Code: Review Please 2026-10-29 14:40 · Slide and colour share 250ms and one easing, so the colour never trails the knob 🠈|--\\
+      transition:
+        filter 250ms $tint-fade,
+        background 250ms $tint-fade;
+      &::after {
+        transition:
+          transform 250ms $tint-fade,
+          filter 250ms $tint-fade;
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠋 Crossfade Layers 🠋|--\\
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the flipped one (Set in *-tint). On hover or focus ::before
+      fades out while ::after fades in, so the gradients blend, like <Button>.
+      Note: An <input> can't hold ::before or ::after, so the <label> carries
+      both layers and the <input> stays see-through on top of them.
+    🠉|--*/
+    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers above the parent, behind the <input> 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+    }
+    &::before {
+      transition: opacity 750ms $tint-fade;
+    }
+    &::after {
+      opacity: 0;
+      transition: opacity 750ms $tint-fade;
+    }
+    input[class='event'] {
+      &::-webkit-slider-thumb {
+        transition: background 250ms $tint-fade;
+      }
+      &::-moz-range-thumb {
+        transition: background 250ms $tint-fade;
+      }
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      //--|🠊 AI Code: Review Please 2026-10-29 16:41 · Flips on hover like <Button> and on keyboard focus; after a mouse click it reverts when the mouse leaves 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠋 Crossfade Layers 🠋|--\\
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the flipped one (Set in *-tint), like {select}.
+      Note: Every {chip} & {option} is its own <label>, so each one fades on its own.
+    🠉|--*/
+    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers inside the <label> 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
+    }
+    &::before {
+      transition: opacity 750ms $tint-fade;
+    }
+    &::after {
+      opacity: 0;
+      transition: opacity 750ms $tint-fade;
+    }
+    span[class='dot'] {
+      transition:
+        opacity 250ms $tint-fade,
+        background-color 250ms $tint-fade;
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      //--|🠊 Flips on hover like {check} and on keyboard focus; after a mouse click it reverts when the mouse leaves 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_mon'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$gray-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$gray-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_mon'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$gray-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$gray-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_red'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$red-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$red-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_red'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$red-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$red-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_gre'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$green-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$green-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_gre'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$green-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$green-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_blu'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$blue-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$blue-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_blu'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$blue-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$blue-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pur'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$purple-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$purple-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pur'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$purple-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$purple-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_ora'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$orange-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$orange-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_ora'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$orange-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$orange-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pin'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$pink-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$pink-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pin'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$pink-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$pink-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_yel'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$yellow-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$yellow-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_yel'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$yellow-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$yellow-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_bro'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$brown-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$brown-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_bro'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$brown-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$brown-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+  &[class*='switching-chip'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='text'] {
+        color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+        text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $blaDar,
+          0 0 0.25em rgba($blaDar, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $neoLig;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+          text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      span[class='text'] {
+        color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
+        text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
+          0 0 0.04em $neoLig,
+          0 0 0.25em rgba($neoLig, 0.6);
+      }
+      span[class='plus'],
+      span[class='times'] {
+        background-color: $blaDar;
+      }
+      &:has(:checked) {
+        span[class='text'] {
+          color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
+          text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        span[class='plus'],
+        span[class='times'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      span[class='check'],
+      span[class='minus'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='check'],
+        span[class='minus'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_tur'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$turquoise-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$turquoise-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_tur'] {
+      input[class='event'] {
+        &:not(:checked) + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.2),
+            0 0 0 1px Palettes.$turquoise-medium;
+          &::after {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+        &:checked + span[class='switch'] {
+          background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 2px rgba(#000, 0.3),
+            0 0 0 1px Palettes.$turquoise-medium;
+          &::after {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow:
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+      span[class='switch'] {
+        &:hover::after {
+          filter: brightness(1.2); //--|🠈 Sharp hover: no blur 🠈|--\\
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Light knob on a dark track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Dark knob on a light track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      input[class='event'] {
+        &::-webkit-slider-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+        &::-moz-range-thumb {
+          //--|🠊 Dark knob on a light track 🠈|--\\
+          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
+          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+            inset 0 0 0 1px rgba(#000, 0.08),
+            0 1px 2px rgba(#000, 0.3),
+            0 2px 6px rgba(#000, 0.15);
+        }
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        input[class='event'] {
+          &::-webkit-slider-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+          &::-moz-range-thumb {
+            //--|🠊 Light knob on a dark track 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
+              inset 0 0 0 1px rgba(#000, 0.08),
+              0 1px 2px rgba(#000, 0.3),
+              0 2px 6px rgba(#000, 0.15);
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      span[class='dot'] {
+        background-color: $neoLig;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $blaDar;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur'] {
+      &::before {
+        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(#fff, 0.22),
+          inset 0 -1px 0 rgba(#000, 0.25),
+          inset 0 0 0 1px rgba(#000, 0.1);
+      }
+      &::after {
+        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+          inset 0 -1px 0 rgba(#000, 0.35),
+          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      }
+      span[class='dot'] {
+        background-color: $blaDar;
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        span[class='dot'] {
+          background-color: $neoLig;
+        }
+      }
+    }
+  }
+}

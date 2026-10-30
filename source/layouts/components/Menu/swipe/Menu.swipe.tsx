@@ -56,6 +56,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 view: '-icon-',
                 color: style.color,
                 shade: style.shade,
+                clarity: '⟨lucid⟩',
                 image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-left'),
               }}
               info={{
@@ -76,6 +77,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 view: '-icon-',
                 color: style.color,
                 shade: style.shade,
+                clarity: '⟨lucid⟩',
                 image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-right'),
               }}
               info={{

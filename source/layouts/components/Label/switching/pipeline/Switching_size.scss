@@ -1,0 +1,1142 @@
+//--|🠊 switching/pipeline/Switching_size.scss 🠈|--\\
+@mixin desktop-size {
+  //--|🠋 Desktop (Size) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:22 · Every size comes from the height (h): each chip is an h-high pill like {select}, padding h / 2 left and h right
+    for the icon. Chips wrap, so it grows one h per row with h / 4 between rows: 44, 99, 154px … at the largest size.
+  🠉|--*/
+  &[class*='switching-chip'] {
+    height: 44px;
+    border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+    span[class='text'] {
+      font-size: 18px;
+      padding-left: 22px;
+      padding-right: 44px; //--|🠈 Leaves room for the icon 🠈|--\\
+    }
+    span[class='plus'],
+    span[class='times'] {
+      right: 10px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px;
+      border-radius: 20px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 16px;
+        padding-left: 20px;
+        padding-right: 40px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 9px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px;
+      border-radius: 12px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 12px;
+        padding-left: 12px;
+        padding-right: 24px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 5px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px;
+      border-radius: 8px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 10px;
+        padding-left: 8px;
+        padding-right: 16px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 3px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 15:45 · Every size comes from the height (h): width = h, radius = h / 4 (on the <label>), so it reads as a box and
+    never as a {option} dot. The marks use the {select} caret sizes. Heights match {toggle} so they line up in a form row.
+  🠉|--*/
+  &[class*='switching-check'] {
+    width: 44px; //--|🠈 A square, so it sizes itself 🠈|--\\
+    height: 44px;
+    border-radius: 11px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+    span[class='check'],
+    span[class='minus'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-height: 768px) {
+      width: 40px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 40px;
+      border-radius: 10px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      width: 24px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 24px;
+      border-radius: 6px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      width: 16px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 16px;
+      border-radius: 4px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  /*--|🠋
+    Every size comes from the height (h): width = h × 35/18, padding = h / 12,
+    knob = h × 5/6, slide = h × 17/18, rounded to whole pixels. The code wins
+    over the maths: 44px uses a 36px knob, 40px a 34px knob, 16px a 32px width,
+    a 14px knob and a 16px slide, so the gap around the knob is equal everywhere.
+  🠉|--*/
+  &[class*='switching-toggle'] {
+    input[class='event'] {
+      &:checked + span[class='switch']::after {
+        transform: translateX(42px);
+      }
+    }
+    span[class='switch'] {
+      width: 86px;
+      height: 44px;
+      border-radius: 22px;
+      &::after {
+        top: 4px;
+        left: 4px;
+        width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+        height: 36px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(38px);
+        }
+      }
+      span[class='switch'] {
+        width: 78px;
+        height: 40px;
+        border-radius: 20px;
+        &::after {
+          top: 3px;
+          left: 3px;
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(23px);
+        }
+      }
+      span[class='switch'] {
+        width: 47px;
+        height: 24px;
+        border-radius: 12px;
+        &::after {
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+        }
+      }
+      span[class='switch'] {
+        width: 32px;
+        height: 16px;
+        border-radius: 8px;
+        &::after {
+          top: 1px;
+          left: 1px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 15:56 · Every size comes from the height (h): radius = h / 2 (on the <label>), and the knob and the gap around it are the
+    {toggle} knob: 36px & 4px, 34px & 3px, 20px & 2px, 14px & 1px.
+  🠉|--*/
+  &[class*='switching-slider'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      padding: 0 4px; //--|🠈 The knob stops 4px from each end, like {toggle} 🠈|--\\
+      &::-webkit-slider-thumb {
+        width: 36px;
+        height: 36px;
+        margin-top: 4px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+      }
+      &::-moz-range-thumb {
+        width: 36px;
+        height: 36px;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        padding: 0 3px; //--|🠈 The knob stops 3px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 34px;
+          height: 34px;
+          margin-top: 3px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+    @media screen and (max-height: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        padding: 0 2px; //--|🠈 The knob stops 2px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 20px;
+          height: 20px;
+          margin-top: 2px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    @media screen and (max-height: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        padding: 0 1px; //--|🠈 The knob stops 1px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 14px;
+          height: 14px;
+          margin-top: 1px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+  /*--|🠋
+    AI Code: Review Please 2026-10-29 17:16 · Every size comes from the height (h): each option is an h × h circle like {check}, the dot is h / 2,
+    and the gap between options is h / 4. Heights match {toggle} so they line up in a form row.
+  🠉|--*/
+  &[class*='switching-option'] {
+    width: 44px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+    height: 44px;
+    span[class='dot'] {
+      width: 22px; //--|🠈 Half the circle 🠈|--\\
+      height: 22px;
+    }
+    @media screen and (max-height: 768px) {
+      width: 40px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 40px;
+      span[class='dot'] {
+        width: 20px; //--|🠈 Half the circle 🠈|--\\
+        height: 20px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      width: 24px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 24px;
+      span[class='dot'] {
+        width: 12px; //--|🠈 Half the circle 🠈|--\\
+        height: 12px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      width: 16px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 16px;
+      span[class='dot'] {
+        width: 8px; //--|🠈 Half the circle 🠈|--\\
+        height: 8px;
+      }
+    }
+  }
+}
+@mixin mobile-size {
+  //--|🠋 Mobile (Size) 🠋|--\\
+  &[class*='switching-chip'] {
+    //--|🠊 AI Code: Review Please 2026-10-29 17:32 · Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
+    height: 44px;
+    border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+    span[class='text'] {
+      font-size: 18px;
+      padding-left: 22px;
+      padding-right: 44px; //--|🠈 Leaves room for the icon 🠈|--\\
+    }
+    span[class='plus'],
+    span[class='times'] {
+      right: 10px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px;
+      border-radius: 20px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 16px;
+        padding-left: 20px;
+        padding-right: 40px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 9px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px;
+      border-radius: 12px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 12px;
+        padding-left: 12px;
+        padding-right: 24px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 5px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px;
+      border-radius: 8px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 10px;
+        padding-left: 8px;
+        padding-right: 16px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 3px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    width: 44px; //--|🠈 A square, so it sizes itself 🠈|--\\
+    height: 44px;
+    border-radius: 11px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+    span[class='check'],
+    span[class='minus'] {
+      width: 24px;
+      height: 24px;
+    }
+    @media screen and (max-width: 768px) {
+      width: 40px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 40px;
+      border-radius: 10px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 24px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 24px;
+      border-radius: 6px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      width: 16px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 16px;
+      border-radius: 4px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    input[class='event'] {
+      &:checked + span[class='switch']::after {
+        transform: translateX(42px);
+      }
+    }
+    span[class='switch'] {
+      width: 86px;
+      height: 44px;
+      border-radius: 22px;
+      &::after {
+        top: 4px;
+        left: 4px;
+        width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+        height: 36px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(38px);
+        }
+      }
+      span[class='switch'] {
+        width: 78px;
+        height: 40px;
+        border-radius: 20px;
+        &::after {
+          top: 3px;
+          left: 3px;
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(23px);
+        }
+      }
+      span[class='switch'] {
+        width: 47px;
+        height: 24px;
+        border-radius: 12px;
+        &::after {
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+        }
+      }
+      span[class='switch'] {
+        width: 32px;
+        height: 16px;
+        border-radius: 8px;
+        &::after {
+          top: 1px;
+          left: 1px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+    border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+    input[class='event'] {
+      height: 44px;
+      padding: 0 4px; //--|🠈 The knob stops 4px from each end, like {toggle} 🠈|--\\
+      &::-webkit-slider-thumb {
+        width: 36px;
+        height: 36px;
+        margin-top: 4px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+      }
+      &::-moz-range-thumb {
+        width: 36px;
+        height: 36px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 40px;
+        padding: 0 3px; //--|🠈 The knob stops 3px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 34px;
+          height: 34px;
+          margin-top: 3px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+    @media screen and (max-width: 480px) {
+      height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 24px;
+        padding: 0 2px; //--|🠈 The knob stops 2px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 20px;
+          height: 20px;
+          margin-top: 2px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    @media screen and (max-width: 360px) {
+      height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 16px;
+        padding: 0 1px; //--|🠈 The knob stops 1px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 14px;
+          height: 14px;
+          margin-top: 1px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    width: 44px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+    height: 44px;
+    span[class='dot'] {
+      width: 22px; //--|🠈 Half the circle 🠈|--\\
+      height: 22px;
+    }
+    @media screen and (max-width: 768px) {
+      width: 40px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 40px;
+      span[class='dot'] {
+        width: 20px; //--|🠈 Half the circle 🠈|--\\
+        height: 20px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      width: 24px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 24px;
+      span[class='dot'] {
+        width: 12px; //--|🠈 Half the circle 🠈|--\\
+        height: 12px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      width: 16px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 16px;
+      span[class='dot'] {
+        width: 8px; //--|🠈 Half the circle 🠈|--\\
+        height: 8px;
+      }
+    }
+  }
+}
+@mixin tablet-size {
+  //--|🠋 Tablet (Size) 🠋|--\\
+  &[class*='switching-chip'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px;
+      border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 10px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px;
+        border-radius: 20px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 9px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px;
+        border-radius: 12px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 5px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px;
+        border-radius: 8px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 3px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      //--|🠊 AI Code: Review Please 2026-10-29 17:32 · Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
+      height: 44px;
+      border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+      span[class='text'] {
+        font-size: 18px;
+        padding-left: 22px;
+        padding-right: 44px; //--|🠈 Leaves room for the icon 🠈|--\\
+      }
+      span[class='plus'],
+      span[class='times'] {
+        right: 10px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px;
+        border-radius: 20px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 40px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 9px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px;
+        border-radius: 12px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 12px;
+          padding-left: 12px;
+          padding-right: 24px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 5px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px;
+        border-radius: 8px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
+        span[class='text'] {
+          font-size: 10px;
+          padding-left: 8px;
+          padding-right: 16px; //--|🠈 Leaves room for the icon 🠈|--\\
+        }
+        span[class='plus'],
+        span[class='times'] {
+          right: 3px; //--|🠈 Centres the icon in the right padding 🠈|--\\
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+  &[class*='switching-check'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      width: 44px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 44px;
+      border-radius: 11px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-width: 1920px) {
+        width: 40px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 40px;
+        border-radius: 10px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        width: 24px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 24px;
+        border-radius: 6px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        width: 16px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 16px;
+        border-radius: 4px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      width: 44px; //--|🠈 A square, so it sizes itself 🠈|--\\
+      height: 44px;
+      border-radius: 11px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      span[class='check'],
+      span[class='minus'] {
+        width: 24px;
+        height: 24px;
+      }
+      @media screen and (max-height: 1920px) {
+        width: 40px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 40px;
+        border-radius: 10px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        width: 24px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 24px;
+        border-radius: 6px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        width: 16px; //--|🠈 A square, so it sizes itself 🠈|--\\
+        height: 16px;
+        border-radius: 4px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        span[class='check'],
+        span[class='minus'] {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+  &[class*='switching-toggle'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(42px);
+        }
+      }
+      span[class='switch'] {
+        width: 86px;
+        height: 44px;
+        border-radius: 22px;
+        &::after {
+          top: 4px;
+          left: 4px;
+          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          height: 36px;
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(38px);
+          }
+        }
+        span[class='switch'] {
+          width: 78px;
+          height: 40px;
+          border-radius: 20px;
+          &::after {
+            top: 3px;
+            left: 3px;
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(23px);
+          }
+        }
+        span[class='switch'] {
+          width: 47px;
+          height: 24px;
+          border-radius: 12px;
+          &::after {
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+          }
+        }
+        span[class='switch'] {
+          width: 32px;
+          height: 16px;
+          border-radius: 8px;
+          &::after {
+            top: 1px;
+            left: 1px;
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      input[class='event'] {
+        &:checked + span[class='switch']::after {
+          transform: translateX(42px);
+        }
+      }
+      span[class='switch'] {
+        width: 86px;
+        height: 44px;
+        border-radius: 22px;
+        &::after {
+          top: 4px;
+          left: 4px;
+          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          height: 36px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(38px);
+          }
+        }
+        span[class='switch'] {
+          width: 78px;
+          height: 40px;
+          border-radius: 20px;
+          &::after {
+            top: 3px;
+            left: 3px;
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(23px);
+          }
+        }
+        span[class='switch'] {
+          width: 47px;
+          height: 24px;
+          border-radius: 12px;
+          &::after {
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      @media screen and (max-height: 854px) {
+        input[class='event'] {
+          &:checked + span[class='switch']::after {
+            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+          }
+        }
+        span[class='switch'] {
+          width: 32px;
+          height: 16px;
+          border-radius: 8px;
+          &::after {
+            top: 1px;
+            left: 1px;
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-slider'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        padding: 0 4px; //--|🠈 The knob stops 4px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 36px;
+          height: 36px;
+          margin-top: 4px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 36px;
+          height: 36px;
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          padding: 0 3px; //--|🠈 The knob stops 3px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 34px;
+            height: 34px;
+            margin-top: 3px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          padding: 0 2px; //--|🠈 The knob stops 2px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      @media screen and (max-width: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          padding: 0 1px; //--|🠈 The knob stops 1px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 14px;
+            height: 14px;
+            margin-top: 1px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+      border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+      input[class='event'] {
+        height: 44px;
+        padding: 0 4px; //--|🠈 The knob stops 4px from each end, like {toggle} 🠈|--\\
+        &::-webkit-slider-thumb {
+          width: 36px;
+          height: 36px;
+          margin-top: 4px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+        }
+        &::-moz-range-thumb {
+          width: 36px;
+          height: 36px;
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        height: 40px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 20px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 40px;
+          padding: 0 3px; //--|🠈 The knob stops 3px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 34px;
+            height: 34px;
+            margin-top: 3px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        height: 24px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 12px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 24px;
+          padding: 0 2px; //--|🠈 The knob stops 2px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      @media screen and (max-height: 854px) {
+        height: 16px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
+        border-radius: 8px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
+        input[class='event'] {
+          height: 16px;
+          padding: 0 1px; //--|🠈 The knob stops 1px from each end, like {toggle} 🠈|--\\
+          &::-webkit-slider-thumb {
+            width: 14px;
+            height: 14px;
+            margin-top: 1px; //--|🠈 Chrome pins the knob to the top of the track 🠈|--\\
+          }
+          &::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+  }
+  &[class*='switching-option'] {
+    @media screen and (orientation: landscape) {
+      //--|🠊 Desktop 🠈|--\\
+      width: 44px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 44px;
+      span[class='dot'] {
+        width: 22px; //--|🠈 Half the circle 🠈|--\\
+        height: 22px;
+      }
+      @media screen and (max-width: 1920px) {
+        width: 40px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 40px;
+        span[class='dot'] {
+          width: 20px; //--|🠈 Half the circle 🠈|--\\
+          height: 20px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        width: 24px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 24px;
+        span[class='dot'] {
+          width: 12px; //--|🠈 Half the circle 🠈|--\\
+          height: 12px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        width: 16px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 16px;
+        span[class='dot'] {
+          width: 8px; //--|🠈 Half the circle 🠈|--\\
+          height: 8px;
+        }
+      }
+    }
+    @media screen and (orientation: portrait) {
+      //--|🠊 Mobile 🠈|--\\
+      width: 44px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+      height: 44px;
+      span[class='dot'] {
+        width: 22px; //--|🠈 Half the circle 🠈|--\\
+        height: 22px;
+      }
+      @media screen and (max-height: 1920px) {
+        width: 40px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 40px;
+        span[class='dot'] {
+          width: 20px; //--|🠈 Half the circle 🠈|--\\
+          height: 20px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        width: 24px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 24px;
+        span[class='dot'] {
+          width: 12px; //--|🠈 Half the circle 🠈|--\\
+          height: 12px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        width: 16px; //--|🠈 A circle, so it sizes itself like {check} 🠈|--\\
+        height: 16px;
+        span[class='dot'] {
+          width: 8px; //--|🠈 Half the circle 🠈|--\\
+          height: 8px;
+        }
+      }
+    }
+  }
+}

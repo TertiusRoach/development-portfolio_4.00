@@ -100,6 +100,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 style={{
                   image: style.image[index] as string,
                   shade: style.shade as '~dark~' | '~light~',
+                  clarity: '⟨lucid⟩',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                   //--|===|--\\
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',
@@ -131,6 +132,7 @@ const MenuAxis: React.FC<TheseProps> = ({ info, style, cases }) => {
                 style={{
                   image: style.image as string,
                   shade: style.shade as '~dark~' | '~light~',
+                  clarity: '⟨lucid⟩',
                   view: style.view as 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen',
                   //--|===|--\\
                   size: styleSize[index] as '<h1>' | '<h4>' | '<p>',

@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import LabelToggle from '../../Label/toggle/Label.toggle';
+import LabelSwitching from '../../Label/switching/Label.switching'; //--|🠈 AI Code: Review Please 2026-10-30 · Was <LabelToggle> 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 import toggleColors from './Division_colourize';
@@ -40,10 +40,10 @@ const DivisionColourize: React.FC<TheseProps> = ({ info, style, cases }) => {
         cases.task[0](toggleColors(event.currentTarget));
       }}
     >
-      <LabelToggle style={{ shade: style.shade, color: '(mono)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-      <LabelToggle style={{ shade: style.shade, color: '(red)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-      <LabelToggle style={{ shade: style.shade, color: '(green)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
-      <LabelToggle style={{ shade: style.shade, color: '(blue)' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelSwitching style={{ shade: style.shade, color: '(mono)', clarity: '⟨lucid⟩' }} cases={{ type: '{toggle}' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelSwitching style={{ shade: style.shade, color: '(red)', clarity: '⟨lucid⟩' }} cases={{ type: '{toggle}' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelSwitching style={{ shade: style.shade, color: '(green)', clarity: '⟨lucid⟩' }} cases={{ type: '{toggle}' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
+      <LabelSwitching style={{ shade: style.shade, color: '(blue)', clarity: '⟨lucid⟩' }} cases={{ type: '{toggle}' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
     </div>
   );
 };

@@ -1,39 +1,33 @@
 //--|🠊 Button_routing.ts 🠈|--\\
 import { stripBrackets } from '../../../../scripts';
+import type { TheseProps } from './Button.routing'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
-export interface StyleProps {
-  shade: '~dark~' | '~light~';
-  size: '<h1>' | '<h4>' | '<p>';
-  view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
-
-  image?: string | null;
-}
 //--|🠋 Functions 🠋|--\\
-function createClass(style: StyleProps): string {
+function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <ButtonRouting> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, style.view);
+  const classClarity = createClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 
   if (style.image == null) {
-    return `${classLayout}_${classColor}_alt`;
+    return `${classLayout}_${classColor}_${classClarity}_alt`;
   } else if (/\.(png|jpe?g)$/i.test(style.image)) {
-    return `${classLayout}_${classColor}_alt`; //--|🠈 .png & .jpg show the picture itself 🠈|--\\
+    return `${classLayout}_${classColor}_${classClarity}_alt`; //--|🠈 .png & .jpg show the picture itself 🠈|--\\
   } else {
-    return `${classLayout}_${classColor}_rou`;
+    return `${classLayout}_${classColor}_${classClarity}_rou`;
   }
 }
 
 //--|🠋 Generate Abbreviations 🠋|--\\
-const createLayout = (size: StyleProps['size'], view: StyleProps['view']): string => {
-  const sizeMap: Record<StyleProps['size'], string> = {
+const createLayout = (size: TheseProps['style']['size'], view: TheseProps['style']['view']): string => {
+  const sizeMap: Record<TheseProps['style']['size'], string> = {
     //--|🠊 Map of size tags to class abbreviations 🠈|--\\
     '<h1>': 'one',
     '<h4>': 'fou',
     '<p>': 'par',
   };
 
-  const viewMap: Record<StyleProps['view'], string> = {
+  const viewMap: Record<TheseProps['style']['view'], string> = {
     //--|🠊 Map of view options to class abbreviations 🠈|--\\
     'top-lef': 'tl',
     'top-cen': 'tc',
@@ -56,14 +50,14 @@ const createLayout = (size: StyleProps['size'], view: StyleProps['view']): strin
 
   return `${classSize}_${classView}`;
 };
-const createColor = (shade: StyleProps['shade'], color: StyleProps['color']): string => {
-  const shadeMap: Record<StyleProps['shade'], string> = {
+const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
+  const shadeMap: Record<TheseProps['style']['shade'], string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
     '~light~': 'lig',
   };
 
-  const colorMap: Record<StyleProps['color'], string> = {
+  const colorMap: Record<TheseProps['style']['color'], string> = {
     //--|🠊 Map color options to class abbreviations 🠈|--\\
     '(mono)': 'mon',
     '(red)': 'red',
@@ -86,5 +80,22 @@ const createColor = (shade: StyleProps['shade'], color: StyleProps['color']): st
   }
 
   return `${classShade}_${classColor}`;
+};
+//--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
+const createClarity = (clarity: TheseProps['style']['clarity']): string => {
+  const clarityMap: Record<TheseProps['style']['clarity'], string> = {
+    //--|🠊 Map clarity options to class abbreviations 🠈|--\\
+    '⟨opaque⟩': 'opa',
+    '⟨lucid⟩': 'luc',
+  };
+
+  const classClarity = clarityMap[clarity];
+
+  if (!classClarity) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid ⟨${stripBrackets(clarity, '⟨⟩')}⟩ 🠈|`);
+  }
+
+  return classClarity;
 };
 export default createClass;

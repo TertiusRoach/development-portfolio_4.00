@@ -11,9 +11,17 @@
     display: grid;
 
     //--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
-    label[class*='dar'] {
-      align-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its height 🠈|--\\
-      justify-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its width 🠈|--\\
+    fieldset[class*='dar'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset> fills its cell, style.view's auto margins place the <LabelTextarea> inside it 🠈|--\\
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
+      width: 100%; //--|🠈 A <fieldset> shrinks to its content in a grid, so it's told to fill the cell 🠈|--\\
+      height: 100%;
+      align-self: stretch;
+      justify-self: stretch;
+      border-style: none;
       &[class*='mon'] {
         grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -82,9 +90,17 @@
     //--|===|--\\
 
     //--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--\\
-    label[class*='lig'] {
-      align-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its height 🠈|--\\
-      justify-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its width 🠈|--\\
+    fieldset[class*='lig'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset> fills its cell, style.view's auto margins place the <LabelTextarea> inside it 🠈|--\\
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
+      width: 100%; //--|🠈 A <fieldset> shrinks to its content in a grid, so it's told to fill the cell 🠈|--\\
+      height: 100%;
+      align-self: stretch;
+      justify-self: stretch;
+      border-style: none;
       &[class*='mon'] {
         grid-area: 3 / 8 / 4 / 9; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -247,9 +263,17 @@
   section[class*='main-fore'] {
     display: grid;
     //--|🠊 AI Code: Review Please 2026-10-29 16:48 · Two columns like the desktop sides: ~dark~ on the left, ~light~ on the right, one colour per row 🠈|--\\
-    label[class*='dar'] {
-      align-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its height 🠈|--\\
-      justify-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its width 🠈|--\\
+    fieldset[class*='dar'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset> fills its cell, style.view's auto margins place the <LabelTextarea> inside it 🠈|--\\
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
+      width: 100%; //--|🠈 A <fieldset> shrinks to its content in a grid, so it's told to fill the cell 🠈|--\\
+      height: 100%;
+      align-self: stretch;
+      justify-self: stretch;
+      border-style: none;
       &[class*='mon'] {
         grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
@@ -317,9 +341,17 @@
     }
     //--|===|--\\
 
-    label[class*='lig'] {
-      align-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its height 🠈|--\\
-      justify-self: center; //--|🠈 <LabelTextarea> fills its cell, the layout sets its width 🠈|--\\
+    fieldset[class*='lig'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset> fills its cell, style.view's auto margins place the <LabelTextarea> inside it 🠈|--\\
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
+      width: 100%; //--|🠈 A <fieldset> shrinks to its content in a grid, so it's told to fill the cell 🠈|--\\
+      height: 100%;
+      align-self: stretch;
+      justify-self: stretch;
+      border-style: none;
       &[class*='mon'] {
         grid-area: 3 / 4 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }

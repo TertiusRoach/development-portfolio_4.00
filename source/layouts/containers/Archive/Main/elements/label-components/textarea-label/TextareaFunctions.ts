@@ -33,4 +33,9 @@ export function listPlaceholders(company: 'voidspire' | 'silverveil'): Array<str
 
   return companyList[company];
 }
+//--|🠋 Inputs 🠋|--\\
+export function listInputs(): Array<string> {
+  //--|🠊 AI Code: Review Please 2026-10-30 · The old <LabelInput> page's order, both sides use the same list 🠈|--\\
+  return ['{text}', '{email}', '{password}', '{search}', '{url}', '{tel}', '{text}', '{email}', '{password}', '{search}'];
+}
 export default listPlaceholders;

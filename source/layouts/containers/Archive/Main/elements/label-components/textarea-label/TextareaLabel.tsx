@@ -2,12 +2,12 @@
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
-import LabelTextarea from '../../../../../../components/Label/textarea/Label.textarea';
+import LabelTextarea, { TheseProps } from '../../../../../../components/Label/textarea/Label.textarea';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
 import { loadAsset } from '../../../../../../../scripts';
-import listPlaceholders from './TextareaFunctions';
+import listPlaceholders, { listInputs } from './TextareaFunctions';
 
 interface InfoProps {
   info: {
@@ -23,292 +23,374 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
 
   let voidspireList: Array<string> = listPlaceholders('voidspire'); //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Left, every ~dark~ <LabelTextarea> 🠈|--\\
   let silverveilList: Array<string> = listPlaceholders('silverveil'); //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Right, every ~light~ <LabelTextarea> 🠈|--\\
+  const showType: TheseProps['cases']['type'] = '{text}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{input}' or '{block}' until the dropdown exists 🠈|--\\
+  let inputList: Array<string> = listInputs(); //--|🠈 AI Code: Review Please 2026-10-30 · Every <fieldset>'s data-input, only {input} reads it 🠈|--\\
   let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
   return (
     <aside className="textarea-label">
       <section className={`${blockName}-foreground`}>
-        {/*--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--*/}
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(mono)',
-          }}
-          cases={{
-            placeholder: voidspireList[0],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(red)',
-          }}
-          cases={{
-            placeholder: voidspireList[1],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(green)',
-          }}
-          cases={{
-            placeholder: voidspireList[2],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(blue)',
-          }}
-          cases={{
-            placeholder: voidspireList[3],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(purple)',
-          }}
-          cases={{
-            placeholder: voidspireList[4],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(orange)',
-          }}
-          cases={{
-            placeholder: voidspireList[5],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(pink)',
-          }}
-          cases={{
-            placeholder: voidspireList[6],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(yellow)',
-          }}
-          cases={{
-            placeholder: voidspireList[7],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(brown)',
-          }}
-          cases={{
-            placeholder: voidspireList[8],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-            color: '(turquoise)',
-          }}
-          cases={{
-            placeholder: voidspireList[9],
-          }}
-        />
-        {/*--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--*/}
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(mono)',
-          }}
-          cases={{
-            placeholder: silverveilList[0],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(red)',
-          }}
-          cases={{
-            placeholder: silverveilList[1],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(green)',
-          }}
-          cases={{
-            placeholder: silverveilList[2],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(blue)',
-          }}
-          cases={{
-            placeholder: silverveilList[3],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(purple)',
-          }}
-          cases={{
-            placeholder: silverveilList[4],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(orange)',
-          }}
-          cases={{
-            placeholder: silverveilList[5],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(pink)',
-          }}
-          cases={{
-            placeholder: silverveilList[6],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(yellow)',
-          }}
-          cases={{
-            placeholder: silverveilList[7],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(brown)',
-          }}
-          cases={{
-            placeholder: silverveilList[8],
-          }}
-        />
-        <LabelTextarea
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~light~',
-            color: '(turquoise)',
-          }}
-          cases={{
-            placeholder: silverveilList[9],
-          }}
-        />
+        {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelTextarea> sits in a <fieldset>, so data-input can be tested 🠈|--*/}
+        <fieldset className="dar-mon" data-input={inputList[0]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[0],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-red" data-input={inputList[1]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(red)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[1],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-gre" data-input={inputList[2]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(green)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[2],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-blu" data-input={inputList[3]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(blue)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[3],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-pur" data-input={inputList[4]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(purple)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[4],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-ora" data-input={inputList[5]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(orange)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[5],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-pin" data-input={inputList[6]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(pink)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[6],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-yel" data-input={inputList[7]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(yellow)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[7],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-bro" data-input={inputList[8]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(brown)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[8],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="dar-tur" data-input={inputList[9]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(turquoise)',
+              clarity: '⟨opaque⟩',
+              text: voidspireList[9],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelTextarea> sits in a <fieldset>, so data-input can be tested 🠈|--*/}
+        <fieldset className="lig-mon" data-input={inputList[0]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[0],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-red" data-input={inputList[1]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(red)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[1],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-gre" data-input={inputList[2]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(green)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[2],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-blu" data-input={inputList[3]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(blue)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[3],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-pur" data-input={inputList[4]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(purple)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[4],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-ora" data-input={inputList[5]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(orange)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[5],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-pin" data-input={inputList[6]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(pink)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[6],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-yel" data-input={inputList[7]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(yellow)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[7],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-bro" data-input={inputList[8]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(brown)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[8],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
+        <fieldset className="lig-tur" data-input={inputList[9]}>
+          <LabelTextarea
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: labelName,
+            }}
+            style={{
+              shade: '~light~',
+              color: '(turquoise)',
+              clarity: '⟨opaque⟩',
+              text: silverveilList[9],
+            }}
+            cases={{
+              type: showType,
+            }}
+          />
+        </fieldset>
 
         {/*--|🠊 AI Code: Review Please 2026-10-29 15:53 🠈|--*/}
         <ButtonDefault
@@ -321,6 +403,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -335,6 +418,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -349,6 +433,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -363,6 +448,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -377,6 +463,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -391,6 +478,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -405,6 +493,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -419,6 +508,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -433,6 +523,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -447,6 +538,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~dark~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -462,6 +554,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -476,6 +569,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -490,6 +584,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -504,6 +599,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -518,6 +614,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -532,6 +629,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -546,6 +644,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -560,6 +659,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -574,6 +674,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
@@ -588,6 +689,7 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
             size: '<h5>',
             view: '-icon-',
             shade: '~light~',
+            clarity: '⟨lucid⟩',
             color: '(mono)',
             image: copyImage,
           }}
