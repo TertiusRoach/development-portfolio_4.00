@@ -1,13 +1,14 @@
 //--|🠊 LoadingArticle.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import ArticleLoading from '../../../../../../components/Article/loading/Article.loading';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import ArticleLoading from '../../../../../../components/Article/loading/Article.loading';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -16,7 +17,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const LoadingArticle: React.FC<InfoProps> = ({ info }) => {
+function LoadingArticle({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -42,5 +43,5 @@ const LoadingArticle: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default LoadingArticle;

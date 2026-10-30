@@ -9,6 +9,8 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 import blockViews from '../../containers';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     pageName: '[components]';
@@ -16,22 +18,20 @@ interface InfoProps {
     labelName: '(default)';
   };
 }
-
-function ArchiveLeftbar({ info }: InfoProps): JSX.Element {
+function ArchiveLeftbar({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
-  let pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let blurName: string = 'obnubilate';
+  let blurName = 'obnubilate' as string;
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':

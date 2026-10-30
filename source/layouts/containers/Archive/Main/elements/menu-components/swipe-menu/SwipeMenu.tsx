@@ -1,16 +1,17 @@
 //--|🠊 SwipeMenu.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-
-//--|🠋 Styles 🠋|--\\
-
-//--|🠋 Functions 🠋|--\\
-import { functionHolder } from './SwipeFunctions';
-import { loadAsset } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+
+//--|🠋 Functions 🠋|--\\
+import { functionHolder } from './SwipeFunctions';
+import { loadAsset } from '../../../../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -19,7 +20,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
+function SwipeMenu({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'swipe';
   const pageName = info.pageName as 'component';
@@ -29,7 +30,7 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
   }, [pageName, blockName, labelName]);
 
   let casesPages = ['<MenuSwipe>', '<MenuSwipe>', '<MenuSwipe>'] as Array<string>;
-  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
   return (
     <aside className="swipe-menu">
       <section className={`${blockName}-foreground`}>
@@ -292,5 +293,5 @@ const SwipeMenu: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default SwipeMenu;

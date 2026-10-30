@@ -2,14 +2,14 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SelectFunctions';
 import { loadAsset } from '../../../../../../../scripts';
-import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -18,7 +18,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const SelectMenu: React.FC<InfoProps> = ({ info }) => {
+function SelectMenu({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'select';
   const pageName = info.pageName as 'component';
@@ -47,7 +47,7 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
       loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
     ],
   };
-  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
   return (
     <aside className="select-menu">
       <section className={`${blockName}-foreground`}>
@@ -194,5 +194,5 @@ const SelectMenu: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default SelectMenu;

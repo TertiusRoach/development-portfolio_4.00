@@ -12,6 +12,8 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import { freezeHeaders, unfoldHeaders } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     blockName: '<header>' | string;
@@ -19,21 +21,20 @@ interface InfoProps {
     pageName: '[components]' | string;
   };
 }
-function ArchiveHeader({ info }: InfoProps): JSX.Element {
+function ArchiveHeader({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'header';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
-  let pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let blurName: string = 'obnubilate';
+  let blurName = 'obnubilate' as string;
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':

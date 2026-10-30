@@ -2,17 +2,17 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
-//--|🠋 Functions 🠋|--\\
-import { toggleColors } from './RoutingFunctions';
-import { checkScreen, loadAsset } from '../../../../../../../scripts';
-
 //--|🠋 Components 🠋|--\\
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import ButtonRouting from '../../../../../../components/Button/routing/Button.routing';
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
+
+//--|🠋 Functions 🠋|--\\
+import { toggleColors } from './RoutingFunctions';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -249,7 +249,7 @@ function RoutingButton({ info }: InfoProps) {
   }
 }
 //--|===|--\\
-const ButtonsDarkside = ({ info }: InfoProps) => {
+const ButtonsDarkside: React.FC<InfoProps> = ({ info }) => {
   return (
     <>
       <ViewOne
@@ -276,7 +276,7 @@ const ButtonsDarkside = ({ info }: InfoProps) => {
     </>
   );
 };
-const ButtonsLightside = ({ info }: InfoProps) => {
+const ButtonsLightside: React.FC<InfoProps> = ({ info }) => {
   return (
     <>
       <ViewOne
@@ -1159,5 +1159,4 @@ let ViewPar = ({ info }: InfoProps) => {
       );
   }
 };
-
 export default RoutingButton;

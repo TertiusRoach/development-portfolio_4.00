@@ -1,13 +1,14 @@
 //--|🠊 TestingDivision.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import DivisionTesting from '../../../../../../components/Division/testing/Division.testing';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import DivisionTesting from '../../../../../../components/Division/testing/Division.testing';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {

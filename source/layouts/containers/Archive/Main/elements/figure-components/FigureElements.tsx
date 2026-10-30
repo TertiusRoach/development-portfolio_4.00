@@ -2,13 +2,15 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultFigure from './default-figure/DefaultFigure';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,8 +19,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-
-const FigureElements: React.FC<InfoProps> = ({ info }) => {
+function FigureElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -35,9 +36,9 @@ const FigureElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
-function FigureComponents({ info }: InfoProps) {
+const FigureComponents: React.FC<InfoProps> = ({ info }) => {
   let defaultInfo = {
     pageName: info.pageName,
     blockName: info.blockName,
@@ -49,5 +50,5 @@ function FigureComponents({ info }: InfoProps) {
       <DefaultFigure info={defaultInfo} />
     </>
   );
-}
+};
 export default FigureElements;

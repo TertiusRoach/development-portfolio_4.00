@@ -1,14 +1,15 @@
 //--|🠊 UpdatesArticle.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
 import toggleColors from './UpdatesFunctions';
-import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
 
-//--|🠋 Components 🠋|--\\
-import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,7 +18,6 @@ interface InfoProps {
     labelName: string;
   };
 }
-
 function UpdatesArticle({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';

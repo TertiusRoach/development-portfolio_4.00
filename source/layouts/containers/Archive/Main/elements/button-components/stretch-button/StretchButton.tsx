@@ -1,11 +1,12 @@
 //--|🠊 StretchButton.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -14,7 +15,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const StretchButton: React.FC<InfoProps> = ({ info }) => {
+function StretchButton({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'profile';
 
@@ -27,5 +28,5 @@ const StretchButton: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </section>
   );
-};
+}
 export default StretchButton;

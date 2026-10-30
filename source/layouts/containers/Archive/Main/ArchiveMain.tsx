@@ -5,10 +5,6 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
 
-//--|🠋 Functions 🠋|--\\
-import { revertBlocks } from '../../../scripts/Main';
-import { stripBrackets, checkScreen } from '../../../../scripts';
-
 //--|🠋 Elements 🠋|--\\
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
@@ -22,6 +18,12 @@ import SectionElements from './elements/section-components/SectionElements';
 import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
+//--|🠋 Functions 🠋|--\\
+import { revertBlocks } from '../../../scripts/Main';
+import { stripBrackets, checkScreen } from '../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     blockName: '<main>' | string;
@@ -29,23 +31,21 @@ interface InfoProps {
     pageName: '[components]' | string;
   };
 }
-
 function ArchiveMain({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'main';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
-  let pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview: number = 6;
-  let blurName: string = 'obnubilate';
+  let startingPreview = 6 as number;
+  let blurName = 'obnubilate' as string;
   return (
     <main
       id={`${pageName}-${blockName}`}
@@ -78,6 +78,7 @@ function ArchiveMain({ info }: InfoProps) {
     </main>
   );
 }
+
 const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';

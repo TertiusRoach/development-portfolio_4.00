@@ -6,11 +6,12 @@ import React, { useEffect } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-
 import LoadingArticle from './loading-article/LoadingArticle';
+import UpdatesArticle from './updates-article/UpdatesArticle';
+
+//--|🠋 Functions 🠋|--\\
 
 //--|🠋 Styles 🠋|--\\
-import UpdatesArticle from './updates-article/UpdatesArticle';
 
 interface InfoProps {
   info: {
@@ -19,8 +20,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-
-const ArticleElements: React.FC<InfoProps> = ({ info }) => {
+function ArticleElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -37,12 +37,12 @@ const ArticleElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
-function ArticleComponents({ info }: InfoProps) {
-  const pageName = info.pageName;
+const ArticleComponents: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName;
   const labelName = info.labelName;
+  const pageName = info.pageName;
 
   return (
     <>
@@ -50,5 +50,5 @@ function ArticleComponents({ info }: InfoProps) {
       <LoadingArticle info={{ labelName: 'loading' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
-}
+};
 export default ArticleElements;

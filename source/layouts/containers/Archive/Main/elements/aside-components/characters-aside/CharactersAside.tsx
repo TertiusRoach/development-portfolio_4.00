@@ -1,17 +1,16 @@
 //--|🠊 CharactersAside.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
-import AsideCharacters from '../../../../../../components/Aside/characters/Aside.characters';
-
 //--|🠋 Components 🠋|--\\
+import AsideCharacters from '../../../../../../components/Aside/characters/Aside.characters';
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../../../../../scripts';
 import { toggleColors } from './CharactersFunctions';
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -20,7 +19,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const CharactersAside: React.FC<InfoProps> = ({ info }) => {
+function CharactersAside({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -72,5 +71,5 @@ const CharactersAside: React.FC<InfoProps> = ({ info }) => {
       </div>
     </aside>
   );
-};
+}
 export default CharactersAside;

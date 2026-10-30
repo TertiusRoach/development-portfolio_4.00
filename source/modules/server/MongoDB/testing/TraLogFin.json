@@ -6,9 +6,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Executive Governance",
       "paid": true,
       "headOfDepartment": true,
@@ -21,9 +19,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Service Coordination & Technical Delivery",
       "paid": false,
       "headOfDepartment": true,
@@ -36,10 +32,7 @@
       "vocation": "Freelancing",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems",
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Voidspire Systems", "Silverveil Logistics"],
       "bureau": "Applied Research & Prototyping",
       "paid": false,
       "headOfDepartment": false,
@@ -52,9 +45,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Network Infrastructure",
       "paid": false,
       "headOfDepartment": false,
@@ -67,9 +58,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Cybersecurity & Compliance",
       "paid": false,
       "headOfDepartment": false,
@@ -82,9 +71,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Systems Operations Management",
       "paid": false,
       "headOfDepartment": false,
@@ -97,10 +84,7 @@
       "vocation": "Freelancing",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Voidspire Systems",
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Voidspire Systems", "Silverveil Logistics"],
       "bureau": "Technical Documentation & Knowledge Services",
       "paid": false,
       "headOfDepartment": false,
@@ -113,9 +97,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Software Quality Assurance",
       "paid": false,
       "headOfDepartment": false,
@@ -128,9 +110,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Voidspire Systems"
-      ],
+      "organizations": ["Voidspire Systems"],
       "bureau": "Platform Reliability & Maintenance",
       "paid": false,
       "headOfDepartment": false,
@@ -143,9 +123,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Technician",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Logistics Executive Office",
       "paid": true,
       "headOfDepartment": true,
@@ -158,9 +136,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Technician",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Fleet Technology & Maintenance",
       "paid": false,
       "headOfDepartment": true,
@@ -173,9 +149,7 @@
       "vocation": "Established",
       "position": "Manager",
       "occupation": "Specialist",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Operational Systems Management",
       "paid": false,
       "headOfDepartment": false,
@@ -188,10 +162,7 @@
       "vocation": "Freelancing",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Voidspire Systems",
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Voidspire Systems", "Silverveil Logistics"],
       "bureau": "Cross-Company Infrastructure Support",
       "paid": false,
       "headOfDepartment": false,
@@ -204,9 +175,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Data Integration & API Services",
       "paid": false,
       "headOfDepartment": false,
@@ -219,9 +188,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Application Architecture",
       "paid": false,
       "headOfDepartment": false,
@@ -234,9 +201,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Technician",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Endpoint Services",
       "paid": false,
       "headOfDepartment": false,
@@ -249,9 +214,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Human Resources Systems",
       "paid": false,
       "headOfDepartment": false,
@@ -264,9 +227,7 @@
       "vocation": "Established",
       "position": "Employee",
       "occupation": "Specialist",
-      "organizations": [
-        "Silverveil Logistics"
-      ],
+      "organizations": ["Silverveil Logistics"],
       "bureau": "Workflow Automation",
       "paid": false,
       "headOfDepartment": false,

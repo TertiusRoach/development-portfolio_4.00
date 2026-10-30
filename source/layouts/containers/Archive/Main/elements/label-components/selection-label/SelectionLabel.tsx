@@ -1,4 +1,5 @@
 //--|🠊 SelectionLabel.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
@@ -9,6 +10,8 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import { loadAsset } from '../../../../../../../scripts';
 import { listCharacters, startPlaceholder } from './SelectionFunctions';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     pageName: string;
@@ -16,19 +19,19 @@ interface InfoProps {
     labelName: string;
   };
 }
-const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
+function SelectionLabel({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'selection';
   const pageName = info.pageName as 'components';
 
   const showType: TheseProps['cases']['type'] = '{select}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{combo}' or '{number}' until the dropdown exists 🠈|--\\
-  let voidspireList: Array<string> = listCharacters('voidspire'); //--|🠈 AI Code: Review Please 2026-10-29 · Left, every ~dark~ <LabelSelection> 🠈|--\\
-  let silverveilList: Array<string> = listCharacters('silverveil'); //--|🠈 AI Code: Review Please 2026-10-29 · Right, every ~light~ <LabelSelection> 🠈|--\\
-  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
+
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
+  let company = [listCharacters('voidspire'), listCharacters('silverveil')] as Array<Array<string>>;
   return (
     <aside className="selection-label">
       <section className={`${blockName}-foreground`}>
-        {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSelection> sits in a <fieldset>, so style.view has a box to place it in 🠈|--*/}
+        {/*
         <fieldset className="dar-mon">
           <LabelSelection
             info={{
@@ -45,7 +48,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -68,7 +71,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -91,7 +94,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -114,7 +117,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -137,7 +140,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -160,7 +163,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -183,7 +186,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -206,7 +209,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -229,7 +232,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -252,14 +255,14 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
             }}
           />
         </fieldset>
-        {/*--|🠊 AI Code: Review Please 2026-10-29 13:54 🠈|--*/}
+        //--|===|--\\
         <fieldset className="lig-mon">
           <LabelSelection
             info={{
@@ -276,7 +279,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -299,7 +302,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -322,7 +325,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -345,7 +348,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -368,7 +371,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -391,7 +394,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -414,7 +417,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -437,7 +440,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -460,7 +463,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -483,7 +486,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             }}
             cases={{
               type: showType,
-              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
               min: 0, //--|🠈 {number} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
@@ -641,7 +644,7 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             image: copyImage,
           }}
         />
-        {/*--|🠊 AI Code: Review Please 2026-10-29 13:54 🠈|--*/}
+        //--|===|--\\
         <ButtonDefault
           info={{
             pageName: pageName as 'components',
@@ -792,10 +795,11 @@ const SelectionLabel: React.FC<InfoProps> = ({ info }) => {
             image: copyImage,
           }}
         />
+        */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default SelectionLabel;

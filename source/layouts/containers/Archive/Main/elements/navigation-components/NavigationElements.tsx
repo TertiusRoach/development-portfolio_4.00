@@ -2,11 +2,13 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 import NavigationDefault from '../../../../../components/Navigation/default/Navigation.default';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -15,7 +17,26 @@ interface InfoProps {
     labelName: string;
   };
 }
-function NavigationComponents({ info }: InfoProps) {
+function NavigationElements({ info }: InfoProps) {
+  return (
+    <section className={`${info.labelName}-${info.blockName}`}>
+      <DivisionFullscreen
+        cases={{
+          show: 1,
+          axis: '[x]',
+          call: NavigationComponents as React.ComponentType<InfoProps>,
+        }}
+        info={{
+          pageName: info.pageName,
+          blockName: info.blockName,
+          labelName: info.labelName,
+        }}
+      />
+    </section>
+  );
+}
+
+const NavigationComponents: React.FC<InfoProps> = ({ info }) => {
   const labelName = 'default' as string;
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'components';
@@ -51,24 +72,5 @@ function NavigationComponents({ info }: InfoProps) {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-}
-const NavigationElements: React.FC<InfoProps> = ({ info }) => {
-  return (
-    <section className={`${info.labelName}-${info.blockName}`}>
-      <DivisionFullscreen
-        cases={{
-          show: 1,
-          axis: '[x]',
-          call: NavigationComponents as React.ComponentType<InfoProps>,
-        }}
-        info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: info.labelName,
-        }}
-      />
-    </section>
-  );
 };
-
 export default NavigationElements;

@@ -1,14 +1,15 @@
-//--|🠊 TestingDivision.tsx 🠈|--\\
+//--|🠊 PlaceholderDivision.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
-
-//--|🠋 Styles 🠋|--\\
-
-//--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
 
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder';
+
+//--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,7 +18,6 @@ interface InfoProps {
     pageName: string;
   };
 }
-
 function PlaceholderDivision({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';

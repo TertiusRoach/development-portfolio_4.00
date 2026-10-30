@@ -1,13 +1,14 @@
 //--|🠊 DemonstrationSection.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import SectionDemonstration from '../../../../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import SectionDemonstration from '../../../../../../components/Section/demonstration/Section.demonstration';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {

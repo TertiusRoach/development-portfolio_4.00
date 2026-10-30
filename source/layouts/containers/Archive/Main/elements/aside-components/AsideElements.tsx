@@ -2,13 +2,15 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import CharactersAside from './characters-aside/CharactersAside';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,17 +19,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-function AsideComponents({ info }: InfoProps) {
-  const pageName = info.pageName;
-  const blockName = info.blockName;
-  const labelName = info.labelName;
-  return (
-    <>
-      <CharactersAside info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
-    </>
-  );
-}
-const AsideElements: React.FC<InfoProps> = ({ info }) => {
+function AsideElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -44,6 +36,16 @@ const AsideElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
+const AsideComponents: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName;
+  const labelName = info.labelName;
+  const pageName = info.pageName;
+  return (
+    <>
+      <CharactersAside info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+};
 export default AsideElements;

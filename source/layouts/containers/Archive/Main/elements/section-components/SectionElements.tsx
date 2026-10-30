@@ -2,14 +2,16 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import CharactersSection from './characters-section/CharactersSection';
 import DemonstrationSection from './demonstration-section/DemonstrationSection';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -18,18 +20,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-function SectionComponents({ info }: InfoProps) {
-  const pageName = info.pageName;
-  const blockName = info.blockName;
-  const labelName = info.labelName as 'section';
-  return (
-    <>
-      <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
-      <DemonstrationSection info={{ labelName: 'demonstration' as string, pageName: pageName, blockName: blockName }} />
-    </>
-  );
-}
-const SectionElements: React.FC<InfoProps> = ({ info }) => {
+function SectionElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -46,6 +37,17 @@ const SectionElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
+const SectionComponents: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName;
+  const labelName = info.labelName as 'section';
+  const pageName = info.pageName;
+  return (
+    <>
+      <CharactersSection info={{ labelName: 'characters' as string, pageName: pageName, blockName: blockName }} />
+      <DemonstrationSection info={{ labelName: 'demonstration' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+};
 export default SectionElements;

@@ -6,11 +6,13 @@ import React, { useEffect } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-
-//--|🠋 Styles 🠋|--\\
 import SwipeMenu from './swipe-menu/SwipeMenu';
 import ScrollMenu from './scroll-menu/ScrollMenu';
 import SelectMenu from './select-menu/SelectMenu';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -19,20 +21,7 @@ interface InfoProps {
     labelName: string | 'scroll' | 'swipe' | 'select';
   };
 }
-function MenuComponents({ info }: InfoProps) {
-  const pageName = info.pageName;
-  const blockName = info.blockName;
-  const labelName = info.labelName;
-
-  return (
-    <>
-      <SwipeMenu info={{ labelName: 'swipe' as string, pageName: pageName, blockName: blockName }} />
-      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
-      <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
-    </>
-  );
-}
-const MenuElements: React.FC<InfoProps> = ({ info }) => {
+function MenuElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -49,6 +38,19 @@ const MenuElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
+const MenuComponents: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName;
+  const labelName = info.labelName;
+  const pageName = info.pageName;
+
+  return (
+    <>
+      <SwipeMenu info={{ labelName: 'swipe' as string, pageName: pageName, blockName: blockName }} />
+      <SelectMenu info={{ labelName: 'select' as string, pageName: pageName, blockName: blockName }} />
+      <ScrollMenu info={{ labelName: 'scroll' as string, pageName: pageName, blockName: blockName }} />
+    </>
+  );
+};
 export default MenuElements;

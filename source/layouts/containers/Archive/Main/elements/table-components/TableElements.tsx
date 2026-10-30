@@ -2,13 +2,15 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
-
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
 import DefaultTable from './default-table/DefaultTable';
+
+//--|🠋 Functions 🠋|--\\
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,8 +19,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-
-const TableElements: React.FC<InfoProps> = ({ info }) => {
+function TableElements({ info }: InfoProps) {
   return (
     <section className={`${info.labelName}-${info.blockName}`}>
       <DivisionFullscreen
@@ -35,9 +36,9 @@ const TableElements: React.FC<InfoProps> = ({ info }) => {
       />
     </section>
   );
-};
+}
 
-function TableComponents({ info }: InfoProps) {
+const TableComponents: React.FC<InfoProps> = ({ info }) => {
   let defaultInfo = {
     pageName: info.pageName,
     blockName: info.blockName,
@@ -49,5 +50,5 @@ function TableComponents({ info }: InfoProps) {
       <DefaultTable info={defaultInfo} />
     </>
   );
-}
+};
 export default TableElements;

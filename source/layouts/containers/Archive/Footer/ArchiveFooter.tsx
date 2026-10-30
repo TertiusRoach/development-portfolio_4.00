@@ -13,6 +13,8 @@ import { unfoldFooters } from './ArchiveFunctions';
 import { freezeToggle } from '../../../scripts/Footer';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     blockName: '<footer>' | string;
@@ -20,21 +22,20 @@ interface InfoProps {
     pageName: '[components]' | string;
   };
 }
-function ArchiveFooter({ info }: InfoProps): JSX.Element {
+function ArchiveFooter({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'footer';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
-  let pageName = stripBrackets(info.pageName, '[]') as 'components';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let blurName: string = 'obnubilate';
+  let blurName = 'obnubilate' as string;
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':

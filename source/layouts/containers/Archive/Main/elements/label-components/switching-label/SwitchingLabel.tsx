@@ -1,4 +1,5 @@
 //--|🠊 SwitchingLabel.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
@@ -9,6 +10,8 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import { loadAsset } from '../../../../../../../scripts';
 import { listHours, listWords, startMixed } from './SwitchingFunctions';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     pageName: string;
@@ -16,15 +19,15 @@ interface InfoProps {
     labelName: string;
   };
 }
-const SwitchingLabel: React.FC<InfoProps> = ({ info }) => {
+function SwitchingLabel({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'switching';
   const pageName = info.pageName as 'components';
 
   const showType: TheseProps['cases']['type'] = '{toggle}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{chip}', '{check}', '{slider}' or '{option}' until the dropdown exists 🠈|--\\
-  let hoursList: Array<number> = listHours(); //--|🠈 {slider}: same starting values on both sides 🠈|--\\
-  let wordsList: Array<string> = listWords(); //--|🠈 {chip}: the words, {option}: the values 🠈|--\\
-  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
+  let hoursList = listHours() as Array<number>; //--|🠈 {slider}: same starting values on both sides 🠈|--\\
+  let wordsList = listWords() as Array<string>; //--|🠈 {chip}: the words, {option}: the values 🠈|--\\
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
   return (
     <aside className="switching-label">
       <section className={`${blockName}-foreground`}>
@@ -798,5 +801,5 @@ const SwitchingLabel: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default SwitchingLabel;

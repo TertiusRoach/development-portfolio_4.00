@@ -1,4 +1,5 @@
 //--|🠊 TextareaLabel.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
@@ -9,6 +10,8 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import { loadAsset } from '../../../../../../../scripts';
 import listPlaceholders, { listInputs } from './TextareaFunctions';
 
+//--|🠋 Styles 🠋|--\\
+
 interface InfoProps {
   info: {
     pageName: string;
@@ -16,16 +19,16 @@ interface InfoProps {
     labelName: string;
   };
 }
-const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
+function TextareaLabel({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'textarea';
   const pageName = info.pageName as 'components';
 
-  let voidspireList: Array<string> = listPlaceholders('voidspire'); //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Left, every ~dark~ <LabelTextarea> 🠈|--\\
-  let silverveilList: Array<string> = listPlaceholders('silverveil'); //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Right, every ~light~ <LabelTextarea> 🠈|--\\
+  let voidspireList = listPlaceholders('voidspire') as Array<string>; //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Left, every ~dark~ <LabelTextarea> 🠈|--\\
+  let silverveilList = listPlaceholders('silverveil') as Array<string>; //--|🠈 AI Code: Review Please 2026-10-29 15:53 · Right, every ~light~ <LabelTextarea> 🠈|--\\
   const showType: TheseProps['cases']['type'] = '{text}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{input}' or '{block}' until the dropdown exists 🠈|--\\
-  let inputList: Array<string> = listInputs(); //--|🠈 AI Code: Review Please 2026-10-30 · Every <fieldset>'s data-input, only {input} reads it 🠈|--\\
-  let copyImage: string = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy');
+  let inputList = listInputs() as Array<string>; //--|🠈 AI Code: Review Please 2026-10-30 · Every <fieldset>'s data-input, only {input} reads it 🠈|--\\
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
   return (
     <aside className="textarea-label">
       <section className={`${blockName}-foreground`}>
@@ -699,5 +702,5 @@ const TextareaLabel: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default TextareaLabel;

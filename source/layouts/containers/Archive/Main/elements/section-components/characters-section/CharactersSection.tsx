@@ -1,13 +1,14 @@
 //--|🠊 CharactersSection.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
+import SectionCharacters from '../../../../../../components/Section/characters/Section.characters';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
-import SectionCharacters from '../../../../../../components/Section/characters/Section.characters';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {

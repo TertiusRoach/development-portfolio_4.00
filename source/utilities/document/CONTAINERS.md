@@ -54,7 +54,7 @@ Each page lives in `source/layouts/containers/${PageName}/`, where `${PageName}.
 
 ### Two Fixed Pairs
 
-The four outer containers work in two pairs, and a pair always moves as one: it unfolds together, freezes together and folds back together.
+The four outer containers are coupled in two pairs, and a coupled pair always moves as one: it unfolds together, freezes together and folds back together.
 
 | Pair                      | Unfolds through                      | Freezes through                     |
 | ------------------------- | ------------------------------------ | ----------------------------------- |

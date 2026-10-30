@@ -1,3 +1,4 @@
+//--|🠊 ArchiveRightbar.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -6,6 +7,8 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -17,22 +20,20 @@ interface InfoProps {
     labelName: '(default)' | string;
   };
 }
-
-function ArchiveRightbar({ info }: InfoProps): JSX.Element {
+function ArchiveRightbar({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let pageName = stripBrackets(info.pageName, '[]') as 'components';
-  let blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName]);
 
-  let blurName: string = 'obnubilate';
+  let blurName = 'obnubilate' as string;
   let stateName: 'expanded' | 'unfolded' | 'collapsed' | 'squaring';
   switch (getOrientation) {
     case 'landscape':

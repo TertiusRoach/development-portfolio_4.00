@@ -1,12 +1,13 @@
 //--|🠊 DefaultFigure.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-//--|🠋 Styles 🠋|--\\
+//--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
 
-//--|🠋 Components 🠋|--\\
+//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -15,7 +16,7 @@ interface InfoProps {
     labelName: string;
   };
 }
-const DefaultFigure: React.FC<InfoProps> = ({ info }) => {
+function DefaultFigure({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
 
@@ -28,5 +29,5 @@ const DefaultFigure: React.FC<InfoProps> = ({ info }) => {
       <div className={`${blockName}-background`}></div>
     </aside>
   );
-};
+}
 export default DefaultFigure;

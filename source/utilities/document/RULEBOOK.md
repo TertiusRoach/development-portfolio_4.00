@@ -209,16 +209,102 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
 | `function` | First  | The main function, the one the file is named after and exports           |
 | `const`    | Second | Called by the `function`                                                 |
 | `let`      | Third  | Called by a `const`                                                      |
-| `var`      | Fourth | Called by a `let`. Best avoided; no file has needed to go this deep yet  |
+| `var`      | Fourth | Called by a `let`. The deepest level; nothing goes below it              |
 
-- **One main function, exported twice.** A file with one main function declares it as `export function`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
+- **The main function is a `function`, never an arrow.** Props are pulled apart in the brackets and typed after them: `function SwitchingLabel({ info }: InfoProps) {` … `}`. Not `const SwitchingLabel: React.FC<InfoProps> = ({ info }) => {` … `};`, because a `const` at the top means second depth (see the table above).
+- **One main function, exported twice.** A file with one main function declares it as `export function` in `components/` and as a plain `function` in `containers/`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
 - **Several main functions, no default.** A file of equal utilities (like `scripts.ts`) uses named exports only, so a default export always means "the one this file is about".
-- **Values inside a function.** A flag worked out once per render is a `let` with its type written out, and its reason as a trailing comment: `let styleImage: boolean = /\.(png|jpe?g)$/i.test(…); //--|🠈 … 🠈|--\\`. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
+- **Values inside a function.** A flag worked out once per render is a `let` with its type written after the value with `as`, and its reason as a trailing comment: `let casesShow = 3 as number; //--|🠈 … 🠈|--\\`. A `let` declared without a value has nothing to put `as` after, so it keeps its type after the name: `let stateName: 'expanded' | 'collapsed';`. Some files in `components/` still write `let styleImage: boolean = …`; they move to `as` when they're refactored. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
 - **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)).
 
-`<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. Older files are being moved to this order as they're refactored.
+`<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. In `containers/`, `DefaultButton.tsx` is the reference (see [Container Skeleton](#container-skeleton)). Older files are being moved to this order as they're refactored.
 
 Inside the `<button>` tag, attributes come in three groups split by `//--|===|--\\`: identity (`id`, `className`), events (`onClick` … `onDoubleClick`), then accessibility (`aria-label`).
+
+### Container Skeleton
+
+`containers/Archive/Main/elements/button-components/default-button/DefaultButton.tsx` is the skeleton every container file follows from now on. Here it is with the repeated markup taken out:
+
+```tsx
+//--|🠊 DefaultButton.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect, useState } from 'react';
+
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+
+//--|🠋 Functions 🠋|--\\
+import copyCode, { toggleColors } from './DefaultFunctions';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
+
+//--|🠋 Styles 🠋|--\\
+
+interface InfoProps {
+  info: {
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
+}
+function DefaultButton({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
+
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  let casesShow = 3 as number;
+  switch (getOrientation) {
+    case 'landscape':
+      return (
+        <aside className="default-button">
+          <section className={`${blockName}-foreground`}>…</section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}>…</div>
+        </aside>
+      );
+    case 'portrait':
+      return (…);
+  }
+}
+
+const ButtonsDarkside: React.FC<InfoProps> = ({ info }) => {
+  return (
+    <>
+      <ViewOne info={{ labelName: 'one-dark', pageName: info.pageName, blockName: info.blockName }} />
+    </>
+  );
+};
+
+let ViewOne = ({ info }: InfoProps) => {
+  const iconOne = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h1') as string;
+  switch (true) {
+    case info.labelName.includes('dark'):
+      return (…);
+    case info.labelName.includes('light'):
+      return (…);
+  }
+};
+
+var TaskOne = ({ info }: InfoProps) => {};
+export default DefaultButton;
+```
+
+- **The header.** The first line names the file (`//--|🠊 DefaultButton.tsx 🠈|--\\`). Imports follow under four flags, always in this order: `Dependencies`, `Components`, `Functions`, `Styles`. A group with nothing in it keeps its flag. An import goes under the flag for what it brings in, not where it happens to sit: `react` under `Dependencies`, anything from `components/` under `Components`, a `.ts` file (`scripts.ts`, `DefaultFunctions.ts`) under `Functions`, a `.scss` file under `Styles`.
+- **The `Elements` flag.** A file that imports scoped elements from inside a container gets a fifth flag, `//--|🠋 Elements 🠋|--\\`, between `Components` and `Functions`. Elements are the `.tsx` files scoped to one container block: the coupled `<header>` + `<leftbar>` and `<footer>` + `<rightbar>` pairs (the two swap jobs on the flip), and `<main>` and `<overlay>`, which aren't coupled to anything and work the same in both orientations. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip). `ArchiveMain.tsx` imports `ButtonElements` there, and `ButtonElements.tsx` imports `DefaultButton` there. A file that imports no elements leaves the flag out.
+- **`interface InfoProps` sits right above the main function**, with `pageName`, `blockName` and `labelName` as strings.
+- **The `function` (first depth).** Inside it, in this order: the `getOrientation` state, the `info` values given their exact types (`blockName`, `labelName`, `pageName`), the `useEffect` that returns `checkScreen(setOrientation)`, then the `let` values for this render. It returns from `switch (getOrientation)`, with a full `'landscape'` and a full `'portrait'` case, each an `<aside>` holding a `-foreground` `<section>`, a `-midground` `<figure>` and a `-background` `<div>`.
+- **The `const` (second depth)** is written `const Name: React.FC<InfoProps> = ({ info }) => {` … `};`. The `function` uses it, here by passing it as `cases.call` to `<DivisionFullscreen>`. It lists the `let` views and gives each its own `labelName`.
+- **The `let` (third depth)** is written `let Name = ({ info }: InfoProps) => {` … `};`, with no `React.FC`. It returns from `switch (true)`, one `case` per shade (`info.labelName.includes('dark')`, `…('light')`).
+- **The `var` (fourth depth)** is written the same way, as `var Name = ({ info }: InfoProps) => {};`. It goes last, just above the export.
+- **One blank line between depths**, none between helpers at the same depth, none between `interface InfoProps` and the `function`, and none before `export default DefaultButton;`, which is the last line. A flag can stand in for the blank line between depths (`//--|===|--\\` in `RoutingButton.tsx`, `//--|🠊 Desktop Previews 🠈|--\\` in `ArchiveHeader.tsx`); keep these.
+- **No return type on the `function`.** Write `function ArchiveHeader({ info }: InfoProps) {`, not `…): JSX.Element {`.
+- **Plain functions go in a sibling `.ts` file** (`DefaultFunctions.ts`): its main function is the default export (`copyCode`), and the helpers the `.tsx` also needs are named `export const` (`toggleColors`).
 
 ---
 
