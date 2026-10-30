@@ -120,7 +120,9 @@ const caseNumber = (labelClass: string, style: TheseProps['style'], cases: These
         step={cases.step}
         placeholder={style.text}
         //--|===|--\\
+        onPaste={(event) => pasteNumber(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
         onChange={onChange}
+        onKeyDown={(event) => blockCharacters(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
       />
       {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
       <span
@@ -162,5 +164,17 @@ const stepNumber = (input: HTMLInputElement | null, direction: 'up' | 'down'): v
     input.stepDown();
   }
   input.dispatchEvent(new Event('input', { bubbles: true })); //--|🠈 Stepping fires no event on its own, this lets onChange hear it 🠈|--\\
+};
+const blockCharacters = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+  //--|🠊 AI Code: Review Please 2026-10-30 · Only numbers and the symbols a number uses (+ - .): no letters (Chrome lets 'e' & 'E' through for exponents) and no other special characters 🠈|--\\
+  if (event.key.length === 1 && /[^0-9+\-.]/.test(event.key) && !event.ctrlKey && !event.metaKey) {
+    event.preventDefault(); //--|🠈 Ctrl/⌘ shortcuts (copy, paste, select all) still work; Backspace, arrows & Tab are longer than one character 🠈|--\\
+  }
+};
+const pasteNumber = (event: React.ClipboardEvent<HTMLInputElement>): void => {
+  //--|🠊 AI Code: Review Please 2026-10-30 · A pasted value with anything but numbers and + - . in it is refused 🠈|--\\
+  if (/[^0-9+\-.]/.test(event.clipboardData.getData('text').trim())) {
+    event.preventDefault();
+  }
 };
 export default LabelSelection;

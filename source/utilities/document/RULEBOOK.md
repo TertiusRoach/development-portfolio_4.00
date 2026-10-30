@@ -368,6 +368,7 @@ function LabelElements({ info }: InfoProps) {
 - **Dropdowns mirror around the middle:** `~dark~` takes `'mid-lef'` and `~light~` `'mid-rig'` (see [Bracket Syntax](#5-bracket-syntax)).
 - **Spacing belongs to the page, never the component.** The 16/12/8/4px gap between labels that would touch (the `<LabelTextarea>` rows, at the four screen sizes) is set in the page's `.scss`.
 - **`{block}` is one UPPERCASE letter or number.** `<LabelTextarea>` turns a typed or pasted lowercase letter into uppercase and refuses anything else.
+- **`{number}` takes numbers and the symbols a number uses (`+`, `-`, `.`), nothing else.** `<LabelSelection>` refuses letters, UPPERCASE or lowercase, and every other special character when typed or pasted, including the `e` and `E` the browser would allow for exponents.
 
 ---
 
