@@ -1,24 +1,24 @@
 //--|🠊 Label.textarea.scss 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-30 · {text}, {input} & {block} in one <label>, split into a pipeline like <ButtonDefault> 🠈|--\\
-@use './pipeline/Textarea_flex.scss';
-@use './pipeline/Textarea_size.scss';
-@use './pipeline/Textarea_tint.scss';
+@use './pipeline/Label_flex.scss';
+@use './pipeline/Label_size.scss';
+@use './pipeline/Label_tint.scss';
 
 label[class*='_textarea-'] {
-  @include Textarea_flex.textarea-flexbox();
-  @include Textarea_tint.textarea-colors();
+  @include Label_flex.textarea-flexbox();
+  @include Label_tint.textarea-colors();
 
   @media screen and (orientation: landscape) {
     //--|🠊 <LabelTextarea> for [DesktopLandscape] 🠈|--\\
-    @include Textarea_size.desktop-size();
+    @include Label_size.desktop-size();
   }
   @media screen and (orientation: portrait) {
     //--|🠊 <LabelTextarea> for [MobilePortrait] 🠈|--\\
-    @include Textarea_size.mobile-size();
+    @include Label_size.mobile-size();
   }
   //--|🠋 Tablet (Squaring) 🠋|--\\
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
     //--|🠊 <LabelTextarea> for [TabletSquaring] 🠈|--\\
-    @include Textarea_size.tablet-size();
+    @include Label_size.tablet-size();
   }
 }

@@ -1,4 +1,4 @@
-//--|🠊 selection/pipeline/Selection_size.scss 🠈|--\\
+//--|🠊 selection/pipeline/Label_size.scss 🠈|--\\
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   /*--|🠋
@@ -49,7 +49,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -137,6 +136,92 @@
         }
       }
     }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      select[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      select[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
   }
   /*--|🠋
     AI Code: Review Please 2026-10-29 17:04 · Half {input}, half {select}: every size comes from the height (h), padding = h / 2 on the text side and h on the
@@ -186,7 +271,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -268,6 +352,90 @@
         input[class='event'] {
           padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
           padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
         }
         span[class='arrow'] {
           left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
@@ -327,7 +495,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -423,6 +590,98 @@
         }
       }
     }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+      }
+      @media screen and (max-height: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+    }
   }
 }
 @mixin mobile-size {
@@ -471,7 +730,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -559,6 +817,92 @@
         }
       }
     }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      select[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      select[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
   }
   &[class*='selection-combo'] {
     height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
@@ -604,7 +948,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -686,6 +1029,90 @@
         input[class='event'] {
           padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
           padding-right: 8px;
+        }
+        span[class='arrow'] {
+          left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+      }
+      span[class='arrow'] {
+        right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='arrow'] {
+        left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
         }
         span[class='arrow'] {
           left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
@@ -741,7 +1168,6 @@
       }
     }
     &[class*='_tc_'],
-    &[class*='_mc_'],
     &[class*='_bc_'],
     &[class*='_tr_'],
     &[class*='_mr_'],
@@ -830,6 +1256,98 @@
         input[class='event'] {
           padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
           padding-right: 8px;
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_mc_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+      border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+      }
+    }
+    &[class*='_cm_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+      border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+      input[class='event'] {
+        text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+        padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        padding-right: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+      }
+      span[class='up'],
+      span[class='down'] {
+        left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+      }
+      @media screen and (max-width: 768px) {
+        border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 480px) {
+        border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
         }
         span[class='up'],
         span[class='down'] {
@@ -887,7 +1405,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -975,6 +1492,92 @@
           }
         }
       }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
     }
     @media screen and (orientation: portrait) {
       //--|🠊 Mobile 🠈|--\\
@@ -1021,7 +1624,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -1103,6 +1705,92 @@
           select[class='event'] {
             padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
             padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        select[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        select[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          justify-content: center; //--|🠈 Chrome's base-select centres the flex way 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          select[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
           }
           span[class='arrow'] {
             left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
@@ -1157,7 +1845,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -1245,6 +1932,90 @@
           }
         }
       }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
     }
     @media screen and (orientation: portrait) {
       //--|🠊 Mobile 🠈|--\\
@@ -1291,7 +2062,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -1373,6 +2143,90 @@
           input[class='event'] {
             padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
             padding-right: 8px;
+          }
+          span[class='arrow'] {
+            left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+        }
+        span[class='arrow'] {
+          right: 10px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 9px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 5px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+          }
+          span[class='arrow'] {
+            right: 3px; //--|🠈 Centres the caret in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the caret 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='arrow'] {
+          left: 10px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 9px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='arrow'] {
+            left: 5px; //--|🠈 Centres the caret in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the caret 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the caret side, so the text sits in the middle 🠈|--\\
           }
           span[class='arrow'] {
             left: 3px; //--|🠈 Centres the caret in the left padding 🠈|--\\
@@ -1431,7 +2285,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -1527,6 +2380,98 @@
           }
         }
       }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+        @media screen and (max-width: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+      }
     }
     @media screen and (orientation: portrait) {
       //--|🠊 Mobile 🠈|--\\
@@ -1577,7 +2522,6 @@
         }
       }
       &[class*='_tc_'],
-      &[class*='_mc_'],
       &[class*='_bc_'],
       &[class*='_tr_'],
       &[class*='_mr_'],
@@ -1666,6 +2610,98 @@
           input[class='event'] {
             padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
             padding-right: 8px;
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 3px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_mc_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+        border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          padding-right: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          right: 10px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 6px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 9px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 4px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 5px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 2px; //--|🠈 Sharp at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+            padding-right: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            right: 3px; //--|🠈 Centres the carets in the right padding 🠈|--\\
+          }
+        }
+      }
+      &[class*='_cm_'] {
+        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+        border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
+        input[class='event'] {
+          text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
+          padding-left: 44px; //--|🠈 Leaves room for the carets 🠈|--\\
+          padding-right: 44px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+        }
+        span[class='up'],
+        span[class='down'] {
+          left: 10px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+        }
+        @media screen and (max-height: 1920px) {
+          border-radius: 20px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 40px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 40px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 9px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          border-radius: 12px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 24px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 24px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
+          }
+          span[class='up'],
+          span[class='down'] {
+            left: 5px; //--|🠈 Centres the carets in the left padding 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          border-radius: 8px; //--|🠈 Round at both ends 🠈|--\\
+          input[class='event'] {
+            padding-left: 16px; //--|🠈 Leaves room for the carets 🠈|--\\
+            padding-right: 16px; //--|🠈 Matches the carets side, so the text sits in the middle 🠈|--\\
           }
           span[class='up'],
           span[class='down'] {

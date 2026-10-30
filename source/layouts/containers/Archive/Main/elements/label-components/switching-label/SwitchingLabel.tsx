@@ -3,12 +3,11 @@
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
-import LabelSwitching, { TheseProps } from '../../../../../../components/Label/switching/Label.switching';
-import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
+import LabelSwitching from '../../../../../../components/Label/switching/Label.switching';
 
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../../../../scripts';
-import { listHours, listWords, startMixed } from './SwitchingFunctions';
+import { switchColors } from '../../../../../../../scripts';
 
 //--|🠋 Styles 🠋|--\\
 
@@ -21,789 +20,372 @@ interface InfoProps {
 }
 function SwitchingLabel({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'switching';
   const pageName = info.pageName as 'components';
+  const labelName = info.labelName as 'switching';
 
-  const showType: TheseProps['cases']['type'] = '{toggle}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{chip}', '{check}', '{slide}' or '{option}' until the dropdown exists 🠈|--\\
-  let hoursList = listHours() as Array<number>; //--|🠈 {slide}: same starting values on both sides 🠈|--\\
-  let wordsList = listWords() as Array<string>; //--|🠈 {chip}: the words, {option}: the values 🠈|--\\
-  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
+  let pickerView = 'mid-cen' as 'mid-cen' | 'cen-mid'; //--|🠈 AI Code: Review Please 2026-10-30 · The colour picker: change by hand to 'cen-mid' to round both ends 🠈|--\\
   return (
     <aside className="switching-label">
       <section className={`${blockName}-foreground`}>
-        {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSwitching> sits in a <fieldset>, so the {option}s of one cell share a data-group 🠈|--*/}
-        {/*
-        <fieldset className="dar-mon">
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'colours',
+          }}
+          style={{
+            view: pickerView,
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨lucid⟩',
+            text: '(mono)',
+          }}
+          cases={{
+            type: '{select}',
+            list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchColors(event.target.value, 'switching')} //--|🠈 AI Code: Review Please 2026-10-30 · Recolours every <LabelSwitching> with the chosen colour 🠈|--\\
+        />
+        <div className="toggle">
           <LabelSwitching
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: labelName,
+              labelName: 'luc-tog-dar',
             }}
             style={{
               shade: '~dark~',
               color: '(mono)',
               clarity: '⟨lucid⟩',
-              text: wordsList[0],
             }}
             cases={{
-              type: showType,
-              indeterminate: startMixed('(mono)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[0],
+              type: '{toggle}',
             }}
           />
-        </fieldset>
-        <fieldset className="dar-red">
           <LabelSwitching
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: labelName,
+              labelName: 'opa-tog-dar',
             }}
             style={{
               shade: '~dark~',
-              color: '(red)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[1],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(red)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[1],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-gre">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(green)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[2],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(green)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[2],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-blu">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(blue)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[3],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(blue)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[3],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-pur">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(purple)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[4],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(purple)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[4],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-ora">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(orange)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[5],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(orange)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[5],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-pin">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(pink)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[6],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(pink)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[6],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-yel">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(yellow)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[7],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(yellow)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[7],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-bro">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(brown)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[8],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(brown)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[8],
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-tur">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~dark~',
-              color: '(turquoise)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[9],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(turquoise)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[9],
-            }}
-          />
-        </fieldset>
-        */}
-        {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSwitching> sits in a <fieldset>, so the {option}s of one cell share a data-group 🠈|--*/}
-        {/*
-        <fieldset className="lig-mon">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
               color: '(mono)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[0],
+              clarity: '⟨opaque⟩',
             }}
             cases={{
-              type: showType,
-              indeterminate: startMixed('(mono)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[0],
+              type: '{toggle}',
             }}
           />
-        </fieldset>
-        <fieldset className="lig-red">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(red)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[1],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(red)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[1],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-gre">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(green)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[2],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(green)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[2],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-blu">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(blue)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[3],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(blue)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[3],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-pur">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(purple)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[4],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(purple)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[4],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-ora">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(orange)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[5],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(orange)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[5],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-pin">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(pink)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[6],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(pink)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[6],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-yel">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(yellow)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[7],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(yellow)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[7],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-bro">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(brown)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[8],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(brown)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[8],
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-tur">
-          <LabelSwitching
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              shade: '~light~',
-              color: '(turquoise)',
-              clarity: '⟨lucid⟩',
-              text: wordsList[9],
-            }}
-            cases={{
-              type: showType,
-              indeterminate: startMixed('(turquoise)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slide} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-              start: hoursList[9],
-            }}
-          />
-        </fieldset>
-        */}
 
-        {/*--|🠊 AI Code: Review Please 2026-10-29 15:56 🠈|--*/}
-        {/*
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-mon_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-red_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-gre_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-blu_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-pur_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-ora_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-pin_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-yel_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-bro_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-tur_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        */}
-        {/*--|🠊 AI Code: Review Please 2026-10-29 15:56 🠈|--*/}
-        {/*
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-mon_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-red_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-gre_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-blu_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-pur_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-ora_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-pin_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-yel_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-bro_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-tur_switching',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        */}
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-tog-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+            }}
+            cases={{
+              type: '{toggle}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-tog-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+            }}
+            cases={{
+              type: '{toggle}',
+            }}
+          />
+        </div>
+        <div className="check">
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-che-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+            }}
+            cases={{
+              type: '{check}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-che-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+            }}
+            cases={{
+              type: '{check}',
+            }}
+          />
+
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-che-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+            }}
+            cases={{
+              type: '{check}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-che-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+            }}
+            cases={{
+              type: '{check}',
+            }}
+          />
+        </div>
+        {/*--|🠊 AI Code: Review Please 2026-10-30 · A <fieldset>, not a <div>, so the four {option}s share one data-group 🠈|--*/}
+        <fieldset className="option">
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-opt-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: 'Lucid Dark', //--|🠈 {option}: the value, read aloud 🠈|--\\
+            }}
+            cases={{
+              type: '{option}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-opt-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: 'Opaque Dark', //--|🠈 {option}: the value, read aloud 🠈|--\\
+            }}
+            cases={{
+              type: '{option}',
+            }}
+          />
+
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-opt-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: 'Lucid Light', //--|🠈 {option}: the value, read aloud 🠈|--\\
+            }}
+            cases={{
+              type: '{option}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-opt-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: 'Opaque Light', //--|🠈 {option}: the value, read aloud 🠈|--\\
+            }}
+            cases={{
+              type: '{option}',
+            }}
+          />
+        </fieldset>
+        <div className="chip">
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-chi-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: 'Lucid Dark', //--|🠈 {chip}: the words 🠈|--\\
+            }}
+            cases={{
+              type: '{chip}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-chi-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: 'Opaque Dark', //--|🠈 {chip}: the words 🠈|--\\
+            }}
+            cases={{
+              type: '{chip}',
+            }}
+          />
+
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-chi-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: 'Lucid Light', //--|🠈 {chip}: the words 🠈|--\\
+            }}
+            cases={{
+              type: '{chip}',
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-chi-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: 'Opaque Light', //--|🠈 {chip}: the words 🠈|--\\
+            }}
+            cases={{
+              type: '{chip}',
+            }}
+          />
+        </div>
+        <div className="slide">
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-sli-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+            }}
+            cases={{
+              type: '{slide}',
+              min: 0, //--|🠈 {slide} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+              start: 12,
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-sli-dar',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+            }}
+            cases={{
+              type: '{slide}',
+              min: 0, //--|🠈 {slide} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+              start: 12,
+            }}
+          />
+
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-sli-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+            }}
+            cases={{
+              type: '{slide}',
+              min: 0, //--|🠈 {slide} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+              start: 12,
+            }}
+          />
+          <LabelSwitching
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-sli-lig',
+            }}
+            style={{
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+            }}
+            cases={{
+              type: '{slide}',
+              min: 0, //--|🠈 {slide} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+              start: 12,
+            }}
+          />
+        </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

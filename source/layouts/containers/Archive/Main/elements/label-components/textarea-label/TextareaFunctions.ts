@@ -1,41 +1,29 @@
 //--|🠊 textarea-label/TextareaFunctions.ts 🠈|--\\
 //--|🠋 Placeholders 🠋|--\\
-export function listPlaceholders(company: 'voidspire' | 'silverveil'): Array<string> {
-  //--|🠊 AI Code: Review Please 2026-10-29 15:53 · A note with a leave request, names and order from CHARACTERS.md, both lists end with the company 🠈|--\\
-  const companyList: Record<'voidspire' | 'silverveil', Array<string>> = {
-    //--|🠊 Left (~dark~): 01 - 09 🠈|--\\
-    voidspire: [
-      "Jane Lester's Leave Note",
-      "Malik Tremaine Carter's Leave Note",
-      "Dimitri Lewis's Leave Note",
-      "Dale Sutton's Leave Note",
-      "Dr. Alaric Voss's Leave Note",
-      "Conrad Guy's Leave Note",
-      "Daniel Meyers's Leave Note",
-      "Ms. Kady Deacon's Leave Note",
-      "Seamus O'Donnell's Leave Note",
-      'Voidspire Leave Note',
-    ],
-    //--|🠊 Right (~light~): 10 - 18 🠈|--\\
-    silverveil: [
-      "Hammad Dean's Leave Note",
-      "Tasneem Kemp's Leave Note",
-      "Elliot Crane's Leave Note",
-      "Sipho Dlamini's Leave Note",
-      "Zuberi Thorne's Leave Note",
-      "Nyra Solari's Leave Note",
-      "Victor Langston's Leave Note",
-      "Danish Copeland's Leave Note",
-      "Aelin Darrow's Leave Note",
-      'Silverveil Leave Note',
-    ],
+function typePlaceholder(type: '{text}' | '{input}' | '{block}', input?: string): string {
+  //--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelTextarea> is named after its cases.type; {block} is one security-code character, so it shows a dash 🠈|--\\
+  const placeholderMap: Record<string, string> = {
+    '{text}': 'Text',
+    '{input}': 'Input',
+    '{block}': '-',
+  };
+  const inputMap: Record<string, string> = {
+    '{text}': 'Text',
+    '{email}': 'Email',
+    '{password}': 'Password',
+    '{search}': 'Search',
+    '{url}': 'Website',
+    '{tel}': 'Phone number',
   };
 
-  return companyList[company];
+  if (type === '{input}' && input) {
+    return `${inputMap[input]} ${placeholderMap[type]}`; //--|🠈 AI Code: Review Please 2026-10-30 · Its data-input, then its cases.type: 'Email Input' 🠈|--\\
+  }
+  return placeholderMap[type];
 }
 //--|🠋 Inputs 🠋|--\\
-export function listInputs(): Array<string> {
-  //--|🠊 AI Code: Review Please 2026-10-30 · The old <LabelInput> page's order, both sides use the same list 🠈|--\\
+export const listInputs = (): Array<string> => {
+  //--|🠊 AI Code: Review Please 2026-10-30 · The old <LabelInput> page's order, the {input} row uses the first four 🠈|--\\
   return ['{text}', '{email}', '{password}', '{search}', '{url}', '{tel}', '{text}', '{email}', '{password}', '{search}'];
-}
-export default listPlaceholders;
+};
+export default typePlaceholder;

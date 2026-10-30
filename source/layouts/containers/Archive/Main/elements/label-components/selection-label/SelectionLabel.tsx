@@ -3,12 +3,11 @@
 import React from 'react';
 
 //--|🠋 Components 🠋|--\\
-import LabelSelection, { TheseProps } from '../../../../../../components/Label/selection/Label.selection';
-import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
 
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../../../../scripts';
-import { listCharacters, startPlaceholder } from './SelectionFunctions';
+import { switchColors } from '../../../../../../../scripts';
+import listCharacters, { typePlaceholder } from './SelectionFunctions';
 
 //--|🠋 Styles 🠋|--\\
 
@@ -24,778 +23,276 @@ function SelectionLabel({ info }: InfoProps) {
   const labelName = info.labelName as 'selection';
   const pageName = info.pageName as 'components';
 
-  const showType: TheseProps['cases']['type'] = '{select}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{combo}' or '{number}' until the dropdown exists 🠈|--\\
-
-  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
-  let company = [listCharacters('voidspire'), listCharacters('silverveil')] as Array<Array<string>>;
+  let voidspireList = listCharacters('voidspire') as Array<string>; //--|🠈 AI Code: Review Please 2026-10-30 · Every ~dark~ {select} & {combo} 🠈|--\\
+  let silverveilList = listCharacters('silverveil') as Array<string>; //--|🠈 AI Code: Review Please 2026-10-30 · Every ~light~ {select} & {combo} 🠈|--\\
+  let pickerView = 'mid-cen' as 'mid-cen' | 'cen-mid'; //--|🠈 AI Code: Review Please 2026-10-30 · The colour picker: change by hand to 'cen-mid' to round both ends 🠈|--\\
   return (
     <aside className="selection-label">
       <section className={`${blockName}-foreground`}>
-        {/*
-        <fieldset className="dar-mon">
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'colours',
+          }}
+          style={{
+            view: pickerView,
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨lucid⟩',
+            text: '(mono)',
+          }}
+          cases={{
+            type: '{select}',
+            list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchColors(event.target.value, 'selection')} //--|🠈 AI Code: Review Please 2026-10-30 · Recolours every <LabelSelection> except this one with the chosen colour 🠈|--\\
+        />
+        <div className="select">
           <LabelSelection
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: labelName,
+              labelName: 'luc-sel-dar',
             }}
             style={{
-              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · Dark sits left with the caret on the left, light sits right with the caret on the right 🠈|--\\
-              shade: '~dark~',
-              color: '(mono)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-red">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(red)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-gre">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(green)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-blu">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(blue)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-pur">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(purple)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-ora">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(orange)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-pin">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(pink)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-yel">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(yellow)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-bro">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(brown)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="dar-tur">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-lef',
-              shade: '~dark~',
-              color: '(turquoise)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'voidspire'),
-            }}
-            cases={{
-              type: showType,
-              list: company[0] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        //--|===|--\\
-        <fieldset className="lig-mon">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · Dark sits left with the caret on the left, light sits right with the caret on the right 🠈|--\\
-              shade: '~light~',
-              color: '(mono)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-red">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(red)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-gre">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(green)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-blu">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(blue)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-pur">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(purple)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-ora">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(orange)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-pin">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(pink)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-yel">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(yellow)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-bro">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(brown)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
-        <fieldset className="lig-tur">
-          <LabelSelection
-            info={{
-              pageName: pageName,
-              blockName: blockName,
-              labelName: labelName,
-            }}
-            style={{
-              view: 'mid-rig',
-              shade: '~light~',
-              color: '(turquoise)',
-              clarity: '⟨lucid⟩',
-              text: startPlaceholder(showType, 'silverveil'),
-            }}
-            cases={{
-              type: showType,
-              list: company[1] as Array<string>, //--|🠈 {select} & {combo} only 🠈|--\\
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
-            }}
-          />
-        </fieldset>
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
 
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-mon_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-red_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-gre_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-blu_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-pur_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-ora_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-pin_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-yel_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-bro_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'dar-tur_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~dark~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        //--|===|--\\
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-mon_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-red_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-gre_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-blu_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-pur_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-ora_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-pin_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-yel_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-bro_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        <ButtonDefault
-          info={{
-            pageName: pageName as 'components',
-            blockName: blockName as 'main',
-            labelName: 'lig-tur_selection',
-          }}
-          style={{
-            size: '<h5>',
-            view: '-icon-',
-            shade: '~light~',
-            clarity: '⟨lucid⟩',
-            color: '(mono)',
-            image: copyImage,
-          }}
-        />
-        */}
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{select}'),
+            }}
+            cases={{
+              type: '{select}',
+              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-sel-dar',
+            }}
+            style={{
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
+
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{select}'),
+            }}
+            cases={{
+              type: '{select}',
+              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-sel-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{select}'),
+            }}
+            cases={{
+              type: '{select}',
+              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-sel-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{select}'),
+            }}
+            cases={{
+              type: '{select}',
+              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+        </div>
+        <div className="combo">
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-com-dar',
+            }}
+            style={{
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
+
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{combo}'),
+            }}
+            cases={{
+              type: '{combo}',
+              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-com-dar',
+            }}
+            style={{
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
+
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{combo}'),
+            }}
+            cases={{
+              type: '{combo}',
+              list: voidspireList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-com-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{combo}'),
+            }}
+            cases={{
+              type: '{combo}',
+              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-com-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{combo}'),
+            }}
+            cases={{
+              type: '{combo}',
+              list: silverveilList, //--|🠈 {select} & {combo} only 🠈|--\\
+            }}
+          />
+        </div>
+        <div className="number">
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-num-dar',
+            }}
+            style={{
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
+
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{number}'),
+            }}
+            cases={{
+              type: '{number}',
+              min: 0, //--|🠈 {number} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-num-dar',
+            }}
+            style={{
+              view: 'mid-lef', //--|🠈 AI Code: Review Please 2026-10-30 · ~dark~: round around the caret on the left, sharp on the right 🠈|--\\
+
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{number}'),
+            }}
+            cases={{
+              type: '{number}',
+              min: 0, //--|🠈 {number} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+            }}
+          />
+
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'luc-num-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: typePlaceholder('{number}'),
+            }}
+            cases={{
+              type: '{number}',
+              min: 0, //--|🠈 {number} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+            }}
+          />
+          <LabelSelection
+            info={{
+              pageName: pageName,
+              blockName: blockName,
+              labelName: 'opa-num-lig',
+            }}
+            style={{
+              view: 'mid-rig', //--|🠈 AI Code: Review Please 2026-10-30 · ~light~: sharp on the left, round around the caret on the right 🠈|--\\
+
+              shade: '~light~',
+              color: '(mono)',
+              clarity: '⟨opaque⟩',
+              text: typePlaceholder('{number}'),
+            }}
+            cases={{
+              type: '{number}',
+              min: 0, //--|🠈 {number} only 🠈|--\\
+              max: 24, //--|🠈 Hours in a day 🠈|--\\
+              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
+            }}
+          />
+        </div>
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

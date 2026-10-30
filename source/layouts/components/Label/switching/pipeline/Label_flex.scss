@@ -1,4 +1,4 @@
-//--|🠊 switching/pipeline/Switching_flex.scss 🠈|--\\
+//--|🠊 switching/pipeline/Label_flex.scss 🠈|--\\
 @mixin switching-flexbox {
   &[class*='switching-chip'] {
     //--|🠋 Global (Flex) 🠋|--\\
@@ -109,7 +109,7 @@
       }
     }
   }
-  &[class*='switching-slider'] {
+  &[class*='switching-slide'] {
     //--|🠋 Global (Flex) 🠋|--\\
     width: 75%; //--|🠈 Three quarters of its parent container 🠈|--\\
     display: flex;

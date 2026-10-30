@@ -22,8 +22,6 @@ import NavigationElements from './elements/navigation-components/NavigationEleme
 import { revertBlocks } from '../../../scripts/Main';
 import { stripBrackets, checkScreen } from '../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     blockName: '<main>' | string;

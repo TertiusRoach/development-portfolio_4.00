@@ -1,6 +1,6 @@
 //--|🠊 selection-label/SelectionFunctions.ts 🠈|--\\
 //--|🠋 Character Lists 🠋|--\\
-export function listCharacters(company: 'voidspire' | 'silverveil'): Array<string> {
+function listCharacters(company: 'voidspire' | 'silverveil'): Array<string> {
   //--|🠊 AI Code: Review Please 2026-10-29 · Names and order from CHARACTERS.md, both lists end with Randomize Character 🠈|--\\
   const companyList: Record<'voidspire' | 'silverveil', Array<string>> = {
     //--|🠊 Left (~dark~): 01 - 09 🠈|--\\
@@ -34,11 +34,14 @@ export function listCharacters(company: 'voidspire' | 'silverveil'): Array<strin
   return companyList[company];
 }
 //--|🠋 Placeholders 🠋|--\\
-export function startPlaceholder(type: '{select}' | '{combo}' | '{number}', company: 'voidspire' | 'silverveil'): string {
-  //--|🠊 AI Code: Review Please 2026-10-30 · {number} starts at 0 like the old <LabelNumber> page, {combo} names the company like the old <LabelCombobox> page 🠈|--\\
-  if (type === '{number}') {
-    return '0';
-  }
-  return company === 'voidspire' ? 'Voidspire Character' : 'Silverveil Character';
-}
+export const typePlaceholder = (type: '{select}' | '{combo}' | '{number}'): string => {
+  //--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSelection> is named after its cases.type; {number} shows 0 until a number is typed 🠈|--\\
+  const placeholderMap: Record<string, string> = {
+    '{select}': 'Select',
+    '{combo}': 'Combo',
+    '{number}': '0',
+  };
+
+  return placeholderMap[type];
+};
 export default listCharacters;

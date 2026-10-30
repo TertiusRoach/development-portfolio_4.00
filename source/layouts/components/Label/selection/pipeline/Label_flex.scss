@@ -1,4 +1,4 @@
-//--|🠊 selection/pipeline/Selection_flex.scss 🠈|--\\
+//--|🠊 selection/pipeline/Label_flex.scss 🠈|--\\
 @mixin selection-flexbox {
   &[class*='selection-select'] {
     //--|🠋 Global (Flex) 🠋|--\\
@@ -13,10 +13,52 @@
       appearance: none;
       cursor: pointer;
       font-family: inherit;
+      border-radius: inherit; //--|🠈 AI Code: Review Please 2026-10-30 · The ⟨opaque⟩ frame follows the <label>'s corners 🠈|--\\
       font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
       border-style: none;
+      overflow: hidden; //--|🠈 AI Code: Review Please 2026-10-30 · One line: a long name crops instead of wrapping, with an ellipsis (...) where the browser allows it; Chrome's base-select doesn't 🠈|--\\
+      white-space: nowrap;
+      text-overflow: ellipsis;
       &:focus {
         outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
+      }
+      //--|🠋 Chrome Only (Open List) 🠋|--\\
+      /*--|🠋
+        AI Code: Review Please 2026-10-30 · Chrome only: appearance: base-select lets the page draw the open list, so its corners can be styled.
+        The end touching the <select> is sharp, the far end round. When there's no room below, Chrome flips the list above (flip-block)
+        and the anchored query swaps the corners. Firefox & Safari ignore all of this and keep the browser's own list.
+      🠉|--*/
+      &,
+      &::picker(select) {
+        appearance: base-select;
+      }
+      @supports (appearance: base-select) {
+        align-items: center; //--|🠈 base-select lays the text out in a flex row, so it is centred the flex way 🠈|--\\
+      }
+      &::picker-icon {
+        display: none; //--|🠈 span.arrow draws the caret 🠈|--\\
+      }
+      &::picker(select) {
+        padding: 0;
+        overflow: visible; //--|🠈 A scrolling list clips its own corners, which would round the sharp end too 🠈|--\\
+        border-style: none;
+        background: none; //--|🠈 The options carry the tint, the list itself is see-through 🠈|--\\
+        container-type: anchored; //--|🠈 Lets the options ask which way the list opened 🠈|--\\
+        position-try-fallbacks: flip-block; //--|🠈 Named, so the query below can match it 🠈|--\\
+      }
+      option::checkmark {
+        display: none; //--|🠈 The browser's own list had no tick 🠈|--\\
+      }
+      option:last-child {
+        border-radius: 0 0 0.4em 0.4em; //--|🠈 Opens below: the far end is round, in em so it follows the size steps 🠈|--\\
+      }
+      @container anchored(fallback: flip-block) {
+        option:first-child {
+          border-radius: 0.4em 0.4em 0 0; //--|🠈 Opens above: the far end is now the top 🠈|--\\
+        }
+        option:last-child {
+          border-radius: 0; //--|🠈 The bottom touches the <select>, so it is sharp 🠈|--\\
+        }
       }
     }
     span[class='arrow'] {
@@ -46,6 +88,7 @@
       border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
       font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
       border-style: none;
+      text-overflow: ellipsis; //--|🠈 AI Code: Review Please 2026-10-30 · A long value or placeholder crops into an ellipsis (...), an <input> already stays on one line 🠈|--\\
       &:focus {
         outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
       }
@@ -82,6 +125,7 @@
       border-radius: inherit; //--|🠈 The frame follows the <label>'s corners 🠈|--\\
       font-weight: 750; //--|🠈 Same weight as an <h3> <ButtonDefault> 🠈|--\\
       border-style: none;
+      text-overflow: ellipsis; //--|🠈 AI Code: Review Please 2026-10-30 · A long value or placeholder crops into an ellipsis (...), an <input> already stays on one line 🠈|--\\
       &:focus {
         outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
       }
@@ -127,7 +171,8 @@
   &[class*='_ml_'] {
     margin: auto auto auto 0;
   }
-  &[class*='_mc_'] {
+  &[class*='_mc_'],
+  &[class*='_cm_'] {
     margin: auto;
   }
   &[class*='_mr_'] {

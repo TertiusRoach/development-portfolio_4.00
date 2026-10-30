@@ -29,6 +29,7 @@ const createLayout = (type: TheseProps['cases']['type'], view: TheseProps['style
     'top-rig': 'tr',
     'mid-lef': 'ml',
     'mid-cen': 'mc',
+    'cen-mid': 'cm', //--|🠈 AI Code: Review Please 2026-10-30 · Sits like 'mid-cen', both ends round 🠈|--\\
     'mid-rig': 'mr',
     'bot-lef': 'bl',
     'bot-cen': 'bc',

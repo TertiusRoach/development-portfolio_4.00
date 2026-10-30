@@ -1,24 +1,24 @@
 //--|🠊 Label.selection.scss 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-30 · {select}, {combo} & {number} in one <label>, split into a pipeline like <ButtonDefault> 🠈|--\\
-@use './pipeline/Selection_flex.scss';
-@use './pipeline/Selection_size.scss';
-@use './pipeline/Selection_tint.scss';
+@use './pipeline/Label_flex.scss';
+@use './pipeline/Label_size.scss';
+@use './pipeline/Label_tint.scss';
 
 label[class*='_selection-'] {
-  @include Selection_flex.selection-flexbox();
-  @include Selection_tint.selection-colors();
+  @include Label_flex.selection-flexbox();
+  @include Label_tint.selection-colors();
 
   @media screen and (orientation: landscape) {
     //--|🠊 <LabelSelection> for [DesktopLandscape] 🠈|--\\
-    @include Selection_size.desktop-size();
+    @include Label_size.desktop-size();
   }
   @media screen and (orientation: portrait) {
     //--|🠊 <LabelSelection> for [MobilePortrait] 🠈|--\\
-    @include Selection_size.mobile-size();
+    @include Label_size.mobile-size();
   }
   //--|🠋 Tablet (Squaring) 🠋|--\\
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
     //--|🠊 <LabelSelection> for [TabletSquaring] 🠈|--\\
-    @include Selection_size.tablet-size();
+    @include Label_size.tablet-size();
   }
 }

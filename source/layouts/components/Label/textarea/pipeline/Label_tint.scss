@@ -1,4 +1,4 @@
-//--|🠊 textarea/pipeline/Textarea_tint.scss 🠈|--\\
+//--|🠊 textarea/pipeline/Label_tint.scss 🠈|--\\
 @use 'sass:color';
 @use '../../../../styles/Palettes.scss' as Palettes;
 
@@ -18,10 +18,10 @@
   //--|🠋 Clarity 🠋|--\\
   //--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
   &[class*='_luc_'] {
-    opacity: 0.75; //--|🠈 ⟨lucid⟩: slightly see-through, there's room to type 🠈|--\\
+    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-30 · ⟨lucid⟩: solid, like <LabelSelection> 🠈|--\\
   }
   &[class*='_opa_'] {
-    opacity: 1; //--|🠈 ⟨opaque⟩: solid 🠈|--\\
+    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: see-through with a frame, set below and in *-tint 🠈|--\\
   }
   //--|🠋 Crossfade Layers 🠋|--\\
   /*--|🠋
@@ -43,7 +43,6 @@
     border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
   }
   &::before {
-    opacity: 0.25; //--|🠈 See-through, the page shows behind the text 🠈|--\\
     transition: opacity 750ms $tint-fade;
   }
   &::after {
@@ -67,7 +66,26 @@
       opacity: 0;
     }
     &::after {
-      opacity: 0.25;
+      opacity: 1;
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ like {select}: the layers drop to a quarter and lose the bevel, the frame is set in *-tint 🠈|--\\
+    &::before {
+      opacity: 0.25; //--|🠈 See-through, the page shows behind the text 🠈|--\\
+      box-shadow: none;
+    }
+    &::after {
+      box-shadow: none;
+    }
+    &:hover,
+    &:has(:focus-visible) {
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 0.25;
+      }
     }
   }
 }
@@ -82,18 +100,23 @@
   &[class*='dar_mon'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -106,12 +129,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$gray-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -120,18 +164,23 @@
   &[class*='lig_mon'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -144,12 +193,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$gray-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -165,18 +235,23 @@
   &[class*='dar_red'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -189,12 +264,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$red-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -203,18 +299,23 @@
   &[class*='lig_red'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -227,12 +328,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$red-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -248,18 +370,23 @@
   &[class*='dar_gre'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -272,12 +399,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$green-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -286,18 +434,23 @@
   &[class*='lig_gre'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -310,12 +463,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$green-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -331,18 +505,23 @@
   &[class*='dar_blu'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -355,12 +534,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$blue-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -369,18 +569,23 @@
   &[class*='lig_blu'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -393,12 +598,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$blue-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -414,18 +640,23 @@
   &[class*='dar_pur'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -438,12 +669,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$purple-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -452,18 +704,23 @@
   &[class*='lig_pur'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -476,12 +733,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$purple-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -497,18 +775,23 @@
   &[class*='dar_ora'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -521,12 +804,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$orange-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -535,18 +839,23 @@
   &[class*='lig_ora'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -559,12 +868,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$orange-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -580,18 +910,23 @@
   &[class*='dar_pin'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -604,12 +939,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$pink-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -618,18 +974,23 @@
   &[class*='lig_pin'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -642,12 +1003,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$pink-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -663,18 +1045,23 @@
   &[class*='dar_yel'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -687,12 +1074,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$yellow-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -701,18 +1109,23 @@
   &[class*='lig_yel'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -725,12 +1138,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$yellow-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -746,18 +1180,23 @@
   &[class*='dar_bro'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -770,12 +1209,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$brown-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -784,18 +1244,23 @@
   &[class*='lig_bro'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -808,12 +1273,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$brown-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }
@@ -829,18 +1315,23 @@
   &[class*='dar_tur'] {
     &::before {
       background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
     }
     &::after {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     [class='event'] {
       color: $neoLig; //--|🠈 Light text on a dark track 🠈|--\\
       text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $blaDar,
         0 0 0.25em rgba($blaDar, 0.6);
-      box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-        inset 0 0 0 2px $blaDar,
-        inset 0 0.125em 0.25em $blaDar;
       &::placeholder {
         color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -853,12 +1344,33 @@
         text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $neoLig,
           0 0 0.25em rgba($neoLig, 0.6);
-        box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-          inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-          inset 0 0 0.5em $neoLig;
         &::placeholder {
           color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+          inset 0 0 0 2px $blaDar,
+          inset 0 0.125em 0.25em $blaDar;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          0 0 0.06em $blaDar,
+          0 0 0.12em $blaDar,
+          0 0 0.3em rgba($blaDar, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+            inset 0 0 0 2px $neoLig,
+            inset 0 0 0.5em Palettes.$turquoise-medium;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+            0 0 0.06em $neoLig,
+            0 0 0.12em $neoLig,
+            0 0 0.3em rgba($neoLig, 0.8);
         }
       }
     }
@@ -867,18 +1379,23 @@
   &[class*='lig_tur'] {
     &::before {
       background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(#fff, 0.22),
+        inset 0 -1px 0 rgba(#000, 0.25),
+        inset 0 0 0 1px rgba(#000, 0.1);
     }
     &::after {
       background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+      box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
+        inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+        inset 0 -1px 0 rgba(#000, 0.35),
+        inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
     }
     [class='event'] {
       color: $blaDar; //--|🠈 Dark text on a light track 🠈|--\\
       text-shadow: //--|🠈 A thin light outline in em, so it scales with the font like <Button> 🠈|--\\
         0 0 0.04em $neoLig,
         0 0 0.25em rgba($neoLig, 0.6);
-      box-shadow: //--|🠈 An inset glow, so the dark text & placeholder stand out 🠈|--\\
-        inset 0 0 0 2px rgba($neoLig, 0), //--|🠈 No outline, kept so the fade has the same two shadows 🠈|--\\
-        inset 0 0 0.5em $neoLig;
       &::placeholder {
         color: $blaDar; //--|🠈 Same colour as the text, only fainter 🠈|--\\
         opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
@@ -891,12 +1408,33 @@
         text-shadow: //--|🠈 A thin dark outline in em, so it scales with the font like <Button> 🠈|--\\
           0 0 0.04em $blaDar,
           0 0 0.25em rgba($blaDar, 0.6);
-        box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
-          inset 0 0 0 2px $blaDar,
-          inset 0 0.125em 0.25em $blaDar;
         &::placeholder {
           color: $neoLig; //--|🠈 Same colour as the text, only fainter 🠈|--\\
           opacity: 0.75; //--|🠈 Same strength as the <Form> placeholders 🠈|--\\
+        }
+      }
+    }
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      [class='event'] {
+        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          inset 0 0 0 2px $neoLig,
+          inset 0 0 0.5em Palettes.$turquoise-medium;
+        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          0 0 0.06em $neoLig,
+          0 0 0.12em $neoLig,
+          0 0 0.3em rgba($neoLig, 0.8);
+      }
+      &:hover,
+      &:has(:focus-visible) {
+        [class='event'] {
+          box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
+            inset 0 0 0 2px $blaDar,
+            inset 0 0.125em 0.25em $blaDar;
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+            0 0 0.06em $blaDar,
+            0 0 0.12em $blaDar,
+            0 0 0.3em rgba($blaDar, 0.8);
         }
       }
     }

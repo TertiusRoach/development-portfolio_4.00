@@ -1,4 +1,4 @@
-//--|🠊 switching/pipeline/Switching_size.scss 🠈|--\\
+//--|🠊 switching/pipeline/Label_size.scss 🠈|--\\
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   /*--|🠋
@@ -191,7 +191,7 @@
     AI Code: Review Please 2026-10-29 15:56 · Every size comes from the height (h): radius = h / 2 (on the <label>), and the knob and the gap around it are the
     {toggle} knob: 36px & 4px, 34px & 3px, 20px & 2px, 14px & 1px.
   🠉|--*/
-  &[class*='switching-slider'] {
+  &[class*='switching-slide'] {
     height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
     border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
     input[class='event'] {
@@ -471,7 +471,7 @@
       }
     }
   }
-  &[class*='switching-slider'] {
+  &[class*='switching-slide'] {
     height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\
     border-radius: 22px; //--|🠈 On the <label>, the fade layers inherit it 🠈|--\\
     input[class='event'] {
@@ -931,7 +931,7 @@
       }
     }
   }
-  &[class*='switching-slider'] {
+  &[class*='switching-slide'] {
     @media screen and (orientation: landscape) {
       //--|🠊 Desktop 🠈|--\\
       height: 44px; //--|🠈 Same as the <input>, so a stretching parent cannot grow the fade layers 🠈|--\\

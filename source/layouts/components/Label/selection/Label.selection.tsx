@@ -13,7 +13,7 @@ export interface TheseProps {
     labelName: string;
   };
   style: {
-    view?: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig'; //--|🠈 Missing is 'mid-cen'; the left column puts the caret on the left, the rest on the right 🠈|--\\
+    view?: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'cen-mid' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig'; //--|🠈 Missing is 'mid-cen'; the left column puts the caret on the left, 'cen-mid' rounds both ends with the caret on the left, the rest on the right 🠈|--\\
     shade: '~dark~' | '~light~';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
     clarity: '⟨opaque⟩' | '⟨lucid⟩';

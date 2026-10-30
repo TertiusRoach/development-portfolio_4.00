@@ -1861,6 +1861,7 @@ let updateButtons = (color: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < 49; i++) {
+    //--|🠊 AI Code: Review Please 2026-10-30 · 49 on purpose, not .length: it marks how many <ButtonDefault>s each side holds 🠈|--\\
     let prevDarkClass = wrapperDarkside[i].classList[1] as string;
     let prevLightClass = wrapperLightside[i].classList[1] as string;
 

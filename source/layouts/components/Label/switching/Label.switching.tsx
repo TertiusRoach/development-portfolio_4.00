@@ -44,11 +44,12 @@ export interface TheseProps {
   */
 }
 
-export function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
+function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
   const labelRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const groupName = useId(); //--|🠈 {option}: the group name when the parent has no data-group yet 🠈|--\\
   const [genes, setGenes] = useState<{ group: string; input: string }>({ group: '', input: '{text}' });
+
   useEffect(() => {
     if (cases.type === '{option}') {
       setGenes(previewParent(labelRef.current, groupName)); //--|🠈 The parent only exists after the first render 🠈|--\\
@@ -62,16 +63,16 @@ export function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
   }, [cases.type, cases.indeterminate]);
   let labelClass: string = `${info.labelName}-${info.blockName}_switching-${stripBrackets(cases.type, '{}')} ${createClass(style, cases)}`;
   switch (cases.type) {
-    case '{chip}':
-      return caseChip(labelClass, labelRef, style, onChange);
-    case '{check}':
-      return caseCheck(labelClass, labelRef, inputRef, onChange);
     case '{toggle}':
       return caseToggle(labelClass, labelRef, onChange);
-    case '{slide}':
-      return caseSlider(labelClass, labelRef, cases, onChange);
+    case '{check}':
+      return caseCheck(labelClass, labelRef, inputRef, onChange);
     case '{option}':
       return caseOption(labelClass, labelRef, style, genes, onChange);
+    case '{chip}':
+      return caseChip(labelClass, labelRef, style, onChange);
+    case '{slide}':
+      return caseSlider(labelClass, labelRef, cases, onChange);
   }
 }
 //--|🠋 Cases 🠋|--\\

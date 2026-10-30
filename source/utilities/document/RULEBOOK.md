@@ -24,10 +24,11 @@ How code is written in this repository. Every rule here exists because breaking 
 1. **Readability beats brevity.** More lines are fine. Repeating a value is fine. A clever shortcut that saves ten lines and costs ten minutes of head-scratching later is not.
 2. **Match what's already there.** Same naming, same comment flags, same file layout, same order of things. A new file should look like it was always part of the project.
 3. **One step at a time.** Change one thing, check it, then move on. Big sweeping refactors are how a project stops belonging to the person who built it.
-4. **Understand it before you ship it.** No code goes in that nobody can explain. That's the whole defence against vibe coding.
+4. **Understand it before you ship it.** No code goes in that nobody can explain. That's the whole defense against vibe coding.
 5. **Nothing is ever finished.** Every component is still being refactored. Don't treat any of it as frozen, and don't hide any of it.
 6. **Quirks can be identity.** Some behaviours look like bugs and are deliberate (see [Deliberate Choices](#deliberate-choices)). Only real visual bugs get fixed.
 7. **The design comes first.** Sizes, gutters and colours are worked out in Figma and measured against the skeleton in `styles/Mixins.scss`. If a number looks odd, compare it with the skeleton before changing it.
+8. **The documents change with the code.** When a change alters what a prop, a class or a rule means, the paragraph that describes it is updated in the same step. A document that describes the old meaning is worse than none.
 
 ### Deliberate Choices
 
@@ -39,18 +40,18 @@ How code is written in this repository. Every rule here exists because breaking 
 
 Every document lives in `source/utilities/document/`. If you're unsure about anything, look here first.
 
-| Document                         | What it answers                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------------ |
-| **RULEBOOK.md** (this page)      | How code is written: naming, files, scaling, colours, comments                        |
-| [GUIDELINES.md](GUIDELINES.md)   | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
-| [TOGGLES.md](TOGGLES.md)         | Which page each toggle opens (Vocation, Position, Occupation)                        |
-| [CONTAINERS.md](CONTAINERS.md)   | The six containers every page is built from, how they pair and flip, and what each one does per app |
-| [CHARACTERS.md](CHARACTERS.md)   | The 18 test characters, their facts, their psychology and the rules they test        |
-| [TABLE.md](TABLE.md)             | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB       |
-| [MODULES.md](MODULES.md)         | Setting up the database, secrets, test emails and the server on any OS               |
-| [GITHUB.md](GITHUB.md)           | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble         |
-| [EDITOR.md](EDITOR.md)           | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable               |
-| [REFERENCE.md](REFERENCE.md)     | The template the main `README.md` follows                                            |
+| Document                       | What it answers                                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| **RULEBOOK.md** (this page)    | How code is written: naming, files, scaling, colours, comments                                      |
+| [GUIDELINES.md](GUIDELINES.md) | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
+| [TOGGLES.md](TOGGLES.md)       | Which page each toggle opens (Vocation, Position, Occupation)                                       |
+| [CONTAINERS.md](CONTAINERS.md) | The six containers every page is built from, how they pair and flip, and what each one does per app |
+| [CHARACTERS.md](CHARACTERS.md) | The 18 test characters, their facts, their psychology and the rules they test                       |
+| [TABLE.md](TABLE.md)           | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB                     |
+| [MODULES.md](MODULES.md)       | Setting up the database, secrets, test emails and the server on any OS                              |
+| [GITHUB.md](GITHUB.md)         | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
+| [EDITOR.md](EDITOR.md)         | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
+| [REFERENCE.md](REFERENCE.md)   | The template the main `README.md` follows                                                           |
 
 **When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
@@ -60,11 +61,11 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 
 ### Pages, Blocks and Labels
 
-| Name        | Identifies             | Written as   | Example result                    |
-| ----------- | ---------------------- | ------------ | --------------------------------- |
-| `pageName`  | The application        | `[overtime]` | `<div id="overtime-body">`        |
-| `blockName` | The container          | `<leftbar>`  | `<aside id="overtime-leftbar">`   |
-| `labelName` | The role-specific view | `(clocking)` | `class="clocking-leftbar"`        |
+| Name        | Identifies             | Written as   | Example result                  |
+| ----------- | ---------------------- | ------------ | ------------------------------- |
+| `pageName`  | The application        | `[overtime]` | `<div id="overtime-body">`      |
+| `blockName` | The container          | `<leftbar>`  | `<aside id="overtime-leftbar">` |
+| `labelName` | The role-specific view | `(clocking)` | `class="clocking-leftbar"`      |
 
 The full explanation is in [CONTAINERS.md](CONTAINERS.md#naming).
 
@@ -77,11 +78,11 @@ A component's outer element gets two classes: who placed it, then what it looks 
 //--|🠈 default-main_selection-select nul_sel_mc_dar_red_luc_def 🠈|--\\
 ```
 
-| Part                             | Example             | Comes from                                      |
-| -------------------------------- | ------------------- | ----------------------------------------------- |
-| `${labelName}-${blockName}`      | `default-main`      | The caller's `info`                             |
-| `_${variant}-${type}`            | `_selection-select` | The component's folder name, then `cases.type` in full. A component without `cases.type` ends in `-default` |
-| `${createClass(style, cases)}`   | `nul_sel_mc_dar_red_luc_def` | The props, always the **second** class (see [Bracket Syntax](#5-bracket-syntax)) |
+| Part                           | Example                      | Comes from                                                                                                  |
+| ------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `${labelName}-${blockName}`    | `default-main`               | The caller's `info`                                                                                         |
+| `_${variant}-${type}`          | `_selection-select`          | The component's folder name, then `cases.type` in full. A component without `cases.type` ends in `-default` |
+| `${createClass(style, cases)}` | `nul_sel_mc_dar_red_luc_def` | The props, always the **second** class (see [Bracket Syntax](#5-bracket-syntax))                            |
 
 - **The props class stays second.** The `*Functions.ts` files swap colours with `classList[1]`, so nothing may be added between the two classes. They rebuild it with `.split('_')`, so a new slot in the class moves every index after it: adding `_luc_` to `<Button>` meant `[4]` became the clarity and `[5]` the variant.
 - **The root selector matches the variant part, not just the variant name:** `label[class*='_selection-']`, never `label[class*='select']`. The first half of the class comes from the caller, so a `labelName` like `select` would otherwise pull the wrong styles onto another `<Label>`. Each case is then `&[class*='selection-select']` inside it.
@@ -92,13 +93,13 @@ A component's outer element gets two classes: who placed it, then what it looks 
 
 ### Files
 
-| File                                  | Example                     | Holds                                          |
-| ------------------------------------- | --------------------------- | ---------------------------------------------- |
-| `${Element}.${variant}.tsx`           | `Button.default.tsx`        | Markup and props                               |
-| `${Element}.${variant}.scss`          | `Button.default.scss`       | Imports the pipeline and applies it per screen |
-| `${Element}_${variant}.ts`            | `Button_default.ts`         | `createClass()` and other logic                |
-| `pipeline/${Element}_${part}.scss`    | `Button_tint.scss`          | One concern per file (see below)               |
-| `${PageName}${BlockName}.tsx`         | `OvertimeLeftbar.tsx`       | One container of one page                      |
+| File                               | Example               | Holds                                          |
+| ---------------------------------- | --------------------- | ---------------------------------------------- |
+| `${Element}.${variant}.tsx`        | `Button.default.tsx`  | Markup and props                               |
+| `${Element}.${variant}.scss`       | `Button.default.scss` | Imports the pipeline and applies it per screen |
+| `${Element}_${variant}.ts`         | `Button_default.ts`   | `createClass()` and other logic                |
+| `pipeline/${Element}_${part}.scss` | `Button_tint.scss`    | One concern per file (see below)               |
+| `${PageName}${BlockName}.tsx`      | `OvertimeLeftbar.tsx` | One container of one page                      |
 
 Documents in `source/utilities/document/` are named in **CAPITALS** (`GUIDELINES.md`).
 
@@ -106,14 +107,14 @@ Documents in `source/utilities/document/` are named in **CAPITALS** (`GUIDELINES
 
 State classes are intentionally simple. They act like a contract between the scripts and the styles: scripts only ever swap these classes, and styles only ever react to them.
 
-| State Type          | Classes                                         | Alternatives              | Purpose                                                               |
-| ------------------- | ----------------------------------------------- | ------------------------- | --------------------------------------------------------------------- |
-| **Operating State** | `.active` · `.asleep`                           | `.running` · `.disabled`  | Whether a page (`#${pageName}-body`) is in use                        |
-| **Preview State**   | `.visible` · `.hidden`                          | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`             |
-| **Indexed State**   | `.expanded` · `.collapsed`                      | `.unfolded` · `.squaring` | Blocks that open and close while staying part of the page             |
+| State Type          | Classes                                         | Alternatives              | Purpose                                                                                 |
+| ------------------- | ----------------------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- |
+| **Operating State** | `.active` · `.asleep`                           | `.running` · `.disabled`  | Whether a page (`#${pageName}-body`) is in use                                          |
+| **Preview State**   | `.visible` · `.hidden`                          | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`                               |
+| **Indexed State**   | `.expanded` · `.collapsed`                      | `.unfolded` · `.squaring` | Blocks that open and close while staying part of the page                               |
 | **Emphasize State** | `.highlight` · `.downplay`                      |                           | On a `<button>`: `.highlight` swaps it to the opposite shade, `.downplay` keeps its own |
-| **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely |
-| **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM    |
+| **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely                   |
+| **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM                      |
 
 `.running` is a reserved name; it isn't used in the code yet. `.conceal` blurs a `<SectionDemonstration>` card away while a character preview slides in.
 
@@ -154,10 +155,11 @@ components/Button/default/
 
 `<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline.
 
-The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`) use a shorter pipeline: `Switching_flex.scss`, `Switching_size.scss` and `Switching_tint.scss`. They have no grid or corners of their own, and their flex and tint never change per screen, so those two files only hold the global `*-flexbox` and `*-colors` mixins. Only `*_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`. Inside every mixin, each case sits under its own `&[class*='switching-toggle']`, so one look per case stays readable. `<LabelTextarea>`'s three cases share one set of tints, because `{text}`, `{input}` and `{block}` look the same; `[class='event']` matches the `<input>` and the `<textarea>`.
+The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`) use a shorter pipeline: `Label_flex.scss`, `Label_size.scss` and `Label_tint.scss`. They have no grid or corners of their own, and their flex and tint never change per screen, so those two files only hold the global `*-flexbox` and `*-colors` mixins. Only `*_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`. Inside every mixin, each case sits under its own `&[class*='switching-toggle']`, so one look per case stays readable. `<LabelTextarea>`'s three cases share one set of tints, because `{text}`, `{input}` and `{block}` look the same; `[class='event']` matches the `<input>` and the `<textarea>`.
 
 ### Pipeline Files
 
+- **Named after the element, not the variant:** every pipeline file is `${Element}_${part}.scss`, so `switching/pipeline/` holds `Label_tint.scss`, the same way `default/pipeline/` holds `Button_tint.scss`. The variant only shows in the folder, the first-line flag (`//--|🠊 switching/pipeline/Label_tint.scss 🠈|--\\`) and the mixin names (`switching-colors`).
 - **One order everywhere:** flex, grid, size, tint, corn. The `@use` lines, the global includes and every orientation block follow it.
 - **Every file is always there.** Each one exports `desktop-*`, `mobile-*` and `tablet-*`, and each mixin opens with its flag: `//--|🠋 Desktop (Flex) 🠋|--\\`. A mixin with nothing to do stays, with a `/*--|🠋 … 🠉|--*/` note saying where the other variants handle that part.
 - **Global mixins** (`${variant}-flexbox`, `${variant}-gridbox`, `${variant}-colors`) hold what never changes per screen. They're included outside the media queries, and a `//--|===|--\\` divider separates them from `desktop-*`.
@@ -204,12 +206,12 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 
 Every `.ts` and `.tsx` file in `components/` and `containers/` declares its functions by how deep they sit in the call chain, so the keyword tells you where you are:
 
-| Keyword    | Depth  | Role                                                                     |
-| ---------- | ------ | ------------------------------------------------------------------------ |
-| `function` | First  | The main function, the one the file is named after and exports           |
-| `const`    | Second | Called by the `function`                                                 |
-| `let`      | Third  | Called by a `const`                                                      |
-| `var`      | Fourth | Called by a `let`. The deepest level; nothing goes below it              |
+| Keyword    | Depth  | Role                                                           |
+| ---------- | ------ | -------------------------------------------------------------- |
+| `function` | First  | The main function, the one the file is named after and exports |
+| `const`    | Second | Called by the `function`                                       |
+| `let`      | Third  | Called by a `const`                                            |
+| `var`      | Fourth | Called by a `let`. The deepest level; nothing goes below it    |
 
 - **The main function is a `function`, never an arrow.** Props are pulled apart in the brackets and typed after them: `function SwitchingLabel({ info }: InfoProps) {` … `}`. Not `const SwitchingLabel: React.FC<InfoProps> = ({ info }) => {` … `};`, because a `const` at the top means second depth (see the table above).
 - **One main function, exported twice.** A file with one main function declares it as `export function` in `components/` and as a plain `function` in `containers/`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
@@ -306,6 +308,17 @@ export default DefaultButton;
 - **No return type on the `function`.** Write `function ArchiveHeader({ info }: InfoProps) {`, not `…): JSX.Element {`.
 - **Plain functions go in a sibling `.ts` file** (`DefaultFunctions.ts`): its main function is the default export (`copyCode`), and the helpers the `.tsx` also needs are named `export const` (`toggleColors`).
 
+### Functions Files
+
+The sibling `.ts` file (`${Name}Functions.ts`) follows [Declaration Order](#declaration-order) too. `DefaultFunctions.ts`, `TextareaFunctions.ts` and `SelectionFunctions.ts` are the references. A page with no plain functions of its own has no `*Functions.ts` (`SwitchingLabel.tsx` only needs `switchColors` from `scripts.ts`).
+
+- **One plain `function` per file**, declared first and repeated as `export default` on the last line. Everything else the `.tsx` imports is an `export const` arrow, and the helpers those call are file-level `let`s. Never several `export function`s side by side. The `.tsx` imports both kinds in one line: `import listCharacters, { typePlaceholder } from './SelectionFunctions';`.
+- **Pass values, not events.** The `.tsx` hands over what the function needs (`onChange={(event) => switchColors(event.target.value, 'textarea')}`, `task: [(tint) => toggleColors(tint)]`), so the `.ts` never imports React types.
+- **Lookup maps are written out**, one line per entry (`'(red)': 'red'`, `'(green)': 'gre'` …), never derived with a shortcut like `.slice(0, 3)`.
+- **Colour switching swaps one slot of the class.** The `export const` turns the choice into its abbreviation and passes it to a `let`, which loops over the elements and rebuilds `classList[1]` from its `.split('_')` parts, changing only the colour: `[3]` on a `<Button>` (size*view_shade***color**_clarity_variant), `[4]` on a `<Label>` (size_type_view_shade_**color**\_clarity_def). Shade and clarity never change. The three `<Label>` pages share one copy in `scripts.ts`, `switchColors(choice, labelName)`, which skips the page's own colour `{select}`; `<Button>` pages keep theirs in their `*Functions.ts` (`toggleColors`).
+- **Loops count with `.length`**, so adding or removing a preview never breaks them. **The one exception** is `updateButtons` in `DefaultFunctions.ts`: its `i < 49` is deliberate, a marker showing how many `<ButtonDefault>`s each side holds. Leave it.
+- **The control keeps its own colour.** The `<DivisionColourize>` toggles and the colour `{select}` stay `(mono)`; they're part of the page, not the preview.
+
 ### Element Scopes
 
 Each `containers/Archive/Main/elements/${element}-components/` folder has one scope file, `${Element}Elements.tsx`, which `ArchiveMain.tsx` imports. Its `function` is written the same way in every folder, so you can tell at a glance what each one is previewing. `LabelElements.tsx` is the reference:
@@ -343,33 +356,51 @@ function LabelElements({ info }: InfoProps) {
 - **The names go through `stripBrackets()`** and build the `<section>` class (`label-main`), not the raw `info` values.
 - **The `const` (`LabelComponents`) lists the previews**, one per `${variant}-${element}/` folder, and gives each its own `labelName`. Only the `function` follows the shared pattern. Each `const` stays as its folder wrote it: `NavigationElements.tsx` renders its preview inline, and Division, Figure, Table and Time pass one shared `defaultInfo`.
 
+### Label Pages
+
+`SwitchingLabel.tsx`, `TextareaLabel.tsx` and `SelectionLabel.tsx` preview the three `<Label>`s the same way:
+
+- **A `(mono)` colour `{select}` on top** (`labelName: 'colours'`) recolours every other `<Label>` on the page through `switchColors()` (see [Functions Files](#functions-files)). Its `view` comes from `let pickerView`: `'mid-cen'`, changed by hand to `'cen-mid'` to compare.
+- **One row per `cases.type`,** four labels in this order: `⟨lucid⟩ ~dark~`, `⟨opaque⟩ ~dark~`, `⟨lucid⟩ ~light~`, `⟨opaque⟩ ~light~`. Each `labelName` is clarity, type, shade, three letters each: `luc-tog-dar`. Desktop lays a row out as 4 columns; portrait as 2 × 2, `~dark~` above `~light~` and `⟨lucid⟩` left of `⟨opaque⟩`.
+- **Two gutter rows top and bottom** in both orientations (`repeat(2, 4rem)` … on desktop, `repeat(2, 6rem)` … in portrait), so no row sits under the corner logos. The picker sits in the first.
+- **A row is a `<fieldset>` when its labels belong together:** `{option}` (one `data-group`) and `{block}` (typing moves to the next box, like a security code). Each `{input}` sits in its own `<fieldset>` with its own `data-input`: `{text}`, `{email}`, `{password}`, `{search}`.
+- **Placeholders name the type:** `Text`, `Combo`, `Select`, and for an `{input}` its `data-input` first: `Email Input`. `{number}` shows `0` and `{block}` shows `-`. `{select}` and `{combo}` keep the character lists from `CHARACTERS.md`, Voidspire on `~dark~`, Silverveil on `~light~`.
+- **Dropdowns mirror around the middle:** `~dark~` takes `'mid-lef'` and `~light~` `'mid-rig'` (see [Bracket Syntax](#5-bracket-syntax)).
+- **Spacing belongs to the page, never the component.** The 16/12/8/4px gap between labels that would touch (the `<LabelTextarea>` rows, at the four screen sizes) is set in the page's `.scss`.
+- **`{block}` is one UPPERCASE letter or number.** `<LabelTextarea>` turns a typed or pasted lowercase letter into uppercase and refuses anything else.
+
 ---
 
 ## 5. Bracket Syntax
 
 Props are written with brackets that show their type at a glance. `stripBrackets()` in `source/scripts.ts` removes them, and `createClass()` turns style props (and `cases.type`) into short class names.
 
-| Wrapper | Prop            | Example                       | Becomes             |
-| ------- | --------------- | ----------------------------- | ------------------- |
-| `[ ]`   | `pageName`      | `'[components]'`              | `components`        |
-| `< >`   | `blockName`     | `'<main>'`                    | `main`              |
-| `< >`   | `style.size`    | `'<h1>'` … `'<p>'`            | `one` … `par`, missing or `null` is `nul` |
-| `- -`   | `style.view`    | `'-top-'` · `'-left-'`        | `top` · `lef`       |
-| `~ ~`   | `style.shade`   | `'~dark~'` · `'~light~'`      | `dar` · `lig`       |
-| `( )`   | `style.color`   | `'(blue)'` · `'(mono)'`       | `blu` · `mon`       |
-| `( )`   | `style.role`    | `'(manager)'`                 | `manager`           |
-| `⟨ ⟩`   | `style.clarity` | `'⟨opaque⟩'` · `'⟨lucid⟩'`    | `opa` · `luc`       |
-| `{ }`   | `cases.type`    | `'{toggle}'` · `'{select}'`   | `tog` · `sel`, the first three letters |
+| Wrapper | Prop            | Example                     | Becomes                                   |
+| ------- | --------------- | --------------------------- | ----------------------------------------- |
+| `[ ]`   | `pageName`      | `'[components]'`            | `components`                              |
+| `< >`   | `blockName`     | `'<main>'`                  | `main`                                    |
+| `< >`   | `style.size`    | `'<h1>'` … `'<p>'`          | `one` … `par`, missing or `null` is `nul` |
+| `- -`   | `style.view`    | `'-top-'` · `'-left-'`      | `top` · `lef`                             |
+| `~ ~`   | `style.shade`   | `'~dark~'` · `'~light~'`    | `dar` · `lig`                             |
+| `( )`   | `style.color`   | `'(blue)'` · `'(mono)'`     | `blu` · `mon`                             |
+| `( )`   | `style.role`    | `'(manager)'`               | `manager`                                 |
+| `⟨ ⟩`   | `style.clarity` | `'⟨opaque⟩'` · `'⟨lucid⟩'`  | `opa` · `luc`                             |
+| `{ }`   | `cases.type`    | `'{toggle}'` · `'{select}'` | `tog` · `sel`, the first three letters    |
 
-`style.clarity` is required everywhere. `⟨lucid⟩` makes the whole element 0.75 opaque, slightly see-through; `⟨opaque⟩` keeps it solid. On a `<Button>` it's only a class for now. `<LabelTextarea>`s are written `⟨opaque⟩`, `<LabelSelection>`s, `<LabelSwitching>`s and `<Button>`s `⟨lucid⟩`.
+`style.clarity` is required everywhere, and every `<Label>` takes both values:
 
-For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an image produces `class="default-button thr_lef_dar_blu_luc_def"`. A `<Label>` writes its class in the same order with `cases.type` added after the size, `size_type_view_shade_color_clarity_def`: `nul_tog_mc_dar_mon_luc_def`. Its view is a `<ButtonRouting>` position (below), the only style prop that may be left out (missing is `'mid-cen'`, `mc`). It places the `<label>` inside its parent with auto margins, so the parent has to be a flex or grid box for top and bottom to work. On `<LabelSelection>` it also picks the caret's side: the left column puts it on the left, every other position on the right. A `<Label>`'s `_def` is a placeholder for now. On a `<Button>`, the last part of the class is a toggle between a variant's two looks:
+- **`⟨lucid⟩` is solid:** the full gradient with the `<Button>` bevel, no frame.
+- **`⟨opaque⟩` is see-through with a frame:** the layers drop to a quarter and lose the bevel, and the field gets a frame: a 2px dark outline with an inset drop shadow on `~dark~`, and a 2px light outline over a medium inset glow on `~light~`. Hover swaps the two. On `<LabelTextarea>` and `<LabelSelection>` the text also gets a heavier halo in the opposite colour, so it reads on light and dark backgrounds. `<LabelSwitching>` draws the same frames on its layers, and its marks and text stay dark on both, because the page shows through.
 
-| Variant           | `.svg`                 | `.png` / `.jpg`            | No image        |
-| ----------------- | ---------------------- | -------------------------- | --------------- |
-| `<ButtonDefault>` | `_def`, silhouette     | `_def`, the picture        | `_alt`, no icon |
-| `<ButtonRouting>` | `_rou`, silhouette     | `_alt`, picture fills the square | `_alt`, empty |
-| `<ButtonProfile>` | `_alt`, silhouette     | `_pro`, the picture        | `_pro`, empty   |
+The look lives in each component's `*_tint.scss`; the `&[class*='_luc_']` and `&[class*='_opa_']` rules at the top only hold `opacity: 1`. On a `<Button>` it's only a class for now. **When a clarity's look changes, update this paragraph in the same step,** so the document never describes the old meaning.
+
+For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an image produces `class="default-button thr_lef_dar_blu_luc_def"`. A `<Label>` writes its class in the same order with `cases.type` added after the size, `size_type_view_shade_color_clarity_def`: `nul_tog_mc_dar_mon_luc_def`. Its view is a `<ButtonRouting>` position (below), the only style prop that may be left out (missing is `'mid-cen'`, `mc`). It places the `<label>` inside its parent with auto margins, so the parent has to be a flex or grid box for top and bottom to work. On `<LabelSelection>` it also picks the caret's side and the corners: round around the caret, sharp where you type. The left column (`'top-lef'`, `'mid-lef'`, `'bot-lef'`) puts the caret on the left, `'mid-cen'` is sharp at both ends, `'cen-mid'` rounds both ends with the caret on the left, and every other position puts it on the right. The Archive pages give `~dark~` `'mid-lef'` and `~light~` `'mid-rig'`, so each row mirrors around the middle. A `<Label>`'s `_def` is a placeholder for now. On a `<Button>`, the last part of the class is a toggle between a variant's two looks:
+
+| Variant           | `.svg`             | `.png` / `.jpg`                  | No image        |
+| ----------------- | ------------------ | -------------------------------- | --------------- |
+| `<ButtonDefault>` | `_def`, silhouette | `_def`, the picture              | `_alt`, no icon |
+| `<ButtonRouting>` | `_rou`, silhouette | `_alt`, picture fills the square | `_alt`, empty   |
+| `<ButtonProfile>` | `_alt`, silhouette | `_pro`, the picture              | `_pro`, empty   |
 
 A silhouette is the `.svg` used as a mask, painted in the button's colours. A picture is shown as it is.
 
@@ -383,20 +414,20 @@ There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>
 
 > **Rule:** visible components scale through three mixins, `desktop-landscape`, `mobile-portrait` and `tablet-squaring`, so they fit every screen size. Structural components may merge into one set of rules when every orientation behaves the same. Repeating values is fine; clever shortcuts are not.
 
-| Group      | Components                                                                                                                                     | Scaling                                       |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<span>` · `<table>` · `<time>` · lists   | Always all three mixins                       |
-| Structural | `<section>` · `<div>` · `<nav>`                                                                                                                | All three mixins, or one merged set (below)   |
+| Group      | Components                                                                                                                                   | Scaling                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<span>` · `<table>` · `<time>` · lists | Always all three mixins                     |
+| Structural | `<section>` · `<div>` · `<nav>`                                                                                                              | All three mixins, or one merged set (below) |
 
 **Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. Add `tablet-squaring` only when near-square screens need different values. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
 Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
-| Mixin               | Applied under                                                  | Breakpoints                                                            |
-| ------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `desktop-landscape` | `(orientation: landscape)`                                     | `max-height`: 768px · 480px · 360px                                    |
-| `mobile-portrait`   | `(orientation: portrait)`                                      | `max-width`: 768px · 480px · 360px                                     |
-| `tablet-squaring`   | `(max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99)`  | Landscape `max-width` / Portrait `max-height`: 1920px · 1366px · 854px |
+| Mixin               | Applied under                                                 | Breakpoints                                                            |
+| ------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `desktop-landscape` | `(orientation: landscape)`                                    | `max-height`: 768px · 480px · 360px                                    |
+| `mobile-portrait`   | `(orientation: portrait)`                                     | `max-width`: 768px · 480px · 360px                                     |
+| `tablet-squaring`   | `(max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99)` | Landscape `max-width` / Portrait `max-height`: 1920px · 1366px · 854px |
 
 Near-square screens (tablets, split windows) don't fit the desktop or mobile breakpoints well, so `tablet-squaring` measures the long side instead and steps down one size earlier. It reuses the exact values from the other two mixins, which are measured against the `styles/Mixins.scss` skeleton. It's included last, so it overrides both orientations.
 
@@ -427,20 +458,30 @@ Inside each mixin, styles are grouped into `flex`, `grid` and `tint` placeholder
     @at-root aside[class*='characters-default'] {
       @media screen and (orientation: landscape) {
         //--|🠊 Desktop 🠈|--\\
-        @media screen and (max-width: 1920px) {}
-        @media screen and (max-width: 1366px) {}
-        @media screen and (max-width: 854px) {}
+        @media screen and (max-width: 1920px) {
+        }
+        @media screen and (max-width: 1366px) {
+        }
+        @media screen and (max-width: 854px) {
+        }
       }
       @media screen and (orientation: portrait) {
         //--|🠊 Mobile 🠈|--\\
-        @media screen and (max-height: 1920px) {}
-        @media screen and (max-height: 1366px) {}
-        @media screen and (max-height: 854px) {}
+        @media screen and (max-height: 1920px) {
+        }
+        @media screen and (max-height: 1366px) {
+        }
+        @media screen and (max-height: 854px) {
+        }
       }
     }
   }
-  %tabl-grid { /* same shape */ }
-  %tabl-tint { /* same shape */ }
+  %tabl-grid {
+    /* same shape */
+  }
+  %tabl-tint {
+    /* same shape */
+  }
   //--|===|--\\
   @extend %tabl-flex;
   @extend %tabl-grid;
@@ -477,18 +518,18 @@ The reference implementation is `source/layouts/components/Aside/characters/Asid
 
 `styles/Palettes.scss` holds every colour, in this order. Mono comes first because it's the default colour. Every colour list (types, maps, includes, mixins) follows the same order: `mon · red · gre · blu · pur · ora · pin · yel · bro · tur`. `<Button>` already does; other components are moved over as they're refactored.
 
-| #  | Colour    | In `.tsx`       | Class   | In `.scss`              |
-| -- | --------- | --------------- | ------- | ----------------------- |
-| 1  | Mono      | `'(mono)'`      | `_mon`  | `Palettes.$gray-*`      |
-| 2  | Red       | `'(red)'`       | `_red`  | `Palettes.$red-*`       |
-| 3  | Green     | `'(green)'`     | `_gre`  | `Palettes.$green-*`     |
-| 4  | Blue      | `'(blue)'`      | `_blu`  | `Palettes.$blue-*`      |
-| 5  | Purple    | `'(purple)'`    | `_pur`  | `Palettes.$purple-*`    |
-| 6  | Orange    | `'(orange)'`    | `_ora`  | `Palettes.$orange-*`    |
-| 7  | Pink      | `'(pink)'`      | `_pin`  | `Palettes.$pink-*`      |
-| 8  | Yellow    | `'(yellow)'`    | `_yel`  | `Palettes.$yellow-*`    |
-| 9  | Brown     | `'(brown)'`     | `_bro`  | `Palettes.$brown-*`     |
-| 10 | Turquoise | `'(turquoise)'` | `_tur`  | `Palettes.$turquoise-*` |
+| #   | Colour    | In `.tsx`       | Class  | In `.scss`              |
+| --- | --------- | --------------- | ------ | ----------------------- |
+| 1   | Mono      | `'(mono)'`      | `_mon` | `Palettes.$gray-*`      |
+| 2   | Red       | `'(red)'`       | `_red` | `Palettes.$red-*`       |
+| 3   | Green     | `'(green)'`     | `_gre` | `Palettes.$green-*`     |
+| 4   | Blue      | `'(blue)'`      | `_blu` | `Palettes.$blue-*`      |
+| 5   | Purple    | `'(purple)'`    | `_pur` | `Palettes.$purple-*`    |
+| 6   | Orange    | `'(orange)'`    | `_ora` | `Palettes.$orange-*`    |
+| 7   | Pink      | `'(pink)'`      | `_pin` | `Palettes.$pink-*`      |
+| 8   | Yellow    | `'(yellow)'`    | `_yel` | `Palettes.$yellow-*`    |
+| 9   | Brown     | `'(brown)'`     | `_bro` | `Palettes.$brown-*`     |
+| 10  | Turquoise | `'(turquoise)'` | `_tur` | `Palettes.$turquoise-*` |
 
 **Mono and gray are the same colour.** Write `(mono)` in `.tsx` and `.ts` files, and `gray` in `.scss` files. Never `(gray)` in a prop.
 
@@ -543,12 +584,12 @@ Text colour, text glow and the icon background fade smoothly when the colour cha
 
 Arrows mark comments so the structure of a file reads at a glance. They wrap every comment as `//--| … |--\\` in TypeScript and SCSS, and `<!--| … |-->` in HTML.
 
-| Flag                                            | Unicode | Usage                                   | Example                                |
-| ----------------------------------------------- | ------- | --------------------------------------- | -------------------------------------- |
-| [🠊](https://www.compart.com/en/unicode/U+1F80A) | U+1F80A | Opens a file title or a note            | `//--\|🠊 Button.default.tsx 🠈\|--\\`   |
-| [🠋](https://www.compart.com/en/unicode/U+1F80B) | U+1F80B | Section heading for the code below it   | `//--\|🠋 Functions 🠋\|--\\`            |
-| [🠈](https://www.compart.com/en/unicode/U+1F808) | U+1F808 | Points back at the code on its left     | `//--\|🠈 Must Load First 🠈\|--\\`      |
-| [🠉](https://www.compart.com/en/unicode/U+1F809) | U+1F809 | Closes a block comment opened with 🠋   | `/*--\|🠋 … 🠉\|--*/`                     |
+| Flag                                            | Unicode | Usage                                 | Example                              |
+| ----------------------------------------------- | ------- | ------------------------------------- | ------------------------------------ |
+| [🠊](https://www.compart.com/en/unicode/U+1F80A) | U+1F80A | Opens a file title or a note          | `//--\|🠊 Button.default.tsx 🠈\|--\\` |
+| [🠋](https://www.compart.com/en/unicode/U+1F80B) | U+1F80B | Section heading for the code below it | `//--\|🠋 Functions 🠋\|--\\`          |
+| [🠈](https://www.compart.com/en/unicode/U+1F808) | U+1F808 | Points back at the code on its left   | `//--\|🠈 Must Load First 🠈\|--\\`    |
+| [🠉](https://www.compart.com/en/unicode/U+1F809) | U+1F809 | Closes a block comment opened with 🠋  | `/*--\|🠋 … 🠉\|--*/`                  |
 
 **More patterns you'll see:**
 
@@ -581,14 +622,14 @@ The TypeScript check currently reports some errors that already existed. Compare
 
 Decided, but not built yet. Don't start any of these without a conversation first.
 
-| What                                    | Where it's headed                                                                                     |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Smooth fades between colours            | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first |
-| `⟨opaque⟩` · `⟨lucid⟩` on `<Button>`    | `style.clarity` is only a class for now (`…_luc_def`); its toggles and look come later               |
-| `<ButtonRouting>` effects               | Special animations when it's inside `<NavigationDefault>`                                             |
-| `_division-${variant}` classes          | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
-| Bracketed `labelName`s                  | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored  |
-| Log a Ticket                            | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                          |
-| Login status                            | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow)) |
-| Server secrets path                     | `landing.js` looks for `.env` in the wrong folder ([MODULES.md](MODULES.md#5-run-the-server))           |
-| Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](GUIDELINES.md#15-explicitly-outside-this-baseline)                       |
+| What                                      | Where it's headed                                                                                                                                                                      |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Smooth fades between colours              | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first                                                                               |
+| `⟨opaque⟩` · `⟨lucid⟩` on `<Button>`      | `style.clarity` is only a class for now (`…_luc_def`); its toggles and look come later                                                                                                 |
+| `<ButtonRouting>` effects                 | Special animations when it's inside `<NavigationDefault>`                                                                                                                              |
+| `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
+| Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                   |
+| Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                           |
+| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow))                               |
+| Server secrets path                       | `landing.js` looks for `.env` in the wrong folder ([MODULES.md](MODULES.md#5-run-the-server))                                                                                          |
+| Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                         |
