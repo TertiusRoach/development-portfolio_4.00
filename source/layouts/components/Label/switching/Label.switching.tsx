@@ -20,12 +20,12 @@ export interface TheseProps {
     text?: string; //--|🠈 {chip}'s words, {option}'s value 🠈|--\\
   };
   cases: {
-    type: '{chip}' | '{check}' | '{toggle}' | '{slider}' | '{option}';
+    type: '{toggle}' | '{check}' | '{option}' | '{chip}' | '{slide}';
     indeterminate?: boolean; //--|🠈 {check} only: partly ticked 🠈|--\\
-    min?: number; //--|🠈 {slider} only 🠈|--\\
-    max?: number; //--|🠈 {slider} only 🠈|--\\
-    step?: number; //--|🠈 {slider} only 🠈|--\\
-    start?: number; //--|🠈 {slider} only: the first value, the browser keeps it from there 🠈|--\\
+    min?: number; //--|🠈 {slide} only 🠈|--\\
+    max?: number; //--|🠈 {slide} only 🠈|--\\
+    step?: number; //--|🠈 {slide} only 🠈|--\\
+    start?: number; //--|🠈 {slide} only: the first value, the browser keeps it from there 🠈|--\\
   };
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /*
@@ -68,7 +68,7 @@ export function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
       return caseCheck(labelClass, labelRef, inputRef, onChange);
     case '{toggle}':
       return caseToggle(labelClass, labelRef, onChange);
-    case '{slider}':
+    case '{slide}':
       return caseSlider(labelClass, labelRef, cases, onChange);
     case '{option}':
       return caseOption(labelClass, labelRef, style, genes, onChange);
@@ -95,7 +95,12 @@ const caseChip = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement
     </label>
   );
 };
-const caseCheck = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, inputRef: React.RefObject<HTMLInputElement>, onChange: TheseProps['onChange']) => {
+const caseCheck = (
+  labelClass: string,
+  labelRef: React.RefObject<HTMLLabelElement>,
+  inputRef: React.RefObject<HTMLInputElement>,
+  onChange: TheseProps['onChange'],
+) => {
   //--|🠊 {check}: a sharp h × h square, ticked, partly ticked or empty 🠈|--\\
   let checkImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/check');
   let minusImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/minus');
@@ -128,8 +133,13 @@ const caseToggle = (labelClass: string, labelRef: React.RefObject<HTMLLabelEleme
     </label>
   );
 };
-const caseSlider = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, cases: TheseProps['cases'], onChange: TheseProps['onChange']) => {
-  //--|🠊 {slider}: a range, missing numbers fall back to the browser's 0, 100 & 1 🠈|--\\
+const caseSlider = (
+  labelClass: string,
+  labelRef: React.RefObject<HTMLLabelElement>,
+  cases: TheseProps['cases'],
+  onChange: TheseProps['onChange'],
+) => {
+  //--|🠊 {slide}: a range, missing numbers fall back to the browser's 0, 100 & 1 🠈|--\\
   return (
     <label className={labelClass} ref={labelRef}>
       <input
@@ -145,7 +155,13 @@ const caseSlider = (labelClass: string, labelRef: React.RefObject<HTMLLabelEleme
     </label>
   );
 };
-const caseOption = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, style: TheseProps['style'], genes: { group: string; input: string }, onChange: TheseProps['onChange']) => {
+const caseOption = (
+  labelClass: string,
+  labelRef: React.RefObject<HTMLLabelElement>,
+  style: TheseProps['style'],
+  genes: { group: string; input: string },
+  onChange: TheseProps['onChange'],
+) => {
   //--|🠊 {option}: a round radio dot, every {option} in the same <fieldset> or <form> shares its data-group 🠈|--\\
   return (
     <label className={labelClass} ref={labelRef}>

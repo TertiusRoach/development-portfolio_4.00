@@ -1,6 +1,6 @@
 //--|🠊 ArticleElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
 
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
@@ -10,6 +10,7 @@ import LoadingArticle from './loading-article/LoadingArticle';
 import UpdatesArticle from './updates-article/UpdatesArticle';
 
 //--|🠋 Functions 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../../../scripts'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
 
 //--|🠋 Styles 🠋|--\\
 
@@ -21,12 +22,27 @@ interface InfoProps {
   };
 }
 function ArticleElements({ info }: InfoProps) {
+  //--|🠊 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const blockName = stripBrackets(info.blockName, '<>') as 'main'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+  const labelName = stripBrackets(info.labelName, '()') as 'article'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+  const pageName = stripBrackets(info.pageName, '[]') as 'components'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+
+  //--|🠊 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+  useEffect(() => {
+    //--|🟨|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  let startingPreview = 1 as number; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
   return (
-    <section className={`${info.labelName}-${info.blockName}`}>
+    <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen
         cases={{
-          show: 1,
           axis: '[x]',
+          show: startingPreview,
           call: ArticleComponents as React.ComponentType<InfoProps>,
         }}
         info={{

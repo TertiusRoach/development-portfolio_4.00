@@ -20,7 +20,7 @@ const createLayout = (type: TheseProps['cases']['type'], view: TheseProps['style
     '{chip}': 'chi',
     '{check}': 'che',
     '{toggle}': 'tog',
-    '{slider}': 'sli',
+    '{slide}': 'sli',
     '{option}': 'opt',
   };
 

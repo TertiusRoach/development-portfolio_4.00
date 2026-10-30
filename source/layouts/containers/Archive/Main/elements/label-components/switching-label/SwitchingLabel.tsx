@@ -24,14 +24,15 @@ function SwitchingLabel({ info }: InfoProps) {
   const labelName = info.labelName as 'switching';
   const pageName = info.pageName as 'components';
 
-  const showType: TheseProps['cases']['type'] = '{toggle}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{chip}', '{check}', '{slider}' or '{option}' until the dropdown exists 🠈|--\\
-  let hoursList = listHours() as Array<number>; //--|🠈 {slider}: same starting values on both sides 🠈|--\\
+  const showType: TheseProps['cases']['type'] = '{toggle}'; //--|🠈 AI Code: Review Please 2026-10-30 · Change by hand to '{chip}', '{check}', '{slide}' or '{option}' until the dropdown exists 🠈|--\\
+  let hoursList = listHours() as Array<number>; //--|🠈 {slide}: same starting values on both sides 🠈|--\\
   let wordsList = listWords() as Array<string>; //--|🠈 {chip}: the words, {option}: the values 🠈|--\\
   let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
   return (
     <aside className="switching-label">
       <section className={`${blockName}-foreground`}>
         {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSwitching> sits in a <fieldset>, so the {option}s of one cell share a data-group 🠈|--*/}
+        {/*
         <fieldset className="dar-mon">
           <LabelSwitching
             info={{
@@ -48,7 +49,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(mono)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[0],
@@ -71,7 +72,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(red)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[1],
@@ -94,7 +95,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(green)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[2],
@@ -117,7 +118,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(blue)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[3],
@@ -140,7 +141,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(purple)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[4],
@@ -163,7 +164,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(orange)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[5],
@@ -186,7 +187,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(pink)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[6],
@@ -209,7 +210,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(yellow)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[7],
@@ -232,7 +233,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(brown)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[8],
@@ -255,14 +256,16 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(turquoise)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[9],
             }}
           />
         </fieldset>
+        */}
         {/*--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSwitching> sits in a <fieldset>, so the {option}s of one cell share a data-group 🠈|--*/}
+        {/*
         <fieldset className="lig-mon">
           <LabelSwitching
             info={{
@@ -279,7 +282,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(mono)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[0],
@@ -302,7 +305,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(red)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[1],
@@ -325,7 +328,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(green)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[2],
@@ -348,7 +351,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(blue)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[3],
@@ -371,7 +374,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(purple)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[4],
@@ -394,7 +397,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(orange)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[5],
@@ -417,7 +420,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(pink)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[6],
@@ -440,7 +443,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(yellow)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[7],
@@ -463,7 +466,7 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(brown)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[8],
@@ -486,15 +489,17 @@ function SwitchingLabel({ info }: InfoProps) {
             cases={{
               type: showType,
               indeterminate: startMixed('(turquoise)'), //--|🠈 {check} only 🠈|--\\
-              min: 0, //--|🠈 {slider} only 🠈|--\\
+              min: 0, //--|🠈 {slide} only 🠈|--\\
               max: 24, //--|🠈 Hours in a day 🠈|--\\
               step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
               start: hoursList[9],
             }}
           />
         </fieldset>
+        */}
 
         {/*--|🠊 AI Code: Review Please 2026-10-29 15:56 🠈|--*/}
+        {/*
         <ButtonDefault
           info={{
             pageName: pageName as 'components',
@@ -645,7 +650,9 @@ function SwitchingLabel({ info }: InfoProps) {
             image: copyImage,
           }}
         />
+        */}
         {/*--|🠊 AI Code: Review Please 2026-10-29 15:56 🠈|--*/}
+        {/*
         <ButtonDefault
           info={{
             pageName: pageName as 'components',
@@ -796,6 +803,7 @@ function SwitchingLabel({ info }: InfoProps) {
             image: copyImage,
           }}
         />
+        */}
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>

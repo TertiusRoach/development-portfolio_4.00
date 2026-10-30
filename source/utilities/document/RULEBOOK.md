@@ -187,7 +187,7 @@ throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stri
 
 - **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). `info.labelAria` is optional and is read aloud when a button has no visible text; other components add it when they need it.
 - **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.selection';` and uses `TheseProps['style']['shade']`. The three `<Label>`s follow this; the others move over as they're refactored.
-- **`cases.type` decides what a component is, `style` decides how it looks.** One component covers several elements with a classic `switch (cases.type)`, and each `case` calls its own function that returns that element's HTML: `caseText()`, `caseInput()`, `caseBlock()`. Props only one case needs are optional and marked with a trailing comment (`min?: number; //--|🠈 {slider} only 🠈|--\\`). Hooks stay at the top of the component, above the `switch`, because React needs them in the same order on every render.
+- **`cases.type` decides what a component is, `style` decides how it looks.** One component covers several elements with a classic `switch (cases.type)`, and each `case` calls its own function that returns that element's HTML: `caseText()`, `caseInput()`, `caseBlock()`. Props only one case needs are optional and marked with a trailing comment (`min?: number; //--|🠈 {slide} only 🠈|--\\`). Hooks stay at the top of the component, above the `switch`, because React needs them in the same order on every render.
 - **Every `<Button>` and `<Label>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick` on a `<Button>`, `onChange` on a `<Label>`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
 - **An event is typed with every element the cases render.** `<LabelSelection>` renders a `<select>` or an `<input>`, so its handler is `React.ChangeEvent<HTMLInputElement | HTMLSelectElement>`. The limit: the handler gets the union, so a caller that needs something only one element has (`.selectedIndex`) checks `event.target` first. One handler per element would avoid that, but it would also undo the merge.
 - **A `<Label>` inherits from its parent through `data-` attributes, never its class.** `previewParent()` reads the nearest `<fieldset>` or `<form>` after the first render and returns its "genes": `data-group` (the name every `{option}` radio in it shares) and `data-input` (`'{password}'`, `'{email}'` … for an `{input}`, `'{text}'` when missing). A class changes as styles change; a `data-` attribute doesn't, so `.split('_')` never touches it. **The one exception:** the first `{option}` in a `<fieldset>` or `<form>` without a `data-group` writes one, the only place a component writes to an element it doesn't own. It's limited to those two tags. It lives in `Label_switching.ts` and `Label_textarea.ts`, the two that use it, written out in both. It moves to `scripts.ts` once something outside the `<Label>`s needs it.
@@ -305,6 +305,43 @@ export default DefaultButton;
 - **One blank line between depths**, none between helpers at the same depth, none between `interface InfoProps` and the `function`, and none before `export default DefaultButton;`, which is the last line. A flag can stand in for the blank line between depths (`//--|===|--\\` in `RoutingButton.tsx`, `//--|🠊 Desktop Previews 🠈|--\\` in `ArchiveHeader.tsx`); keep these.
 - **No return type on the `function`.** Write `function ArchiveHeader({ info }: InfoProps) {`, not `…): JSX.Element {`.
 - **Plain functions go in a sibling `.ts` file** (`DefaultFunctions.ts`): its main function is the default export (`copyCode`), and the helpers the `.tsx` also needs are named `export const` (`toggleColors`).
+
+### Element Scopes
+
+Each `containers/Archive/Main/elements/${element}-components/` folder has one scope file, `${Element}Elements.tsx`, which `ArchiveMain.tsx` imports. Its `function` is written the same way in every folder, so you can tell at a glance what each one is previewing. `LabelElements.tsx` is the reference:
+
+```tsx
+function LabelElements({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(…);
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'label';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
+
+  useEffect(() => {
+    //--|🟨|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  let startingPreview = 3 as number;
+  return (
+    <section className={`${labelName}-${blockName}`}>
+      <DivisionFullscreen
+        cases={{
+          axis: '[x]',
+          show: startingPreview,
+          call: LabelComponents as React.ComponentType<InfoProps>,
+        }}
+        info={{ … }}
+      />
+    </section>
+  );
+}
+```
+
+- **`startingPreview` is the page `<DivisionFullscreen>` opens on.** It counts from 1, in the order the `const` lists its previews. It sits right above `return`, so it's the first thing you read. To land on the preview you're working on, change it by hand.
+- **`getOrientation` and the `useEffect` are unused for now.** They keep every scope ready for a `switch (getOrientation)` and let you test by hand without adding them first.
+- **The names go through `stripBrackets()`** and build the `<section>` class (`label-main`), not the raw `info` values.
+- **The `const` (`LabelComponents`) lists the previews**, one per `${variant}-${element}/` folder, and gives each its own `labelName`. Only the `function` follows the shared pattern. Each `const` stays as its folder wrote it: `NavigationElements.tsx` renders its preview inline, and Division, Figure, Table and Time pass one shared `defaultInfo`.
 
 ---
 
@@ -519,12 +556,13 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 - A comment on a line that continues onto the next one (like the rows of a multi-line `grid-template`) ends in `|--//` instead of `|--\\`.
 - The server's `.js` files end every comment in `|--//`.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
+- A coloured square tags the application a file belongs to, usually as the first line inside a container's `useEffect`: `//--|🟨|--\\` Archive (`components`), 🟩 Track a Day (`overtime`), 🟦 Log a Ticket (`ticketing`), 🟥 Find a Link (`hyperlink`), 🟪 Landing (`landing`). It makes a code review show at a glance which app you're in.
 
 ---
 
 ## 9. Testing
 
-**Visually:** the **Archive** page (`#components-body`) is the testing surface. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
+**Visually:** the **Archive** page (`#components-body`) is the testing surface. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
 **Rules:** test the application rules with the characters in [CHARACTERS.md](CHARACTERS.md). Each one lists the rules it exists to break.
 

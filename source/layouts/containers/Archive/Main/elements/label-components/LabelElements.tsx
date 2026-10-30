@@ -1,6 +1,6 @@
 //--|🠊 LabelElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
@@ -11,8 +11,7 @@ import TextareaLabel from './textarea-label/TextareaLabel'; //--|🠈 AI Code: R
 import SelectionLabel from './selection-label/SelectionLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-
-//--|🠋 Styles 🠋|--\\
+import { stripBrackets, checkScreen } from '../../../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -22,12 +21,25 @@ interface InfoProps {
   };
 }
 function LabelElements({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'label';
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
+
+  useEffect(() => {
+    //--|🟨|--\\
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  let startingPreview = 1 as number;
   return (
-    <section className={`${info.labelName}-${info.blockName}`}>
+    <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen
         cases={{
-          show: 1,
           axis: '[x]',
+          show: startingPreview,
           call: LabelComponents as React.ComponentType<InfoProps>,
         }}
         info={{
