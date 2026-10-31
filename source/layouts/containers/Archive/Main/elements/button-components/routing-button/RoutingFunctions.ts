@@ -19,3 +19,31 @@ export function toggleColors(tint: string): void {
   };
   updateButtons(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into every <ButtonRouting> 🠈|--\\
 }
+export function toggleClarity(element: HTMLFieldSetElement): void {
+  //--|🠊 AI Code: Review Please 2026-10-31 · The checked radio's value picks the clarity, the <fieldset>'s class picks the side, like <DefaultButton> 🠈|--\\
+  const updateClarity = (clarity: string, side: string) => {
+    const wrapperSide = document.querySelectorAll(`#components-main .routing-${side}-main_container button[class*="routing-button"]`) as NodeListOf<HTMLButtonElement>;
+
+    for (let i = 0; i < 27; i++) {
+      //--|🠊 Same 27 as toggleColors(), [4] is the clarity 🠈|--\\
+      let prevSideClass = wrapperSide[i].classList[1] as string;
+
+      let nextSideClass = `${wrapperSide[i].classList[1].split('_')[0]}_${wrapperSide[i].classList[1].split('_')[1]}_${wrapperSide[i].classList[1].split('_')[2]}_${wrapperSide[i].classList[1].split('_')[3]}_${clarity}_${wrapperSide[i].classList[1].split('_')[5]}`;
+
+      wrapperSide[i].classList.replace(prevSideClass, nextSideClass);
+    }
+  };
+  const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
+  const fieldsetSide = element.classList[0].split('-')[1] as string; //--|🠈 clarify-darkside → darkside 🠈|--\\
+
+  let clarity: string = '';
+  switch (checkedInput.value) {
+    case 'Lucid':
+      clarity = 'luc';
+      break;
+    case 'Opaque':
+      clarity = 'opa';
+      break;
+  }
+  updateClarity(clarity, fieldsetSide); //--|🠈 Swaps the clarity into every <ButtonRouting> on that side only 🠈|--\\
+}

@@ -656,6 +656,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-dark, 0) 0%,
+            rgba(Palettes.$red-dark, 0.28) 55%,
+            rgba(Palettes.$red-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$red-medium, 0.1) 0%,
+              rgba(Palettes.$red-medium, 0) 70%,
+              rgba(Palettes.$red-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-light, 0) 0%,
+            rgba(Palettes.$red-light, 0.3) 55%,
+            rgba(Palettes.$red-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$red-medium, 0.1) 0%,
+              rgba(Palettes.$red-medium, 0) 70%,
+              rgba(Palettes.$red-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin red-fade {
   $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
@@ -707,6 +800,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$red-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -865,6 +1011,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-dark, 0) 0%,
+            rgba(Palettes.$green-dark, 0.28) 55%,
+            rgba(Palettes.$green-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-light, 0) 0%,
+            rgba(Palettes.$green-light, 0.3) 55%,
+            rgba(Palettes.$green-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin gre-fade {
   $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
@@ -916,6 +1155,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$green-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1074,6 +1366,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-dark, 0) 0%,
+            rgba(Palettes.$blue-dark, 0.28) 55%,
+            rgba(Palettes.$blue-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-light, 0) 0%,
+            rgba(Palettes.$blue-light, 0.3) 55%,
+            rgba(Palettes.$blue-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin blu-fade {
   $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
@@ -1125,6 +1510,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$blue-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1285,6 +1723,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-dark, 0) 0%,
+            rgba(Palettes.$purple-dark, 0.28) 55%,
+            rgba(Palettes.$purple-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-light, 0) 0%,
+            rgba(Palettes.$purple-light, 0.3) 55%,
+            rgba(Palettes.$purple-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin pur-fade {
   $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
@@ -1336,6 +1867,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$purple-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1496,6 +2080,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-dark, 0) 0%,
+            rgba(Palettes.$orange-dark, 0.28) 55%,
+            rgba(Palettes.$orange-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-light, 0) 0%,
+            rgba(Palettes.$orange-light, 0.3) 55%,
+            rgba(Palettes.$orange-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin ora-fade {
   $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
@@ -1547,6 +2224,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$orange-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1705,6 +2435,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-dark, 0) 0%,
+            rgba(Palettes.$pink-dark, 0.28) 55%,
+            rgba(Palettes.$pink-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-light, 0) 0%,
+            rgba(Palettes.$pink-light, 0.3) 55%,
+            rgba(Palettes.$pink-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin pin-fade {
   $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
@@ -1756,6 +2579,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$pink-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1916,6 +2792,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-dark, 0) 0%,
+            rgba(Palettes.$yellow-dark, 0.28) 55%,
+            rgba(Palettes.$yellow-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-light, 0) 0%,
+            rgba(Palettes.$yellow-light, 0.3) 55%,
+            rgba(Palettes.$yellow-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin yel-fade {
   $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
@@ -1967,6 +2936,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$yellow-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2125,6 +3147,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-dark, 0) 0%,
+            rgba(Palettes.$brown-dark, 0.28) 55%,
+            rgba(Palettes.$brown-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-light, 0) 0%,
+            rgba(Palettes.$brown-light, 0.3) 55%,
+            rgba(Palettes.$brown-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin bro-fade {
   $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
@@ -2176,6 +3291,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$brown-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2336,6 +3504,99 @@
       }
     }
   }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-dark, 0) 0%,
+            rgba(Palettes.$turquoise-dark, 0.28) 55%,
+            rgba(Palettes.$turquoise-dark, 0.58) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-light, 0) 0%,
+            rgba(Palettes.$turquoise-light, 0.3) 55%,
+            rgba(Palettes.$turquoise-light, 0.64) 100%
+          );
+          box-shadow: none; //--|🠈 AI Code: Review Please 2026-10-31 · <ButtonDefault> only: no frame, <ButtonRouting> & <ButtonProfile> keep it 🠈|--\\
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
 }
 @mixin tur-fade {
   $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
@@ -2387,6 +3648,59 @@
       div[class='icon'] {
         img {
           background: Palettes.$turquoise-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }

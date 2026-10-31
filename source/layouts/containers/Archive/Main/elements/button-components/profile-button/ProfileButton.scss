@@ -101,6 +101,36 @@
     button[class*='par_cir_lig'] {
       grid-area: 5 / 6 / 7 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
+
+    //--| Clarity |--\\
+    fieldset {
+      //--|🠊 AI Code: Review Please 2026-10-31 · Copied from <DefaultButton>, only the grid-area numbers changed to fit this grid 🠈|--\\
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        grid-area: 6 / 1 / 8 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      height: $high-desk;
+      width: calc($high-desk * 2);
+      @media screen and (max-height: 768px) {
+        height: $test-desk;
+        width: calc($test-desk * 2);
+      }
+      @media screen and (max-height: 480px) {
+        height: $misc-desk;
+        width: calc($misc-desk * 2);
+      }
+      @media screen and (max-height: 360px) {
+        height: $tiny-desk;
+        width: calc($tiny-desk * 2);
+      }
+    }
   }
 }
 @mixin mobile-portrait {
@@ -201,6 +231,38 @@
     }
     button[class*='par_cir_lig'] {
       grid-area: 6 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+
+    //--| Clarity |--\\
+    fieldset {
+      //--|🠊 AI Code: Review Please 2026-10-31 · Copied from <DefaultButton>, only the grid-area numbers changed to fit this grid 🠈|--\\
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-right: auto;
+        align-self: end; //--|🠈 AI Code: Review Please 2026-10-31 · Only one short row at the bottom here, so it sits on the bottom edge instead of hanging off the page 🠈|--\\
+        grid-area: 7 / 1 / 8 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      width: $high-mobi;
+      height: $high-mobi;
+      @media screen and (max-width: 768px) {
+        width: $test-mobi;
+        height: $test-mobi;
+      }
+      @media screen and (max-width: 480px) {
+        width: $misc-mobi;
+        height: $misc-mobi;
+      }
+      @media screen and (max-width: 360px) {
+        width: $tiny-mobi;
+        height: $tiny-mobi;
+      }
     }
 
     /*

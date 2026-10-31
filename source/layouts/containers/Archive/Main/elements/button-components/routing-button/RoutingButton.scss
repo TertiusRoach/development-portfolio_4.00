@@ -191,6 +191,33 @@
         grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
+    fieldset {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        grid-area: 4 / 1 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      height: $high-desk;
+      width: calc($high-desk * 2);
+      @media screen and (max-height: 768px) {
+        height: $test-desk;
+        width: calc($test-desk * 2);
+      }
+      @media screen and (max-height: 480px) {
+        height: $misc-desk;
+        width: calc($misc-desk * 2);
+      }
+      @media screen and (max-height: 360px) {
+        height: $tiny-desk;
+        width: calc($tiny-desk * 2);
+      }
+    }
 
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
@@ -480,6 +507,35 @@
         }
       }
     }
+    fieldset {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-right: auto;
+        grid-area: 6 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      width: $high-mobi;
+      height: $high-mobi;
+      @media screen and (max-width: 768px) {
+        width: $test-mobi;
+        height: $test-mobi;
+      }
+      @media screen and (max-width: 480px) {
+        width: $misc-mobi;
+        height: $misc-mobi;
+      }
+      @media screen and (max-width: 360px) {
+        width: $tiny-mobi;
+        height: $tiny-mobi;
+      }
+    }
+
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
       repeat(2, 6rem) 1fr 12rem 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
@@ -547,7 +603,8 @@
   }
   //--|===|--\\
   %mark-area-mobi {
-    menu {
+    menu,
+    fieldset {
       z-index: 2;
       &[class*='darkside'] {
         grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

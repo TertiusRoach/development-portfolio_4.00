@@ -17,17 +17,39 @@
   @include yel-tint();
   @include bro-tint();
   @include tur-tint();
+  //--|🠋 Clarity 🠋|--\\
+  //--|🠊 AI Code: Review Please 2026-10-31 🠈|--\\
+  &[class*='_luc_'] {
+    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: only the ring & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
+    div[class='icon'] {
+      img[src] {
+        opacity: 0.5; //--|🠈 AI Code: Review Please 2026-10-31 · Real pictures dim at rest 🠈|--\\
+      }
+    }
+    div[class='back'] {
+      span {
+        opacity: 0; //--|🠈 Completely clear: no layers to hide, so the box itself fades (a gradient can't fade, it snaps) 🠈|--\\
+      }
+    }
+  }
   div[class='fore'] {
     transition: border-color 500ms $tint-fade;
   }
   div[class='icon'] {
     img {
-      transition: background 250ms $tint-fade;
+      transition:
+        background 250ms $tint-fade,
+        opacity 250ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨opaque⟩'s dimmed pictures fade with the icon 🠈|--\\
     }
   }
   div[class='back'] {
     span {
-      transition: background 750ms $tint-fade;
+      transition:
+        background 750ms $tint-fade,
+        opacity 750ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨opaque⟩ fades the box itself 🠈|--\\
     }
   }
   &[class*='_alt'] {
@@ -48,6 +70,19 @@
     @include yel-fade();
     @include bro-fade();
     @include tur-fade();
+    &[class*='_opa_'] {
+      //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and real pictures light up 🠈|--\\
+      div[class='icon'] {
+        img[src] {
+          opacity: 1;
+        }
+      }
+      div[class='back'] {
+        span {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 //--|===|--\\
@@ -74,87 +109,173 @@
 }
 //--|===|--\\
 @mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_mon']:where(:not(.highlight)),
-  &[class*='lig_mon']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$gray-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$gray-light;
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_mon']:where(:not(.highlight)),
-  &[class*='dar_mon']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$gray-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$gray-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin mon-fade {
-  &[class*='dar_mon']:where(:not(.highlight)),
-  &[class*='lig_mon']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$gray-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$gray-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$gray-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$gray-dark;
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$gray-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_mon']:where(:not(.highlight)),
-  &[class*='dar_mon']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$gray-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$gray-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$gray-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -162,87 +283,173 @@
 }
 
 @mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_red']:where(:not(.highlight)),
-  &[class*='lig_red']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$red-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$red-light;
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_red']:where(:not(.highlight)),
-  &[class*='dar_red']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$red-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$red-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin red-fade {
-  &[class*='dar_red']:where(:not(.highlight)),
-  &[class*='lig_red']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$red-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$red-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$red-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$red-dark;
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$red-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_red']:where(:not(.highlight)),
-  &[class*='dar_red']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$red-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$red-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$red-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -250,87 +457,173 @@
 }
 
 @mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_gre']:where(:not(.highlight)),
-  &[class*='lig_gre']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$green-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$green-light;
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_gre']:where(:not(.highlight)),
-  &[class*='dar_gre']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$green-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$green-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin gre-fade {
-  &[class*='dar_gre']:where(:not(.highlight)),
-  &[class*='lig_gre']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$green-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$green-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$green-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$green-dark;
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$green-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_gre']:where(:not(.highlight)),
-  &[class*='dar_gre']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$green-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$green-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$green-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -338,87 +631,173 @@
 }
 
 @mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_blu']:where(:not(.highlight)),
-  &[class*='lig_blu']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$blue-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$blue-light;
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_blu']:where(:not(.highlight)),
-  &[class*='dar_blu']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$blue-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$blue-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin blu-fade {
-  &[class*='dar_blu']:where(:not(.highlight)),
-  &[class*='lig_blu']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$blue-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$blue-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$blue-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$blue-dark;
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$blue-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_blu']:where(:not(.highlight)),
-  &[class*='dar_blu']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$blue-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$blue-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$blue-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -426,87 +805,173 @@
 }
 
 @mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_pur']:where(:not(.highlight)),
-  &[class*='lig_pur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$purple-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$purple-light;
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_pur']:where(:not(.highlight)),
-  &[class*='dar_pur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$purple-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$purple-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin pur-fade {
-  &[class*='dar_pur']:where(:not(.highlight)),
-  &[class*='lig_pur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$purple-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$purple-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$purple-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$purple-dark;
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$purple-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_pur']:where(:not(.highlight)),
-  &[class*='dar_pur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$purple-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$purple-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$purple-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -514,87 +979,173 @@
 }
 
 @mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_ora']:where(:not(.highlight)),
-  &[class*='lig_ora']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$orange-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$orange-light;
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_ora']:where(:not(.highlight)),
-  &[class*='dar_ora']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$orange-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$orange-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin ora-fade {
-  &[class*='dar_ora']:where(:not(.highlight)),
-  &[class*='lig_ora']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$orange-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$orange-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$orange-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$orange-dark;
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$orange-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_ora']:where(:not(.highlight)),
-  &[class*='dar_ora']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$orange-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$orange-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$orange-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -602,87 +1153,173 @@
 }
 
 @mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_pin']:where(:not(.highlight)),
-  &[class*='lig_pin']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$pink-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$pink-light;
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_pin']:where(:not(.highlight)),
-  &[class*='dar_pin']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$pink-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$pink-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin pin-fade {
-  &[class*='dar_pin']:where(:not(.highlight)),
-  &[class*='lig_pin']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$pink-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$pink-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$pink-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$pink-dark;
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$pink-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_pin']:where(:not(.highlight)),
-  &[class*='dar_pin']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$pink-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$pink-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$pink-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -690,87 +1327,173 @@
 }
 
 @mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_yel']:where(:not(.highlight)),
-  &[class*='lig_yel']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$yellow-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$yellow-light;
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_yel']:where(:not(.highlight)),
-  &[class*='dar_yel']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$yellow-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$yellow-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin yel-fade {
-  &[class*='dar_yel']:where(:not(.highlight)),
-  &[class*='lig_yel']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$yellow-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$yellow-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$yellow-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$yellow-dark;
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$yellow-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_yel']:where(:not(.highlight)),
-  &[class*='dar_yel']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$yellow-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$yellow-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$yellow-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -778,87 +1501,173 @@
 }
 
 @mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_bro']:where(:not(.highlight)),
-  &[class*='lig_bro']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$brown-dark;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-dark;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$brown-light;
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_bro']:where(:not(.highlight)),
-  &[class*='dar_bro']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$brown-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$brown-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin bro-fade {
-  &[class*='dar_bro']:where(:not(.highlight)),
-  &[class*='lig_bro']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$brown-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$brown-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$brown-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$brown-dark;
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$brown-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_bro']:where(:not(.highlight)),
-  &[class*='dar_bro']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$brown-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$brown-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$brown-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
@@ -866,88 +1675,174 @@
 }
 
 @mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
-  &[class*='dar_tur']:where(:not(.highlight)),
-  &[class*='lig_tur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$turquoise-dark;
-    }
-    div[class='back'] {
-      span {
-        background:
-          linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+  &[class*='_luc_'] {
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-dark;
+      }
+      div[class='back'] {
+        span {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-light;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$turquoise-light;
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-light;
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-dark;
+          }
         }
       }
     }
   }
-  &[class*='lig_tur']:where(:not(.highlight)),
-  &[class*='dar_tur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$turquoise-light;
-    }
-    div[class='back'] {
-      span {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the ring stays 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$turquoise-dark;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The ring stays, in the shade's own colour 🠈|--\\
+      }
+      div[class='back'] {
+        span {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          }
         }
       }
     }
   }
 }
 @mixin tur-fade {
-  &[class*='dar_tur']:where(:not(.highlight)),
-  &[class*='lig_tur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$turquoise-light;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$turquoise-medium;
+  &[class*='_luc_'] {
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-light;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$turquoise-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-dark;
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$turquoise-dark;
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-dark;
+      }
+      div[class='back'] {
+        span {
+          background: Palettes.$turquoise-medium;
+        }
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-light;
+          }
         }
       }
     }
   }
-  &[class*='lig_tur']:where(:not(.highlight)),
-  &[class*='dar_tur']:where(.highlight) {
-    div[class='fore'] {
-      border-color: Palettes.$turquoise-dark;
-    }
-    div[class='back'] {
-      span {
-        background: Palettes.$turquoise-medium;
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the ring & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
+        }
       }
     }
-    &[class*='_alt'] {
-      div[class='icon'] {
-        img {
-          background: Palettes.$turquoise-light;
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='fore'] {
+        border-color: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ ring 🠈|--\\
+      }
+      &[class*='_alt'] {
+        div[class='icon'] {
+          img {
+            background: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          }
         }
       }
     }
