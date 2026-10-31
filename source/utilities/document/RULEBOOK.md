@@ -29,6 +29,7 @@ How code is written in this repository. Every rule here exists because breaking 
 6. **Quirks can be identity.** Some behaviours look like bugs and are deliberate (see [Deliberate Choices](#deliberate-choices)). Only real visual bugs get fixed.
 7. **The design comes first.** Sizes, gutters and colours are worked out in Figma and measured against the skeleton in `styles/Mixins.scss`. If a number looks odd, compare it with the skeleton before changing it.
 8. **The documents change with the code.** When a change alters what a prop, a class or a rule means, the paragraph that describes it is updated in the same step. A document that describes the old meaning is worse than none.
+9. **`<ButtonDefault>` is the baseline everything is replicated from.** A new feature is built and settled on `<ButtonDefault>` (and its Archive page, `<DefaultButton>`) first, then copied to the other components in the same syntax: same mixin layout, same selector order, same comment flags. `⟨opaque⟩` went this way: `<ButtonDefault>` first, then `<ButtonRouting>` and `<ButtonProfile>`, then the other nine colours. When two components disagree, the one that matches `<ButtonDefault>` is right. Copying one pattern everywhere is what lets the project scale and stay maintainable by hand.
 
 ### Deliberate Choices
 
@@ -153,7 +154,7 @@ components/Button/default/
     └── Button_corn.scss        # Corner radii and border widths
 ```
 
-`<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline.
+`<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline (see [The Philosophy](#1-the-philosophy), point 9).
 
 The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`) use a shorter pipeline: `Label_flex.scss`, `Label_size.scss` and `Label_tint.scss`. They have no grid or corners of their own, and their flex and tint never change per screen, so those two files only hold the global `*-flexbox` and `*-colors` mixins. Only `*_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`. Inside every mixin, each case sits under its own `&[class*='switching-toggle']`, so one look per case stays readable. `<LabelTextarea>`'s three cases share one set of tints, because `{text}`, `{input}` and `{block}` look the same; `[class='event']` matches the `<input>` and the `<textarea>`.
 
