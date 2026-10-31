@@ -51,15 +51,15 @@ function DefaultButton({ info }: InfoProps) {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
+              /*
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
-                */
               }}
+              */
             />
             <MenuScroll
               //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
@@ -147,15 +147,15 @@ function DefaultButton({ info }: InfoProps) {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
+              /*
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
-                */
               }}
+              */
             />
             <MenuScroll
               //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
@@ -240,15 +240,15 @@ function DefaultButton({ info }: InfoProps) {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
+              /*
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
-                */
               }}
+              */
             />
             <MenuScroll
               //--|🠊 <menu class="default-darkside-main_scroll-default"/> 🠈|--\\
@@ -336,15 +336,15 @@ function DefaultButton({ info }: InfoProps) {
                 blockName: info.blockName as '<main>',
                 pageName: info.pageName as '[components]',
               }}
+              /*
               onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
-                /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
                 } else if (event.deltaY > 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-next');
                 }
-                 */
               }}
+              */
             />
             <MenuScroll
               //--|🠊 <menu class="default-lightside-main_scroll-default"/> 🠈|--\\
@@ -2550,6 +2550,4 @@ let ViewSev = ({ info }: InfoProps) => {
       );
   }
 };
-
-var TaskOne = ({ info }: InfoProps) => {};
 export default DefaultButton;

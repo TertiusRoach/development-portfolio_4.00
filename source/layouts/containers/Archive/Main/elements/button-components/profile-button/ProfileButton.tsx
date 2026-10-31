@@ -11,8 +11,6 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 import { toggleColors, toggleClarity } from './ProfileFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

@@ -13,8 +13,6 @@ import DivisionFullscreen from '../../../../../../components/Division/fullscreen
 import { toggleColors, toggleClarity } from './RoutingFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

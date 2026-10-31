@@ -3,7 +3,6 @@ import React from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Button_default';
-import { stripBrackets } from '../../../../scripts';
 
 export interface TheseProps {
   info: {
