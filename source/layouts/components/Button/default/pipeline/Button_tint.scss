@@ -160,183 +160,212 @@
   $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
-
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_mon']:where(:not(.highlight)),
-  &[class*='lig_mon']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-dark, 0) 0%,
-          rgba(Palettes.$gray-dark, 0.28) 55%,
-          rgba(Palettes.$gray-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$gray-dark, 0) 0%,
+            rgba(Palettes.$gray-dark, 0.28) 55%,
+            rgba(Palettes.$gray-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$gray-light, 0) 0%,
+            rgba(Palettes.$gray-light, 0.3) 55%,
+            rgba(Palettes.$gray-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-light, 0) 0%,
-          rgba(Palettes.$gray-light, 0.3) 55%,
-          rgba(Palettes.$gray-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$gray-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$gray-medium, 0.1) 0%, rgba(Palettes.$gray-medium, 0) 70%, rgba(Palettes.$gray-medium, 0) 100%);
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$gray-light, 0) 0%,
+            rgba(Palettes.$gray-light, 0.3) 55%,
+            rgba(Palettes.$gray-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$gray-dark, 0) 0%,
+            rgba(Palettes.$gray-dark, 0.28) 55%,
+            rgba(Palettes.$gray-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
+        }
       }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$gray-medium, 0.1) 0%, rgba(Palettes.$gray-medium, 0) 70%, rgba(Palettes.$gray-medium, 0) 100%);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$gray-dark;
+        }
       }
-      img {
-        background: Palettes.$gray-light;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
       }
     }
   }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_mon']:where(:not(.highlight)),
-  &[class*='dar_mon']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-light, 0) 0%,
-          rgba(Palettes.$gray-light, 0.3) 55%,
-          rgba(Palettes.$gray-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$gray-dark, 0) 0%,
-          rgba(Palettes.$gray-dark, 0.28) 55%,
-          rgba(Palettes.$gray-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$gray-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$gray-neon, 0.05);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$gray-medium, 0.1) 0%, rgba(Palettes.$gray-medium, 0) 70%, rgba(Palettes.$gray-medium, 0) 100%);
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$gray-medium, 0.1) 0%, rgba(Palettes.$gray-medium, 0) 70%, rgba(Palettes.$gray-medium, 0) 100%);
-      }
-      img {
-        background: Palettes.$gray-dark;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
-      }
-    }
+  &[class*='_opa_'] {
+    background: red;
   }
 }
 @mixin mon-fade {
   $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_mon']:where(:not(.highlight)),
-  &[class*='lig_mon']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$gray-dark;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-light;
+        }
       }
     }
   }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_mon']:where(:not(.highlight)),
-  &[class*='dar_mon']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
-        span {
-          text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
-        }
-      }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$gray-light;
-      }
-    }
+  &[class*='_opa_'] {
+    background: blue;
   }
 }
 
@@ -346,117 +375,129 @@
   $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_red']:where(:not(.highlight)),
-  &[class*='lig_red']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$red-dark, 0) 0%, rgba(Palettes.$red-dark, 0.28) 55%, rgba(Palettes.$red-dark, 0.58) 100%);
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-dark, 0) 0%,
+            rgba(Palettes.$red-dark, 0.28) 55%,
+            rgba(Palettes.$red-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-light, 0) 0%,
+            rgba(Palettes.$red-light, 0.3) 55%,
+            rgba(Palettes.$red-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$red-light, 0) 0%,
-          rgba(Palettes.$red-light, 0.3) 55%,
-          rgba(Palettes.$red-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        img {
+          background: Palettes.$red-light;
+        }
       }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
-      }
-      img {
-        background: Palettes.$red-light;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_red']:where(:not(.highlight)),
-  &[class*='dar_red']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$red-light, 0) 0%,
-          rgba(Palettes.$red-light, 0.3) 55%,
-          rgba(Palettes.$red-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$red-dark, 0) 0%, rgba(Palettes.$red-dark, 0.28) 55%, rgba(Palettes.$red-dark, 0.58) 100%);
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-light, 0) 0%,
+            rgba(Palettes.$red-light, 0.3) 55%,
+            rgba(Palettes.$red-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$red-dark, 0) 0%,
+            rgba(Palettes.$red-dark, 0.28) 55%,
+            rgba(Palettes.$red-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$red-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$red-neon, 0.05);
+        }
       }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        img {
+          background: Palettes.$red-dark;
+        }
       }
-      img {
-        background: Palettes.$red-dark;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
       }
     }
   }
@@ -465,51 +506,53 @@
   $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_red']:where(:not(.highlight)),
-  &[class*='lig_red']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$red-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_red']:where(:not(.highlight)),
-  &[class*='dar_red']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$red-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-light;
+        }
       }
     }
   }
@@ -521,147 +564,149 @@
   $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_gre']:where(:not(.highlight)),
-  &[class*='lig_gre']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-dark, 0) 0%,
-          rgba(Palettes.$green-dark, 0.28) 55%,
-          rgba(Palettes.$green-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-light, 0) 0%,
-          rgba(Palettes.$green-light, 0.3) 55%,
-          rgba(Palettes.$green-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$green-medium, 0.1) 0%,
-            rgba(Palettes.$green-medium, 0) 70%,
-            rgba(Palettes.$green-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-dark, 0) 0%,
+            rgba(Palettes.$green-dark, 0.28) 55%,
+            rgba(Palettes.$green-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$green-medium, 0.1) 0%,
-            rgba(Palettes.$green-medium, 0) 70%,
-            rgba(Palettes.$green-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-light, 0) 0%,
+            rgba(Palettes.$green-light, 0.3) 55%,
+            rgba(Palettes.$green-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$green-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$green-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_gre']:where(:not(.highlight)),
-  &[class*='dar_gre']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-light, 0) 0%,
-          rgba(Palettes.$green-light, 0.3) 55%,
-          rgba(Palettes.$green-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$green-dark, 0) 0%,
-          rgba(Palettes.$green-dark, 0.28) 55%,
-          rgba(Palettes.$green-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$green-medium, 0.1) 0%,
-            rgba(Palettes.$green-medium, 0) 70%,
-            rgba(Palettes.$green-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-light, 0) 0%,
+            rgba(Palettes.$green-light, 0.3) 55%,
+            rgba(Palettes.$green-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$green-medium, 0.1) 0%,
-            rgba(Palettes.$green-medium, 0) 70%,
-            rgba(Palettes.$green-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$green-dark, 0) 0%,
+            rgba(Palettes.$green-dark, 0.28) 55%,
+            rgba(Palettes.$green-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$green-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$green-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$green-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$green-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
       }
     }
   }
@@ -670,51 +715,53 @@
   $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_gre']:where(:not(.highlight)),
-  &[class*='lig_gre']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$green-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_gre']:where(:not(.highlight)),
-  &[class*='dar_gre']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$green-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-light;
+        }
       }
     }
   }
@@ -726,127 +773,149 @@
   $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_blu']:where(:not(.highlight)),
-  &[class*='lig_blu']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-dark, 0) 0%,
-          rgba(Palettes.$blue-dark, 0.28) 55%,
-          rgba(Palettes.$blue-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-dark, 0) 0%,
+            rgba(Palettes.$blue-dark, 0.28) 55%,
+            rgba(Palettes.$blue-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-light, 0) 0%,
+            rgba(Palettes.$blue-light, 0.3) 55%,
+            rgba(Palettes.$blue-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-light, 0) 0%,
-          rgba(Palettes.$blue-light, 0.3) 55%,
-          rgba(Palettes.$blue-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$blue-light;
+        }
       }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$blue-medium, 0.1) 0%, rgba(Palettes.$blue-medium, 0) 70%, rgba(Palettes.$blue-medium, 0) 100%);
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$blue-medium, 0.1) 0%, rgba(Palettes.$blue-medium, 0) 70%, rgba(Palettes.$blue-medium, 0) 100%);
-      }
-      img {
-        background: Palettes.$blue-light;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_blu']:where(:not(.highlight)),
-  &[class*='dar_blu']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-light, 0) 0%,
-          rgba(Palettes.$blue-light, 0.3) 55%,
-          rgba(Palettes.$blue-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$blue-dark, 0) 0%,
-          rgba(Palettes.$blue-dark, 0.28) 55%,
-          rgba(Palettes.$blue-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$blue-medium, 0.1) 0%, rgba(Palettes.$blue-medium, 0) 70%, rgba(Palettes.$blue-medium, 0) 100%);
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-light, 0) 0%,
+            rgba(Palettes.$blue-light, 0.3) 55%,
+            rgba(Palettes.$blue-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$blue-dark, 0) 0%,
+            rgba(Palettes.$blue-dark, 0.28) 55%,
+            rgba(Palettes.$blue-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$blue-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$blue-neon, 0.05);
+        }
       }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$blue-medium, 0.1) 0%, rgba(Palettes.$blue-medium, 0) 70%, rgba(Palettes.$blue-medium, 0) 100%);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$blue-dark;
+        }
       }
-      img {
-        background: Palettes.$blue-dark;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
       }
     }
   }
@@ -855,51 +924,53 @@
   $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_blu']:where(:not(.highlight)),
-  &[class*='lig_blu']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$blue-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_blu']:where(:not(.highlight)),
-  &[class*='dar_blu']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$blue-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-light;
+        }
       }
     }
   }
@@ -911,147 +982,151 @@
   $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_pur']:where(:not(.highlight)),
-  &[class*='lig_pur']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-dark, 0) 0%,
-          rgba(Palettes.$purple-dark, 0.28) 55%,
-          rgba(Palettes.$purple-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-light, 0) 0%,
-          rgba(Palettes.$purple-light, 0.3) 55%,
-          rgba(Palettes.$purple-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$purple-medium, 0.1) 0%,
-            rgba(Palettes.$purple-medium, 0) 70%,
-            rgba(Palettes.$purple-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-dark, 0) 0%,
+            rgba(Palettes.$purple-dark, 0.28) 55%,
+            rgba(Palettes.$purple-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$purple-medium, 0.1) 0%,
-            rgba(Palettes.$purple-medium, 0) 70%,
-            rgba(Palettes.$purple-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-light, 0) 0%,
+            rgba(Palettes.$purple-light, 0.3) 55%,
+            rgba(Palettes.$purple-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$purple-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$purple-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_pur']:where(:not(.highlight)),
-  &[class*='dar_pur']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-light, 0) 0%,
-          rgba(Palettes.$purple-light, 0.3) 55%,
-          rgba(Palettes.$purple-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$purple-dark, 0) 0%,
-          rgba(Palettes.$purple-dark, 0.28) 55%,
-          rgba(Palettes.$purple-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$purple-medium, 0.1) 0%,
-            rgba(Palettes.$purple-medium, 0) 70%,
-            rgba(Palettes.$purple-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-light, 0) 0%,
+            rgba(Palettes.$purple-light, 0.3) 55%,
+            rgba(Palettes.$purple-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$purple-medium, 0.1) 0%,
-            rgba(Palettes.$purple-medium, 0) 70%,
-            rgba(Palettes.$purple-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$purple-dark, 0) 0%,
+            rgba(Palettes.$purple-dark, 0.28) 55%,
+            rgba(Palettes.$purple-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$purple-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$purple-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$purple-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$purple-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
       }
     }
   }
@@ -1060,51 +1135,53 @@
   $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_pur']:where(:not(.highlight)),
-  &[class*='lig_pur']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$purple-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_pur']:where(:not(.highlight)),
-  &[class*='dar_pur']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$purple-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-light;
+        }
       }
     }
   }
@@ -1116,147 +1193,151 @@
   $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_ora']:where(:not(.highlight)),
-  &[class*='lig_ora']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-dark, 0) 0%,
-          rgba(Palettes.$orange-dark, 0.28) 55%,
-          rgba(Palettes.$orange-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-light, 0) 0%,
-          rgba(Palettes.$orange-light, 0.3) 55%,
-          rgba(Palettes.$orange-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$orange-medium, 0.1) 0%,
-            rgba(Palettes.$orange-medium, 0) 70%,
-            rgba(Palettes.$orange-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-dark, 0) 0%,
+            rgba(Palettes.$orange-dark, 0.28) 55%,
+            rgba(Palettes.$orange-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$orange-medium, 0.1) 0%,
-            rgba(Palettes.$orange-medium, 0) 70%,
-            rgba(Palettes.$orange-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-light, 0) 0%,
+            rgba(Palettes.$orange-light, 0.3) 55%,
+            rgba(Palettes.$orange-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$orange-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$orange-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_ora']:where(:not(.highlight)),
-  &[class*='dar_ora']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-light, 0) 0%,
-          rgba(Palettes.$orange-light, 0.3) 55%,
-          rgba(Palettes.$orange-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$orange-dark, 0) 0%,
-          rgba(Palettes.$orange-dark, 0.28) 55%,
-          rgba(Palettes.$orange-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$orange-medium, 0.1) 0%,
-            rgba(Palettes.$orange-medium, 0) 70%,
-            rgba(Palettes.$orange-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-light, 0) 0%,
+            rgba(Palettes.$orange-light, 0.3) 55%,
+            rgba(Palettes.$orange-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$orange-medium, 0.1) 0%,
-            rgba(Palettes.$orange-medium, 0) 70%,
-            rgba(Palettes.$orange-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$orange-dark, 0) 0%,
+            rgba(Palettes.$orange-dark, 0.28) 55%,
+            rgba(Palettes.$orange-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$orange-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$orange-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$orange-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$orange-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
       }
     }
   }
@@ -1265,51 +1346,53 @@
   $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_ora']:where(:not(.highlight)),
-  &[class*='lig_ora']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$orange-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_ora']:where(:not(.highlight)),
-  &[class*='dar_ora']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$orange-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-light;
+        }
       }
     }
   }
@@ -1321,127 +1404,149 @@
   $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_pin']:where(:not(.highlight)),
-  &[class*='lig_pin']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-dark, 0) 0%,
-          rgba(Palettes.$pink-dark, 0.28) 55%,
-          rgba(Palettes.$pink-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-dark, 0) 0%,
+            rgba(Palettes.$pink-dark, 0.28) 55%,
+            rgba(Palettes.$pink-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-light, 0) 0%,
+            rgba(Palettes.$pink-light, 0.3) 55%,
+            rgba(Palettes.$pink-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-light, 0) 0%,
-          rgba(Palettes.$pink-light, 0.3) 55%,
-          rgba(Palettes.$pink-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$pink-light;
+        }
       }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$pink-medium, 0.1) 0%, rgba(Palettes.$pink-medium, 0) 70%, rgba(Palettes.$pink-medium, 0) 100%);
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$pink-medium, 0.1) 0%, rgba(Palettes.$pink-medium, 0) 70%, rgba(Palettes.$pink-medium, 0) 100%);
-      }
-      img {
-        background: Palettes.$pink-light;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_pin']:where(:not(.highlight)),
-  &[class*='dar_pin']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-light, 0) 0%,
-          rgba(Palettes.$pink-light, 0.3) 55%,
-          rgba(Palettes.$pink-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$pink-dark, 0) 0%,
-          rgba(Palettes.$pink-dark, 0.28) 55%,
-          rgba(Palettes.$pink-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$pink-medium, 0.1) 0%, rgba(Palettes.$pink-medium, 0) 70%, rgba(Palettes.$pink-medium, 0) 100%);
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-light, 0) 0%,
+            rgba(Palettes.$pink-light, 0.3) 55%,
+            rgba(Palettes.$pink-light, 0.64) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$pink-dark, 0) 0%,
+            rgba(Palettes.$pink-dark, 0.28) 55%,
+            rgba(Palettes.$pink-dark, 0.58) 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$pink-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$pink-neon, 0.05);
+        }
       }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(closest-side, rgba(Palettes.$pink-medium, 0.1) 0%, rgba(Palettes.$pink-medium, 0) 70%, rgba(Palettes.$pink-medium, 0) 100%);
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$pink-dark;
+        }
       }
-      img {
-        background: Palettes.$pink-dark;
-      }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
       }
     }
   }
@@ -1450,51 +1555,53 @@
   $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_pin']:where(:not(.highlight)),
-  &[class*='lig_pin']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$pink-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_pin']:where(:not(.highlight)),
-  &[class*='dar_pin']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$pink-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-light;
+        }
       }
     }
   }
@@ -1506,147 +1613,151 @@
   $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_yel']:where(:not(.highlight)),
-  &[class*='lig_yel']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-dark, 0) 0%,
-          rgba(Palettes.$yellow-dark, 0.28) 55%,
-          rgba(Palettes.$yellow-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-light, 0) 0%,
-          rgba(Palettes.$yellow-light, 0.3) 55%,
-          rgba(Palettes.$yellow-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$yellow-medium, 0.1) 0%,
-            rgba(Palettes.$yellow-medium, 0) 70%,
-            rgba(Palettes.$yellow-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-dark, 0) 0%,
+            rgba(Palettes.$yellow-dark, 0.28) 55%,
+            rgba(Palettes.$yellow-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$yellow-medium, 0.1) 0%,
-            rgba(Palettes.$yellow-medium, 0) 70%,
-            rgba(Palettes.$yellow-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-light, 0) 0%,
+            rgba(Palettes.$yellow-light, 0.3) 55%,
+            rgba(Palettes.$yellow-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$yellow-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$yellow-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_yel']:where(:not(.highlight)),
-  &[class*='dar_yel']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-light, 0) 0%,
-          rgba(Palettes.$yellow-light, 0.3) 55%,
-          rgba(Palettes.$yellow-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$yellow-dark, 0) 0%,
-          rgba(Palettes.$yellow-dark, 0.28) 55%,
-          rgba(Palettes.$yellow-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$yellow-medium, 0.1) 0%,
-            rgba(Palettes.$yellow-medium, 0) 70%,
-            rgba(Palettes.$yellow-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-light, 0) 0%,
+            rgba(Palettes.$yellow-light, 0.3) 55%,
+            rgba(Palettes.$yellow-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$yellow-medium, 0.1) 0%,
-            rgba(Palettes.$yellow-medium, 0) 70%,
-            rgba(Palettes.$yellow-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$yellow-dark, 0) 0%,
+            rgba(Palettes.$yellow-dark, 0.28) 55%,
+            rgba(Palettes.$yellow-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$yellow-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$yellow-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$yellow-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$yellow-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
       }
     }
   }
@@ -1655,51 +1766,53 @@
   $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_yel']:where(:not(.highlight)),
-  &[class*='lig_yel']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$yellow-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_yel']:where(:not(.highlight)),
-  &[class*='dar_yel']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$yellow-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-light;
+        }
       }
     }
   }
@@ -1711,147 +1824,149 @@
   $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_bro']:where(:not(.highlight)),
-  &[class*='lig_bro']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-dark, 0) 0%,
-          rgba(Palettes.$brown-dark, 0.28) 55%,
-          rgba(Palettes.$brown-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-light, 0) 0%,
-          rgba(Palettes.$brown-light, 0.3) 55%,
-          rgba(Palettes.$brown-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$brown-medium, 0.1) 0%,
-            rgba(Palettes.$brown-medium, 0) 70%,
-            rgba(Palettes.$brown-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-dark, 0) 0%,
+            rgba(Palettes.$brown-dark, 0.28) 55%,
+            rgba(Palettes.$brown-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$brown-medium, 0.1) 0%,
-            rgba(Palettes.$brown-medium, 0) 70%,
-            rgba(Palettes.$brown-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-light, 0) 0%,
+            rgba(Palettes.$brown-light, 0.3) 55%,
+            rgba(Palettes.$brown-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$brown-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$brown-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_bro']:where(:not(.highlight)),
-  &[class*='dar_bro']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-light, 0) 0%,
-          rgba(Palettes.$brown-light, 0.3) 55%,
-          rgba(Palettes.$brown-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$brown-dark, 0) 0%,
-          rgba(Palettes.$brown-dark, 0.28) 55%,
-          rgba(Palettes.$brown-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$brown-medium, 0.1) 0%,
-            rgba(Palettes.$brown-medium, 0) 70%,
-            rgba(Palettes.$brown-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-light, 0) 0%,
+            rgba(Palettes.$brown-light, 0.3) 55%,
+            rgba(Palettes.$brown-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$brown-medium, 0.1) 0%,
-            rgba(Palettes.$brown-medium, 0) 70%,
-            rgba(Palettes.$brown-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$brown-dark, 0) 0%,
+            rgba(Palettes.$brown-dark, 0.28) 55%,
+            rgba(Palettes.$brown-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$brown-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$brown-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$brown-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$brown-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
       }
     }
   }
@@ -1860,51 +1975,53 @@
   $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_bro']:where(:not(.highlight)),
-  &[class*='lig_bro']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$brown-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_bro']:where(:not(.highlight)),
-  &[class*='dar_bro']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$brown-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-light;
+        }
       }
     }
   }
@@ -1916,149 +2033,151 @@
   $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
   $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
 
-  //--|🠊 Dark Shade 🠈|--\\
-  &[class*='dar_tur']:where(:not(.highlight)),
-  &[class*='lig_tur']:where(.highlight) {
-    div[class='text'] {
-      color: $neoLig;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-dark, 0) 0%,
-          rgba(Palettes.$turquoise-dark, 0.28) 55%,
-          rgba(Palettes.$turquoise-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-light, 0) 0%,
-          rgba(Palettes.$turquoise-light, 0.3) 55%,
-          rgba(Palettes.$turquoise-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-    }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$turquoise-medium, 0.1) 0%,
-            rgba(Palettes.$turquoise-medium, 0) 70%,
-            rgba(Palettes.$turquoise-medium, 0) 100%
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-dark, 0) 0%,
+            rgba(Palettes.$turquoise-dark, 0.28) 55%,
+            rgba(Palettes.$turquoise-dark, 0.58) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$turquoise-medium, 0.1) 0%,
-            rgba(Palettes.$turquoise-medium, 0) 70%,
-            rgba(Palettes.$turquoise-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-light, 0) 0%,
+            rgba(Palettes.$turquoise-light, 0.3) 55%,
+            rgba(Palettes.$turquoise-light, 0.64) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
       }
-      img {
-        background: Palettes.$turquoise-light;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$turquoise-light;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background:
-          linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-    }
-  }
-  //--|🠊 Light Shade 🠈|--\\
-  &[class*='lig_tur']:where(:not(.highlight)),
-  &[class*='dar_tur']:where(.highlight) {
-    div[class='text'] {
-      color: $blaDar;
-      &::before {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-light, 0) 0%,
-          rgba(Palettes.$turquoise-light, 0.3) 55%,
-          rgba(Palettes.$turquoise-light, 0.64) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.1),
-          inset 0 -14px 26px rgba(#000, 0.18),
-          inset 0 0 0 1px rgba(#000, 0.06);
-      }
-      &::after {
-        background: linear-gradient(
-          180deg,
-          rgba(Palettes.$turquoise-dark, 0) 0%,
-          rgba(Palettes.$turquoise-dark, 0.28) 55%,
-          rgba(Palettes.$turquoise-dark, 0.58) 100%
-        );
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
-          inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
       }
     }
-    div[class='icon'] {
-      &::before {
-        background:
-          radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$turquoise-medium, 0.1) 0%,
-            rgba(Palettes.$turquoise-medium, 0) 70%,
-            rgba(Palettes.$turquoise-medium, 0) 100%
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-light, 0) 0%,
+            rgba(Palettes.$turquoise-light, 0.3) 55%,
+            rgba(Palettes.$turquoise-light, 0.64) 100%
           );
-      }
-      &::after {
-        background:
-          radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
-          radial-gradient(
-            closest-side,
-            rgba(Palettes.$turquoise-medium, 0.1) 0%,
-            rgba(Palettes.$turquoise-medium, 0) 70%,
-            rgba(Palettes.$turquoise-medium, 0) 100%
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.1),
+            inset 0 -14px 26px rgba(#000, 0.18),
+            inset 0 0 0 1px rgba(#000, 0.06);
+        }
+        &::after {
+          background: linear-gradient(
+            180deg,
+            rgba(Palettes.$turquoise-dark, 0) 0%,
+            rgba(Palettes.$turquoise-dark, 0.28) 55%,
+            rgba(Palettes.$turquoise-dark, 0.58) 100%
           );
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.06),
+            inset 0 -14px 26px rgba(Palettes.$turquoise-light, 0.1),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-neon, 0.05);
+        }
       }
-      img {
-        background: Palettes.$turquoise-dark;
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$turquoise-dark;
+        }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow:
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background:
-          linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow:
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
       }
     }
   }
@@ -2067,51 +2186,53 @@
   $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
   $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
 
-  //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-  &[class*='dar_tur']:where(:not(.highlight)),
-  &[class*='lig_tur']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $blaDar,
-          0 0 0.25em rgba($blaDar, 0.6);
-      }
-      *:hover {
-        color: $blaDar;
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($blaDar, 0),
-            0 0 0.25em rgba($blaDar, 0);
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-dark;
         }
       }
     }
-    div[class='icon'] {
-      img {
-        background: Palettes.$turquoise-dark;
-      }
-    }
-  }
-  //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-  &[class*='lig_tur']:where(:not(.highlight)),
-  &[class*='dar_tur']:where(.highlight) {
-    div[class='text'] {
-      span {
-        text-shadow:
-          0 0 0.04em $neoLig,
-          0 0 0.25em rgba($neoLig, 0.6);
-      }
-      *:hover {
-        color: $neoLig;
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
         span {
           text-shadow:
-            0 0 0.04em rgba($neoLig, 0),
-            0 0 0.25em rgba($neoLig, 0);
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
         }
       }
-    }
-    div[class='icon'] {
-      img {
-        background: Palettes.$turquoise-light;
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-light;
+        }
       }
     }
   }

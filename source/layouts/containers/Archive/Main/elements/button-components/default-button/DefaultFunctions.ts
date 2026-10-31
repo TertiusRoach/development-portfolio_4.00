@@ -1810,6 +1810,23 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
 export const toggleColors = (tint: string): void => {
   updateButtons(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into every <ButtonDefault> 🠈|--\\
 };
+//--|🠋 Button Clarity Toggle 🠋|--\\
+export const toggleClarity = (element: HTMLFieldSetElement): void => {
+  //--|🠊 AI Code: Review Please 2026-10-31 · The checked radio's value picks the clarity, the <fieldset>'s class picks the side 🠈|--\\
+  const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
+  const fieldsetSide = element.classList[0].split('-')[1] as string; //--|🠈 clarify-darkside → darkside 🠈|--\\
+
+  let clarity: string = '';
+  switch (checkedInput.value) {
+    case 'Lucid':
+      clarity = 'luc';
+      break;
+    case 'Opaque':
+      clarity = 'opa';
+      break;
+  }
+  updateClarity(clarity, fieldsetSide); //--|🠈 Swaps the clarity into every <ButtonDefault> on that side only 🠈|--\\
+};
 //--|🠋 Fullscreen & Menu Chain 🠋|--\\
 export const scrollSide = (element: HTMLDivElement, action: 'view-prev' | 'view-next') => {
   const fullscreen = element.querySelector('li') as HTMLElement;
@@ -1870,6 +1887,20 @@ let updateButtons = (color: string) => {
 
     wrapperDarkside[i].classList.replace(prevDarkClass, nextDarkClass);
     wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
+  }
+};
+let updateClarity = (clarity: string, side: string) => {
+  const wrapperSide = document.querySelectorAll(
+    `#components-main .default-${side}-main_container button[class*="default-button"]`,
+  ) as NodeListOf<HTMLButtonElement>;
+
+  for (let i = 0; i < 49; i++) {
+    //--|🠊 AI Code: Review Please 2026-10-31 · Same 49 as updateButtons(), [4] is the clarity 🠈|--\\
+    let prevSideClass = wrapperSide[i].classList[1] as string;
+
+    let nextSideClass = `${wrapperSide[i].classList[1].split('_')[0]}_${wrapperSide[i].classList[1].split('_')[1]}_${wrapperSide[i].classList[1].split('_')[2]}_${wrapperSide[i].classList[1].split('_')[3]}_${clarity}_${wrapperSide[i].classList[1].split('_')[5]}`;
+
+    wrapperSide[i].classList.replace(prevSideClass, nextSideClass);
   }
 };
 let updateMessage = () => {

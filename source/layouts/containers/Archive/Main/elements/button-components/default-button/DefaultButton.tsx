@@ -10,7 +10,7 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
-import copyCode, { toggleColors } from './DefaultFunctions';
+import copyCode, { toggleColors, toggleClarity } from './DefaultFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 interface InfoProps {
@@ -78,22 +78,45 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <fieldset className="clarify-darkside">
+            <fieldset
+              className="clarify-darkside"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
               <LabelSwitching
                 cases={{
-                  // mark: true,
+                  mark: true,
                   type: '{option}',
                 }}
                 style={{
                   shade: '~dark~',
                   color: '(mono)',
                   clarity: '⟨lucid⟩',
-                  text: 'Lucid Dark', //--|🠈 {option}: the value, read aloud 🠈|--\\
+                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
                   blockName: blockName,
                   labelName: 'lucid-dark',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-dark',
                 }}
               />
             </fieldset>
@@ -151,7 +174,48 @@ function DefaultButton({ info }: InfoProps) {
                 titles: casesPages as Array<string>,
               }}
             />
-            <fieldset className="clarify-lightside"></fieldset>
+            <fieldset
+              className="clarify-lightside"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
+              <LabelSwitching
+                cases={{
+                  mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  color: '(mono)',
+                  shade: '~light~',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-light',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  color: '(mono)',
+                  shade: '~light~',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-light',
+                }}
+              />
+            </fieldset>
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>
@@ -164,23 +228,6 @@ function DefaultButton({ info }: InfoProps) {
       return (
         <aside className="default-button">
           <section className={`${blockName}-foreground`}>
-            <MenuScroll
-              //--|🠊 <menu class="default-darkside-main_scroll-default"/> 🠈|--\\
-              info={{
-                labelName: 'default-darkside',
-                blockName: blockName as 'main',
-                pageName: pageName as 'components',
-              }}
-              style={{
-                view: '-cen-',
-                color: '(mono)',
-                shade: '~dark~',
-              }}
-              cases={{
-                axis: '[x]',
-                titles: casesPages as Array<string>,
-              }}
-            />
             <DivisionFullscreen
               //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
@@ -203,6 +250,65 @@ function DefaultButton({ info }: InfoProps) {
                 */
               }}
             />
+            <MenuScroll
+              //--|🠊 <menu class="default-darkside-main_scroll-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                view: '-cen-',
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+              cases={{
+                axis: '[x]',
+                titles: casesPages as Array<string>,
+              }}
+            />
+            <fieldset
+              className="clarify-darkside"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
+              <LabelSwitching
+                cases={{
+                  mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-dark',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-dark',
+                }}
+              />
+            </fieldset>
 
             <DivisionColourize
               info={{
@@ -218,23 +324,6 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
 
-            <MenuScroll
-              //--|🠊 <menu class="default-lightside-main_scroll-default"/> 🠈|--\\
-              info={{
-                labelName: 'default-lightside',
-                blockName: blockName as 'main',
-                pageName: pageName as 'components',
-              }}
-              style={{
-                view: '-cen-',
-                color: '(mono)',
-                shade: '~light~',
-              }}
-              cases={{
-                axis: '[x]',
-                titles: casesPages as Array<string>,
-              }}
-            />
             <DivisionFullscreen
               //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
@@ -257,6 +346,65 @@ function DefaultButton({ info }: InfoProps) {
                  */
               }}
             />
+            <MenuScroll
+              //--|🠊 <menu class="default-lightside-main_scroll-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                view: '-cen-',
+                color: '(mono)',
+                shade: '~light~',
+              }}
+              cases={{
+                axis: '[x]',
+                titles: casesPages as Array<string>,
+              }}
+            />
+            <fieldset
+              className="clarify-lightside"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
+              <LabelSwitching
+                cases={{
+                  mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  color: '(mono)',
+                  shade: '~light~',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-light',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  color: '(mono)',
+                  shade: '~light~',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-light',
+                }}
+              />
+            </fieldset>
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>

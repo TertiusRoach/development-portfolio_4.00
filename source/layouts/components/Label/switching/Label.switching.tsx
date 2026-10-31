@@ -1,5 +1,5 @@
 //--|🠊 Label.switching.tsx 🠈|--\\
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Label_switching';
@@ -20,6 +20,7 @@ export interface TheseProps {
   };
   cases: {
     type: '{toggle}' | '{check}' | '{option}' | '{chip}'; //--|🠈 Only on & off: {slide} holds many values, so it'll be its own component 🠈|--\\
+    mark?: boolean; //--|🠈 On from the start, off when it's missing 🠈|--\\
   };
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /*
@@ -42,6 +43,20 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const [group, setGroup] = useState<string>('');
+  useEffect(() => {
+    //--|🠊 AI Code: Review Please 2026-10-31 · Runs once the {option} is on the page: the first one names its <fieldset> or <form>, the others read it 🠈|--\\
+    //--|🠊 Kept in state so React renders the name itself, otherwise it doesn't know the radios are a group and skips the switch back 🠈|--\\
+    let parentElement = labelRef.current?.closest('fieldset, form') as HTMLElement | null;
+    if (parentElement) {
+      if (!parentElement.dataset.group) {
+        parentElement.dataset.group = `option-${Math.random().toString(36).slice(2, 8)}`; //--|🠈 Six random letters & numbers, so every group gets its own name 🠈|--\\
+      }
+      setGroup(parentElement.dataset.group); //--|🠈 No parent, no name: a lone radio needs none 🠈|--\\
+    }
+  }, []);
+
   let casesType = stripBrackets(cases.type, '{}') as string;
   let labelClass: string = `${labelName}-${blockName}_switching-${casesType} ${createClass(style, cases)}`;
   switch (cases.type) {
@@ -53,6 +68,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
         <label className={labelClass}>
           <input
             type="checkbox"
+            defaultChecked={cases.mark} //--|🠈 Only the first state, the browser keeps it from there 🠈|--\\
             value={style.text}
             className="event"
             //--|===|--\\
@@ -72,6 +88,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
         <label className={labelClass}>
           <input
             type="checkbox"
+            defaultChecked={cases.mark} //--|🠈 Only the first state, the browser keeps it from there 🠈|--\\
             className="event"
             //--|===|--\\
             onChange={onChange}
@@ -87,6 +104,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
         <label className={labelClass}>
           <input
             type="checkbox"
+            defaultChecked={cases.mark} //--|🠈 Only the first state, the browser keeps it from there 🠈|--\\
             className="event"
             //--|===|--\\
             onChange={onChange}
@@ -98,21 +116,13 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
     case '{option}': {
       //--|🠊 {option}: a round radio dot, every {option} in the same <fieldset> or <form> shares its data-group 🠈|--\\
       return (
-        <label className={labelClass}>
+        <label className={labelClass} ref={labelRef}>
           <input
             type="radio"
+            name={group} //--|🠈 AI Code: Review Please 2026-10-31 · Radios only exclude each other with the same name 🠈|--\\
+            defaultChecked={cases.mark} //--|🠈 Only the first state, the browser keeps it from there 🠈|--\\
             value={style.text}
             className="event"
-            ref={(input) => {
-              //--|🠊 AI Code: Review Please 2026-10-31 · Runs once the radio is on the page: radios only exclude each other with the same name, so the first {option} names its <fieldset> or <form> and the others read it 🠈|--\\
-              let parentElement = input?.closest('fieldset, form') as HTMLElement | null;
-              if (input && parentElement) {
-                if (!parentElement.dataset.group) {
-                  parentElement.dataset.group = `option-${Math.random().toString(36).slice(2, 8)}`; //--|🠈 Six random letters & numbers, so every group gets its own name 🠈|--\\
-                }
-                input.name = parentElement.dataset.group; //--|🠈 No parent, no name: a lone radio needs none 🠈|--\\
-              }
-            }}
             //--|===|--\\
             onChange={onChange}
             //--|===|--\\

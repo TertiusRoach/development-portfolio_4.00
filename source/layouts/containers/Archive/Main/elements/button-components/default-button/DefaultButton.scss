@@ -7,7 +7,6 @@
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
-  mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
   section[class*='main-fore'] {
     @extend %mark-area-desk;
     @extend %mark-disp-desk;
@@ -55,9 +54,30 @@
       }
     }
     fieldset {
-      background: red;
-      grid-area: 4 / 1 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      &[class*='lucid-dark'] {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        grid-area: 4 / 1 / 6 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      height: $high-desk;
+      width: calc($high-desk * 2);
+      @media screen and (max-height: 768px) {
+        height: $test-desk;
+        width: calc($test-desk * 2);
+      }
+      @media screen and (max-height: 480px) {
+        height: $misc-desk;
+        width: calc($misc-desk * 2);
+      }
+      @media screen and (max-height: 360px) {
+        height: $tiny-desk;
+        width: calc($tiny-desk * 2);
       }
     }
     //--|===|--\\
@@ -84,6 +104,36 @@
         / 16px 1fr repeat(2, 3rem) 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
+  figure[class*='main-mid'] {
+    display: none;
+  }
+  div[class*='main-back'] {
+    display: grid;
+    grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
+    grid-template-rows: 1fr;
+
+    .left-side {
+      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
+    }
+    .right-side {
+      grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
+    }
+    grid-template-columns: 1fr calc($high-desk * 2) 1fr; //--|🠈 Width: 1920px 🠈|--\\
+    @media screen and (max-height: 768px) {
+      grid-template-columns: 1fr calc($test-desk * 2) 1fr; //--|🠈 Width: 1366px 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      grid-template-columns: 1fr calc($misc-desk * 2) 1fr; //--|🠈 Width: 854px 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      grid-template-columns: 1fr calc($tiny-desk * 2) 1fr; //--|🠈 Width: 640px 🠈|--\\
+    }
+  }
+  //--|===|--\\
   %mark-area-desk {
     menu {
       z-index: 0;
@@ -93,6 +143,9 @@
       &[class*='lightside'] {
         grid-area: 2 / 4 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       }
+    }
+    div[class*='fullscreen'] {
+      overflow: hidden; //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the scroll views inside, the removed mask-image used to clip them 🠈|--\\
     }
     div[class*='default'] {
       &[class*='darkside'] {
@@ -152,35 +205,6 @@
     }
     div[class*='colourize'] {
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
-    }
-  }
-  //--|===|--\\
-  figure[class*='main-mid'] {
-  }
-  div[class*='main-back'] {
-    display: grid;
-    grid-row: 1 / 2; //--|🠈 row-start row-end 🠈|--\\
-    grid-template-rows: 1fr;
-
-    .left-side {
-      grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
-      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
-    }
-    .right-side {
-      grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
-      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
-    }
-    grid-template-columns: 1fr calc($high-desk * 2) 1fr; //--|🠈 Width: 1920px 🠈|--\\
-    @media screen and (max-height: 768px) {
-      grid-template-columns: 1fr calc($test-desk * 2) 1fr; //--|🠈 Width: 1366px 🠈|--\\
-    }
-    @media screen and (max-height: 480px) {
-      grid-template-columns: 1fr calc($misc-desk * 2) 1fr; //--|🠈 Width: 854px 🠈|--\\
-    }
-    @media screen and (max-height: 360px) {
-      grid-template-columns: 1fr calc($tiny-desk * 2) 1fr; //--|🠈 Width: 640px 🠈|--\\
     }
   }
 }
@@ -250,7 +274,34 @@
         }
       }
     }
-    //--|===|--\\
+    fieldset {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &[class*='darkside'] {
+        margin-left: auto;
+        grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+      &[class*='lightside'] {
+        margin-right: auto;
+        grid-area: 6 / 1 / 8 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      }
+
+      width: $high-mobi;
+      height: $high-mobi;
+      @media screen and (max-width: 768px) {
+        width: $test-mobi;
+        height: $test-mobi;
+      }
+      @media screen and (max-width: 480px) {
+        width: $misc-mobi;
+        height: $misc-mobi;
+      }
+      @media screen and (max-width: 360px) {
+        width: $tiny-mobi;
+        height: $tiny-mobi;
+      }
+    }
 
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
@@ -287,9 +338,41 @@
       }
     }
   }
+  figure[class*='main-mid'] {
+    display: none;
+  }
+  div[class*='main-back'] {
+    display: grid;
+    grid-column: 1 / 2; //--|🠈 col-start col-end 🠈|--\\
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr calc($high-mobi / 2) 1fr; //--|🠈 Height: 1920px 🠈|--\\
+    @media screen and (max-width: 768px) {
+      grid-template-rows: 1fr calc($test-mobi / 2) 1fr; //--|🠈 Height: 1366px 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      grid-template-rows: 1fr calc($misc-mobi / 2) 1fr; //--|🠈 Height: 854px 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      grid-template-rows: 1fr calc($tiny-mobi / 2) 1fr; //--|🠈 Height: 640px 🠈|--\\
+    }
 
+    section[class*='stack'] {
+      &.top-stack {
+        grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
+        background: Palettes.$indexLand-darkMode;
+        mask-image: linear-gradient(to bottom, transparent 0%, black 0px, black calc(100% - 5rem), transparent 100%);
+      }
+      &.bot-stack {
+        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
+        background: Palettes.$indexLand-lightMode;
+        mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black 100%, transparent 100%);
+      }
+    }
+  }
+  //--|===|--\\
   %mark-area-mobi {
-    menu {
+    menu,
+    fieldset {
       z-index: 2;
       &[class*='darkside'] {
         grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -377,37 +460,6 @@
     }
     div[class*='colourize'] {
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
-    }
-  }
-  //--|===|--\\
-  figure[class*='main-mid'] {
-  }
-  div[class*='main-back'] {
-    display: grid;
-    grid-column: 1 / 2; //--|🠈 col-start col-end 🠈|--\\
-    grid-template-columns: 1fr;
-
-    grid-template-rows: 1fr calc($high-mobi / 2) 1fr; //--|🠈 Height: 1920px 🠈|--\\
-    @media screen and (max-width: 768px) {
-      grid-template-rows: 1fr calc($test-mobi / 2) 1fr; //--|🠈 Height: 1366px 🠈|--\\
-    }
-    @media screen and (max-width: 480px) {
-      grid-template-rows: 1fr calc($misc-mobi / 2) 1fr; //--|🠈 Height: 854px 🠈|--\\
-    }
-    @media screen and (max-width: 360px) {
-      grid-template-rows: 1fr calc($tiny-mobi / 2) 1fr; //--|🠈 Height: 640px 🠈|--\\
-    }
-
-    section[class*='stack'] {
-      mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black calc(100% - 5rem), transparent 100%);
-      &.top-stack {
-        grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
-        background: Palettes.$indexLand-darkMode;
-      }
-      &.bot-stack {
-        grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
-        background: Palettes.$indexLand-lightMode;
-      }
     }
   }
 }
