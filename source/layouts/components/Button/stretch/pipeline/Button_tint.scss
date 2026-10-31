@@ -1,0 +1,3036 @@
+//--|🠊 stretch/pipeline/Button_tint.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 11:52 · Copied from <ButtonDefault>, except div[class='text'] has no box (Stretch) 🠈|--\\
+//--|🠊 Visuals: Colors, shadows, gradients & fades 🠈|--\\
+@use 'sass:color';
+@use '../../../../styles/Palettes.scss' as Palettes;
+
+@mixin stretch-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: none;
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+  //--|🠋 Clarity 🠋|--\\
+  //--|🠊 AI Code: Review Please 2026-10-31 🠈|--\\
+  &[class*='_luc_'] {
+    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: only the text & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
+    div[class='icon'],
+    div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+      &::before {
+        opacity: 0; //--|🠈 Completely clear, ::after holds the box (Set in *-tint) 🠈|--\\
+      }
+    }
+  }
+  //--|🠋 Crossfade Layers 🠋|--\\
+  div[class='icon'],
+  div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    /*--|🠋
+      Why: A browser can't fade one gradient into another, it snaps.
+      It can fade opacity. How: ::before holds the resting gradient,
+      ::after the hovered one (Set in *-tint). How: On hover ::before
+      fades out while ::after fades in, so the gradients blend.
+      Fix: Both layers need a background, one layer alone stacks both
+      gradients at the end. Note: Inset shadows live on the layers too,
+      a layer would otherwise cover the element's own inset shadow.
+    🠉|--*/
+    position: relative; //--|🠈 Anchors the layers, no offsets so the grid stays the same 🠈|--\\
+    &::before,
+    &::after {
+      content: '';
+      inset: 0;
+      z-index: -1; //--|🠈 Behind the text & icon, above nothing else 🠈|--\\
+      position: absolute;
+      pointer-events: none;
+      border-radius: inherit; //--|🠈 Follows Button_corn.scss 🠈|--\\
+    }
+    &::after {
+      opacity: 0;
+    }
+  }
+  div[class='text'] {
+    transition: color 500ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    * {
+      transition:
+        color 500ms $tint-fade,
+        text-shadow 500ms $tint-fade;
+    }
+    span {
+      //--|🠊 Outline: Hidden until the button is hovered (See *-fade) 🠈|--\\
+      //--|🠊 em: Scales with the font-size (0.25em = a quarter of the letter height) 🠈|--\\
+      //--|🠊 px: A fixed size, it would need a new value for every <h1>-<p> breakpoint 🠈|--\\
+      text-shadow:
+        0 0 0.04em transparent,
+        0 0 0.25em transparent;
+    }
+  }
+  div[class='icon'] {
+    &::before,
+    &::after {
+      transition: opacity 250ms $tint-fade;
+    }
+    img {
+      transition: background 250ms $tint-fade;
+    }
+  }
+  div[class='back'] {
+    &::before,
+    &::after {
+      transition: opacity 750ms $tint-fade;
+    }
+  }
+
+  //--|🠊 Edge Cases 🠈|--\\
+  &[class*='_str'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    div[class='icon'] {
+      //--|🠊 Hides the alt text: <img> has no src (only a mask), so it would print 'icon' inside the mask 🠈|--\\
+      color: rgba(gray, 0);
+    }
+  }
+  //--|🠊 Pictures: .png & .jpg get a src and show themselves, .svg stays a tinted silhouette 🠈|--\\
+  div[class='icon'] img[src] {
+    background: none;
+  }
+
+  &:hover {
+    /*--|🠋
+    Glitch Prevention: Disabled, transform never changes & GPU layers
+    on every <button> cost memory
+    Re-enable if a flicker or 1px wobble shows up at the end of a hover
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    🠉|-- */
+    div[class='icon'],
+    div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+      &::before {
+        opacity: 0;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+    @include mon-fade();
+    @include red-fade();
+    @include gre-fade();
+    @include blu-fade();
+    @include pur-fade();
+    @include ora-fade();
+    @include pin-fade();
+    @include yel-fade();
+    @include bro-fade();
+    @include tur-fade();
+    div[class='icon'] img[src] {
+      background: none; //--|🠈 Keeps the picture clear of the hovered tint 🠈|--\\
+    }
+  }
+}
+//--|===|--\\
+@mixin desktop-tint {
+  //--|🠋 Desktop (Tint) 🠋|--\\
+  /*--|🠋
+    Colours don't change between screens, so every tint lives in
+    stretch-colors. Kept empty so every pipeline file has the same shape.
+  🠉|--*/
+}
+@mixin mobile-tint {
+  //--|🠋 Mobile (Tint) 🠋|--\\
+  /*--|🠋
+    Colours don't change between screens, so every tint lives in
+    stretch-colors. Kept empty so every pipeline file has the same shape.
+  🠉|--*/
+}
+@mixin tablet-tint {
+  //--|🠋 Tablet (Tint) 🠋|--\\
+  /*--|🠋
+    Colours don't change between screens, so every tint lives in
+    stretch-colors. Kept empty so every pipeline file has the same shape.
+  🠉|--*/
+}
+//--|===|--\\
+@mixin mon-tint {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$gray-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$gray-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$gray-medium, 0.1) 0%,
+              rgba(Palettes.$gray-medium, 0) 70%,
+              rgba(Palettes.$gray-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin mon-fade {
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_mon']:where(:not(.highlight)),
+    &[class*='lig_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_mon']:where(:not(.highlight)),
+    &[class*='dar_mon']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin red-tint {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        img {
+          background: Palettes.$red-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(closest-side, rgba(Palettes.$red-medium, 0.1) 0%, rgba(Palettes.$red-medium, 0) 70%, rgba(Palettes.$red-medium, 0) 100%);
+        }
+        img {
+          background: Palettes.$red-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$red-medium, 0.1) 0%,
+              rgba(Palettes.$red-medium, 0) 70%,
+              rgba(Palettes.$red-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$red-medium, 0.1) 0%,
+              rgba(Palettes.$red-medium, 0) 70%,
+              rgba(Palettes.$red-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin red-fade {
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_red']:where(:not(.highlight)),
+    &[class*='lig_red']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_red']:where(:not(.highlight)),
+    &[class*='dar_red']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin gre-tint {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$green-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$green-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$green-medium, 0.1) 0%,
+              rgba(Palettes.$green-medium, 0) 70%,
+              rgba(Palettes.$green-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin gre-fade {
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_gre']:where(:not(.highlight)),
+    &[class*='lig_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_gre']:where(:not(.highlight)),
+    &[class*='dar_gre']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin blu-tint {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$blue-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$blue-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$blue-medium, 0.1) 0%,
+              rgba(Palettes.$blue-medium, 0) 70%,
+              rgba(Palettes.$blue-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin blu-fade {
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_blu']:where(:not(.highlight)),
+    &[class*='lig_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_blu']:where(:not(.highlight)),
+    &[class*='dar_blu']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin pur-tint {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$purple-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$purple-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$purple-medium, 0.1) 0%,
+              rgba(Palettes.$purple-medium, 0) 70%,
+              rgba(Palettes.$purple-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin pur-fade {
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pur']:where(:not(.highlight)),
+    &[class*='lig_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pur']:where(:not(.highlight)),
+    &[class*='dar_pur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin ora-tint {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$orange-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$orange-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$orange-medium, 0.1) 0%,
+              rgba(Palettes.$orange-medium, 0) 70%,
+              rgba(Palettes.$orange-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin ora-fade {
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_ora']:where(:not(.highlight)),
+    &[class*='lig_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_ora']:where(:not(.highlight)),
+    &[class*='dar_ora']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin pin-tint {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$pink-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$pink-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$pink-medium, 0.1) 0%,
+              rgba(Palettes.$pink-medium, 0) 70%,
+              rgba(Palettes.$pink-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin pin-fade {
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_pin']:where(:not(.highlight)),
+    &[class*='lig_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_pin']:where(:not(.highlight)),
+    &[class*='dar_pin']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin yel-tint {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$yellow-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$yellow-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$yellow-medium, 0.1) 0%,
+              rgba(Palettes.$yellow-medium, 0) 70%,
+              rgba(Palettes.$yellow-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin yel-fade {
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_yel']:where(:not(.highlight)),
+    &[class*='lig_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_yel']:where(:not(.highlight)),
+    &[class*='dar_yel']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin bro-tint {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$brown-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$brown-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$brown-medium, 0.1) 0%,
+              rgba(Palettes.$brown-medium, 0) 70%,
+              rgba(Palettes.$brown-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin bro-fade {
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_bro']:where(:not(.highlight)),
+    &[class*='lig_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_bro']:where(:not(.highlight)),
+    &[class*='dar_bro']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}
+
+@mixin tur-tint {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
+  $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$turquoise-light;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+    //--|🠊 Light Shade 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar;
+      }
+      div[class='icon'] {
+        &::before {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: Palettes.$turquoise-dark;
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+        &::after {
+          background:
+            linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#000, 0.34) 0%, rgba(#000, 0.18) 45%, rgba(#000, 0) 78%, rgba(#000, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+          box-shadow:
+            inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
+            inset 0 -1px 0 rgba(#000, 0.35),
+            inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        span {
+          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+      }
+      div[class='icon'] {
+        &::after {
+          background:
+            radial-gradient(closest-side, rgba(#fff, 0.26) 0%, rgba(#fff, 0.14) 45%, rgba(#fff, 0) 78%, rgba(#fff, 0) 100%),
+            radial-gradient(
+              closest-side,
+              rgba(Palettes.$turquoise-medium, 0.1) 0%,
+              rgba(Palettes.$turquoise-medium, 0) 70%,
+              rgba(Palettes.$turquoise-medium, 0) 100%
+            );
+        }
+        img {
+          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+        }
+      }
+      div[class='back'] {
+        &::after {
+          background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+          box-shadow:
+            inset 0 1px 0 rgba(#fff, 0.22),
+            inset 0 -1px 0 rgba(#000, 0.25),
+            inset 0 0 0 1px rgba(#000, 0.1);
+        }
+      }
+    }
+  }
+}
+@mixin tur-fade {
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+
+  &[class*='_luc_'] {
+    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($blaDar, 0),
+              0 0 0.25em rgba($blaDar, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-dark;
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.04em rgba($neoLig, 0),
+              0 0 0.25em rgba($neoLig, 0);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-light;
+        }
+      }
+    }
+  }
+  &[class*='_opa_'] {
+    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='dar_tur']:where(:not(.highlight)),
+    &[class*='lig_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $blaDar,
+            0 0 0.25em rgba($blaDar, 0.6);
+        }
+        *:hover {
+          color: $blaDar;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+              0 0 0.04em $neoLig,
+              0 0 0.25em rgba($neoLig, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+    //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
+    &[class*='lig_tur']:where(:not(.highlight)),
+    &[class*='dar_tur']:where(.highlight) {
+      div[class='text'] {
+        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        span {
+          text-shadow:
+            0 0 0.04em $neoLig,
+            0 0 0.25em rgba($neoLig, 0.6);
+        }
+        *:hover {
+          color: $neoLig;
+          span {
+            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+              0 0 0.04em $blaDar,
+              0 0 0.25em rgba($blaDar, 0.6);
+          }
+        }
+      }
+      div[class='icon'] {
+        img {
+          background: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+        }
+      }
+    }
+  }
+}

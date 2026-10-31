@@ -409,17 +409,16 @@ The UI system. This is where the application becomes readable. The split between
 | ------------- | ------------------------------------------------------ |
 | `Article/`    | `loading` · `updates`                                  |
 | `Aside/`      | `characters`                                           |
-| `Button/`     | `default` · `profile` · `routing`                      |
+| `Button/`     | `default` · `profile` · `routing` · `stretch`          |
 | `Division/`   | `conveyor` · `fullscreen` · `sweeping` · `testing`     |
 | `Fieldset/`   | `code`                                                 |
 | `Figure/`     | `default` · `loading` · `rotation`                     |
 | `Form/`       | `login` · `password` · `register` · `reset` · `verify` |
 | `Label/`      | `toggle`                                               |
-| `List/`       | `countdown` · `scrolling`                              |
+| `List/`       | `countdown`                                            |
 | `Menu/`       | `scroll` · `select` · `swipe` · `toggle`               |
 | `Navigation/` | `default`                                              |
 | `Section/`    | `characters` · `demonstration`                         |
-| `Span/`       | `scrolling`                                            |
 | `Table/`      | `clocking` · `tracking`                                |
 | `Time/`       | `clock` · `date`                                       |
 

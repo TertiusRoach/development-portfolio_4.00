@@ -7,9 +7,9 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 
 //--|🠋 Elements 🠋|--\\
 import DefaultButton from './default-button/DefaultButton';
+import StretchButton from './stretch-button/StretchButton';
 import RoutingButton from './routing-button/RoutingButton';
 import ProfileButton from './profile-button/ProfileButton';
-import StretchButton from './stretch-button/StretchButton';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen } from '../../../../../../scripts'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
@@ -62,10 +62,11 @@ const ButtonComponents: React.FC<InfoProps> = ({ info }) => {
   return (
     <>
       <DefaultButton info={{ labelName: 'default' as string, pageName: pageName, blockName: blockName }} />
+      {/*--|🠊 AI Code: Review Please 2026-10-31 11:32 🠈|--*/}
+      <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} />
       <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
       <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} />
       {/* <CleanedButton info={{ labelName: 'cleaned' as string, pageName: pageName, blockName: blockName }} /> */}
-      {/* <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} /> */}
     </>
   );
 };

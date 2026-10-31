@@ -34,6 +34,7 @@ How code is written in this repository. Every rule here exists because breaking 
 ### Deliberate Choices
 
 - **`<ButtonDefault>` text hover.** The background changes shade when you hover the button, but the text colour only flips when the cursor is on the text itself (`div[class='text'] *:hover`). It's snappy on purpose and part of the project's identity. Improve the contrast in the in-between state if needed; never "fix" the behaviour.
+- **`<ButtonStretch>` is sharp and boxless.** No corner radii and no box around the text, only the back, stretched across the whole button. It's a design option next to `<ButtonDefault>`, not an unfinished copy (see [Component Anatomy](#4-component-anatomy)).
 
 ---
 
@@ -154,7 +155,7 @@ components/Button/default/
     └── Button_corn.scss        # Corner radii and border widths
 ```
 
-`<ButtonDefault>`, `<ButtonProfile>` and `<ButtonRouting>` are written the same way, line for line. When they disagree, `<ButtonDefault>` is the baseline (see [The Philosophy](#1-the-philosophy), point 9).
+`<ButtonDefault>`, `<ButtonStretch>`, `<ButtonRouting>` and `<ButtonProfile>` are written the same way, line for line. `<ButtonStretch>` started as an exact copy of `<ButtonDefault>` with only the names changed (`stretch-button`, `stretch-*` mixins, `_str`), so the two read side by side. It differs on purpose in three places, and each file's header says so: in `Button_grid.scss`, `div[class='back']` fills the whole grid in every view (`1 / 1 / last row line / last column line`) while the text and icon keep `<ButtonDefault>`'s areas; `Button_corn.scss` is empty, because its corners are sharp; and in `Button_tint.scss`, `div[class='text']` has no box (`::before`/`::after`), because the stretched back already is the box. When they disagree anywhere else, `<ButtonDefault>` is the baseline (see [The Philosophy](#1-the-philosophy), point 9).
 
 The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`) use a shorter pipeline: `Label_flex.scss`, `Label_size.scss` and `Label_tint.scss`. They have no grid or corners of their own, and their flex and tint never change per screen, so those two files only hold the global `*-flexbox` and `*-colors` mixins. Only `*_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`. Inside every mixin, each case sits under its own `&[class*='switching-toggle']`, so one look per case stays readable. `<LabelTextarea>`'s three cases share one set of tints, because `{text}`, `{input}` and `{block}` look the same; `[class='event']` matches the `<input>` and the `<textarea>`.
 
@@ -406,6 +407,7 @@ For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an ima
 | Variant           | `.svg`             | `.png` / `.jpg`                  | No image        |
 | ----------------- | ------------------ | -------------------------------- | --------------- |
 | `<ButtonDefault>` | `_def`, silhouette | `_def`, the picture              | `_alt`, no icon |
+| `<ButtonStretch>` | `_str`, silhouette | `_str`, the picture              | `_alt`, no icon |
 | `<ButtonRouting>` | `_rou`, silhouette | `_alt`, picture fills the square | `_alt`, empty   |
 | `<ButtonProfile>` | `_alt`, silhouette | `_pro`, the picture              | `_pro`, empty   |
 

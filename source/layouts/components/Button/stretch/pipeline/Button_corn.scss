@@ -1,0 +1,29 @@
+//--|🠊 stretch/pipeline/Button_corn.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 11:52 · Copied from <ButtonDefault>, then emptied: <ButtonStretch> has sharp corners 🠈|--\\
+@mixin desktop-corn {
+  //--|🠋 Desktop (Corners) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-31 11:52 · <ButtonStretch> has sharp corners, a design option,
+    so it needs no radii. <ButtonDefault> uses this file to round its text, icon and back.
+  🠉|--*/
+}
+@mixin mobile-corn {
+  //--|🠋 Mobile (Corners) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-31 11:52 · <ButtonStretch> has sharp corners, a design option,
+    so it needs no radii. <ButtonDefault> uses this file to round its text, icon and back.
+  🠉|--*/
+}
+@mixin tablet-corn {
+  //--|🠋 Tablet (Corners) 🠋|--\\
+  /*--|🠋
+    AI Code: Review Please 2026-10-31 11:52 · <ButtonStretch> has sharp corners, a design option,
+    so it needs no radii. <ButtonDefault> uses this file to round its text, icon and back.
+  🠉|--*/
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+  }
+}

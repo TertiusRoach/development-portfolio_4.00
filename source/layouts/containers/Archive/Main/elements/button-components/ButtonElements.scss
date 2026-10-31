@@ -2,9 +2,9 @@
 @use '../../../../../styles/Palettes.scss';
 
 @use './default-button/DefaultButton.scss';
+@use './stretch-button/StretchButton.scss';
 @use './routing-button/RoutingButton.scss';
 @use './profile-button/ProfileButton.scss';
-@use './stretch-button/StretchButton.scss';
 
 section[class*='button-main'] {
   div[class*='fullscreen'] {
@@ -14,28 +14,28 @@ section[class*='button-main'] {
           &[class*='default'] {
             @include DefaultButton.desktop-landscape;
           }
+          &[class*='stretch'] {
+            @include StretchButton.desktop-landscape;
+          }
           &[class*='routing'] {
             @include RoutingButton.desktop-landscape;
           }
           &[class*='profile'] {
             @include ProfileButton.desktop-landscape;
           }
-          &[class*='stretch'] {
-            @include StretchButton.desktop-landscape;
-          }
         }
         @media screen and (orientation: portrait) {
           &[class*='default'] {
             @include DefaultButton.mobile-portrait;
+          }
+          &[class*='stretch'] {
+            @include StretchButton.mobile-portrait;
           }
           &[class*='routing'] {
             @include RoutingButton.mobile-portrait;
           }
           &[class*='profile'] {
             @include ProfileButton.mobile-portrait;
-          }
-          &[class*='stretch'] {
-            @include StretchButton.mobile-portrait;
           }
         }
       }
