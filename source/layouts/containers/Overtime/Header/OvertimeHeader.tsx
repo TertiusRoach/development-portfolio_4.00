@@ -124,7 +124,7 @@ function OvertimeHeader({ info }: InfoProps) {
               info={{
                 pageName: pageName,
                 blockName: blockName,
-                labelName: labelName,
+                labelName: 'demonstration',
               }}
               style={{
                 size: '<h3>',

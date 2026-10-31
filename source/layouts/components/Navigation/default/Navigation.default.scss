@@ -95,9 +95,7 @@
   //--|===|--\\
   ul[class*='vert-Y'] {
     li[class='top-lef'] {
-      transition:
-        transform 250ms ease-in-out,
-        opacity 250ms ease-in-out; //--|🠈 On the normal state, so it animates out and back in 🠈|--\\
+      transition: transform 250ms ease-in-out; //--|🠈 On the normal state, so it animates out and back in 🠈|--\\
       transform-origin: top left; //--|🠈 Shrinks into the top-lef corner 🠈|--\\
       header[class*='expanded'] & {
         transform: scale(0);
@@ -200,6 +198,18 @@
   }
   //--|===|--\\
   @extend %mobi-grid;
+  //--|===|--\\
+  //--|🠊 AI Code: Review Please 2026-10-31 13:52 🠈|--\\
+  ul[class*='vert-Y'] {
+    li[class='bot-rig'] {
+      transition: transform 250ms ease-in-out; //--|🠈 On the normal state, so it animates out and back in 🠈|--\\
+      transform-origin: bottom right; //--|🠈 Shrinks into the bot-rig corner 🠈|--\\
+      footer[class*='expanded'] & {
+        transform: scale(0);
+        pointer-events: none; //--|🠈 A hidden button can't be clicked 🠈|--\\
+      }
+    }
+  }
 }
 @mixin tablet-squaring {
   //--|🠋 Tablet (Navigation) 🠋|--\\

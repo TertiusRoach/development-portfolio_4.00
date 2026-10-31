@@ -37,19 +37,16 @@ function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.style.opacity = '0';
-      demoCard.style.filter = 'blur(8px)';
-      demoCard.style.transition = 'filter 250ms, opacity 750ms';
+      demoCard.classList.add('dimmed'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
+      blockViews(thisItem, pageName, 'header', 'squaring');
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.style.opacity = '1';
-      demoCard.style.filter = 'blur(0)';
-      demoCard.style.transition = 'filter 750ms, opacity 250ms';
+      demoCard.classList.remove('dimmed'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;
@@ -57,7 +54,6 @@ function previewProfile(
 }
 const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
-  /* Where's the container functions? */
 };
 let sequencedDemonstration = (profile: string): string => {
   switch (profile) {

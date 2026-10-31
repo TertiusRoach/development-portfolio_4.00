@@ -156,7 +156,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-left-',
-                  color: '(green)',
+                  color: '(mono)',
                   shade: '~dark~',
                   clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
@@ -176,7 +176,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-right-',
-                  color: '(green)',
+                  color: '(mono)',
                   shade: '~light~',
                   clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
