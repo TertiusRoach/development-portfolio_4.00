@@ -22,9 +22,6 @@ export interface TheseProps {
   cases: {
     type: '{select}' | '{combo}' | '{number}';
     list?: Array<string>; //--|🠈 {select} & {combo}: the choices 🠈|--\\
-    min?: number; //--|🠈 {number} only 🠈|--\\
-    max?: number; //--|🠈 {number} only 🠈|--\\
-    step?: number; //--|🠈 {number} only 🠈|--\\
   };
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   /*
@@ -49,97 +46,90 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
   const listId = useId(); //--|🠈 {combo}: a <datalist> only links by id, and labelName repeats, so React makes one per instance 🠈|--\\
   let labelClass: string = `${info.labelName}-${info.blockName}_selection-${stripBrackets(cases.type, '{}')} ${createClass(style, cases)}`;
   switch (cases.type) {
-    case '{select}':
-      return caseSelect(labelClass, cases, pointerRef, onChange);
-    case '{combo}':
-      return caseCombo(labelClass, style, cases, listId, onChange);
-    case '{number}':
-      return caseNumber(labelClass, style, cases, numberRef, onChange);
+    case '{select}': {
+      //--|🠊 {select}: the browser's own list, with a caret 🠈|--\\
+      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as <MenuSwipe> & <MenuScroll> 🠈|--\\
+      return (
+        <label className={labelClass}>
+          <select
+            className="event"
+            //--|===|--\\
+            onChange={onChange}
+            onMouseDown={() => (pointerRef.current = true)} //--|🠈 Runs before onFocus, so a click is never mistaken for the keyboard 🠈|--\\
+            onFocus={(event) => markKeyboard(event, pointerRef)}
+            onBlur={(event) => clearKeyboard(event, pointerRef)}
+          >
+            {(cases.list ?? []).map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+          {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
+          <span className="arrow" style={{ maskImage: `url(${caretImage})`, WebkitMaskImage: `url(${caretImage})` }}></span>
+        </label>
+      );
+    }
+    case '{combo}': {
+      //--|🠊 {combo}: type anything, or pick from the list 🠈|--\\
+      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as {select} 🠈|--\\
+      return (
+        <label className={labelClass}>
+          <input
+            type="text"
+            list={listId}
+            className="event"
+            placeholder={style.text}
+            //--|===|--\\
+            onChange={onChange}
+          />
+          <datalist id={listId}>
+            {(cases.list ?? []).map((item) => (
+              <option key={item} value={item}></option>
+            ))}
+          </datalist>
+          {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
+          <span className="arrow" style={{ maskImage: `url(${caretImage})`, WebkitMaskImage: `url(${caretImage})` }}></span>
+        </label>
+      );
+    }
+    case '{number}': {
+      //--|🠊 {number}: a count from 1 to 9999 with its own up & down carets, the browser's step of 1 counts 1 2 3 4 5 🠈|--\\
+      let upImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up');
+      let downImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down');
+      return (
+        <label className={labelClass}>
+          <input
+            type="number"
+            className="event"
+            ref={numberRef}
+            min={1}
+            max={9999} //--|🠈 Four digits, the same 0000 the width fits 🠈|--\\
+            defaultValue={1} //--|🠈 Only the first value, the browser keeps it from there 🠈|--\\
+            placeholder={style.text}
+            //--|===|--\\
+            onPaste={(event) => pasteNumber(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            onChange={(event) => limitNumber(event, onChange)} //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+            onKeyDown={(event) => blockCharacters(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+          />
+          {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
+          <span
+            className="up"
+            style={{ maskImage: `url(${upImage})`, WebkitMaskImage: `url(${upImage})` }}
+            //--|===|--\\
+            onClick={() => stepNumber(numberRef.current, 'up')}
+          ></span>
+          <span
+            className="down"
+            style={{ maskImage: `url(${downImage})`, WebkitMaskImage: `url(${downImage})` }}
+            //--|===|--\\
+            onClick={() => stepNumber(numberRef.current, 'down')}
+          ></span>
+        </label>
+      );
+    }
   }
 }
-//--|🠋 Cases 🠋|--\\
-const caseSelect = (labelClass: string, cases: TheseProps['cases'], pointerRef: React.MutableRefObject<boolean>, onChange: TheseProps['onChange']) => {
-  //--|🠊 {select}: the browser's own list, with a caret 🠈|--\\
-  let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as <MenuSwipe> & <MenuScroll> 🠈|--\\
-  return (
-    <label className={labelClass}>
-      <select
-        className="event"
-        //--|===|--\\
-        onChange={onChange}
-        onMouseDown={() => (pointerRef.current = true)} //--|🠈 Runs before onFocus, so a click is never mistaken for the keyboard 🠈|--\\
-        onFocus={(event) => markKeyboard(event, pointerRef)}
-        onBlur={(event) => clearKeyboard(event, pointerRef)}
-      >
-        {(cases.list ?? []).map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
-      {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
-      <span className="arrow" style={{ maskImage: `url(${caretImage})`, WebkitMaskImage: `url(${caretImage})` }}></span>
-    </label>
-  );
-};
-const caseCombo = (labelClass: string, style: TheseProps['style'], cases: TheseProps['cases'], listId: string, onChange: TheseProps['onChange']) => {
-  //--|🠊 {combo}: type anything, or pick from the list 🠈|--\\
-  let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as {select} 🠈|--\\
-  return (
-    <label className={labelClass}>
-      <input
-        type="text"
-        list={listId}
-        className="event"
-        placeholder={style.text}
-        //--|===|--\\
-        onChange={onChange}
-      />
-      <datalist id={listId}>
-        {(cases.list ?? []).map((item) => (
-          <option key={item} value={item}></option>
-        ))}
-      </datalist>
-      {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
-      <span className="arrow" style={{ maskImage: `url(${caretImage})`, WebkitMaskImage: `url(${caretImage})` }}></span>
-    </label>
-  );
-};
-const caseNumber = (labelClass: string, style: TheseProps['style'], cases: TheseProps['cases'], numberRef: React.RefObject<HTMLInputElement>, onChange: TheseProps['onChange']) => {
-  //--|🠊 {number}: a number with its own up & down carets 🠈|--\\
-  let upImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up');
-  let downImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down');
-  return (
-    <label className={labelClass}>
-      <input
-        type="number"
-        className="event"
-        ref={numberRef}
-        min={cases.min}
-        max={cases.max}
-        step={cases.step}
-        placeholder={style.text}
-        //--|===|--\\
-        onPaste={(event) => pasteNumber(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-        onChange={onChange}
-        onKeyDown={(event) => blockCharacters(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-      />
-      {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
-      <span
-        className="up"
-        style={{ maskImage: `url(${upImage})`, WebkitMaskImage: `url(${upImage})` }}
-        //--|===|--\\
-        onClick={() => stepNumber(numberRef.current, 'up')}
-      ></span>
-      <span
-        className="down"
-        style={{ maskImage: `url(${downImage})`, WebkitMaskImage: `url(${downImage})` }}
-        //--|===|--\\
-        onClick={() => stepNumber(numberRef.current, 'down')}
-      ></span>
-    </label>
-  );
-};
 //--|🠋 Select 🠋|--\\
 const markKeyboard = (event: React.FocusEvent<HTMLSelectElement>, pointerRef: React.MutableRefObject<boolean>): void => {
   //--|🠊 Chrome counts a clicked <select> as :focus-visible, so the script tells the keyboard from the mouse itself 🠈|--\\
@@ -166,15 +156,23 @@ const stepNumber = (input: HTMLInputElement | null, direction: 'up' | 'down'): v
   input.dispatchEvent(new Event('input', { bubbles: true })); //--|🠈 Stepping fires no event on its own, this lets onChange hear it 🠈|--\\
 };
 const blockCharacters = (event: React.KeyboardEvent<HTMLInputElement>): void => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · Only numbers and the symbols a number uses (+ - .): no letters (Chrome lets 'e' & 'E' through for exponents) and no other special characters 🠈|--\\
-  if (event.key.length === 1 && /[^0-9+\-.]/.test(event.key) && !event.ctrlKey && !event.metaKey) {
+  //--|🠊 AI Code: Review Please 2026-10-31 · Only the digits 0 to 9: no letters (Chrome lets 'e' & 'E' through for exponents), no + - . and no other special characters 🠈|--\\
+  if (event.key.length === 1 && /[^0-9]/.test(event.key) && !event.ctrlKey && !event.metaKey) {
     event.preventDefault(); //--|🠈 Ctrl/⌘ shortcuts (copy, paste, select all) still work; Backspace, arrows & Tab are longer than one character 🠈|--\\
   }
 };
 const pasteNumber = (event: React.ClipboardEvent<HTMLInputElement>): void => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · A pasted value with anything but numbers and + - . in it is refused 🠈|--\\
-  if (/[^0-9+\-.]/.test(event.clipboardData.getData('text').trim())) {
+  //--|🠊 AI Code: Review Please 2026-10-31 · A pasted value with anything but the digits 0 to 9 in it is refused 🠈|--\\
+  if (/[^0-9]/.test(event.clipboardData.getData('text').trim())) {
     event.preventDefault();
   }
+};
+const limitNumber = (event: React.ChangeEvent<HTMLInputElement>, onChange: TheseProps['onChange']): void => {
+  //--|🠊 AI Code: Review Please 2026-10-31 · max only stops the carets, so a typed or pasted count is trimmed to 1 – 9999 here: no leading 0, no fifth digit 🠈|--\\
+  let trimmed: string = event.target.value.replace(/^0+/, '').slice(0, 4);
+  if (trimmed !== event.target.value) {
+    event.target.value = trimmed;
+  }
+  onChange?.(event); //--|🠈 The parent hears the trimmed value 🠈|--\\
 };
 export default LabelSelection;

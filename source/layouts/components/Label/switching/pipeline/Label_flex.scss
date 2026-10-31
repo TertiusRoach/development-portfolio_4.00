@@ -59,20 +59,13 @@
       opacity: 0;
       position: absolute;
       pointer-events: none;
-      //--|🠊 The browser keeps the state, the marks only follow it 🠈|--\\
+      //--|🠊 The browser keeps the state, the tick only follows it 🠈|--\\
       &:checked ~ span[class='check'] {
         opacity: 1;
       }
-      &:indeterminate ~ span[class='check'] {
-        opacity: 0; //--|🠈 Partly ticked wins over ticked 🠈|--\\
-      }
-      &:indeterminate ~ span[class='minus'] {
-        opacity: 1;
-      }
     }
-    span[class='check'],
-    span[class='minus'] {
-      //--|🠊 Font Awesome check & minus, painted in the tint like a <ButtonDefault> silhouette 🠈|--\\
+    span[class='check'] {
+      //--|🠊 Font Awesome check, painted in the tint like a <ButtonDefault> silhouette 🠈|--\\
       inset: 0;
       margin: auto; //--|🠈 Centres the mark in the square 🠈|--\\
       opacity: 0;
@@ -105,47 +98,6 @@
       &::after {
         content: '';
         position: absolute;
-        border-radius: 50%;
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠋 Global (Flex) 🠋|--\\
-    width: 75%; //--|🠈 Three quarters of its parent container 🠈|--\\
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    input[class='event'] {
-      width: 100%;
-      margin: 0;
-      appearance: none; //--|🠈 The <label> draws the track, the thumbs below draw the knob 🠈|--\\
-      cursor: pointer;
-      background: none;
-      &:focus {
-        outline-style: none; //--|🠈 The colour flip shows the focus instead 🠈|--\\
-      }
-      /*--|🠋
-        Can't be matched without a script: a filled part left of the knob.
-        Chrome only draws one from a CSS variable a script would have to set
-        inline, so the knob's position alone shows the value.
-      🠉|--*/
-      &::-webkit-slider-runnable-track {
-        height: 100%;
-        background: none;
-      }
-      &::-moz-range-track {
-        height: 100%;
-        background: none;
-      }
-      //--|🠊 The same knob twice: one invalid selector would drop a shared rule, so Chrome & Firefox each get their own 🠈|--\\
-      &::-webkit-slider-thumb {
-        appearance: none;
-        border-style: none;
-        border-radius: 50%;
-      }
-      &::-moz-range-thumb {
-        border-style: none;
         border-radius: 50%;
       }
     }

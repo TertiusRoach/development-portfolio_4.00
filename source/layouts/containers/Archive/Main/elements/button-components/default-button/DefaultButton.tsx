@@ -5,14 +5,13 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Components 🠋|--\\
 import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
 import ButtonDefault from '../../../../../../components/Button/default/Button.default';
+import LabelSwitching from '../../../../../../components/Label/switching/Label.switching';
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
 import copyCode, { toggleColors } from './DefaultFunctions';
 import { checkScreen, loadAsset } from '../../../../../../../scripts';
-
-//--|🠋 Styles 🠋|--\\
 
 interface InfoProps {
   info: {
@@ -33,35 +32,18 @@ function DefaultButton({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let casesShow = 3 as number;
+  let startingPreview = 3 as number;
   let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;
   switch (getOrientation) {
     case 'landscape':
       return (
         <aside className="default-button">
           <section className={`${blockName}-foreground`}>
-            <MenuScroll
-              //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
-              info={{
-                labelName: 'default-darkside',
-                blockName: blockName as 'main',
-                pageName: pageName as 'components',
-              }}
-              style={{
-                view: '-def-',
-                color: '(mono)',
-                shade: '~dark~',
-              }}
-              cases={{
-                axis: '[y]',
-                titles: casesPages as Array<string>,
-              }}
-            />
             <DivisionFullscreen
               //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
+                show: startingPreview as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -79,6 +61,42 @@ function DefaultButton({ info }: InfoProps) {
                 */
               }}
             />
+            <MenuScroll
+              //--|🠊 <menu class="default-darkside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-darkside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                view: '-def-',
+                color: '(mono)',
+                shade: '~dark~',
+              }}
+              cases={{
+                axis: '[y]',
+                titles: casesPages as Array<string>,
+              }}
+            />
+            <fieldset className="clarify-darkside">
+              <LabelSwitching
+                cases={{
+                  // mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid Dark', //--|🠈 {option}: the value, read aloud 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-dark',
+                }}
+              />
+            </fieldset>
 
             <DivisionColourize
               info={{
@@ -94,28 +112,11 @@ function DefaultButton({ info }: InfoProps) {
               }}
             />
 
-            <MenuScroll
-              //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
-              info={{
-                labelName: 'default-lightside',
-                blockName: blockName as 'main',
-                pageName: pageName as 'components',
-              }}
-              style={{
-                view: '-def-',
-                color: '(mono)',
-                shade: '~light~',
-              }}
-              cases={{
-                axis: '[y]',
-                titles: casesPages as Array<string>,
-              }}
-            />
             <DivisionFullscreen
               //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
+                show: startingPreview as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -133,6 +134,24 @@ function DefaultButton({ info }: InfoProps) {
                 */
               }}
             />
+            <MenuScroll
+              //--|🠊 <menu class="default-lightside-main_swipe-default"/> 🠈|--\\
+              info={{
+                labelName: 'default-lightside',
+                blockName: blockName as 'main',
+                pageName: pageName as 'components',
+              }}
+              style={{
+                view: '-def-',
+                color: '(mono)',
+                shade: '~light~',
+              }}
+              cases={{
+                axis: '[y]',
+                titles: casesPages as Array<string>,
+              }}
+            />
+            <fieldset className="clarify-lightside"></fieldset>
           </section>
           <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}>
@@ -166,7 +185,7 @@ function DefaultButton({ info }: InfoProps) {
               //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
+                show: startingPreview as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -220,7 +239,7 @@ function DefaultButton({ info }: InfoProps) {
               //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: casesShow as number,
+                show: startingPreview as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{

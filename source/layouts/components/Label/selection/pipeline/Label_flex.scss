@@ -112,13 +112,14 @@
   }
   &[class*='selection-number'] {
     //--|🠋 Global (Flex) 🠋|--\\
-    width: 75%; //--|🠈 Three quarters of its parent container 🠈|--\\
+    width: fit-content; //--|🠈 Wraps the <input>, so the count sets the width 🠈|--\\
     display: flex;
     position: relative;
     align-items: center;
     justify-content: center;
     input[class='event'] {
-      width: 100%;
+      width: 4ch; //--|🠈 AI Code: Review Please 2026-10-31 · Fits 0000: 1ch is one 0 at this font, so it follows every size step 🠈|--\\
+      box-sizing: content-box; //--|🠈 The padding for the text & carets sits outside the 4ch 🠈|--\\
       appearance: none;
       cursor: text;
       font-family: inherit;

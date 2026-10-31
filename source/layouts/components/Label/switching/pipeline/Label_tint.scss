@@ -106,8 +106,7 @@
       opacity: 0;
       transition: opacity 750ms $tint-fade;
     }
-    span[class='check'],
-    span[class='minus'] {
+    span[class='check'] {
       transition:
         opacity 250ms $tint-fade,
         background-color 250ms $tint-fade;
@@ -132,52 +131,6 @@
         box-shadow 250ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-30 · The ⟨opaque⟩ frame flips with the track 🠈|--\\
       &::after {
         transition: transform 250ms $tint-fade;
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠋 Crossfade Layers 🠋|--\\
-    /*--|🠋
-      Why: A browser can't fade one gradient into another, it snaps.
-      It can fade opacity. How: ::before holds the resting gradient,
-      ::after the flipped one (Set in *-tint). On hover or focus ::before
-      fades out while ::after fades in, so the gradients blend, like <Button>.
-      Note: An <input> can't hold ::before or ::after, so the <label> carries
-      both layers and the <input> stays see-through on top of them.
-    🠉|--*/
-    isolation: isolate; //--|🠈 Keeps the z-index: -1 layers above the parent, behind the <input> 🠈|--\\
-    &::before,
-    &::after {
-      content: '';
-      inset: 0;
-      z-index: -1;
-      position: absolute;
-      pointer-events: none;
-      border-radius: inherit; //--|🠈 Follows the size steps 🠈|--\\
-    }
-    &::before {
-      transition: opacity 750ms $tint-fade;
-    }
-    &::after {
-      opacity: 0;
-      transition: opacity 750ms $tint-fade;
-    }
-    input[class='event'] {
-      &::-webkit-slider-thumb {
-        transition: background 250ms $tint-fade;
-      }
-      &::-moz-range-thumb {
-        transition: background 250ms $tint-fade;
-      }
-    }
-    &:hover,
-    &:has(:focus-visible) {
-      //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: the flipped layer at half strength over the resting one gives the medium between the two 🠈|--\\
-      &::before {
-        opacity: 1;
-      }
-      &::after {
-        opacity: 0.5;
       }
     }
   }
@@ -375,8 +328,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -393,8 +345,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$gray-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -415,8 +366,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -433,8 +383,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -615,136 +564,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$gray-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_mon'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$gray-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_mon'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$gray-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$gray-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -981,8 +800,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -999,8 +817,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$red-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -1021,8 +838,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -1039,8 +855,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -1221,136 +1036,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$red-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_red'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$red-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_red'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$red-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$red-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -1587,8 +1272,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -1605,8 +1289,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$green-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -1627,8 +1310,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -1645,8 +1327,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -1827,136 +1508,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$green-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_gre'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$green-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_gre'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$green-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$green-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -2193,8 +1744,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -2211,8 +1761,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$blue-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -2233,8 +1782,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -2251,8 +1799,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -2433,136 +1980,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$blue-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_blu'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$blue-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_blu'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$blue-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$blue-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -2799,8 +2216,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -2817,8 +2233,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$purple-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -2839,8 +2254,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -2857,8 +2271,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -3039,136 +2452,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$purple-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_pur'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$purple-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_pur'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$purple-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$purple-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -3405,8 +2688,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -3423,8 +2705,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$orange-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -3445,8 +2726,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -3463,8 +2743,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -3645,136 +2924,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$orange-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_ora'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$orange-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_ora'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$orange-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$orange-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -4011,8 +3160,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -4029,8 +3177,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$pink-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -4051,8 +3198,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -4069,8 +3215,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -4251,136 +3396,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$pink-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_pin'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$pink-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_pin'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$pink-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$pink-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -4617,8 +3632,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -4635,8 +3649,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$yellow-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -4657,8 +3670,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -4675,8 +3687,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -4857,136 +3868,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$yellow-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_yel'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$yellow-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_yel'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$yellow-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$yellow-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -5223,8 +4104,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -5241,8 +4121,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$brown-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -5263,8 +4142,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -5281,8 +4159,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -5463,136 +4340,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$brown-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_bro'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$brown-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_bro'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$brown-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$brown-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }
@@ -5829,8 +4576,7 @@
           inset 0 -1px 0 rgba(#000, 0.25),
           inset 0 0 0 1px rgba(#000, 0.1);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $neoLig;
       }
       &[class*='_opa_'] {
@@ -5847,8 +4593,7 @@
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$turquoise-medium;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -5869,8 +4614,7 @@
           inset 0 -1px 0 rgba(#000, 0.35),
           inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
       }
-      span[class='check'],
-      span[class='minus'] {
+      span[class='check'] {
         background-color: $blaDar;
       }
       &[class*='_opa_'] {
@@ -5887,8 +4631,7 @@
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
         }
-        span[class='check'],
-        span[class='minus'] {
+        span[class='check'] {
           background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-30 · Dark on every frame: the see-through layers show the light page behind them 🠈|--\\
         }
       }
@@ -6069,136 +4812,6 @@
                 inset 0 0.125em 0.25em rgba($blaDar, 0.5),
                 inset 0 0 0.5em rgba(Palettes.$turquoise-medium, 0.5);
             }
-          }
-        }
-      }
-    }
-  }
-  &[class*='switching-slide'] {
-    //--|🠊 Dark Shade: Fades into the Light Shade 🠈|--\\
-    &[class*='dar_tur'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $neoLig,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        &::after {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$turquoise-medium;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $neoLig,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-        }
-      }
-    }
-    //--|🠊 Light Shade: Fades into the Dark Shade 🠈|--\\
-    &[class*='lig_tur'] {
-      &::before {
-        background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(#fff, 0.22),
-          inset 0 -1px 0 rgba(#000, 0.25),
-          inset 0 0 0 1px rgba(#000, 0.1);
-      }
-      &::after {
-        background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-        box-shadow: //--|🠈 Bevel from <Button>'s div.back, no outer ring 🠈|--\\
-          inset 0 1px 0 rgba(Palettes.$turquoise-neon, 0.09),
-          inset 0 -1px 0 rgba(#000, 0.35),
-          inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
-      }
-      input[class='event'] {
-        &::-webkit-slider-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-        &::-moz-range-thumb {
-          //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a dark fade keeps it standing out 🠈|--\\
-          background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
-          box-shadow: //--|🠈 Same knob as {toggle} 🠈|--\\
-            inset 0 0 4px $blaDar,
-            0 1px 2px rgba(#000, 0.3),
-            0 2px 6px rgba(#000, 0.15);
-        }
-      }
-      &[class*='_opa_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: both layers turn see-through and take the {toggle} frames, ::after holds the other shade's 🠈|--\\
-        &::before {
-          background: rgba($ligMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A light outline over a medium inset glow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $neoLig,
-            inset 0 0 0.5em Palettes.$turquoise-medium;
-        }
-        &::after {
-          background: rgba($darMed, 0.25); //--|🠈 A quarter, like {toggle} 🠈|--\\
-          box-shadow: //--|🠈 A dark outline + an inset drop shadow, like {toggle} 🠈|--\\
-            inset 0 0 0 2px $blaDar,
-            inset 0 0.125em 0.25em $blaDar;
-        }
-        input[class='event'] {
-          &::-webkit-slider-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
-          }
-          &::-moz-range-thumb {
-            box-shadow: //--|🠈 ⟨opaque⟩ keeps the sharp edge, like {toggle} 🠈|--\\
-              inset 0 0 0 1px $blaDar,
-              0 1px 2px rgba(#000, 0.3),
-              0 2px 6px rgba(#000, 0.15);
           }
         }
       }

@@ -48,64 +48,57 @@ export function LabelTextarea({ info, style, cases, onChange }: TheseProps) {
   }, []);
   let labelClass: string = `${info.labelName}-${info.blockName}_textarea-${stripBrackets(cases.type, '{}')} ${createClass(style, cases)}`;
   switch (cases.type) {
-    case '{text}':
-      return caseText(labelClass, labelRef, style, onChange);
-    case '{input}':
-      return caseInput(labelClass, labelRef, style, genes, onChange);
-    case '{block}':
-      return caseBlock(labelClass, labelRef, style, onChange);
+    case '{text}': {
+      //--|🠊 {text}: a <textarea> that fills its parent 🠈|--\\
+      return (
+        <label className={labelClass} ref={labelRef}>
+          <textarea
+            className="event"
+            placeholder={style.text}
+            //--|===|--\\
+            onChange={onChange}
+          ></textarea>
+        </label>
+      );
+    }
+    case '{input}': {
+      //--|🠊 {input}: one line, its type comes from the parent's data-input, '{text}' when there is none 🠈|--\\
+      return (
+        <label className={labelClass} ref={labelRef}>
+          <input
+            type={stripBrackets(genes.input, '{}')}
+            className="event"
+            placeholder={style.text}
+            //--|===|--\\
+            onChange={onChange}
+          />
+        </label>
+      );
+    }
+    case '{block}': {
+      //--|🠊 {block}: one character, the <fieldset> or <form> around it holds the row 🠈|--\\
+      return (
+        <label className={labelClass} ref={labelRef}>
+          <input
+            type="text"
+            maxLength={1}
+            inputMode="text"
+            className="event"
+            pattern="[A-Z0-9]" //--|🠈 AI Code: Review Please 2026-10-30 · One UPPERCASE letter or number; nextBlock() & pasteBlocks() turn lowercase into uppercase 🠈|--\\
+            placeholder={style.text}
+            autoComplete="one-time-code"
+            //--|===|--\\
+            onPaste={(event) => pasteBlocks(event)}
+            onInput={(event) => nextBlock(event)}
+            onFocus={(event) => event.currentTarget.select()} //--|🠈 Typing replaces the box's character 🠈|--\\
+            onChange={onChange}
+            onKeyDown={(event) => backBlock(event)}
+          />
+        </label>
+      );
+    }
   }
 }
-//--|🠋 Cases 🠋|--\\
-const caseText = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, style: TheseProps['style'], onChange: TheseProps['onChange']) => {
-  //--|🠊 {text}: a <textarea> that fills its parent 🠈|--\\
-  return (
-    <label className={labelClass} ref={labelRef}>
-      <textarea
-        className="event"
-        placeholder={style.text}
-        //--|===|--\\
-        onChange={onChange}
-      ></textarea>
-    </label>
-  );
-};
-const caseInput = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, style: TheseProps['style'], genes: { group: string; input: string }, onChange: TheseProps['onChange']) => {
-  //--|🠊 {input}: one line, its type comes from the parent's data-input, '{text}' when there is none 🠈|--\\
-  return (
-    <label className={labelClass} ref={labelRef}>
-      <input
-        type={stripBrackets(genes.input, '{}')}
-        className="event"
-        placeholder={style.text}
-        //--|===|--\\
-        onChange={onChange}
-      />
-    </label>
-  );
-};
-const caseBlock = (labelClass: string, labelRef: React.RefObject<HTMLLabelElement>, style: TheseProps['style'], onChange: TheseProps['onChange']) => {
-  //--|🠊 {block}: one character, the <fieldset> or <form> around it holds the row 🠈|--\\
-  return (
-    <label className={labelClass} ref={labelRef}>
-      <input
-        type="text"
-        maxLength={1}
-        inputMode="text"
-        className="event"
-        pattern="[A-Z0-9]" //--|🠈 AI Code: Review Please 2026-10-30 · One UPPERCASE letter or number; nextBlock() & pasteBlocks() turn lowercase into uppercase 🠈|--\\
-        placeholder={style.text}
-        autoComplete="one-time-code"
-        //--|===|--\\
-        onPaste={(event) => pasteBlocks(event)}
-        onInput={(event) => nextBlock(event)}
-        onFocus={(event) => event.currentTarget.select()} //--|🠈 Typing replaces the box's character 🠈|--\\
-        onChange={onChange}
-        onKeyDown={(event) => backBlock(event)}
-      />
-    </label>
-  );
-};
 //--|🠋 Blocks 🠋|--\\
 //--|🠊 Moves between the boxes through the DOM, so the browser keeps every value 🠈|--\\
 const listBlocks = (input: HTMLInputElement): Array<HTMLInputElement> => {

@@ -35,11 +35,11 @@ function listCharacters(company: 'voidspire' | 'silverveil'): Array<string> {
 }
 //--|🠋 Placeholders 🠋|--\\
 export const typePlaceholder = (type: '{select}' | '{combo}' | '{number}'): string => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSelection> is named after its cases.type; {number} shows 0 until a number is typed 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSelection> is named after its cases.type; {number} shows 1 once it's cleared, the lowest count 🠈|--\\
   const placeholderMap: Record<string, string> = {
     '{select}': 'Select',
     '{combo}': 'Combo',
-    '{number}': '0',
+    '{number}': '1',
   };
 
   return placeholderMap[type];

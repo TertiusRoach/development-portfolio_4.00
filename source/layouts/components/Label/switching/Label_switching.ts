@@ -20,7 +20,6 @@ const createLayout = (type: TheseProps['cases']['type'], view: TheseProps['style
     '{chip}': 'chi',
     '{check}': 'che',
     '{toggle}': 'tog',
-    '{slide}': 'sli',
     '{option}': 'opt',
   };
 
@@ -31,6 +30,7 @@ const createLayout = (type: TheseProps['cases']['type'], view: TheseProps['style
     'top-rig': 'tr',
     'mid-lef': 'ml',
     'mid-cen': 'mc',
+    'cen-mid': 'cm',
     'mid-rig': 'mr',
     'bot-lef': 'bl',
     'bot-cen': 'bc',
@@ -94,20 +94,5 @@ const createClarity = (clarity: TheseProps['style']['clarity']): string => {
   }
 
   return classClarity;
-};
-//--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
-export const previewParent = (thisLabel: HTMLElement | null, thisGroup?: string): { group: string; input: string } => {
-  //--|🠊 Reads the "genes" a <Label> inherits: the data- attributes of the <fieldset> or <form> around it 🠈|--\\
-  let parentElement = thisLabel?.closest('fieldset, form') as HTMLElement | null;
-  if (!parentElement) {
-    return { group: thisGroup ?? '', input: '{text}' }; //--|🠈 No parent, nothing to inherit 🠈|--\\
-  }
-  if (thisGroup && !parentElement.dataset.group) {
-    parentElement.dataset.group = thisGroup; //--|🠈 The first {option} names the group, the others read it 🠈|--\\
-  }
-  return {
-    group: parentElement.dataset.group ?? '', //--|🠈 data-group: the name every {option} radio shares 🠈|--\\
-    input: parentElement.dataset.input ?? '{text}', //--|🠈 data-input: '{email}', '{password}', '{search}', '{url}' or '{tel}' for an {input} 🠈|--\\
-  };
 };
 export default createClass;

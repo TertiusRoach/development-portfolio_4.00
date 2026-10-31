@@ -223,9 +223,6 @@ function SelectionLabel({ info }: InfoProps) {
             }}
             cases={{
               type: '{number}',
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
             }}
           />
           <LabelSelection
@@ -244,9 +241,6 @@ function SelectionLabel({ info }: InfoProps) {
             }}
             cases={{
               type: '{number}',
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
             }}
           />
 
@@ -266,9 +260,6 @@ function SelectionLabel({ info }: InfoProps) {
             }}
             cases={{
               type: '{number}',
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
             }}
           />
           <LabelSelection
@@ -287,9 +278,6 @@ function SelectionLabel({ info }: InfoProps) {
             }}
             cases={{
               type: '{number}',
-              min: 0, //--|🠈 {number} only 🠈|--\\
-              max: 24, //--|🠈 Hours in a day 🠈|--\\
-              step: 0.5, //--|🠈 Half-hour steps 🠈|--\\
             }}
           />
         </div>
