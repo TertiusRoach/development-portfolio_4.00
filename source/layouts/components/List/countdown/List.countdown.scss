@@ -77,11 +77,11 @@ ol[class*='countdown'] {
       bottom: 0; // Extend to the bottom
     }
   }
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

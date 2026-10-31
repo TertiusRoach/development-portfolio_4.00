@@ -85,6 +85,7 @@ function TicketingHeader({ info }: InfoProps) {
                   view: '-left-',
                   color: '(blue)',
                   shade: '~dark~',
+                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -104,6 +105,7 @@ function TicketingHeader({ info }: InfoProps) {
                   view: '-right-',
                   color: '(blue)',
                   shade: '~light~',
+                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
                 cases={{
                   task: [

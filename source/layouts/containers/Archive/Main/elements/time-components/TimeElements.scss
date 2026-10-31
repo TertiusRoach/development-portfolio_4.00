@@ -6,9 +6,11 @@ section[class*='time'] {
   div[class*='fullscreen'] {
     div.time-main_container {
       aside[class*='default'] {
+        //--|🠋 Desktop (Landscape) 🠋|--\\
         @media screen and (orientation: landscape) {
           @include DefaultTime.desktop-landscape;
         }
+        //--|🠋 Mobile (Portrait) 🠋|--\\
         @media screen and (orientation: portrait) {
           @include DefaultTime.mobile-portrait;
         }

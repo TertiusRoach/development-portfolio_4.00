@@ -38,18 +38,22 @@ body {
           z-index: 0;
         }
       }
+      //--|🠋 Desktop (Landscape) 🠋|--\\
       @media screen and (orientation: landscape) {
         @include Mixins.landscape-grid();
       }
+      //--|🠋 Mobile (Portrait) 🠋|--\\
       @media screen and (orientation: portrait) {
         @include Mixins.portrait-grid();
       }
     }
 
     //--|🠊 display: grid; 🠈|--\\
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       @include Mixins.landscape-grid;
     }
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       @include Mixins.portrait-grid;
     }
@@ -167,40 +171,48 @@ body {
 
   //--|===|--\\
   div[id='landing-body'] {
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       //--|🟪| Landing |🟪|--\\
       @include Mixins.landscape-grid;
     }
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       //--|🟪| Landing |🟪|--\\
       @include Mixins.portrait-grid;
     }
   }
   div[id='overtime-body'] {
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       //--|🟩| Overtime |🟩|--\\
       @include Mixins.landscape-grid;
     }
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       //--|🟩| Overtime |🟩|--\\
       @include Mixins.portrait-grid;
     }
   }
   div[id='ticketing-body'] {
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       //--|🟦| Ticketing |🟦|--\\
       @include Mixins.landscape-grid;
     }
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       //--|🟦| Ticketing |🟦|--\\
       @include Mixins.portrait-grid;
     }
   }
   div[id='hyperlink-body'] {
+    //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
       //--|🟥| Hyperlink |🟥|--\\
       @include Mixins.landscape-grid;
     }
+    //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
       //--|🟥| Hyperlink |🟥|--\\
       @include Mixins.portrait-grid;
@@ -225,6 +237,7 @@ body {
         flex: 0 0 100vw;
         min-width: 100vw;
       }
+      //--|🠋 Desktop (Landscape) 🠋|--\\
       @media screen and (orientation: landscape) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.landscape-grid;
@@ -242,6 +255,7 @@ body {
           @include Mixins.layering-position;
         }
       }
+      //--|🠋 Mobile (Portrait) 🠋|--\\
       @media screen and (orientation: portrait) {
         //--|🟨| Archive |🟨|--\\
         @include Mixins.portrait-grid;

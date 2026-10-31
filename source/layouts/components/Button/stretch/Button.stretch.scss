@@ -11,6 +11,7 @@ button[class*='stretch'] {
   @include Button_grid.stretch-gridbox();
   @include Button_tint.stretch-colors();
 
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <ButtonStretch> for [DesktopLandscape] 🠈|--\\
     @include Button_flex.desktop-flex();
@@ -19,6 +20,7 @@ button[class*='stretch'] {
     @include Button_tint.desktop-tint();
     @include Button_corn.desktop-corn();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <ButtonStretch> for [MobilePortrait] 🠈|--\\
     @include Button_flex.mobile-flex();

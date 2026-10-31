@@ -278,11 +278,11 @@ form[class*='register'] {
   border-radius: 1rem;
   background: rgba(Palettes.$trackDay-dark, 0.75);
   box-shadow: 0 0 8rem rgba(Palettes.$trackDay-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

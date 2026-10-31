@@ -18,6 +18,7 @@ interface TheseProps {
   style: {
     view: '-left-' | '-right-';
     shade: '~dark~' | '~light~';
+    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   cases?: {
@@ -67,8 +68,8 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       style={{
                         view: '-square-',
                         shade: style.shade,
-                        clarity: '⟨lucid⟩',
                         color: style.color,
+                        clarity: '⟨lucid⟩',
                         size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
                       }}
@@ -101,8 +102,8 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                       style={{
                         view: '-square-',
                         shade: style.shade,
-                        clarity: '⟨lucid⟩',
                         color: style.color,
+                        clarity: '⟨lucid⟩',
                         size: index === 0 ? '<h1>' : '<p>',
                         image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
                       }}

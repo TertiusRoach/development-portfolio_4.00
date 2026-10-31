@@ -158,6 +158,7 @@ function OvertimeFooter({ info }: InfoProps) {
                   view: '-left-',
                   color: '(green)',
                   shade: '~dark~',
+                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -177,6 +178,7 @@ function OvertimeFooter({ info }: InfoProps) {
                   view: '-right-',
                   color: '(green)',
                   shade: '~light~',
+                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
                 }}
                 cases={{
                   task: [

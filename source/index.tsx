@@ -14,7 +14,7 @@ import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 //--|🠋 Entry Point 🠋|--\\
 setTimeout(() => {
-  viewBody('archive');
+  viewBody('overtime');
   themeScheme('light');
 }, 250);
 
@@ -23,7 +23,7 @@ const themeScheme = (colorScheme: 'light' | 'dark'): void => {
   const element = document.getElementsByTagName('body')[0];
   const currentHour = new Date().getHours();
 
-  if (currentHour >= 5 && currentHour < 17) {
+  if (currentHour >= 5 && currentHour < 13) {
     element.classList.add('ante-meridiem');
     element.classList.remove('post-meridiem');
   } else {

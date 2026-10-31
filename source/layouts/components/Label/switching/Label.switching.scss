@@ -8,10 +8,12 @@ label[class*='_switching-'] {
   @include Label_flex.switching-flexbox();
   @include Label_tint.switching-colors();
 
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <LabelSwitching> for [DesktopLandscape] 🠈|--\\
     @include Label_size.desktop-size();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <LabelSwitching> for [MobilePortrait] 🠈|--\\
     @include Label_size.mobile-size();

@@ -8,10 +8,12 @@ label[class*='_textarea-'] {
   @include Label_flex.textarea-flexbox();
   @include Label_tint.textarea-colors();
 
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <LabelTextarea> for [DesktopLandscape] 🠈|--\\
     @include Label_size.desktop-size();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <LabelTextarea> for [MobilePortrait] 🠈|--\\
     @include Label_size.mobile-size();

@@ -87,8 +87,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-left-',
-                  color: '(green)',
+                  color: '(mono)',
                   shade: '~dark~',
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [
@@ -106,8 +107,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-right-',
-                  color: '(green)',
+                  color: '(mono)',
                   shade: '~light~',
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [
@@ -194,6 +196,9 @@ function OvertimeHeader({ info }: InfoProps) {
             <header>
               <div className="top-header"></div>
               <div className="bot-header"></div>
+
+              <div className="lef-header"></div>
+              <div className="rig-header"></div>
             </header>
           </div>
         </header>

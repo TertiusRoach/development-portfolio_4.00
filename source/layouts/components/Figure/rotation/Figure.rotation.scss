@@ -111,11 +111,11 @@ figure[class*='rotation'] {
   display: grid;
   position: relative; //--|🠊 Needed for z-index to work correctly 🠈|--//
   @extend %fade-view;
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

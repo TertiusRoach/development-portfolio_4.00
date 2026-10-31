@@ -116,11 +116,11 @@ form[class*='reset'] {
   background: rgba(Palettes.$indexLand-dark, 0.75);
   box-shadow: 0 0 8rem rgba(Palettes.$indexLand-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
   box-shadow: inset 0 0 8px rgba(Palettes.$indexLand-light, 1);
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

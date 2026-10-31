@@ -7,9 +7,11 @@ section[class*='table'] {
   div[class*='fullscreen'] {
     div.table-main_container {
       aside[class*='table'] {
+        //--|🠋 Desktop (Landscape) 🠋|--\\
         @media screen and (orientation: landscape) {
           @include DefaultTable.desktop-landscape;
         }
+        //--|🠋 Mobile (Portrait) 🠋|--\\
         @media screen and (orientation: portrait) {
           @include DefaultTable.mobile-portrait;
         }

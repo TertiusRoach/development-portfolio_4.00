@@ -33,11 +33,11 @@ fieldset[class*='code'] {
   column-gap: 1rem;
   grid-template: 8rem / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
 
-  //--|🠋 Desktop (Landscape) 🠋|--//
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
-  //--|🠋 Mobile (Portrait) 🠋|--//
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

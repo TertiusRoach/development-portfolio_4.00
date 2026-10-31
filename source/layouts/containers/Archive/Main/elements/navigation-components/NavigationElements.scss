@@ -119,9 +119,11 @@ section[class*='navigation'] {
   div[class*='fullscreen'] {
     div.navigation-main_container {
       aside[class*='navigation'] {
+        //--|🠋 Desktop (Landscape) 🠋|--\\
         @media screen and (orientation: landscape) {
           @include desktop-landscape();
         }
+        //--|🠋 Mobile (Portrait) 🠋|--\\
         @media screen and (orientation: portrait) {
           @include mobile-portrait();
         }

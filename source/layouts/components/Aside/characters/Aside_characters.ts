@@ -6,6 +6,7 @@ import { loadAsset } from '../../../../scripts';
 type StyleProps = {
   view: '-left-' | '-right-';
   shade: '~dark~' | '~light~';
+  clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
   color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
 };
 
@@ -34,7 +35,13 @@ export function createClass(style: StyleProps): string {
     '~dark~': 'dar',
     '~light~': 'lig',
   };
-  return `${viewMap[style.view]}_${shadeMap[style.shade]}_${colorMap[style.color]}`;
+  //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+  const clarityMap: Record<string, string> = {
+    //--|🠊 Clarity Abbr 🠈|--\\
+    '⟨opaque⟩': 'opa',
+    '⟨lucid⟩': 'luc',
+  };
+  return `${viewMap[style.view]}_${shadeMap[style.shade]}_${colorMap[style.color]}_${clarityMap[style.clarity]}`; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
 }
 
 interface CharacterSelection {

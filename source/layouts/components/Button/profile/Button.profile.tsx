@@ -8,15 +8,14 @@ export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
-    //--|🠊 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
-    ariaName?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
+    ariaName?: string;
     labelName?: string;
   };
   style: {
     shade: '~dark~' | '~light~';
-    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
     size: '<h1>' | '<h4>' | '<p>';
     view: '-square-' | '-circle-';
+    clarity: '⟨lucid⟩' | '⟨opaque⟩';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
     //--|===|--\\
     image?: string | null; //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\

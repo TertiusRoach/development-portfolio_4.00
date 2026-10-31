@@ -10,6 +10,7 @@ button[class*='routing'] {
   @include Button_grid.routing-gridbox();
   @include Button_tint.routing-colors();
 
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <ButtonRouting> for [DesktopLandscape] 🠈|--\\
     @include Button_flex.desktop-flex();
@@ -18,6 +19,7 @@ button[class*='routing'] {
     @include Button_tint.desktop-tint();
     @include Button_corn.desktop-corn();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <ButtonRouting> for [MobilePortrait] 🠈|--\\
     @include Button_flex.mobile-flex();

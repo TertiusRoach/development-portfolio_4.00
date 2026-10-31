@@ -8,10 +8,12 @@ label[class*='_selection-'] {
   @include Label_flex.selection-flexbox();
   @include Label_tint.selection-colors();
 
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 <LabelSelection> for [DesktopLandscape] 🠈|--\\
     @include Label_size.desktop-size();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     //--|🠊 <LabelSelection> for [MobilePortrait] 🠈|--\\
     @include Label_size.mobile-size();

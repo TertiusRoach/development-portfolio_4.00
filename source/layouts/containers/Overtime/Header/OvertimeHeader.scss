@@ -65,6 +65,7 @@
     }
   }
   div[class*='header-back'] {
+    /*
     background: rgba(darkred, 0.75);
     header {
       grid-area: 1 / 1 / 2 / 4;
@@ -72,6 +73,7 @@
       //--|🠊 background: Palettes.$indexLand-lightMode; 🠈|--\\
       //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75)); 🠈|--\\
     }
+    */
   }
 }
 @mixin mobile-portrait {
@@ -110,9 +112,11 @@
   }
 }
 header[id*='overtime'] {
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

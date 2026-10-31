@@ -128,6 +128,10 @@
         &[class*='_tur'] {
           background: Palettes.$turquoise-darkMode;
         }
+        //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+        &[class*='_opa'] {
+          background: transparent; //--|🠈 ⟨opaque⟩ sets the background to 0 opacity 🠈|--\\
+        }
       }
       &[class*='_lig_'] {
         &[class*='_mon'] {
@@ -159,6 +163,10 @@
         }
         &[class*='_tur'] {
           background: Palettes.$turquoise-lightMode;
+        }
+        //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+        &[class*='_opa'] {
+          background: transparent; //--|🠈 ⟨opaque⟩ sets the background to 0 opacity 🠈|--\\
         }
       }
     }
@@ -348,6 +356,10 @@
         &[class*='_tur']::before {
           background: Palettes.$turquoise-darkMode;
         }
+        //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+        &[class*='_opa']::before {
+          background: transparent; //--|🠈 ⟨opaque⟩ sets the background to 0 opacity 🠈|--\\
+        }
       }
       &[class*='_lig_'] {
         &[class*='_mon']::before {
@@ -379,6 +391,10 @@
         }
         &[class*='_tur']::before {
           background: Palettes.$turquoise-lightMode;
+        }
+        //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+        &[class*='_opa']::before {
+          background: transparent; //--|🠈 ⟨opaque⟩ sets the background to 0 opacity 🠈|--\\
         }
       }
     }
@@ -557,9 +573,11 @@
 
 aside[class*='characters-default'] {
   display: grid;
+  //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
   }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
   }

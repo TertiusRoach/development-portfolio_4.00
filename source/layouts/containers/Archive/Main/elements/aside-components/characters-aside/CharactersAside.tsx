@@ -36,6 +36,7 @@ function CharactersAside({ info }: InfoProps) {
             view: '-left-',
             color: '(mono)',
             shade: '~dark~',
+            clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
           }}
         />
         <DivisionColourize
@@ -61,6 +62,7 @@ function CharactersAside({ info }: InfoProps) {
             view: '-right-',
             color: '(mono)',
             shade: '~light~',
+            clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
           }}
         />
       </section>

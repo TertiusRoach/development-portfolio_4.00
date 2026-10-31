@@ -11,7 +11,7 @@ let updateAside = (color: string) => {
     let aside = asideElements[i];
 
     let prevClass = aside.classList[1] as string;
-    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}` as string;
+    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${color}_${prevClass.split('_')[3]}` as string; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
 
     asideElements[i].classList.replace(prevClass, nextClass);
   }
@@ -23,7 +23,7 @@ let updateAside = (color: string) => {
     let button = buttonElements[i] as HTMLButtonElement;
 
     let prevClass = button.classList[1] as string;
-    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${prevClass.split('_')[2]}_${color}_${prevClass.split('_').pop()}` as string;
+    let nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${prevClass.split('_')[2]}_${color}_${prevClass.split('_')[4]}_${prevClass.split('_').pop()}` as string; //--|🠈 AI Code: Review Please 2026-10-31 12:35 🠈|--\\
 
     buttonElements[i].classList.replace(prevClass, nextClass);
   }
