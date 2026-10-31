@@ -2,7 +2,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Navigation) 🠋|--\\
   %desk-grid {
-    @at-root nav[class*='_navigation-default'] {
+    @at-root nav[class*='navigation-default'] {
       ol[class*='hori-X'] {
         z-index: 1;
         display: inherit; //--|🠈 display: grid; 🠈|--\\
@@ -91,13 +91,25 @@
       }
     }
   }
-  //--|===|--\\
   @extend %desk-grid;
+  //--|===|--\\
+  ul[class*='vert-Y'] {
+    li[class='top-lef'] {
+      transition:
+        transform 250ms ease-in-out,
+        opacity 250ms ease-in-out; //--|🠈 On the normal state, so it animates out and back in 🠈|--\\
+      transform-origin: top left; //--|🠈 Shrinks into the top-lef corner 🠈|--\\
+      header[class*='expanded'] & {
+        transform: scale(0);
+        pointer-events: none; //--|🠈 A hidden button can't be clicked 🠈|--\\
+      }
+    }
+  }
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Navigation) 🠋|--\\
   %mobi-grid {
-    @at-root nav[class*='_navigation-default'] {
+    @at-root nav[class*='navigation-default'] {
       ol[class*='hori-X'] {
         z-index: 1;
         display: inherit; //--|🠈 display: grid; 🠈|--\\
@@ -192,7 +204,7 @@
 @mixin tablet-squaring {
   //--|🠋 Tablet (Navigation) 🠋|--\\
   %tabl-grid {
-    @at-root nav[class*='_navigation-default'] {
+    @at-root nav[class*='navigation-default'] {
       @media screen and (orientation: landscape) {
         //--|🠊 Desktop 🠈|--\\
         //--|🠊 96px (Left & Right) for Design 🠈|--\\
@@ -329,7 +341,7 @@
   @extend %tabl-grid;
 }
 
-nav[class*='_navigation-default'] {
+nav[class*='navigation-default'] {
   display: grid;
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

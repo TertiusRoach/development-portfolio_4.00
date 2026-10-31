@@ -28,10 +28,9 @@ function OvertimeHeader({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'header';
-  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🠊 console.log(TrackTime().PickPage[0]); 🠈|--\\
@@ -147,6 +146,7 @@ function OvertimeHeader({ info }: InfoProps) {
             />
           </section>
           <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
             <DivisionSweeping
               //--|🠊 <div class="demon-left-header_sweeping-default"/> 🠈|--\\
               info={{
@@ -191,15 +191,11 @@ function OvertimeHeader({ info }: InfoProps) {
                 call: OvertimeCharacters as React.ComponentType<InfoProps>,
               }}
             />
+            <div className="bot"></div>
           </figure>
           <div className={`${blockName}-background`}>
-            <header>
-              <div className="top-header"></div>
-              <div className="bot-header"></div>
-
-              <div className="lef-header"></div>
-              <div className="rig-header"></div>
-            </header>
+            <div className="lef"></div>
+            <div className="rig"></div>
           </div>
         </header>
       );

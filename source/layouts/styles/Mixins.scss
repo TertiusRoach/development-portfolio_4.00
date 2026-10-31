@@ -1,8 +1,8 @@
 //--|🠊 Mixins.scss 🠈|--\\
+
 //--|🠋 @include Mixins.landscape-grid; 🠋|--\\
 @mixin landscape-grid {
   display: grid;
-  @include stack-ground;
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
@@ -25,34 +25,13 @@
       repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
       / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
   }
-}
-//--|🠋 @include Mixins.desktop-grid; 🠋|--\\
-@mixin desktop-grid {
-  //--|🠊 Simple grid for foreground, midground and background. 🠈|--\\
-  grid-template: //--|🠋 1920px 🠋|--\\
-    8rem 1fr 8rem //--|🠈 rows 🠈|--//
-    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
-  @media screen and (max-height: 768px) {
-    grid-template:  //--|🠋 1366px 🠋|--\\
-      6rem 1fr 6rem //--|🠈 rows 🠈|--//
-      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-height: 480px) {
-    grid-template:  //--|🠋 854px 🠋|--\\
-      4rem 1fr 4rem //--|🠈 rows 🠈|--//
-      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
-  }
-  @media screen and (max-height: 360px) {
-    grid-template: //--|🠋 640px 🠋|--\\
-      3rem 1fr 3rem //--|🠈 rows 🠈|--//
-      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
+  @at-root (without: media) {
+    @extend %stack-ground;
   }
 }
-//--|===|--\\
 //--|🠋 @include Mixins.portrait-grid; 🠋|--\\
 @mixin portrait-grid {
   display: grid;
-  @include stack-ground;
   //--|🠊 64px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Height: 1920px 🠋|--\\
     repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
@@ -74,6 +53,51 @@
     grid-template: //--|🠋 Height: 640px 🠋|--\\
       repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
       / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
+  }
+  @at-root (without: media) {
+    @extend %stack-ground;
+  }
+}
+%stack-ground {
+  //--|🠊 Default grid for foreground, midground and background. 🠈|--\\
+  width: 100vw;
+  flex: 0 0 100vw;
+  min-width: 100vw;
+  section[class*='ground'],
+  figure[class*='ground'],
+  div[class*='ground'] {
+    width: 100%;
+    height: 100svh;
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+
+    &[class*='mid'],
+    &[class*='fore'] {
+      grid-template: inherit;
+    }
+  }
+}
+//--|===|--\\
+//--|🠋 @include Mixins.desktop-grid; 🠋|--\\
+@mixin desktop-grid {
+  //--|🠊 Simple grid for foreground, midground and background. 🠈|--\\
+  grid-template: //--|🠋 1920px 🠋|--\\
+    8rem 1fr 8rem //--|🠈 rows 🠈|--//
+    / 6rem 1fr 6rem; //--|🠈 columns 🠈|--//
+  @media screen and (max-height: 768px) {
+    grid-template:  //--|🠋 1366px 🠋|--\\
+      6rem 1fr 6rem //--|🠈 rows 🠈|--//
+      / 4rem 1fr 4rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    grid-template:  //--|🠋 854px 🠋|--\\
+      4rem 1fr 4rem //--|🠈 rows 🠈|--//
+      / 3rem 1fr 3rem; //--|🠈 columns 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    grid-template: //--|🠋 640px 🠋|--\\
+      3rem 1fr 3rem //--|🠈 rows 🠈|--//
+      / 2rem 1fr 2rem; //--|🠈 columns 🠈|--\\
   }
 }
 //--|🠋 @include Mixins.mobile-grid; 🠋|--\\
@@ -98,6 +122,7 @@
       / 1.5rem 1fr 1.5rem; //--|🠈 columns 🠈|--\\
   }
 }
+//--|===|--\\
 //--|🠋 @include Mixins.layering-position; 🠋|--\\
 @mixin layering-position {
   //--|🠊 Stacks elements on top of one another. 🠈|--\\
@@ -201,21 +226,5 @@
     }
     //--|🠊 border: 2px dashed $blue-neon; 🠈|--//
     //--|🠊 background: rgba($blue-dark, 0.25); 🠈|--//
-  }
-}
-//--|===|--\\
-@mixin stack-ground {
-  //--|🠊 Default grid for foreground, midground and background. 🠈|--\\
-  width: 100vw;
-  flex: 0 0 100vw;
-  min-width: 100vw;
-  section[class*='foreground'],
-  figure[class*='midground'],
-  div[class*='background'] {
-    width: 100%;
-    height: 100svh;
-    display: inherit; //--|🠈 display: grid; 🠈|--\\
-    grid-template: inherit;
-    grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
   }
 }

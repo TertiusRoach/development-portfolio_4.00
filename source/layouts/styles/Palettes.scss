@@ -8,16 +8,17 @@ $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $indexLand-darkMode: light on top, $indexLand-medium at the bottom instead of black, base mixed with $indexLand-medium 🠈|--\\
 $indexLand-lightMode:
-  linear-gradient(180deg, rgba($indexLand-neon, 0.22) 0%, rgba($indexLand-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($indexLand-neon, 0.14) 0%, rgba($indexLand-light, 0) 45%, rgba($indexLand-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($indexLand-light, 0.7) 0%, rgba($indexLand-light, 0) 52%, rgba($indexLand-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($indexLand-neon, 0.08) 0%, rgba($indexLand-light, 0) 45%, rgba($indexLand-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($indexLand-dark, 0.1) 0%, rgba($indexLand-neon, 0.1) 34%, rgba($indexLand-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($indexLand-light, #fff, 84%) 0%,
-    color.mix($indexLand-light, $indexLand-neon, 70%) 55%,
-    color.mix($indexLand-light, $indexLand-neon, 82%) 100%
+    color.mix($indexLand-light, $indexLand-medium, 82%) 0%,
+    color.mix($indexLand-light, $indexLand-medium, 66%) 55%,
+    color.mix($indexLand-light, $indexLand-medium, 74%) 100%
   );
 $indexLand-darkMode:
   linear-gradient(180deg, rgba($indexLand-medium, 0.22) 0%, rgba($indexLand-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -44,16 +45,17 @@ $tra-pending: $orange-medium;
 $trackDay-automatic: $grey-medium;
 */
 
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $trackDay-darkMode: light on top, $trackDay-medium at the bottom instead of black, base mixed with $trackDay-medium 🠈|--\\
 $trackDay-lightMode:
-  linear-gradient(180deg, rgba($trackDay-neon, 0.22) 0%, rgba($trackDay-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($trackDay-neon, 0.14) 0%, rgba($trackDay-light, 0) 45%, rgba($trackDay-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($trackDay-light, 0.7) 0%, rgba($trackDay-light, 0) 52%, rgba($trackDay-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($trackDay-neon, 0.08) 0%, rgba($trackDay-light, 0) 45%, rgba($trackDay-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($trackDay-dark, 0.1) 0%, rgba($trackDay-neon, 0.1) 34%, rgba($trackDay-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($trackDay-light, #fff, 84%) 0%,
-    color.mix($trackDay-light, $trackDay-neon, 70%) 55%,
-    color.mix($trackDay-light, $trackDay-neon, 82%) 100%
+    color.mix($trackDay-light, $trackDay-medium, 82%) 0%,
+    color.mix($trackDay-light, $trackDay-medium, 66%) 55%,
+    color.mix($trackDay-light, $trackDay-medium, 74%) 100%
   );
 $trackDay-darkMode:
   linear-gradient(180deg, rgba($trackDay-medium, 0.22) 0%, rgba($trackDay-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -80,16 +82,17 @@ $log-pending: $orange-neon;
 $log-resolved: $green-neon;
 */
 
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $logTicket-darkMode: light on top, $logTicket-medium at the bottom instead of black, base mixed with $logTicket-medium 🠈|--\\
 $logTicket-lightMode:
-  linear-gradient(180deg, rgba($logTicket-neon, 0.22) 0%, rgba($logTicket-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($logTicket-neon, 0.14) 0%, rgba($logTicket-light, 0) 45%, rgba($logTicket-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($logTicket-light, 0.7) 0%, rgba($logTicket-light, 0) 52%, rgba($logTicket-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($logTicket-neon, 0.08) 0%, rgba($logTicket-light, 0) 45%, rgba($logTicket-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($logTicket-dark, 0.1) 0%, rgba($logTicket-neon, 0.1) 34%, rgba($logTicket-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($logTicket-light, #fff, 84%) 0%,
-    color.mix($logTicket-light, $logTicket-neon, 70%) 55%,
-    color.mix($logTicket-light, $logTicket-neon, 82%) 100%
+    color.mix($logTicket-light, $logTicket-medium, 82%) 0%,
+    color.mix($logTicket-light, $logTicket-medium, 66%) 55%,
+    color.mix($logTicket-light, $logTicket-medium, 74%) 100%
   );
 $logTicket-darkMode:
   linear-gradient(180deg, rgba($logTicket-medium, 0.22) 0%, rgba($logTicket-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -109,16 +112,17 @@ $findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
 $findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
 $findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
 
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $findLink-darkMode: light on top, $findLink-medium at the bottom instead of black, base mixed with $findLink-medium 🠈|--\\
 $findLink-lightMode:
-  linear-gradient(180deg, rgba($findLink-neon, 0.22) 0%, rgba($findLink-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($findLink-neon, 0.14) 0%, rgba($findLink-light, 0) 45%, rgba($findLink-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($findLink-light, 0.7) 0%, rgba($findLink-light, 0) 52%, rgba($findLink-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($findLink-neon, 0.08) 0%, rgba($findLink-light, 0) 45%, rgba($findLink-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($findLink-dark, 0.1) 0%, rgba($findLink-neon, 0.1) 34%, rgba($findLink-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($findLink-light, #fff, 84%) 0%,
-    color.mix($findLink-light, $findLink-neon, 70%) 55%,
-    color.mix($findLink-light, $findLink-neon, 82%) 100%
+    color.mix($findLink-light, $findLink-medium, 82%) 0%,
+    color.mix($findLink-light, $findLink-medium, 66%) 55%,
+    color.mix($findLink-light, $findLink-medium, 74%) 100%
   );
 $findLink-darkMode:
   linear-gradient(180deg, rgba($findLink-medium, 0.22) 0%, rgba($findLink-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -137,16 +141,17 @@ $gray-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
 $gray-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $gray-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $gray-medium: #737373; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $gray-darkMode: light on top, $gray-medium at the bottom instead of black, base mixed with $gray-medium 🠈|--\\
 $gray-lightMode:
-  linear-gradient(180deg, rgba($gray-neon, 0.22) 0%, rgba($gray-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($gray-neon, 0.14) 0%, rgba($gray-light, 0) 45%, rgba($gray-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($gray-light, 0.7) 0%, rgba($gray-light, 0) 52%, rgba($gray-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($gray-neon, 0.08) 0%, rgba($gray-light, 0) 45%, rgba($gray-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($gray-dark, 0.1) 0%, rgba($gray-neon, 0.1) 34%, rgba($gray-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($gray-light, #fff, 84%) 0%,
-    color.mix($gray-light, $gray-neon, 70%) 55%,
-    color.mix($gray-light, $gray-neon, 82%) 100%
+    color.mix($gray-light, $gray-medium, 82%) 0%,
+    color.mix($gray-light, $gray-medium, 66%) 55%,
+    color.mix($gray-light, $gray-medium, 74%) 100%
   );
 $gray-darkMode:
   linear-gradient(180deg, rgba($gray-medium, 0.22) 0%, rgba($gray-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -164,12 +169,13 @@ $red-neon: #ff9090; //--|🠈 rgba() 🠈|--\\
 $red-dark: #290a0a; //--|🠈 rgba() 🠈|--\\
 $red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
 $red-medium: #ab2424; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $red-darkMode: light on top, $red-medium at the bottom instead of black, base mixed with $red-medium 🠈|--\\
 $red-lightMode:
-  linear-gradient(180deg, rgba($red-neon, 0.22) 0%, rgba($red-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($red-neon, 0.14) 0%, rgba($red-light, 0) 45%, rgba($red-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($red-light, 0.7) 0%, rgba($red-light, 0) 52%, rgba($red-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($red-neon, 0.08) 0%, rgba($red-light, 0) 45%, rgba($red-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($red-dark, 0.1) 0%, rgba($red-neon, 0.1) 34%, rgba($red-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
-  linear-gradient(135deg, color.mix($red-light, #fff, 84%) 0%, color.mix($red-light, $red-neon, 70%) 55%, color.mix($red-light, $red-neon, 82%) 100%);
+  linear-gradient(135deg, color.mix($red-light, $red-medium, 82%) 0%, color.mix($red-light, $red-medium, 66%) 55%, color.mix($red-light, $red-medium, 74%) 100%);
 $red-darkMode:
   linear-gradient(180deg, rgba($red-medium, 0.22) 0%, rgba($red-dark, 0) 52%, rgba(#000, 0.4) 100%),
   linear-gradient(135deg, rgba($red-medium, 0.14) 0%, rgba($red-dark, 0) 45%, rgba($red-dark, 0.38) 100%),
@@ -181,16 +187,17 @@ $green-neon: #63ff9c; //--|🠈 rgba() 🠈|--\\
 $green-dark: #062112; //--|🠈 rgba() 🠈|--\\
 $green-light: #cffae0; //--|🠈 rgba() 🠈|--\\
 $green-medium: #079707; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $green-darkMode: light green on top, $green-medium at the bottom instead of black, base mixed with $green-medium 🠈|--\\
 $green-lightMode:
-  linear-gradient(180deg, rgba($green-neon, 0.22) 0%, rgba($green-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($green-neon, 0.14) 0%, rgba($green-light, 0) 45%, rgba($green-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($green-light, 0.7) 0%, rgba($green-light, 0) 52%, rgba($green-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($green-neon, 0.08) 0%, rgba($green-light, 0) 45%, rgba($green-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($green-dark, 0.1) 0%, rgba($green-neon, 0.1) 34%, rgba($green-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($green-light, #fff, 84%) 0%,
-    color.mix($green-light, $green-neon, 70%) 55%,
-    color.mix($green-light, $green-neon, 82%) 100%
+    color.mix($green-light, $green-medium, 82%) 0%,
+    color.mix($green-light, $green-medium, 66%) 55%,
+    color.mix($green-light, $green-medium, 74%) 100%
   );
 $green-darkMode:
   linear-gradient(180deg, rgba($green-medium, 0.22) 0%, rgba($green-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -208,16 +215,17 @@ $blue-neon: #7dc0ff; //--|🠈 rgba() 🠈|--\\
 $blue-dark: #07122d; //--|🠈 rgba() 🠈|--\\
 $blue-light: #d6e6ff; //--|🠈 rgba() 🠈|--\\
 $blue-medium: #0d56a6; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $blue-darkMode: light on top, $blue-medium at the bottom instead of black, base mixed with $blue-medium 🠈|--\\
 $blue-lightMode:
-  linear-gradient(180deg, rgba($blue-neon, 0.22) 0%, rgba($blue-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($blue-neon, 0.14) 0%, rgba($blue-light, 0) 45%, rgba($blue-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($blue-light, 0.7) 0%, rgba($blue-light, 0) 52%, rgba($blue-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($blue-neon, 0.08) 0%, rgba($blue-light, 0) 45%, rgba($blue-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($blue-dark, 0.1) 0%, rgba($blue-neon, 0.1) 34%, rgba($blue-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($blue-light, #fff, 84%) 0%,
-    color.mix($blue-light, $blue-neon, 70%) 55%,
-    color.mix($blue-light, $blue-neon, 82%) 100%
+    color.mix($blue-light, $blue-medium, 82%) 0%,
+    color.mix($blue-light, $blue-medium, 66%) 55%,
+    color.mix($blue-light, $blue-medium, 74%) 100%
   );
 $blue-darkMode:
   linear-gradient(180deg, rgba($blue-medium, 0.22) 0%, rgba($blue-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -235,16 +243,17 @@ $purple-neon: #c98fff; //--|🠈 rgba() 🠈|--\\
 $purple-dark: #140a2a; //--|🠈 rgba() 🠈|--\\
 $purple-light: #eadcff; //--|🠈 rgba() 🠈|--\\
 $purple-medium: #68179d; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $purple-darkMode: light on top, $purple-medium at the bottom instead of black, base mixed with $purple-medium 🠈|--\\
 $purple-lightMode:
-  linear-gradient(180deg, rgba($purple-neon, 0.22) 0%, rgba($purple-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($purple-neon, 0.14) 0%, rgba($purple-light, 0) 45%, rgba($purple-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($purple-light, 0.7) 0%, rgba($purple-light, 0) 52%, rgba($purple-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($purple-neon, 0.08) 0%, rgba($purple-light, 0) 45%, rgba($purple-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($purple-dark, 0.1) 0%, rgba($purple-neon, 0.1) 34%, rgba($purple-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($purple-light, #fff, 84%) 0%,
-    color.mix($purple-light, $purple-neon, 70%) 55%,
-    color.mix($purple-light, $purple-neon, 82%) 100%
+    color.mix($purple-light, $purple-medium, 82%) 0%,
+    color.mix($purple-light, $purple-medium, 66%) 55%,
+    color.mix($purple-light, $purple-medium, 74%) 100%
   );
 $purple-darkMode:
   linear-gradient(180deg, rgba($purple-medium, 0.22) 0%, rgba($purple-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -262,16 +271,17 @@ $orange-neon: #ff9900; //--|🠈 rgba() 🠈|--\\
 $orange-dark: #421500; //--|🠈 rgba() 🠈|--\\
 $orange-light: #ffe2c2; //--|🠈 rgba() 🠈|--\\
 $orange-medium: #d97e00; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $orange-darkMode: light on top, $orange-medium at the bottom instead of black, base mixed with $orange-medium 🠈|--\\
 $orange-lightMode:
-  linear-gradient(180deg, rgba($orange-neon, 0.22) 0%, rgba($orange-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($orange-neon, 0.14) 0%, rgba($orange-light, 0) 45%, rgba($orange-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($orange-light, 0.7) 0%, rgba($orange-light, 0) 52%, rgba($orange-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($orange-neon, 0.08) 0%, rgba($orange-light, 0) 45%, rgba($orange-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($orange-dark, 0.1) 0%, rgba($orange-neon, 0.1) 34%, rgba($orange-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($orange-light, #fff, 84%) 0%,
-    color.mix($orange-light, $orange-neon, 70%) 55%,
-    color.mix($orange-light, $orange-neon, 82%) 100%
+    color.mix($orange-light, $orange-medium, 82%) 0%,
+    color.mix($orange-light, $orange-medium, 66%) 55%,
+    color.mix($orange-light, $orange-medium, 74%) 100%
   );
 $orange-darkMode:
   linear-gradient(180deg, rgba($orange-medium, 0.22) 0%, rgba($orange-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -289,16 +299,17 @@ $pink-neon: #ff00c8; //--|🠈 rgba() 🠈|--\\
 $pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
 $pink-light: #ffd1e6; //--|🠈 rgba() 🠈|--\\
 $pink-medium: #b4236a; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $pink-darkMode: light on top, $pink-medium at the bottom instead of black, base mixed with $pink-medium 🠈|--\\
 $pink-lightMode:
-  linear-gradient(180deg, rgba($pink-neon, 0.22) 0%, rgba($pink-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($pink-neon, 0.14) 0%, rgba($pink-light, 0) 45%, rgba($pink-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($pink-light, 0.7) 0%, rgba($pink-light, 0) 52%, rgba($pink-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($pink-neon, 0.08) 0%, rgba($pink-light, 0) 45%, rgba($pink-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($pink-dark, 0.1) 0%, rgba($pink-neon, 0.1) 34%, rgba($pink-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($pink-light, #fff, 84%) 0%,
-    color.mix($pink-light, $pink-neon, 70%) 55%,
-    color.mix($pink-light, $pink-neon, 82%) 100%
+    color.mix($pink-light, $pink-medium, 82%) 0%,
+    color.mix($pink-light, $pink-medium, 66%) 55%,
+    color.mix($pink-light, $pink-medium, 74%) 100%
   );
 $pink-darkMode:
   linear-gradient(180deg, rgba($pink-medium, 0.22) 0%, rgba($pink-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -316,16 +327,17 @@ $yellow-neon: #ffdd55; //--|🠈 rgba() 🠈|--\\
 $yellow-dark: #705010; //--|🠈 rgba() 🠈|--\\
 $yellow-light: #f5e7ad; //--|🠈 rgba() 🠈|--\\
 $yellow-medium: #caa42a; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $yellow-darkMode: light on top, $yellow-medium at the bottom instead of black, base mixed with $yellow-medium 🠈|--\\
 $yellow-lightMode:
-  linear-gradient(180deg, rgba($yellow-neon, 0.22) 0%, rgba($yellow-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($yellow-neon, 0.14) 0%, rgba($yellow-light, 0) 45%, rgba($yellow-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($yellow-light, 0.7) 0%, rgba($yellow-light, 0) 52%, rgba($yellow-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($yellow-neon, 0.08) 0%, rgba($yellow-light, 0) 45%, rgba($yellow-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($yellow-dark, 0.1) 0%, rgba($yellow-neon, 0.1) 34%, rgba($yellow-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($yellow-light, #fff, 84%) 0%,
-    color.mix($yellow-light, $yellow-neon, 70%) 55%,
-    color.mix($yellow-light, $yellow-neon, 82%) 100%
+    color.mix($yellow-light, $yellow-medium, 82%) 0%,
+    color.mix($yellow-light, $yellow-medium, 66%) 55%,
+    color.mix($yellow-light, $yellow-medium, 74%) 100%
   );
 $yellow-darkMode:
   linear-gradient(180deg, rgba($yellow-medium, 0.22) 0%, rgba($yellow-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -343,16 +355,17 @@ $brown-neon: #d9a066; //--|🠈 rgba() 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
 $brown-light: #f0dcc8; //--|🠈 rgba() 🠈|--\\
 $brown-medium: #7b4a2e; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $brown-darkMode: light on top, $brown-medium at the bottom instead of black, base mixed with $brown-medium 🠈|--\\
 $brown-lightMode:
-  linear-gradient(180deg, rgba($brown-neon, 0.22) 0%, rgba($brown-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($brown-neon, 0.14) 0%, rgba($brown-light, 0) 45%, rgba($brown-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($brown-light, 0.7) 0%, rgba($brown-light, 0) 52%, rgba($brown-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($brown-neon, 0.08) 0%, rgba($brown-light, 0) 45%, rgba($brown-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($brown-dark, 0.1) 0%, rgba($brown-neon, 0.1) 34%, rgba($brown-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($brown-light, #fff, 84%) 0%,
-    color.mix($brown-light, $brown-neon, 70%) 55%,
-    color.mix($brown-light, $brown-neon, 82%) 100%
+    color.mix($brown-light, $brown-medium, 82%) 0%,
+    color.mix($brown-light, $brown-medium, 66%) 55%,
+    color.mix($brown-light, $brown-medium, 74%) 100%
   );
 $brown-darkMode:
   linear-gradient(180deg, rgba($brown-medium, 0.22) 0%, rgba($brown-dark, 0) 52%, rgba(#000, 0.4) 100%),
@@ -370,16 +383,17 @@ $turquoise-neon: #2de2e6; //--|🠈 rgba() 🠈|--\\
 $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
 $turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
 $turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $turquoise-darkMode: light on top, $turquoise-medium at the bottom instead of black, base mixed with $turquoise-medium 🠈|--\\
 $turquoise-lightMode:
-  linear-gradient(180deg, rgba($turquoise-neon, 0.22) 0%, rgba($turquoise-light, 0) 52%, rgba(#000, 0.4) 100%),
-  linear-gradient(135deg, rgba($turquoise-neon, 0.14) 0%, rgba($turquoise-light, 0) 45%, rgba($turquoise-light, 0.38) 100%),
+  linear-gradient(180deg, rgba($turquoise-light, 0.7) 0%, rgba($turquoise-light, 0) 52%, rgba($turquoise-medium, 0.3) 100%),
+  linear-gradient(135deg, rgba($turquoise-neon, 0.08) 0%, rgba($turquoise-light, 0) 45%, rgba($turquoise-light, 0.38) 100%),
   radial-gradient(120% 140% at 42% 22%, rgba($turquoise-dark, 0.1) 0%, rgba($turquoise-neon, 0.1) 34%, rgba($turquoise-light, 0) 70%),
   radial-gradient(110% 120% at 50% 50%, rgba(#fff, 0) 58%, rgba(#fff, 0.34) 100%),
   linear-gradient(
     135deg,
-    color.mix($turquoise-light, #fff, 84%) 0%,
-    color.mix($turquoise-light, $turquoise-neon, 70%) 55%,
-    color.mix($turquoise-light, $turquoise-neon, 82%) 100%
+    color.mix($turquoise-light, $turquoise-medium, 82%) 0%,
+    color.mix($turquoise-light, $turquoise-medium, 66%) 55%,
+    color.mix($turquoise-light, $turquoise-medium, 74%) 100%
   );
 $turquoise-darkMode:
   linear-gradient(180deg, rgba($turquoise-medium, 0.22) 0%, rgba($turquoise-dark, 0) 52%, rgba(#000, 0.4) 100%),

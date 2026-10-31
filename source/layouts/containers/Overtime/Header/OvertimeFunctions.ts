@@ -2,7 +2,7 @@
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Header';
 
-export default function previewProfile(
+function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
@@ -57,6 +57,7 @@ export default function previewProfile(
 }
 const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
+  /* Where's the container functions? */
 };
 let sequencedDemonstration = (profile: string): string => {
   switch (profile) {
@@ -93,21 +94,14 @@ let sequencedDemonstration = (profile: string): string => {
   }
 };
 //--|===|--\\
-export function freezeHeaders(pageName: 'overtime', styleView: 'top-lef') {
-  switch (styleView) {
-    case 'top-lef':
-      freezeToggle(pageName, 'header');
-      freezeToggle(pageName, 'leftbar');
-      break;
-  }
-}
-export function unfoldHeaders(thisItem: HTMLElement) {
+
+export const unfoldHeaders = (thisItem: HTMLElement) => {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'overtime', 'header', 'unfolded');
     blockViews(thisItem, 'overtime', 'leftbar', 'unfolded');
   }
-}
-export function squareHeaders(thisItem: HTMLElement) {
+};
+export const squareHeaders = (thisItem: HTMLElement) => {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   const leftbarElement = document.querySelector('#overtime-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
@@ -116,6 +110,14 @@ export function squareHeaders(thisItem: HTMLElement) {
       leftbarElement.className = `default-leftbar collapsed`;
       break;
   }
-}
-
+};
+export const freezeHeaders = (pageName: 'overtime', styleView: 'top-lef') => {
+  switch (styleView) {
+    case 'top-lef':
+      freezeToggle(pageName, 'header');
+      freezeToggle(pageName, 'leftbar');
+      break;
+  }
+};
 //--|===|--\\
+export default previewProfile;
