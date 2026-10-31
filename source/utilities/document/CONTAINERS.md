@@ -91,6 +91,22 @@ The flip swaps markup rather than restyling it, and that's the limitation to kee
 3. **Scripts can't assume which pair holds a component.** The previews live in the header on Desktop and in the footer on Mobile. Look a component up in both, the way `findTags()` in `Menu_swipe.ts` tries `#${pageName}-header` and then `#${pageName}-footer`, never in just one.
 4. **The pair holding home and the app menu sits on top.** `%position` in `styles/Skeleton.scss` swaps the layers with the flip: on Desktop the footer is `z-index: 9` and the header `6`, on Mobile the other way round.
 
+### Mirroring a Layout
+
+The header's Desktop and the footer's Mobile do the same job (on Track a Day, the demonstration), so one is built from the other. `OvertimeHeader.tsx` (`'landscape'`) and `OvertimeFooter.tsx` (`'portrait'`) are the reference pair. Mirroring moves the layout to the opposite edge of the screen; it never renames it.
+
+| Stays the same                                                                   | Flips                                                                                              |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Element and class names: the midground's `.top` / `.bot`, the background's `.lef` / `.rig` | `<DivisionSweeping>` axis `'[x]'` → `'[y]'`, view `'-lef-'` / `'-rig-'` → `'-top-'` / `'-bot-'` |
+| Components, their order and `labelName`s                                         | `<NavigationDefault>` position `'top-lef'` → `'bot-rig'`                                           |
+| Colour, shade and clarity                                                        | Edge rows: `grid-area: 1 / 1 / 3 / 4` → `4 / 1 / 6 / 4`                                            |
+| `previewProfile()`, `.conceal` and the state classes                             | Slide offsets: `top:` → `bottom:`                                                                  |
+|                                                                                  | Breakpoints: `max-height` → `max-width`, and the `*-desk` values → the `*-mobi` values             |
+
+- **Whatever slides away sits against the screen edge.** The demonstration's `<MenuToggle>` slides out whenever its container leaves `.expanded` (`top` on the header, `bottom` on the footer). That only hides it when it sits in the two edge rows and the offset equals its row height from `Menu.toggle.scss`: 128 / 96 / 64 / 48px on Desktop, 192 / 160 / 96 / 64px on Mobile. One row away from the edge, it stops at the edge and peeks into the squared corner.
+- **The `@at-root` state blocks reach every container of their kind.** `@at-root header { &[class*='expanded'] … }` compiles to any `header[class*='expanded']`, not only `#overtime-header`, and the footer's does the same for every footer. It's harmless while only Overtime has a `menu[class*='demonstration']`. Both carry a `Warning:` flag until they're narrowed.
+- **The `locked-*` class is what makes a tap's squaring stick.** Clicking a character profile squares its container through `blockViews(…, 'squaring')`, in `previewProfile()`'s `'click'` case. On Mobile the same tap then bubbles up to the footer's own `onClick`, `unfoldFooters()`, which would unfold it straight away. The 1500ms `locked-footer` that `blockViews()` sets drops that second call. Shorten or remove the lock and the squaring stops sticking.
+
 ---
 
 ## Shared by Every App

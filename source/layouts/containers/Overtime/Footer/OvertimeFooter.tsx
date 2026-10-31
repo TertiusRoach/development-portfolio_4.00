@@ -158,7 +158,7 @@ function OvertimeFooter({ info }: InfoProps) {
                   view: '-left-',
                   color: '(mono)',
                   shade: '~dark~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -178,7 +178,7 @@ function OvertimeFooter({ info }: InfoProps) {
                   view: '-right-',
                   color: '(mono)',
                   shade: '~light~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -194,7 +194,7 @@ function OvertimeFooter({ info }: InfoProps) {
               info={{
                 pageName: pageName,
                 blockName: blockName,
-                labelName: labelName,
+                labelName: 'demonstration',
               }}
               style={{
                 size: '<h3>',
@@ -216,6 +216,7 @@ function OvertimeFooter({ info }: InfoProps) {
             />
           </section>
           <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
             <DivisionSweeping
               //--|🠊 <div class="demon-left-footer_sweeping-default"/> 🠈|--\\
               info={{
@@ -260,9 +261,11 @@ function OvertimeFooter({ info }: InfoProps) {
                 call: OvertimeCharacters as React.ComponentType<InfoProps>,
               }}
             />
+            <div className="bot"></div>
           </figure>
           <div className={`${blockName}-background`}>
-            <footer></footer>
+            <div className="lef"></div>
+            <div className="rig"></div>
           </div>
         </footer>
       );

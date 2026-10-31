@@ -2,7 +2,7 @@
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Footer';
 
-export default function previewProfile(
+function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'overtime',
@@ -43,6 +43,7 @@ export default function previewProfile(
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
+      blockViews(thisItem, pageName, 'footer', 'squaring'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
       demoCard.classList.remove('conceal');
@@ -89,13 +90,14 @@ let sequencedDemonstration = (profile: string): string => {
   }
 };
 //--|===|--\\
-export function unfoldFooters(thisItem: HTMLElement) {
+
+export const unfoldFooters = (thisItem: HTMLElement) => {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'overtime', 'footer', 'unfolded');
     blockViews(thisItem, 'overtime', 'rightbar', 'unfolded');
   }
-}
-export function squareFooters(thisItem: HTMLElement) {
+};
+export const squareFooters = (thisItem: HTMLElement) => {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   const rightbarElement = document.querySelector('#overtime-rightbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
@@ -104,12 +106,14 @@ export function squareFooters(thisItem: HTMLElement) {
       rightbarElement.className = `default-rightbar collapsed`;
       break;
   }
-}
-export function freezeFooters(pageName: 'overtime', styleView: 'bot-rig') {
+};
+export const freezeFooters = (pageName: 'overtime', styleView: 'bot-rig') => {
   switch (styleView) {
     case 'bot-rig':
       freezeToggle(pageName, 'footer');
       freezeToggle(pageName, 'rightbar');
       break;
   }
-}
+};
+//--|===|--\\
+export default previewProfile;
