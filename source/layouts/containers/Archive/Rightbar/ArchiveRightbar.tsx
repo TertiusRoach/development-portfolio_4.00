@@ -66,6 +66,7 @@ function ArchiveRightbar({ info }: InfoProps) {
                   loadAsset('-svg-', '/project-pages/components-page/button-element'),
                   loadAsset('-svg-', '/project-pages/components-page/division-element'),
                   loadAsset('-svg-', '/project-pages/components-page/figure-element'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/file-pen'), //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
                   loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/tags'),
                   loadAsset('-svg-', '/project-pages/components-page/menu-element'),
                   loadAsset('-svg-', '/project-pages/components-page/navigation-element'),
@@ -75,7 +76,7 @@ function ArchiveRightbar({ info }: InfoProps) {
                 ],
               }}
               cases={{
-                pages: 11,
+                pages: 12, //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
                 axis: '[y]',
                 link: [
                   'article',
@@ -83,6 +84,7 @@ function ArchiveRightbar({ info }: InfoProps) {
                   'button',
                   'division',
                   'figure',
+                  'form', //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
                   'label',
                   'menu',
                   'navigation',

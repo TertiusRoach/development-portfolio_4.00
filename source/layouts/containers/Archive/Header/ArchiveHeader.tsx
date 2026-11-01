@@ -263,6 +263,23 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
+      {/*--|🠊 <Form> AI Code: Review Please 2026-11-01 🠈|--*/}
+      <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Form_Register>', '<Form_Verify>', '<Form_Login>', '<Form_Password>', '<Form_Reset>'] as Array<string>,
+        }}
+        info={{
+          labelName: 'form',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
+        }}
+      />
       {/*--|🠊 AI Code: Review Please 🠈|--*/}
       {/*--|🠊 <Label> 🠈|--*/}
       <MenuSwipe

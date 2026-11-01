@@ -1,221 +1,209 @@
-//--|🠊 Form.register.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { showDemos, defineButton, generatePassword } from './Form_register';
-import { viewBlock, viewText, viewPass, retrieveEndpoint, axiosError } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
+//--|🠊 Form.register.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/register/ 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React from 'react';
+/* import axios from 'axios'; */
+
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
+import LabelTextarea from '../../Label/textarea/Label.textarea';
+
+//--|🠋 Functions 🠋|--\\
+import createClass, { defineButton } from './Form_register';
+import { loadAsset } from '../../../../scripts';
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
-//--|🠋 Components 🠋|--//
-/* import ButtonDefault from '../../Button/default/Button.default'; */
-//--|🠉 Components 🠉|--//
 
-interface InfoProps {
+export interface TheseProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
+  style: {
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
 }
-const FormRegister: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  /*
-  const blockName = 'main';
-  const pageName = info.identification;
-  */
 
-  const imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-plus.svg';
+export function FormRegister({ info, style }: TheseProps) {
+  let { setEmail } = useEmail();
+  let { setPassword } = usePassword();
 
-  //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let [lastName, setLastName] = useState('');
-  let [firstName, setFirstName] = useState('');
-  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
-
-  //--|🠋 Button States 🠋|--//
-  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
-
-  const handleRegister = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setSubmit(true);
-    try {
-      const endpoint = retrieveEndpoint('register', 'http://localhost:3000');
-      const response = await axios.post(endpoint, {
-        firstName,
-        lastName,
-        email,
-        passwordHash: password,
-      });
-      const { view, data } = response.data;
-
-      let dialogue: string;
-      switch (view) {
-        case 'login':
-          dialogue = 'You already have an account.';
-
-          viewBlock('login');
-          viewText('login', dialogue);
-          break;
-        case 'password':
-          dialogue = 'You already have an account. Reset your password here.';
-
-          viewBlock('password');
-          viewText('password', dialogue);
-          break;
-        case 'verify':
-          dialogue = 'Please check your email for the activation code.';
-
-          viewBlock('verify');
-          viewText('verify', dialogue);
-          break;
-        case 'blocked':
-          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
-          viewBlock('blocked');
-
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
-          break;
-      }
-    } catch (error) {
-      axiosError(error);
-    } finally {
-      setSubmit(false);
-    }
-  };
-
-  useEffect(() => {
-    // showDemos(pageName);
-  }, [pageName, blockName]);
-
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus') as string;
+  const loginButton = defineButton('login'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
+  const passwordButton = defineButton('password'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   return (
-    <form className="register-form" onSubmit={(event) => handleRegister(event)}>
-      <div className="register-header">
-        {/* <button className="register-close" type="button">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
-            alt=""
-          />
-        </button> */}
-        <div className="register-text">
+    <form
+      className={`${info.labelName}-${info.blockName}_register-default ${createClass(style)}`}
+      onSubmit={(event) => event.preventDefault()} //--|🠈 Visual-only: every <ButtonDefault> in a <form> submits, handleRegister waits below 🠈|--\\
+    >
+      <div className="header">
+        <div className="text">
           <h4>Sign up to use application.</h4>
         </div>
-        <div className="register-icon">
-          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
+        <div className="icon">
+          <img style={{ maskImage: `url(${iconImage})`, WebkitMaskImage: `url(${iconImage})` }} />
         </div>
       </div>
-      <div className="register-inputs">
-        <input
-          required
-          type="text"
-          id="first-name"
-          name="First Name"
-          pattern="[A-Z][a-zA-Z\s]+"
-          placeholder="First Name"
-          title="Name must start with a capital letter and contain only letters and spaces"
-          // --- //
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
-        />
-        <input
-          required
-          type="text"
-          id="last-name"
-          name="Last Name"
-          pattern="[a-zA-Z\s]+"
-          placeholder="Last Name"
-          title="Surname can't contain any numerical values or special characters"
-          // --- //
-          value={lastName}
-          onChange={(event) => setLastName(event.target.value)}
-        />
-        <input
-          required
-          id="email"
-          name="Email"
-          type="email"
-          placeholder="Email Address"
-          // --- //
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          required
-          id="password"
-          type="password"
-          name="Password"
-          title="Click on the 🔄︎ icon to generate a secure password or enter a one that's more than eight characters"
-          pattern=".{8,}"
-          /* pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" */
-          placeholder="Password"
-          // --- //
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
-        {/*
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => {
-            let newPass = generatePassword(); //--|🠈 This generates a new password 🠈|--//
-            setPassword(newPass); //--|🠈 Sets state to new password 🠈|--//
-          }}
-          style={defineButton('generate', { pageName, blockName })}
-        />
-        */}
-        {/*
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => viewPass('register')}
-          style={defineButton('observe', { pageName, blockName })}
-        />
-        */}
+      <div className="inputs">
+        <fieldset className="first" data-input="{text}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'register-first' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'First Name' }}
+            cases={{ type: '{input}' }}
+            /* onChange={(event) => setFirstName(event.target.value)} */
+          />
+        </fieldset>
+        <fieldset className="last" data-input="{text}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'register-last' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Last Name' }}
+            cases={{ type: '{input}' }}
+            /* onChange={(event) => setLastName(event.target.value)} */
+          />
+        </fieldset>
+        <fieldset className="email" data-input="{email}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'register-email' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Email Address' }}
+            cases={{ type: '{input}' }}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </fieldset>
+        <fieldset className="password" data-input="{password}">
+          <ButtonDefault
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Generate password', labelName: 'register-generate' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-01 · No box, only the icon: it lies over the end of the password, like the old one 🠈|--\\
+              size: '<p>',
+              view: '-icon-',
+              color: style.color,
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sync-alt'),
+            }}
+            /* onClick={() => setPassword(generatePassword())} */
+          />
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'register-password' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Password' }}
+            cases={{ type: '{input}' }}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <ButtonDefault
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Show password', labelName: 'register-observe' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-01 · No box, only the icon: it lies over the end of the password, like the old one 🠈|--\\
+              size: '<p>',
+              view: '-icon-',
+              color: style.color,
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/eye'),
+            }}
+            /* onClick={() => viewPass('register')} */
+          />
+        </fieldset>
       </div>
-      <div className="register-footer">
-        <menu className="register-action">
-          {/*
+      <div className="footer">
+        <menu className="action">
           <ButtonDefault
-            type="submit"
-            text={submit ? 'Registering...' : 'Register'}
-            style={defineButton('register', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'register-register' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨lucid⟩',
+              size: '<h3>',
+              view: '-text-',
+              color: style.color,
+              text: 'Register',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+            }}
           />
-          */}
         </menu>
-        <nav id="register-buttons">
-          {/*
+        <nav className="buttons">
           <ButtonDefault
-            type="button"
-            text={'Access Account'}
-            onClick={() => viewBlock('login')}
-            style={defineButton('login', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Access Account', labelName: 'register-login' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: loginButton.size,
+              view: loginButton.view,
+              color: style.color,
+              text: 'Access Account',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+            }}
+            /* onClick={() => viewBlock('login')} */
           />
-          */}
-          {/*
           <ButtonDefault
-            type="button"
-            text={'Reset Password'}
-            onClick={() => viewBlock('password')}
-            style={defineButton('password', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Reset Password', labelName: 'register-password' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: passwordButton.size,
+              view: passwordButton.view,
+              color: style.color,
+              text: 'Reset Password',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+            }}
+            /* onClick={() => viewBlock('password')} */
           />
-          */}
         </nav>
       </div>
     </form>
   );
+}
+/*--|🠋 Submit: commented out so the <Form> is visual-only, viewBlock() drove the old Landing carousel 🠉|--*/
+/*
+//--|🠋 The old <input>s' rules: <LabelTextarea> has no pattern or title props yet 🠋|--\\
+First Name: pattern="[A-Z][a-zA-Z\s]+" title="Name must start with a capital letter and contain only letters and spaces"
+Last Name: pattern="[a-zA-Z\s]+" title="Surname can't contain any numerical values or special characters"
+Password: pattern=".{8,}" title="Click on the 🔄︎ icon to generate a secure password or enter a one that's more than eight characters"
+//--|===|--\\
+let [lastName, setLastName] = useState('');
+let [firstName, setFirstName] = useState('');
+let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--\\
+const handleRegister = async (event: React.FormEvent) => {
+  event.preventDefault();
+  setSubmit(true);
+  try {
+    const endpoint = retrieveEndpoint('register', 'http://localhost:3000');
+    const response = await axios.post(endpoint, {
+      firstName,
+      lastName,
+      email,
+      password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\
+    });
+    const { view, data } = response.data;
+
+    let dialogue: string;
+    switch (view) {
+      case 'login':
+        dialogue = 'You already have an account.';
+
+        viewBlock('login');
+        viewText('login', dialogue);
+        break;
+      case 'password':
+        dialogue = 'You already have an account. Reset your password here.';
+
+        viewBlock('password');
+        viewText('password', dialogue);
+        break;
+      case 'verify':
+        dialogue = 'Please check your email for the activation code.';
+
+        viewBlock('verify');
+        viewText('verify', dialogue);
+        break;
+      case 'blocked':
+        dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+        viewBlock('blocked');
+        break;
+    }
+  } catch (error) {
+    axiosError(error);
+  } finally {
+    setSubmit(false);
+  }
 };
+*/
 export default FormRegister;

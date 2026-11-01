@@ -1,68 +1,109 @@
-//--|🠊 Form_reset.ts 🠈|--//
-export function defineButton(
-  button: 'close' | 'reset' | 'observe' | 'generate',
-  info: { blockName: string; pageName: string }
-) {
-  const { blockName, pageName } = info;
-  //--|🠋 Always Return an Object 🠋|--//
-  const tabletSquare =
-    window.innerWidth < 400 && window.matchMedia('(orientation: portrait)').matches;
-  switch (button) {
-    case 'close':
-      return {
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'dark' as 'dark' | 'medium' | 'light',
+//--|🠊 Form_reset.ts 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/reset/ 🠈|--\\
+import { stripBrackets } from '../../../../scripts';
+import type { TheseProps } from './Form.reset'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
-        className: button,
-        blockName: blockName as 'main',
-        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg',
-      };
-    case 'reset':
-      return {
-        fontSize: '<h3>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-text-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'light' as 'dark' | 'medium' | 'light',
+//--|🠋 Functions 🠋|--\\
+//--|🠊 color_def, e.g. mon_def 🠈|--\\
+function createClass(style: TheseProps['style']): string {
+  //--|🠊 Class Build for <FormReset> 🠈|--\\
+  const classColor = createColor(style.color);
 
-        className: button,
-        blockName: blockName as 'main',
-        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c82ef634aba52a2b13811924580637ceaec1712b/source/assets/svg-files/landing-page/trash-restore.svg',
-      };
-    case 'observe':
-      return {
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'light' as 'dark' | 'medium' | 'light',
+  return `${classColor}_def`; //--|🠈 _def is a placeholder for now 🠈|--\\
+}
 
-        className: button,
-        blockName: blockName as 'rightbar',
-        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/eye.svg',
-      };
-    case 'generate':
-      return {
-        fontSize: '<p>' as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-        layoutView: '-icon-' as '-left-' | '-right-' | '-center-' | '-icon-' | '-text-',
-        shadingView: 'light' as 'dark' | 'medium' | 'light',
+//--|🠋 Generate Abbreviations 🠋|--\\
+const createColor = (color: TheseProps['style']['color']): string => {
+  const colorMap: Record<TheseProps['style']['color'], string> = {
+    //--|🠊 Map of color options to class abbreviations 🠈|--\\
+    '(mono)': 'mon',
+    '(red)': 'red',
+    '(green)': 'gre',
+    '(blue)': 'blu',
+    '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(yellow)': 'yel',
+    '(brown)': 'bro',
+    '(turquoise)': 'tur',
+  };
+  const classColor = colorMap[color];
 
-        className: button,
-        blockName: blockName as 'rightbar',
-        pageName: 'landing' as 'landing' | 'overtime' | 'ticketing' | 'hyperlink',
-        imageLink:
-          'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/6e8c50fc3d2d3a45cee89b33a4a81d8685a2888b/source/assets/svg-files/landing-page/sync-alt.svg',
-      };
+  if (!classColor) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid (${stripBrackets(color, '()')}) 🠈|`);
+  }
+
+  return classColor;
+};
+
+/*--|🠋 Helpers: recovered from git show 7bbf3da8^:source/layouts/scripts/landing.ts, commented out while the <Form> is visual-only 🠉|--*/
+/*
+export function viewText(page: 'login' | 'register' | 'password' | 'verify' | 'reset' | 'launch' | 'blocked', text: string) {
+  let element = document.querySelector(`.${page}-text`)?.firstChild as HTMLElement;
+  element.innerText = text;
+}
+export function viewPass(form: 'register' | 'login' | 'reset') {
+  let input = document.querySelector(`.${form}-inputs #password`) as HTMLInputElement;
+  if (input) {
+    input.type = input.type === 'password' ? 'text' : 'password';
   }
 }
+
+export function axiosError(error: unknown) {
+  //--|🠉 First, we check if the error came from an Axios request. 🠉|--\\
+  //--|🠋 This is important because not all errors in JavaScript are Axios errors. 🠋|--\\
+  if (axios.isAxiosError(error)) {
+    //--|🠋 We try to get the HTTP status code from the server's response. 🠋|--\\
+    const status = error.response?.status;
+    //--|🠉 We also try to extract a meaningful error message from the response. 🠉|--\\
+    //--|🠋 If there's no specific message, we fall back to Axios's built-in error message. 🠋|--\\
+    const message = error.response?.data?.message || error.message;
+
+    //--|🠋 Now we check the status code to decide what message to show the user. 🠋|--\\
+    switch (status) {
+      case 404: //--|🠈 If the server is not found (wrong URL or down) 🠈|--\\
+        alert('status(404): Axios Error: Server not found. Please try again later.');
+        break;
+      case 401: //--|🠈 If the user is unauthorized (wrong username/password) 🠈|--\\
+        alert('status(401):Axios Error: Unauthorized access. Please check your credentials and try again.');
+        break;
+      case 500: //--|🠈 If the server itself has an error (internal server issue) 🠈|--\\
+        alert('status(500)): Axios Error: Internal Server Error. Please try again later.');
+        break;
+      default: //--|🠈 If it's some other error, we show a general network error message. 🠈|--\\
+        alert(`status(default):Axios Error: ${message || 'A network error occurred. Please check your connection.'}`);
+    }
+
+    //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--\\
+    console.error('Axios Error Details:', {
+      status, //--|🠈 The HTTP status code (like 404, 500) 🠈|--\\
+      message, //--|🠈 The error message from the server 🠈|--\\
+      url: error.config?.url, //--|🠈 The URL that was requested 🠈|--\\
+      method: error.config?.method, //--|🠈 The HTTP method (GET, POST, etc.) 🠈|--\\
+    });
+  } else {
+    //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--\\
+    return console.error('Unexpected Error:', error);
+  }
+}
+export function retrieveEndpoint(
+  route: 'register' | 'login' | 'password' | 'verify' | 'reset',
+  address: 'http://localhost:3000' | string,
+) {
+  //--|🠊 URL: Uniform Resource Locator 🠈|--\\
+  //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--\\
+  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--\\
+  return `${BASE_URL}/users/${route}`;
+}
+*/
+/*--|🠋 Own helpers: from the old Form_reset.ts, commented out while the <Form> is visual-only 🠉|--*/
+/*
 export function closeRightbar(pageName: 'landing' | string) {
   let rightbar = document.querySelector(`#${pageName}-rightbar`) as HTMLElement;
   if (rightbar.classList.contains('expanded')) {
-    rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--//
-    rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--//
+    rightbar.classList.remove('expanded'); //--|🠈 Remove '.expanded' 🠈|--\\
+    rightbar.classList.toggle('collapsed'); //--|🠈 Toggle '.collapsed' 🠈|--\\
   }
 }
 export function generatePassword() {
@@ -85,23 +126,23 @@ export function generatePassword() {
   const getRandomElements = (generator: () => string, count: number): string[] =>
     Array.from({ length: count }, generator);
 
-  //--|🠋 Determine random character counts within constraints with mostly lowercase letters 🠋|--//
-  let length = Math.floor(Math.random() * 9) + 8; //--|🠈 It must be between 8 and 16 Characters 🠈|--//
-  let upperCount = Math.floor(Math.random() * 3) + 1; //--|🠈 Contain at least 1 to 3 Numbers 🠈|--//
-  let numberCount = Math.floor(Math.random() * 3) + 1; //--|🠈 1 to 3 numbers 🠈|--//
-  let symbolCount = 1; //--|🠈 And One Special Character 🠈|--//
+  //--|🠋 Determine random character counts within constraints with mostly lowercase letters 🠋|--\\
+  let length = Math.floor(Math.random() * 9) + 8; //--|🠈 It must be between 8 and 16 Characters 🠈|--\\
+  let upperCount = Math.floor(Math.random() * 3) + 1; //--|🠈 Contain at least 1 to 3 Numbers 🠈|--\\
+  let numberCount = Math.floor(Math.random() * 3) + 1; //--|🠈 1 to 3 numbers 🠈|--\\
+  let symbolCount = 1; //--|🠈 And One Special Character 🠈|--\\
 
-  //--|🠋 Fill the password parts 🠋|--//
+  //--|🠋 Fill the password parts 🠋|--\\
   let upperChars = getRandomElements(getRandomUpper, upperCount);
   let numberChars = getRandomElements(getRandomNumber, numberCount);
   let symbolChars = getRandomElements(getRandomSymbol, symbolCount);
   let remainingLength = length - (upperCount + numberCount + symbolCount);
   let lowerChars = getRandomElements(getRandomLower, remainingLength);
 
-  //--|🠋 Combine all characters and shuffle 🠋|--//
+  //--|🠋 Combine all characters and shuffle 🠋|--\\
   let passwordArray = [...upperChars, ...numberChars, ...symbolChars, ...lowerChars];
   let shuffledPassword = passwordArray
-    .sort(() => Math.random() - 0.5) //--|🠈 Fisher-Yates-like shuffle 🠈|--//
+    .sort(() => Math.random() - 0.5) //--|🠈 Fisher-Yates-like shuffle 🠈|--\\
     .join('');
 
   passLogin.value = shuffledPassword;
@@ -116,3 +157,53 @@ export function getCode(formName: 'verify' | 'reset'): string {
     .map((input) => (input as HTMLInputElement).value)
     .join('');
 }
+*/
+/*--|🠋 Server: moved from Form_reset.js, the old route this <Form> posted to 🠉|--*/
+/*
+//--|🠋 POST: Form.reset.js (2025-03-07) 🠋|--\\
+server.post(`/${root}/reset`, async (req, res) => {
+  const { email, passwordNew, renewal } = req.body;
+  const user =
+    (await database.collection('enabled').findOne({ email })) ||
+    (await database.collection('pending').findOne({ email })) ||
+    (await database.collection('blocked').findOne({ email }));
+
+  async function updatePassword(email, password) {
+    await database.collection('enabled').updateOne(
+      { email: email },
+      {
+        $set: {
+          passwordHash: await encryptValue(password),
+
+          userIP: await trackPlace(req),
+          updatedAt: await createDate('today'),
+
+          passwordCode: null,
+          passwordChangeRequests: 0,
+          passwordCodeExpiresAt: null,
+        },
+      }
+    );
+  }
+
+  try {
+    let flagRenewal = await matchValue(renewal, user.passwordCode);
+    let flagPassword = await decryptValue(passwordNew, user.passwordHash);
+    if (flagRenewal) {
+      await updatePassword(email, passwordNew);
+      return res.status(200).json({
+        view: 'login',
+        data: user,
+      });
+    } else {
+      return res.status(200).json({
+        view: 'reset',
+        data: user,
+      });
+    }
+  } catch (error) {
+    axiosError(error); //--|🠈 Handle Login Errors 🠈|--\\
+  }
+});
+*/
+export default createClass;

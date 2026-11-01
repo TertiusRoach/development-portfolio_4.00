@@ -1,162 +1,163 @@
-//--|🠊 Form.password.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { stripBrackets } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
-import { showDemos, defineButton } from './Form_password';
-import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
-//--|🠋 Components 🠋|--//
-/* import ButtonDefault from '../../Button/default/Button.default'; */
-//--|🠉 Components 🠉|--//
+//--|🠊 Form.password.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/password/ 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React from 'react';
+/* import axios from 'axios'; */
 
-interface InfoProps {
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
+import LabelTextarea from '../../Label/textarea/Label.textarea';
+
+//--|🠋 Functions 🠋|--\\
+import createClass, { defineButton } from './Form_password';
+import { loadAsset } from '../../../../scripts';
+import { useEmail } from '../../../../modules/context/EmailContext';
+
+export interface TheseProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
+  style: {
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
 }
-const FormPassword: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  /*
-  const blockName = 'main';
-  const pageName = info.identification;
-  */
 
-  //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
+export function FormPassword({ info, style }: TheseProps) {
+  let { setEmail } = useEmail();
 
-  //--|🠋 Button States 🠋|--//
-  let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--//
-
-  const handlePassword = async (event: React.FormEvent) => {
-    event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--//
-    setSubmit(true);
-    try {
-      const endpoint = retrieveEndpoint('password', 'http://localhost:3000');
-      const response = await axios.post(endpoint, {
-        email: email,
-        passwordHash: password,
-      });
-      const { view, data } = response.data;
-
-      let dialogue: string;
-      switch (view) {
-        case 'register':
-          dialogue = "You cannot change the password for an account that doesn't exist.";
-
-          viewBlock('register');
-          viewText('register', dialogue);
-          break;
-        case 'login':
-          dialogue = 'Account recovered. Please log in and check your email to authorize.';
-
-          viewBlock('login');
-          viewText('login', dialogue);
-          break;
-        case 'verify':
-          dialogue = 'Please verify your account before requesting a password change.';
-
-          viewBlock('verify');
-          viewText('verify', dialogue);
-          break;
-        case 'reset':
-          dialogue = 'Please enter the recovery code sent to your email, followed by the new password.';
-
-          viewBlock('reset');
-          viewText('reset', dialogue);
-          break;
-        case 'blocked':
-          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
-          viewBlock('blocked');
-
-          // setTimeout(() => {
-          //   alert(dialogue);
-          // }, 250);
-          break;
-      }
-    } catch (error) {
-      axiosError(error);
-    } finally {
-      setSubmit(false);
-    }
-  };
-
-  useEffect(() => {}, [pageName, blockName]);
-
-  let imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/user-lock.svg';
-
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock') as string;
+  const loginButton = defineButton('login'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
+  const registerButton = defineButton('register'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   return (
-    <form className="password-form" onSubmit={(event) => handlePassword(event)}>
-      <div className="password-header">
-        {/* <button className="password-close" type="button">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
-            alt=""
-          />
-        </button> */}
-        <div className="password-text">
+    <form
+      className={`${info.labelName}-${info.blockName}_password-default ${createClass(style)}`}
+      onSubmit={(event) => event.preventDefault()} //--|🠈 Visual-only: every <ButtonDefault> in a <form> submits, handlePassword waits below 🠈|--\\
+    >
+      <div className="header">
+        <div className="text">
           <h4>You can update your password here.</h4>
         </div>
-        <div className="password-icon">
-          <img style={{ maskImage: `url(${imageLink})`, WebkitMaskImage: `url(${imageLink})` }} />
+        <div className="icon">
+          <img style={{ maskImage: `url(${iconImage})`, WebkitMaskImage: `url(${iconImage})` }} />
         </div>
       </div>
-      <div className="password-inputs">
-        <input
-          required
-          id="email"
-          name="Email"
-          type="email"
-          placeholder="Email Address"
-          // --- //
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
+      <div className="inputs">
+        <fieldset className="email" data-input="{email}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'password-email' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Email Address' }}
+            cases={{ type: '{input}' }}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </fieldset>
       </div>
-      <div className="password-footer">
-        <menu className="password-action">
-          {/*
+      <div className="footer">
+        <menu className="action">
           <ButtonDefault
-            type="submit"
-            text={submit ? 'Changing...' : 'Change'}
-            style={defineButton('password', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'password-password' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨lucid⟩',
+              size: '<h3>',
+              view: '-text-',
+              color: style.color,
+              text: 'Change',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+            }}
           />
-          */}
         </menu>
-        <nav id="password-buttons">
-          {/*
+        <nav className="buttons">
           <ButtonDefault
-            type="button"
-            text={'Enter Account'}
-            onClick={() => viewBlock('login')}
-            style={defineButton('login', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Enter Account', labelName: 'password-login' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: loginButton.size,
+              view: loginButton.view,
+              color: style.color,
+              text: 'Enter Account',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+            }}
+            /* onClick={() => viewBlock('login')} */
           />
-          */}
-          {/*
           <ButtonDefault
-            type="button"
-            text={'Create Account'}
-            onClick={() => viewBlock('register')}
-            style={defineButton('register', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Create Account', labelName: 'password-register' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: registerButton.size,
+              view: registerButton.view,
+              color: style.color,
+              text: 'Create Account',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+            }}
+            /* onClick={() => viewBlock('register')} */
           />
-          */}
         </nav>
       </div>
     </form>
   );
+}
+/*--|🠋 Submit: commented out so the <Form> is visual-only, viewBlock() drove the old Landing carousel 🠉|--*/
+/*
+let { email } = useEmail();
+let { password } = usePassword();
+let [submit, setSubmit] = useState(false); //--|🠈 Prevents Multiple Submissions 🠈|--\\
+const handlePassword = async (event: React.FormEvent) => {
+  event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--\\
+  setSubmit(true);
+  try {
+    const endpoint = retrieveEndpoint('password', 'http://localhost:3000');
+    const response = await axios.post(endpoint, {
+      email: email,
+      password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\
+      password: password, //--|🠈 AI Code: Review Please 2026-11-01 · The old body sent this line twice, kept as it was 🠈|--\\
+    });
+    const { view, data } = response.data;
+
+    let dialogue: string;
+    switch (view) {
+      case 'register':
+        dialogue = "You cannot change the password for an account that doesn't exist.";
+
+        viewBlock('register');
+        viewText('register', dialogue);
+        break;
+      case 'login':
+        dialogue = 'Account recovered. Please log in and check your email to authorize.';
+
+        viewBlock('login');
+        viewText('login', dialogue);
+        break;
+      case 'verify':
+        dialogue = 'Please verify your account before requesting a password change.';
+
+        viewBlock('verify');
+        viewText('verify', dialogue);
+        break;
+      case 'reset':
+        dialogue = 'Please enter the recovery code sent to your email, followed by the new password.';
+
+        viewBlock('reset');
+        viewText('reset', dialogue);
+        break;
+      case 'blocked':
+        dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+        viewBlock('blocked');
+
+        // setTimeout(() => {
+        //   alert(dialogue);
+        // }, 250);
+        break;
+    }
+  } catch (error) {
+    axiosError(error);
+  } finally {
+    setSubmit(false);
+  }
 };
+*/
 export default FormPassword;

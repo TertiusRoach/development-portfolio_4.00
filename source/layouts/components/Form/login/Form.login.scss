@@ -1,266 +1,628 @@
-//--|🠊 Form.login.scss 🠈|--//
-@use '../../../designs/Palettes.scss' as Palettes;
+//--|🠊 Form.login.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax: card size from <SectionDemonstration>, the old sizes and $logTicket-* recipe kept per colour. The original is in git: git show d3b4ec09:source/layouts/components/Form/login/ 🠈|--\\
+@use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 1fr auto 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
-  div[class*='header'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
-    button[class*='close'] {
-      background: none;
-      grid-area: 1 / 3 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      img {
-        width: 3rem;
-        height: 3rem;
-        padding: 0.5rem;
+  //--|🠋 Desktop (Login) 🠋|--\\
+  %desk-flex {
+    @at-root form[class*='_login-'] {
+      > div[class='header'] {
+        > div[class='text'] {
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+          h4 {
+            width: 100%;
+            padding: 4px;
+            line-clamp: 3; //--|🠊 Standard property 🠈|--\\
+            color: white;
+            text-wrap: balance;
+            text-align: center; //--|🠊 Justifies text alignment 🠈|--\\
+            display: -webkit-box; //--|🠊 Enables multi-line truncation 🠈|--\\
+            -webkit-line-clamp: 4; //--|🠊 Limits the number of lines 🠈|--\\
+            text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--\\
+            -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--\\
+            filter: drop-shadow(black 0 0 1rem); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+          }
+        }
+        > div[class='icon'] {
+          z-index: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 50%;
+            height: 50%;
+            opacity: 0.25;
+            mask-size: contain;
+            mask-position: center;
+            mask-repeat: no-repeat;
+          }
+        }
       }
-    }
-    div[class*='text'] {
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      grid-area: 1 / 2 / 3 / 3;
-      filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      h4 {
-        width: 100%;
-        padding: 4px;
-        line-clamp: 3; //--|🠊 Standard property 🠈|--//
-        color: white;
-        text-wrap: balance;
-        text-align: center; //--|🠊 Justifies text alignment 🠈|--//
-        display: -webkit-box; //--|🠊 Enables multi-line truncation 🠈|--//
-        -webkit-line-clamp: 4; //--|🠊 Limits the number of lines  🠈|--//
-        text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--//
-        -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
-        filter: drop-shadow(black 0 0 1rem); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      }
-    }
-    div[class*='icon'] {
-      z-index: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      grid-area: 1 / 2 / 3 / 3;
-      img {
-        width: 50%;
-        height: 50%;
-        opacity: 0.25;
-        mask-size: contain;
-        mask-position: center;
-        mask-repeat: no-repeat;
-        background: Palettes.$logTicket-light;
+      > div[class='inputs'] > fieldset > label {
+        width: 100%; //--|🠈 The old <input>s filled their columns, <LabelTextarea> {input} is 75% on its own 🠈|--\\
       }
     }
   }
-  div[class*='inputs'] {
-    row-gap: 1rem;
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-    grid-template: repeat(2, 2rem) / 32px repeat(2, 2rem) 1fr repeat(2, 2rem) 32px; //--|🠊 rows / columns 🠈|--//
-
-    input {
-      text-align: left;
-      border-radius: 4px;
-      padding-left: 12px; //--|🠊 padding-left: 0.75rem 🠈|--//
-      color: Palettes.$logTicket-dark;
-      filter: drop-shadow(black 0 0 4px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      outline: 2px solid Palettes.$logTicket-light;
-      box-shadow: inset 0 0 4px rgba(Palettes.$logTicket-dark, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-
-      &[id*='email'] {
-        grid-area: 1 / 2 / 2 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  %desk-grid {
+    @at-root form[class*='_login-'] {
+      display: grid;
+      grid-template: 1fr auto 1fr / 1fr; //--|🠈 rows / columns 🠈|--\\
+      > div[class='header'] {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠈 rows / columns 🠈|--\\
+        > div[class='text'],
+        > div[class='icon'] {
+          grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
       }
-      &[id*='password'] {
-        grid-area: 2 / 2 / 3 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      > div[class='inputs'] {
+        row-gap: 1rem;
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-template: repeat(2, auto) / 32px repeat(2, 2rem) 1fr repeat(2, 2rem) 32px; //--|🠈 rows / columns, the rows were 2rem: <LabelTextarea> sets its own height now 🠈|--\\
+        > fieldset {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-template: 1fr / 1fr auto; //--|🠈 rows / columns, the eye takes its own width over the end of the password 🠈|--\\
+          align-items: center;
+          label {
+            grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end, under the eye: AI Code: Review Please 2026-11-01 🠈|--\\
+          }
+        }
+        > fieldset[class='email'] {
+          grid-area: 1 / 2 / 2 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          label {
+            grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end, the email has no eye 🠈|--\\
+          }
+        }
+        > fieldset[class='password'] {
+          grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          button[id='login-observe'] {
+            z-index: 2;
+            grid-area: 1 / 2 / 2 / 3; //--|🠈 Over the end of the password, like the old eye: ⟨opaque⟩ has no box, AI Code: Review Please 2026-11-01 🠈|--\\
+          }
+        }
       }
-      &::placeholder {
-        font-weight: bold;
-        color: rgba(Palettes.$logTicket-dark, 0.75);
+      > div[class='footer'] {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-template: 1fr 6rem / repeat(2, 1fr); //--|🠈 rows / columns 🠈|--\\
+        > menu[class='action'] {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-template: 1rem auto 1fr / 2rem 1fr 2rem; //--|🠈 rows / columns 🠈|--\\
+          button[id='login-login'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        > nav[class='buttons'] {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-area: 2 / 1 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-template: 1fr auto 1fr / 1fr auto 1fr auto 1fr; //--|🠈 rows / columns, was 10rem: today's <ButtonDefault> takes its own width 🠈|--\\
+          button[id='login-register'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[id='login-password'] {
+            grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
       }
-    }
-    button[class*='observe'] {
-      grid-area: 2 / 6 / 3 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      width: 448px;
+      height: 672px; //--|🠈 <SectionDemonstration> card size 🠈|--\\
+      @media screen and (max-height: 768px) {
+        width: 285px;
+        height: 416px;
+      }
+      @media screen and (max-height: 480px) {
+        width: 214px;
+        height: 312px;
+        > div[class='header'] {
+          display: none;
+        }
+        > div[class='inputs'] {
+          padding-top: 3rem;
+        }
+        > div[class='footer'] {
+          grid-template: 1fr auto / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-11-01 · The nav row was 6rem, too tall for the small cards 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 360px) {
+        width: 165px;
+        height: 240px;
+        margin-top: -1rem;
+        margin-bottom: -1rem;
+      }
     }
   }
-  div[class*='footer'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    grid-area: 3 / 1 / 4 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 1fr 6rem / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-
-    menu[class*='action'] {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-area: 1 / 1 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1rem auto 1fr / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-
-      button[class*='login'] {
-        grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        filter: drop-shadow(
-          rgba(Palettes.$logTicket-dark, 1) 0 0 8px
-        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  %desk-tint {
+    //--|🠊 Style Color 🠈|--\\
+    @at-root form[class*='_login-'] {
+      &[class*='mon_'] {
+        background: rgba(Palettes.$gray-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$gray-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$gray-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$gray-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
       }
-    }
-    #login-buttons {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-area: 2 / 1 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1fr auto 1fr / 1fr 10rem 1fr 10rem 1fr; //--|🠊 rows / columns 🠈|--//
-      button[class*='register'] {
-        grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      &[class*='red_'] {
+        background: rgba(Palettes.$red-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$red-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$red-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$red-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
       }
-      button[class*='password'] {
-        grid-area: 2 / 4 / 3 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      &[class*='gre_'] {
+        background: rgba(Palettes.$green-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$green-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$green-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$green-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
       }
-      button {
-        filter: drop-shadow(
-          rgba(Palettes.$logTicket-light, 1) 0 0 2px
-        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      &[class*='blu_'] {
+        background: rgba(Palettes.$blue-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$blue-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$blue-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$blue-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='pur_'] {
+        background: rgba(Palettes.$purple-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$purple-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$purple-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$purple-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='ora_'] {
+        background: rgba(Palettes.$orange-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$orange-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$orange-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$orange-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='pin_'] {
+        background: rgba(Palettes.$pink-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$pink-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$pink-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$pink-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='yel_'] {
+        background: rgba(Palettes.$yellow-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$yellow-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$yellow-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$yellow-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='bro_'] {
+        background: rgba(Palettes.$brown-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$brown-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$brown-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$brown-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='tur_'] {
+        background: rgba(Palettes.$turquoise-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$turquoise-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$turquoise-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$turquoise-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
       }
     }
   }
-
-  //--|🠋 Tablet (Landscape) 🠋|--//
-  @media screen and (max-height: 768px) {
-  }
-  @media screen and (max-height: 480px) {
-    div[class*='header'] {
-      display: none;
-    }
-    div[class*='inputs'] {
-      padding-top: 3rem;
-    }
-  }
-  @media screen and (max-height: 360px) {
-    margin-top: -1rem;
-    margin-bottom: -1rem;
-  }
+  //--|===|--\\
+  @extend %desk-flex;
+  @extend %desk-grid;
+  @extend %desk-tint;
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
-  grid-template: 1fr auto 1fr / 1fr; //--|🠊 rows / columns 🠈|--//
-  div[class*='header'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    padding-top: 4rem;
-    grid-area: 1 / 1 / 2 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠊 rows / columns 🠈|--//
-    button[class*='close'] {
-      background: none;
-      grid-area: 1 / 3 / 2 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      img {
-        width: 3rem;
-        height: 3rem;
-        padding: 0.5rem;
+  //--|🠋 Mobile (Login) 🠋|--\\
+  %mobi-flex {
+    @at-root form[class*='_login-'] {
+      > div[class='header'] {
+        padding-top: 4rem; //--|🠈 The old Mobile header 🠈|--\\
+        > div[class='text'] {
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+          h4 {
+            width: 100%;
+            padding: 4px;
+            line-clamp: 3; //--|🠊 Standard property 🠈|--\\
+            color: white;
+            text-wrap: balance;
+            text-align: center; //--|🠊 Justifies text alignment 🠈|--\\
+            display: -webkit-box; //--|🠊 Enables multi-line truncation 🠈|--\\
+            -webkit-line-clamp: 4; //--|🠊 Limits the number of lines 🠈|--\\
+            text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--\\
+            -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--\\
+            filter: drop-shadow(black 0 0 1rem); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+          }
+        }
+        > div[class='icon'] {
+          z-index: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 50%;
+            height: 50%;
+            opacity: 0.25;
+            mask-size: contain;
+            mask-position: center;
+            mask-repeat: no-repeat;
+          }
+        }
       }
-    }
-    div[class*='text'] {
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      grid-area: 1 / 2 / 3 / 3;
-      filter: drop-shadow(black 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      h4 {
-        width: 100%;
-        padding: 4px;
-        line-clamp: 3; //--|🠊 Standard property 🠈|--//
-        color: white;
-        text-wrap: balance;
-        text-align: center; //--|🠊 Justifies text alignment 🠈|--//
-        display: -webkit-box; //--|🠊 Enables multi-line truncation 🠈|--//
-        -webkit-line-clamp: 4; //--|🠊 Limits the number of lines  🠈|--//
-        text-overflow: ellipsis; //--|🠊 Adds ellipsis for overflow 🠈|--//
-        -webkit-box-orient: vertical; //--|🠊 Vertical Text 🠈|--//
-        filter: drop-shadow(black 0 0 1rem); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
-      }
-    }
-    div[class*='icon'] {
-      z-index: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      grid-area: 1 / 2 / 3 / 3;
-      img {
-        width: 50%;
-        height: 50%;
-        opacity: 0.25;
-        mask-size: contain;
-        mask-position: center;
-        mask-repeat: no-repeat;
-        background: Palettes.$logTicket-light;
+      > div[class='inputs'] > fieldset > label {
+        width: 100%; //--|🠈 The old <input>s filled their columns, <LabelTextarea> {input} is 75% on its own 🠈|--\\
       }
     }
   }
-  div[class*='inputs'] {
-    row-gap: 1rem;
-    display: inherit; //--|🠈 display: grid; 🠈|--//
-    grid-template: repeat(2, 2rem) / 32px repeat(2, 2rem) 1fr repeat(2, 2rem) 32px; //--|🠊 rows / columns 🠈|--//
-
-    input {
-      padding-left: 0.75rem; //--|🠊 padding-left: 12px 🠈|--//
-      &[id*='email'] {
-        grid-area: 1 / 2 / 2 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  %mobi-grid {
+    @at-root form[class*='_login-'] {
+      display: grid;
+      grid-template: 1fr auto 1fr / 1fr; //--|🠈 rows / columns 🠈|--\\
+      > div[class='header'] {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-template: 4rem 1fr / 4rem 1fr 4rem; //--|🠈 rows / columns 🠈|--\\
+        > div[class='text'],
+        > div[class='icon'] {
+          grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        }
       }
-      &[id*='password'] {
-        grid-area: 2 / 2 / 3 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+      > div[class='inputs'] {
+        row-gap: 1rem;
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-template: repeat(2, auto) / 32px repeat(2, 2rem) 1fr repeat(2, 2rem) 32px; //--|🠈 rows / columns, the rows were 2rem: <LabelTextarea> sets its own height now 🠈|--\\
+        > fieldset {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-template: 1fr / 1fr auto; //--|🠈 rows / columns, the eye takes its own width over the end of the password 🠈|--\\
+          align-items: center;
+          label {
+            grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end, under the eye: AI Code: Review Please 2026-11-01 🠈|--\\
+          }
+        }
+        > fieldset[class='email'] {
+          grid-area: 1 / 2 / 2 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          label {
+            grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end, the email has no eye 🠈|--\\
+          }
+        }
+        > fieldset[class='password'] {
+          grid-area: 2 / 2 / 3 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          button[id='login-observe'] {
+            z-index: 2;
+            grid-area: 1 / 2 / 2 / 3; //--|🠈 Over the end of the password, like the old eye: ⟨opaque⟩ has no box, AI Code: Review Please 2026-11-01 🠈|--\\
+          }
+        }
       }
-      &::placeholder {
-        font-weight: bold;
+      > div[class='footer'] {
+        display: inherit; //--|🠈 display: grid; 🠈|--\\
+        grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-template: 1fr 6rem / repeat(2, 1fr); //--|🠈 rows / columns 🠈|--\\
+        > menu[class='action'] {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-area: 1 / 1 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-template: 1rem auto 1fr / 2rem 1fr 2rem; //--|🠈 rows / columns 🠈|--\\
+          button[id='login-login'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+        > nav[class='buttons'] {
+          display: inherit; //--|🠈 display: grid; 🠈|--\\
+          grid-area: 2 / 1 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-template: 1fr auto 1fr / 1fr auto 1fr auto 1fr; //--|🠈 rows / columns, was 10rem: today's <ButtonDefault> takes its own width 🠈|--\\
+          button[id='login-register'] {
+            grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+          button[id='login-password'] {
+            grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          }
+        }
+      }
+      width: 448px;
+      height: 672px; //--|🠈 <SectionDemonstration> card size 🠈|--\\
+      @media screen and (max-width: 768px) {
+        width: 285px;
+        height: 416px;
+      }
+      @media screen and (max-width: 480px) {
+        width: 214px;
+        height: 312px;
+        > div[class='header'] {
+          display: none; //--|🠈 AI Code: Review Please 2026-11-01 · The old Desktop 480px rule, carried over: the small cards have no room for the header 🠈|--\\
+        }
+        > div[class='inputs'] {
+          padding-top: 3rem;
+        }
+        > div[class='footer'] {
+          grid-template: 1fr auto / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-11-01 · The nav row was 6rem, too tall for the small cards 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 360px) {
+        width: 165px;
+        height: 240px;
       }
     }
-    button[class*='observe'] {
-      grid-area: 2 / 6 / 3 / 7; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    }
   }
-  div[class*='footer'] {
-    display: inherit; //--|🠊 display: grid; 🠈|--//
-    grid-area: 3 / 1 / 4 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-    grid-template: 1fr 6rem / repeat(2, 1fr); //--|🠊 rows / columns 🠈|--//
-
-    menu[class*='action'] {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-area: 1 / 1 / 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1rem auto 1fr / 2rem 1fr 2rem; //--|🠊 rows / columns 🠈|--//
-
-      button[class*='login'] {
-        grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-        filter: drop-shadow(
-          rgba(Palettes.$logTicket-dark, 1) 0 0 8px
-        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+  %mobi-tint {
+    //--|🠊 Style Color 🠈|--\\
+    @at-root form[class*='_login-'] {
+      &[class*='mon_'] {
+        background: rgba(Palettes.$gray-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$gray-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$gray-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$gray-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='red_'] {
+        background: rgba(Palettes.$red-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$red-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$red-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$red-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='gre_'] {
+        background: rgba(Palettes.$green-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$green-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$green-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$green-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='blu_'] {
+        background: rgba(Palettes.$blue-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$blue-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$blue-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$blue-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='pur_'] {
+        background: rgba(Palettes.$purple-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$purple-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$purple-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$purple-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='ora_'] {
+        background: rgba(Palettes.$orange-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$orange-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$orange-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$orange-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='pin_'] {
+        background: rgba(Palettes.$pink-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$pink-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$pink-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$pink-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='yel_'] {
+        background: rgba(Palettes.$yellow-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$yellow-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$yellow-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$yellow-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='bro_'] {
+        background: rgba(Palettes.$brown-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$brown-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$brown-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$brown-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+      }
+      &[class*='tur_'] {
+        background: rgba(Palettes.$turquoise-dark, 0.75);
+        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 1); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--\\
+        > div[class='header'] > div[class='icon'] img {
+          background: Palettes.$turquoise-light;
+        }
+        > div[class='footer'] > menu[class='action'] button {
+          filter: drop-shadow(rgba(Palettes.$turquoise-dark, 1) 0 0 8px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
+        > div[class='footer'] > nav[class='buttons'] button {
+          filter: drop-shadow(rgba(Palettes.$turquoise-light, 1) 0 0 2px); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--\\
+        }
       }
     }
-    #login-buttons {
-      display: inherit; //--|🠊 display: grid; 🠈|--//
-      grid-area: 2 / 1 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      grid-template: 1fr auto 1fr / 1fr 10rem 1fr 10rem 1fr; //--|🠊 rows / columns 🠈|--//
-      button[class*='register'] {
-        grid-area: 2 / 2 / 3 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+  }
+  //--|===|--\\
+  @extend %mobi-flex;
+  @extend %mobi-grid;
+  @extend %mobi-tint;
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Login) 🠋|--\\
+  %tabl-flex {
+    /*--|🠋 Nothing changes: Desktop and Mobile handle the flex 🠉|--*/
+  }
+  %tabl-grid {
+    @at-root form[class*='_login-'] {
+      @media screen and (orientation: landscape) {
+        //--|🠊 Desktop: one step earlier than desktop-landscape 🠈|--\\
+        width: 448px;
+        height: 672px; //--|🠈 <SectionDemonstration> card size 🠈|--\\
+        @media screen and (max-width: 1920px) {
+          width: 285px;
+          height: 416px;
+        }
+        @media screen and (max-width: 1366px) {
+          width: 214px;
+          height: 312px;
+          > div[class='header'] {
+            display: none;
+          }
+          > div[class='inputs'] {
+            padding-top: 3rem;
+          }
+          > div[class='footer'] {
+            grid-template: 1fr auto / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-11-01 · The nav row was 6rem, too tall for the small cards 🠈|--\\
+          }
+        }
+        @media screen and (max-width: 854px) {
+          width: 165px;
+          height: 240px;
+          margin-top: -1rem;
+          margin-bottom: -1rem;
+        }
       }
-      button[class*='password'] {
-        grid-area: 2 / 4 / 3 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
-      }
-      button {
-        filter: drop-shadow(
-          rgba(Palettes.$logTicket-light, 1) 0 0 2px
-        ); //--|🠈 drop-shadow( <color> <x-axis> <y-axis> <blur> ) 🠈|--//
+      @media screen and (orientation: portrait) {
+        //--|🠊 Mobile: one step earlier than mobile-portrait 🠈|--\\
+        width: 448px;
+        height: 672px; //--|🠈 <SectionDemonstration> card size 🠈|--\\
+        @media screen and (max-height: 1920px) {
+          width: 285px;
+          height: 416px;
+        }
+        @media screen and (max-height: 1366px) {
+          width: 214px;
+          height: 312px;
+          > div[class='header'] {
+            display: none; //--|🠈 AI Code: Review Please 2026-11-01 · The old Desktop 480px rule, carried over: the small cards have no room for the header 🠈|--\\
+          }
+          > div[class='inputs'] {
+            padding-top: 3rem;
+          }
+          > div[class='footer'] {
+            grid-template: 1fr auto / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-11-01 · The nav row was 6rem, too tall for the small cards 🠈|--\\
+          }
+        }
+        @media screen and (max-height: 854px) {
+          width: 165px;
+          height: 240px;
+        }
       }
     }
   }
-
-  //--|🠋 Tablet (Portrait) 🠋|--//
-  @media screen and (max-width: 768px) {
+  %tabl-tint {
+    /*--|🠋 Nothing changes: the colours are the same on every screen 🠉|--*/
   }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-width: 360px) {
-  }
+  //--|===|--\\
+  @extend %tabl-flex;
+  @extend %tabl-grid;
+  @extend %tabl-tint;
 }
 
-form[class*='login'] {
-  // display: none;
-  display: grid;
+form[class*='_login-'] {
   border-radius: 1rem;
-  background: rgba(Palettes.$logTicket-dark, 0.75);
-  box-shadow: 0 0 8rem rgba(Palettes.$logTicket-medium, 0.75); //--|🠈 <x-axis> | <y-axis> | <blur> | <color> 🠈|--//
-  box-shadow: inset 0 0 8px rgba(Palettes.$logTicket-light, 1);
-  height: 26rem;
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
@@ -268,5 +630,9 @@ form[class*='login'] {
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
   }
 }

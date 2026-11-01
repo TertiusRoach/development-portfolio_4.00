@@ -207,6 +207,7 @@ body {
   div[id='components-body'] {
     //--|🟨|--\\
     main[id*='components'] {
+      aside[class*='form'], //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
       aside[class*='menu'],
       aside[class*='time'],
       aside[class*='table'],

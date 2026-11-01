@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
+import FormElements from './elements/form-components/FormElements'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';
@@ -117,6 +118,13 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName,
           blockName: blockName,
           labelName: 'figure' as string,
+        }}
+      />
+      <FormElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'form' as string, //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
         }}
       />
       <LabelElements

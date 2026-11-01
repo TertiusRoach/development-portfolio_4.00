@@ -314,7 +314,6 @@ root/
 │   │   │   ├── Aside/
 │   │   │   ├── Button/
 │   │   │   ├── Division/
-│   │   │   ├── Fieldset/
 │   │   │   ├── Figure/
 │   │   │   ├── Form/
 │   │   │   ├── Label/
@@ -411,10 +410,9 @@ The UI system. This is where the application becomes readable. The split between
 | `Aside/`      | `characters`                                           |
 | `Button/`     | `default` · `profile` · `routing` · `stretch`          |
 | `Division/`   | `conveyor` · `fullscreen` · `sweeping` · `testing`     |
-| `Fieldset/`   | `code`                                                 |
 | `Figure/`     | `default` · `loading` · `rotation`                     |
 | `Form/`       | `login` · `password` · `register` · `reset` · `verify` |
-| `Label/`      | `toggle`                                               |
+| `Label/`      | `selection` · `switching` · `textarea`                 |
 | `List/`       | `countdown`                                            |
 | `Menu/`       | `scroll` · `select` · `swipe` · `toggle`               |
 | `Navigation/` | `default`                                              |

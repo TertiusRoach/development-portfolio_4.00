@@ -71,7 +71,7 @@ ReactDOM.createRoot(element).render(
 - **Emails** (verification and reset codes) go through nodemailer, with Mailtrap for testing ([MODULES.md, Section 4](MODULES.md#4-test-emails-with-mailtrap)).
 - **The password field** was called `passwordHash`. It carries the plain password; the server hashes it with `bcrypt`. A name that says "hash" makes the value look safe already, so someone could log it, store it or send it over plain HTTP thinking nothing can be read from it. It's renamed so the name says what the value really is.
 
-The `<Form>`s currently call `axios` themselves. That breaks the rule in [TABLE.md, Section 5](TABLE.md#5-how-data-reaches-a-table) that components never talk to the server directly; it's fixed when the data layer below takes over.
+The `<Form>`s are visual-only for now: their old submit handlers, which called `axios` themselves, are commented out under each component (see [RULEBOOK, Component Anatomy](RULEBOOK.md#4-component-anatomy)). Calling `axios` from a component breaks the rule in [TABLE.md, Section 5](TABLE.md#5-how-data-reaches-a-table) that components never talk to the server directly, so the handlers come back through the data layer below, not as they were.
 
 ---
 

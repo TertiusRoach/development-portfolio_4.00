@@ -69,7 +69,7 @@ To hide something for yourself:
 
 1. Open Settings (`Ctrl + ,` or `Cmd + ,`) and make sure the **User** tab is selected, not **Workspace**.
 2. Search for `files.exclude`.
-3. Click **Add Pattern** and type the folder path, for example `source/layouts/components/Fieldset`.
+3. Click **Add Pattern** and type the folder path, for example `source/layouts/components/Figure`.
 
 Use the **User** tab so the change stays on your machine. The **Workspace** tab writes into `.vscode/settings.json`, which is committed and would hide the folder for everyone.
 

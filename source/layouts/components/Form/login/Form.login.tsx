@@ -1,209 +1,192 @@
-//--|🠊 Form.login.tsx 🠈|--//
-//--|🠋 Functions 🠋|--//
-import { defineButton } from './Form_login';
-import { stripBrackets } from '../../../scripts/landing';
-import { axiosError, retrieveEndpoint } from '../../../scripts/landing';
-import { viewBlock, viewText, viewPass } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Dependencies 🠋|--//
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Context 🠋|--//
+//--|🠊 Form.login.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/login/ 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React from 'react';
+/* import axios from 'axios'; */
+
+//--|🠋 Components 🠋|--\\
+import ButtonDefault from '../../Button/default/Button.default';
+import LabelTextarea from '../../Label/textarea/Label.textarea';
+
+//--|🠋 Functions 🠋|--\\
+import createClass, { defineButton } from './Form_login';
+import { loadAsset } from '../../../../scripts';
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
-//--|🠋 Components 🠋|--//
-/* import ButtonDefault from '../../Button/default/Button.default'; */
-//--|🠉 Components 🠉|--//
 
-interface InfoProps {
+export interface TheseProps {
   info: {
-    pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
-    blockName: '<overlay>' | '<leftbar>' | '<rightbar>' | '<header>' | '<footer>' | '<main>' | string;
-    roleName?: '(established)' | '(freelancing)' | '(manager)' | '(employee)' | '(specialist)' | '(technician)' | string;
+    pageName: string;
+    blockName: string;
+    labelName: string;
+  };
+  style: {
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
 }
-const FormLogin: React.FC<InfoProps> = ({ info }) => {
-  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  const blockName = stripBrackets(info.blockName, '<>') as 'main';
 
-  //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail();
-  let { password, setPassword } = usePassword();
+export function FormLogin({ info, style }: TheseProps) {
+  let { setEmail } = useEmail();
+  let { setPassword } = usePassword();
 
-  //--|🠋 Action States 🠋|--//
-  let [submit, setSubmit] = useState(false);
-  let [attempts, setAttempts] = useState(0);
-
-  const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setSubmit(true);
-    try {
-      const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
-      const response = await axios.post(endpoint, {
-        email,
-        passwordHash: password,
-      });
-      const { view, data } = response.data;
-
-      let dialogue: string;
-      switch (view) {
-        case 'launch':
-          dialogue = 'Login successful, please select the application you want to use.';
-          viewBlock('launch');
-
-          /*
-          setTimeout(() => {
-            alert(dialogue);
-          }, 250);
-          */
-          break;
-        case 'register':
-          dialogue = 'No account found with this email. Would you like to register?';
-          viewBlock('register');
-          break;
-        case 'password':
-          let messages: string[] = [
-            'You have three attempts left.',
-            'You have two attempts left.',
-            'You have one attempt left.',
-          ];
-          if (attempts < 3) {
-            dialogue = messages[attempts];
-
-            setAttempts(attempts + 1);
-            viewText('login', dialogue);
-          } else {
-            dialogue = 'Would you like to change your password?';
-            setAttempts(0);
-            viewBlock('password');
-            viewText('password', dialogue);
-
-            setTimeout(() => {
-              dialogue = 'Sign in to access your account.';
-              viewText('login', dialogue);
-            }, 250);
-          }
-          break;
-        case 'verify':
-          dialogue = 'Please verify your account before signing in.';
-
-          viewBlock('verify');
-          viewText('verify', dialogue);
-          break;
-        case 'blocked':
-          dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
-
-          viewBlock('blocked');
-          viewText('blocked', dialogue);
-          break;
-        default:
-          viewBlock('login');
-          break;
-      }
-    } catch (error) {
-      axiosError(error);
-    } finally {
-      // Simulate a delay for login (optional)
-      /*
-      setTimeout(() => {
-        setSubmit(false); // Reset button after process
-      }, 2500);
-      */
-      setSubmit(false);
-    }
-  };
-
-  useEffect(() => {
-    // showDemos(pageName);
-  }, [pageName, blockName]);
-
-  let imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/95cb0b63850941f4de8b0d021e44f529819fe627/source/assets/svg-files/landing-page/sign-in-alt.svg';
-
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt') as string;
+  const registerButton = defineButton('register'); //--|🠈 <h6> with text, or <p> icon only below 768px 🠈|--\\
+  const passwordButton = defineButton('password'); //--|🠈 <h6> with text, or <p> icon only below 768px 🠈|--\\
   return (
-    <form className="login-form" onSubmit={(event) => handleLogin(event)}>
-      <div className="login-header">
-        {/* <button className="login-close" type="button">
-          <img
-            src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/3d96e3df748dac85a20c559b47659c1a3763a5fe/source/assets/svg-files/index-page/close/close-light.svg"
-            alt=""
-          />
-        </button> */}
-        <div className="login-text">
+    <form
+      className={`${info.labelName}-${info.blockName}_login-default ${createClass(style)}`}
+      onSubmit={(event) => event.preventDefault()} //--|🠈 Visual-only: every <ButtonDefault> in a <form> submits, handleLogin waits below 🠈|--\\
+    >
+      <div className="header">
+        <div className="text">
           <h4>Sign in to access your account.</h4>
         </div>
-        <div className="login-icon">
-          <img
-            style={{
-              maskImage: `url(${imageLink})`,
-              WebkitMaskImage: `url(${imageLink})`,
-            }}
-          />
+        <div className="icon">
+          <img style={{ maskImage: `url(${iconImage})`, WebkitMaskImage: `url(${iconImage})` }} />
         </div>
       </div>
-      <div className="login-inputs">
-        <input
-          required
-          id="email"
-          name="Email"
-          type="email"
-          placeholder="Email Address"
-          // --- //
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          required
-          id="password"
-          name="Password"
-          type="password"
-          placeholder="Password"
-          // --- //
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        {/*
-        <ButtonDefault
-          text={''}
-          type="button"
-          onClick={() => viewPass('login')}
-          style={defineButton('observe', { pageName, blockName })}
-        />
-        */}
+      <div className="inputs">
+        <fieldset className="email" data-input="{email}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'login-email' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Email Address' }}
+            cases={{ type: '{input}' }}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </fieldset>
+        <fieldset className="password" data-input="{password}">
+          <LabelTextarea
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'login-password' }}
+            style={{ shade: '~light~', color: style.color, clarity: '⟨opaque⟩', text: 'Password' }}
+            cases={{ type: '{input}' }}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <ButtonDefault
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Show password', labelName: 'login-observe' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-01 · No box, only the icon: it lies over the end of the password, like the old one 🠈|--\\
+              size: '<p>',
+              view: '-icon-',
+              color: style.color,
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/eye'),
+            }}
+            /* onClick={() => viewPass('login')} */
+          />
+        </fieldset>
       </div>
-      <div className="login-footer">
-        <menu className="login-action">
-          {/*
+      <div className="footer">
+        <menu className="action">
           <ButtonDefault
-            type="submit"
-            disabled={submit}
-            text={submit ? 'Logging in...' : 'Login'}
-            style={defineButton('login', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, labelName: 'login-login' }}
+            style={{
+              shade: '~light~',
+              clarity: '⟨lucid⟩',
+              size: '<h3>',
+              view: '-text-',
+              color: style.color,
+              text: 'Login',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+            }}
           />
-          */}
         </menu>
-        <nav id="login-buttons">
-          {/*
+        <nav className="buttons">
           <ButtonDefault
-            type="button"
-            text={'Register Account'}
-            onClick={() => viewBlock('register')}
-            style={defineButton('register', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Register Account', labelName: 'login-register' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: registerButton.size,
+              view: registerButton.view,
+              color: style.color,
+              text: 'Register Account',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+            }}
+            /* onClick={() => viewBlock('register')} */
           />
-          */}
-          {/*
           <ButtonDefault
-            type="button"
-            text={'Forgot Password'}
-            onClick={() => viewBlock('password')}
-            style={defineButton('password', { pageName, blockName })}
+            info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Forgot Password', labelName: 'login-password' }}
+            style={{
+              shade: '~dark~',
+              clarity: '⟨lucid⟩',
+              size: passwordButton.size,
+              view: passwordButton.view,
+              color: style.color,
+              text: 'Forgot Password',
+              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+            }}
+            /* onClick={() => viewBlock('password')} */
           />
-          */}
         </nav>
       </div>
     </form>
   );
+}
+/*--|🠋 Submit: commented out so the <Form> is visual-only, viewBlock() drove the old Landing carousel 🠉|--*/
+/*
+let [submit, setSubmit] = useState(false);
+let [attempts, setAttempts] = useState(0);
+const handleLogin = async (event: React.FormEvent) => {
+  event.preventDefault();
+  setSubmit(true);
+  try {
+    const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
+    const response = await axios.post(endpoint, {
+      email,
+      password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\
+    });
+    const { view, data } = response.data;
+
+    let dialogue: string;
+    switch (view) {
+      case 'launch':
+        dialogue = 'Login successful, please select the application you want to use.';
+        viewBlock('launch');
+        break;
+      case 'register':
+        dialogue = 'No account found with this email. Would you like to register?';
+        viewBlock('register');
+        break;
+      case 'password':
+        let messages: string[] = ['You have three attempts left.', 'You have two attempts left.', 'You have one attempt left.'];
+        if (attempts < 3) {
+          dialogue = messages[attempts];
+
+          setAttempts(attempts + 1);
+          viewText('login', dialogue);
+        } else {
+          dialogue = 'Would you like to change your password?';
+          setAttempts(0);
+          viewBlock('password');
+          viewText('password', dialogue);
+
+          setTimeout(() => {
+            dialogue = 'Sign in to access your account.';
+            viewText('login', dialogue);
+          }, 250);
+        }
+        break;
+      case 'verify':
+        dialogue = 'Please verify your account before signing in.';
+
+        viewBlock('verify');
+        viewText('verify', dialogue);
+        break;
+      case 'blocked':
+        dialogue = `Your account has been ${view} until ${data.restrictionExpiresAt}.`;
+
+        viewBlock('blocked');
+        viewText('blocked', dialogue);
+        break;
+      default:
+        viewBlock('login');
+        break;
+    }
+  } catch (error) {
+    axiosError(error);
+  } finally {
+    setSubmit(false);
+  }
 };
+*/
 export default FormLogin;
