@@ -22,8 +22,8 @@ function Hyperlink() {
 
   useEffect(() => {
     //--|🠋 Contains the Asynchronous References 🠋|--\\
-    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
-    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
 
     //--|🠋 References <Main> block container 🠋|--\\
     const headerTimer = setTimeout(() => setHeader(true), 250 * 2);
@@ -40,9 +40,9 @@ function Hyperlink() {
     }, 60000);
 
     return () => {
+      clearTimeout(mainTimer);
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
-      clearTimeout(mainTimer);
 
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
@@ -52,21 +52,21 @@ function Hyperlink() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
-        {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
-      </Suspense>
       <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Main...</div>}>
+        {getMain && <HyperlinkMain info={{ pageName: '[hyperlink]', blockName: '<main>', labelName: '(default)' }} />}
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
       //--|🟥|--\\
-      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
-        {getOverlay && <HyperlinkOverlay info={{ pageName: '[hyperlink]', blockName: '<overlay>', labelName: '(default)' }} />}
-      </Suspense>
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <HyperlinkLeftbar info={{ pageName: '[hyperlink]', blockName: '<leftbar>', labelName: '(default)' }} />}
+      </Suspense>
+      <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
+        {getOverlay && <HyperlinkOverlay info={{ pageName: '[hyperlink]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
         {getRightbar && <HyperlinkRightbar info={{ pageName: '[hyperlink]', blockName: '<rightbar>', labelName: '(default)' }} />}

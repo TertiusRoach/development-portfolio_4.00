@@ -7,7 +7,6 @@ import ArticleLoading from '../../../components/Article/loading/Article.loading'
 import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 //--|🠋 Functions 🠋|--\\
-import blockViews from '../../containers';
 import obnubilateContainers from '../../../scripts/Overlay';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 

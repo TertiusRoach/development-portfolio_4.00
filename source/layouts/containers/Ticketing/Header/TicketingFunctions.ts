@@ -37,15 +37,16 @@ function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.classList.add('conceal'); //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+      demoCard.classList.add('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
+      blockViews(thisItem, pageName, 'header', 'squaring'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.classList.remove('conceal'); //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+      demoCard.classList.remove('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;

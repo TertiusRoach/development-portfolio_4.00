@@ -22,8 +22,8 @@ function Ticketing() {
 
   useEffect(() => {
     //--|🠋 Contains the Asynchronous References 🠋|--\\
-    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
-    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+    const overlayTimer = setTimeout(() => setOverlay(true), 0 * 0); //--|🠈 Must Load First and not allowed to reference <Overlay>. 🠈|--\\
+    const mainTimer = setTimeout(() => setMain(true), 250 * 1); //--|🠈 Must Load First and not allowed to reference <Main>. 🠈|--\\
 
     //--|🠋 References <Main> block container 🠋|--\\
     const headerTimer = setTimeout(() => setHeader(true), 250 * 2);
@@ -40,9 +40,9 @@ function Ticketing() {
     }, 60000);
 
     return () => {
+      clearTimeout(mainTimer);
       clearTimeout(headerTimer);
       clearTimeout(footerTimer);
-      clearTimeout(mainTimer);
 
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);

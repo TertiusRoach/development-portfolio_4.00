@@ -19,7 +19,7 @@ interface InfoProps {
   info: {
     pageName: '[ticketing]' | string;
     blockName: '<footer>' | string;
-    labelName: '(default)' | string;
+    labelName: '(default)' | '(demonstration)' | '(application)' | string;
   };
 }
 function TicketingFooter({ info }: InfoProps) {
@@ -156,9 +156,9 @@ function TicketingFooter({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-left-',
-                  color: '(blue)',
+                  color: '(mono)',
                   shade: '~dark~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -176,9 +176,9 @@ function TicketingFooter({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-right-',
-                  color: '(blue)',
+                  color: '(mono)',
                   shade: '~light~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
                 }}
                 cases={{
                   task: [
@@ -194,7 +194,7 @@ function TicketingFooter({ info }: InfoProps) {
               info={{
                 pageName: pageName,
                 blockName: blockName,
-                labelName: labelName,
+                labelName: 'demonstration',
               }}
               style={{
                 size: '<h3>',
@@ -216,6 +216,7 @@ function TicketingFooter({ info }: InfoProps) {
             />
           </section>
           <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
             <DivisionSweeping
               //--|🠊 <div class="demon-left-footer_sweeping-default"/> 🠈|--\\
               info={{
@@ -260,9 +261,11 @@ function TicketingFooter({ info }: InfoProps) {
                 call: TicketingCharacters as React.ComponentType<InfoProps>,
               }}
             />
+            <div className="bot"></div>
           </figure>
           <div className={`${blockName}-background`}>
-            <footer></footer>
+            <div className="lef"></div>
+            <div className="rig"></div>
           </div>
         </footer>
       );

@@ -1,5 +1,4 @@
 //--|🠊 TicketingRightbar.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
 @mixin desktop-landscape {
   //--|🠊 Desktop <Rightbar> 🠈|--\\
   section[class*='foreground'] {
@@ -23,6 +22,7 @@
     background: rgba(blue, 0.25);
   }
 }
+
 aside[id='ticketing-rightbar'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

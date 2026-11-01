@@ -22,8 +22,8 @@ function TicketingOverlay({ info }: InfoProps) {
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  let blockName = stripBrackets(info.blockName, '<>') as 'ticketing';
-  let pageName = stripBrackets(info.pageName, '[]') as 'overlay';
+  let blockName = stripBrackets(info.blockName, '<>') as 'overlay';
+  let pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {

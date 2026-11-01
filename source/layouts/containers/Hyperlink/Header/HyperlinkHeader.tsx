@@ -10,28 +10,30 @@ import DivisionSweeping from '../../../components/Division/sweeping/Division.swe
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
-
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './HyperlinkFunctions';
+
+//--|🠋 Database 🠋|--\\
+import ArchiveAnchors from '../../../../modules/server/MongoDB/testing/ArchiveAnchors';
 
 interface InfoProps {
   info: {
     pageName: '[hyperlink]' | string;
     blockName: '<header>' | string;
-    labelName: '(default)' | string;
+    labelName: '(default)' | '(demonstration)' | '(application)' | string;
   };
 }
 function HyperlinkHeader({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'header';
-  let pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
+  const blockName = stripBrackets(info.blockName, '<>') as 'header';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
+    //--|🠊 console.log(ArchiveAnchors().PickPage[0]); 🠈|--\\
     //--|🟥|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
@@ -58,10 +60,10 @@ function HyperlinkHeader({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(blue)',
                 view: 'top-lef',
                 shade: '~light~',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium') as string,
+                color: '(red)',
+                image: loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium') as string,
               }}
               cases={{
                 view: undefined,
@@ -83,9 +85,9 @@ function HyperlinkHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-left-',
-                  color: '(red)',
+                  color: '(mono)',
                   shade: '~dark~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [
@@ -103,9 +105,9 @@ function HyperlinkHeader({ info }: InfoProps) {
                 }}
                 style={{
                   view: '-right-',
-                  color: '(red)',
+                  color: '(mono)',
                   shade: '~light~',
-                  clarity: '⟨lucid⟩', //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [
@@ -121,7 +123,7 @@ function HyperlinkHeader({ info }: InfoProps) {
               info={{
                 pageName: pageName,
                 blockName: blockName,
-                labelName: labelName,
+                labelName: 'demonstration',
               }}
               style={{
                 size: '<h3>',
@@ -143,6 +145,7 @@ function HyperlinkHeader({ info }: InfoProps) {
             />
           </section>
           <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
             <DivisionSweeping
               //--|🠊 <div class="demon-left-header_sweeping-default"/> 🠈|--\\
               info={{
@@ -187,12 +190,11 @@ function HyperlinkHeader({ info }: InfoProps) {
                 call: HyperlinkCharacters as React.ComponentType<InfoProps>,
               }}
             />
+            <div className="bot"></div>
           </figure>
           <div className={`${blockName}-background`}>
-            <header>
-              <div className="top-header"></div>
-              <div className="bot-header"></div>
-            </header>
+            <div className="lef"></div>
+            <div className="rig"></div>
           </div>
         </header>
       );
@@ -248,7 +250,6 @@ function HyperlinkHeader({ info }: InfoProps) {
                 view: 'top-cen',
                 shade: '~light~',
                 color: ['(green)', '(blue)', '(mono)'],
-
                 image: [
                   loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
                   loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),

@@ -154,6 +154,8 @@ let squaringHeader = (pageName: string, blockName: 'header') => {
     <Main> · revertBlocks();
     <Overlay> · shrinkBlocks();
     <OvertimeHeader> · previewProfile();
+    <TicketingHeader> · previewProfile();
+    <HyperlinkHeader> · previewProfile();
   🠉|--*/
 };
 let squaringFooter = (pageName: string, blockName: 'footer') => {
@@ -168,6 +170,8 @@ let squaringFooter = (pageName: string, blockName: 'footer') => {
     <Main> · revertBlocks();
     <Overlay> · shrinkBlocks();
     <OvertimeFooter> · previewProfile();
+    <TicketingFooter> · previewProfile();
+    <HyperlinkFooter> · previewProfile();
   🠉|--*/
 };
 let squaringLeftbar = (pageName: string, blockName: 'leftbar') => {

@@ -91,7 +91,7 @@ The flip swaps markup rather than restyling it, and that's the limitation to kee
 
 ### Mirroring a Layout
 
-The header's Desktop and the footer's Mobile do the same job (on Track a Day, the demonstration), so one is built from the other. `OvertimeHeader.tsx` (`'landscape'`) and `OvertimeFooter.tsx` (`'portrait'`) are the reference pair. Mirroring moves the layout to the opposite edge of the screen; it never renames it.
+The header's Desktop and the footer's Mobile do the same job (the demonstration, on Track a Day, Log a Ticket and Find a Link), so one is built from the other. `OvertimeHeader.tsx` (`'landscape'`) and `OvertimeFooter.tsx` (`'portrait'`) are the reference pair. Mirroring moves the layout to the opposite edge of the screen; it never renames it.
 
 | Stays the same                                                                   | Flips                                                                                              |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -102,7 +102,7 @@ The header's Desktop and the footer's Mobile do the same job (on Track a Day, th
 |                                                                                  | Breakpoints: `max-height` → `max-width`, and the `*-desk` values → the `*-mobi` values             |
 
 - **Whatever slides away sits against the screen edge.** The demonstration's `<MenuToggle>` slides out whenever its container leaves `.expanded` (`top` on the header, `bottom` on the footer). That only hides it when it sits in the two edge rows and the offset equals its row height from `Menu.toggle.scss`: 128 / 96 / 64 / 48px on Desktop, 192 / 160 / 96 / 64px on Mobile. One row away from the edge, it stops at the edge and peeks into the squared corner.
-- **The `@at-root` state blocks reach every container of their kind.** `@at-root header { &[class*='expanded'] … }` compiles to any `header[class*='expanded']`, not only `#overtime-header`, and the footer's does the same for every footer. It's harmless while only Overtime has a `menu[class*='demonstration']`. Both carry a `Warning:` flag until they're narrowed.
+- **Each application scopes its own state blocks.** The slide rules sit inside `header[id*='overtime']` and `footer[id*='overtime']`, never in an unscoped `@at-root header { … }`. That would compile to every `header[class*='expanded']`, and all three applications have a `menu[class*='demonstration']`, so one app's rules would slide the others' menus. A copy scopes them to its own id: `header[id*='ticketing']`, `footer[id*='hyperlink']`.
 - **The `locked-*` class is what makes a tap's squaring stick.** Clicking a character profile squares its container through `blockViews(…, 'squaring')`, in `previewProfile()`'s `'click'` case. On Mobile the same tap then bubbles up to the footer's own `onClick`, `unfoldFooters()`, which would unfold it straight away. The 1500ms `locked-footer` that `blockViews()` sets drops that second call. Shorten or remove the lock and the squaring stops sticking.
 
 ---

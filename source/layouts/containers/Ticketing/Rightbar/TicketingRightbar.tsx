@@ -19,8 +19,8 @@ function TicketingRightbar({ info }: InfoProps) {
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
 
-  let blockName = stripBrackets(info.blockName, '<>') as 'ticketing';
-  let pageName = stripBrackets(info.pageName, '[]') as 'rightbar';
+  let blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+  let pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
   let labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {

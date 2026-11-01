@@ -1,6 +1,5 @@
 //--|🠊 HyperlinkLeftbar.scss 🠈|--\\
 @use '../../../styles/Palettes.scss' as Palettes;
-
 @mixin desktop-landscape {
   //--|🠊 Desktop <Leftbar> 🠈|--\\
   section[class*='foreground'] {
@@ -24,6 +23,7 @@
     background: rgba(green, 0.25);
   }
 }
+
 aside[id='hyperlink-leftbar'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
