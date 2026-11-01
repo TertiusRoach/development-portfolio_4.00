@@ -13,12 +13,12 @@ export interface TheseProps {
     labelName: string;
   };
   style: {
-    size?: '<h1>' | '<p>' | null; //--|🠈 Only {block} has sizes, missing or null is nul 🠈|--\\
-    view?: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig'; //--|🠈 Missing is 'mid-cen' 🠈|--\\
-    shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
-    clarity: '⟨opaque⟩' | '⟨lucid⟩';
     text?: string; //--|🠈 The placeholder 🠈|--\\
+    size?: '<h1>' | '<p>' | null; //--|🠈 Only {block} has sizes, missing or null is nul 🠈|--\\
+    shade: '~dark~' | '~light~';
+    clarity: '⟨opaque⟩' | '⟨lucid⟩';
+    view?: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig'; //--|🠈 Missing is 'mid-cen' 🠈|--\\
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
     type: '{text}' | '{input}' | '{block}';
@@ -131,7 +131,10 @@ const pasteBlocks = (event: React.ClipboardEvent<HTMLInputElement>): void => {
   event.preventDefault();
   let blockList: Array<HTMLInputElement> = listBlocks(event.currentTarget);
   let blockIndex: number = blockList.indexOf(event.currentTarget);
-  let pastedText: string = event.clipboardData.getData('text').replace(/[^A-Za-z0-9]/g, '').toUpperCase(); //--|🠈 AI Code: Review Please 2026-10-30 · Pasted codes are UPPERCASE too 🠈|--\\
+  let pastedText: string = event.clipboardData
+    .getData('text')
+    .replace(/[^A-Za-z0-9]/g, '')
+    .toUpperCase(); //--|🠈 AI Code: Review Please 2026-10-30 · Pasted codes are UPPERCASE too 🠈|--\\
   for (let i = 0; i < pastedText.length && blockIndex + i < blockList.length; i++) {
     blockList[blockIndex + i].value = pastedText[i];
   }
