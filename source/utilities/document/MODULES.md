@@ -2,7 +2,7 @@
 
 How to set up the back end on your own machine: the database, the secrets file, test emails and the server itself, on Windows, macOS and Linux. You only need this to work on the server side. The front end runs without it (see the [README](../../../README.md#quick-start)).
 
-Git and Node.js come first; they're set up in [GITHUB.md](GITHUB.md#2-machine-setup). How the data itself is structured is in [TABLE.md](TABLE.md).
+Git and Node.js come first; they're set up in [GITHUB.md](GITHUB.md#2-machine-setup). How the data itself is structured is in [TABLE.md](TABLE.md); how the back end is organised and where it's headed is in [SERVER.md](SERVER.md).
 
 ---
 

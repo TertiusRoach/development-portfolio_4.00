@@ -12,6 +12,10 @@ import Landing from './layouts/containers/Landing/Landing';
 import Overtime from './layouts/containers/Overtime/Overtime';
 import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
+
+//--|🠋 Context 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+import { EmailProvider } from './modules/context/EmailContext';
+import { PasswordProvider } from './modules/context/PasswordContext';
 //--|🠋 Entry Point 🠋|--\\
 setTimeout(() => {
   viewBody('overtime');
@@ -40,7 +44,15 @@ const loadPage = (identification: string, container: React.ReactElement) => {
   }
 
   if (element.innerHTML === '') {
-    ReactDOM.createRoot(element).render(<React.StrictMode>{container}</React.StrictMode>);
+    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
+    //--|🠋 Every page gets its own email and password state; the <Form>s inside one page share it 🠋|--\\
+    ReactDOM.createRoot(element).render(
+      <React.StrictMode>
+        <EmailProvider>
+          <PasswordProvider>{container}</PasswordProvider>
+        </EmailProvider>
+      </React.StrictMode>,
+    );
   } else {
     console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
   }

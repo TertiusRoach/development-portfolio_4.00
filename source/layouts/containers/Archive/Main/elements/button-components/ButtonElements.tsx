@@ -30,13 +30,12 @@ function ButtonElements({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'button'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
   const pageName = stripBrackets(info.pageName, '[]') as 'components'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
 
-  //--|🠊 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 1 as number; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
+  let startingPreview = 1 as number;
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen

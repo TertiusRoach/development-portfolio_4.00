@@ -12,7 +12,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 
 - How code is written → `RULEBOOK.md`
 - What the application allows → `GUIDELINES.md`
-- Pages, containers, characters, data, setup, Git → `TOGGLES.md`, `CONTAINERS.md`, `CHARACTERS.md`, `TABLE.md`, `MODULES.md`, `GITHUB.md`, `EDITOR.md`
+- Pages, containers, characters, data, setup, server, Git → `TOGGLES.md`, `CONTAINERS.md`, `CHARACTERS.md`, `TABLE.md`, `MODULES.md`, `SERVER.md`, `GITHUB.md`, `EDITOR.md`
 
 ## How to Work Here
 

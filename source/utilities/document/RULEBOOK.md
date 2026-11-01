@@ -51,6 +51,7 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 | [CHARACTERS.md](CHARACTERS.md) | The 18 test characters, their facts, their psychology and the rules they test                       |
 | [TABLE.md](TABLE.md)           | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB                     |
 | [MODULES.md](MODULES.md)       | Setting up the database, secrets, test emails and the server on any OS                              |
+| [SERVER.md](SERVER.md)         | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
 | [GITHUB.md](GITHUB.md)         | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
 | [EDITOR.md](EDITOR.md)         | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
 | [REFERENCE.md](REFERENCE.md)   | The template the main `README.md` follows                                                           |
@@ -120,7 +121,7 @@ State classes are intentionally simple. They act like a contract between the scr
 | **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely                   |
 | **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM                      |
 
-`.running` is a reserved name; it isn't used in the code yet. `.conceal` blurs a `<SectionDemonstration>` card away while a character preview slides in.
+`.running` is a reserved name; it isn't used in the code yet. `.conceal` blurs a `<SectionDemonstration>` card away while a character preview slides in (Track a Day, Log a Ticket and Find a Link). `.emphasize` and `.emphasize-${colour}` are testing-only: `<DivisionTesting>` adds them to flash a container's background (see [Test Tools](#test-tools)).
 
 ### No Inline Styles
 
@@ -178,8 +179,10 @@ The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`)
 - **Why.** A `.scss` imported inside a lazy-loaded `.tsx` becomes its own small CSS file that arrives late: the page draws for a moment without those styles, and the late copy lands after everything else, so it can override rules that were meant to win.
 - **Two gathering points.** Components `@use` from `styles/Barrel.scss`: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`. Containers `@use` from their application's file (`containers/Overtime/Overtime.scss` gathers Main, Header, Footer, Overlay, Leftbar and Rightbar), and `index.scss` uses that file under the application's flag (`//--|🠋 Overtime 🠋|--\\`).
 - **Never twice.** A stylesheet appears in exactly one `@use`.
+- **Every `@use` names its namespace with `as`,** even where Sass would pick the same name: `@use '../../../styles/Palettes.scss' as Palettes;`, `@use 'sass:color' as color;`. It reads like a TypeScript import, so a prefix always says where it comes from.
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
-- **A component no container renders stays commented out** in its Barrel group, under a placeholder note, so it ships no CSS. Uncomment its line in the same step a container starts using it. (The `Form` placeholders still point at `designs/Palettes.scss`, which is now `styles/Palettes.scss`; fix the path when they come back.)
+- **A component no container renders stays commented out** in its Barrel group, under a placeholder note, so it ships no CSS. Uncomment its line in the same step a container starts using it.
+- **Bootstrap 5.3.3 is the one framework.** `styles/Global.scss` uses it on its first line, so every rule after it wins a tie. It sets the baseline typography (body margin, heading sizes, line-height) and the `display-*` heading classes. Scripts use those classes to size headings: `showingBootstrap()` in `scripts.ts` picks one by screen size for `<MenuSwipe>` and `<MenuScroll>` titles. Its tablet branch uses the `tablet-squaring` query, measures the long side and is checked first, the way `tablet-squaring` is included last.
 - **Check the path letter by letter.** A wrong folder or file name stops the whole build with `Can't find stylesheet to import`, pointing at `Barrel.scss` and `index.scss` rather than at the component.
 
 ### Error Messages
@@ -366,12 +369,9 @@ function LabelElements({ info }: InfoProps) {
 
 `SwitchingLabel.tsx`, `TextareaLabel.tsx` and `SelectionLabel.tsx` preview the three `<Label>`s the same way:
 
-- **A `(mono)` colour `{select}` on top** (`labelName: 'colours'`) recolours every other `<Label>` on the page through `switchColors()` (see [Functions Files](#functions-files)). Its `view` comes from `let pickerView`: `'mid-cen'`, changed by hand to `'cen-mid'` to compare.
-- **One row per `cases.type`,** four labels in this order: `⟨lucid⟩ ~dark~`, `⟨opaque⟩ ~dark~`, `⟨lucid⟩ ~light~`, `⟨opaque⟩ ~light~`. Each `labelName` is clarity, type, shade, three letters each: `luc-tog-dar`. Desktop lays a row out as 4 columns; portrait as 2 × 2, `~dark~` above `~light~` and `⟨lucid⟩` left of `⟨opaque⟩`.
-- **Two gutter rows top and bottom** in both orientations (`repeat(2, 4rem)` … on desktop, `repeat(2, 6rem)` … in portrait), so no row sits under the corner logos. The picker sits in the first.
+- **A `(mono)` colour `{select}`** (`labelName: 'colours'`) recolours every other `<Label>` on the page through `switchColors()` (see [Functions Files](#functions-files)).
 - **A row is a `<fieldset>` when its labels belong together:** `{option}` (one `data-group`) and `{block}` (typing moves to the next box, like a security code). Each `{input}` sits in its own `<fieldset>` with its own `data-input`: `{text}`, `{email}`, `{password}`, `{search}`.
 - **Placeholders name the type:** `Text`, `Combo`, `Select`, and for an `{input}` its `data-input` first: `Email Input`. `{number}` shows `1`, its lowest count, once it's cleared, and `{block}` shows `-`. `{select}` and `{combo}` keep the character lists from `CHARACTERS.md`, Voidspire on `~dark~`, Silverveil on `~light~`.
-- **Dropdowns mirror around the middle:** `~dark~` takes `'mid-lef'` and `~light~` `'mid-rig'` (see [Bracket Syntax](#5-bracket-syntax)).
 - **Spacing belongs to the page, never the component.** The 16/12/8/4px gap between labels that would touch (the `<LabelTextarea>` rows, at the four screen sizes) is set in the page's `.scss`.
 - **`{block}` is one UPPERCASE letter or number.** `<LabelTextarea>` turns a typed or pasted lowercase letter into uppercase and refuses anything else.
 - **`{number}` is a count from `1` to `9999`.** It starts at `1` and the browser's step of `1` counts 1 2 3 4 5; there are no `min`, `max` or `step` props. The `<input>` is `4ch` wide, exactly `0000`, so it follows every size step.
@@ -409,7 +409,7 @@ Props are written with brackets that show their type at a glance. `stripBrackets
 
 The look lives in each component's `*_tint.scss`. On a `<Label>`, the `&[class*='_luc_']` and `&[class*='_opa_']` rules at the top only hold `opacity: 1`. On a `<Button>`, the top `_opa_` rule also hides the box (`<ButtonDefault>`'s `::before` layers, Routing's `.back`, Profile's `.back span`) and dims pictures; the colours stay in `mon-tint` and `mon-fade`. All ten colours have it; each colour's `_opa_` blocks are its `(mono)` blocks with the palette swapped. **When a clarity's look changes, update this paragraph in the same step,** so the document never describes the old meaning.
 
-For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an image produces `class="default-button thr_lef_dar_blu_luc_def"`. A `<Label>` writes its class in the same order with `cases.type` added after the size, `size_type_view_shade_color_clarity_def`: `nul_tog_mc_dar_mon_luc_def`. Its view is a `<ButtonRouting>` position (below), the only style prop that may be left out (missing is `'mid-cen'`, `mc`). It places the `<label>` inside its parent with auto margins, so the parent has to be a flex or grid box for top and bottom to work. On `<LabelSelection>` it also picks the caret's side and the corners: round around the caret, sharp where you type. The left column (`'top-lef'`, `'mid-lef'`, `'bot-lef'`) puts the caret on the left, `'mid-cen'` is sharp at both ends, `'cen-mid'` rounds both ends with the caret on the left, and every other position puts it on the right. The Archive pages give `~dark~` `'mid-lef'` and `~light~` `'mid-rig'`, so each row mirrors around the middle. A `<Label>`'s `_def` is a placeholder for now. On a `<Button>`, the last part of the class is a toggle between a variant's two looks:
+For example, `<h3>` + `-left-` + `~dark~` + `(blue)` + `⟨lucid⟩` with an image produces `class="default-button thr_lef_dar_blu_luc_def"`. A `<Label>` writes its class in the same order with `cases.type` added after the size, `size_type_view_shade_color_clarity_def`: `nul_tog_mc_dar_mon_luc_def`. Its view is a `<ButtonRouting>` position (below), the only style prop that may be left out (missing is `'mid-cen'`, `mc`). It places the `<label>` inside its parent with auto margins, so the parent has to be a flex or grid box for top and bottom to work. On `<LabelSelection>` it also picks the caret's side and the corners: round around the caret, sharp where you type. The left column (`'top-lef'`, `'mid-lef'`, `'bot-lef'`) puts the caret on the left, `'mid-cen'` is sharp at both ends, `'cen-mid'` rounds both ends with the caret on the left, and every other position puts it on the right. A `<Label>`'s `_def` is a placeholder for now. On a `<Button>`, the last part of the class is a toggle between a variant's two looks:
 
 | Variant           | `.svg`             | `.png` / `.jpg`                  | No image        |
 | ----------------- | ------------------ | -------------------------------- | --------------- |
@@ -435,9 +435,9 @@ There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>
 | Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<span>` · `<table>` · `<time>` · lists | Always all three mixins                     |
 | Structural | `<section>` · `<div>` · `<nav>`                                                                                                              | All three mixins, or one merged set (below) |
 
-**Components scale on tablet, containers don't.** The table is about the components in `components/`. The files in `containers/` (the Archive pages, the global page grid) only use `desktop-landscape` and `mobile-portrait`, with no `tablet-squaring`. On a near-square screen the page keeps its bigger size while the component inside it has already stepped down. That's deliberate: the deeper element is always one step ahead, so a component always fits inside its container. Anything sized to the global grid stays on the desktop and mobile values for the same reason: the `<MenuSwipe>` and `<MenuScroll>` row height, the `<DivisionConveyor>` slide, and the conveyor margins in the Archive `<header>` and `<footer>`. Only what sits inside a menu row (button grids, side paddings) scales on tablet.
+**Components scale on tablet, containers don't. This is strict.** Every component in `components/` has all three mixins. Every file in `containers/` (the application pages, the Archive pages, the global page grid) has only `desktop-landscape` and `mobile-portrait`, never `tablet-squaring`. If a container ever seems to need tablet values, turn that piece into a component and scale it there. On a near-square screen the page keeps its bigger size while the component inside it has already stepped down. That's deliberate: the deeper element is always one step ahead, so a component always fits inside its container. Anything sized to the global grid stays on the desktop and mobile values for the same reason: the `<MenuSwipe>` and `<MenuScroll>` row height, the `<DivisionConveyor>` slide, and the conveyor margins in the Archive `<header>` and `<footer>`. Only what sits inside a menu row (button grids, side paddings) scales on tablet.
 
-**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. Add `tablet-squaring` only when near-square screens need different values. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
+**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
 Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
@@ -614,10 +614,11 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 **More patterns you'll see:**
 
 - `//--|===|--\\` divides a block into parts, for example before the `@extend` lines.
-- A comment on a line that continues onto the next one (like the rows of a multi-line `grid-template`) ends in `|--//` instead of `|--\\`.
-- The server's `.js` files end every comment in `|--//`.
+- Every flag ends in `|--\\`, including a comment on a line that continues onto the next (the rows of a multi-line `grid-template`).
+- The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
 - `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept.
+- A commented-out line with `!important` is a test switch, not dead code: `//--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\`. Uncomment it to see what a selector reaches, and comment it back before committing (see [Test Tools](#test-tools)).
 - `Warning:` marks code that works today but can break something elsewhere, and says what: `//--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\`. It stays until the code is changed.
 - A coloured square tags the application a file belongs to, usually as the first line inside a container's `useEffect`: `//--|🟨|--\\` Archive (`components`), 🟩 Track a Day (`overtime`), 🟦 Log a Ticket (`ticketing`), 🟥 Find a Link (`hyperlink`), 🟪 Landing (`landing`). It makes a code review show at a glance which app you're in.
 
@@ -625,7 +626,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 
 ## 9. Testing
 
-**Visually:** the **Archive** page (`#components-body`) is the testing surface. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
+**Visually:** the **Archive** page (`#components-body`) is the testing surface. Its element groups (`<Article>`, `<Aside>`, `<Button>` …) always run alphabetically, in every file that lists them: `ArchiveMain.tsx` and `ArchiveMain.scss`, the Leftbar and Rightbar menus (icons, links and `pages` count), and the Header and Footer `MenuSwipe`s. A new group slots into its letter in all six, so `<Form>` sits between `<Figure>` and `<Label>`. Inside a group, the page order, the default preview and the harness layouts change with the work, so the documents don't fix them; the code decides. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
 **Rules:** test the application rules with the characters in [CHARACTERS.md](CHARACTERS.md). Each one lists the rules it exists to break.
 
@@ -638,6 +639,18 @@ npx tsc --noEmit -p tsconfig.json                         # Does the TypeScript 
 
 The TypeScript check currently reports some errors that already existed. Compare the count before and after a change: it should never go up.
 
+### Test Tools
+
+Test tools use `!important` on purpose: they have to win over everything, and they're never part of the design.
+
+- **`display-testing` in `styles/Mixins.scss`** tints the page blocks (header, main, footer and the `fore`/`mid`/`back` layers) so the grid can be checked by eye. Include it by hand; it's never left on.
+- **`<DivisionTesting>`** has a button per block (`<header>`, `<main>`, `<footer>`, `<leftbar>`, `<overlay>`, `<rightbar>`) that runs the block's transitions and flashes its background with `.emphasize` / `.emphasize-${colour}` (`Division.testing.scss`). Its dashed outline, the marching ants, takes the colour of its `style.color`.
+- **Scope selectors in `styles/Transition.scss`.** `%header-children` and `%footer-children` start with empty `section[class*='foreground']`, `figure[class*='midground']` and `div[class*='background']` rules. They're kept empty to show what each selector reaches: uncomment the test background inside one and look. They compile as descendant selectors, so they reach every match inside the `<header>` or `<footer>`, not only its direct children.
+
+### REVIEW Folders
+
+When old code is replaced but should be kept, the untouched original goes in a `REVIEW/` folder beside its rewrite: `components/Form/REVIEW/login/` next to `components/Form/login/`. The live folder holds the rewrite in the current syntax. `tsconfig.json` excludes `source/**/REVIEW/`, so the old code doesn't count against the type check, and nothing `@use`s or imports it. Delete the `REVIEW/` folder once the rewrite previews cleanly in the Archive; GitHub keeps the history.
+
 ---
 
 ## 10. Parked for Later
@@ -646,6 +659,7 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 
 | What                                      | Where it's headed                                                                                                                                                                      |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bootstrap into `Global.scss`               | Carry over only the Bootstrap rules the app uses, then drop the framework and rename `display-1` … to `disp~one` …. Never select those as `[class*='disp~one']`. Only with near-certainty, since it moves the baseline |
 | Smooth fades between colours              | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first                                                                               |
 | `<ButtonRouting>` effects                 | Special animations when it's inside `<NavigationDefault>`                                                                                                                              |
 | `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
