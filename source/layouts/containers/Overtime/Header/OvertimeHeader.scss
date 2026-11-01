@@ -128,27 +128,24 @@ header[id*='overtime'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    //--|🠊 Warning: @at-root reaches every <header>, not only #overtime-header. Review Please 🠈|--\\
-    @at-root header {
-      &[class*='expanded'] {
-        menu[class*='demonstration'] {
-          top: 0;
-        }
+    &[class*='expanded'] { //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+      menu[class*='demonstration'] {
+        top: 0;
       }
-      &[class*='squaring'],
-      &[class*='unfolded'],
-      &[class*='collapsed'] {
-        menu[class*='demonstration'] {
-          top: -128px;
-          @media screen and (max-height: 768px) {
-            top: -96px;
-          }
-          @media screen and (max-height: 480px) {
-            top: -64px;
-          }
-          @media screen and (max-height: 360px) {
-            top: -48px;
-          }
+    }
+    &[class*='squaring'],
+    &[class*='unfolded'],
+    &[class*='collapsed'] {
+      menu[class*='demonstration'] {
+        top: -128px;
+        @media screen and (max-height: 768px) {
+          top: -96px;
+        }
+        @media screen and (max-height: 480px) {
+          top: -64px;
+        }
+        @media screen and (max-height: 360px) {
+          top: -48px;
         }
       }
     }

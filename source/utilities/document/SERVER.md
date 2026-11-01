@@ -25,7 +25,7 @@ How the back end in `source/modules/` is organised, how the front end shares wha
 | `modules/server/MongoDB/offline/` | The same four modules against the device's offline cache                                              | Stubs                  |
 | `modules/server/MongoDB/REVIEW/`  | The old, working login server: `landing.js` (Express), `data.js` (the MongoDB connection)             | Old code, kept as-is   |
 
-The four module names follow the applications: **PickPage** is the Landing page, **TrackTime** is Track a Day, **DefineDuties** is Log a Ticket and **ArchiveAnchors** is Find a Link.
+The four module names follow the applications: **PickPage** is Pick a Page (the Landing page), **TrackTime** is Track a Day, **DefineDuties** is Log a Ticket and **ArchiveAnchors** is Find a Link.
 
 ---
 
@@ -53,7 +53,7 @@ ReactDOM.createRoot(element).render(
 );
 ```
 
-**Every page has its own copy.** `index.tsx` creates one React root per `#${pageName}-body`, and a provider can't reach across roots. So the `<Form>`s on one page share one email and one password (type your email in Register and Verify already knows it), but Landing and the Archive never see each other's. That's how the finished app behaves: a user logs in on one page.
+**Every page has its own copy.** `index.tsx` creates one React root per `#${pageName}-body`, and a provider can't reach across roots. So the `<Form>`s on one page share one email and one password (type your email in Register and Verify already knows it), but Pick a Page and the Archive never see each other's. That's how the finished app behaves: a user logs in on one page.
 
 **Keep the password in memory only.** It lives in the context while the user types and is sent to the server once. Never write it to `localStorage`, a cookie, the console or a log, and only ever send it over HTTPS outside your own machine. The server is the only place that hashes it.
 

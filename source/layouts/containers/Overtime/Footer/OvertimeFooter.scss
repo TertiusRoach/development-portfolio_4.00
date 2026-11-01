@@ -140,27 +140,24 @@ footer[id*='overtime'] {
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    //--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\
-    @at-root footer {
-      &[class*='expanded'] {
-        menu[class*='demonstration'] {
-          bottom: 0;
-        }
+    &[class*='expanded'] { //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+      menu[class*='demonstration'] {
+        bottom: 0;
       }
-      &[class*='squaring'],
-      &[class*='unfolded'],
-      &[class*='collapsed'] {
-        menu[class*='demonstration'] {
-          bottom: -192px;
-          @media screen and (max-width: 768px) {
-            bottom: -160px;
-          }
-          @media screen and (max-width: 480px) {
-            bottom: -96px;
-          }
-          @media screen and (max-width: 360px) {
-            bottom: -64px;
-          }
+    }
+    &[class*='squaring'],
+    &[class*='unfolded'],
+    &[class*='collapsed'] {
+      menu[class*='demonstration'] {
+        bottom: -192px;
+        @media screen and (max-width: 768px) {
+          bottom: -160px;
+        }
+        @media screen and (max-width: 480px) {
+          bottom: -96px;
+        }
+        @media screen and (max-width: 360px) {
+          bottom: -64px;
         }
       }
     }

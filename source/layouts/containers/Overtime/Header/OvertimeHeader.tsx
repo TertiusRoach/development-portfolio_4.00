@@ -35,7 +35,6 @@ function OvertimeHeader({ info }: InfoProps) {
   useEffect(() => {
     //--|🠊 console.log(TrackTime().PickPage[0]); 🠈|--\\
     //--|🟩|--\\
-
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 

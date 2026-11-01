@@ -72,6 +72,18 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 
 The full explanation is in [CONTAINERS.md](CONTAINERS.md#naming).
 
+**Every application has four names.** In conversation, notes and commit messages, call an application by its `[pageName]` in brackets. The brackets set it apart from the plain word, so `[archive]` is the application and "archive" is just a word.
+
+| Bracket       | `pageName`     | Plain name   | Module           |
+| ------------- | -------------- | ------------ | ---------------- |
+| `[archive]`   | `'components'` | Archive      | (none)           |
+| `[overtime]`  | `'overtime'`   | Track a Day  | `TrackTime`      |
+| `[ticketing]` | `'ticketing'`  | Log a Ticket | `DefineDuties`   |
+| `[hyperlink]` | `'hyperlink'`  | Find a Link  | `ArchiveAnchors` |
+| `[landing]`   | `'landing'`    | Pick a Page  | `PickPage`       |
+
+`[archive]` is the only one whose bracket and `pageName` differ: its containers are `#components-header`, `#components-main` and so on.
+
 **A `labelName` is a styling hook.** It becomes the first part of the component's class, and the SCSS selects on it: `<MenuToggle>` with `labelName: 'demonstration'` renders `class="demonstration-footer_toggle-default"`, which is what `menu[class*='demonstration']` matches in `OvertimeFooter.scss`. Before renaming a `labelName`, search the SCSS for the selector that uses it.
 
 ### Component Classes
@@ -630,11 +642,47 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 - `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept.
 - A commented-out line with `!important` is a test switch, not dead code: `//--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\`. Uncomment it to see what a selector reaches, and comment it back before committing (see [Test Tools](#test-tools)).
 - `Warning:` marks code that works today but can break something elsewhere, and says what: `//--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\`. It stays until the code is changed.
-- A coloured square tags the application a file belongs to, usually as the first line inside a container's `useEffect`: `//--|🟨|--\\` Archive (`components`), 🟩 Track a Day (`overtime`), 🟦 Log a Ticket (`ticketing`), 🟥 Find a Link (`hyperlink`), 🟪 Landing (`landing`). It makes a code review show at a glance which app you're in.
+- `Used in` is a back-reference: it names who calls a handler in `layouts/containers/containers.ts`. Those handlers are never called by name. `blockViews()` reaches them through `blockHandlers`, a lookup table keyed by `blockName` and `alterAction` (a dispatch table), so the editor's Find All References can't trace them. Keep the trail by hand: when a container starts calling `blockViews()` with a pair, add the caller to the block comment at the end of the handler that pair reaches, one caller per line as `<Container> · function();`, indented one step inside the block:
+
+  ```ts
+  /*--|🠋 Used in...
+    <Main> · revertBlocks();
+    <Overlay> · shrinkBlocks();
+    <OvertimeHeader> · previewProfile();
+  🠉|--*/
+  ```
+
+  When a caller stops, take its line out. A handler with no note isn't wired to anything yet. This keeps the indirection readable instead of turning it into spaghetti code.
+- A coloured square tags the application a file belongs to, usually as the first line inside a container's `useEffect`: `//--|🟨|--\\` Archive (`components`), 🟩 Track a Day (`overtime`), 🟦 Log a Ticket (`ticketing`), 🟥 Find a Link (`hyperlink`), 🟪 Pick a Page (`landing`). It makes a code review show at a glance which app you're in.
 
 ---
 
 ## 9. Testing
+
+### The Pipeline
+
+Work moves through the applications in phases, and a phase only opens when the owner gives the go-ahead:
+
+1. **`[archive]` first.** Every component is stress-tested here until it behaves correctly.
+2. **`[overtime]` second.** The application skeleton is built here, going back and forth with `[archive]` whenever a component needs fixing. This is the flip-flop.
+3. **`[ticketing]` and `[hyperlink]` next.** Once the skeleton is confirmed, its patterns are copied over, and the flip-flop moves between `[overtime]`, `[ticketing]` and `[hyperlink]`. `[archive]` comes back only to fix a bad mistake or confirm a complicated component. **This is the current phase** (started 2026-11-01).
+4. **`[landing]` waits.** It stays untouched until the character demo in `[overtime]` (`previewProfile()`, `sequencedDemonstration()`) is complete with all 18 characters. Whether the demo then moves to `[landing]` hasn't been decided yet.
+
+**Change only the application you're working in.** A change made in `[overtime]` doesn't go to `[ticketing]` or `[hyperlink]` until the owner asks. Note where it will be needed later, and confirm the instructions before copying it, so it's duplicated correctly. **Shared files are the exception:** `containers/containers.ts` and `layouts/scripts/` run for every application, so a change there reaches all of them at once. Check that the others still behave before calling it done.
+
+**What a copy keeps per application.** `[overtime]` is the skeleton: a copy takes its structure, classes, SCSS and functions line for line, and changes only these:
+
+| Part                                         | `[overtime]`                                 | `[ticketing]`                                | `[hyperlink]`                                |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| Names, flag and module                       | `overtime`, 🟩, `TrackTime`                  | `ticketing`, 🟦, `DefineDuties`              | `hyperlink`, 🟥, `ArchiveAnchors`            |
+| `<NavigationDefault>` logo                   | `(green)`, `track-a-day/primary-medium`      | `(blue)`, `log-a-ticket/primary-medium`      | `(red)`, `find-a-link/primary-medium`        |
+| The `apps:` card and the `<SectionCharacters>` | `(green)`, `apps: 'track-a-day'`           | `(blue)`, `apps: 'log-a-ticket'`             | `(red)`, `apps: 'find-a-link'`               |
+| The toggle menu's `text` and icons           | `Established` / `Freelancing`                | `Manager` / `Employee`                       | `Specialist` / `Technician`                  |
+| The app menu (`<MenuSwipe>`)                 | TraLogFin, Log a Ticket, Find a Link         | Track a Day, TraLogFin, Find a Link          | Track a Day, Log a Ticket, TraLogFin         |
+
+Everything else stays `(mono)`: the toggle menu, and `<AsideCharacters>` (`(mono)` + `⟨opaque⟩`). Only the cards that represent the application carry its colour; the other colours are too flamboyant. In the app menu, TraLogFin takes the current application's own slot, so the three always run Track a Day → Log a Ticket → Find a Link.
+
+### Visual Tests
 
 **Visually:** the **Archive** page (`#components-body`) is the testing surface. Its element groups (`<Article>`, `<Aside>`, `<Button>` …) always run alphabetically, in every file that lists them: `ArchiveMain.tsx` and `ArchiveMain.scss`, the Leftbar and Rightbar menus (icons, links and `pages` count), and the Header and Footer `MenuSwipe`s. A new group slots into its letter in all six, so `<Form>` sits between `<Figure>` and `<Label>`. Inside a group, the page order, the default preview and the harness layouts change with the work, so the documents don't fix them; the code decides. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
