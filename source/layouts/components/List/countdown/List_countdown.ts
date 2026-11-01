@@ -1,17 +1,17 @@
 export const scaleText = () => {
   let updateText = () => {
-    //--|🠋 Define an array containing the time units we need to scale text for 🠋|--//
+    //--|🠋 Define an array containing the time units we need to scale text for 🠋|--\\
     var timeUnits = ['days', 'hours', 'minutes', 'seconds'];
 
-    //--|🠋 Loop through each time unit in the array 🠋|--//
+    //--|🠋 Loop through each time unit in the array 🠋|--\\
     timeUnits.forEach((unit) => {
-      //--|🠋 Select the corresponding list item (li) based on its class name (e.g., "days", "hours", etc.) 🠋|--//
+      //--|🠋 Select the corresponding list item (li) based on its class name (e.g., "days", "hours", etc.) 🠋|--\\
       var wrapper = document.querySelector(`li[class*="${unit}"]`) as HTMLElement;
 
-      //--|🠋 Select the <span> element inside the wrapper, which contains the numerical countdown value 🠋|--//
+      //--|🠋 Select the <span> element inside the wrapper, which contains the numerical countdown value 🠋|--\\
       var counter = wrapper?.querySelector('span') as HTMLSpanElement;
 
-      //--|🠋 Ensure that both the wrapper and counter elements exist before proceeding 🠋|--//
+      //--|🠋 Ensure that both the wrapper and counter elements exist before proceeding 🠋|--\\
       if (wrapper && counter) {
         /**
          * Set a scale factor:
@@ -21,19 +21,19 @@ export const scaleText = () => {
          */
         var scaleFactor = unit === 'days' ? 1 : 1.75;
 
-        //--|🠋 Set the font size of the counter dynamically based on the wrapper's width 🠋|--//
+        //--|🠋 Set the font size of the counter dynamically based on the wrapper's width 🠋|--\\
         counter.style.fontSize = `${wrapper.offsetWidth / scaleFactor}px`;
       }
     });
   };
 
-  //--|🠋 Run initially 🠋|--//
+  //--|🠋 Run initially 🠋|--\\
   updateText();
 
-  //--|🠋 Add resize event listener 🠋|--//
+  //--|🠋 Add resize event listener 🠋|--\\
   window.addEventListener('resize', updateText);
 
-  //--|🠋 Cleanup function to remove event listener when unmounted 🠋|--//
+  //--|🠋 Cleanup function to remove event listener when unmounted 🠋|--\\
   return () => {
     window.removeEventListener('resize', updateText);
   };
@@ -47,13 +47,13 @@ export const createSquare = () => {
     }
   };
 
-  //--|🠋 Run initially 🠋|--//
+  //--|🠋 Run initially 🠋|--\\
   updateSquare();
 
-  //--|🠋 Add resize event listener 🠋|--//
+  //--|🠋 Add resize event listener 🠋|--\\
   window.addEventListener('resize', updateSquare);
 
-  //--|🠋 Cleanup function to remove event listener when unmounted 🠋|--//
+  //--|🠋 Cleanup function to remove event listener when unmounted 🠋|--\\
   return () => {
     window.removeEventListener('resize', updateSquare);
   };

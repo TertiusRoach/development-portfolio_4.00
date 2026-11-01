@@ -1,7 +1,8 @@
 //--|🠊 Footer/HyperlinkFunctions.ts 🠈|--\\
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Footer';
-export default function previewProfile(
+
+function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'hyperlink',
@@ -17,7 +18,6 @@ export default function previewProfile(
   const oppositeContainer = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] li[class*="sweeping-${orientation}"] div[class*="${labelName === 'demo-left' ? 'demo-right' : 'demo-left'}"]`,
   ) as HTMLDivElement;
-  console.log(oppositeContainer);
   const demoCard = document.querySelector(
     `#${pageName}-${blockName} figure[class=${blockName}-midground] section[class*="demonstration"]`,
   ) as HTMLElement;
@@ -37,9 +37,7 @@ export default function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.style.opacity = '0';
-      demoCard.style.filter = 'blur(8px)';
-      demoCard.style.transition = 'filter 250ms, opacity 750ms';
+      demoCard.classList.add('conceal');
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
@@ -47,9 +45,7 @@ export default function previewProfile(
     case 'click':
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.style.opacity = '1';
-      demoCard.style.filter = 'blur(0)';
-      demoCard.style.transition = 'filter 750ms, opacity 250ms';
+      demoCard.classList.remove('conceal');
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;
@@ -93,13 +89,14 @@ let sequencedDemonstration = (profile: string): string => {
   }
 };
 //--|===|--\\
-export function unfoldFooters(thisItem: HTMLElement) {
+
+export const unfoldFooters = (thisItem: HTMLElement) => {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'hyperlink', 'footer', 'unfolded');
     blockViews(thisItem, 'hyperlink', 'rightbar', 'unfolded');
   }
-}
-export function squareFooters(thisItem: HTMLElement) {
+};
+export const squareFooters = (thisItem: HTMLElement) => {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   const rightbarElement = document.querySelector('#hyperlink-rightbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
@@ -108,12 +105,14 @@ export function squareFooters(thisItem: HTMLElement) {
       rightbarElement.className = `default-rightbar collapsed`;
       break;
   }
-}
-export function freezeFooters(pageName: 'hyperlink', styleView: 'bot-rig') {
+};
+export const freezeFooters = (pageName: 'hyperlink', styleView: 'bot-rig') => {
   switch (styleView) {
     case 'bot-rig':
       freezeToggle(pageName, 'footer');
       freezeToggle(pageName, 'rightbar');
       break;
   }
-}
+};
+//--|===|--\\
+export default previewProfile;

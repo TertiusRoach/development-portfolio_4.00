@@ -1,9 +1,9 @@
 //--|🠊 MenuElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './scroll-menu/ScrollMenu.scss';
-@use './swipe-menu/SwipeMenu.scss';
-@use './select-menu/SelectMenu.scss';
+@use './scroll-menu/ScrollMenu.scss' as ScrollMenu;
+@use './swipe-menu/SwipeMenu.scss' as SwipeMenu;
+@use './select-menu/SelectMenu.scss' as SelectMenu;
 
 section[class*='menu-main'] {
   div[class*='fullscreen'] {

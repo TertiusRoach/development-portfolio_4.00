@@ -1,7 +1,8 @@
 //--|🠊 Header/HyperlinkFunctions.ts 🠈|--\\
 import blockViews from '../../containers';
 import { freezeToggle } from '../../../scripts/Header';
-export default function previewProfile(
+
+function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
   thisItem: HTMLButtonElement,
   pageName: 'hyperlink',
@@ -36,9 +37,7 @@ export default function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.style.opacity = '0';
-      demoCard.style.filter = 'blur(8px)';
-      demoCard.style.transition = 'filter 250ms, opacity 750ms';
+      demoCard.classList.add('conceal'); //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
@@ -46,9 +45,7 @@ export default function previewProfile(
     case 'click':
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.style.opacity = '1';
-      demoCard.style.filter = 'blur(0)';
-      demoCard.style.transition = 'filter 750ms, opacity 250ms';
+      demoCard.classList.remove('conceal'); //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;
@@ -92,13 +89,14 @@ let sequencedDemonstration = (profile: string): string => {
   }
 };
 //--|===|--\\
-export function unfoldHeaders(thisItem: HTMLElement) {
+
+export const unfoldHeaders = (thisItem: HTMLElement) => {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'hyperlink', 'header', 'unfolded');
     blockViews(thisItem, 'hyperlink', 'leftbar', 'unfolded');
   }
-}
-export function squareHeaders(thisItem: HTMLElement) {
+};
+export const squareHeaders = (thisItem: HTMLElement) => {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   const leftbarElement = document.querySelector('#hyperlink-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
@@ -107,12 +105,14 @@ export function squareHeaders(thisItem: HTMLElement) {
       leftbarElement.className = `default-leftbar collapsed`;
       break;
   }
-}
-export function freezeHeaders(pageName: 'hyperlink', styleView: 'top-lef') {
+};
+export const freezeHeaders = (pageName: 'hyperlink', styleView: 'top-lef') => {
   switch (styleView) {
     case 'top-lef':
       freezeToggle(pageName, 'header');
       freezeToggle(pageName, 'leftbar');
       break;
   }
-}
+};
+//--|===|--\\
+export default previewProfile;

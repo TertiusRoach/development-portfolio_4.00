@@ -1,5 +1,5 @@
 //--|🠊 RoutingButton.scss 🠈|--\\
-@use '../../../../../../styles/Palettes.scss';
+@use '../../../../../../styles/Palettes.scss' as Palettes;
 @mixin desktop-landscape {
   //--|🠊 <aside className="routing-button"> 🠈|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
@@ -38,7 +38,7 @@
         section[class*='one'] {
           //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
 
-          grid-template: 1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+          grid-template: 1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--\\
             / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
 
           /*
@@ -48,21 +48,21 @@
             $tiny-one: 48px;
   
             grid-template: //--|🠋 Width: 1920px 🠋|--\\
-              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--\\
               / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
             @media screen and (max-height: 768px) {
               grid-template: //--|🠋 Width: 1366px 🠋|--\\
-                1fr repeat(3, $test-one) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $test-one) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $test-one) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 480px) {
               grid-template: //--|🠋 Width: 854px 🠋|--\\
-                1fr repeat(3, $misc-one) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $misc-one) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $misc-one) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 360px) {
               grid-template: //--|🠋 Width: 640px 🠋|--\\
-                1fr repeat(3, $tiny-one) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $tiny-one) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $tiny-one) 1fr; //--|🠈 columns 🠈|--\\
             }
           */
@@ -71,7 +71,7 @@
           //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
 
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--\\
             / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
           /*
             $high-fou: 84px;
@@ -79,21 +79,21 @@
             $misc-fou: 42px;
             $tiny-fou: 32px;
             grid-template: //--|🠋 Width: 1920px 🠋|--\\
-              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--\\
               / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
             @media screen and (max-height: 768px) {
               grid-template: //--|🠋 Width: 1366px 🠋|--\\
-                1fr repeat(3, $test-fou) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $test-fou) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $test-fou) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 480px) {
               grid-template: //--|🠋 Width: 854px 🠋|--\\
-                1fr repeat(3, $misc-fou) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $misc-fou) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $misc-fou) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 360px) {
               grid-template: //--|🠋 Width: 640px 🠋|--\\
-                1fr repeat(3, $tiny-fou) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $tiny-fou) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $tiny-fou) 1fr; //--|🠈 columns 🠈|--\\
             }
           */
@@ -102,7 +102,7 @@
           //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
 
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
-            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--//
+            1fr repeat(3, auto) 1fr //--|🠈 rows 🠈|--\\
             / 1fr repeat(3, auto) 1fr; //--|🠈 columns 🠈|--\\
           /*
             $high-par: 64px;
@@ -110,21 +110,21 @@
             $misc-par: 32px;
             $tiny-par: 24px;
             grid-template: //--|🠋 Width: 1920px 🠋|--\\
-              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--//
+              1fr repeat(3, $high-one) 1fr //--|🠈 rows 🠈|--\\
               / 1fr repeat(3, $high-one) 1fr; //--|🠈 columns 🠈|--\\
             @media screen and (max-height: 768px) {
               grid-template: //--|🠋 Width: 1366px 🠋|--\\
-                1fr repeat(3, $test-par) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $test-par) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $test-par) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 480px) {
               grid-template: //--|🠋 Width: 854px 🠋|--\\
-                1fr repeat(3, $misc-par) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $misc-par) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $misc-par) 1fr; //--|🠈 columns 🠈|--\\
             }
             @media screen and (max-height: 360px) {
               grid-template: //--|🠋 Width: 640px 🠋|--\\
-                1fr repeat(3, $tiny-par) 1fr //--|🠈 rows 🠈|--//
+                1fr repeat(3, $tiny-par) 1fr //--|🠈 rows 🠈|--\\
                 / 1fr repeat(3, $tiny-par) 1fr; //--|🠈 columns 🠈|--\\
             }
           */
@@ -221,24 +221,24 @@
 
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--\\
       / 48px 1fr repeat(2, $high-desk) 1fr 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 64px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--\\
         / 32px 1fr repeat(2, $test-desk) 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠋 48px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 854px 🠋|--\\
-        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--\\
         / 24px 1fr repeat(2, $misc-desk) 1fr 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠋 32px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 640px 🠋|--\\
-        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--\\
         / 16px 1fr repeat(2, $tiny-desk) 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
@@ -311,24 +311,24 @@
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -337,24 +337,24 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -363,24 +363,24 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--//
+                12rem repeat(3, auto) 1fr 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--//
+                  10rem repeat(3, auto) 1fr 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--//
+                  6rem repeat(3, auto) 1fr 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--//
+                  4rem repeat(3, auto) 1fr 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -419,24 +419,24 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -445,24 +445,24 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -471,24 +471,24 @@
 
               //--|🠊 64px (Left & Right) for Design 🠈|--\\
               grid-template: //--|🠋 Height: 1920px 🠋|--\\
-                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--//
+                12rem 1fr repeat(3, auto) 12rem //--|🠈 rows 🠈|--\\
                 / 64px 1fr repeat(3, auto) 1fr 64px; //--|🠈 columns 🠈|--\\
               @media screen and (max-width: 768px) {
                 //--|🠊 48px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 1366px 🠋|--\\
-                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--//
+                  10rem 1fr repeat(3, auto) 10rem //--|🠈 rows 🠈|--\\
                   / 48px 1fr repeat(3, auto) 1fr 48px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 480px) {
                 //--|🠊 32px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 854px 🠋|--\\
-                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--//
+                  6rem 1fr repeat(3, auto) 6rem //--|🠈 rows 🠈|--\\
                   / 32px 1fr repeat(3, auto) 1fr 32px; //--|🠈 columns 🠈|--\\
               }
               @media screen and (max-width: 360px) {
                 //--|🠊 24px (Left & Right) for Design 🠈|--\\
                 grid-template: //--|🠋 Height: 640px 🠋|--\\
-                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--//
+                  4rem 1fr repeat(3, auto) 4rem //--|🠈 rows 🠈|--\\
                   / 24px 1fr repeat(3, auto) 1fr 24px; //--|🠈 columns 🠈|--\\
               }
             }
@@ -538,7 +538,7 @@
 
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
-      repeat(2, 6rem) 1fr 12rem 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      repeat(2, 6rem) 1fr 12rem 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--\\
       / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
     menu {
       padding: 0 128px;
@@ -546,7 +546,7 @@
     @media screen and (max-width: 768px) {
       //--|🠊 48px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
-        repeat(2, 5rem) 1fr 10rem 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        repeat(2, 5rem) 1fr 10rem 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--\\
         / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
       menu {
         padding: 0 112px;
@@ -555,7 +555,7 @@
     @media screen and (max-width: 480px) {
       //--|🠊 32px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 854px 🠋|--\\
-        repeat(2, 3rem) 1fr 6rem 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        repeat(2, 3rem) 1fr 6rem 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--\\
         / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
       menu {
         padding: 0 64px;
@@ -564,7 +564,7 @@
     @media screen and (max-width: 360px) {
       //--|🠊 24px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 640px 🠋|--\\
-        repeat(2, 2rem) 1fr 4rem 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        repeat(2, 2rem) 1fr 4rem 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--\\
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
       menu {
         padding: 0 40px;

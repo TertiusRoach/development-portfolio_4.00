@@ -1,10 +1,10 @@
 //--|🠊 ButtonElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './default-button/DefaultButton.scss';
-@use './stretch-button/StretchButton.scss';
-@use './routing-button/RoutingButton.scss';
-@use './profile-button/ProfileButton.scss';
+@use './default-button/DefaultButton.scss' as DefaultButton;
+@use './stretch-button/StretchButton.scss' as StretchButton;
+@use './routing-button/RoutingButton.scss' as RoutingButton;
+@use './profile-button/ProfileButton.scss' as ProfileButton;
 
 section[class*='button-main'] {
   div[class*='fullscreen'] {

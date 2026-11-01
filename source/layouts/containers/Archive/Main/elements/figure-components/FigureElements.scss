@@ -1,7 +1,7 @@
 //--|🠊 FigureElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './default-figure/DefaultFigure.scss';
+@use './default-figure/DefaultFigure.scss' as DefaultFigure;
 
 section[class*='figure'] {
   div[class*='fullscreen'] {

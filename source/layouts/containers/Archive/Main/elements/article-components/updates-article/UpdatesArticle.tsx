@@ -9,8 +9,6 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 //--|🠋 Functions 🠋|--\\
 import toggleColors from './UpdatesFunctions';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

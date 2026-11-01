@@ -1,5 +1,5 @@
-//--|🠊 TicketingHeader.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 TicketingHeader.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\

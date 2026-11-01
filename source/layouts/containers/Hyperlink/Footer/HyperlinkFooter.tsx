@@ -1,5 +1,5 @@
-//--|🠊 HyperlinkFooter.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 HyperlinkFooter.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\

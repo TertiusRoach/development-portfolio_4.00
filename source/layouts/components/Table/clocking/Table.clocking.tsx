@@ -1,6 +1,4 @@
 //--|🠊 Table.clocking.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Table.clocking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 

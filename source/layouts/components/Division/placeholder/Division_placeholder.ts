@@ -1,4 +1,4 @@
-//--|🠊 Division_testing.ts 🠈|--\\
+//--|🠊 Division_placeholder.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../scripts';
 
@@ -165,30 +165,17 @@ const viewRight = (wrapper: HTMLElement) => {
   }
 };
 
+//--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
 let emphasizeBackground = (element: HTMLDivElement, color: '(green)' | '(red)' | '(blue)' | '(orange)' | '(purple)' | '(yellow)') => {
-  element.style.opacity = '0.5';
-  element.style.transition = 'background 250ms ease-in-out';
+  //--|🠋 Styled in Division.testing.scss: .emphasize dims the background, .emphasize-* paints it 🠋|--\\
+  const paintClass: string = `emphasize-${stripBrackets(color, '()')}`;
+  element.classList.add('emphasize', paintClass);
   setTimeout(() => {
-    element.style.background = '';
+    element.classList.remove(paintClass);
     setTimeout(() => {
-      element.style.opacity = '';
-      element.style.transition = '';
+      element.classList.remove('emphasize');
     }, 750 * 1);
   }, 750 * 5);
-  switch (color) {
-    case '(green)':
-      return (element.style.background = '#63ff9c');
-    case '(red)':
-      return (element.style.background = '#ff9090');
-    case '(blue)':
-      return (element.style.background = '#7dc0ff');
-    case '(orange)':
-      return (element.style.background = '#ff9900');
-    case '(purple)':
-      return (element.style.background = '#c98fff');
-    case '(yellow)':
-      return (element.style.background = '#ffdd55');
-  }
 };
 
 export default testBlock;

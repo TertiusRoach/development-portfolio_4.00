@@ -1,5 +1,5 @@
 //--|🠊 switching/pipeline/Label_tint.scss 🠈|--\\
-@use 'sass:color';
+@use 'sass:color' as color;
 @use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin switching-colors {

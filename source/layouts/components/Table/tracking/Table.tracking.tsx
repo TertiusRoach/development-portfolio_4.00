@@ -1,6 +1,4 @@
 //--|🠊 Table.tracking.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Table.tracking.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 

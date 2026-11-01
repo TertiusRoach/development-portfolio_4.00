@@ -1,16 +1,13 @@
-//--|🠊 Figure.rotation.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Figure.rotation.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 Figure.rotation.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
-//--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
-//--|🠉 Context 🠉|--//
-//--|🠋 Components 🠋|--//
-//--|🠉 Components 🠉|--//
+//--|🠉 Dependencies 🠉|--\\
+//--|🠋 Functions 🠋|--\\
+//--|🠉 Functions 🠉|--\\
+//--|🠋 Context 🠋|--\\
+//--|🠉 Context 🠉|--\\
+//--|🠋 Components 🠋|--\\
+//--|🠉 Components 🠉|--\\
 interface InfoProps {
   style: {
     fadeView: 'find-a-link' | 'track-a-day' | 'log-a-ticket' | 'test-a-fade';

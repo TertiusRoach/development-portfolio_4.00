@@ -13,8 +13,6 @@ import { unfoldFooters } from './ArchiveFunctions';
 import { freezeToggle } from '../../../scripts/Footer';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     blockName: '<footer>' | string;

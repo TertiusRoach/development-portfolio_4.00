@@ -159,6 +159,17 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
   %header-children {
+    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
+    //--|🠋 Scope: empty on purpose, uncomment a background to see what each selector reaches 🠋|--\\
+    section[class*='foreground'] {
+      //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
+    }
+    figure[class*='midground'] {
+      //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--\\
+    }
+    div[class*='background'] {
+      //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
+    }
     *[class*='ground']:first-child {
       @media screen and (orientation: landscape) {
         //--|🠊 max-height 🠈|--\\
@@ -199,7 +210,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
               grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
             }
           }
-          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--//
+          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
         }
         /*
         header {
@@ -312,7 +323,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
       }
     }
-    //--|🠊 Constituents: Serving as part of a whole 🠈|--//
+    //--|🠊 Constituents: Serving as part of a whole 🠈|--\\
     &[class*='expanded'] {
       clip-path: inset(0 0 0 0); //--|🠈 top / right / bottom / left 🠈|--\\
     }
@@ -323,7 +334,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 }
 //--|🠋 footer[id*="footer"] 🠋|--\\
 @mixin footer-transition {
-  //--|🠋 Footer 🠋|--//
+  //--|🠋 Footer 🠋|--\\
   footer {
     @extend %footer-effects;
     @extend %footer-children;
@@ -349,6 +360,17 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
   %footer-children {
+    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
+    //--|🠋 Scope: empty on purpose, uncomment a background to see what each selector reaches 🠋|--\\
+    section[class*='foreground'] {
+      //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
+    }
+    figure[class*='midground'] {
+      //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--\\
+    }
+    div[class*='background'] {
+      //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
+    }
     *[class*='ground']:first-child {
       @media screen and (orientation: landscape) {
         //--|🠊 max-height 🠈|--\\
@@ -481,7 +503,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     transition: filter calc(3000ms - 125ms) ease-in-out;
   }
   %main-constituents {
-    //--|🠊 Definition: Serving as part of a whole 🠈|--//
+    //--|🠊 Definition: Serving as part of a whole 🠈|--\\
     @media screen and (orientation: landscape) {
       //--|🠊 max-height 🠈|--\\
     }
@@ -490,7 +512,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
 }
-
 //--|🠋 aside[id*="bar"] 🠋|--\\
 @mixin sidebar-transition {
   aside[id*='leftbar'] {
@@ -511,7 +532,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   %leftbar-clipping {
     //--|🠊 Constituents: Serving as part of a whole 🠈|--\\
     &[class*='expanded'] {
-      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
     }
     @media screen and (orientation: landscape) {
       //--|🠊 max-height 🠈|--\\
@@ -590,7 +611,7 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   %rightbar-clipping {
     //--|🠊 Constituents: Serving as part of a whole 🠈|--\\
     &[class*='expanded'] {
-      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--//
+      clip-path: inset(0% 0% 0% 0%); //--|🠈 top / right / bottom / left 🠈|--\\
     }
     @media screen and (orientation: landscape) {
       //--|🠊 max-height 🠈|--\\
@@ -650,91 +671,4 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
     }
   }
-}
-
-//--|🠊 AI Code: Review Please 🠈|--\\
-//--|🠋 <Mobile> Snapping 🠋|--\\
-/*--|🠋
-  Same selectors and order as the mixins above, with every duration and delay at 0ms.
-  Skeleton.scss includes these under (orientation: portrait) so mobile snaps instead of animating.
-🠉|--*/
-//--|🠋 div[id*="body"] 🠋|--\\
-@mixin body-snapping {
-  &[id*='body'] {
-    main[class*='main'],
-    aside[class*='bar'],
-    header[class*='header'],
-    footer[class*='footer'] {
-      &[class*='main'] {
-        transition: filter 0ms ease-in-out;
-      }
-
-      &[class*='left'],
-      &[class*='right'],
-      &[class*='header'],
-      &[class*='footer'] {
-        transition:
-          filter 0ms ease-in-out,
-          opacity 0ms ease-in-out,
-          clip-path 0ms ease-in-out;
-      }
-    }
-
-    transition:
-      height 0ms ease-in-out,
-      filter 0ms ease-in-out,
-      opacity 0ms ease-in-out,
-      clip-path 0ms ease-in-out;
-    &[class*='active'] {
-      transition-delay: 0ms, 0ms, 0ms, 0ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
-    }
-    &[class*='asleep'] {
-      transition-delay: 0ms, 0ms, 0ms, 0ms; //--|🠈 height, filter, opacity, clip-path 🠈|--\\
-    }
-  }
-}
-//--|🠋 section[id*="overlay"] 🠋|--\\
-@mixin overlay-snapping {
-  section[class*='overlay'] {
-    &[class*='visible'],
-    &[class*='loading'],
-    &[class*='updates'],
-    &[class*='hidden'] {
-      transition:
-        visibility 0ms 0ms,
-        filter 0ms ease-in-out,
-        opacity 0ms ease-in-out;
-      figure[class='overlay-midground'] {
-        article[class*='loading'],
-        article[class*='updates'] {
-          transition:
-            visibility 0ms 0ms,
-            filter 0ms ease-in-out,
-            opacity 0ms ease-in-out;
-        }
-      }
-    }
-  }
-}
-//--|🠋 header[id*="header"] 🠋|--\\
-@mixin header-snapping {
-  header {
-    &[class*='squaring'] {
-      transition: clip-path 0ms ease-in-out;
-    }
-  }
-}
-//--|🠋 footer[id*="footer"] 🠋|--\\
-@mixin footer-snapping {
-  /*--|🠋 The footer has no transition of its own; body-snapping covers its clip-path 🠉|--*/
-}
-//--|🠋 main[id*="main"] 🠋|--\\
-@mixin main-snapping {
-  main {
-    transition: filter 0ms ease-in-out;
-  }
-}
-//--|🠋 aside[id*="bar"] 🠋|--\\
-@mixin sidebar-snapping {
-  /*--|🠋 The sidebars have no transition of their own; body-snapping covers their clip-path 🠉|--*/
 }

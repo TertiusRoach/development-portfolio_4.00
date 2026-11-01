@@ -1,7 +1,7 @@
 //--|🠊 LabelElements.scss 🠈|--\\
-@use './switching-label/SwitchingLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-@use './textarea-label/TextareaLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-@use './selection-label/SelectionLabel.scss'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+@use './switching-label/SwitchingLabel.scss' as SwitchingLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+@use './textarea-label/TextareaLabel.scss' as TextareaLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+@use './selection-label/SelectionLabel.scss' as SelectionLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 
 section[class*='label-main'] {
   div[class*='fullscreen'] {

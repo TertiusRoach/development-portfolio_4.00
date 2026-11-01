@@ -1,7 +1,4 @@
 //--|🠊 Form.login.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Form.login.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { defineButton } from './Form_login';
 import { stripBrackets } from '../../../scripts/landing';

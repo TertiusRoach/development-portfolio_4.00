@@ -1,6 +1,4 @@
 //--|🠊 Time.date-string.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Time.date-string.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 

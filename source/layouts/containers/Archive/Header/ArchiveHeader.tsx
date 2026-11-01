@@ -12,8 +12,6 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import { freezeHeaders, unfoldHeaders } from './ArchiveFunctions';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     blockName: '<header>' | string;

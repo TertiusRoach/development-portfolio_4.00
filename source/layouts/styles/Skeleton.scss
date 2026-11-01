@@ -146,27 +146,13 @@ body {
   }
   %transition {
     //--|🠊 Desktop 🠈|--\\
-    @include Transition.body-transition();
-    //--|===|--\\
-    @include Transition.overlay-transition();
-    @include Transition.sidebar-transition();
-    //--|===|--\\
     @include Transition.header-transition();
     @include Transition.main-transition();
     @include Transition.footer-transition();
-    //--|🠊 AI Code: Review Please 🠈|--\\
-    @media screen and (orientation: portrait) {
-      //--|🠊 Mobile 🠈|--\\
-      /*--|🠋 Desktop stays outside the query because it also holds the portrait clip-paths; these only override the timing 🠉|--*/
-      @include Transition.body-snapping();
-      //--|===|--\\
-      @include Transition.overlay-snapping();
-      @include Transition.sidebar-snapping();
-      //--|===|--\\
-      @include Transition.header-snapping();
-      @include Transition.main-snapping();
-      @include Transition.footer-snapping();
-    }
+    //--|===|--\\
+    @include Transition.overlay-transition();
+    @include Transition.body-transition();
+    @include Transition.sidebar-transition();
   }
 
   //--|===|--\\

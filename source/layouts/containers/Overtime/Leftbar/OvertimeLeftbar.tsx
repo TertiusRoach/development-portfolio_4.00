@@ -1,5 +1,5 @@
-//--|🠊 OvertimeLeftbar.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 OvertimeLeftbar.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\

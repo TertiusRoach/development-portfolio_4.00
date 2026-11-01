@@ -80,8 +80,6 @@ Each pair keeps its edge of the screen; only the jobs move. `checkScreen()` in `
 
 On Track a Day, Log a Ticket and Find a Link the portrait footer starts `.expanded` and covers `<main>`, so there's no `<main>` to tap. Their headers keep `onMouseLeave` → `squareHeaders()`: a tap anywhere outside the header folds it back.
 
-**Mobile snaps.** Every container transition, and the page's fade-in, runs at `0ms` in portrait. The `*-snapping` mixins at the end of `styles/Transition.scss` mirror the desktop ones with the timing zeroed, and `styles/Skeleton.scss` includes them under `(orientation: portrait)`. To bring an animation back on Mobile, change its value there.
-
 ### What the Flip Costs
 
 The flip swaps markup rather than restyling it, and that's the limitation to keep in mind:

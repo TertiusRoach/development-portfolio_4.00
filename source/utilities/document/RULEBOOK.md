@@ -174,11 +174,13 @@ The three `<Label>`s (`<LabelSwitching>`, `<LabelTextarea>`, `<LabelSelection>`)
 
 ### Style Imports
 
-- **Every component's `.scss` is loaded from `styles/Barrel.scss`, never from its own `.tsx`.** A `.tsx` has no `//--|🠋 Styles 🠋|--\\` import. A new component gets one `@use` line in the Barrel instead: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`.
+- **One door in.** `index.tsx` imports `index.scss`, and that is the only `.scss` import in any `.tsx` or `.ts` file. Every other stylesheet arrives through `@use`, so the whole look is one `index.css` that the browser loads before it draws anything.
+- **Why.** A `.scss` imported inside a lazy-loaded `.tsx` becomes its own small CSS file that arrives late: the page draws for a moment without those styles, and the late copy lands after everything else, so it can override rules that were meant to win.
+- **Two gathering points.** Components `@use` from `styles/Barrel.scss`: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`. Containers `@use` from their application's file (`containers/Overtime/Overtime.scss` gathers Main, Header, Footer, Overlay, Leftbar and Rightbar), and `index.scss` uses that file under the application's flag (`//--|🠋 Overtime 🠋|--\\`).
+- **Never twice.** A stylesheet appears in exactly one `@use`.
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
+- **A component no container renders stays commented out** in its Barrel group, under a placeholder note, so it ships no CSS. Uncomment its line in the same step a container starts using it. (The `Form` placeholders still point at `designs/Palettes.scss`, which is now `styles/Palettes.scss`; fix the path when they come back.)
 - **Check the path letter by letter.** A wrong folder or file name stops the whole build with `Can't find stylesheet to import`, pointing at `Barrel.scss` and `index.scss` rather than at the component.
-
-Older files still import their own `.scss` (the `Form` components and others). They're moved to the Barrel as they're refactored.
 
 ### Error Messages
 
@@ -299,7 +301,7 @@ var TaskOne = ({ info }: InfoProps) => {};
 export default DefaultButton;
 ```
 
-- **The header.** The first line names the file (`//--|🠊 DefaultButton.tsx 🠈|--\\`). Imports follow under three flags, always in this order: `Dependencies`, `Components`, `Functions`. A group with nothing in it keeps its flag. An import goes under the flag for what it brings in, not where it happens to sit: `react` under `Dependencies`, anything from `components/` under `Components`, a `.ts` file (`scripts.ts`, `DefaultFunctions.ts`) under `Functions`. There is no `Styles` flag: a `.tsx` never imports a `.scss` file, because every stylesheet is loaded from `styles/Barrel.scss` (see [Style Imports](#style-imports)). Older files that still carry the flag lose it as they're refactored.
+- **The header.** The first line names the file (`//--|🠊 DefaultButton.tsx 🠈|--\\`). Imports follow under three flags, always in this order: `Dependencies`, `Components`, `Functions`. A group with nothing in it keeps its flag. An import goes under the flag for what it brings in, not where it happens to sit: `react` under `Dependencies`, anything from `components/` under `Components`, a `.ts` file (`scripts.ts`, `DefaultFunctions.ts`) under `Functions`. There is no `Styles` flag: a `.tsx` never imports a `.scss` file, because every stylesheet is loaded through `index.scss` (see [Style Imports](#style-imports)). Older files that still carry the flag lose it as they're refactored.
 - **The `Elements` flag.** A file that imports scoped elements from inside a container gets a fourth flag, `//--|🠋 Elements 🠋|--\\`, between `Components` and `Functions`. Elements are the `.tsx` files scoped to one container block: the coupled `<header>` + `<leftbar>` and `<footer>` + `<rightbar>` pairs (the two swap jobs on the flip), and `<main>` and `<overlay>`, which aren't coupled to anything and work the same in both orientations. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip). `ArchiveMain.tsx` imports `ButtonElements` there, and `ButtonElements.tsx` imports `DefaultButton` there. A file that imports no elements leaves the flag out.
 - **`interface InfoProps` sits right above the main function**, with `pageName`, `blockName` and `labelName` as strings.
 - **The `function` (first depth).** Inside it, in this order: the `getOrientation` state, the `info` values given their exact types (`blockName`, `labelName`, `pageName`), the `useEffect` that returns `checkScreen(setOrientation)`, then the `let` values for this render. It returns from `switch (getOrientation)`, with a full `'landscape'` and a full `'portrait'` case, each an `<aside>` holding a `-foreground` `<section>`, a `-midground` `<figure>` and a `-background` `<div>`.

@@ -10,8 +10,6 @@ import LabelSelection from '../../../../../../components/Label/selection/Label.s
 import { switchColors } from '../../../../../../../scripts';
 import typePlaceholder, { listInputs } from './TextareaFunctions';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

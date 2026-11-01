@@ -8,9 +8,6 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
 
-//--|🠋 Styles 🠋|--\\
-import './Navigation.default.scss';
-
 interface TheseProps {
   info: {
     pageName: 'components' | 'landing' | 'overtime' | 'ticketing' | 'hyperlink';

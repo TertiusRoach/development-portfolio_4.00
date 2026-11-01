@@ -1,4 +1,7 @@
 //--|🠊 Global.scss 🠈|--\\
+//--|🠋 Framework 🠋|--\\
+@use '../../utilities/vendors/bootstrap/5.3.3/css/bootstrap.css' as Bootstrap; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+
 html {
   overflow: hidden; //--|🠈 Disable Scrolling 🠈|--\\
   body {

@@ -1,19 +1,16 @@
-//--|🠊 Fieldset.code.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Fieldset.code.scss';
-//--|🠉 Styles 🠉|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 Fieldset.code.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
-//--|🠉 Dependencies 🠉|--//
-//--|🠋 Functions 🠋|--//
+//--|🠉 Dependencies 🠉|--\\
+//--|🠋 Functions 🠋|--\\
 import { reactChange, reactKeydown, reactPaste } from './Fieldset_code';
 import { viewBlock, viewText, axiosError, retrieveEndpoint } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--//
-//--|🠋 Context 🠋|--//
+//--|🠉 Functions 🠉|--\\
+//--|🠋 Context 🠋|--\\
 import { useEmail } from '../../../../modules/context/EmailContext';
 import { usePassword } from '../../../../modules/context/PasswordContext';
-//--|🠉 Context 🠉|--//
+//--|🠉 Context 🠉|--\\
 import { stripBrackets } from '../../../scripts/landing';
 
 interface InfoProps {
@@ -28,14 +25,14 @@ const FieldsetCode: React.FC<InfoProps> = ({ info }) => {
   const pageName = stripBrackets(info.pageName, '[]') as 'landing';
   const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
 
-  //--|🠋 Local Input States 🠋|--//
-  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--//
-  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--//
+  //--|🠋 Local Input States 🠋|--\\
+  let { email, setEmail } = useEmail(); //--|🠈 Use the global email state 🠈|--\\
+  let { password, setPassword } = usePassword(); //--|🠈 Global Password State 🠈|--\\
 
-  //--|🠋 Action States 🠋|--//
+  //--|🠋 Action States 🠋|--\\
   let [renew, setRenew] = useState('');
   let [active, setActive] = useState(['', '', '', '']);
-  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--//
+  let [submit, setSubmit] = useState(false); //--|🠈 Prevents multiple submissions 🠈|--\\
   let inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {}, [pageName, blockName]);

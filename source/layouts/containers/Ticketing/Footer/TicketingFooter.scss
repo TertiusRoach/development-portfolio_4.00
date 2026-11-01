@@ -1,5 +1,5 @@
 //--|🠊 TicketingFooter.scss 🠈|--\\\
-@use '../../../styles/Palettes.scss';
+@use '../../../styles/Palettes.scss' as Palettes;
 @mixin desktop-landscape {
   //--|🠋 Desktop <Footer> 🠋|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
@@ -58,21 +58,21 @@
       }
 
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
-        1fr //--|🠈 rows 🠈|--//
+        1fr //--|🠈 rows 🠈|--\\
         / 64px auto 1fr auto 64px; //--|🠈 columns 🠈|--\\
       @media screen and (max-width: 768px) {
         grid-template: //--|🠋 Height: 1366px 🠋|--\\
-          1fr //--|🠈 rows 🠈|--//
+          1fr //--|🠈 rows 🠈|--\\
           / 48px auto 1fr auto 48px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 480px) {
         grid-template: //--|🠋 Height: 854px 🠋|--\\
-          1fr //--|🠈 rows 🠈|--//
+          1fr //--|🠈 rows 🠈|--\\
           / 32px auto 1fr auto 32px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 360px) {
         grid-template: //--|🠋 Height: 640px 🠋|--\\
-          1fr //--|🠈 rows 🠈|--//
+          1fr //--|🠈 rows 🠈|--\\
           / 24px auto 1fr auto 24px; //--|🠈 columns 🠈|--\\
       }
     }
@@ -106,5 +106,21 @@ footer[id*='ticketing'] {
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+  //--|🠋 Every Orientation 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+  figure[class*='midground'] section[class*='demonstration'] {
+    opacity: 1;
+    filter: blur(0);
+    transition:
+      filter 750ms,
+      opacity 250ms; //--|🠈 Leaving .conceal 🠈|--\\
+
+    &.conceal {
+      opacity: 0;
+      filter: blur(8px);
+      transition:
+        filter 250ms,
+        opacity 750ms; //--|🠈 Entering .conceal 🠈|--\\
+    }
   }
 }

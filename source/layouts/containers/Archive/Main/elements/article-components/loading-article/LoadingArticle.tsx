@@ -8,8 +8,6 @@ import ArticleLoading from '../../../../../../components/Article/loading/Article
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

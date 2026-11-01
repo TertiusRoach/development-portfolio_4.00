@@ -1,8 +1,8 @@
 //--|🠊 DivisionElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './testing-division/TestingDivision.scss';
-@use './placeholder-division/PlaceholderDivision.scss';
+@use './testing-division/TestingDivision.scss' as TestingDivision;
+@use './placeholder-division/PlaceholderDivision.scss' as PlaceholderDivision;
 
 section[class*='division-main'] {
   overflow: clip; //--|🠈 AI Code: Review Please 2026-10-29 17:40 · The nested placeholder slides hung one screen below this page and showed through the next see-through page 🠈|--\\

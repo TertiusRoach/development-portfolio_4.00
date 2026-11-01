@@ -1,5 +1,5 @@
-//--|🠊 HyperlinkHeader.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 HyperlinkHeader.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\

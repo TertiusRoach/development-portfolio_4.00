@@ -1,5 +1,5 @@
 //--|🠊 TestingDivision.scss 🠈|--\\
-@use '../../../../../../styles/Palettes.scss';
+@use '../../../../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="testing-division"> 🠈|--\\
@@ -10,9 +10,6 @@
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      button[id*='block'] {
-        border: 2px dashed Palettes.$gray-medium;
-      }
     }
   }
 }
@@ -25,9 +22,6 @@
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      button[id*='block'] {
-        border: 2px dashed Palettes.$gray-medium;
-      }
     }
   }
 }

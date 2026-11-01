@@ -8,8 +8,6 @@ import DivisionTesting from '../../../../../../components/Division/testing/Divis
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

@@ -8,8 +8,6 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     //--|🠋 pageName: Id that represents the application 🠋|--\\

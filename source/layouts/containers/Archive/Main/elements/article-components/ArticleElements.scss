@@ -1,6 +1,6 @@
 //--|🠊 ArticleElements.scss 🠈|--\\
-@use './loading-article/LoadingArticle.scss';
-@use './updates-article/UpdatesArticle.scss';
+@use './loading-article/LoadingArticle.scss' as LoadingArticle;
+@use './updates-article/UpdatesArticle.scss' as UpdatesArticle;
 
 @use '../../../../../styles/Palettes.scss' as Palettes;
 

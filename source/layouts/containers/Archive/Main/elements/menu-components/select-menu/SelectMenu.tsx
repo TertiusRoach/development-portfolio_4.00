@@ -9,8 +9,6 @@ import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 import { functionHolder } from './SelectFunctions';
 import { loadAsset } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

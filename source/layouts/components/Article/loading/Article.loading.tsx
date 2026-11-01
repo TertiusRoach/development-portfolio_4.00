@@ -1,6 +1,4 @@
 //--|🠊 Article.loading.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-// import './Article.loading.scss';
 
 //--|🠋 Functions 🠋|--\\
 import loadShade from './Article_loading';

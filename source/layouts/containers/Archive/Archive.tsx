@@ -11,15 +11,6 @@ const ArchiveOverlay = lazy(() => import('./Overlay/ArchiveOverlay'));
 const ArchiveLeftbar = lazy(() => import('./Leftbar/ArchiveLeftbar'));
 const ArchiveRightbar = lazy(() => import('./Rightbar/ArchiveRightbar'));
 
-//--|🠋 Styles (*.scss) 🠋|--\\
-import './Main/ArchiveMain.scss';
-import './Header/ArchiveHeader.scss';
-import './Footer/ArchiveFooter.scss';
-
-import './Overlay/ArchiveOverlay.scss';
-import './Leftbar/ArchiveLeftbar.scss';
-import './Rightbar/ArchiveRightbar.scss';
-
 function Archive() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);

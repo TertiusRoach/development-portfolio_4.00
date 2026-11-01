@@ -11,8 +11,6 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 import { functionHolder } from './ScrollFunctions';
 import { loadAsset } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

@@ -1,5 +1,5 @@
 //--|🠊 UpdatesArticle.scss 🠈|--\\
-@use '../../../../../../styles/Palettes.scss';
+@use '../../../../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="updates-article"> 🠈|--\\
@@ -17,24 +17,24 @@
     }
     //--|🠋 96px (Left & Right) for Design 🠋|--\\
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--\\
       / 48px calc($high-desk * 2) 1fr 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       //--|🠋 64px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--\\
         / 32px calc($test-desk * 2) 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       //--|🠋 48px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 854px 🠋|--\\
-        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--\\
         / 24px calc($misc-desk * 2) 1fr 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       //--|🠋 32px (Left & Right) for Design 🠋|--\\
       grid-template: //--|🠋 Width: 640px 🠋|--\\
-        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
+        repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--\\
         / 16px calc($tiny-desk * 2) 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
@@ -60,24 +60,24 @@
 
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
-      6rem 1fr $high-mobi 6rem //--|🠈 rows 🠈|--//
+      6rem 1fr $high-mobi 6rem //--|🠈 rows 🠈|--\\
       / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
     @media screen and (max-width: 768px) {
       //--|🠊 48px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
-        5rem 1fr $test-mobi 5rem //--|🠈 rows 🠈|--//
+        5rem 1fr $test-mobi 5rem //--|🠈 rows 🠈|--\\
         / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 480px) {
       //--|🠊 32px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 854px 🠋|--\\
-        3rem 1fr $misc-mobi 3rem //--|🠈 rows 🠈|--//
+        3rem 1fr $misc-mobi 3rem //--|🠈 rows 🠈|--\\
         / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 360px) {
       //--|🠊 24px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 640px 🠋|--\\
-        2rem 1fr $tiny-mobi 2rem //--|🠈 rows 🠈|--//
+        2rem 1fr $tiny-mobi 2rem //--|🠈 rows 🠈|--\\
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
   }

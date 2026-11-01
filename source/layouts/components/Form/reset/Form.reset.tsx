@@ -1,7 +1,4 @@
 //--|🠊 Form.reset.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Form.reset.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';

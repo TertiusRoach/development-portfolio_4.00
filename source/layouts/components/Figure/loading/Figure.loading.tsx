@@ -1,6 +1,4 @@
 //--|🠊 Figure.loading.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Figure.loading.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 

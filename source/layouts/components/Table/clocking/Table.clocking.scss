@@ -1,8 +1,8 @@
 //--|🠊 Table.clocking.scss 🠈|--\\
-@use './pipeline/Table_layout.scss';
-@use './pipeline/Table_letters.scss';
-@use './pipeline/Table_motion.scss';
-@use './pipeline/Table_visuals.scss';
+@use './pipeline/Table_layout.scss' as Table_layout;
+@use './pipeline/Table_letters.scss' as Table_letters;
+@use './pipeline/Table_motion.scss' as Table_motion;
+@use './pipeline/Table_visuals.scss' as Table_visuals;
 table[class*='clocking-leftbar'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

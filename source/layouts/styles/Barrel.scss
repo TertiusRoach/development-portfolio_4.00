@@ -20,12 +20,39 @@
 @use '../components/Division/fullscreen/Division.fullscreen.scss' as DivisionFullscreen;
 @use '../components/Division/placeholder/Division.placeholder.scss' as DivisionPlaceholder;
 
+//--|🠋 <Fieldset> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/Fieldset/code/Fieldset.code.scss' as FieldsetCode;
+*/
+
 //--|🠋 <Figure> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/Figure/loading/Figure.loading.scss' as FigureLoading;
+@use '../components/Figure/rotation/Figure.rotation.scss' as FigureRotation;
+*/
+
+//--|🠋 <Form> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/Form/login/Form.login.scss' as FormLogin;
+@use '../components/Form/reset/Form.reset.scss' as FormReset;
+@use '../components/Form/verify/Form.verify.scss' as FormVerify;
+@use '../components/Form/register/Form.register.scss' as FormRegister;
+@use '../components/Form/password/Form.password.scss' as FormPassword;
+*/
 
 //--|🠋 <Label> 🠋|--\\
 @use '../components/Label/textarea/Label.textarea.scss' as LabelTextarea; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 @use '../components/Label/switching/Label.switching.scss' as LabelSwitching; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
 @use '../components/Label/selection/Label.selection.scss' as LabelSelection; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+
+//--|🠋 <List> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/List/countdown/List.countdown.scss' as ListCountdown;
+*/
 
 //--|🠋 <Menu> 🠋|--\\
 @use '../components/Menu/swipe/Menu.swipe.scss' as MenuSwipe;
@@ -34,11 +61,22 @@
 @use '../components/Menu/toggle/Menu.toggle.scss' as MenuToggle;
 
 //--|🠋 <Navigation> 🠋|--\\
+@use '../components/Navigation/default/Navigation.default.scss' as NavigationDefault; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
 
 //--|🠋 <Section> 🠋|--\\
 @use '../components/Section/characters/Section.characters.scss' as SectionCharacters;
 @use '../components/Section/demonstration/Section.demonstration.scss' as SectionDemonstration;
 
 //--|🠋 <Table> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/Table/clocking/Table.clocking.scss' as TableClocking;
+@use '../components/Table/tracking/Table.tracking.scss' as TableTracking;
+*/
 
 //--|🠋 <Time> 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-01 — placeholders: not rendered yet, uncomment when a container uses it 🠈|--\\
+/*
+@use '../components/Time/date/Time.date-string.scss' as TimeDateString;
+@use '../components/Time/clock/Time.clock-count.scss' as TimeClockCount;
+*/

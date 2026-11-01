@@ -1,5 +1,5 @@
-//--|🠊 Fieldset.code.scss 🠈|--//
-@use '../../../designs/Palettes.scss';
+//--|🠊 Fieldset.code.scss 🠈|--\\
+@use '../../../designs/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   input[class*='digit'] {
@@ -12,16 +12,16 @@
     }
     & {
       .digit-1 {
-        grid-column: 1 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-column: 1 / 2; //--|🠊 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .digit-2 {
-        grid-column: 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-column: 2 / 3; //--|🠊 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .digit-3 {
-        grid-column: 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-column: 3 / 4; //--|🠊 row-start / col-start / row-end / col-end 🠈|--\\
       }
       .digit-4 {
-        grid-column: 4 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--//
+        grid-column: 4 / 5; //--|🠊 row-start / col-start / row-end / col-end 🠈|--\\
       }
     }
   }
@@ -31,7 +31,7 @@
 fieldset[class*='code'] {
   display: grid;
   column-gap: 1rem;
-  grid-template: 8rem / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--//
+  grid-template: 8rem / repeat(4, 1fr); //--|🠊 rows / columns 🠈|--\\
 
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

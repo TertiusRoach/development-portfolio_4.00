@@ -1,7 +1,7 @@
 //--|🠊 SectionElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './characters-section/CharactersSection.scss';
+@use './characters-section/CharactersSection.scss' as CharactersSection;
 
 section[class*='section-main'] {
   div[class*='fullscreen'] {

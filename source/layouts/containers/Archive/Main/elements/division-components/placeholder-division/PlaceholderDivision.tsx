@@ -9,8 +9,6 @@ import DivisionPlaceholder from '../../../../../../components/Division/placehold
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     blockName: string;

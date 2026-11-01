@@ -1,6 +1,4 @@
 //--|🠊 Article.updates.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-// import './Article.updates.scss';
 
 //--|🠋 Functions 🠋|--\\
 import { createClass } from './Article_updates';

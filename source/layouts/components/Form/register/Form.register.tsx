@@ -1,7 +1,4 @@
 //--|🠊 Form.register.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Form.register.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//

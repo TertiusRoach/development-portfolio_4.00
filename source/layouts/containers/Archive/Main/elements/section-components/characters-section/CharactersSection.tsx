@@ -8,8 +8,6 @@ import SectionCharacters from '../../../../../../components/Section/characters/S
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

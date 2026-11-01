@@ -4,15 +4,17 @@
 @use './layouts/styles/Barrel.scss' as Barrel;
 @use './layouts/styles/Skeleton.scss' as Skeleton;
 
-//--|🠋 Framework 🠋|--\\
-@use './utilities/vendors/bootstrap/5.3.3/css/bootstrap.css' as Bootstrap;
-
 //--|🠋 Archive 🠋|--\\
+@use './layouts/containers/Archive/Archive.scss' as Archive;
 
 //--|🠋 Landing 🠋|--\\
+@use './layouts/containers/Landing/Landing.scss' as Landing;
 
 //--|🠋 Overtime 🠋|--\\
+@use './layouts/containers/Overtime/Overtime.scss' as Overtime;
 
 //--|🠋 Ticketing 🠋|--\\
+@use './layouts/containers/Ticketing/Ticketing.scss' as Ticketing;
 
 //--|🠋 Hyperlink 🠋|--\\
+@use './layouts/containers/Hyperlink/Hyperlink.scss' as Hyperlink;

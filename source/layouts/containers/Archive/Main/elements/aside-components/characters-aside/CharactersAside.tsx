@@ -10,8 +10,6 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 import { stripBrackets } from '../../../../../../../scripts';
 import { toggleColors } from './CharactersFunctions';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

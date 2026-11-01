@@ -11,15 +11,6 @@ const HyperlinkOverlay = lazy(() => import('./Overlay/HyperlinkOverlay'));
 const HyperlinkLeftbar = lazy(() => import('./Leftbar/HyperlinkLeftbar'));
 const HyperlinkRightbar = lazy(() => import('./Rightbar/HyperlinkRightbar'));
 
-//--|🠋 Styles (*.scss) 🠋|--\\
-import './Main/HyperlinkMain.scss';
-import './Header/HyperlinkHeader.scss';
-import './Footer/HyperlinkFooter.scss';
-
-import './Overlay/HyperlinkOverlay.scss';
-import './Leftbar/HyperlinkLeftbar.scss';
-import './Rightbar/HyperlinkRightbar.scss';
-
 function Hyperlink() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);

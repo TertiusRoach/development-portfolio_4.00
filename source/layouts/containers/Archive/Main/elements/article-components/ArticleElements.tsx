@@ -12,8 +12,6 @@ import UpdatesArticle from './updates-article/UpdatesArticle';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen } from '../../../../../../scripts'; //--|🠈 AI Code: Review Please 2026-10-30 13:04 🠈|--\\
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

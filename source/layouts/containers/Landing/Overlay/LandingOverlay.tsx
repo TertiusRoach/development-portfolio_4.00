@@ -1,4 +1,4 @@
-//--|🠊 LandingOverlay.tsx 🠈|--//
+//--|🠊 LandingOverlay.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 

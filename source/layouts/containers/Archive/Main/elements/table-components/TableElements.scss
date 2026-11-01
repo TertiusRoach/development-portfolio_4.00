@@ -1,7 +1,7 @@
 //--|🠊 TableElements.scss 🠈|--\\
-@use '../../../../../styles/Palettes.scss';
+@use '../../../../../styles/Palettes.scss' as Palettes;
 
-@use './default-table/DefaultTable.scss';
+@use './default-table/DefaultTable.scss' as DefaultTable;
 
 section[class*='table'] {
   div[class*='fullscreen'] {

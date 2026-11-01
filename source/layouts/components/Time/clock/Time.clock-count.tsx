@@ -1,6 +1,4 @@
 //--|🠊 Time.clock-count.tsx 🠈|--\\
-//--|🠋 Styles 🠋|--\\
-import './Time.clock-count.scss';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 

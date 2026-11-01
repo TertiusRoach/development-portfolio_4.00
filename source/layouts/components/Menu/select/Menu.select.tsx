@@ -9,9 +9,6 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 import { stripBrackets } from '../../../../scripts';
 import reloadElements, { modifyControl, selectFullscreen, createClass } from './Menu_select';
 
-//--|🠋 Styles 🠋|--\\
-import './Menu.select.scss';
-
 interface TheseProps {
   info: {
     pageName: string;

@@ -2,9 +2,6 @@
 //--|🠋 Functions 🠋|--//
 import { stripBrackets } from '../../../scripts/landing';
 //--|🠉 Functions 🠉|--//
-//--|🠋 Styles 🠋|--//
-import './Form.password.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';

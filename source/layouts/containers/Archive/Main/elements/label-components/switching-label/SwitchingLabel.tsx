@@ -9,8 +9,6 @@ import LabelSwitching from '../../../../../../components/Label/switching/Label.s
 //--|🠋 Functions 🠋|--\\
 import { switchColors } from '../../../../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

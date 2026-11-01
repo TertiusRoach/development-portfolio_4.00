@@ -1,0 +1,9 @@
+//--|🠊 Ticketing.scss 🠈|--\\
+//--|🠋 Containers 🠋|--\\
+@use './Main/TicketingMain.scss' as TicketingMain;
+@use './Header/TicketingHeader.scss' as TicketingHeader;
+@use './Footer/TicketingFooter.scss' as TicketingFooter;
+
+@use './Overlay/TicketingOverlay.scss' as TicketingOverlay;
+@use './Leftbar/TicketingLeftbar.scss' as TicketingLeftbar;
+@use './Rightbar/TicketingRightbar.scss' as TicketingRightbar;

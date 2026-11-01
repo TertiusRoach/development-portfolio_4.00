@@ -1,5 +1,5 @@
 //--|🠊 OvertimeMain.scss 🠈|--\\
-@use '../../../styles/Palettes.scss';
+@use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop: Overtime Main 🠋|--\\
@@ -7,9 +7,6 @@
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      button[id*='block'] {
-        border: 2px dashed Palettes.$green-medium;
-      }
     }
   }
 }
@@ -19,9 +16,6 @@
   section[class*='main-fore'] {
     div[class*='testing'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      button[id*='block'] {
-        border: 2px dashed Palettes.$green-medium;
-      }
     }
   }
 }

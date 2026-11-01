@@ -1,6 +1,6 @@
 //--|🠊 profile/pipeline/Button_tint.scss 🠈|--\\
 //--|🠊 Visuals: Colors, shadows & gradients 🠈|--\\
-@use 'sass:color';
+@use 'sass:color' as color;
 @use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin profile-colors {

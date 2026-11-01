@@ -1,9 +1,9 @@
 //--|🠊 Button.default.scss 🠈|--\\
-@use './pipeline/Button_flex.scss';
-@use './pipeline/Button_grid.scss';
-@use './pipeline/Button_size.scss';
-@use './pipeline/Button_tint.scss';
-@use './pipeline/Button_corn.scss';
+@use './pipeline/Button_flex.scss' as Button_flex;
+@use './pipeline/Button_grid.scss' as Button_grid;
+@use './pipeline/Button_size.scss' as Button_size;
+@use './pipeline/Button_tint.scss' as Button_tint;
+@use './pipeline/Button_corn.scss' as Button_corn;
 
 button[class*='default'] {
   @include Button_flex.default-flexbox();

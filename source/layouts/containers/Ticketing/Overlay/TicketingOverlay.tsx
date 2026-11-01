@@ -1,5 +1,5 @@
-//--|🠊 TicketingOverlay.tsx 🠈|--//
-//--|🠋 Dependencies 🠋|--//
+//--|🠊 TicketingOverlay.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\

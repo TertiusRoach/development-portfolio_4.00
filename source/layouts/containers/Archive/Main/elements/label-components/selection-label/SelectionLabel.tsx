@@ -9,8 +9,6 @@ import LabelSelection from '../../../../../../components/Label/selection/Label.s
 import { switchColors } from '../../../../../../../scripts';
 import listCharacters, { typePlaceholder } from './SelectionFunctions';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: string;

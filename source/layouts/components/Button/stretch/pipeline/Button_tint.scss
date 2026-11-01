@@ -1,7 +1,7 @@
 //--|🠊 stretch/pipeline/Button_tint.scss 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 11:52 · Copied from <ButtonDefault>, except div[class='text'] has no box (Stretch) 🠈|--\\
 //--|🠊 Visuals: Colors, shadows, gradients & fades 🠈|--\\
-@use 'sass:color';
+@use 'sass:color' as color;
 @use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin stretch-colors {

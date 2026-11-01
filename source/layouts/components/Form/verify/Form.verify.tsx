@@ -1,7 +1,4 @@
 //--|🠊 Form.verify.tsx 🠈|--//
-//--|🠋 Styles 🠋|--//
-import './Form.verify.scss';
-//--|🠉 Styles 🠉|--//
 //--|🠋 Dependencies 🠋|--//
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState, useRef } from 'react';

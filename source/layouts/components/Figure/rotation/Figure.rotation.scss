@@ -1,8 +1,8 @@
-//--|🠊 Figure.rotation.scss 🠈|--//
-@use '../../../../styles/Palettes.scss';
+//--|🠊 Figure.rotation.scss 🠈|--\\
+@use '../../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠊 display: grid; 🠈|--\\
   grid-template: 4rem 1fr 4rem / 6rem repeat(3, 1fr) 6rem; //~~|🠊 rows / columns 🠈|~~//
 
   svg {
@@ -54,7 +54,7 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 display: grid; 🠈|--//
+  //--|🠊 display: grid; 🠈|--\\
   grid-template: 6rem 1fr 6rem / 2rem repeat(3, 1fr) 2rem; //~~|🠊 rows / columns 🠈|~~//
 
   svg {
@@ -109,7 +109,7 @@
 figure[class*='rotation'] {
   margin: 0;
   display: grid;
-  position: relative; //--|🠊 Needed for z-index to work correctly 🠈|--//
+  position: relative; //--|🠊 Needed for z-index to work correctly 🠈|--\\
   @extend %fade-view;
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {

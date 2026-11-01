@@ -11,15 +11,6 @@ const LandingOverlay = lazy(() => import('./Overlay/LandingOverlay'));
 const LandingLeftbar = lazy(() => import('./Leftbar/LandingLeftbar'));
 const LandingRightbar = lazy(() => import('./Rightbar/LandingRightbar'));
 
-//--|🠋 Styles (*.scss) 🠋|--\\
-import './Main/LandingMain.scss';
-import './Header/LandingHeader.scss';
-import './Footer/LandingFooter.scss';
-
-import './Overlay/LandingOverlay.scss';
-import './Leftbar/LandingLeftbar.scss';
-import './Rightbar/LandingRightbar.scss';
-
 function Landing() {
   const [getMain, setMain] = useState(false);
   const [getHeader, setHeader] = useState(false);

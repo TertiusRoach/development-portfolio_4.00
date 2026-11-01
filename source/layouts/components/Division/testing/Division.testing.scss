@@ -1,5 +1,5 @@
 //--|🠊 Division.testing.scss 🠈|--\\
-@use '../../../styles/Palettes.scss';
+@use '../../../styles/Palettes.scss' as Palettes;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Default) 🠋|--\\
@@ -35,24 +35,24 @@
   display: grid;
   //--|🠊 96px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Width: 1920px 🠋|--\\
-    8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--//
+    8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--\\
     / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--\\
   @media screen and (max-height: 768px) {
     //--|🠊 64px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 1366px 🠋|--\\
-      6rem repeat(2, 1fr) 6rem //--|🠈 rows 🠈|--//
+      6rem repeat(2, 1fr) 6rem //--|🠈 rows 🠈|--\\
       / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-height: 480px) {
     //--|🠊 48px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 854px 🠋|--\\
-      4rem repeat(2, 1fr) 4rem //--|🠈 rows 🠈|--//
+      4rem repeat(2, 1fr) 4rem //--|🠈 rows 🠈|--\\
       / 24px repeat(3, 1fr) 24px; //--|🠈 columns 🠈|--\\
   }
   @media screen and (max-height: 360px) {
     //--|🠊 32px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Width: 640px 🠋|--\\
-      3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--//
+      3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--\\
       / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--\\
   }
 }
@@ -78,13 +78,11 @@
     &#test-right-block {
       grid-area: 3 / 3 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
-
-    border: 2px dashed Palettes.$gray-medium;
   }
   display: grid;
   //--|🠊 64px (Left & Right) for Design 🠈|--\\
   grid-template: //--|🠋 Height: 1920px 🠋|--\\
-    repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--//
+    repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--\\
     / 64px repeat(2, 1fr) 64px; //--|🠈 columns 🠈|--\\
   button[id*='block'] {
     &[id*='left'] {
@@ -97,7 +95,7 @@
   @media screen and (max-width: 768px) {
     //--|🠊 48px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 1366px 🠋|--\\
-      repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--//
+      repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--\\
       / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
     button[id*='block'] {
       &[id*='left'] {
@@ -111,7 +109,7 @@
   @media screen and (max-width: 480px) {
     //--|🠊 32px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 854px 🠋|--\\
-      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--\\
       / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
     button[id*='block'] {
       &[id*='left'] {
@@ -125,7 +123,7 @@
   @media screen and (max-width: 360px) {
     //--|🠊 24px (Left & Right) for Design 🠈|--\\
     grid-template: //--|🠋 Height: 640px 🠋|--\\
-      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+      repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--\\
       / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
     button[id*='block'] {
       &[id*='left'] {
@@ -133,6 +131,92 @@
       }
       &[id*='right'] {
         padding-right: 1.5rem;
+      }
+    }
+  }
+}
+
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Default) 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    //--|🠊 96px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Width: 1920px 🠋|--\\
+      8rem repeat(2, 1fr) 8rem //--|🠈 rows 🠈|--\\
+      / 48px repeat(3, 1fr) 48px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 1920px) {
+      //--|🠊 64px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 1366px 🠋|--\\
+        6rem repeat(2, 1fr) 6rem //--|🠈 rows 🠈|--\\
+        / 32px repeat(3, 1fr) 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 1366px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 854px 🠋|--\\
+        4rem repeat(2, 1fr) 4rem //--|🠈 rows 🠈|--\\
+        / 24px repeat(3, 1fr) 24px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 854px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Width: 640px 🠋|--\\
+        3rem repeat(2, 1fr) 3rem //--|🠈 rows 🠈|--\\
+        / 16px repeat(3, 1fr) 16px; //--|🠈 columns 🠈|--\\
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    //--|🠊 64px (Left & Right) for Design 🠈|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      repeat(2, 12rem) 1fr repeat(2, 12rem) //--|🠈 rows 🠈|--\\
+      / 64px repeat(2, 1fr) 64px; //--|🠈 columns 🠈|--\\
+    button[id*='block'] {
+      &[id*='left'] {
+        padding-left: 4rem;
+      }
+      &[id*='right'] {
+        padding-right: 4rem;
+      }
+    }
+    @media screen and (max-height: 1920px) {
+      //--|🠊 48px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        repeat(2, 10rem) 1fr repeat(2, 10rem) //--|🠈 rows 🠈|--\\
+        / 48px repeat(2, 1fr) 48px; //--|🠈 columns 🠈|--\\
+      button[id*='block'] {
+        &[id*='left'] {
+          padding-left: 3rem;
+        }
+        &[id*='right'] {
+          padding-right: 3rem;
+        }
+      }
+    }
+    @media screen and (max-height: 1366px) {
+      //--|🠊 32px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--\\
+        / 32px repeat(2, 1fr) 32px; //--|🠈 columns 🠈|--\\
+      button[id*='block'] {
+        &[id*='left'] {
+          padding-left: 2rem;
+        }
+        &[id*='right'] {
+          padding-right: 2rem;
+        }
+      }
+    }
+    @media screen and (max-height: 854px) {
+      //--|🠊 24px (Left & Right) for Design 🠈|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--\\
+        / 24px repeat(2, 1fr) 24px; //--|🠈 columns 🠈|--\\
+      button[id*='block'] {
+        &[id*='left'] {
+          padding-left: 1.5rem;
+        }
+        &[id*='right'] {
+          padding-right: 1.5rem;
+        }
       }
     }
   }
@@ -146,5 +230,72 @@ div[class*='testing'] {
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+  //--|🠋 Every Orientation 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+  //--|🠊 Marching ants: the dashed outline takes the colour of style.color (_gre_, _blu_, …) 🠈|--\\
+  button[id*='block'] {
+    border-width: 2px;
+    border-style: dashed;
+    &[class*='_mon_'] {
+      border-color: Palettes.$gray-medium;
+    }
+    &[class*='_red_'] {
+      border-color: Palettes.$red-medium;
+    }
+    &[class*='_gre_'] {
+      border-color: Palettes.$green-medium;
+    }
+    &[class*='_blu_'] {
+      border-color: Palettes.$blue-medium;
+    }
+    &[class*='_pur_'] {
+      border-color: Palettes.$purple-medium;
+    }
+    &[class*='_ora_'] {
+      border-color: Palettes.$orange-medium;
+    }
+    &[class*='_pin_'] {
+      border-color: Palettes.$pink-medium;
+    }
+    &[class*='_yel_'] {
+      border-color: Palettes.$yellow-medium;
+    }
+    &[class*='_bro_'] {
+      border-color: Palettes.$brown-medium;
+    }
+    &[class*='_tur_'] {
+      border-color: Palettes.$turquoise-medium;
+    }
+  }
+}
+
+//--|🠋 emphasizeBackground() 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+//--|🠊 Testing only: !important stands in for the inline styles it replaced 🠈|--\\
+div[class*='background'] {
+  &[class*='emphasize'] {
+    opacity: 0.5 !important;
+    transition: background 250ms ease-in-out !important;
+  }
+  &[class*='emphasize-green'] {
+    background: #63ff9c !important;
+  }
+  &[class*='emphasize-red'] {
+    background: #ff9090 !important;
+  }
+  &[class*='emphasize-blue'] {
+    background: #7dc0ff !important;
+  }
+  &[class*='emphasize-orange'] {
+    background: #ff9900 !important;
+  }
+  &[class*='emphasize-purple'] {
+    background: #c98fff !important;
+  }
+  &[class*='emphasize-yellow'] {
+    background: #ffdd55 !important;
   }
 }

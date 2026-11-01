@@ -10,8 +10,6 @@ import ArticleUpdates from '../../../components/Article/updates/Article.updates'
 import obnubilateContainers from '../../../scripts/Overlay';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
-//--|🠋 Styles 🠋|--\\
-
 interface InfoProps {
   info: {
     pageName: '[components]';
