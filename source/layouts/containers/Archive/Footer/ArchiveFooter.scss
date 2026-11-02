@@ -13,8 +13,6 @@
     menu[class*='select'] {
       grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
-      background: rgba(darkgreen, 0.5);
-
       margin-right: $high-desk;
       @media screen and (max-height: 768px) {
         margin-right: $test-desk;
@@ -28,14 +26,17 @@
     }
   }
   figure[class*='footer-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    .bot {
+      height: 50%;
+      margin-top: auto;
+      grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+    }
   }
   div[class*='footer-back'] {
-    footer {
-      grid-area: 5 / 1 / 6 / 4;
-      background: rgba(green, 0.25);
-      //--|🠊 background: Palettes.$indexLand-darkMode; 🠈|--\\
-      //--|🠊 filter: drop-shadow(0 -1.5rem 1.5rem rgba(Palettes.$indexLand-dark, 0.75)); 🠈|--\\
-    }
   }
 }
 @mixin mobile-portrait {
@@ -48,7 +49,6 @@
   section[class*='footer-fore'] {
     div[class*='conveyor'] {
       z-index: 1;
-      background: rgba(darkblue, 0.5);
       grid-area: 4 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
       margin-right: 192px; //--|🠈 192px for Squares 🠈|--\\
@@ -67,25 +67,24 @@
     }
   }
   figure[class*='footer-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    .bot {
+      grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-darkMode;
+    }
   }
   div[class*='footer-back'] {
-    footer {
-      grid-area: 5 / 1 / 6 / 4;
-      background: rgba(blue, 0.25);
-      //--|🠊 background: Palettes.$indexLand-darkMode; 🠈|--\\
-      //--|🠊 filter: drop-shadow(0 -1.5rem 1.5rem rgba(Palettes.$indexLand-dark, 0.75)); 🠈|--\\
-    }
   }
 }
 footer[id*='components'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
-    //
   }
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
-    //
   }
 }

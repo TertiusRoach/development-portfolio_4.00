@@ -9,9 +9,15 @@
     }
   }
   figure[class*='leftbar-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    .lef {
+      grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+    }
   }
   div[class*='leftbar-back'] {
-    background: rgba(red, 0.25);
   }
 }
 @mixin mobile-portrait {
@@ -22,9 +28,15 @@
     }
   }
   figure[class*='leftbar-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    .lef {
+      grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+    }
   }
   div[class*='leftbar-back'] {
-    background: rgba(green, 0.25);
   }
 }
 aside[id='components-leftbar'] {

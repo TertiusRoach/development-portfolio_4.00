@@ -82,13 +82,10 @@ function ArchiveHeader({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}>
-            <header>
-              <div className="top-header"></div>
-              <div className="bot-header"></div>
-            </header>
-          </div>
+          <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
+          </figure>
+          <div className={`${blockName}-background`}></div>
         </header>
       );
     case 'portrait':
@@ -156,13 +153,10 @@ function ArchiveHeader({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}>
-            <header>
-              <div className="top-header"></div>
-              <div className="bot-header"></div>
-            </header>
-          </div>
+          <figure className={`${blockName}-midground`}>
+            <div className="top"></div>
+          </figure>
+          <div className={`${blockName}-background`}></div>
         </header>
       );
   }

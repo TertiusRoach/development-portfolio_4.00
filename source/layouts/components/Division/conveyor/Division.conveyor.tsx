@@ -55,12 +55,9 @@ const DivisionAxis = ({ info, cases }: TheseProps) => {
     '[y]': 'conveyor-vertical',
   };
 
-  let fullscreen = document.querySelector(`#${info.pageName}-main .${info.labelName}-main_fullscreen-default li[class*="fullscreen"]`) as HTMLLIElement;
-  /*
-  let conveyor = document.querySelector(`#${info.pageName}-${info.blockName} .${info.labelName}-${info.blockName}_conveyor-default li[class*="conveyor"]`) as HTMLLIElement;
-  let position = fullscreen.classList[0].split('_')[1] as string;
-  */
-
+  let fullscreen = document.querySelector(
+    `#${info.pageName}-main .${info.labelName}-main_fullscreen-default li[class*="fullscreen"]`,
+  ) as HTMLLIElement;
   return (
     <li className={`${childrenAxis[cases.axis]}_${fullscreen.classList[0].split('_')[1]}`}>
       <div className={`${info.labelName}-${info.blockName}_container`}>

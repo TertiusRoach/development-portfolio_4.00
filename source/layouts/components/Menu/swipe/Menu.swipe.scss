@@ -1934,9 +1934,29 @@ menu[class*='swipe'] {
     *[class*='_mon'] {
       &[class*='lig_'] h3[class*='display'] {
         color: Palettes.$indexLand-light;
+        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        text-shadow:
+          0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0 -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0.04em 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0.04em -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75);
       }
       &[class*='dar_'] h3[class*='display'] {
         color: Palettes.$indexLand-dark;
+        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        text-shadow:
+          0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0 -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0.04em 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em 0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          0.04em -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75),
+          -0.04em -0.04em 0 rgba(Palettes.$indexLand-medium, 0.75);
       }
     }
   }
