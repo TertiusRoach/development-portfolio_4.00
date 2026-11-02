@@ -1,7 +1,7 @@
 //--|🠊 selection-label/SelectionFunctions.ts 🠈|--\\
 //--|🠋 Character Lists 🠋|--\\
 function listCharacters(company: 'voidspire' | 'silverveil'): Array<string> {
-  //--|🠊 AI Code: Review Please 2026-10-29 · Names and order from CHARACTERS.md, both lists end with Randomize Character 🠈|--\\
+  //--|🠊 Names and order from CHARACTERS.md, both lists end with Randomize Character 🠈|--\\
   const companyList: Record<'voidspire' | 'silverveil', Array<string>> = {
     //--|🠊 Left (~dark~): 01 - 09 🠈|--\\
     voidspire: [
@@ -35,7 +35,7 @@ function listCharacters(company: 'voidspire' | 'silverveil'): Array<string> {
 }
 //--|🠋 Placeholders 🠋|--\\
 export const typePlaceholder = (type: '{select}' | '{combo}' | '{number}'): string => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · Every <LabelSelection> is named after its cases.type; {number} shows 1 once it's cleared, the lowest count 🠈|--\\
+  //--|🠊 Every <LabelSelection> is named after its cases.type; {number} shows 1 once it's cleared, the lowest count 🠈|--\\
   const placeholderMap: Record<string, string> = {
     '{select}': 'Select',
     '{combo}': 'Combo',

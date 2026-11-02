@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import SwitchingLabel from './switching-label/SwitchingLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-import TextareaLabel from './textarea-label/TextareaLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-import SelectionLabel from './selection-label/SelectionLabel'; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+import TextareaLabel from './textarea-label/TextareaLabel';
+import SelectionLabel from './selection-label/SelectionLabel';
+import SwitchingLabel from './switching-label/SwitchingLabel';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen } from '../../../../../../scripts';
@@ -57,7 +57,6 @@ const LabelComponents: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName;
   return (
     <>
-      {/*--|🠊 AI Code: Review Please 2026-10-30 · Three pages, a dropdown will pick the type later 🠈|--*/}
       <SwitchingLabel info={{ labelName: 'switching' as string, pageName: pageName, blockName: blockName }} />
       <TextareaLabel info={{ labelName: 'textarea' as string, pageName: pageName, blockName: blockName }} />
       <SelectionLabel info={{ labelName: 'selection' as string, pageName: pageName, blockName: blockName }} />

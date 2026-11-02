@@ -6,16 +6,15 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import RegisterForm from './register-form/RegisterForm'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-import LoginForm from './login-form/LoginForm'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-import PasswordForm from './password-form/PasswordForm'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-import VerifyForm from './verify-form/VerifyForm'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-import ResetForm from './reset-form/ResetForm'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+import LoginForm from './login-form/LoginForm';
+import ResetForm from './reset-form/ResetForm';
+import VerifyForm from './verify-form/VerifyForm';
+import RegisterForm from './register-form/RegisterForm';
+import PasswordForm from './password-form/PasswordForm';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen } from '../../../../../../scripts';
 
-//--|🠊 AI Code: Review Please 2026-11-01 · Copied from LabelElements.tsx, names changed to form 🠈|--\\
 interface InfoProps {
   info: {
     pageName: string;
@@ -36,7 +35,7 @@ function FormElements({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 3 as number; //--|🠈 <Form_Login> AI Code: Review Please 2026-11-01 🠈|--\\
+  let startingPreview = 3 as number;
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen
@@ -60,12 +59,11 @@ const FormComponents: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName;
   return (
     <>
-      {/*--|🠊 AI Code: Review Please 2026-11-01 · Register, Verify, Login, Password, Reset 🠈|--*/}
-      <RegisterForm info={{ labelName: 'register' as string, pageName: pageName, blockName: blockName }} /> {/*--|🠈 AI Code: Review Please 2026-11-01 🠈|--*/}
-      <VerifyForm info={{ labelName: 'verify' as string, pageName: pageName, blockName: blockName }} /> {/*--|🠈 AI Code: Review Please 2026-11-01 🠈|--*/}
-      <LoginForm info={{ labelName: 'login' as string, pageName: pageName, blockName: blockName }} /> {/*--|🠈 AI Code: Review Please 2026-11-01 🠈|--*/}
-      <PasswordForm info={{ labelName: 'password' as string, pageName: pageName, blockName: blockName }} /> {/*--|🠈 AI Code: Review Please 2026-11-01 🠈|--*/}
-      <ResetForm info={{ labelName: 'reset' as string, pageName: pageName, blockName: blockName }} /> {/*--|🠈 AI Code: Review Please 2026-11-01 🠈|--*/}
+      <RegisterForm info={{ labelName: 'register' as string, pageName: pageName, blockName: blockName }} />
+      <VerifyForm info={{ labelName: 'verify' as string, pageName: pageName, blockName: blockName }} />
+      <LoginForm info={{ labelName: 'login' as string, pageName: pageName, blockName: blockName }} />
+      <PasswordForm info={{ labelName: 'password' as string, pageName: pageName, blockName: blockName }} />
+      <ResetForm info={{ labelName: 'reset' as string, pageName: pageName, blockName: blockName }} />
     </>
   );
 };

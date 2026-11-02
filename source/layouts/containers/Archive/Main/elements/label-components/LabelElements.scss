@@ -1,7 +1,7 @@
 //--|🠊 LabelElements.scss 🠈|--\\
-@use './switching-label/SwitchingLabel.scss' as SwitchingLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-@use './textarea-label/TextareaLabel.scss' as TextareaLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-@use './selection-label/SelectionLabel.scss' as SelectionLabel; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+@use './textarea-label/TextareaLabel.scss' as TextareaLabel;
+@use './selection-label/SelectionLabel.scss' as SelectionLabel;
+@use './switching-label/SwitchingLabel.scss' as SwitchingLabel;
 
 section[class*='label-main'] {
   div[class*='fullscreen'] {
@@ -9,24 +9,24 @@ section[class*='label-main'] {
       aside[class*='label'] {
         @media screen and (orientation: landscape) {
           &[class*='switching'] {
-            @include SwitchingLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include SwitchingLabel.desktop-landscape;
           }
           &[class*='textarea'] {
-            @include TextareaLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include TextareaLabel.desktop-landscape;
           }
           &[class*='selection'] {
-            @include SelectionLabel.desktop-landscape; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include SelectionLabel.desktop-landscape;
           }
         }
         @media screen and (orientation: portrait) {
           &[class*='switching'] {
-            @include SwitchingLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include SwitchingLabel.mobile-portrait;
           }
           &[class*='textarea'] {
-            @include TextareaLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include TextareaLabel.mobile-portrait;
           }
           &[class*='selection'] {
-            @include SelectionLabel.mobile-portrait; //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            @include SelectionLabel.mobile-portrait;
           }
         }
       }

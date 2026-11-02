@@ -37,16 +37,16 @@ function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.classList.add('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      demoCard.classList.add('conceal');
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
-      blockViews(thisItem, pageName, 'header', 'squaring'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      blockViews(thisItem, pageName, 'header', 'squaring');
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.classList.remove('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      demoCard.classList.remove('conceal');
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;
@@ -99,7 +99,7 @@ export const unfoldHeaders = (thisItem: HTMLElement) => {
 };
 export const squareHeaders = (thisItem: HTMLElement) => {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  const leftbarElement = document.querySelector('#hyperlink-leftbar') as HTMLElement;
+  let leftbarElement = document.querySelector('#hyperlink-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
     case 'unfolded':
       headerElement.className = `default-header squaring`;

@@ -37,16 +37,16 @@ function previewProfile(
 
   switch (inputAction) {
     case 'enter':
-      demoCard.classList.add('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      demoCard.classList.add('conceal');
 
       oppositeContainer.parentElement?.classList.replace(prevReset, nextReset);
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
-      blockViews(thisItem, pageName, 'footer', 'squaring'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      blockViews(thisItem, pageName, 'footer', 'squaring');
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
-      demoCard.classList.remove('conceal'); //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+      demoCard.classList.remove('conceal');
 
       selectedContainer.parentElement?.classList.replace(prevSlide, nextReset);
       break;
@@ -98,11 +98,11 @@ export const unfoldFooters = (thisItem: HTMLElement) => {
   }
 };
 export const squareFooters = (thisItem: HTMLElement) => {
-  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  const rightbarElement = document.querySelector('#hyperlink-rightbar') as HTMLElement;
+  const footerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
+  let rightbarElement = document.querySelector('#hyperlink-rightbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
     case 'unfolded':
-      headerElement.className = `default-footer squaring`;
+      footerElement.className = `default-footer squaring`;
       rightbarElement.className = `default-rightbar collapsed`;
       break;
   }

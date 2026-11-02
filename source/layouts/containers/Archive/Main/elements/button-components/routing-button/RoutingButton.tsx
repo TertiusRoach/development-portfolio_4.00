@@ -81,7 +81,7 @@ function RoutingButton({ info }: InfoProps) {
             <fieldset
               className="clarify-darkside"
               onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
-                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
                 toggleClarity(event.currentTarget);
               }}
             >
@@ -94,7 +94,7 @@ function RoutingButton({ info }: InfoProps) {
                   shade: '~dark~',
                   color: '(mono)',
                   clarity: '⟨lucid⟩',
-                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -111,7 +111,7 @@ function RoutingButton({ info }: InfoProps) {
                   shade: '~dark~',
                   color: '(mono)',
                   clarity: '⟨opaque⟩',
-                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -177,7 +177,7 @@ function RoutingButton({ info }: InfoProps) {
             <fieldset
               className="clarify-lightside"
               onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
-                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
                 toggleClarity(event.currentTarget);
               }}
             >
@@ -190,7 +190,7 @@ function RoutingButton({ info }: InfoProps) {
                   color: '(mono)',
                   shade: '~light~',
                   clarity: '⟨lucid⟩',
-                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -207,7 +207,7 @@ function RoutingButton({ info }: InfoProps) {
                   color: '(mono)',
                   shade: '~light~',
                   clarity: '⟨opaque⟩',
-                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -270,7 +270,7 @@ function RoutingButton({ info }: InfoProps) {
             <fieldset
               className="clarify-darkside"
               onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
-                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
                 toggleClarity(event.currentTarget);
               }}
             >
@@ -283,7 +283,7 @@ function RoutingButton({ info }: InfoProps) {
                   shade: '~dark~',
                   color: '(mono)',
                   clarity: '⟨lucid⟩',
-                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -300,7 +300,7 @@ function RoutingButton({ info }: InfoProps) {
                   shade: '~dark~',
                   color: '(mono)',
                   clarity: '⟨opaque⟩',
-                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -366,7 +366,7 @@ function RoutingButton({ info }: InfoProps) {
             <fieldset
               className="clarify-lightside"
               onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
-                //--|🠊 AI Code: Review Please 2026-10-31 · The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
                 toggleClarity(event.currentTarget);
               }}
             >
@@ -379,7 +379,7 @@ function RoutingButton({ info }: InfoProps) {
                   color: '(mono)',
                   shade: '~light~',
                   clarity: '⟨lucid⟩',
-                  text: 'Lucid', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,
@@ -396,7 +396,7 @@ function RoutingButton({ info }: InfoProps) {
                   color: '(mono)',
                   shade: '~light~',
                   clarity: '⟨opaque⟩',
-                  text: 'Opaque', //--|🠈 AI Code: Review Please 2026-10-31 · {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
                 }}
                 info={{
                   pageName: pageName,

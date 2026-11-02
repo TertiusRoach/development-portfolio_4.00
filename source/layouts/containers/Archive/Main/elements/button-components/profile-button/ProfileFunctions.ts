@@ -2,12 +2,11 @@
 //--|🠋 Functions 🠋|--\\
 //--|🠋 Button Colors Toggle 🠋|--\\
 export const toggleColors = (tint: string): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 11:26 · Same shape as DefaultFunctions.ts: export const calls a file-level let 🠈|--\\
   updateButtons(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into every <ButtonProfile> 🠈|--\\
 };
 //--|🠋 Button Clarity Toggle 🠋|--\\
 export const toggleClarity = (element: HTMLFieldSetElement): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 · Like <DefaultButton>, but <ProfileButton> has no sides: the <fieldset>'s class picks the shade instead 🠈|--\\
+  //--|🠊 Like <DefaultButton>, but <ProfileButton> has no sides: the <fieldset>'s class picks the shade instead 🠈|--\\
   const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
 
   let fieldsetShade: string = '';
@@ -38,9 +37,9 @@ let updateButtons = (color: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < wrapperButtons.length; i++) {
-    //--|🠊 AI Code: Review Please 2026-10-31 11:26 · .length, not 12 🠈|--\\
+    //--|🠊 .length, not 12 🠈|--\\
     let prevClass = wrapperButtons[i].classList[1] as string;
-    let nextClass = `${wrapperButtons[i].classList[1].split('_')[0]}_${wrapperButtons[i].classList[1].split('_')[1]}_${wrapperButtons[i].classList[1].split('_')[2]}_${color}_${wrapperButtons[i].classList[1].split('_')[4]}_${wrapperButtons[i].classList[1].split('_')[5]}`; //--|🠈 AI Code: Review Please 2026-10-30 · [4] is now the clarity 🠈|--\\
+    let nextClass = `${wrapperButtons[i].classList[1].split('_')[0]}_${wrapperButtons[i].classList[1].split('_')[1]}_${wrapperButtons[i].classList[1].split('_')[2]}_${color}_${wrapperButtons[i].classList[1].split('_')[4]}_${wrapperButtons[i].classList[1].split('_')[5]}`; //--|🠈 [4] is now the clarity 🠈|--\\
 
     wrapperButtons[i].classList.replace(prevClass, nextClass);
   }
@@ -51,7 +50,7 @@ let updateClarity = (clarity: string, shade: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < wrapperShade.length; i++) {
-    //--|🠊 AI Code: Review Please 2026-10-31 11:26 · .length, not 6: one shade's share of updateButtons(), [4] is the clarity 🠈|--\\
+    //--|🠊 .length, not 6: one shade's share of updateButtons(), [4] is the clarity 🠈|--\\
     let prevShadeClass = wrapperShade[i].classList[1] as string;
 
     let nextShadeClass = `${wrapperShade[i].classList[1].split('_')[0]}_${wrapperShade[i].classList[1].split('_')[1]}_${wrapperShade[i].classList[1].split('_')[2]}_${wrapperShade[i].classList[1].split('_')[3]}_${clarity}_${wrapperShade[i].classList[1].split('_')[5]}`;

@@ -3,7 +3,7 @@
 @mixin desktop-landscape {
   //--|🠊 <aside className="switching-label"> 🠈|--\\
   section[class*='main-fore'] {
-    display: grid; //--|🠈 AI Code: Review Please 2026-10-30 · Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
+    display: grid; //--|🠈 Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
     label[class*='colours'] {
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -46,7 +46,7 @@
       }
     }
     fieldset[class='option'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset>: no margin, padding or border, so the grid sizes it 🠈|--\\
+      //--|🠊 A bare <fieldset>: no margin, padding or border, so the grid sizes it 🠈|--\\
       margin: 0;
       padding: 0;
       min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
@@ -89,21 +89,21 @@
       }
     }
     grid-template: //--|🠋 Width: 1920px 🠋|--\\
-      repeat(2, 4rem) repeat(4, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--\\
+      repeat(2, 4rem) repeat(4, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
       / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
     @media screen and (max-height: 768px) {
       grid-template: //--|🠋 Width: 1366px 🠋|--\\
-        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
         / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 480px) {
       grid-template: //--|🠋 Width: 854px 🠋|--\\
-        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-height: 360px) {
       grid-template: //--|🠋 Width: 640px 🠋|--\\
-        repeat(2, 1.5rem) repeat(4, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 1.5rem) repeat(4, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
         / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
     }
   }
@@ -116,14 +116,14 @@
 @mixin mobile-portrait {
   //--|🠊 <aside className="switching-label"> 🠈|--\\
   section[class*='main-fore'] {
-    display: grid; //--|🠈 AI Code: Review Please 2026-10-30 · Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
+    display: grid; //--|🠈 Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
     label[class*='colours'] {
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class='toggle'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-10-30 · rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
 
       label[class*='luc-tog-dar'] {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -142,7 +142,7 @@
     div[class='check'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-10-30 · rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
 
       label[class*='luc-che-dar'] {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -159,14 +159,14 @@
       }
     }
     fieldset[class='option'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · A bare <fieldset>: no margin, padding or border, so the grid sizes it 🠈|--\\
+      //--|🠊 A bare <fieldset>: no margin, padding or border, so the grid sizes it 🠈|--\\
       margin: 0;
       padding: 0;
       min-width: 0; //--|🠈 A <fieldset> grows to its content by default, this lets the grid size it 🠈|--\\
       border-style: none;
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-10-30 · rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
 
       label[class*='luc-opt-dar'] {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -185,7 +185,7 @@
     div[class='chip'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 AI Code: Review Please 2026-10-30 · rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr); //--|🠈 rows / cols: ~dark~ above ~light~, ⟨lucid⟩ left of ⟨opaque⟩ 🠈|--\\
 
       label[class*='luc-chi-dar'] {
         grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -202,21 +202,21 @@
       }
     }
     grid-template: //--|🠋 Height: 1920px 🠋|--\\
-      repeat(2, 6rem) repeat(4, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--\\
+      repeat(2, 6rem) repeat(4, 1fr) repeat(2, 6rem) //--|🠈 rows 🠈|--//
       / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
     @media screen and (max-width: 768px) {
       grid-template: //--|🠋 Height: 1366px 🠋|--\\
-        repeat(2, 5rem) repeat(4, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 5rem) repeat(4, 1fr) repeat(2, 5rem) //--|🠈 rows 🠈|--//
         / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 480px) {
       grid-template: //--|🠋 Height: 854px 🠋|--\\
-        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 3rem) repeat(4, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
         / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
     }
     @media screen and (max-width: 360px) {
       grid-template: //--|🠋 Height: 640px 🠋|--\\
-        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 2rem) repeat(4, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
         / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
   }

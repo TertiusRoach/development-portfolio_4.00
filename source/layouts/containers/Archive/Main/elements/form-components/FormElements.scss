@@ -1,47 +1,46 @@
 //--|🠊 FormElements.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Copied from LabelElements.scss, one @use and @include per page 🠈|--\\
-@use './login-form/LoginForm.scss' as LoginForm; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-@use './register-form/RegisterForm.scss' as RegisterForm; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-@use './password-form/PasswordForm.scss' as PasswordForm; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-@use './verify-form/VerifyForm.scss' as VerifyForm; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-@use './reset-form/ResetForm.scss' as ResetForm; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+@use './login-form/LoginForm.scss' as LoginForm;
+@use './reset-form/ResetForm.scss' as ResetForm;
+@use './verify-form/VerifyForm.scss' as VerifyForm;
+@use './register-form/RegisterForm.scss' as RegisterForm;
+@use './password-form/PasswordForm.scss' as PasswordForm;
 
 section[class*='form-main'] {
   div[class*='fullscreen'] {
     div.form-main_container {
       aside[class*='form'] {
         @media screen and (orientation: landscape) {
-          &[class*='login'] {
-            @include LoginForm.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-          }
           &[class*='register'] {
-            @include RegisterForm.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-          }
-          &[class*='password'] {
-            @include PasswordForm.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include RegisterForm.desktop-landscape;
           }
           &[class*='verify'] {
-            @include VerifyForm.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include VerifyForm.desktop-landscape;
+          }
+          &[class*='login'] {
+            @include LoginForm.desktop-landscape;
+          }
+          &[class*='password'] {
+            @include PasswordForm.desktop-landscape;
           }
           &[class*='reset'] {
-            @include ResetForm.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include ResetForm.desktop-landscape;
           }
         }
         @media screen and (orientation: portrait) {
-          &[class*='login'] {
-            @include LoginForm.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-          }
           &[class*='register'] {
-            @include RegisterForm.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
-          }
-          &[class*='password'] {
-            @include PasswordForm.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include RegisterForm.mobile-portrait;
           }
           &[class*='verify'] {
-            @include VerifyForm.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include VerifyForm.mobile-portrait;
+          }
+          &[class*='login'] {
+            @include LoginForm.mobile-portrait;
+          }
+          &[class*='password'] {
+            @include PasswordForm.mobile-portrait;
           }
           &[class*='reset'] {
-            @include ResetForm.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+            @include ResetForm.mobile-portrait;
           }
         }
       }

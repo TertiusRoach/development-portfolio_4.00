@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import FormElements from './elements/form-components/FormElements'; //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+import FormElements from './elements/form-components/FormElements';
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';
@@ -52,7 +52,6 @@ function ArchiveMain({ info }: InfoProps) {
       onMouseEnter={(event) => {
         revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
-      //--|🠊 AI Code: Review Please 🠈|--\\
       onClick={(event) => {
         revertBlocks(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
       }}
@@ -124,7 +123,7 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'form' as string, //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+          labelName: 'form' as string,
         }}
       />
       <LabelElements

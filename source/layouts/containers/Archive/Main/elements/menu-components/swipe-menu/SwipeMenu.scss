@@ -50,21 +50,21 @@
           $tiny-desk-hori-rows: 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr $tiny-desk 1fr;
 
           //--|🠋 Width: 1920px 🠋|--\\
-          grid-template-rows: $high-desk-hori-rows; //--|🠈 rows 🠈|--\\
+          grid-template-rows: $high-desk-hori-rows; //--|🠈 rows 🠈|--//
           grid-template-columns: $high-desk 1fr; //--|🠈 columns 🠈|--\\
           @media screen and (max-height: 768px) {
             //--|🠋 Width: 1366px 🠋|--\\
-            grid-template-rows: $test-desk-hori-rows; //--|🠈 rows 🠈|--\\
+            grid-template-rows: $test-desk-hori-rows; //--|🠈 rows 🠈|--//
             grid-template-columns: $test-desk 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 480px) {
             //--|🠋 Width: 854px 🠋|--\\
-            grid-template-rows: $misc-desk-hori-rows; //--|🠈 rows 🠈|--\\
+            grid-template-rows: $misc-desk-hori-rows; //--|🠈 rows 🠈|--//
             grid-template-columns: $misc-desk 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 360px) {
             //--|🠋 Width: 640px 🠋|--\\
-            grid-template-rows: $tiny-desk-hori-rows; //--|🠈 rows 🠈|--\\
+            grid-template-rows: $tiny-desk-hori-rows; //--|🠈 rows 🠈|--//
             grid-template-columns: $tiny-desk 1fr; //--|🠈 columns 🠈|--\\
           }
         }
@@ -110,22 +110,22 @@
 
         & {
           grid-gap: 0 48px; //--|🠋 Width: 1920px 🠋|--\\
-          grid-template-rows: $high-desk 1fr; //--|🠈 rows 🠈|--\\
+          grid-template-rows: $high-desk 1fr; //--|🠈 rows 🠈|--//
           grid-template-columns: repeat(4, $high-desk); //--|🠈 columns 🠈|--\\
           @media screen and (max-height: 768px) {
             grid-gap: 0 32px; //--|🠋 Width: 1366px 🠋|--\\
             grid-template-rows: $test-desk 1fr; //--|🠈 columns 🠈|--\\
-            grid-template-columns: repeat(4, $test-desk); //--|🠈 rows 🠈|--\\
+            grid-template-columns: repeat(4, $test-desk); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-height: 480px) {
             grid-gap: 0 24px; //--|🠋 Width: 854px 🠋|--\\
             grid-template-rows: $misc-desk 1fr; //--|🠈 columns 🠈|--\\
-            grid-template-columns: repeat(4, $misc-desk); //--|🠈 rows 🠈|--\\
+            grid-template-columns: repeat(4, $misc-desk); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-height: 360px) {
             grid-gap: 0 16px; //--|🠋 Width: 640px 🠋|--\\
             grid-template-rows: $tiny-desk 1fr; //--|🠈 columns 🠈|--\\
-            grid-template-columns: repeat(4, $tiny-desk); //--|🠈 rows 🠈|--\\
+            grid-template-columns: repeat(4, $tiny-desk); //--|🠈 rows 🠈|--//
           }
         }
 
@@ -146,24 +146,24 @@
     & {
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
-        8rem 1fr 8rem //--|🠈 rows 🠈|--\\
+        8rem 1fr 8rem //--|🠈 rows 🠈|--//
         / 48px 1fr auto 48px; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
         //--|🠊 64px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 1366px 🠋|--\\
-          6rem 1fr 6rem //--|🠈 rows 🠈|--\\
+          6rem 1fr 6rem //--|🠈 rows 🠈|--//
           / 32px 1fr auto 32px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 480px) {
         //--|🠊 48px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 854px 🠋|--\\
-          4rem 1fr 4rem //--|🠈 rows 🠈|--\\
+          4rem 1fr 4rem //--|🠈 rows 🠈|--//
           / 24px 1fr auto 24px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 360px) {
         //--|🠊 32px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 640px 🠋|--\\
-          3rem 1fr 3rem //--|🠈 rows 🠈|--\\
+          3rem 1fr 3rem //--|🠈 rows 🠈|--//
           / 16px 1fr auto 16px; //--|🠈 columns 🠈|--\\
       }
     }
@@ -213,21 +213,21 @@
         & {
           grid-gap: calc(64px / 4) 0; //--|🠋 Width: 1920px 🠋|--\\
           grid-template-columns: 1fr $high-mobi; //--|🠈 columns 🠈|--\\
-          grid-template-rows: repeat(4, $high-mobi); //--|🠈 rows 🠈|--\\
+          grid-template-rows: repeat(4, $high-mobi); //--|🠈 rows 🠈|--//
           @media screen and (max-width: 768px) {
             grid-gap: calc(48px / 4) 0; //--|🠋 Width: 1366px 🠋|--\\
             grid-template-columns: 1fr $test-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $test-mobi); //--|🠈 rows 🠈|--\\
+            grid-template-rows: repeat(4, $test-mobi); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-width: 480px) {
             grid-gap: calc(32px / 4) 0; //--|🠋 Width: 854px 🠋|--\\
             grid-template-columns: 1fr $misc-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $misc-mobi); //--|🠈 rows 🠈|--\\
+            grid-template-rows: repeat(4, $misc-mobi); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-width: 360px) {
             grid-gap: calc(24px / 4) 0; //--|🠋 Width: 640px 🠋|--\\
             grid-template-columns: 1fr $tiny-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $tiny-mobi); //--|🠈 rows 🠈|--\\
+            grid-template-rows: repeat(4, $tiny-mobi); //--|🠈 rows 🠈|--//
           }
         }
 
@@ -276,18 +276,18 @@
           $misc-mobi-vert-cols: $misc-mobi 1fr $misc-mobi 1fr $misc-mobi 1fr $misc-mobi;
           $tiny-mobi-vert-cols: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi;
 
-          grid-template-rows: 1fr $high-mobi; //--|🠈 rows 🠈|--\\
+          grid-template-rows: 1fr $high-mobi; //--|🠈 rows 🠈|--//
           grid-template-columns: $high-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           @media screen and (max-width: 768px) {
-            grid-template-rows: 1fr $test-mobi; //--|🠈 rows 🠈|--\\
+            grid-template-rows: 1fr $test-mobi; //--|🠈 rows 🠈|--//
             grid-template-columns: $test-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 480px) {
-            grid-template-rows: 1fr $misc-mobi; //--|🠈 rows 🠈|--\\
+            grid-template-rows: 1fr $misc-mobi; //--|🠈 rows 🠈|--//
             grid-template-columns: $misc-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 360px) {
-            grid-template-rows: 1fr $tiny-mobi; //--|🠈 rows 🠈|--\\
+            grid-template-rows: 1fr $tiny-mobi; //--|🠈 rows 🠈|--//
             grid-template-columns: $tiny-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
         }
@@ -309,24 +309,24 @@
     & {
       //--|🠊 64px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
-        repeat(2, 6rem) 1fr auto repeat(2, 6rem) //--|🠈 rows 🠈|--\\
+        repeat(2, 6rem) 1fr auto repeat(2, 6rem) //--|🠈 rows 🠈|--//
         / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
       @media screen and (max-width: 768px) {
         //--|🠊 48px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 1366px 🠋|--\\
-          repeat(2, 5rem) 1fr auto repeat(2, 5rem) //--|🠈 rows 🠈|--\\
+          repeat(2, 5rem) 1fr auto repeat(2, 5rem) //--|🠈 rows 🠈|--//
           / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 480px) {
         //--|🠊 32px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 854px 🠋|--\\
-          repeat(2, 3rem) 1fr auto repeat(2, 3rem) //--|🠈 rows 🠈|--\\
+          repeat(2, 3rem) 1fr auto repeat(2, 3rem) //--|🠈 rows 🠈|--//
           / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-width: 360px) {
         //--|🠊 24px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Height: 640px 🠋|--\\
-          repeat(2, 2rem) 1fr auto repeat(2, 2rem) //--|🠈 rows 🠈|--\\
+          repeat(2, 2rem) 1fr auto repeat(2, 2rem) //--|🠈 rows 🠈|--//
           / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
       }
     }

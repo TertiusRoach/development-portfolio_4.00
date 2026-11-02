@@ -203,7 +203,7 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 - **Never twice.** A stylesheet appears in exactly one `@use`.
 - **Every `@use` names its namespace with `as`,** even where Sass would pick the same name: `@use '../../../styles/Palettes.scss' as Palettes;`, `@use 'sass:color' as color;`. It reads like a TypeScript import, so a prefix always says where it comes from.
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
-- **A component no container renders stays commented out** in its Barrel group, under a placeholder note, so it ships no CSS. Uncomment its line in the same step a container starts using it.
+- **A component no container renders stays commented out** in its Barrel group, in a `/* … */` block right under the group's flag, so it ships no CSS. Uncomment its line in the same step a container starts using it.
 - **Bootstrap 5.3.3 is the one framework.** `styles/Global.scss` uses it on its first line, so every rule after it wins a tie. It sets the baseline typography (body margin, heading sizes, line-height) and the `display-*` heading classes. Scripts use those classes to size headings: `showingBootstrap()` in `scripts.ts` picks one by screen size for `<MenuSwipe>` and `<MenuScroll>` titles. Its tablet branch uses the `tablet-squaring` query, measures the long side and is checked first, the way `tablet-squaring` is included last.
 - **Check the path letter by letter.** A wrong folder or file name stops the whole build with `Can't find stylesheet to import`, pointing at `Barrel.scss` and `index.scss` rather than at the component.
 
@@ -248,6 +248,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
 - **One main function, exported twice.** A file with one main function declares it as `export function` in `components/` and as a plain `function` in `containers/`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
 - **Several main functions, no default.** A file of equal utilities (like `scripts.ts`) uses named exports only, so a default export always means "the one this file is about".
 - **Values inside a function.** A flag worked out once per render is a `let` with its type written after the value with `as`, and its reason as a trailing comment: `let casesShow = 3 as number; //--|🠈 … 🠈|--\\`. A `let` declared without a value has nothing to put `as` after, so it keeps its type after the name: `let stateName: 'expanded' | 'collapsed';`. Some files in `components/` still write `let styleImage: boolean = …`; they move to `as` when they're refactored. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
+- **Elements inside a function.** The container the call was launched from is a `const`; a container reached through a hard-coded selector is a `let`. In `squareFooters`, ``const footerElement = document.querySelector(`#${thisItem.id}`)`` is the footer that was tapped, and `let rightbarElement = document.querySelector('#overtime-rightbar')` is the partner it reaches out to. The squaring handlers in `containers/containers.ts` read the same way: `const headerElement` for the block, `let mainElement` for `#${pageName}-main`. The variable is named after the container it holds, so a Footer file says `footerElement`, never `headerElement`.
 - **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)).
 
 `<ButtonDefault>` is the reference: `export function ButtonDefault` … `export default ButtonDefault;` in the `.tsx`, and `export function createClass` calling `const createLayout` and `const createColor` … `export default createClass;` in the `.ts`. In `containers/`, `DefaultButton.tsx` is the reference (see [Container Skeleton](#container-skeleton)). Older files are being moved to this order as they're refactored.
@@ -385,7 +386,7 @@ function LabelElements({ info }: InfoProps) {
 - **`startingPreview` is the page `<DivisionFullscreen>` opens on.** It counts from 1, in the order the `const` lists its previews. It sits right above `return`, so it's the first thing you read. To land on the preview you're working on, change it by hand.
 - **`getOrientation` and the `useEffect` are unused for now.** They keep every scope ready for a `switch (getOrientation)` and let you test by hand without adding them first.
 - **The names go through `stripBrackets()`** and build the `<section>` class (`label-main`), not the raw `info` values.
-- **The `const` (`LabelComponents`) lists the previews**, one per `${variant}-${element}/` folder, and gives each its own `labelName`. Only the `function` follows the shared pattern. Each `const` stays as its folder wrote it: `NavigationElements.tsx` renders its preview inline, and Division, Figure, Table and Time pass one shared `defaultInfo`.
+- **The `const` (`LabelComponents`) lists the previews**, one per `${variant}-${element}/` folder, and gives each its own `labelName`. Only the `function` follows the shared pattern. Each `const` stays as its folder wrote it: Division, Figure, Navigation, Table and Time pass one shared `defaultInfo`.
 
 ### Label Pages
 
@@ -471,7 +472,7 @@ Sass can't `@extend` a placeholder from outside the `@media` block it sits in, s
 
 Near-square screens (tablets, split windows) don't fit the desktop or mobile breakpoints well, so `tablet-squaring` measures the long side instead and steps down one size earlier. It reuses the exact values from the other two mixins, which are measured against the `styles/Mixins.scss` skeleton. It's included last, so it overrides both orientations.
 
-The component's root selector includes all three, each under its own flag: `Desktop (Landscape)`, `Mobile (Portrait)` and `Tablet (Squaring)`, so the three includes read as three sections. Every orientation query that holds `@include`s gets its flag the same way, wherever it sits: components, pipeline components (`Button.default.scss`), containers and `styles/Skeleton.scss`. A flag ends in `|--\\`, never `|--//`:
+The component's root selector includes all three, each under its own flag: `Desktop (Landscape)`, `Mobile (Portrait)` and `Tablet (Squaring)`, so the three includes read as three sections. Every orientation query that holds `@include`s gets its flag the same way, wherever it sits: components, pipeline components (`Button.default.scss`), containers and `styles/Skeleton.scss`. A flag ends in `|--\\`, never `|--//`, except the rows comment of a multi-line `grid-template` (see [Comment Flags](#8-comment-flags)):
 
 ```scss
 aside[class*='characters-default'] {
@@ -636,7 +637,13 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 **More patterns you'll see:**
 
 - `//--|===|--\\` divides a block into parts, for example before the `@extend` lines.
-- Every flag ends in `|--\\`, including a comment on a line that continues onto the next (the rows of a multi-line `grid-template`).
+- Every flag ends in `|--\\`, with one exception: the rows comment inside a multi-line `grid-template` ends in `|--//`. Prettier reads a `\` at the end of a line as "continue onto the next line" and glues the rows line to the columns line on save, so the `//` comment swallows the columns and the build fails with `expected ";"`. The other comments in the template keep `|--\\`:
+
+  ```scss
+  grid-template: //--|🠋 Width: 1920px 🠋|--\\
+    repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
+    / 398px 1fr 398px; //--|🠈 columns 🠈|--\\
+  ```
 - The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
 - `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept.
@@ -697,7 +704,7 @@ Every line the `diff` shows is either a row of the table, which the copy keeps, 
 
 ### Visual Tests
 
-**Visually:** the **Archive** page (`#components-body`) is the testing surface. Its element groups (`<Article>`, `<Aside>`, `<Button>` …) always run alphabetically, in every file that lists them: `ArchiveMain.tsx` and `ArchiveMain.scss`, the Leftbar and Rightbar menus (icons, links and `pages` count), and the Header and Footer `MenuSwipe`s. A new group slots into its letter in all six, so `<Form>` sits between `<Figure>` and `<Label>`. Inside a group, the page order, the default preview and the harness layouts change with the work, so the documents don't fix them; the code decides. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows one `cases.type` at a time: change the `const showType` at the top of its harness by hand until a dropdown replaces it. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
+**Visually:** the **Archive** page (`#components-body`) is the testing surface. Its element groups (`<Article>`, `<Aside>`, `<Button>` …) always run alphabetically, in every file that lists them: `ArchiveMain.tsx` and `ArchiveMain.scss`, the Leftbar and Rightbar menus (icons, links and `pages` count), and the Header and Footer `MenuSwipe`s. A new group slots into its letter in all six, so `<Form>` sits between `<Figure>` and `<Label>`. Inside a group, the page order, the default preview and the harness layouts change with the work, so the documents don't fix them; the code decides. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview opens first, through `let startingPreview` (see [Element Scopes](#element-scopes)). To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows every `cases.type` at once, one row each, in both shades and both clarities. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
 **Rules:** test the application rules with the characters in [CHARACTERS.md](CHARACTERS.md). Each one lists the rules it exists to break.
 

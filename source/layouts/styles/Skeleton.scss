@@ -114,14 +114,17 @@ body {
         inset: 0;
         content: '';
         position: fixed;
-        //--|🠊 Desktop 🠈|--\\
-        animation: overlay-fade 1.5s ease-in-out 1.5s both;
-        //--|🠊 AI Code: Review Please 🠈|--\\
-        @media screen and (orientation: portrait) {
-          //--|🠊 Mobile 🠈|--\\
-          animation: overlay-fade 0ms ease-in-out 0ms both; //--|🠈 duration, delay 🠈|--\\
+        animation: overlay-fade 1.5s ease-in-out 3s both;
+        @keyframes overlay-fade {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
         }
       }
+      //--|===|--\\
       &[class*='ante'] {
         background: Palettes.$indexLand-lightMode;
         &::before {
@@ -132,14 +135,6 @@ body {
         background: Palettes.$indexLand-darkMode;
         &::before {
           background: black;
-        }
-      }
-      @keyframes overlay-fade {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
         }
       }
     }
@@ -207,7 +202,7 @@ body {
   div[id='components-body'] {
     //--|🟨|--\\
     main[id*='components'] {
-      aside[class*='form'], //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+      aside[class*='form'],
       aside[class*='menu'],
       aside[class*='time'],
       aside[class*='table'],

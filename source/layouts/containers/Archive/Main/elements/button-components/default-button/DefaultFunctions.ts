@@ -1812,7 +1812,7 @@ export const toggleColors = (tint: string): void => {
 };
 //--|🠋 Button Clarity Toggle 🠋|--\\
 export const toggleClarity = (element: HTMLFieldSetElement): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 · The checked radio's value picks the clarity, the <fieldset>'s class picks the side 🠈|--\\
+  //--|🠊 The checked radio's value picks the clarity, the <fieldset>'s class picks the side 🠈|--\\
   const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
   const fieldsetSide = element.classList[0].split('-')[1] as string; //--|🠈 clarify-darkside → darkside 🠈|--\\
 
@@ -1878,12 +1878,12 @@ let updateButtons = (color: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < 49; i++) {
-    //--|🠊 AI Code: Review Please 2026-10-30 · 49 on purpose, not .length: it marks how many <ButtonDefault>s each side holds 🠈|--\\
+    //--|🠊 49 on purpose, not .length: it marks how many <ButtonDefault>s each side holds 🠈|--\\
     let prevDarkClass = wrapperDarkside[i].classList[1] as string;
     let prevLightClass = wrapperLightside[i].classList[1] as string;
 
-    let nextDarkClass = `${wrapperDarkside[i].classList[1].split('_')[0]}_${wrapperDarkside[i].classList[1].split('_')[1]}_${wrapperDarkside[i].classList[1].split('_')[2]}_${color}_${wrapperDarkside[i].classList[1].split('_')[4]}_${wrapperDarkside[i].classList[1].split('_')[5]}`; //--|🠈 AI Code: Review Please 2026-10-30 · [4] is now the clarity 🠈|--\\
-    let nextLightClass = `${wrapperLightside[i].classList[1].split('_')[0]}_${wrapperLightside[i].classList[1].split('_')[1]}_${wrapperLightside[i].classList[1].split('_')[2]}_${color}_${wrapperLightside[i].classList[1].split('_')[4]}_${wrapperLightside[i].classList[1].split('_')[5]}`; //--|🠈 AI Code: Review Please 2026-10-30 · [4] is now the clarity 🠈|--\\
+    let nextDarkClass = `${wrapperDarkside[i].classList[1].split('_')[0]}_${wrapperDarkside[i].classList[1].split('_')[1]}_${wrapperDarkside[i].classList[1].split('_')[2]}_${color}_${wrapperDarkside[i].classList[1].split('_')[4]}_${wrapperDarkside[i].classList[1].split('_')[5]}`; //--|🠈 [4] is now the clarity 🠈|--\\
+    let nextLightClass = `${wrapperLightside[i].classList[1].split('_')[0]}_${wrapperLightside[i].classList[1].split('_')[1]}_${wrapperLightside[i].classList[1].split('_')[2]}_${color}_${wrapperLightside[i].classList[1].split('_')[4]}_${wrapperLightside[i].classList[1].split('_')[5]}`; //--|🠈 [4] is now the clarity 🠈|--\\
 
     wrapperDarkside[i].classList.replace(prevDarkClass, nextDarkClass);
     wrapperLightside[i].classList.replace(prevLightClass, nextLightClass);
@@ -1895,7 +1895,7 @@ let updateClarity = (clarity: string, side: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < 49; i++) {
-    //--|🠊 AI Code: Review Please 2026-10-31 · Same 49 as updateButtons(), [4] is the clarity 🠈|--\\
+    //--|🠊 Same 49 as updateButtons(), [4] is the clarity 🠈|--\\
     let prevSideClass = wrapperSide[i].classList[1] as string;
 
     let nextSideClass = `${wrapperSide[i].classList[1].split('_')[0]}_${wrapperSide[i].classList[1].split('_')[1]}_${wrapperSide[i].classList[1].split('_')[2]}_${wrapperSide[i].classList[1].split('_')[3]}_${clarity}_${wrapperSide[i].classList[1].split('_')[5]}`;

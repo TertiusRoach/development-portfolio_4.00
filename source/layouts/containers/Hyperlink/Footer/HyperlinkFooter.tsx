@@ -117,7 +117,6 @@ function HyperlinkFooter({ info }: InfoProps) {
         <footer
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          //--|🠊 AI Code: Review Please 🠈|--\\
           onClick={(event) => {
             unfoldFooters(event.currentTarget); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}
@@ -158,7 +157,7 @@ function HyperlinkFooter({ info }: InfoProps) {
                   view: '-left-',
                   color: '(mono)',
                   shade: '~dark~',
-                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [
@@ -178,7 +177,7 @@ function HyperlinkFooter({ info }: InfoProps) {
                   view: '-right-',
                   color: '(mono)',
                   shade: '~light~',
-                  clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
+                  clarity: '⟨opaque⟩',
                 }}
                 cases={{
                   task: [

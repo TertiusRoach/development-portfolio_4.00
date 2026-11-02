@@ -111,7 +111,6 @@ function LandingFooter({ info }: InfoProps) {
         <footer
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          //--|🠊 AI Code: Review Please 🠈|--\\
           onClick={(event) => {
             unfoldFooters(event.currentTarget); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}

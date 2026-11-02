@@ -1,5 +1,4 @@
 //--|🠊 register-form/RegisterFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Written like CharactersFunctions.ts 🠈|--\\
 //--|🠋 Form Color Toggle 🠋|--\\
 export const toggleColors = (tint: string): void => {
   updateForm(tint); //--|🠈 <DivisionColourize> finds the tint, this swaps it into <FormRegister> and everything inside it 🠈|--\\

@@ -13,9 +13,10 @@ import Overtime from './layouts/containers/Overtime/Overtime';
 import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 
-//--|🠋 Context 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+//--|🠋 Context 🠋|--\\
 import { EmailProvider } from './modules/context/EmailContext';
 import { PasswordProvider } from './modules/context/PasswordContext';
+
 //--|🠋 Entry Point 🠋|--\\
 setTimeout(() => {
   viewBody('archive');
@@ -44,9 +45,11 @@ const loadPage = (identification: string, container: React.ReactElement) => {
   }
 
   if (element.innerHTML === '') {
-    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
-    //--|🠋 Every page gets its own email and password state; the <Form>s inside one page share it 🠋|--\\
     ReactDOM.createRoot(element).render(
+      /*--|🠋
+        Every page gets its own email and password state.
+        The <Form> elements all share it as one page.
+      🠉|--*/
       <React.StrictMode>
         <EmailProvider>
           <PasswordProvider>{container}</PasswordProvider>

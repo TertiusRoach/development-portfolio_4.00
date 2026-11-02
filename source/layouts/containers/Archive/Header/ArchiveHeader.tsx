@@ -94,7 +94,6 @@ function ArchiveHeader({ info }: InfoProps) {
         <header
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
-          //--|🠊 AI Code: Review Please 🠈|--\\
           onClick={(event) => {
             unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
           }}
@@ -210,7 +209,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Button_Default>', '<Button_Stretch>', '<Button_Routing>', '<Button_Profile>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-10-31 11:32 🠈|--\\
+          titles: ['<Button_Default>', '<Button_Stretch>', '<Button_Routing>', '<Button_Profile>'] as Array<string>,
         }}
         info={{
           labelName: 'button',
@@ -257,7 +256,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
-      {/*--|🠊 <Form> AI Code: Review Please 2026-11-01 🠈|--*/}
+      {/*--|🠊 <Form> 🠈|--*/}
       <MenuSwipe
         cases={{
           axis: '[x]',
@@ -274,12 +273,11 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
-      {/*--|🠊 AI Code: Review Please 🠈|--*/}
       {/*--|🠊 <Label> 🠈|--*/}
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Label_Switching>', '<Label_Textarea>', '<Label_Selection>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+          titles: ['<Label_Switching>', '<Label_Textarea>', '<Label_Selection>'] as Array<string>,
         }}
         info={{
           labelName: 'label',

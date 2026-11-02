@@ -1,7 +1,6 @@
 //--|🠊 ResetForm.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Laid out like CharactersAside.tsx: one card and its <DivisionColourize> 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import FormReset from '../../../../../../components/Form/reset/Form.reset';
@@ -9,6 +8,7 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './ResetFunctions';
+import { checkScreen } from '../../../../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -18,39 +18,82 @@ interface InfoProps {
   };
 }
 function ResetForm({ info }: InfoProps) {
+  const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
+    window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
+  ); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'reset';
   const pageName = info.pageName as 'components';
-  return (
-    <aside className="reset-form">
-      <section className={`${blockName}-foreground`}>
-        <DivisionColourize
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            shade: '~dark~',
-          }}
-          cases={{
-            task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <FormReset> with the tint from the toggles 🠈|--\\
-          }}
-        />
-        <FormReset
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
-          }}
-          style={{
-            color: '(mono)',
-          }}
-        />
-      </section>
-      <figure className={`${blockName}-midground`}></figure>
-      <div className={`${blockName}-background`}></div>
-    </aside>
-  );
+
+  useEffect(() => {
+    return checkScreen(setOrientation);
+  }, [pageName, blockName, labelName]);
+
+  switch (getOrientation) {
+    case 'landscape':
+      return (
+        <aside className="reset-form">
+          <section className={`${blockName}-foreground`}>
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <FormReset> with the tint from the toggles 🠈|--\\
+              }}
+            />
+            <FormReset
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}></div>
+        </aside>
+      );
+    case 'portrait':
+      return (
+        <aside className="reset-form">
+          <section className={`${blockName}-foreground`}>
+            <DivisionColourize
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                shade: '~dark~',
+              }}
+              cases={{
+                task: [(tint) => toggleColors(tint)], //--|🠈 Recolors <FormReset> with the tint from the toggles 🠈|--\\
+              }}
+            />
+            <FormReset
+              info={{
+                pageName: pageName,
+                blockName: blockName,
+                labelName: labelName,
+              }}
+              style={{
+                color: '(mono)',
+              }}
+            />
+          </section>
+          <figure className={`${blockName}-midground`}></figure>
+          <div className={`${blockName}-background`}></div>
+        </aside>
+      );
+  }
 }
 export default ResetForm;
