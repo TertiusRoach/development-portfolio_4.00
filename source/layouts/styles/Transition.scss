@@ -159,108 +159,13 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
   %header-children {
-    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
-    //--|🠋 Scope: empty on purpose, uncomment a background to see what each selector reaches 🠋|--\\
-    section[class*='foreground'] {
-      //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
-    }
-    figure[class*='midground'] {
-      //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--\\
-    }
     div[class*='background'] {
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
       //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
     }
-    *[class*='ground']:first-child {
-      @media screen and (orientation: landscape) {
-        //--|🠊 max-height 🠈|--\\
-        section[class='header-foreground'] {
-          header {
-            //--|🠋 128px for Squares 🠋|--\\
-            clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
-            @media screen and (max-height: 768px) {
-              //--|🠋 96px for Squares 🠋|--\\
-              clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-            @media screen and (max-height: 480px) {
-              //--|🠋 64px for Squares 🠋|--\\
-              clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-            @media screen and (max-height: 360px) {
-              //--|🠋 48px for Squares 🠋|--\\
-              clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
-            }
-          }
-          nav {
-            menu {
-              z-index: 1;
-              grid-area: 1 / 1 / 3 / 2;
-              button:not(:first-child) {
-                top: 0;
-                position: relative;
-              }
-            }
-            grid-template-rows: repeat(2, 64px); //--|🠈 rows 🠈|--\\
-            @media screen and (max-height: 768px) {
-              grid-template-rows: repeat(2, 48px); //--|🠈 rows 🠈|--\\
-            }
-            @media screen and (max-height: 480px) {
-              grid-template-rows: repeat(2, 32px); //--|🠈 rows 🠈|--\\
-            }
-            @media screen and (max-height: 360px) {
-              grid-template-rows: repeat(2, 24px); //--|🠈 rows 🠈|--\\
-            }
-          }
-          //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
-        }
-        /*
-        header {
-          //--|🠋 128px for Squares 🠋|--\\
-          padding: 0 128px;
-          clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-height: 768px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            padding: 0 96px;
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            padding: 0 64px;
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            //--|🠋 48px for Squares 🠋|--\\
-            padding: 0 48px;
-            clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-        */
-      }
-
-      @media screen and (orientation: portrait) {
-        //--|🠊 max-width 🠈|--\\
-        /*
-        header {
-          //--|🠋 192px for Squares 🠋|--\\
-          padding: 0 192px;
-          clip-path: inset(0% 192px 0% 192px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-width: 768px) {
-            //--|🠋 160px for Squares 🠋|--\\
-            padding: 0 160px;
-            clip-path: inset(0% 160px 0% 160px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 480px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            padding: 0 96px;
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 360px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            padding: 0 64px;
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-        */
-      }
+    &[class*='expanded'] div[class*='background'] {
+      opacity: 1;
     }
   }
   %header-clipping {
@@ -360,60 +265,13 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     }
   }
   %footer-children {
-    //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
-    //--|🠋 Scope: empty on purpose, uncomment a background to see what each selector reaches 🠋|--\\
-    section[class*='foreground'] {
-      //--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\
-    }
-    figure[class*='midground'] {
-      //--|🠊 background: rgba(darkblue, 0.25) !important; 🠈|--\\
-    }
     div[class*='background'] {
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
       //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
     }
-    *[class*='ground']:first-child {
-      @media screen and (orientation: landscape) {
-        //--|🠊 max-height 🠈|--\\
-        /*
-        footer {
-          //--|🠋 128px for Squares 🠋|--\\
-          clip-path: inset(0% 128px 0% 128px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-height: 768px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 480px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-height: 360px) {
-            //--|🠋 48px for Squares 🠋|--\\
-            clip-path: inset(0% 48px 0% 48px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-        */
-      }
-      @media screen and (orientation: portrait) {
-        //--|🠊 max-width 🠈|--\\
-        /*
-        footer {
-          //--|🠋 192px for Squares 🠋|--\\
-          clip-path: inset(0% 192px 0% 192px); //--|🠈 top / right / bottom / left 🠈|--\\
-          @media screen and (max-width: 768px) {
-            //--|🠋 160px for Squares 🠋|--\\
-            clip-path: inset(0% 160px 0% 160px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 480px) {
-            //--|🠋 96px for Squares 🠋|--\\
-            clip-path: inset(0% 96px 0% 96px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-          @media screen and (max-width: 360px) {
-            //--|🠋 64px for Squares 🠋|--\\
-            clip-path: inset(0% 64px 0% 64px); //--|🠈 top / right / bottom / left 🠈|--\\
-          }
-        }
-        */
-      }
+    &[class*='expanded'] div[class*='background'] {
+      opacity: 1;
     }
   }
   %footer-clipping {
