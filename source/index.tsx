@@ -1,4 +1,10 @@
 //--|🠊 index.tsx (Entry Point) 🠈|--\\
+//--|🠋 Entry Point 🠋|--\\
+setTimeout(() => {
+  viewBody('overtime');
+  themeScheme('light');
+}, 250);
+
 //--|🠋 Styles 🠋|--\\
 import './index.scss';
 
@@ -16,12 +22,6 @@ import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 //--|🠋 Context 🠋|--\\
 import { EmailProvider } from './modules/context/EmailContext';
 import { PasswordProvider } from './modules/context/PasswordContext';
-
-//--|🠋 Entry Point 🠋|--\\
-setTimeout(() => {
-  viewBody('archive');
-  themeScheme('light');
-}, 250);
 
 //--|🠋 Functions 🠋|--\\
 const themeScheme = (colorScheme: 'light' | 'dark'): void => {

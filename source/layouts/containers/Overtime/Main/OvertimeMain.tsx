@@ -7,7 +7,7 @@ import DivisionTesting from '../../../components/Division/testing/Division.testi
 
 //--|🠋 Functions 🠋|--\\
 import { revertBlocks } from '../../../scripts/Main';
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import { stripBrackets, checkScreen, synchDemo } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -20,12 +20,12 @@ function OvertimeMain({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'main';
-  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
+    synchDemo(pageName, blockName);
     //--|🟩|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);

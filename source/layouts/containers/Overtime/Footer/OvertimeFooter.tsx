@@ -12,7 +12,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
 import previewProfile, { unfoldFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
 
 interface InfoProps {
@@ -26,10 +26,9 @@ function OvertimeFooter({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'footer';
-  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🟩|--\\
@@ -119,6 +118,9 @@ function OvertimeFooter({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onClick={(event) => {
             unfoldFooters(event.currentTarget); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
+          }}
+          onLoad={() => {
+            synchDemo(pageName, blockName, 'load');
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -227,7 +229,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 axis: '[y]',
                 view: '-top-',
                 show: 0 as number,
-                call: OvertimeCharacters as React.ComponentType<InfoProps>,
+                call: SelectProfile as React.ComponentType<InfoProps>,
               }}
             />
 
@@ -257,7 +259,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 axis: '[y]',
                 view: '-bot-',
                 show: 0 as number,
-                call: OvertimeCharacters as React.ComponentType<InfoProps>,
+                call: SelectProfile as React.ComponentType<InfoProps>,
               }}
             />
             <div className="bot"></div>
@@ -270,7 +272,7 @@ function OvertimeFooter({ info }: InfoProps) {
       );
   }
 }
-const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
+const SelectProfile: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as string;
   const pageName = info.pageName as 'overtime';
   const blockName = info.blockName as 'footer';

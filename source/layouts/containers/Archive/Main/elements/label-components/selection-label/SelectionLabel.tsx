@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react';
 import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
 
 //--|🠋 Functions 🠋|--\\
-import { switchColors, checkScreen } from '../../../../../../../scripts';
-import listCharacters, { typePlaceholder } from './SelectionFunctions';
+import { checkScreen } from '../../../../../../../scripts';
+import listCharacters, { typePlaceholder, switchColors } from './SelectionFunctions';
 
 interface InfoProps {
   info: {

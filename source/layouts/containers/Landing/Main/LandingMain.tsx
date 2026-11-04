@@ -23,10 +23,9 @@ function LandingMain({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'main';
-  let pageName = stripBrackets(info.pageName, '[]') as 'landing';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'landing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'main';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🟪|--\\

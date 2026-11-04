@@ -1,7 +1,51 @@
 //--|🠊 scripts.ts 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import blockViews from './layouts/containers/containers';
 
 //--|🠋 Resolution & Refreshing 🠋|--\\
+type Selection = 'awaiting' | 'selected';
 type Orientation = 'landscape' | 'portrait';
+//--|🠋 Element Observers 🠋|--\\
+
+export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
+  //--|🠋 Runs whenever the screen switches between portrait and landscape 🠋|--\\
+  const orientChange = (event: MediaQueryListEvent): void => {
+    defaultReset(); //--|🠈 Reset anything that depends on the previous orientation 🠈|--\\
+    onChange(event.matches ? 'landscape' : 'portrait'); //--|🠈 Tell React which orientation the screen is now in 🠈|--\\
+  };
+
+  let mediaQuery = window.matchMedia('(orientation: landscape)'); //--|🠈 Create a media query that tells us whether the screen is currently landscape 🠈|--\\
+  mediaQuery.addEventListener('change', orientChange); //--|🠈 Listen for the screen changing between landscape and portrait 🠈|--\\
+
+  return (): void => {
+    mediaQuery.removeEventListener('change', orientChange); //--|🠈 Remove the listener when React no longer needs this check 🠈|--\\
+  };
+}
+export function asynchObserve(selector: string, timeout = 6000): Promise<HTMLElement> {
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLElement>(selector);
+    if (existing) {
+      resolve(existing);
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      const tag = document.querySelector<HTMLElement>(selector);
+      if (tag) {
+        observer.disconnect();
+        clearTimeout(timer);
+        resolve(tag);
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const timer = setTimeout(() => {
+      observer.disconnect();
+      reject(new Error(`//--|🠊 Error: ${selector} not found 🠈|--\\`));
+    }, timeout);
+  });
+}
 export function showingBootstrap(): string {
   let windowScreen: number = 0;
   let displayText: string = 'display-0';
@@ -62,19 +106,39 @@ export function showingBootstrap(): string {
 
   return displayText as string;
 }
-export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
-  //--|🠋 Runs whenever the screen switches between portrait and landscape 🠋|--\\
-  const orientChange = (event: MediaQueryListEvent): void => {
-    defaultReset(); //--|🠈 Reset anything that depends on the previous orientation 🠈|--\\
-    onChange(event.matches ? 'landscape' : 'portrait'); //--|🠈 Tell React which orientation the screen is now in 🠈|--\\
-  };
 
-  let mediaQuery = window.matchMedia('(orientation: landscape)'); //--|🠈 Create a media query that tells us whether the screen is currently landscape 🠈|--\\
-  mediaQuery.addEventListener('change', orientChange); //--|🠈 Listen for the screen changing between landscape and portrait 🠈|--\\
-
-  return (): void => {
-    mediaQuery.removeEventListener('change', orientChange); //--|🠈 Remove the listener when React no longer needs this check 🠈|--\\
-  };
+let demoState: Selection = 'awaiting'; //--|🠈 Shared by every application, so one pick squares the demonstration in all three 🠈|--\\
+export async function synchDemo(
+  pageName: 'overtime' | 'ticketing' | 'hyperlink',
+  blockName: 'header' | 'main' | 'footer',
+  inputAction: 'load' | 'click',
+): Promise<void> {
+  //--|🠋 Wait for containers to exist 🠋|--\\
+  const [headCont, mainCont, footCont] = await Promise.all([
+    asynchObserve(`#${pageName}-header`),
+    asynchObserve(`#${pageName}-main`),
+    asynchObserve(`#${pageName}-footer`),
+  ]);
+  let thisItem: HTMLElement = mainCont;
+  if (blockName === 'header') {
+    thisItem = headCont;
+  } else if (blockName === 'footer') {
+    thisItem = footCont;
+  }
+  switch (inputAction) {
+    case 'click':
+      demoState = 'selected';
+      blockViews(thisItem, pageName, blockName, 'squaring');
+      break;
+    case 'load': {
+      if (demoState === 'awaiting') {
+        blockViews(thisItem, pageName, blockName, 'expanded');
+      } else if (demoState === 'selected') {
+        blockViews(thisItem, pageName, blockName, 'squaring');
+      }
+      break;
+    }
+  }
 }
 
 //--|🠋 Utilities, Conversions & Navigation Functions 🠋|--\\
@@ -784,38 +848,6 @@ export const stripBrackets = (thisText: string, wrapType: '[]' | '<>' | '()' | '
     case '~~':
       //--|🠊 Associated with ~style.shade~ 🠈|--\\
       return thisText.replace(/[~~]/g, '');
-  }
-};
-
-//--|🠋 Colour Switching 🠋|--\\
-export const switchColors = (choice: string, labelName: 'switching' | 'textarea' | 'selection'): void => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · The colour {select} gives '(red)', the classes need 'red' 🠈|--\\
-  const colorMap: Record<string, string> = {
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(yellow)': 'yel',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-
-  updateLabels(colorMap[choice], labelName); //--|🠈 The {select} picks the colour, this swaps it into every <Label> on that page 🠈|--\\
-};
-let updateLabels = (color: string, labelName: 'switching' | 'textarea' | 'selection') => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · Only the colour changes: size_type_view_shade_[color]_clarity_def, so [4] is swapped; the colour {select} itself stays (mono) 🠈|--\\
-  const archiveLabels = document.querySelectorAll(
-    `#components-main .${labelName}-label label[class*="_${labelName}-"]:not([class*="colours"])`,
-  ) as NodeListOf<HTMLLabelElement>;
-
-  for (let i = 0; i < archiveLabels.length; i++) {
-    let prevClass = archiveLabels[i].classList[1] as string;
-    let nextClass = `${archiveLabels[i].classList[1].split('_')[0]}_${archiveLabels[i].classList[1].split('_')[1]}_${archiveLabels[i].classList[1].split('_')[2]}_${archiveLabels[i].classList[1].split('_')[3]}_${color}_${archiveLabels[i].classList[1].split('_')[5]}_${archiveLabels[i].classList[1].split('_')[6]}`;
-
-    archiveLabels[i].classList.replace(prevClass, nextClass);
   }
 };
 

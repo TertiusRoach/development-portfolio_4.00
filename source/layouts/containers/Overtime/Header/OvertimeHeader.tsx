@@ -10,8 +10,9 @@ import DivisionSweeping from '../../../components/Division/sweeping/Division.swe
 import SectionCharacters from '../../../components/Section/characters/Section.characters';
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
+
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
 import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 
 //--|🠋 Database 🠋|--\\
@@ -49,6 +50,9 @@ function OvertimeHeader({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldHeaders(event.currentTarget as HTMLElement);
+          }}
+          onLoad={() => {
+            synchDemo(pageName, blockName, 'load');
           }}
         >
           <section className={`${blockName}-foreground`}>
@@ -113,6 +117,7 @@ function OvertimeHeader({ info }: InfoProps) {
                   task: [
                     (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                     (event) => previewProfile('click', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+
                     (event) => previewProfile('leave', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   ],
                 }}
@@ -157,7 +162,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 axis: '[x]',
                 view: '-lef-',
                 show: 0 as number,
-                call: OvertimeCharacters as React.ComponentType<InfoProps>,
+                call: SelectProfile as React.ComponentType<InfoProps>,
               }}
             />
 
@@ -187,7 +192,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 axis: '[x]',
                 view: '-rig-',
                 show: 0 as number,
-                call: OvertimeCharacters as React.ComponentType<InfoProps>,
+                call: SelectProfile as React.ComponentType<InfoProps>,
               }}
             />
             <div className="bot"></div>
@@ -275,7 +280,7 @@ function OvertimeHeader({ info }: InfoProps) {
       );
   }
 }
-const OvertimeCharacters: React.FC<InfoProps> = ({ info }) => {
+const SelectProfile: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as string;
   const pageName = info.pageName as 'overtime';
   const blockName = info.blockName as 'header';

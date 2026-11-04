@@ -18,10 +18,9 @@ function HyperlinkRightbar({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
-  let pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'hyperlink';
+  const blockName = stripBrackets(info.blockName, '<>') as 'rightbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🟥|--\\

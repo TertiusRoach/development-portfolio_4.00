@@ -12,7 +12,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
 import previewProfile, { unfoldFooters, squareFooters, freezeFooters } from './TicketingFunctions';
 
 interface InfoProps {
@@ -26,10 +26,9 @@ function TicketingFooter({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'footer';
-  let pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'ticketing';
+  const blockName = stripBrackets(info.blockName, '<>') as 'footer';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🟦|--\\
@@ -119,6 +118,9 @@ function TicketingFooter({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onClick={(event) => {
             unfoldFooters(event.currentTarget); //--|🠈 Mobile taps to unfold, <main> folds it back 🠈|--\\
+          }}
+          onLoad={() => {
+            synchDemo(pageName, blockName, 'load');
           }}
         >
           <section className={`${blockName}-foreground`}>

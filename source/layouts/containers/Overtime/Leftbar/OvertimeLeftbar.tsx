@@ -20,10 +20,9 @@ function OvertimeLeftbar({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
-
-  let blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
-  let pageName = stripBrackets(info.pageName, '[]') as 'overtime';
-  let labelName = stripBrackets(info.labelName, '()') as 'default';
+  const pageName = stripBrackets(info.pageName, '[]') as 'overtime';
+  const blockName = stripBrackets(info.blockName, '<>') as 'leftbar';
+  const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
     //--|🟩|--\\

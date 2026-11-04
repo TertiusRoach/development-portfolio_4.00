@@ -1,6 +1,7 @@
 //--|🠊 layouts/scripts/Overlay.ts 🠈|--\\
 //--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
+import { asynchObserve } from '../../scripts';
 
 //--|🠋 Disable Overlay 🠋|--\\
 const transitioning = new Set<string>();
@@ -39,31 +40,6 @@ async function obnubilateContainers(pageName: string, blockName: string) {
 }
 
 //--|🠋 Element Observers 🠋|--\\
-const asynchObserve = (selector: string, timeout = 6000): Promise<HTMLElement> => {
-  return new Promise((resolve, reject) => {
-    const existing = document.querySelector<HTMLElement>(selector);
-    if (existing) {
-      resolve(existing);
-      return;
-    }
-
-    const observer = new MutationObserver(() => {
-      const el = document.querySelector<HTMLElement>(selector);
-      if (el) {
-        observer.disconnect();
-        clearTimeout(timer);
-        resolve(el);
-      }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    const timer = setTimeout(() => {
-      observer.disconnect();
-      reject(new Error(`//--|🠊 Error: ${selector} not found 🠈|--\\`));
-    }, timeout);
-  });
-};
 const observeOverlay = (blockName: 'overlay') => {
   const unusedElements = document.querySelectorAll<HTMLDivElement>('div[id*="body"].asleep');
   unusedElements.forEach((element) => {

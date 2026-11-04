@@ -11,7 +11,7 @@ import SectionCharacters from '../../../components/Section/characters/Section.ch
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
 import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';
 
 //--|🠋 Database 🠋|--\\
@@ -49,6 +49,9 @@ function TicketingHeader({ info }: InfoProps) {
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onMouseEnter={(event) => {
             unfoldHeaders(event.currentTarget as HTMLElement);
+          }}
+          onLoad={() => {
+            synchDemo(pageName, blockName, 'load');
           }}
         >
           <section className={`${blockName}-foreground`}>

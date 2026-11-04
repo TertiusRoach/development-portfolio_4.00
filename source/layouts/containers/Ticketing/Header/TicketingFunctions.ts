@@ -1,5 +1,7 @@
 //--|🠊 Header/TicketingFunctions.ts 🠈|--\\
+//--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
+import { synchDemo } from '../../../../scripts';
 import { freezeToggle } from '../../../scripts/Header';
 
 function previewProfile(
@@ -43,7 +45,8 @@ function previewProfile(
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
-      blockViews(thisItem, pageName, 'header', 'squaring');
+      synchDemo(pageName, blockName, inputAction as 'click');
+      //--|===|--\\
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
       demoCard.classList.remove('conceal');

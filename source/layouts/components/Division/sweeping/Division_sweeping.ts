@@ -2,7 +2,7 @@
 import { romanToArabic } from '../../../../scripts';
 
 const observers = new WeakMap<HTMLElement, MutationObserver>();
-export default function emphasizeParameters(pageName: string, blockName: string, labelName: string, index: number = 0) {
+function emphasizeParameters(pageName: string, blockName: string, labelName: string, index: number = 0) {
   const selectContainer = document.querySelectorAll(`#${pageName}-${blockName} div[class*="${labelName}-${blockName}_container"]`)[
     index
   ] as HTMLDivElement;
@@ -37,3 +37,4 @@ export default function emphasizeParameters(pageName: string, blockName: string,
     }
   }
 }
+export default emphasizeParameters;

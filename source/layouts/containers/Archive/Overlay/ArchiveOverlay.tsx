@@ -21,9 +21,9 @@ function ArchiveOverlay({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
   const blockName = stripBrackets(info.blockName, '<>') as 'overlay';
   const labelName = stripBrackets(info.labelName, '()') as 'default';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\

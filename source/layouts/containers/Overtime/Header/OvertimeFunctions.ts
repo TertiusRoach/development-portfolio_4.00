@@ -1,5 +1,7 @@
 //--|🠊 Header/OvertimeFunctions.ts 🠈|--\\
+//--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
+import { synchDemo } from '../../../../scripts';
 import { freezeToggle } from '../../../scripts/Header';
 
 function previewProfile(
@@ -43,7 +45,8 @@ function previewProfile(
       selectedContainer.parentElement?.classList.replace(prevSlide, nextSlide);
       break;
     case 'click':
-      blockViews(thisItem, pageName, 'header', 'squaring');
+      synchDemo(pageName, blockName, inputAction as 'click');
+      //--|===|--\\
       return selectCharacter(thisItem, pageName, blockName);
     case 'leave':
       demoCard.classList.remove('conceal');
@@ -52,6 +55,32 @@ function previewProfile(
       break;
   }
 }
+//--|🠋 Container States 🠋|--\\
+export function unfoldHeaders(thisItem: HTMLElement) {
+  if (Array.from(thisItem.classList).pop() !== 'expanded') {
+    blockViews(thisItem, 'overtime', 'header', 'unfolded');
+    blockViews(thisItem, 'overtime', 'leftbar', 'unfolded');
+  }
+}
+export function squareHeaders(thisItem: HTMLElement) {
+  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
+  let leftbarElement = document.querySelector('#overtime-leftbar') as HTMLElement;
+  switch (Array.from(thisItem.classList).pop()) {
+    case 'unfolded':
+      headerElement.className = `default-header squaring`;
+      leftbarElement.className = `default-leftbar collapsed`;
+      break;
+  }
+}
+export function freezeHeaders(pageName: 'overtime', styleView: 'top-lef') {
+  switch (styleView) {
+    case 'top-lef':
+      freezeToggle(pageName, 'header');
+      freezeToggle(pageName, 'leftbar');
+      break;
+  }
+}
+//--|===|--\\
 const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
@@ -87,32 +116,6 @@ let sequencedDemonstration = (profile: string): string => {
     default:
     case 'randomize-character':
       return 'X';
-  }
-};
-//--|===|--\\
-
-export const unfoldHeaders = (thisItem: HTMLElement) => {
-  if (Array.from(thisItem.classList).pop() !== 'expanded') {
-    blockViews(thisItem, 'overtime', 'header', 'unfolded');
-    blockViews(thisItem, 'overtime', 'leftbar', 'unfolded');
-  }
-};
-export const squareHeaders = (thisItem: HTMLElement) => {
-  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  let leftbarElement = document.querySelector('#overtime-leftbar') as HTMLElement;
-  switch (Array.from(thisItem.classList).pop()) {
-    case 'unfolded':
-      headerElement.className = `default-header squaring`;
-      leftbarElement.className = `default-leftbar collapsed`;
-      break;
-  }
-};
-export const freezeHeaders = (pageName: 'overtime', styleView: 'top-lef') => {
-  switch (styleView) {
-    case 'top-lef':
-      freezeToggle(pageName, 'header');
-      freezeToggle(pageName, 'leftbar');
-      break;
   }
 };
 //--|===|--\\
