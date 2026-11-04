@@ -128,7 +128,9 @@ export async function synchDemo(
   switch (inputAction) {
     case 'click':
       demoState = 'selected';
-      blockViews(thisItem, pageName, blockName, 'squaring');
+      blockViews(thisItem, 'overtime', blockName, 'squaring');
+      blockViews(thisItem, 'ticketing', blockName, 'squaring');
+      blockViews(thisItem, 'hyperlink', blockName, 'squaring');
       break;
     case 'load': {
       if (demoState === 'awaiting') {

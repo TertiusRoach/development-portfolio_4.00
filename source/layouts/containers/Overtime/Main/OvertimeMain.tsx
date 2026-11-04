@@ -7,7 +7,7 @@ import DivisionTesting from '../../../components/Division/testing/Division.testi
 
 //--|🠋 Functions 🠋|--\\
 import { revertBlocks } from '../../../scripts/Main';
-import { stripBrackets, checkScreen, synchDemo } from '../../../../scripts';
+import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -25,7 +25,6 @@ function OvertimeMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    synchDemo(pageName, blockName);
     //--|🟩|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);

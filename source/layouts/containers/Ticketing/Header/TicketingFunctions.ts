@@ -55,7 +55,33 @@ function previewProfile(
       break;
   }
 }
-const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
+//--|🠋 Container States 🠋|--\\
+export function unfoldHeaders(thisItem: HTMLElement) {
+  if (Array.from(thisItem.classList).pop() !== 'expanded') {
+    blockViews(thisItem, 'ticketing', 'header', 'unfolded');
+    blockViews(thisItem, 'ticketing', 'leftbar', 'unfolded');
+  }
+}
+export function squareHeaders(thisItem: HTMLElement) {
+  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
+  let leftbarElement = document.querySelector('#ticketing-leftbar') as HTMLElement;
+  switch (Array.from(thisItem.classList).pop()) {
+    case 'unfolded':
+      headerElement.className = `default-header squaring`;
+      leftbarElement.className = `default-leftbar collapsed`;
+      break;
+  }
+}
+export function freezeHeaders(pageName: 'ticketing', styleView: 'top-lef') {
+  switch (styleView) {
+    case 'top-lef':
+      freezeToggle(pageName, 'header');
+      freezeToggle(pageName, 'leftbar');
+      break;
+  }
+}
+//--|===|--\\
+const selectCharacter =(thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {
@@ -90,32 +116,6 @@ let sequencedDemonstration = (profile: string): string => {
     default:
     case 'randomize-character':
       return 'X';
-  }
-};
-//--|===|--\\
-
-export const unfoldHeaders = (thisItem: HTMLElement) => {
-  if (Array.from(thisItem.classList).pop() !== 'expanded') {
-    blockViews(thisItem, 'ticketing', 'header', 'unfolded');
-    blockViews(thisItem, 'ticketing', 'leftbar', 'unfolded');
-  }
-};
-export const squareHeaders = (thisItem: HTMLElement) => {
-  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  let leftbarElement = document.querySelector('#ticketing-leftbar') as HTMLElement;
-  switch (Array.from(thisItem.classList).pop()) {
-    case 'unfolded':
-      headerElement.className = `default-header squaring`;
-      leftbarElement.className = `default-leftbar collapsed`;
-      break;
-  }
-};
-export const freezeHeaders = (pageName: 'ticketing', styleView: 'top-lef') => {
-  switch (styleView) {
-    case 'top-lef':
-      freezeToggle(pageName, 'header');
-      freezeToggle(pageName, 'leftbar');
-      break;
   }
 };
 //--|===|--\\

@@ -55,7 +55,33 @@ function previewProfile(
       break;
   }
 }
-const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
+//--|🠋 Container States 🠋|--\\
+export function unfoldFooters(thisItem: HTMLElement) {
+  if (Array.from(thisItem.classList).pop() !== 'expanded') {
+    blockViews(thisItem, 'ticketing', 'footer', 'unfolded');
+    blockViews(thisItem, 'ticketing', 'rightbar', 'unfolded');
+  }
+}
+export function squareFooters(thisItem: HTMLElement) {
+  const footerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
+  let rightbarElement = document.querySelector('#ticketing-rightbar') as HTMLElement;
+  switch (Array.from(thisItem.classList).pop()) {
+    case 'unfolded':
+      footerElement.className = `default-footer squaring`;
+      rightbarElement.className = `default-rightbar collapsed`;
+      break;
+  }
+}
+export function freezeFooters(pageName: 'ticketing', styleView: 'bot-rig') {
+  switch (styleView) {
+    case 'bot-rig':
+      freezeToggle(pageName, 'footer');
+      freezeToggle(pageName, 'rightbar');
+      break;
+  }
+}
+//--|===|--\\
+const selectCharacter =(thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {
@@ -90,32 +116,6 @@ let sequencedDemonstration = (profile: string): string => {
     default:
     case 'randomize-character':
       return 'X';
-  }
-};
-//--|===|--\\
-
-export const unfoldFooters = (thisItem: HTMLElement) => {
-  if (Array.from(thisItem.classList).pop() !== 'expanded') {
-    blockViews(thisItem, 'ticketing', 'footer', 'unfolded');
-    blockViews(thisItem, 'ticketing', 'rightbar', 'unfolded');
-  }
-};
-export const squareFooters = (thisItem: HTMLElement) => {
-  const footerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  let rightbarElement = document.querySelector('#ticketing-rightbar') as HTMLElement;
-  switch (Array.from(thisItem.classList).pop()) {
-    case 'unfolded':
-      footerElement.className = `default-footer squaring`;
-      rightbarElement.className = `default-rightbar collapsed`;
-      break;
-  }
-};
-export const freezeFooters = (pageName: 'ticketing', styleView: 'bot-rig') => {
-  switch (styleView) {
-    case 'bot-rig':
-      freezeToggle(pageName, 'footer');
-      freezeToggle(pageName, 'rightbar');
-      break;
   }
 };
 //--|===|--\\
