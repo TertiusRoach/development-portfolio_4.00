@@ -35,7 +35,9 @@ function HyperlinkRightbar({ info }: InfoProps) {
       return (
         <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
-          <figure className={`${blockName}-midground`}></figure>
+          <figure className={`${blockName}-midground`}>
+            <div className="rig"></div>
+          </figure>
           <div className={`${blockName}-background`}></div>
         </aside>
       );
@@ -44,7 +46,9 @@ function HyperlinkRightbar({ info }: InfoProps) {
       return (
         <aside id={`${pageName}-${blockName}`} className={`${blurName} ${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
-          <figure className={`${blockName}-midground`}></figure>
+          <figure className={`${blockName}-midground`}>
+            <div className="rig"></div>
+          </figure>
           <div className={`${blockName}-background`}></div>
         </aside>
       );

@@ -2,25 +2,39 @@
 @use '../../../styles/Palettes.scss' as Palettes;
 @mixin desktop-landscape {
   //--|🠊 Desktop <Leftbar> 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='leftbar-fore'] {
   }
-  figure[class*='midground'] {
+  figure[class*='leftbar-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    .lef {
+      grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+    }
   }
-  div[class*='background'] {
-    background: rgba(red, 0.25);
+  div[class*='leftbar-back'] {
   }
 }
 @mixin mobile-portrait {
   //--|🠊 Mobile <Leftbar> 🠈|--\\
-  section[class*='foreground'] {
+  section[class*='leftbar-fore'] {
     menu[class*='select'] {
       grid-area: 3 / 1 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
   }
-  figure[class*='midground'] {
+  figure[class*='leftbar-mid'] {
+    display: inherit; //--|🠈 display: grid; 🠈|--\\
+    grid-template: inherit;
+
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    .lef {
+      grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      background: Palettes.$indexLand-lightMode;
+    }
   }
-  div[class*='background'] {
-    background: rgba(green, 0.25);
+  div[class*='leftbar-back'] {
   }
 }
 

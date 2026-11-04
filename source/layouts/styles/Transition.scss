@@ -164,8 +164,16 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       transition: opacity 250ms ease-in-out;
       //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
     }
-    &[class*='expanded'] div[class*='background'] {
-      opacity: 1;
+    figure[class*='midground'] .top {
+      transition: opacity 250ms ease-in-out;
+    }
+    &[class*='expanded'] {
+      div[class*='background'] {
+        opacity: 1;
+      }
+      figure[class*='midground'] .top {
+        opacity: 0;
+      }
     }
   }
   %header-clipping {
@@ -270,8 +278,16 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
       transition: opacity 250ms ease-in-out;
       //--|🠊 background: rgba(darkred, 0.25) !important; 🠈|--\\
     }
-    &[class*='expanded'] div[class*='background'] {
-      opacity: 1;
+    figure[class*='midground'] .bot {
+      transition: opacity 250ms ease-in-out;
+    }
+    &[class*='expanded'] {
+      div[class*='background'] {
+        opacity: 1;
+      }
+      figure[class*='midground'] .bot {
+        opacity: 0;
+      }
     }
   }
   %footer-clipping {
@@ -377,10 +393,21 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     @extend %leftbar-clipping;
   }
   %leftbar-effects {
-    /*--|🠋
-
-    🠉|--*/
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    div[class*='background'] {
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+    figure[class*='midground'] .lef {
+      transition: opacity 250ms ease-in-out;
+    }
     &[class*='expanded'] {
+      div[class*='background'] {
+        opacity: 1;
+      }
+      figure[class*='midground'] .lef {
+        opacity: 0;
+      }
     }
     &[class*='unfolded'] {
     }
@@ -456,10 +483,21 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     @extend %rightbar-clipping;
   }
   %rightbar-effects {
-    /*--|🠋
-
-    🠉|--*/
+    //--|🠊 AI Code: Review Please 🠈|--\\
+    div[class*='background'] {
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
+    }
+    figure[class*='midground'] .rig {
+      transition: opacity 250ms ease-in-out;
+    }
     &[class*='expanded'] {
+      div[class*='background'] {
+        opacity: 1;
+      }
+      figure[class*='midground'] .rig {
+        opacity: 0;
+      }
     }
     &[class*='unfolded'] {
     }

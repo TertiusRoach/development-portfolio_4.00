@@ -104,10 +104,10 @@ function TicketingFooter({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${blockName}-midground`}></figure>
-          <div className={`${blockName}-background`}>
-            <footer></footer>
-          </div>
+          <figure className={`${blockName}-midground`}>
+            <div className="bot"></div>
+          </figure>
+          <div className={`${blockName}-background`}></div>
         </footer>
       );
     case 'portrait':
