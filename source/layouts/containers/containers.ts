@@ -66,10 +66,22 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
 
 //--|🠊 1. Expanded Functions 🠈|--\\
 let expandHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
+  const headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
+
+  mainElement.className = `obnubilate ${Array.from(mainElement.classList).pop()}`;
+  headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'expanded');
+
+  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 let expandFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
+  const footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
+
+  mainElement.className = `obnubilate ${Array.from(mainElement.classList).pop()}`;
+  footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'expanded');
+
+  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 let expandLeftbar = (pageName: string, blockName: 'leftbar') => {
   console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);

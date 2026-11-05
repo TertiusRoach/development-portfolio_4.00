@@ -20,7 +20,10 @@ interface TheseProps {
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
   };
   cases: {
-    task: Array<(event: React.MouseEvent<HTMLButtonElement>) => void>;
+    task: Array<{
+      click: (event: React.MouseEvent<HTMLButtonElement>) => void;
+      enter: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    }>;
   };
 
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -50,14 +53,24 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             shade: style.shade[0] as '~dark~' | '~light~',
             clarity: '⟨lucid⟩',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
+            color: style.color as
+              | '(mono)'
+              | '(red)'
+              | '(green)'
+              | '(blue)'
+              | '(yellow)'
+              | '(purple)'
+              | '(orange)'
+              | '(pink)'
+              | '(brown)'
+              | '(turquoise)',
             //--|===|--\\
             text: style.text[0] as string,
             image: style.image[0] as string,
             view: style.view[0] as '-left-' | '-right-' | '-center-' | '-text-',
           }}
-          onClick={(event) => cases.task[0](event)}
-          onMouseEnter={(event) => cases.task[0](event)}
+          onClick={(event) => cases.task[0].click(event)}
+          onMouseEnter={(event) => cases.task[0].enter(event)}
         />
       </li>
       <li>
@@ -70,14 +83,24 @@ function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
             shade: style.shade[1] as '~dark~' | '~light~',
             clarity: '⟨lucid⟩',
             size: style.size as '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
-            color: style.color as '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)',
+            color: style.color as
+              | '(mono)'
+              | '(red)'
+              | '(green)'
+              | '(blue)'
+              | '(yellow)'
+              | '(purple)'
+              | '(orange)'
+              | '(pink)'
+              | '(brown)'
+              | '(turquoise)',
             //--|===|--\\
             text: style.text[1] as string,
             image: style.image[1] as string,
             view: style.view[1] as '-left-' | '-right-' | '-center-' | '-text-',
           }}
-          onClick={(event) => cases.task[1](event)}
-          onMouseEnter={(event) => cases.task[1](event)}
+          onClick={(event) => cases.task[1].click(event)}
+          onMouseEnter={(event) => cases.task[1].enter(event)}
         />
       </li>
     </menu>

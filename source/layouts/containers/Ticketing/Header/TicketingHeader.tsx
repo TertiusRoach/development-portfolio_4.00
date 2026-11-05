@@ -12,7 +12,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
-import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';
+import previewProfile, { unfoldHeaders, expandHeaders, squareHeaders, freezeHeaders } from './TicketingFunctions';
 
 //--|🠋 Database 🠋|--\\
 import DefineDuties from '../../../../modules/server/MongoDB/testing/DefineDuties';
@@ -72,8 +72,9 @@ function TicketingHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: () => {
-                    freezeHeaders(pageName, 'top-lef');
+                  onClick: (view, container) => {
+                    expandHeaders(container);
+                    synchDemo(pageName, blockName, 'pick');
                   },
                 },
               }}
@@ -141,8 +142,14 @@ function TicketingHeader({ info }: InfoProps) {
               }}
               cases={{
                 task: [
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  },
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  },
                 ],
               }}
             />

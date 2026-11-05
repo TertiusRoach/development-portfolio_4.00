@@ -62,6 +62,14 @@ export function unfoldHeaders(thisItem: HTMLElement) {
     blockViews(thisItem, 'hyperlink', 'leftbar', 'unfolded');
   }
 }
+//--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
+export function expandHeaders(thisItem: HTMLElement) {
+  let leftbarElement = document.querySelector('#hyperlink-leftbar') as HTMLElement;
+  thisItem.classList.remove('locked-header'); //--|🠈 A deliberate click wins over the hover's lock 🠈|--\\
+  leftbarElement.classList.remove('locked-leftbar');
+  blockViews(thisItem, 'hyperlink', 'header', 'expanded');
+  blockViews(thisItem, 'hyperlink', 'leftbar', 'unfolded'); //--|🠈 The pair matches the page's load state 🠈|--\\
+}
 export function squareHeaders(thisItem: HTMLElement) {
   const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   let leftbarElement = document.querySelector('#hyperlink-leftbar') as HTMLElement;

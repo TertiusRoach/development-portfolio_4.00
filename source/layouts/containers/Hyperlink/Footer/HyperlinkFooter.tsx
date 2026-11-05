@@ -13,7 +13,7 @@ import SectionDemonstration from '../../../components/Section/demonstration/Sect
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
-import previewProfile, { unfoldFooters, squareFooters, freezeFooters } from './HyperlinkFunctions';
+import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './HyperlinkFunctions';
 
 interface InfoProps {
   info: {
@@ -141,8 +141,9 @@ function HyperlinkFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: () => {
-                    freezeFooters(pageName, 'bot-rig');
+                  onClick: (view, container) => {
+                    expandFooters(container);
+                    synchDemo(pageName, blockName, 'pick');
                   },
                 },
               }}
@@ -210,8 +211,14 @@ function HyperlinkFooter({ info }: InfoProps) {
               }}
               cases={{
                 task: [
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  },
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  },
                 ],
               }}
             />

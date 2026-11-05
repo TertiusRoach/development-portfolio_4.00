@@ -12,8 +12,9 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
+import blockViews from '../../containers';
 import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
-import previewProfile, { unfoldHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
+import previewProfile, { unfoldHeaders, expandHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
 
 //--|🠋 Database 🠋|--\\
 import TrackTime from '../../../../modules/server/MongoDB/testing/TrackTime';
@@ -73,8 +74,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: () => {
-                    freezeHeaders(pageName, 'top-lef');
+                  onClick: (view, container) => {
+                    expandHeaders(container);
+                    synchDemo(pageName, blockName, 'pick');
                   },
                 },
               }}
@@ -133,8 +135,8 @@ function OvertimeHeader({ info }: InfoProps) {
               style={{
                 size: '<h3>',
                 color: '(mono)',
-                shade: ['~dark~', '~light~'],
                 view: ['-left-', '-right-'],
+                shade: ['~dark~', '~light~'],
                 text: ['Established', 'Freelancing'],
                 image: [
                   loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/briefcase'),
@@ -143,8 +145,14 @@ function OvertimeHeader({ info }: InfoProps) {
               }}
               cases={{
                 task: [
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  },
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  },
                 ],
               }}
             />
@@ -210,7 +218,7 @@ function OvertimeHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onClick={(event) => {
-            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold 🠈|--\\
+            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, the same as [Archive] 🠈|--\\ //--|🠈 AI Code: Review Please 2026-11-05 🠈|--\\
           }}
           onMouseLeave={(event) => {
             squareHeaders(event.currentTarget as HTMLElement); //--|🠈 The expanded footer covers <main>, so tapping it folds the header back 🠈|--\\
@@ -277,6 +285,7 @@ function OvertimeHeader({ info }: InfoProps) {
       );
   }
 }
+//--|===|--\\
 const SelectProfile: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as string;
   const pageName = info.pageName as 'overtime';

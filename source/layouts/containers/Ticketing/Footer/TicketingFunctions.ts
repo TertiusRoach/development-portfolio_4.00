@@ -62,6 +62,14 @@ export function unfoldFooters(thisItem: HTMLElement) {
     blockViews(thisItem, 'ticketing', 'rightbar', 'unfolded');
   }
 }
+//--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
+export function expandFooters(thisItem: HTMLElement) {
+  let rightbarElement = document.querySelector('#ticketing-rightbar') as HTMLElement;
+  thisItem.classList.remove('locked-footer'); //--|🠈 A deliberate tap wins over the unfold's lock 🠈|--\\
+  rightbarElement.classList.remove('locked-rightbar');
+  blockViews(thisItem, 'ticketing', 'footer', 'expanded');
+  blockViews(thisItem, 'ticketing', 'rightbar', 'unfolded'); //--|🠈 The pair matches the page's load state 🠈|--\\
+}
 export function squareFooters(thisItem: HTMLElement) {
   const footerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   let rightbarElement = document.querySelector('#ticketing-rightbar') as HTMLElement;

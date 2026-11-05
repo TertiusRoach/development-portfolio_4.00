@@ -2,11 +2,55 @@
 //--|🠋 Functions 🠋|--\\
 import blockViews from './layouts/containers/containers';
 
-//--|🠋 Resolution & Refreshing 🠋|--\\
+//--|🠋 Resolution, Refreshing & Updates 🠋|--\\
 type Selection = 'awaiting' | 'selected';
 type Orientation = 'landscape' | 'portrait';
-//--|🠋 Element Observers 🠋|--\\
 
+let demoState: Selection = 'awaiting' as 'awaiting' | 'selected'; //--|🠈 Shared by every application, so one pick squares the demonstration in all three 🠈|--\\
+
+//--|🠋 Element Observers 🠋|--\\
+export async function synchDemo(
+  pageName: 'overtime' | 'ticketing' | 'hyperlink',
+  blockName: 'header' | 'main' | 'footer',
+  inputAction: 'load' | 'click' | 'pick',
+): Promise<void> {
+  //--|🠋 Wait for containers to exist 🠋|--\\
+  const [headCont, mainCont, footCont] = await Promise.all([
+    asynchObserve(`#${pageName}-header`),
+    asynchObserve(`#${pageName}-main`),
+    asynchObserve(`#${pageName}-footer`),
+  ]);
+  let thisItem: HTMLElement = mainCont;
+  if (blockName === 'header') {
+    thisItem = headCont;
+  } else if (blockName === 'footer') {
+    thisItem = footCont;
+  }
+  switch (inputAction) {
+    case 'click':
+      demoState = 'selected';
+      blockViews(thisItem, 'overtime', blockName, 'squaring');
+      blockViews(thisItem, 'ticketing', blockName, 'squaring');
+      blockViews(thisItem, 'hyperlink', blockName, 'squaring');
+      break;
+    case 'load': {
+      if (demoState === 'awaiting') {
+        return blockViews(thisItem, pageName, blockName, 'expanded');
+      } else if (demoState === 'selected') {
+        return blockViews(thisItem, pageName, blockName, 'squaring');
+      }
+      break;
+    }
+    case 'pick': {
+      //--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
+      demoState = 'awaiting';
+      blockViews(thisItem, 'overtime', blockName, 'expanded');
+      blockViews(thisItem, 'ticketing', blockName, 'expanded');
+      blockViews(thisItem, 'hyperlink', blockName, 'expanded');
+      break;
+    }
+  }
+}
 export function checkScreen(onChange: (orientation: Orientation) => void): () => void {
   //--|🠋 Runs whenever the screen switches between portrait and landscape 🠋|--\\
   const orientChange = (event: MediaQueryListEvent): void => {
@@ -105,42 +149,6 @@ export function showingBootstrap(): string {
   }
 
   return displayText as string;
-}
-
-let demoState: Selection = 'awaiting'; //--|🠈 Shared by every application, so one pick squares the demonstration in all three 🠈|--\\
-export async function synchDemo(
-  pageName: 'overtime' | 'ticketing' | 'hyperlink',
-  blockName: 'header' | 'main' | 'footer',
-  inputAction: 'load' | 'click',
-): Promise<void> {
-  //--|🠋 Wait for containers to exist 🠋|--\\
-  const [headCont, mainCont, footCont] = await Promise.all([
-    asynchObserve(`#${pageName}-header`),
-    asynchObserve(`#${pageName}-main`),
-    asynchObserve(`#${pageName}-footer`),
-  ]);
-  let thisItem: HTMLElement = mainCont;
-  if (blockName === 'header') {
-    thisItem = headCont;
-  } else if (blockName === 'footer') {
-    thisItem = footCont;
-  }
-  switch (inputAction) {
-    case 'click':
-      demoState = 'selected';
-      blockViews(thisItem, 'overtime', blockName, 'squaring');
-      blockViews(thisItem, 'ticketing', blockName, 'squaring');
-      blockViews(thisItem, 'hyperlink', blockName, 'squaring');
-      break;
-    case 'load': {
-      if (demoState === 'awaiting') {
-        blockViews(thisItem, pageName, blockName, 'expanded');
-      } else if (demoState === 'selected') {
-        blockViews(thisItem, pageName, blockName, 'squaring');
-      }
-      break;
-    }
-  }
 }
 
 //--|🠋 Utilities, Conversions & Navigation Functions 🠋|--\\

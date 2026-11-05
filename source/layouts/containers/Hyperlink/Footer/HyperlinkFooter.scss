@@ -164,6 +164,12 @@ footer[id*='hyperlink'] {
         bottom: 0;
       }
     }
+    &[class*='squaring'] {
+      //--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
+      section[class*='footer-fore'] nav[class*='navigation'] {
+        pointer-events: auto; //--|🠈 The nav ignores Transition.scss' squaring block, so one tap expands the footer 🠈|--\\
+      }
+    }
     &[class*='squaring'],
     &[class*='unfolded'],
     &[class*='collapsed'] {

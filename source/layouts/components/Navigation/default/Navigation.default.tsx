@@ -22,10 +22,10 @@ interface TheseProps {
   };
   cases: {
     tasks?: {
-      onClick?: (view: string) => void;
-      onMouseEnter?: (view: string) => void;
-      onMouseLeave?: (view: string) => void;
-      onDoubleClick?: (view: string) => void;
+      onClick?: (view: string, container: HTMLElement) => void;
+      onMouseEnter?: (view: string, container: HTMLElement) => void;
+      onMouseLeave?: (view: string, container: HTMLElement) => void;
+      onDoubleClick?: (view: string, container: HTMLElement) => void;
     };
     image: Array<string> | undefined;
     view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
@@ -45,19 +45,27 @@ function NavigationDefault({ info, style, cases, onClick, onMouseEnter, onMouseL
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   let handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    cases.tasks?.onClick?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    var view = event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
+    var container = event.currentTarget.closest('section[class*="foreground"]')?.parentElement as HTMLElement;
+    cases.tasks?.onClick?.(view, container);
     onClick?.(event);
   };
   let handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    cases.tasks?.onMouseEnter?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    var view = event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
+    var container = event.currentTarget.closest('section[class*="foreground"]')?.parentElement as HTMLElement;
+    cases.tasks?.onMouseEnter?.(view, container);
     onMouseEnter?.(event);
   };
   let handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    cases.tasks?.onMouseLeave?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    var view = event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
+    var container = event.currentTarget.closest('section[class*="foreground"]')?.parentElement as HTMLElement;
+    cases.tasks?.onMouseLeave?.(view, container);
     onMouseLeave?.(event);
   };
   let handleDoubleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    cases.tasks?.onDoubleClick?.(event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef');
+    var view = event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
+    var container = event.currentTarget.closest('section[class*="foreground"]')?.parentElement as HTMLElement;
+    cases.tasks?.onDoubleClick?.(view, container);
     onDoubleClick?.(event);
   };
 

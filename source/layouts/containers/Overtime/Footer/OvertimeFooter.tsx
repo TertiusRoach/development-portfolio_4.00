@@ -12,8 +12,12 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
+import blockViews from '../../containers';
 import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
-import previewProfile, { unfoldFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
+import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
+
+//--|🠋 Database 🠋|--\\
+import TrackTime from '../../../../modules/server/MongoDB/testing/TrackTime';
 
 interface InfoProps {
   info: {
@@ -141,8 +145,9 @@ function OvertimeFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: () => {
-                    freezeFooters(pageName, 'bot-rig');
+                  onClick: (view, container) => {
+                    expandFooters(container);
+                    synchDemo(pageName, blockName, 'pick');
                   },
                 },
               }}
@@ -210,8 +215,14 @@ function OvertimeFooter({ info }: InfoProps) {
               }}
               cases={{
                 task: [
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
-                  (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
+                  },
+                  {
+                    click: () => synchDemo(pageName, blockName, 'click'),
+                    enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
+                  },
                 ],
               }}
             />
@@ -272,6 +283,7 @@ function OvertimeFooter({ info }: InfoProps) {
       );
   }
 }
+//--|===|--\\
 const SelectProfile: React.FC<InfoProps> = ({ info }) => {
   const labelName = info.labelName as string;
   const pageName = info.pageName as 'overtime';
