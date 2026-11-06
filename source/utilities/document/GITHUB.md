@@ -497,7 +497,8 @@ The commit then shows up on the ticket, and the ticket closes automatically once
 | **v4.04** | ✅ Archived | Synced, cleaned, most complete build                                       | 2026-07-23 |
 | **v4.05** | ✅ Archived | Mobile layout matching desktop, reusable block scripts, Menu shades synced to Buttons | 2026-10-06 |
 | **v4.06** | ✅ Archived | ButtonDefault, ButtonProfile and ButtonRouting refactor, colour toggles    | 2026-10-27 |
-| **4.7**   | 🚧 Active   | Tablet scaling, AsideCharacters, documentation overhaul                    | _Current_  |
+| **v4.07** | ✅ Archived | Tablet scaling, AsideCharacters, documentation overhaul                    | 2026-11-06 |
+| **4.8**   | 🚧 Active   |                                                                            | _Current_  |
 
 Add a row with every release.
 
