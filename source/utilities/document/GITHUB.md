@@ -17,8 +17,9 @@ Every command block is meant to be copied and pasted as is. Where a version numb
 7. [Emergency Operations](#7-emergency-operations)
 8. [Edge Cases](#8-edge-cases)
 9. [GitHub Issues](#9-github-issues)
-10. [Status Log](#10-status-log)
-11. [References](#11-references)
+10. [GitHub Pages](#10-github-pages)
+11. [Status Log](#11-status-log)
+12. [References](#12-references)
 
 ---
 
@@ -203,6 +204,8 @@ git status
 ```
 
 You want to see `nothing to commit, working tree clean`. If there are changes, commit them first. Never release with loose changes lying around.
+
+`main` is also the live site, so build `public/` before you release. See [Before Each Release](#102-before-each-release).
 
 ### Step 2: Tag
 
@@ -487,7 +490,48 @@ The commit then shows up on the ticket, and the ticket closes automatically once
 
 ---
 
-## 10. Status Log
+## 10. GitHub Pages
+
+`main` is published as a live site at [tertiusroach.github.io/development-portfolio_4.00](https://tertiusroach.github.io/development-portfolio_4.00/). It changes when `main` changes, which means at release time.
+
+### 10.1 How It Works
+
+**Settings → Pages → Source** is set to **GitHub Actions**. The workflow in `.github/workflows/static.yml` uploads the `public/` folder every time `main` changes. `public/` is what `npm run deploy` builds, and it's committed, so the site is always the last build that reached `main`.
+
+> **Why not "Deploy from a branch"?** That option can only serve the repository's root folder or `/docs`. There's no `index.html` in the root, so GitHub showed the README instead of the application.
+
+Only the front end runs there. GitHub Pages hosts plain files, so the Express server, MongoDB and the email code don't work on the live site.
+
+### 10.2 Before Each Release
+
+Build and commit the new `public/` before [Step 1](#step-1-confirm) of the Release Cycle, otherwise the site shows an old build:
+
+```bash
+npm run deploy
+git add public
+git commit -m "Build for v4.08"
+git push origin 4.8
+```
+
+### 10.3 Keep the Workflow on the Branch
+
+[Step 3](#step-3-publish-to-main) makes `main` an exact copy of the branch. If `.github/workflows/static.yml` isn't on the branch, the release deletes it and the site stops updating.
+
+Whenever the workflow is created or edited on GitHub (which commits straight to `main`), bring it into the branch straight away:
+
+```bash
+git checkout 4.8
+git pull origin main
+git push origin 4.8
+```
+
+### 10.4 Check a Deploy
+
+Open the **Actions** tab and look at the latest **Deploy static content to Pages** run. A green tick means the site is live. A red cross means it failed: click the run to see which step broke. **Settings → Pages** always shows the current link and when it was last deployed.
+
+---
+
+## 11. Status Log
 
 | Version   | Status      | Focus                                                                      | Date       |
 | --------- | ----------- | -------------------------------------------------------------------------- | ---------- |
@@ -504,7 +548,7 @@ Add a row with every release.
 
 ---
 
-## 11. References
+## 12. References
 
 | Topic                 | Link                                                                                                                                                                       |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -514,5 +558,6 @@ Add a row with every release.
 | Force with lease      | [Git Docs: git push](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaseltrefnamegt)                                                           |
 | Stash                 | [Git Docs: git stash](https://git-scm.com/docs/git-stash)                                                                                                                   |
 | Issues                | [GitHub Docs: About Issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)                                                                  |
+| GitHub Pages          | [GitHub Docs: Using custom workflows with GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)       |
 | NVM (macOS, Linux)    | [nvm-sh/nvm](https://github.com/nvm-sh/nvm)                                                                                                                                 |
 | NVM (Windows)         | [coreybutler/nvm-windows](https://github.com/coreybutler/nvm-windows)                                                                                                       |
