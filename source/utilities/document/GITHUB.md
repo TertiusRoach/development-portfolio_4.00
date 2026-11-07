@@ -542,6 +542,7 @@ Open the **Actions** tab and look at the latest **Deploy static content to Pages
 | **v4.05** | ✅ Archived | Mobile layout matching desktop, reusable block scripts, Menu shades synced to Buttons | 2026-10-06 |
 | **v4.06** | ✅ Archived | ButtonDefault, ButtonProfile and ButtonRouting refactor, colour toggles    | 2026-10-27 |
 | **v4.07** | ✅ Archived | Tablet scaling, AsideCharacters, documentation overhaul                    | 2026-11-06 |
+| **v4.08.1** | ✅ Published | Image locations synced to the new asset layout, FontAwesome Free 7.3.1, card edges, squaring fades | 2026-11-07 |
 | **4.8**   | 🚧 Active   |                                                                            | _Current_  |
 
 Add a row with every release.
