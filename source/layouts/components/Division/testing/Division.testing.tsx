@@ -38,7 +38,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           shade: style.shade,
           clarity: '⟨lucid⟩',
           color: style.color,
-          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/house') as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/house') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -77,7 +77,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           shade: style.shade,
           clarity: '⟨lucid⟩',
           color: style.color,
-          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/shoe-prints') as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/shoe-prints') as string,
         }}
         info={{
           pageName: pageName as string,
@@ -97,7 +97,7 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
           shade: style.shade,
           clarity: '⟨lucid⟩',
           color: style.color,
-          image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/layer-group') as string,
+          image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/layer-group') as string,
         }}
         info={{
           pageName: pageName as string,

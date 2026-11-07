@@ -68,7 +68,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 view: 'top-lef',
                 shade: '~light~',
                 color: '(green)',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium') as string,
+                image: loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium') as string,
               }}
               cases={{
                 view: undefined,
@@ -139,7 +139,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 shade: ['~dark~', '~light~'],
                 text: ['Established', 'Freelancing'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/briefcase'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/briefcase'),
                   loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/messages-dollar'),
                 ],
               }}
@@ -263,9 +263,9 @@ function OvertimeHeader({ info }: InfoProps) {
                 shade: '~light~',
                 color: ['(mono)', '(blue)', '(red)'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),
+                  loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
                 ] as Array<string>,
                 size: '<h4>',
               }}

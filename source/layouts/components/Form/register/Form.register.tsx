@@ -29,7 +29,7 @@ export function FormRegister({ info, style }: TheseProps) {
   let { setEmail } = useEmail();
   let { setPassword } = usePassword();
 
-  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus') as string;
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-plus') as string;
   const loginButton = defineButton('login'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   const passwordButton = defineButton('password'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   return (
@@ -79,7 +79,7 @@ export function FormRegister({ info, style }: TheseProps) {
               size: '<p>',
               view: '-icon-',
               color: style.color,
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sync-alt'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sync-alt'),
             }}
             /* onClick={() => setPassword(generatePassword())} */
           />
@@ -97,7 +97,7 @@ export function FormRegister({ info, style }: TheseProps) {
               size: '<p>',
               view: '-icon-',
               color: style.color,
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/eye'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/eye'),
             }}
             /* onClick={() => viewPass('register')} */
           />
@@ -114,7 +114,7 @@ export function FormRegister({ info, style }: TheseProps) {
               view: '-text-',
               color: style.color,
               text: 'Register',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-plus'),
             }}
           />
         </menu>
@@ -128,7 +128,7 @@ export function FormRegister({ info, style }: TheseProps) {
               view: loginButton.view,
               color: style.color,
               text: 'Access Account',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sign-in-alt'),
             }}
             /* onClick={() => viewBlock('login')} */
           />
@@ -141,7 +141,7 @@ export function FormRegister({ info, style }: TheseProps) {
               view: passwordButton.view,
               color: style.color,
               text: 'Reset Password',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-lock'),
             }}
             /* onClick={() => viewBlock('password')} */
           />

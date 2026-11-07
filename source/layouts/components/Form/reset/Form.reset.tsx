@@ -27,7 +27,7 @@ export interface TheseProps {
 export function FormReset({ info, style }: TheseProps) {
   let { setPassword } = usePassword();
 
-  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/trash-restore') as string;
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/trash-restore') as string;
   let codeBlocks = ['1', '2', '3', '4', '5', '6'] as Array<string>; //--|🠈 Six {block} labels, the old <FieldsetCode> had four 🠈|--\\
   return (
     <form
@@ -43,7 +43,7 @@ export function FormReset({ info, style }: TheseProps) {
             size: '<p>',
             view: '-icon-',
             color: style.color,
-            image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/times'),
+            image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/times'),
           }}
           /* onClick={() => closeRightbar(pageName)} */
         />
@@ -74,7 +74,7 @@ export function FormReset({ info, style }: TheseProps) {
               size: '<p>',
               view: '-icon-',
               color: style.color,
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sync-alt'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sync-alt'),
             }}
             /* onClick={() => setPassword(generatePassword())} */
           />
@@ -92,7 +92,7 @@ export function FormReset({ info, style }: TheseProps) {
               size: '<p>',
               view: '-icon-',
               color: style.color,
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/eye'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/eye'),
             }}
             /* onClick={() => viewPass('reset')} */
           />
@@ -109,7 +109,7 @@ export function FormReset({ info, style }: TheseProps) {
               view: '-text-',
               color: style.color,
               text: 'Reset',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/trash-restore'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/trash-restore'),
             }}
           />
         </menu>

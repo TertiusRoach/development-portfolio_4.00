@@ -66,7 +66,7 @@ function TicketingHeader({ info }: InfoProps) {
                 view: 'top-lef',
                 shade: '~light~',
                 color: '(blue)',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium') as string,
+                image: loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium') as string,
               }}
               cases={{
                 view: undefined,
@@ -136,7 +136,7 @@ function TicketingHeader({ info }: InfoProps) {
                 view: ['-left-', '-right-'],
                 text: ['Manager', 'Employee'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-tie'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-tie'),
                   loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/user-helmet-safety'),
                 ],
               }}
@@ -260,9 +260,9 @@ function TicketingHeader({ info }: InfoProps) {
                 shade: '~light~',
                 color: ['(green)', '(mono)', '(red)'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),
+                  loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
                 ] as Array<string>,
                 size: '<h4>',
               }}

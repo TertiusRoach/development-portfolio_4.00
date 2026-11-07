@@ -48,7 +48,7 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
   switch (cases.type) {
     case '{select}': {
       //--|🠊 {select}: the browser's own list, with a caret 🠈|--\\
-      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as <MenuSwipe> & <MenuScroll> 🠈|--\\
+      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-down'); //--|🠈 Same caret as <MenuSwipe> & <MenuScroll> 🠈|--\\
       return (
         <label className={labelClass}>
           <select
@@ -72,7 +72,7 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
     }
     case '{combo}': {
       //--|🠊 {combo}: type anything, or pick from the list 🠈|--\\
-      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'); //--|🠈 Same caret as {select} 🠈|--\\
+      let caretImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-down'); //--|🠈 Same caret as {select} 🠈|--\\
       return (
         <label className={labelClass}>
           <input
@@ -95,8 +95,8 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
     }
     case '{number}': {
       //--|🠊 {number}: a count from 1 to 9999 with its own up & down carets, the browser's step of 1 counts 1 2 3 4 5 🠈|--\\
-      let upImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up');
-      let downImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down');
+      let upImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-up');
+      let downImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-down');
       return (
         <label className={labelClass}>
           <input

@@ -528,7 +528,7 @@ const ButtonsLightside: React.FC<InfoProps> = ({ info }) => {
 };
 
 let ViewOne = ({ info }: InfoProps) => {
-  const iconOne = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h1') as string;
+  const iconOne = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h1') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -809,7 +809,7 @@ let ViewOne = ({ info }: InfoProps) => {
   }
 };
 let ViewTwo = ({ info }: InfoProps) => {
-  const iconTwo = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h2') as string;
+  const iconTwo = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h2') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -1103,7 +1103,7 @@ let ViewTwo = ({ info }: InfoProps) => {
   }
 };
 let ViewThr = ({ info }: InfoProps) => {
-  const iconThr = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h3') as string;
+  const iconThr = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h3') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -1392,7 +1392,7 @@ let ViewThr = ({ info }: InfoProps) => {
   }
 };
 let ViewFou = ({ info }: InfoProps) => {
-  const iconFou = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h4') as string;
+  const iconFou = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h4') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -1666,7 +1666,7 @@ let ViewFou = ({ info }: InfoProps) => {
   }
 };
 let ViewFiv = ({ info }: InfoProps) => {
-  const iconFiv = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h5') as string;
+  const iconFiv = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h5') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -1961,7 +1961,7 @@ let ViewFiv = ({ info }: InfoProps) => {
   }
 };
 let ViewSix = ({ info }: InfoProps) => {
-  const iconSix = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h6') as string;
+  const iconSix = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h6') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (
@@ -2256,7 +2256,7 @@ let ViewSix = ({ info }: InfoProps) => {
   }
 };
 let ViewSev = ({ info }: InfoProps) => {
-  const iconPar = loadAsset('-svg-', '/project-pages/components-page/default-buttons/p') as string;
+  const iconPar = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/p') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (

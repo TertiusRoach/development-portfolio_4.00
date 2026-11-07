@@ -71,7 +71,7 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                         color: style.color,
                         clarity: '⟨lucid⟩',
                         size: index === 0 ? '<h1>' : '<p>',
-                        image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
+                        image: loadAsset('-png-', `/character-testing/original/${profile}`),
                       }}
                       onClick={(event) => cases?.task[1](event)}
                       onMouseEnter={(event) => cases?.task[0](event)}
@@ -105,7 +105,7 @@ function AsideCharacters({ info, style, cases }: TheseProps) {
                         color: style.color,
                         clarity: '⟨lucid⟩',
                         size: index === 0 ? '<h1>' : '<p>',
-                        image: loadAsset('-png-', `/archive-images/character-testing/original/${profile}`),
+                        image: loadAsset('-png-', `/character-testing/original/${profile}`),
                       }}
                       onClick={(event) => cases?.task[1](event)}
                       onMouseEnter={(event) => cases?.task[0](event)}

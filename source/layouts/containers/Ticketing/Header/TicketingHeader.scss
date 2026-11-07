@@ -56,6 +56,8 @@
     .top {
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Palettes.$indexLand-lightMode;
+      opacity: 1;
+      transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
     div[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -142,6 +144,8 @@
       height: 50%;
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Palettes.$indexLand-lightMode;
+      opacity: 1;
+      transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
   }
   div[class*='header-back'] {
@@ -155,6 +159,12 @@ header[id*='ticketing'] {
     &[class*='expanded'] {
       menu[class*='demo'] {
         top: 0;
+      }
+    }
+    &[class*='squaring'] {
+      //--|🠊 AI Code: Review Please 2026-11-07 · The squared corner only shows the nav, so the .top strip fades out 🠈|--\\
+      figure[class*='header-mid'] > .top {
+        opacity: 0;
       }
     }
     &[class*='squaring'],
@@ -177,5 +187,11 @@ header[id*='ticketing'] {
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
     @include mobile-portrait();
+    &[class*='squaring'] {
+      //--|🠊 AI Code: Review Please 2026-11-07 · Same as Desktop: the squared corner only shows the nav, so the .top strip fades out 🠈|--\\
+      figure[class*='header-mid'] > .top {
+        opacity: 0;
+      }
+    }
   }
 }

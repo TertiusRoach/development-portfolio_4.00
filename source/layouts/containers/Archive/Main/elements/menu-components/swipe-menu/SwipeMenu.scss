@@ -1,6 +1,46 @@
 //--|🠊 SwipeMenu.scss 🠈|--\\
 @use '../../../../../../styles/Palettes.scss' as Palettes;
 
+//--|🠋 Marching Ants 🠋|--\\
+/*--|🠋
+  AI Code: Review Please 2026-11-07
+  Why: Shows each <menu>'s bounds now that the test fills are commented out.
+  How: A border can't move, so four dashed gradient strips (top, bottom, left, right)
+  slide along the edges. 8px dash, 8px gap, 2px thick, clockwise.
+🠉|--*/
+@keyframes marching-ants {
+  to {
+    background-position:
+      16px 0,
+      -16px 100%,
+      0 -16px,
+      100% 16px; //--|🠈 top → right, bottom → left, left ↑, right ↓ 🠈|--\\
+  }
+}
+@mixin marching-ants {
+  $ants-color: rgba(Palettes.$indexLand-medium, 0.75);
+  background-image:
+    linear-gradient(90deg, $ants-color 50%, transparent 50%),
+    linear-gradient(90deg, $ants-color 50%, transparent 50%),
+    linear-gradient(0deg, $ants-color 50%, transparent 50%),
+    linear-gradient(0deg, $ants-color 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size:
+    16px 2px,
+    16px 2px,
+    2px 16px,
+    2px 16px;
+  background-position:
+    0 0,
+    0 100%,
+    0 0,
+    100% 0;
+  animation: marching-ants 1s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none; //--|🠈 Still outlined, just not moving 🠈|--\\
+  }
+}
+
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
   //--|🠊 <aside className="swipe-menu"> 🠈|--\\
@@ -12,6 +52,9 @@
     display: grid;
     div[class*='swipe'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
+      > menu {
+        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+      }
       $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
       $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
       $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
@@ -19,28 +62,28 @@
 
       &.hori-swipe {
         //--|🠊 display: grid; 🠈|--\\
-        background: rgba(darkred, 0.25);
+        //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
         grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
         //--|🠊 Left Menu - [x] 🠈|--\\
         menu:nth-child(1) {
           grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(orange, 0.125);
+          //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Right Menu - [x] 🠈|--\\
         menu:nth-child(2) {
           grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(yellow, 0.125);
+          //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
         //--|🠊 Center Menu - [x] 🠈|--\\
         menu:nth-child(3) {
           grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(orange, 0.125);
+          //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Default Menu - [x] 🠈|--\\
         menu:nth-child(4) {
           grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(yellow, 0.125);
+          //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
 
         & {
@@ -85,27 +128,27 @@
       &.vert-swipe {
         //--|🠊 display: grid; 🠈|--\\
         grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        background: rgba(darkblue, 0.25);
+        //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
 
         //--|🠊 Top Menu - [y] 🠈|--\\
         menu:nth-child(1) {
           grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(darkgreen, 0.125);
+          //--|🠊 background: rgba(darkgreen, 0.125); 🠈|--\\
         }
         //--|🠊 Bottom Menu - [y] 🠈|--\\
         menu:nth-child(2) {
           grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(turquoise, 0.125);
+          //--|🠊 background: rgba(turquoise, 0.125); 🠈|--\\
         }
         //--|🠊 Center Menu - [y] 🠈|--\\
         menu:nth-child(3) {
           grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(darkgreen, 0.125);
+          //--|🠊 background: rgba(darkgreen, 0.125); 🠈|--\\
         }
         //--|🠊 Default Menu - [y] 🠈|--\\
         menu:nth-child(4) {
           grid-area: 2 / 4 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(turquoise, 0.125);
+          //--|🠊 background: rgba(turquoise, 0.125); 🠈|--\\
         }
 
         & {
@@ -180,6 +223,9 @@
     display: grid;
     div[class*='swipe'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
+      > menu {
+        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+      }
       $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
       $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
       $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -187,27 +233,27 @@
       &.hori-swipe {
         //--|🠊 display: grid; 🠈|--\\
         grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        background: rgba(darkred, 0.25);
+        //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
 
         //--|🠊 Left Menu - [x] 🠈|--\\
         menu:nth-child(1) {
           grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(orange, 0.125);
+          //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Right Menu - [x] 🠈|--\\
         menu:nth-child(2) {
           grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(yellow, 0.125);
+          //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
         //--|🠊 Center Menu - [x] 🠈|--\\
         menu:nth-child(3) {
           grid-area: 3 / 1 / 4 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(orange, 0.125);
+          //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Default Menu - [x] 🠈|--\\
         menu:nth-child(4) {
           grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(yellow, 0.125);
+          //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
 
         & {
@@ -247,27 +293,27 @@
       &.vert-swipe {
         //--|🠊 display: grid; 🠈|--\\
         grid-area: 2 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-        background: rgba(darkblue, 0.25);
+        //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
 
         //--|🠊 Top Menu - [y] 🠈|--\\
         menu:nth-child(1) {
           grid-area: 1 / 1 / 2 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(darkgreen, 0.125);
+          //--|🠊 background: rgba(darkgreen, 0.125); 🠈|--\\
         }
         //--|🠊 Bottom Menu - [y] 🠈|--\\
         menu:nth-child(2) {
           grid-area: 1 / 3 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(turquoise, 0.125);
+          //--|🠊 background: rgba(turquoise, 0.125); 🠈|--\\
         }
         //--|🠊 Center Menu - [y] 🠈|--\\
         menu:nth-child(3) {
           grid-area: 1 / 5 / 2 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(darkgreen, 0.125);
+          //--|🠊 background: rgba(darkgreen, 0.125); 🠈|--\\
         }
         //--|🠊 Default Menu - [y] 🠈|--\\
         menu:nth-child(4) {
           grid-area: 1 / 7 / 2 / 8; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-          background: rgba(turquoise, 0.125);
+          //--|🠊 background: rgba(turquoise, 0.125); 🠈|--\\
         }
 
         & {

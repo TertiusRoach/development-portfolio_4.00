@@ -27,7 +27,7 @@ export interface TheseProps {
 export function FormPassword({ info, style }: TheseProps) {
   let { setEmail } = useEmail();
 
-  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock') as string;
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-lock') as string;
   const loginButton = defineButton('login'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   const registerButton = defineButton('register'); //--|🠈 <h6> with text, or <p> icon only on small screens 🠈|--\\
   return (
@@ -64,7 +64,7 @@ export function FormPassword({ info, style }: TheseProps) {
               view: '-text-',
               color: style.color,
               text: 'Change',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-lock'),
             }}
           />
         </menu>
@@ -78,7 +78,7 @@ export function FormPassword({ info, style }: TheseProps) {
               view: loginButton.view,
               color: style.color,
               text: 'Enter Account',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sign-in-alt'),
             }}
             /* onClick={() => viewBlock('login')} */
           />
@@ -91,7 +91,7 @@ export function FormPassword({ info, style }: TheseProps) {
               view: registerButton.view,
               color: style.color,
               text: 'Create Account',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-plus'),
             }}
             /* onClick={() => viewBlock('register')} */
           />

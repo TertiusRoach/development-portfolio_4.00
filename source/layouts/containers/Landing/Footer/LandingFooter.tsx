@@ -84,9 +84,9 @@ function LandingFooter({ info }: InfoProps) {
                 shade: '~dark~',
                 color: ['(green)', '(blue)', '(red)'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
                 ] as Array<string>,
                 size: '<h4>',
               }}
@@ -126,7 +126,7 @@ function LandingFooter({ info }: InfoProps) {
                 color: '(mono)',
                 view: 'bot-rig',
                 shade: '~dark~',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps') as string,
+                image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,
               }}
               cases={{
                 view: undefined,

@@ -66,7 +66,7 @@ function HyperlinkHeader({ info }: InfoProps) {
                 view: 'top-lef',
                 shade: '~light~',
                 color: '(red)',
-                image: loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium') as string,
+                image: loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium') as string,
               }}
               cases={{
                 view: undefined,
@@ -136,8 +136,8 @@ function HyperlinkHeader({ info }: InfoProps) {
                 view: ['-left-', '-right-'],
                 text: ['Specialist', 'Technician'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/award'),
-                  loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/screwdriver-wrench'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/award'),
+                  loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/screwdriver-wrench'),
                 ],
               }}
               cases={{
@@ -260,9 +260,9 @@ function HyperlinkHeader({ info }: InfoProps) {
                 shade: '~light~',
                 color: ['(green)', '(blue)', '(mono)'],
                 image: [
-                  loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-                  loadAsset('-svg-', '/archive-images/trinity-apps/tralogfin/trinity-apps'),
+                  loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                  loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),
                 ] as Array<string>,
                 size: '<h4>',
               }}

@@ -323,7 +323,7 @@ const ButtonsDarkside: React.FC<InfoProps> = ({ info }) => {
 };
 
 let ViewOne = ({ info }: InfoProps) => {
-  const iconOne = loadAsset('-svg-', '/project-pages/components-page/default-buttons/h1') as string;
+  const iconOne = loadAsset('-svg-', '/tralogfin-pages/archive/default-buttons/h1') as string;
   switch (true) {
     case info.labelName.includes('dark'):
       return (…);
@@ -696,7 +696,7 @@ Work moves through the applications in phases, and a phase only opens when the o
 | `<NavigationDefault>` logo                   | `(green)`, `track-a-day/primary-medium`      | `(blue)`, `log-a-ticket/primary-medium`      | `(red)`, `find-a-link/primary-medium`        |
 | The `apps:` card and the `<SectionCharacters>` | `(green)`, `apps: 'track-a-day'`           | `(blue)`, `apps: 'log-a-ticket'`             | `(red)`, `apps: 'find-a-link'`               |
 | `<DivisionTesting>` in `<Main>` and the two `<ArticleUpdates>` in `<Overlay>` | `(green)` | `(blue)` | `(red)` |
-| The toggle menu's `text` and icons           | `Established` / `Freelancing`, `6.5.1/solid/briefcase` / `6.5.1/solid/messages-dollar` | `Manager` / `Employee`, `5.13.0/solid/user-tie` / `6.5.1/solid/user-helmet-safety` | `Specialist` / `Technician`, `6.5.1/solid/award` / `6.5.1/solid/screwdriver-wrench` |
+| The toggle menu's `text` and icons           | `Established` / `Freelancing`, `7.3.1/solid/briefcase` / `6.5.1/solid/messages-dollar` | `Manager` / `Employee`, `7.3.1/solid/user-tie` / `6.5.1/solid/user-helmet-safety` | `Specialist` / `Technician`, `7.3.1/solid/award` / `7.3.1/solid/screwdriver-wrench` |
 | The app menu (`<MenuSwipe>`)                 | TraLogFin, Log a Ticket, Find a Link         | Track a Day, TraLogFin, Find a Link          | Track a Day, Log a Ticket, TraLogFin         |
 
 Everything else stays `(mono)`: the toggle menu, and `<AsideCharacters>` (`(mono)` + `⟨opaque⟩`). Only the cards that represent the application carry its colour; the other colours are too flamboyant. In the app menu, TraLogFin takes the current application's own slot, so the three always run Track a Day → Log a Ticket → Find a Link. Its `color`, `image` and `task` lists follow that same order, in both the Header and the Footer. The toggle menu keeps `labelName: 'demonstration'` in every application, because the slide rules select on it.
@@ -736,6 +736,7 @@ Test tools use `!important` on purpose: they have to win over everything, and th
 
 - **`display-testing` in `styles/Mixins.scss`** tints the page blocks (header, main, footer and the `fore`/`mid`/`back` layers) so the grid can be checked by eye. Include it by hand; it's never left on.
 - **`<DivisionTesting>`** has a button per block (`<header>`, `<main>`, `<footer>`, `<leftbar>`, `<overlay>`, `<rightbar>`) that runs the block's transitions and flashes its background with `.emphasize` / `.emphasize-${colour}` (`Division.testing.scss`). Its dashed outline, the marching ants, takes the colour of its `style.color`.
+- **Marching ants on the `<Menu>` pages.** `SwipeMenu.scss`, `ScrollMenu.scss` and `SelectMenu.scss` outline every `<menu>` with marching ants, so each menu's bounds show without a fill behind it. Unlike the other tools here it has no `!important` and stays on: it's part of how those pages read. Each file keeps its own `@mixin marching-ants` and `@keyframes marching-ants` under a `//--|🠋 Marching Ants 🠋|--\\` flag, right below the `@use` line, and both mixins apply it with `> menu { @include marching-ants(); }`. A border can't animate, so the outline is four dashed gradient strips (top, bottom, left, right) that slide clockwise: an 8px dash, an 8px gap, 2px thick, `$indexLand-medium` at 75%, one lap of the dash a second. Under `prefers-reduced-motion` it stays drawn but stops moving. To tune it, change `$ants-color`, the `16px` repeat (dash plus gap), the `2px` thickness or the `1s`, the same in all three files. The old test fills stay beside each menu as commented-out lines (`//--|🠊 background: rgba(darkred, 0.25); 🠈|--\\`): uncomment one to see the whole cell a menu or panel fills.
 - **Scope selectors in `styles/Transition.scss`.** `%header-children` and `%footer-children` start with empty `section[class*='foreground']`, `figure[class*='midground']` and `div[class*='background']` rules. They're kept empty to show what each selector reaches: uncomment the test background inside one and look. They compile as descendant selectors, so they reach every match inside the `<header>` or `<footer>`, not only its direct children.
 
 ### REVIEW Folders

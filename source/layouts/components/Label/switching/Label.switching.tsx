@@ -62,8 +62,8 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
   switch (cases.type) {
     case '{chip}': {
       //--|🠊 {chip}: a pill with words, + to add it and ✕ once it's chosen 🠈|--\\
-      let plusImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/plus');
-      let timesImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/times');
+      let plusImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/plus');
+      let timesImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/times');
       return (
         <label className={labelClass}>
           <input
@@ -83,7 +83,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
     }
     case '{check}': {
       //--|🠊 {check}: a sharp h × h square, ticked or empty 🠈|--\\
-      let checkImage: string = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/check');
+      let checkImage: string = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/check');
       return (
         <label className={labelClass}>
           <input

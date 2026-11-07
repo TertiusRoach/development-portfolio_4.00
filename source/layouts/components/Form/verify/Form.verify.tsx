@@ -24,7 +24,7 @@ export interface TheseProps {
 }
 
 export function FormVerify({ info, style }: TheseProps) {
-  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/key') as string;
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/key') as string;
   let codeBlocks = ['1', '2', '3', '4', '5', '6'] as Array<string>; //--|🠈 Six {block} labels, the old <FieldsetCode> had four 🠈|--\\
   return (
     <form
@@ -40,7 +40,7 @@ export function FormVerify({ info, style }: TheseProps) {
             size: '<p>',
             view: '-icon-',
             color: style.color,
-            image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/times'),
+            image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/times'),
           }}
           /* onClick={() => closeLeftbar(pageName)} */
         />
@@ -74,7 +74,7 @@ export function FormVerify({ info, style }: TheseProps) {
               view: '-text-',
               color: style.color,
               text: 'Verify',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/key'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/key'),
             }}
           />
         </menu>

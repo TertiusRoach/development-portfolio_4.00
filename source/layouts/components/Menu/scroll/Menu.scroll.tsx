@@ -56,7 +56,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 color: style.color,
                 shade: style.shade,
                 clarity: '⟨lucid⟩',
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-up'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-up'),
               }}
               info={{
                 pageName: info.pageName,
@@ -77,7 +77,7 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
                 color: style.color,
                 shade: style.shade,
                 clarity: '⟨lucid⟩',
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-down'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-down'),
               }}
               info={{
                 pageName: info.pageName,

@@ -29,7 +29,7 @@ export function FormLogin({ info, style }: TheseProps) {
   let { setEmail } = useEmail();
   let { setPassword } = usePassword();
 
-  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt') as string;
+  const iconImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sign-in-alt') as string;
   const registerButton = defineButton('register'); //--|🠈 <h6> with text, or <p> icon only below 768px 🠈|--\\
   const passwordButton = defineButton('password'); //--|🠈 <h6> with text, or <p> icon only below 768px 🠈|--\\
   return (
@@ -69,7 +69,7 @@ export function FormLogin({ info, style }: TheseProps) {
               size: '<p>',
               view: '-icon-',
               color: style.color,
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/eye'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/eye'),
             }}
             /* onClick={() => viewPass('login')} */
           />
@@ -86,7 +86,7 @@ export function FormLogin({ info, style }: TheseProps) {
               view: '-text-',
               color: style.color,
               text: 'Login',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/sign-in-alt'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/sign-in-alt'),
             }}
           />
         </menu>
@@ -100,7 +100,7 @@ export function FormLogin({ info, style }: TheseProps) {
               view: registerButton.view,
               color: style.color,
               text: 'Register Account',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-plus'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-plus'),
             }}
             /* onClick={() => viewBlock('register')} */
           />
@@ -113,7 +113,7 @@ export function FormLogin({ info, style }: TheseProps) {
               view: passwordButton.view,
               color: style.color,
               text: 'Forgot Password',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/user-lock'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/user-lock'),
             }}
             /* onClick={() => viewBlock('password')} */
           />

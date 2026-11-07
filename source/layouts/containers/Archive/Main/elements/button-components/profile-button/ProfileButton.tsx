@@ -43,7 +43,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -54,7 +54,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -65,7 +65,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -76,7 +76,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -87,7 +87,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -98,7 +98,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <fieldset
@@ -166,7 +166,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -177,7 +177,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -188,7 +188,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -199,7 +199,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -210,7 +210,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -221,7 +221,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <fieldset
@@ -283,7 +283,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -294,7 +294,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -305,7 +305,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -316,7 +316,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -327,7 +327,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -338,7 +338,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~dark~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <fieldset
@@ -406,7 +406,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -417,7 +417,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -428,7 +428,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-square-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -439,7 +439,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -450,7 +450,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <ButtonProfile
@@ -461,7 +461,7 @@ function ProfileButton({ info }: InfoProps) {
                 shade: '~light~',
                 clarity: '⟨lucid⟩',
                 view: '-circle-',
-                image: loadAsset('-png-', '/archive-images/character-testing/original/randomize-character'),
+                image: loadAsset('-png-', '/character-testing/original/randomize-character'),
               }}
             />
             <fieldset

@@ -33,19 +33,19 @@ function SelectMenu({ info }: InfoProps) {
     stylePages: 3,
     styleSize: ['<h1>', '<h4>', '<p>'],
     styleImage: [
-      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/log-a-ticket/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/find-a-link/primary-medium'),
-      loadAsset('-svg-', '/archive-images/trinity-apps/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+      loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
     ],
   };
-  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy') as string;
   return (
     <aside className="select-menu">
       <section className={`${blockName}-foreground`}>
@@ -66,7 +66,7 @@ function SelectMenu({ info }: InfoProps) {
               size: casesPages.styleSize as Array<'<h1>' | '<h4>' | '<p>'>,
               /*
               size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy'),
               */
             }}
             cases={{
@@ -111,7 +111,7 @@ function SelectMenu({ info }: InfoProps) {
 
               /*
               size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy'),
               */
             }}
             cases={{
@@ -158,7 +158,7 @@ function SelectMenu({ info }: InfoProps) {
 
               /*
               size: '<h4>',
-              image: loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy'),
+              image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy'),
               */
             }}
             cases={{

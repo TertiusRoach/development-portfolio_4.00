@@ -28,7 +28,7 @@ function SwipeMenu({ info }: InfoProps) {
   }, [pageName, blockName, labelName]);
 
   let casesPages = ['<MenuSwipe>', '<MenuSwipe>', '<MenuSwipe>'] as Array<string>;
-  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/6.5.1/solid/copy') as string;
+  let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy') as string;
   return (
     <aside className="swipe-menu">
       <section className={`${blockName}-foreground`}>

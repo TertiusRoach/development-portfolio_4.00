@@ -57,7 +57,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 color: style.color,
                 shade: style.shade,
                 clarity: '⟨lucid⟩',
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-left'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-left'),
               }}
               info={{
                 pageName: info.pageName,
@@ -78,7 +78,7 @@ function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
                 color: style.color,
                 shade: style.shade,
                 clarity: '⟨lucid⟩',
-                image: loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/caret-right'),
+                image: loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/caret-right'),
               }}
               info={{
                 pageName: info.pageName,

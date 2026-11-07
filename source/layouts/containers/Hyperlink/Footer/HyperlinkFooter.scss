@@ -34,6 +34,8 @@
       margin-top: auto;
       grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Palettes.$indexLand-darkMode;
+      opacity: 1;
+      transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
   }
   div[class*='footer-back'] {
@@ -96,6 +98,8 @@
     .bot {
       grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Palettes.$indexLand-darkMode;
+      opacity: 1;
+      transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
     div[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -155,6 +159,12 @@ footer[id*='hyperlink'] {
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();
+    &[class*='squaring'] {
+      //--|🠊 AI Code: Review Please 2026-11-07 · The squared corner only shows the nav, so the .bot strip fades out 🠈|--\\
+      figure[class*='footer-mid'] > .bot {
+        opacity: 0;
+      }
+    }
   }
   //--|🠋 Mobile (Portrait) 🠋|--\\
   @media screen and (orientation: portrait) {
@@ -168,6 +178,10 @@ footer[id*='hyperlink'] {
       //--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
       section[class*='footer-fore'] nav[class*='navigation'] {
         pointer-events: auto; //--|🠈 The nav ignores Transition.scss' squaring block, so one tap expands the footer 🠈|--\\
+      }
+      //--|🠊 AI Code: Review Please 2026-11-07 · The squared corner only shows the nav, so the .bot strip fades out 🠈|--\\
+      figure[class*='footer-mid'] > .bot {
+        opacity: 0;
       }
     }
     &[class*='squaring'],
