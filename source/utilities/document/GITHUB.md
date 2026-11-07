@@ -27,11 +27,12 @@ Every command block is meant to be copied and pasted as is. Where a version numb
 
 | Thing     | Format   | Example | Purpose                                              |
 | --------- | -------- | ------- | ---------------------------------------------------- |
-| Branch    | `#.#`    | `4.7`   | The version I'm working on right now                 |
-| Tag       | `v#.##`  | `v4.07` | A permanent, frozen copy of a finished version       |
-| `main`    | `main`   | `main`  | The published version, always equal to the last tag  |
+| Branch    | `#.#`     | `4.7`     | The version I'm working on right now                                 |
+| Tag       | `v#.##`   | `v4.07`   | A permanent, frozen copy of a finished version                       |
+| Patch tag | `v#.##.#` | `v4.08.1` | A release published to `main` while its branch stays open            |
+| `main`    | `main`    | `main`    | The published version, always equal to the last tag (patch included) |
 
-Each `#` is a single digit (0–9). Tags are always zero-padded, so `4.7` becomes `v4.07`, never `v4.7`.
+Each `#` is a single digit (0–9). Tags are always zero-padded, so `4.7` becomes `v4.07`, never `v4.7`. A patch tag keeps that padding and adds a counter for the releases made inside one branch, starting at `1`: `v4.08.1`, `v4.08.2` … The branch's own `v#.##` tag still closes it at the end of the cycle. Whether a version will later split into patches as a rule (for example `4.8.1` becoming its own branch) is still open; until it's decided, a patch is only a tag (see [Mid-Cycle Release](#mid-cycle-release)).
 
 **Tags are the archive.** GitHub turns every tag into a downloadable `.zip` and `.tar.gz` on the repository's **Tags** page, so once a version is tagged it's saved. That's why old branches get deleted after tagging: the tag already holds everything, and I can always go back to it if I mess up.
 
@@ -248,6 +249,35 @@ git push origin --delete 4.7
 ```
 
 If `-d` refuses with "not fully merged", use `git branch -D 4.7`. That's safe here because the tag holds every commit.
+
+### Mid-Cycle Release
+
+Use this when a fix is big enough to publish before the version is finished, for example `v4.08.1`, when every image location was synced to the new asset layout. It's Steps 1 to 3 with a patch tag; Steps 4 and 5 are skipped, because the branch stays open and work carries on in it.
+
+```bash
+git checkout 4.8
+git status                                   # nothing to commit, working tree clean
+ls .github/workflows/static.yml              # the Pages workflow must be on the branch (see 10.3)
+
+npm run deploy                               # Before Each Release (10.2)
+git add public
+git commit -m "Build for v4.08.1"
+git push origin 4.8
+
+git tag -a v4.08.1 -m "4.8.1: what this patch fixes"
+git push origin v4.08.1
+
+git checkout main
+git pull origin main
+git reset --hard 4.8
+git push --force-with-lease origin main
+
+git checkout 4.8                             # back to work on the same branch
+```
+
+- **Source and public are two commits.** Commit `source/` first, then build and commit `public/` on its own (`Build for v4.08.1`), so the build never hides a code change.
+- **Add the patch to the [Status Log](#11-status-log)** in the source commit, above the active branch's row.
+- **The next patch counts up** (`v4.08.2`), and the cycle still ends with the normal [Release Cycle](#3-release-cycle) and `v4.08`.
 
 ---
 
@@ -545,7 +575,7 @@ Open the **Actions** tab and look at the latest **Deploy static content to Pages
 | **v4.08.1** | ✅ Published | Image locations synced to the new asset layout, FontAwesome Free 7.3.1, card edges, squaring fades | 2026-11-07 |
 | **4.8**   | 🚧 Active   |                                                                            | _Current_  |
 
-Add a row with every release.
+Add a row with every release, patches included. A patch's status is ✅ Published, not Archived, because its branch is still open.
 
 ---
 
