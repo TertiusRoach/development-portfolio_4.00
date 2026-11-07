@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import NavigationDefault from '../../../../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { checkScreen } from '../../../../../../../scripts';
+import { checkScreen, loadAsset } from '../../../../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -27,8 +27,7 @@ function DefaultNavigation({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let imageLink =
-    'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/c0f9e3fa69d4960a533a7b73f357ad97886280f1/source/assets/svg-files/archive-images/font-awesome/6.5.1/solid/star.svg' as string;
+  let imageLink = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/star') as string;
   switch (getOrientation) {
     case 'landscape':
       return (

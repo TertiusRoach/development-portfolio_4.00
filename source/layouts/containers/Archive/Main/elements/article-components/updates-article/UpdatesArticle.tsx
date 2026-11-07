@@ -8,6 +8,7 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 
 //--|🠋 Functions 🠋|--\\
 import toggleColors from './UpdatesFunctions';
+import { loadAsset } from '../../../../../../../scripts';
 
 interface InfoProps {
   info: {
@@ -50,8 +51,7 @@ function UpdatesArticle({ info }: InfoProps) {
             view: '-justify-',
           }}
           cases={{
-            image:
-              'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/b345dfe6d6c97c6cb19f6032c42ab41bd6776ac7/source/assets/svg-files/archive-images/my-signature/signature-icon/primary-light.svg',
+            image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-light'),
             title: 'View a Tag',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',

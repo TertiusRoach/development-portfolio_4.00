@@ -147,6 +147,33 @@ demoCard.classList.add('conceal'); //--|🠈 not demoCard.style.opacity = '0' �
 
 The `style={{ … }}` props on components (`color`, `view`, `shade`, `clarity`, `image`) aren't inline styles. They're turned into class names, so they're fine.
 
+### Images & Assets
+
+Every image lives in `source/assets/`, one folder per file type (`svg-files`, `png-files`, `gif-files` …), and is loaded with `loadAsset()` from `scripts.ts`. It takes the type and the path inside that folder, without the extension:
+
+```ts
+loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|🠈 svg-files/tralogfin-application/track-a-day/primary-medium.svg 🠈|--\\
+```
+
+- **It reads GitHub, not the disk.** `loadAsset()` builds a `raw.githubusercontent.com` link on `refs/heads/main`. A new or moved image only shows once it's pushed to `main`, and a moved folder breaks every caller without an error: an `<img>` shows its alt text, a mask shows nothing.
+- **Always through `loadAsset()`.** Never paste a GitHub link by hand, and never one pinned to a commit (`…/b345dfe…/source/assets/…`): it stops following `main` and quietly goes out of date. The GIFs in `Figure.loading.tsx` are the last written-out links, and they point at `refs/heads/main`.
+- **A runtime SVG is a mask, set inline.** A silhouette from `loadAsset()` goes on the element as `maskImage` / `WebkitMaskImage`, never as a URL in SCSS. It's the one inline style the [No Inline Styles](#no-inline-styles) rule allows, because the path only exists at runtime.
+
+| Folder                                                  | Holds                                                                                                       | Example path                                    |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `svg-files/tralogfin-application/${app}/`               | The app logos: `track-a-day`, `log-a-ticket`, `find-a-link` (`primary-dark`, `-medium`, `-light`), and `pick-a-page` (`trinity-apps`, `logo-black`, `logo-white`) | `/tralogfin-application/pick-a-page/trinity-apps` |
+| `svg-files/tralogfin-pages/${page}/`                    | Icons a page draws for itself: `archive` (`*-element`, `default-buttons/h1` … `p`), `overtime`, `ticketing`, `hyperlink`, `landing`, `résumé` | `/tralogfin-pages/archive/default-buttons/h1`   |
+| `svg-files/archive-images/font-awesome/${version}/${style}/` | FontAwesome (below)                                                                                    | `/archive-images/font-awesome/7.3.1/solid/star` |
+| `svg-files/archive-images/my-signature/`                | The signature                                                                                               | `/archive-images/my-signature/signature-icon/primary-light` |
+| `svg-files/archive-images/arabic-numerals/`             | Numerals                                                                                                    |                                                 |
+| `png-files/character-testing/original/`                 | The 18 character portraits and `randomize-character`, with `upscaled/` beside it                            | `/character-testing/original/jane-lester`       |
+| `png-files/tralogfin-application/${version}/`           | App pictures, by release (`1.0.0`, `4.4.0`)                                                                 |                                                 |
+| `gif-files/`                                            | The loading animations (`signature`, `trinity-apps`)                                                        |                                                 |
+
+**Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owner. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
+
+**When a folder moves,** change every `loadAsset()` path in the same step: search `source/` (not `source/assets/`) for the old path, fix each hit, and update the table above. The folders were last reorganised on 2026-11-07, when `archive-images/character-testing` became `character-testing`, `archive-images/trinity-apps` became `tralogfin-application`, and `project-pages/components-page` became `tralogfin-pages/archive`.
+
 ### Git
 
 Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`). The full rules are in [GITHUB.md](GITHUB.md#1-naming-rules).
