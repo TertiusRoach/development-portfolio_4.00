@@ -1,6 +1,6 @@
 <a id="readme-top"></a>
 
-## **TLF** [{Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)
+## **TLF** [{Apps\]](https://tertiusroach.github.io/development-portfolio_4.00/index.html)
 
 Track a Day, Log a Ticket, Find a Link: three applications inspired by the gaps I kept running into across corporate environments, from film production and education institutes to government departments and the events industry. Together they fill one specific need: an office suite that is easy to use and genuinely helpful. It solves workplace chaos while daring to improve the politics that come with the territory. It is the kind of tool you open, do the thing, and get back to your life. Track overtime without turning it into a second job, file tickets without feeling like you are writing a novel for an audience that does not exist, and keep every important company link in one place so nobody has to spelunk through spreadsheets, bookmarks, and half-remembered URLs ever again.
 
@@ -239,14 +239,14 @@ Each page lives in `source/layouts/containers/${PageName}/` and is mounted into 
 | **Hyperlink** | `Hyperlink/` | `#hyperlink-body`  | Find a Link       |
 | **Archive**   | `Archive/`   | `#components-body` | Component testing |
 
-| Container    | HTML Tag    | ID Pattern             | Job                                |
-| ------------ | ----------- | ---------------------- | ---------------------------------- |
-| **Overlay**  | `<section>` | `${pageName}-overlay`  | Entry layer, focused flows on top  |
-| **Main**     | `<main>`    | `${pageName}-main`     | The primary workspace              |
-| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Actions and guidance               |
-| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Context and feedback               |
-| **Header**   | `<header>`  | `${pageName}-header`   | Controls and configuration         |
-| **Footer**   | `<footer>`  | `${pageName}-footer`   | Short status messages              |
+| Container    | HTML Tag    | ID Pattern             | Job                               |
+| ------------ | ----------- | ---------------------- | --------------------------------- |
+| **Overlay**  | `<section>` | `${pageName}-overlay`  | Entry layer, focused flows on top |
+| **Main**     | `<main>`    | `${pageName}-main`     | The primary workspace             |
+| **Leftbar**  | `<aside>`   | `${pageName}-leftbar`  | Actions and guidance              |
+| **Rightbar** | `<aside>`   | `${pageName}-rightbar` | Context and feedback              |
+| **Header**   | `<header>`  | `${pageName}-header`   | Controls and configuration        |
+| **Footer**   | `<footer>`  | `${pageName}-footer`   | Short status messages             |
 
 What each container does in each application is in **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**. The state classes they switch between (`.active`, `.expanded`, `.locked-${blockName}`…) are in the **[RULEBOOK](source/utilities/document/RULEBOOK.md#state-classes)**.
 
@@ -368,13 +368,13 @@ Compiled output and static entry points. This is the browser-facing product, gen
 
 All authored code and assets. This is the only place you should be editing during development.
 
-| File          | Purpose                                                                     |
-| ------------- | --------------------------------------------------------------------------- |
-| `index.html`  | HTML shell with one `<div id="${pageName}-body">` per page                  |
-| `index.tsx`   | Entry point: renders every page and activates one with `viewBody()`         |
-| `index.scss`  | Root stylesheet                                                             |
-| `scripts.ts`  | Shared helpers such as `stripBrackets()`, `checkScreen()` and `loadAsset()` |
-| `types.d.ts`  | Global type declarations                                                    |
+| File         | Purpose                                                                     |
+| ------------ | --------------------------------------------------------------------------- |
+| `index.html` | HTML shell with one `<div id="${pageName}-body">` per page                  |
+| `index.tsx`  | Entry point: renders every page and activates one with `viewBody()`         |
+| `index.scss` | Root stylesheet                                                             |
+| `scripts.ts` | Shared helpers such as `stripBrackets()`, `checkScreen()` and `loadAsset()` |
+| `types.d.ts` | Global type declarations                                                    |
 
 #### `source/assets/`
 
@@ -458,12 +458,12 @@ Application logic and infrastructure that supports the UI. Setup is in [MODULES.
 
 Reusable utilities, references and internal documentation.
 
-| Utility        | Purpose                                                                                |
-| -------------- | -------------------------------------------------------------------------------------- |
-| `document/`    | All project documentation (see [Documentation](#documentation))                        |
-| `vendors/`     | Third-party vendor code kept separate from authored logic                              |
-| `~flex-setup/` | Flexbox reference and layout patterns                                                  |
-| `~grid-setup/` | Grid reference and layout patterns                                                     |
+| Utility        | Purpose                                                         |
+| -------------- | --------------------------------------------------------------- |
+| `document/`    | All project documentation (see [Documentation](#documentation)) |
+| `vendors/`     | Third-party vendor code kept separate from authored logic       |
+| `~flex-setup/` | Flexbox reference and layout patterns                           |
+| `~grid-setup/` | Grid reference and layout patterns                              |
 
 #### `.vscode/`
 
@@ -479,18 +479,18 @@ Editor configuration for consistent debugging and project workflows. What each f
 
 Everything lives in **`source/utilities/document/`**. If you're unsure about anything, start with the **RULEBOOK**.
 
-| Document                                                       | What it answers                                                                 |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **[RULEBOOK.md](source/utilities/document/RULEBOOK.md)**       | How code is written: philosophy, naming, components, scaling, colours, comments |
-| **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)**   | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
-| **[TOGGLES.md](source/utilities/document/TOGGLES.md)**         | Which page each toggle opens                                                    |
-| **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**   | The six containers and what they do in each application                         |
-| **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)**   | The 18 test characters, their psychology and the rules they test                |
-| **[TABLE.md](source/utilities/document/TABLE.md)**             | Tables, ISO weeks, how data travels, MongoDB-to-MySQL rules, offline storage     |
-| **[MODULES.md](source/utilities/document/MODULES.md)**         | Database, secrets, test emails and server setup on any OS                       |
-| **[GITHUB.md](source/utilities/document/GITHUB.md)**           | Machine setup, releases, tags, syncing machines, fixing Git trouble             |
-| **[EDITOR.md](source/utilities/document/EDITOR.md)**           | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                    |
-| **[REFERENCE.md](source/utilities/document/REFERENCE.md)**     | The template this README follows                                                |
+| Document                                                     | What it answers                                                                                 |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| **[RULEBOOK.md](source/utilities/document/RULEBOOK.md)**     | How code is written: philosophy, naming, components, scaling, colours, comments                 |
+| **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)** | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
+| **[TOGGLES.md](source/utilities/document/TOGGLES.md)**       | Which page each toggle opens                                                                    |
+| **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)** | The six containers and what they do in each application                                         |
+| **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)** | The 18 test characters, their psychology and the rules they test                                |
+| **[TABLE.md](source/utilities/document/TABLE.md)**           | Tables, ISO weeks, how data travels, MongoDB-to-MySQL rules, offline storage                    |
+| **[MODULES.md](source/utilities/document/MODULES.md)**       | Database, secrets, test emails and server setup on any OS                                       |
+| **[GITHUB.md](source/utilities/document/GITHUB.md)**         | Machine setup, releases, tags, syncing machines, fixing Git trouble                             |
+| **[EDITOR.md](source/utilities/document/EDITOR.md)**         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                                    |
+| **[REFERENCE.md](source/utilities/document/REFERENCE.md)**   | The template this README follows                                                                |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
