@@ -7,7 +7,7 @@ import ArticleLoading from '../../../components/Article/loading/Article.loading'
 import ArticleUpdates from '../../../components/Article/updates/Article.updates';
 
 //--|🠋 Functions 🠋|--\\
-import obnubilateContainers from '../../../scripts/Overlay';
+import obnubilateContainer from '../../../scripts/Main_Over';
 import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
 
 interface InfoProps {
@@ -34,7 +34,7 @@ function LandingOverlay({ info }: InfoProps) {
   switch (getOrientation) {
     case 'landscape':
       stateName = 'loading';
-      obnubilateContainers(pageName, blockName);
+      obnubilateContainer(pageName, blockName);
       return (
         <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>
@@ -76,7 +76,7 @@ function LandingOverlay({ info }: InfoProps) {
       );
     case 'portrait':
       stateName = 'loading';
-      obnubilateContainers(pageName, blockName);
+      obnubilateContainer(pageName, blockName);
       return (
         <section id={`${pageName}-${blockName}`} className={`${labelName}-${blockName} ${stateName}`}>
           <section className={`${blockName}-foreground`}></section>

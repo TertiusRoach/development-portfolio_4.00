@@ -20,7 +20,7 @@ import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
 //--|🠋 Functions 🠋|--\\
-import { revertBlocks } from '../../../scripts/Main';
+import { revertContainers } from '../../../scripts/Main_Over';
 import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
@@ -50,10 +50,10 @@ function ArchiveMain({ info }: InfoProps) {
       id={`${pageName}-${blockName}`}
       className={`${blurName} ${labelName}-${blockName}`}
       onMouseEnter={(event) => {
-        revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
+        revertContainers(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
       onClick={(event) => {
-        revertBlocks(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
+        revertContainers(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
       }}
     >
       <section className={`${blockName}-foreground`}>

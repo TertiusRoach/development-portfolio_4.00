@@ -9,7 +9,7 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { freezeToggle } from '../../../scripts/Footer';
+import { freezeContainer } from '../../../scripts/Head_Foot';
 import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
 
 interface InfoProps {
@@ -135,8 +135,8 @@ function LandingFooter({ info }: InfoProps) {
                   onClick: (view) => {
                     switch (view) {
                       case 'bot-rig':
-                        freezeToggle(pageName, 'footer');
-                        freezeToggle(pageName, 'rightbar');
+                        freezeContainer(pageName, 'footer');
+                        freezeContainer(pageName, 'rightbar');
                         break;
                     }
                   },

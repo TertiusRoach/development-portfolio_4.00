@@ -1,6 +1,6 @@
 //--|🠊 Header/ArchiveFunctions.ts 🠈|--\\
 import blockViews from '../../containers';
-import { freezeToggle } from '../../../scripts/Header';
+import { freezeContainer } from '../../../scripts/Head_Foot';
 export function unfoldHeaders(thisItem: HTMLElement) {
   if (Array.from(thisItem.classList).pop() !== 'expanded') {
     blockViews(thisItem, 'components', 'header', 'unfolded');
@@ -20,8 +20,8 @@ export function squareHeaders(thisItem: HTMLElement) {
 export function freezeHeaders(pageName: 'components', styleView: 'top-lef') {
   switch (styleView) {
     case 'top-lef':
-      freezeToggle(pageName, 'header');
-      freezeToggle(pageName, 'leftbar');
+      freezeContainer(pageName, 'header');
+      freezeContainer(pageName, 'leftbar');
       break;
   }
 }

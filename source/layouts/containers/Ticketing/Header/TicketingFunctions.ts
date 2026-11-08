@@ -2,7 +2,7 @@
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
 import { synchDemo } from '../../../../scripts';
-import { freezeToggle } from '../../../scripts/Header';
+import { freezeContainer } from '../../../scripts/Head_Foot';
 
 function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
@@ -83,13 +83,13 @@ export function squareHeaders(thisItem: HTMLElement) {
 export function freezeHeaders(pageName: 'ticketing', styleView: 'top-lef') {
   switch (styleView) {
     case 'top-lef':
-      freezeToggle(pageName, 'header');
-      freezeToggle(pageName, 'leftbar');
+      freezeContainer(pageName, 'header');
+      freezeContainer(pageName, 'leftbar');
       break;
   }
 }
 //--|===|--\\
-const selectCharacter =(thisItem: HTMLElement, pageName: string, blockName: string): void => {
+const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {

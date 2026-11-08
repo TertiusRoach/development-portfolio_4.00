@@ -2,7 +2,7 @@
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
 import { synchDemo } from '../../../../scripts';
-import { freezeToggle } from '../../../scripts/Footer';
+import { freezeContainer } from '../../../scripts/Head_Foot';
 
 function previewProfile(
   inputAction: 'enter' | 'click' | 'leave',
@@ -83,13 +83,13 @@ export function squareFooters(thisItem: HTMLElement) {
 export function freezeFooters(pageName: 'hyperlink', styleView: 'bot-rig') {
   switch (styleView) {
     case 'bot-rig':
-      freezeToggle(pageName, 'footer');
-      freezeToggle(pageName, 'rightbar');
+      freezeContainer(pageName, 'footer');
+      freezeContainer(pageName, 'rightbar');
       break;
   }
 }
 //--|===|--\\
-const selectCharacter =(thisItem: HTMLElement, pageName: string, blockName: string): void => {
+const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {

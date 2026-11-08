@@ -1,12 +1,10 @@
-//--|🠊 layouts/scripts/Overlay.ts 🠈|--\\
+//--|🠊 layouts/scripts/Main_Over.ts 🠈|--\\
 //--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
 import { asynchObserve } from '../../scripts';
 
-//--|🠋 Disable Overlay 🠋|--\\
-const transitioning = new Set<string>();
-const watchedBodies = new WeakSet<HTMLDivElement>();
-async function obnubilateContainers(pageName: string, blockName: string) {
+//--|🠋 Class Changes 🠋|--\\
+async function obnubilateContainer(pageName: string, blockName: string) {
   const bodyContainer = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
   const overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   switch (!transitioning.has(pageName)) {
@@ -38,8 +36,17 @@ async function obnubilateContainers(pageName: string, blockName: string) {
       break;
   }
 }
+export function revertContainers(thisItem: HTMLElement, pageName: 'landing' | 'overtime' | 'ticketing' | 'hyperlink' | 'components'): void {
+  blockViews(thisItem, pageName, 'header', 'squaring');
+  blockViews(thisItem, pageName, 'footer', 'squaring');
+
+  blockViews(thisItem, pageName, 'leftbar', 'collapsed');
+  blockViews(thisItem, pageName, 'rightbar', 'collapsed');
+}
 
 //--|🠋 Element Observers 🠋|--\\
+const transitioning = new Set<string>(); //--|🠈 Disable Overlay 🠈|--\\
+const watchedBodies = new WeakSet<HTMLDivElement>();
 const observeOverlay = (blockName: 'overlay') => {
   const unusedElements = document.querySelectorAll<HTMLDivElement>('div[id*="body"].asleep');
   unusedElements.forEach((element) => {
@@ -51,7 +58,7 @@ const observeOverlay = (blockName: 'overlay') => {
         observer.disconnect(); //--|🠈 Stop watching once active 🠈|--\\
         watchedBodies.delete(element); //--|🠈 Free the slot so it can be re-watched if it sleeps again 🠈|--\\
         const activeWrapper = element.id.replace('-body', '');
-        obnubilateContainers(activeWrapper, blockName);
+        obnubilateContainer(activeWrapper, blockName);
       }
     });
 
@@ -59,7 +66,7 @@ const observeOverlay = (blockName: 'overlay') => {
   });
 };
 
-//--|🠋 Class Toggles 🠋|--\\
+//--|🠋 Effect Toggles 🠋|--\\
 let clearBlur = async (
   mainContainer: HTMLElement,
   headerContainer: HTMLElement,
@@ -97,4 +104,4 @@ let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, 
   });
 };
 
-export default obnubilateContainers;
+export default obnubilateContainer;

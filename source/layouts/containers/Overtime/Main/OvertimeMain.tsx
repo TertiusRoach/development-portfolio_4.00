@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import DivisionTesting from '../../../components/Division/testing/Division.testing';
 
 //--|🠋 Functions 🠋|--\\
-import { revertBlocks } from '../../../scripts/Main';
+import { revertContainers } from '../../../scripts/Main_Over';
 import { stripBrackets, checkScreen } from '../../../../scripts';
 
 interface InfoProps {
@@ -35,10 +35,10 @@ function OvertimeMain({ info }: InfoProps) {
       id={`${pageName}-${blockName}`}
       className={`${blurName} ${labelName}-${blockName}`}
       onMouseEnter={(event) => {
-        revertBlocks(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
+        revertContainers(event.currentTarget, pageName); //--|🠈 Revert to Default 🠈|--\\
       }}
       onClick={(event) => {
-        revertBlocks(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
+        revertContainers(event.currentTarget, pageName); //--|🠈 Mobile has no hover, so a tap reverts instead 🠈|--\\
       }}
     >
       <section className={`${blockName}-foreground`}>
