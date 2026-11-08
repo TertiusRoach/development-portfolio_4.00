@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, loadAsset } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadAsset } from '../../../tools/utilities';
 import reloadElements, { modifyingController, previewButtons, swipingFullscreen, createClass } from './Menu_swipe';
 
 //--|🠋 Components 🠋|--\\

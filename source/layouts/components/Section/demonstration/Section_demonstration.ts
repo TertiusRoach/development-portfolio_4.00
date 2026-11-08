@@ -1,6 +1,6 @@
 //--|🠊 Section_demonstration.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 //--|🠋 Demonstration Information 🠋|--\\
 export interface DemonstrationSelection {
   appName: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin';

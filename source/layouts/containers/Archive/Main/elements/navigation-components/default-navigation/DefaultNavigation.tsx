@@ -6,7 +6,8 @@ import React, { useEffect, useState } from 'react';
 import NavigationDefault from '../../../../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
-import { checkScreen, loadAsset } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

@@ -1,5 +1,5 @@
 //--|🠊 Article_loading.ts 🠈|--\\
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 
 function loadShade(apps: '{signature}' | '{tralogfin}', shade: '~dark~' | '~light~'): string {
   const pathName = {

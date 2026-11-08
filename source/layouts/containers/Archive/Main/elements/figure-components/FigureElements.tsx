@@ -9,7 +9,8 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 import DefaultFigure from './default-figure/DefaultFigure';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

@@ -12,7 +12,10 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadPages } from '../../../tools/navigation';
+import { checkScreen, synchDemo } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './TicketingFunctions';
 
 interface InfoProps {

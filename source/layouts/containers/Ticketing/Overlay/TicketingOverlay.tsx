@@ -8,7 +8,9 @@ import ArticleUpdates from '../../../components/Article/updates/Article.updates'
 
 //--|🠋 Functions 🠋|--\\
 import obnubilateContainer from '../../../scripts/Main_Over';
-import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { checkScreen } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 
 interface InfoProps {
   info: {

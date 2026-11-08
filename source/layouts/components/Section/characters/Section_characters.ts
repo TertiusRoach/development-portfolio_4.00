@@ -1,6 +1,6 @@
 //--|🠊 Section_characters.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 function returnProfile(
   selectProfile:
     | string

@@ -2,7 +2,7 @@
 
 //--|🠋 Functions 🠋|--\\
 import loadShade from './Article_loading';
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 
 //--|🠋 Components 🠋|--\\
 

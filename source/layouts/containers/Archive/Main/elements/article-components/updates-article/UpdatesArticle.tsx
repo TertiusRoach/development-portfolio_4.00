@@ -8,7 +8,7 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 
 //--|🠋 Functions 🠋|--\\
 import toggleColors from './UpdatesFunctions';
-import { loadAsset } from '../../../../../../../scripts';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

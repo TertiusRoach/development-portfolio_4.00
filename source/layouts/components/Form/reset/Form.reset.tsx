@@ -10,7 +10,7 @@ import LabelTextarea from '../../Label/textarea/Label.textarea';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Form_reset';
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 import { usePassword } from '../../../../modules/context/PasswordContext';
 
 export interface TheseProps {

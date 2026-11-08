@@ -11,7 +11,8 @@ import ScrollMenu from './scroll-menu/ScrollMenu';
 import SelectMenu from './select-menu/SelectMenu';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

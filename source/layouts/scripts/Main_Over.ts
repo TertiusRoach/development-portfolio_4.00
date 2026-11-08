@@ -1,7 +1,7 @@
 //--|🠊 layouts/scripts/Main_Over.ts 🠈|--\\
 //--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
-import { asynchObserve } from '../../scripts';
+import { asynchObserve } from '../tools/synching';
 
 //--|🠋 Class Changes 🠋|--\\
 async function obnubilateContainer(pageName: string, blockName: string) {
@@ -102,6 +102,28 @@ let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, 
       blockViews(container, pageName, blockName, alterAction);
     }
   });
+};
+
+//--|🠊 1. Expanded Functions 🠈|--\\
+export let expandOverlay = (pageName: string, blockName: 'overlay') => {
+  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`);
+};
+
+//--|🠊 Update & Loading Overlay 🠈|--\\
+export let hidingOverlay = (pageName: string, blockName: 'overlay') => {
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'hidden');
+  /* console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`); */
+};
+export let updateOverlay = (pageName: string, blockName: 'overlay') => {
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'update');
+  /* console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\\\`); */
+};
+export let loadingOverlay = (pageName: string, blockName: 'overlay') => {
+  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  overlayElement.classList.replace(overlayElement.classList[1], 'loading');
+  /* console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
 export default obnubilateContainer;

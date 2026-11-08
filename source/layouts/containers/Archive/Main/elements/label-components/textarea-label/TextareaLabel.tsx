@@ -7,7 +7,7 @@ import LabelTextarea from '../../../../../../components/Label/textarea/Label.tex
 import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
 
 //--|🠋 Functions 🠋|--\\
-import { checkScreen } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
 import typePlaceholder, { listInputs, switchColors } from './TextareaFunctions';
 
 interface InfoProps {

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import createClass, { previewParent } from './Label_textarea';
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 
 //--|🠊 AI Code: Review Please 2026-10-30 · <LabelTextarea> + <LabelInput> + one <FieldsetOtp> box, picked by cases.type 🠈|--\\
 export interface TheseProps {

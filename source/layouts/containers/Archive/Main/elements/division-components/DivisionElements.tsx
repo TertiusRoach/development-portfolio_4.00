@@ -10,7 +10,8 @@ import TestingDivision from './testing-division/TestingDivision';
 import PlaceholderDivision from './placeholder-division/PlaceholderDivision';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

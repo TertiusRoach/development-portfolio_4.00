@@ -10,7 +10,10 @@ import NavigationDefault from '../../../components/Navigation/default/Navigation
 
 //--|🠋 Functions 🠋|--\\
 import { freezeHeaders, unfoldHeaders } from './ArchiveFunctions';
-import { stripBrackets, checkScreen, loadAsset, loadPages } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadPages } from '../../../tools/navigation';
+import { checkScreen } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 
 interface InfoProps {
   info: {

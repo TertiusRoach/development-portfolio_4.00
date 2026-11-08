@@ -1,5 +1,5 @@
 //--|🠊 Division_sweeping.ts 🠈|--\\
-import { romanToArabic } from '../../../../scripts';
+import { romanToArabic } from '../../../tools/conversions';
 
 const observers = new WeakMap<HTMLElement, MutationObserver>();
 function emphasizeParameters(pageName: string, blockName: string, labelName: string, index: number = 0) {

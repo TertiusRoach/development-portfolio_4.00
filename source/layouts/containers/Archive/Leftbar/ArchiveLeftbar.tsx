@@ -7,7 +7,9 @@ import MenuSelect from '../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { checkScreen } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 
 interface InfoProps {
   info: {

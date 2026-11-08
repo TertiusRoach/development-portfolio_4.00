@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 import reloadElements, { modifyControl, selectFullscreen, createClass } from './Menu_select';
 
 interface TheseProps {

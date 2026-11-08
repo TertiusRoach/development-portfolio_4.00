@@ -5,7 +5,9 @@ import React, { useState, useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { checkScreen } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 
 interface InfoProps {
   info: {

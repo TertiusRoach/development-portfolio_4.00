@@ -1,6 +1,6 @@
 //--|🠊 updates-article/UpdatesFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { arabicToRoman, romanToArabic } from '../../../../../../../scripts';
+import { arabicToRoman, romanToArabic } from '../../../../../../tools/conversions';
 
 //--|🠋 Article Colors Toggle 🠋|--\\
 function toggleColors(tint: string): void {

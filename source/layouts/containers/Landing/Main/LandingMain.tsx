@@ -10,7 +10,8 @@ import DivisionTesting from '../../../components/Division/testing/Division.testi
 
 //--|🠋 Functions 🠋|--\\
 import { revertContainers } from '../../../scripts/Main_Over';
-import { stripBrackets, checkScreen } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { checkScreen } from '../../../tools/synching';
 
 interface InfoProps {
   info: {

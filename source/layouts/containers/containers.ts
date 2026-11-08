@@ -1,4 +1,8 @@
 //--|🠊 layouts/containers 🠈|--\\
+//--|🠋 Functions 🠋|--\\
+import { expandHeader, expandFooter, collapseHeader, collapseFooter, unfoldHeader, unfoldFooter, squaringHeader, squaringFooter } from '../scripts/Head_Foot';
+import { expandLeftbar, expandRightbar, collapseLeftbar, collapseRightbar, unfoldLeftbar, unfoldRightbar, squaringLeftbar, squaringRightbar } from '../scripts/Left_Right';
+import { expandOverlay, hidingOverlay, updateOverlay, loadingOverlay } from '../scripts/Main_Over';
 
 //--|🠋 Type Definitions 🠋|--\\
 type Handler = (pageName: string) => void;
@@ -17,12 +21,12 @@ function blockViews(thisItem: HTMLElement, pageName: string, blockName: blockNam
         let lockBody = document.querySelector(`#${pageName}-${blockName}`)?.parentElement as HTMLDivElement;
         switch (!lockBody.className.includes('locked-body')) {
           case true:
-            return blockHandlers[blockName]?.[alterAction]?.(pageName);
+            return runHandlers(pageName, blockName, alterAction);
         }
       } else {
         if (toggleLocked) return;
         //--|===|--\\
-        blockHandlers[blockName]?.[alterAction]?.(pageName);
+        runHandlers(pageName, blockName, alterAction);
         lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
         setTimeout(() => {
           lockedElement.classList.remove(`locked-${blockName}`);
@@ -63,155 +67,17 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
     squaring: (pageName) => squaringRightbar(pageName, 'rightbar'),
   },
 };
-
-//--|🠊 1. Expanded Functions 🠈|--\\
-let expandHeader = (pageName: string, blockName: 'header') => {
-  const headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
-
-  mainElement.className = `obnubilate ${Array.from(mainElement.classList).pop()}`;
-  headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'expanded');
-
-  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let expandFooter = (pageName: string, blockName: 'footer') => {
-  const footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
-
-  mainElement.className = `obnubilate ${Array.from(mainElement.classList).pop()}`;
-  footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'expanded');
-
-  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let expandLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
-};
-let expandRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
-};
-let expandOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`);
-};
-
-//--|🠊 2. Collapsed Functions 🠈|--\\
-let collapseHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
-};
-let collapseFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
-};
-let collapseLeftbar = (pageName: string, blockName: 'leftbar') => {
-  let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'collapsed');
-  /* console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Main> · revertBlocks();
-    <Overlay> · shrinkBlocks();
-  🠉|--*/
-};
-let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
-  let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'collapsed');
-  /* console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Main> · revertBlocks();
-    <Overlay> · shrinkBlocks();
-  🠉|--*/
-};
-
-//--|🠊 3. Unfolded Functions 🠈|--\\\\
-let unfoldHeader = (pageName: string, blockName: 'header') => {
-  let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'unfolded');
-  /* console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Header> · unfoldHeaders();
-  🠉|--*/
-};
-let unfoldFooter = (pageName: string, blockName: 'footer') => {
-  let footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'unfolded');
-  /* console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Footer> · unfoldFooters();
-  🠉|--*/
-};
-let unfoldLeftbar = (pageName: string, blockName: 'leftbar') => {
-  let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'unfolded');
-  /* console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Header> · unfoldHeaders();
-  🠉|--*/
-};
-let unfoldRightbar = (pageName: string, blockName: 'rightbar') => {
-  let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'unfolded');
-  /* console.log(`//--|🠊 Unfold: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Footer> · unfoldFooters();
-  🠉|--*/
-};
-
-//--|🠊 4. Squaring Functions 🠈|--\\
-let squaringHeader = (pageName: string, blockName: 'header') => {
-  const headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
-  if (headerElement.classList.contains('expanded')) {
-    mainElement.classList.remove('obnubilate');
+//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
+const runHandlers = (pageName: string, blockName: blockName, alterAction: alterAction) => {
+  try {
+    return blockHandlers[blockName]?.[alterAction]?.(pageName);
+  } catch (error) {
+    if (error instanceof ReferenceError) {
+      //--|🠋 Main_Over.ts and containers.ts import each other: a handler ran before both finished loading 🠋|--\\
+      window.alert(`|🠊 Warning: <${blockName}> ${alterAction} ran before its handler loaded. Is blockViews() called outside a function? 🠈|`);
+    }
+    throw error;
   }
-  headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'squaring');
-  /* console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Main> · revertBlocks();
-    <Overlay> · shrinkBlocks();
-    <OvertimeHeader> · previewProfile();
-    <TicketingHeader> · previewProfile();
-    <HyperlinkHeader> · previewProfile();
-  🠉|--*/
-};
-let squaringFooter = (pageName: string, blockName: 'footer') => {
-  const footerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement;
-  if (footerElement.classList.contains('expanded')) {
-    mainElement.classList.remove('obnubilate');
-  }
-  footerElement.classList.replace(footerElement.classList[footerElement.classList.length - 1], 'squaring');
-  /* console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`); */
-  /*--|🠋 Used in...
-    <Main> · revertBlocks();
-    <Overlay> · shrinkBlocks();
-    <OvertimeFooter> · previewProfile();
-    <TicketingFooter> · previewProfile();
-    <HyperlinkFooter> · previewProfile();
-  🠉|--*/
-};
-let squaringLeftbar = (pageName: string, blockName: 'leftbar') => {
-  let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'squaring');
-  /* console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let squaringRightbar = (pageName: string, blockName: 'rightbar') => {
-  let rightbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  rightbarElement.classList.replace(rightbarElement.classList[rightbarElement.classList.length - 1], 'squaring');
-  /* console.log(`//--|🠊 Squaring: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-
-//--|🠊 Update & Loading Overlay 🠈|--\\
-let hidingOverlay = (pageName: string, blockName: 'overlay') => {
-  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  overlayElement.classList.replace(overlayElement.classList[1], 'hidden');
-  /* console.log(`//--|🠊 Hidden: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let updateOverlay = (pageName: string, blockName: 'overlay') => {
-  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  overlayElement.classList.replace(overlayElement.classList[1], 'update');
-  /* console.log(`//--|🠊 Update: #${pageName}-${blockName} 🠈|--\\\\`); */
-};
-let loadingOverlay = (pageName: string, blockName: 'overlay') => {
-  let overlayElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
-  overlayElement.classList.replace(overlayElement.classList[1], 'loading');
-  /* console.log(`//--|🠊 Loading: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
 export default blockViews;

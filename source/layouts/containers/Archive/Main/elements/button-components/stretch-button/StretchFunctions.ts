@@ -1,6 +1,6 @@
 //--|🠊 stretch-button/StretchFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { arabicToRoman, romanToArabic } from '../../../../../../../scripts';
+import { arabicToRoman, romanToArabic } from '../../../../../../tools/conversions';
 //--|🠋 Documenting Code Duplication 🠋|--\\
 async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {

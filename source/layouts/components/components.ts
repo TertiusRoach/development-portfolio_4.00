@@ -1,78 +1,5 @@
 //--|🠊 source/layouts/components/components.ts 🠈|--\\
-import { stripBrackets } from '../../scripts';
-
-//--|🠋 Abbreviations 🠋|--\\
-export let abbrAxis = (axis: '[x]' | '[y]'): string => {
-  const axisMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
-    '[x]': 'hori',
-    '[y]': 'vert',
-  };
-
-  const classAxis = axisMap[axis];
-
-  return `${classAxis}`;
-};
-export let abbrType = (type: '{select}' | '{scroll}' | '{swipe}'): string => {
-  const typeMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
-    '{select}': 'sel',
-    '{scroll}': 'scr',
-    '{swipe}': 'swi',
-  };
-
-  const classType = typeMap[type];
-
-  return `${classType}`;
-};
-export let abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '-mid-' | '-def-'): string => {
-  const classView = stripBrackets(view, '--');
-
-  return `${classView}`;
-};
-export let abbrShade = (shade: '~dark~' | '~light~'): string => {
-  const shadeMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
-
-  const classShade = shadeMap[shade];
-
-  return `${classShade}`;
-};
-export let abbrColor = (
-  color:
-    | '(red)'
-    | '(green)'
-    | '(blue)'
-    | '(purple)'
-    | '(orange)'
-    | '(pink)'
-    | '(yellow)'
-    | '(brown)'
-    | '(turquoise)'
-    | '(mono)',
-): string => {
-  const colorMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(yellow)': 'yel',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-    '(mono)': 'mon',
-  };
-
-  const classColor = colorMap[color];
-
-  return `${classColor}`;
-};
-
+import { stripBrackets } from '../tools/conversions';
 //--|🠋 Chain Tags 🠋|--\\
 function eventListen(selector: string, execution: () => void) {
   //--|🠊 Selector helps find the HTMLElement 🠈|--\\
@@ -113,4 +40,55 @@ function eventListen(selector: string, execution: () => void) {
     domObserver?.disconnect();
   };
 }
+
+//--|🠋 Abbreviations 🠋|--\\
+export const abbrAxis = (axis: '[x]' | '[y]'): string => {
+  const axisMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '[x]': 'hori',
+    '[y]': 'vert',
+  };
+
+  const classAxis = axisMap[axis];
+
+  return `${classAxis}`;
+};
+export const abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '-mid-' | '-def-'): string => {
+  const classView = stripBrackets(view, '--');
+
+  return `${classView}`;
+};
+export const abbrShade = (shade: '~dark~' | '~light~'): string => {
+  const shadeMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '~dark~': 'dar',
+    '~light~': 'lig',
+  };
+
+  const classShade = shadeMap[shade];
+
+  return `${classShade}`;
+};
+export const abbrColor = (
+  color: '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)' | '(mono)',
+): string => {
+  const colorMap: Record<string, string> = {
+    //--|🠊 Map of types to abbreviations 🠈|--\\
+    '(red)': 'red',
+    '(green)': 'gre',
+    '(blue)': 'blu',
+    '(purple)': 'pur',
+    '(orange)': 'ora',
+    '(pink)': 'pin',
+    '(yellow)': 'yel',
+    '(brown)': 'bro',
+    '(turquoise)': 'tur',
+    '(mono)': 'mon',
+  };
+
+  const classColor = colorMap[color];
+
+  return `${classColor}`;
+};
+
 export default eventListen; //--|🠈 Allows components to be linked 🠈|--\\

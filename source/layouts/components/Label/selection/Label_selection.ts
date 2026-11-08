@@ -1,5 +1,5 @@
 //--|🠊 Label_selection.ts 🠈|--\\
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Label.selection'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\

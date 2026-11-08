@@ -12,7 +12,8 @@ import RoutingButton from './routing-button/RoutingButton';
 import ProfileButton from './profile-button/ProfileButton';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

@@ -11,7 +11,8 @@ import DivisionFullscreen from '../../../../../../components/Division/fullscreen
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors, toggleClarity } from './RoutingFunctions';
-import { checkScreen, loadAsset } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

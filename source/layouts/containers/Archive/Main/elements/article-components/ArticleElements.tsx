@@ -10,7 +10,8 @@ import LoadingArticle from './loading-article/LoadingArticle';
 import UpdatesArticle from './updates-article/UpdatesArticle';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

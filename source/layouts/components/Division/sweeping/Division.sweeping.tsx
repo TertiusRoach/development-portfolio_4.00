@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import emphasizeParameters from './Division_sweeping';
-import { arabicToRoman, stripBrackets } from '../../../../scripts';
+import { arabicToRoman, stripBrackets } from '../../../tools/conversions';
 
 interface TheseProps {
   info: {

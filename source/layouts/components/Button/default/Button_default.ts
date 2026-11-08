@@ -1,5 +1,5 @@
 //--|🠊 Button_default.ts 🠈|--\\
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Button.default'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\

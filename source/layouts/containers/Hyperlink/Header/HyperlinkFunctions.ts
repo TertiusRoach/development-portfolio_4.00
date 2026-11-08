@@ -1,7 +1,7 @@
 //--|🠊 Header/HyperlinkFunctions.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { synchDemo } from '../../../../scripts';
+import { synchDemo } from '../../../tools/synching';
 import { freezeContainer } from '../../../scripts/Head_Foot';
 
 function previewProfile(

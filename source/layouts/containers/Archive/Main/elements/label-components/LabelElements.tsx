@@ -11,7 +11,8 @@ import SelectionLabel from './selection-label/SelectionLabel';
 import SwitchingLabel from './switching-label/SwitchingLabel';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

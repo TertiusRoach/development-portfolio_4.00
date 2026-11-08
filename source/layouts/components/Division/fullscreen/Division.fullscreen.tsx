@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { arabicToRoman } from '../../../../scripts';
+import { arabicToRoman } from '../../../tools/conversions';
 
 interface TheseProps {
   info: {

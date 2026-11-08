@@ -1,6 +1,6 @@
 //--|🠊 Aside.characters.tsx 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 import { createClass } from './Aside_characters';
 
 //--|🠋 Components 🠋|--\\

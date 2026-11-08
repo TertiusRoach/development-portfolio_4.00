@@ -7,7 +7,7 @@ import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './SelectFunctions';
-import { loadAsset } from '../../../../../../../scripts';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

@@ -13,7 +13,8 @@ import RegisterForm from './register-form/RegisterForm';
 import PasswordForm from './password-form/PasswordForm';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

@@ -9,7 +9,7 @@ import ButtonDefault from '../../../../../../components/Button/default/Button.de
 
 //--|🠋 Functions 🠋|--\\
 import { functionHolder } from './ScrollFunctions';
-import { loadAsset } from '../../../../../../../scripts';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

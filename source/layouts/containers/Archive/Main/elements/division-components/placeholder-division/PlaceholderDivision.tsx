@@ -7,7 +7,7 @@ import DivisionFullscreen from '../../../../../../components/Division/fullscreen
 import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {

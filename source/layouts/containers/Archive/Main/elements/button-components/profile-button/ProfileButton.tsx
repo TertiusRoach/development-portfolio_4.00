@@ -9,7 +9,8 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors, toggleClarity } from './ProfileFunctions';
-import { checkScreen, loadAsset } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
+import { loadAsset } from '../../../../../../tools/utilities';
 
 interface InfoProps {
   info: {

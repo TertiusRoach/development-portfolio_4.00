@@ -7,7 +7,7 @@ import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
 import testBlock from './Division_testing';
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 
 interface TheseProps {
   info: {

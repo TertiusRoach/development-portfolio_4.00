@@ -9,7 +9,8 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 import DefaultTime from './default-time/DefaultTime';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

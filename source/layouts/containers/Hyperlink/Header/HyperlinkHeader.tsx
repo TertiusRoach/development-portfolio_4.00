@@ -11,7 +11,10 @@ import SectionCharacters from '../../../components/Section/characters/Section.ch
 import NavigationDefault from '../../../components/Navigation/default/Navigation.default';
 import SectionDemonstration from '../../../components/Section/demonstration/Section.demonstration';
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadPages } from '../../../tools/navigation';
+import { checkScreen, synchDemo } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldHeaders, expandHeaders, squareHeaders, freezeHeaders } from './HyperlinkFunctions';
 
 //--|🠋 Database 🠋|--\\

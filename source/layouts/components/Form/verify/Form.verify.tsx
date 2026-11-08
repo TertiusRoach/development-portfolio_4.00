@@ -10,7 +10,7 @@ import LabelTextarea from '../../Label/textarea/Label.textarea';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Form_verify';
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 
 export interface TheseProps {
   info: {

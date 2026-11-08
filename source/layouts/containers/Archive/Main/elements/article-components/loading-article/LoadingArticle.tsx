@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import ArticleLoading from '../../../../../../components/Article/loading/Article.loading';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {

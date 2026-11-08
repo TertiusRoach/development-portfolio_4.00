@@ -1,6 +1,6 @@
 //--|🠊 Division_testing.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 
 function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>') {
   let wrapperElement = document.querySelector(`#${pageName}-${stripBrackets(blockName, '<>')}`) as HTMLElement;

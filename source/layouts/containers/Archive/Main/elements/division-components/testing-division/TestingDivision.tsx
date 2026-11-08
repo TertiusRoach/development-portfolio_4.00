@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import DivisionTesting from '../../../../../../components/Division/testing/Division.testing';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {

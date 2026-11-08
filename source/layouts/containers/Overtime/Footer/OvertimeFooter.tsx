@@ -13,7 +13,10 @@ import SectionDemonstration from '../../../components/Section/demonstration/Sect
 
 //--|🠋 Functions 🠋|--\\
 import blockViews from '../../containers';
-import { stripBrackets, checkScreen, loadAsset, loadPages, synchDemo } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadPages } from '../../../tools/navigation';
+import { checkScreen, synchDemo } from '../../../tools/synching';
+import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
 
 //--|🠋 Database 🠋|--\\

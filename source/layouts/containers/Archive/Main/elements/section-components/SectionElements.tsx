@@ -10,7 +10,8 @@ import CharactersSection from './characters-section/CharactersSection';
 import DemonstrationSection from './demonstration-section/DemonstrationSection';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../scripts';
+import { stripBrackets } from '../../../../../tools/conversions';
+import { checkScreen } from '../../../../../tools/synching';
 
 interface InfoProps {
   info: {

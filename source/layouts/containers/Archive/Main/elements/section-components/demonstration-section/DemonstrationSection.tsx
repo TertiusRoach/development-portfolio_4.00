@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import SectionDemonstration from '../../../../../../components/Section/demonstration/Section.demonstration';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {

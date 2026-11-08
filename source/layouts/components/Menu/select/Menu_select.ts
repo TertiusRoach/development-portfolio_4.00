@@ -2,7 +2,7 @@
 
 //--|🠋 Functions 🠋|--\\
 import { abbrView, abbrShade, abbrColor } from '../../components';
-import { stripBrackets, arabicToRoman, romanToArabic } from '../../../../scripts';
+import { stripBrackets, arabicToRoman, romanToArabic } from '../../../tools/conversions';
 //--|🠋 Default Starting Point 🠋|--\\
 /*--|🠋
 

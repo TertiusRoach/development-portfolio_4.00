@@ -8,7 +8,7 @@ import DivisionColourize from '../../../../../../components/Division/colourize/D
 
 //--|🠋 Functions 🠋|--\\
 import { toggleColors } from './RegisterFunctions';
-import { checkScreen } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
 
 interface InfoProps {
   info: {

@@ -3,7 +3,8 @@ import React, { useId, useRef } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Label_selection';
-import { loadAsset, stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadAsset } from '../../../tools/utilities';
 
 //--|🠊 AI Code: Review Please 2026-10-30 · <LabelSelect> + <LabelCombobox> + <LabelNumber>, picked by cases.type 🠈|--\\
 export interface TheseProps {

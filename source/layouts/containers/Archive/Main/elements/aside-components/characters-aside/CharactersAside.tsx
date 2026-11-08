@@ -7,7 +7,8 @@ import AsideCharacters from '../../../../../../components/Aside/characters/Aside
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets, checkScreen } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
+import { checkScreen } from '../../../../../../tools/synching';
 import { toggleColors } from './CharactersFunctions';
 
 interface InfoProps {

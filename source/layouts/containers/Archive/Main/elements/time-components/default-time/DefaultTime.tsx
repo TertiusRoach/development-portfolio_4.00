@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {

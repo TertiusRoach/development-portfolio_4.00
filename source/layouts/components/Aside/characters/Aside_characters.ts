@@ -1,6 +1,6 @@
 //--|🠊 Aside_characters.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../scripts';
+import { loadAsset } from '../../../tools/utilities';
 
 //--|🠋 Configure Container 🠋|--\\
 type StyleProps = {

@@ -1,7 +1,8 @@
 //--|🠊 Menu_swipe.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { abbrView, abbrShade, abbrColor } from '../../components';
-import { arabicToRoman, romanToArabic, showingBootstrap } from '../../../../scripts';
+import { showingBootstrap } from '../../../tools/components';
+import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {

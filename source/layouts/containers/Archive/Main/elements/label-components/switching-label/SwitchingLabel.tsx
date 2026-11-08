@@ -7,7 +7,7 @@ import LabelSelection from '../../../../../../components/Label/selection/Label.s
 import LabelSwitching from '../../../../../../components/Label/switching/Label.switching';
 
 //--|🠋 Functions 🠋|--\\
-import { checkScreen } from '../../../../../../../scripts';
+import { checkScreen } from '../../../../../../tools/synching';
 import { switchColors } from './SwitchingFunctions';
 
 interface InfoProps {

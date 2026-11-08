@@ -3,7 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 //--|🠋 Functions 🠋|--\\
 import createClass from './Label_switching';
-import { loadAsset, stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
+import { loadAsset } from '../../../tools/utilities';
 
 export interface TheseProps {
   info: {

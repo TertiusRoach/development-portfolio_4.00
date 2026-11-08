@@ -1,6 +1,6 @@
 //--|🠊 Button_stretch.ts 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 11:32 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
-import { stripBrackets } from '../../../../scripts';
+import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Button.stretch'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\

@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import SectionCharacters from '../../../../../../components/Section/characters/Section.characters';
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../../../../../scripts';
+import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
   info: {
