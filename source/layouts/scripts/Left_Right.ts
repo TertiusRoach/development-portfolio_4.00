@@ -29,7 +29,7 @@ export let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
   🠉|--*/
 };
 
-//--|🠊 3. Unfolded Functions 🠈|--\\\\
+//--|🠊 3. Unfolded Functions 🠈|--\\
 export let unfoldLeftbar = (pageName: string, blockName: 'leftbar') => {
   let leftbarElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   leftbarElement.classList.replace(leftbarElement.classList[leftbarElement.classList.length - 1], 'unfolded');

@@ -1,8 +1,8 @@
 //--|🠊 Menu_scroll.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { abbrView, abbrShade, abbrColor } from '../../components';
-import { showingBootstrap } from '../../../tools/components';
 import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
+import { showingBootstrap } from '../../../tools/frameworks';
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
@@ -19,7 +19,12 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
 
   //--|🠋 Step 1: Swipe Visible Window 🠋|--\\
-  const revealActiveTitle = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'vertical') => {
+  const revealActiveTitle = (
+    container: HTMLDivElement | null,
+    controller: HTMLMenuElement,
+    fullscreen: 'present' | 'missing',
+    orientation: 'vertical',
+  ) => {
     //--|🠊 Reveal Active Title 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
     switch (fullscreen) {
@@ -42,7 +47,12 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   };
 
   //--|🠋 Step 2: Scale Bootstrap Display 🠋|--\\
-  const assignBootstrapClasses = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'vertical') => {
+  const assignBootstrapClasses = (
+    container: HTMLDivElement | null,
+    controller: HTMLMenuElement,
+    fullscreen: 'present' | 'missing',
+    orientation: 'vertical',
+  ) => {
     //--|🠊 Assign Bootstrap Classes 🠈|--\\
     const controllerShowing = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
     let controllerBootstrap = controllerShowing.querySelectorAll('aside h3[class*="display"]') as NodeListOf<HTMLElement>;
@@ -58,7 +68,12 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
   };
 
   //--|🠋 Step 3: Mark Active Title 🠋|--\\
-  const emphasizeDefaultParameters = (container: HTMLDivElement, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'vertical') => {
+  const emphasizeDefaultParameters = (
+    container: HTMLDivElement,
+    controller: HTMLMenuElement,
+    fullscreen: 'present' | 'missing',
+    orientation: 'vertical',
+  ) => {
     //--|🠊 Emphasize Default Parameters 🠈|--\\
     const showingFullscreen = container.querySelector(`li[class*="fullscreen-${orientation}"]`) as HTMLLIElement;
     const showingController = controller.querySelector(`li[class*="showing-${orientation}"]`) as HTMLLIElement;
@@ -91,7 +106,12 @@ let revealButtons = (pageName: string, blockName: string, labelName: string, men
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
 
   //--|🠋 Step 1: Find Position 🠋|--\\
-  const retrievePositions = (container: HTMLDivElement | null, controller: HTMLMenuElement, fullscreen: 'present' | 'missing', orientation: 'vertical') => {
+  const retrievePositions = (
+    container: HTMLDivElement | null,
+    controller: HTMLMenuElement,
+    fullscreen: 'present' | 'missing',
+    orientation: 'vertical',
+  ) => {
     let minimum: number = 0;
     let current: number = 1;
     let maximum: number = 2;
@@ -169,7 +189,13 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
 export default reloadElements;
 
 //--|🠋 Configures Headings 🠋|--\\
-export const scrollingFullscreen = (showTask: 'show-prev' | 'show-next', pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
+export const scrollingFullscreen = (
+  showTask: 'show-prev' | 'show-next',
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  menuAxis: 'vertical',
+): void => {
   switch (showTask) {
     case 'show-prev':
       return showPrev(pageName, blockName, labelName, menuAxis);
@@ -203,7 +229,10 @@ let showPrev = (pageName: string, blockName: string, labelName: string, menuAxis
         let nextSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]) - 1;
 
         showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
-        showingFullscreen.classList.replace(`fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`, `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`);
+        showingFullscreen.classList.replace(
+          `fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`,
+          `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`,
+        );
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -254,7 +283,10 @@ let showNext = (pageName: string, blockName: string, labelName: string, menuAxis
         let nextSlide: number = romanToArabic(showingFullscreen.classList[0].split('_')[1]) + 1;
 
         showingControl.classList.replace(`showing-${menuAxis}_${arabicToRoman(prevTitle)}`, `showing-${menuAxis}_${arabicToRoman(nextTitle)}`);
-        showingFullscreen.classList.replace(`fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`, `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`);
+        showingFullscreen.classList.replace(
+          `fullscreen-${menuAxis}_${arabicToRoman(prevSlide)}`,
+          `fullscreen-${menuAxis}_${arabicToRoman(nextSlide)}`,
+        );
 
         prevShow.classList.replace('highlight', 'downplay');
         nextShow.classList.replace('downplay', 'highlight');
@@ -310,7 +342,13 @@ export function createClass(style: StyleProps): string {
   //--|🠊 Class Build for <MenuScroll> 🠈|--\\
   return `${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
 }
-export const previewButtons = (viewTask: 'view-prev' | 'view-next', pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
+export const previewButtons = (
+  viewTask: 'view-prev' | 'view-next',
+  pageName: string,
+  blockName: string,
+  labelName: string,
+  menuAxis: 'vertical',
+): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   let emphasisBlocker: string;
   switch (viewTask) {

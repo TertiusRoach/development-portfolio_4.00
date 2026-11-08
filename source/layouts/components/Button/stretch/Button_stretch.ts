@@ -1,5 +1,6 @@
 //--|🠊 Button_stretch.ts 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 11:32 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Button.stretch'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
@@ -8,7 +9,7 @@ function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <ButtonStretch> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, style.view);
-  const classClarity = createClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+  const classClarity = abbrClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 
   if (style.image == null) {
     return `${classLayout}_${classColor}_${classClarity}_alt`;
@@ -51,52 +52,11 @@ const createLayout = (size: TheseProps['style']['size'], view: TheseProps['style
 
   return `${classSize}_${classView}`;
 };
+//--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
 const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
-  const shadeMap: Record<TheseProps['style']['shade'], string> = {
-    //--|🠊 Map shade options to class abbreviations 🠈|--\\
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
-
-  const colorMap: Record<TheseProps['style']['color'], string> = {
-    //--|🠊 Map color options to class abbreviations 🠈|--\\
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(yellow)': 'yel',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-
-  const classShade = shadeMap[shade];
-  const classColor = colorMap[color];
-
-  if (!classShade || !classColor) {
-    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stripBrackets(color, '()')}) 🠈|`);
-  }
+  const classShade = abbrShade(shade);
+  const classColor = abbrColor(color);
 
   return `${classShade}_${classColor}`;
-};
-//--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
-const createClarity = (clarity: TheseProps['style']['clarity']): string => {
-  const clarityMap: Record<TheseProps['style']['clarity'], string> = {
-    //--|🠊 Map clarity options to class abbreviations 🠈|--\\
-    '⟨opaque⟩': 'opa',
-    '⟨lucid⟩': 'luc',
-  };
-
-  const classClarity = clarityMap[clarity];
-
-  if (!classClarity) {
-    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`|🠊 Error: Invalid ⟨${stripBrackets(clarity, '⟨⟩')}⟩ 🠈|`);
-  }
-
-  return classClarity;
 };
 export default createClass;

@@ -1,41 +1,16 @@
 //--|🠊 Form_register.ts 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/register/ 🠈|--\\
-import { stripBrackets } from '../../../tools/conversions';
+import { abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import type { TheseProps } from './Form.register'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 //--|🠊 color_def, e.g. mon_def 🠈|--\\
 function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <FormRegister> 🠈|--\\
-  const classColor = createColor(style.color);
+  const classColor = abbrColor(style.color); //--|🠈 AI Code: Review Please 2026-11-08 · The map lives in components.ts, shared by every component 🠈|--\\
 
   return `${classColor}_def`; //--|🠈 _def is a placeholder for now 🠈|--\\
 }
-
-//--|🠋 Generate Abbreviations 🠋|--\\
-const createColor = (color: TheseProps['style']['color']): string => {
-  const colorMap: Record<TheseProps['style']['color'], string> = {
-    //--|🠊 Map of color options to class abbreviations 🠈|--\\
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(yellow)': 'yel',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-  const classColor = colorMap[color];
-
-  if (!classColor) {
-    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`|🠊 Error: Invalid (${stripBrackets(color, '()')}) 🠈|`);
-  }
-
-  return classColor;
-};
 
 //--|🠋 Button Sizes 🠋|--\\
 export const defineButton = (button: 'login' | 'password'): { size: '<h6>' | '<p>'; view: '-right-' | '-icon-' } => {

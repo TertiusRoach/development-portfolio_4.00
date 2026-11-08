@@ -1,4 +1,4 @@
-//--|🠊 layouts/tools/components.ts 🠈|--\\
+//--|🠊 layouts/tools/frameworks.ts 🠈|--\\
 export function showingBootstrap(): string {
   let windowScreen: number = 0;
   let displayText: string = 'display-0';

@@ -46,7 +46,7 @@ export let collapseFooter = (pageName: string, blockName: 'footer') => {
   console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
 };
 
-//--|🠊 3. Unfolded Functions 🠈|--\\\\
+//--|🠊 3. Unfolded Functions 🠈|--\\
 export let unfoldHeader = (pageName: string, blockName: 'header') => {
   let headerElement = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
   headerElement.classList.replace(headerElement.classList[headerElement.classList.length - 1], 'unfolded');

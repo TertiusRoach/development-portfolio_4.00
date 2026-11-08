@@ -1,5 +1,6 @@
 //--|🠊 Section_demonstration.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { abbrShade, abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { loadAsset } from '../../../tools/utilities';
 //--|🠋 Demonstration Information 🠋|--\\
 export interface DemonstrationSelection {
@@ -47,25 +48,10 @@ function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' |
 }
 export const createClass = (style: StyleProps): string => {
   //--|🠊 Class Build for <SectionDemonstration> 🠈|--\\
-  const colorMap: Record<string, string> = {
-    //--|🠊 Color Abbr 🠈|--\\
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(yellow)': 'yel',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-  const shadeMap: Record<string, string> = {
-    //--|🠊 Shade Abbr 🠈|--\\
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
-  return `${shadeMap[style.shade]}_${colorMap[style.color]}`;
+  //--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
+  const classShade = abbrShade(style.shade);
+  const classColor = abbrColor(style.color);
+  return `${classShade}_${classColor}`;
 };
 export const randomApps = (selectApps: string | Array<string>): string => {
   if (typeof selectApps === 'string') {

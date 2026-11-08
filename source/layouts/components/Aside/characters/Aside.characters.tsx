@@ -9,7 +9,7 @@ import ButtonProfile from '../../Button/profile/Button.profile';
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;

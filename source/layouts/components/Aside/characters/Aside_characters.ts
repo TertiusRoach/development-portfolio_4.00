@@ -1,47 +1,21 @@
 //--|🠊 Aside_characters.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { loadAsset } from '../../../tools/utilities';
+import type { TheseProps } from './Aside.characters'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
 
-//--|🠋 Configure Container 🠋|--\\
-type StyleProps = {
-  view: '-left-' | '-right-';
-  shade: '~dark~' | '~light~';
-  clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
-};
-
-export function createClass(style: StyleProps): string {
+export function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <AsideCharacters> 🠈|--\\
   const viewMap: Record<string, string> = {
     //--|🠊 View Abbr 🠈|--\\
     '-left-': 'lef',
     '-right-': 'rig',
   };
-  const colorMap: Record<string, string> = {
-    //--|🠊 Color Abbr 🠈|--\\
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(yellow)': 'yel',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-  const shadeMap: Record<string, string> = {
-    //--|🠊 Shade Abbr 🠈|--\\
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
-  //--|🠊 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
-  const clarityMap: Record<string, string> = {
-    //--|🠊 Clarity Abbr 🠈|--\\
-    '⟨opaque⟩': 'opa',
-    '⟨lucid⟩': 'luc',
-  };
-  return `${viewMap[style.view]}_${shadeMap[style.shade]}_${colorMap[style.color]}_${clarityMap[style.clarity]}`; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-08 · Shade, colour and clarity maps live in components.ts, shared by every component 🠈|--\\
+  const classShade = abbrShade(style.shade);
+  const classColor = abbrColor(style.color);
+  const classClarity = abbrClarity(style.clarity);
+  return `${viewMap[style.view]}_${classShade}_${classColor}_${classClarity}`; //--|🠈 AI Code: Review Please 2026-10-31 12:27 🠈|--\\
 }
 
 interface CharacterSelection {

@@ -1,4 +1,5 @@
 //--|🠊 Label_textarea.ts 🠈|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Label.textarea'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
@@ -8,7 +9,7 @@ function createClass(style: TheseProps['style'], cases: TheseProps['cases']): st
   //--|🠊 Class Build for <LabelTextarea> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, cases.type, style.view);
-  const classClarity = createClarity(style.clarity);
+  const classClarity = abbrClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 
   return `${classLayout}_${classColor}_${classClarity}_def`; //--|🠈 _def is a placeholder for now 🠈|--\\
 }
@@ -52,52 +53,12 @@ const createLayout = (size: TheseProps['style']['size'], type: TheseProps['cases
 
   return `${classSize}_${classType}_${classView}`;
 };
+//--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
 const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
-  const shadeMap: Record<TheseProps['style']['shade'], string> = {
-    //--|🠊 Map shade options to class abbreviations 🠈|--\\
-    '~dark~': 'dar',
-    '~light~': 'lig',
-  };
-
-  const colorMap: Record<TheseProps['style']['color'], string> = {
-    //--|🠊 Map color options to class abbreviations 🠈|--\\
-    '(mono)': 'mon',
-    '(red)': 'red',
-    '(green)': 'gre',
-    '(blue)': 'blu',
-    '(purple)': 'pur',
-    '(orange)': 'ora',
-    '(pink)': 'pin',
-    '(yellow)': 'yel',
-    '(brown)': 'bro',
-    '(turquoise)': 'tur',
-  };
-
-  const classShade = shadeMap[shade];
-  const classColor = colorMap[color];
-
-  if (!classShade || !classColor) {
-    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ or (${stripBrackets(color, '()')}) 🠈|`);
-  }
+  const classShade = abbrShade(shade);
+  const classColor = abbrColor(color);
 
   return `${classShade}_${classColor}`;
-};
-const createClarity = (clarity: TheseProps['style']['clarity']): string => {
-  const clarityMap: Record<TheseProps['style']['clarity'], string> = {
-    //--|🠊 Map clarity options to class abbreviations 🠈|--\\
-    '⟨opaque⟩': 'opa',
-    '⟨lucid⟩': 'luc',
-  };
-
-  const classClarity = clarityMap[clarity];
-
-  if (!classClarity) {
-    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
-    throw new Error(`|🠊 Error: Invalid ⟨${stripBrackets(clarity, '⟨⟩')}⟩ 🠈|`);
-  }
-
-  return classClarity;
 };
 //--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
 export const previewParent = (thisLabel: HTMLElement | null, thisGroup?: string): { group: string; input: string } => {

@@ -42,38 +42,70 @@ function eventListen(selector: string, execution: () => void) {
 }
 
 //--|🠋 Abbreviations 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-08 · Written out and checked like abbrShade, abbrColor and abbrClarity 🠈|--\\
 export const abbrAxis = (axis: '[x]' | '[y]'): string => {
-  const axisMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
+  const axisMap: Record<'[x]' | '[y]', string> = {
+    //--|🠊 Map axis options to class abbreviations 🠈|--\\
     '[x]': 'hori',
     '[y]': 'vert',
   };
 
   const classAxis = axisMap[axis];
 
-  return `${classAxis}`;
+  if (!classAxis) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid [${stripBrackets(axis, '[]')}] 🠈|`);
+  }
+
+  return classAxis;
 };
 export const abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '-mid-' | '-def-'): string => {
-  const classView = stripBrackets(view, '--');
+  const viewMap: Record<'-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' | '-mid-' | '-def-', string> = {
+    //--|🠊 Map view options to class abbreviations 🠈|--\\
+    '-top-': 'top',
+    '-rig-': 'rig',
+    '-bot-': 'bot',
+    '-lef-': 'lef',
+    '-cen-': 'cen',
+    '-mid-': 'mid',
+    '-def-': 'def',
+  };
 
-  return `${classView}`;
+  const classView = viewMap[view];
+
+  if (!classView) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid -${stripBrackets(view, '--')}- 🠈|`);
+  }
+
+  return classView;
 };
+//--|🠊 AI Code: Review Please 2026-11-08 · Shared by every component: shade, colour and clarity mean the same everywhere 🠈|--\\
 export const abbrShade = (shade: '~dark~' | '~light~'): string => {
-  const shadeMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
+  const shadeMap: Record<'~dark~' | '~light~', string> = {
+    //--|🠊 Map shade options to class abbreviations 🠈|--\\
     '~dark~': 'dar',
     '~light~': 'lig',
   };
 
   const classShade = shadeMap[shade];
 
-  return `${classShade}`;
+  if (!classShade) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid ~${stripBrackets(shade, '~~')}~ 🠈|`);
+  }
+
+  return classShade;
 };
 export const abbrColor = (
-  color: '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)' | '(mono)',
+  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)',
 ): string => {
-  const colorMap: Record<string, string> = {
-    //--|🠊 Map of types to abbreviations 🠈|--\\
+  const colorMap: Record<
+    '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)',
+    string
+  > = {
+    //--|🠊 Map color options to class abbreviations 🠈|--\\
+    '(mono)': 'mon',
     '(red)': 'red',
     '(green)': 'gre',
     '(blue)': 'blu',
@@ -83,12 +115,32 @@ export const abbrColor = (
     '(yellow)': 'yel',
     '(brown)': 'bro',
     '(turquoise)': 'tur',
-    '(mono)': 'mon',
   };
 
   const classColor = colorMap[color];
 
-  return `${classColor}`;
+  if (!classColor) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid (${stripBrackets(color, '()')}) 🠈|`);
+  }
+
+  return classColor;
+};
+export const abbrClarity = (clarity: '⟨opaque⟩' | '⟨lucid⟩'): string => {
+  const clarityMap: Record<'⟨opaque⟩' | '⟨lucid⟩', string> = {
+    //--|🠊 Map clarity options to class abbreviations 🠈|--\\
+    '⟨opaque⟩': 'opa',
+    '⟨lucid⟩': 'luc',
+  };
+
+  const classClarity = clarityMap[clarity];
+
+  if (!classClarity) {
+    //--|🠊 Optional: runtime check for invalid inputs 🠈|--\\
+    throw new Error(`|🠊 Error: Invalid ⟨${stripBrackets(clarity, '⟨⟩')}⟩ 🠈|`);
+  }
+
+  return classClarity;
 };
 
 export default eventListen; //--|🠈 Allows components to be linked 🠈|--\\

@@ -1,7 +1,25 @@
 //--|🠊 layouts/containers 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { expandHeader, expandFooter, collapseHeader, collapseFooter, unfoldHeader, unfoldFooter, squaringHeader, squaringFooter } from '../scripts/Head_Foot';
-import { expandLeftbar, expandRightbar, collapseLeftbar, collapseRightbar, unfoldLeftbar, unfoldRightbar, squaringLeftbar, squaringRightbar } from '../scripts/Left_Right';
+import {
+  expandHeader,
+  expandFooter,
+  collapseHeader,
+  collapseFooter,
+  unfoldHeader,
+  unfoldFooter,
+  squaringHeader,
+  squaringFooter,
+} from '../scripts/Head_Foot';
+import {
+  expandLeftbar,
+  expandRightbar,
+  collapseLeftbar,
+  collapseRightbar,
+  unfoldLeftbar,
+  unfoldRightbar,
+  squaringLeftbar,
+  squaringRightbar,
+} from '../scripts/Left_Right';
 import { expandOverlay, hidingOverlay, updateOverlay, loadingOverlay } from '../scripts/Main_Over';
 
 //--|🠋 Type Definitions 🠋|--\\
@@ -21,12 +39,12 @@ function blockViews(thisItem: HTMLElement, pageName: string, blockName: blockNam
         let lockBody = document.querySelector(`#${pageName}-${blockName}`)?.parentElement as HTMLDivElement;
         switch (!lockBody.className.includes('locked-body')) {
           case true:
-            return runHandlers(pageName, blockName, alterAction);
+            return errorHandlers(pageName, blockName, alterAction);
         }
       } else {
         if (toggleLocked) return;
         //--|===|--\\
-        runHandlers(pageName, blockName, alterAction);
+        errorHandlers(pageName, blockName, alterAction);
         lockedElement.className = `locked-${blockName} ${lockedElement.className}`;
         setTimeout(() => {
           lockedElement.classList.remove(`locked-${blockName}`);
@@ -68,7 +86,7 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
   },
 };
 //--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
-const runHandlers = (pageName: string, blockName: blockName, alterAction: alterAction) => {
+const errorHandlers = (pageName: string, blockName: blockName, alterAction: alterAction) => {
   try {
     return blockHandlers[blockName]?.[alterAction]?.(pageName);
   } catch (error) {
