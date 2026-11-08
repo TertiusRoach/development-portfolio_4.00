@@ -2,8 +2,10 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
+//--|🠋 Components 🠋|--\\
+
 //--|🠋 Functions 🠋|--\\
-import stripBrackets from '../../components';
+import { stripBrackets } from '../../../tools/conversions'; //--|🠈 AI Code: Review Please 2026-11-08 · Was the default import of ../../components, which is eventListen() 🠈|--\\
 
 interface TheseProps {
   info: {
@@ -14,7 +16,8 @@ interface TheseProps {
     shade: '~dark~' | '~light~';
   };
 }
-const DateString: React.FC<TheseProps> = ({ info, style }) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const: the main function of the file 🠈|--\\
+export function DateString({ info, style }: TheseProps) {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
 
@@ -26,5 +29,5 @@ const DateString: React.FC<TheseProps> = ({ info, style }) => {
       <span className="date">1st January 2000</span>
     </time>
   );
-};
+}
 export default DateString;

@@ -2,8 +2,9 @@
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
+//--|🠋 Components 🠋|--\\
+
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../components';
 
 interface TheseProps {
   info: {
@@ -11,7 +12,8 @@ interface TheseProps {
     blockName: string;
   };
 }
-const ClockCount: React.FC<TheseProps> = ({ info }) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the unused stripBrackets import (from the wrong file) is gone 🠈|--\\
+export function ClockCount({ info }: TheseProps) {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
 
@@ -22,5 +24,5 @@ const ClockCount: React.FC<TheseProps> = ({ info }) => {
       <span className="time">--:--</span>
     </time>
   );
-};
+}
 export default ClockCount;
