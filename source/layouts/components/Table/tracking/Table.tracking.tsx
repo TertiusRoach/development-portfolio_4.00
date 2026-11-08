@@ -9,7 +9,7 @@ interface TheseProps {
     labelName: string;
   };
 }
-const TableTracking: React.FC<TheseProps> = ({ info }) => {
+export function TableTracking({ info }: TheseProps) {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';
   const labelName: string = info.labelName as 'tracking';
@@ -222,5 +222,5 @@ const TableTracking: React.FC<TheseProps> = ({ info }) => {
       </tbody>
     </table>
   );
-};
+}
 export default TableTracking;

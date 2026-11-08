@@ -17,7 +17,7 @@ interface TheseProps {
     shade: Array<'~dark~' | '~light~'>;
     view: Array<'-left-' | '-right-' | '-center-' | '-text-'>;
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
     task: Array<{
@@ -30,7 +30,7 @@ interface TheseProps {
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function MenuToggle({ info, style, cases }: TheseProps): JSX.Element {
+export function MenuToggle({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;

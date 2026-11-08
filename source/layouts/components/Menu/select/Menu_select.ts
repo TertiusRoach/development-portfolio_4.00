@@ -1,8 +1,9 @@
 //--|🠊 Menu_select.ts 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { abbrView, abbrShade, abbrColor } from '../../components';
+import { abbrShade } from '../../components';
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../../tools/conversions';
+import type { TheseProps } from './Menu.select'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
 //--|🠋 Default Starting Point 🠋|--\\
 /*--|🠋
 
@@ -137,14 +138,6 @@ interface ChainedElements {
 
   fullscreen: HTMLDivElement | null;
 }
-interface StyleProps {
-  shade: '~dark~' | '~light~';
-  image: string | Array<string>;
-  size: '<h1>' | '<h4>' | '<p>' | Array<'<h1>' | '<h4>' | '<p>'>;
-  view: 'top-cen' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-cen';
-  color: Array<string> | '(mono)' | '(red)' | '(green)' | '(blue)';
-  align: '-top-' | '-rig-' | '-mid-' | '-cen-' | '-bot-' | '-lef-';
-}
 
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType = 'select';
@@ -164,9 +157,9 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
     controller,
   };
 }
-export function createClass(axis: '[x]' | '[y]', style: StyleProps): string {
+export function createClass(axis: '[x]' | '[y]', style: TheseProps['style']): string {
   //--|🠊 Class Build for <MenuSelect> 🠈|--\\
-  const viewClass: Record<StyleProps['view'], Record<'[x]' | '[y]', string>> = {
+  const viewClass: Record<TheseProps['style']['view'], Record<'[x]' | '[y]', string>> = {
     'bot-cen': { '[x]': `bot_${stripBrackets(style.align, '--')}`, '[y]': `rig_${stripBrackets(style.align, '--')}` },
     'top-cen': { '[x]': `top_${stripBrackets(style.align, '--')}`, '[y]': `lef_${stripBrackets(style.align, '--')}` },
     'mid-cen': { '[x]': `${stripBrackets(style.align, '--')}_cen`, '[y]': `${stripBrackets(style.align, '--')}_mid` },

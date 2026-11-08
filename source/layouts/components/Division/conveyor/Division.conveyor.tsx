@@ -23,7 +23,7 @@ type InfoProps = {
   labelName: string;
 };
 
-function DivisionConveyor({ info, cases }: TheseProps) {
+export function DivisionConveyor({ info, cases }: TheseProps) {
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
   const axisClass: Record<'[x]' | '[y]', string> = {
@@ -31,12 +31,12 @@ function DivisionConveyor({ info, cases }: TheseProps) {
     '[y]': 'vert-Y-axis',
   };
 
-  let pageName: string = info.pageName as string;
-  let blockName: string = info.blockName as string;
-  let labelName: string = info.labelName as string;
+  const pageName = info.pageName as string;
+  const blockName = info.blockName as string;
+  const labelName = info.labelName as string;
 
   useEffect(() => {
-    listenEvent(pageName, blockName, labelName);
+    return listenEvent(pageName, blockName, labelName); //--|🠈 AI Code: Review Please 2026-11-08 · Returned, so React stops the observer on unmount 🠈|--\\
   }, [pageName, blockName, labelName]);
 
   return (

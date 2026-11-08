@@ -9,6 +9,7 @@ import {
   unfoldFooter,
   squaringHeader,
   squaringFooter,
+  obnubilateMain,
 } from '../scripts/Head_Foot';
 import {
   expandLeftbar,
@@ -68,7 +69,7 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
   },
   overlay: {
     expanded: (pageName) => expandOverlay(pageName, 'overlay'),
-    collapsed: (pageName) => hidingOverlay(pageName, 'overlay'),
+    collapsed: (pageName) => hidingOverlay(pageName, 'overlay'), //--|🠈 Used in <Overlay> · obnubilateContainer(); 🠈|--\\
     update: (pageName) => updateOverlay(pageName, 'overlay'),
     loading: (pageName) => loadingOverlay(pageName, 'overlay'),
   },
@@ -88,7 +89,8 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
 //--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 const errorHandlers = (pageName: string, blockName: blockName, alterAction: alterAction) => {
   try {
-    return blockHandlers[blockName]?.[alterAction]?.(pageName);
+    blockHandlers[blockName]?.[alterAction]?.(pageName);
+    return obnubilateMain(pageName); //--|🠈 AI Code: Review Please 2026-11-08 · After every change, <main> follows the one rule 🠈|--\\
   } catch (error) {
     if (error instanceof ReferenceError) {
       //--|🠋 Main_Over.ts and containers.ts import each other: a handler ran before both finished loading 🠋|--\\

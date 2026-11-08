@@ -1,14 +1,12 @@
 //--|🠊 Figure.loading.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect, useState } from 'react';
-
-//--|🠋 Functions 🠋|--\\
-import { viewDisplay } from './Figure_loading';
-import { scrollTable } from '../../Table/clocking/Table_clocking';
+import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import ButtonDefault from '../../Button/default/Button.default';
-import ButtonRouting from '../../Button/routing/Button.routing';
+
+//--|🠋 Functions 🠋|--\\
+import { loadAsset } from '../../../tools/utilities';
+
 interface TheseProps<Names extends Info> {
   info: Names;
   style: {
@@ -24,7 +22,8 @@ interface Info {
   blockName: string;
   labelName?: 'loading' | 'signature' | 'tralogfin' | string;
 }
-const FigureLoading = <T extends Info>({ info, cases }: TheseProps<T>) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the GIFs load through loadAsset() 🠈|--\\
+export function FigureLoading<T extends Info>({ info }: TheseProps<T>) {
   const pageName: string = info.pageName as 'overtime';
   const blockName: string = info.blockName as 'overlay';
 
@@ -32,14 +31,14 @@ const FigureLoading = <T extends Info>({ info, cases }: TheseProps<T>) => {
 
   let svgPath: Record<string, Array<string>> = {
     signature: [
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/signature/1280x720%2C%2015fps/signature-dark.gif',
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/signature/1280x720%2C%2015fps/signature-medium.gif',
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/signature/1280x720%2C%2015fps/signature-light.gif',
+      loadAsset('-gif-', '/signature/1280x720%2C%2015fps/signature-dark'),
+      loadAsset('-gif-', '/signature/1280x720%2C%2015fps/signature-medium'),
+      loadAsset('-gif-', '/signature/1280x720%2C%2015fps/signature-light'),
     ],
     tralogfin: [
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black.gif',
+      loadAsset('-gif-', '/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_black'),
       '',
-      'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/gif-files/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white.gif',
+      loadAsset('-gif-', '/trinity-apps/1280x720%2C%2015fps/1280x720%2C%2015fps_white'),
     ],
   };
 
@@ -49,5 +48,5 @@ const FigureLoading = <T extends Info>({ info, cases }: TheseProps<T>) => {
       <img src={`${svgPath.signature[2]}`} alt="Loading" />
     </figure>
   );
-};
+}
 export default FigureLoading;

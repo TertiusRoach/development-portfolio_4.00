@@ -24,7 +24,7 @@ interface TheseProps {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-const DivisionColourize: React.FC<TheseProps> = ({ info, style, cases }) => {
+export function DivisionColourize({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -46,5 +46,5 @@ const DivisionColourize: React.FC<TheseProps> = ({ info, style, cases }) => {
       <LabelSwitching style={{ shade: style.shade, color: '(blue)', clarity: '⟨lucid⟩' }} cases={{ type: '{toggle}' }} info={{ pageName: pageName, blockName: blockName, labelName: labelName }} />
     </div>
   );
-};
+}
 export default DivisionColourize;

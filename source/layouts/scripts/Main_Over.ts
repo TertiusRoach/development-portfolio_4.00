@@ -1,6 +1,7 @@
 //--|🠊 layouts/scripts/Main_Over.ts 🠈|--\\
 //--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
+import { obnubilateMain } from './Head_Foot'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { asynchObserve } from '../tools/synching';
 
 //--|🠋 Class Changes 🠋|--\\
@@ -22,12 +23,12 @@ async function obnubilateContainer(pageName: string, blockName: string) {
             asynchObserve(`#${pageName}-rightbar`),
           ]);
           setTimeout(() => {
-            clearBlur(mainBlock, headBlock, footBlock, leftBlock, rightBlock);
+            clearBlur(pageName, headBlock, footBlock, leftBlock, rightBlock); //--|🠈 AI Code: Review Please 2026-11-08 · <main> is left to obnubilateMain() 🠈|--\\
           }, 250);
 
           setTimeout(() => {
             shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
-            overlayContainer.classList.replace(overlayContainer.classList[1], 'hidden');
+            blockViews(overlayContainer, pageName, 'overlay', 'collapsed'); //--|🠈 AI Code: Review Please 2026-11-08 · Hidden through hidingOverlay(), then <main> checks again 🠈|--\\
           }, 2750);
         }
       } finally {
@@ -67,26 +68,17 @@ const observeOverlay = (blockName: 'overlay') => {
 };
 
 //--|🠋 Effect Toggles 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-08 · <main> follows obnubilateMain(): blurred while the overlay is .loading/.update or any container is .expanded 🠈|--\\
 let clearBlur = async (
-  mainContainer: HTMLElement,
+  pageName: string,
   headerContainer: HTMLElement,
   footerContainer: HTMLElement,
   leftbarContainer: HTMLElement,
   rightbarContainer: HTMLElement,
 ) => {
-  //--|🠋 Confirm Orientation 🠋|--\\
-  const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
-  const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
-
   //--|🠋 Sharpen Containers 🠋|--\\
-  if (desktop && !headerContainer.className.includes('expanded')) {
-    mainContainer.classList.remove('obnubilate');
-  } else if (mobile && !footerContainer.className.includes('expanded')) {
-    mainContainer.classList.remove('obnubilate');
-  }
-
-  // mainContainer.classList.remove('obnubilate');
   [headerContainer, footerContainer, leftbarContainer, rightbarContainer].forEach((el) => el.classList.remove('obnubilate'));
+  obnubilateMain(pageName);
 };
 let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, leftbarContainer: HTMLElement, rightbarContainer: HTMLElement) => {
   const targets = [

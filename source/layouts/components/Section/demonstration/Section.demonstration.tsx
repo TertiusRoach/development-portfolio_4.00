@@ -1,14 +1,14 @@
 //--|🠊 Section.demonstration.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+
+//--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
 import returnInfo, { createClass, randomApps } from './Section_demonstration';
 
-//--|🠋 Components 🠋|--\\
-
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
-
-interface TheseProps {
+//--|🠊 AI Code: Review Please 2026-11-08 · Exported so Section_demonstration.ts reads the types instead of repeating them 🠈|--\\
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -16,14 +16,14 @@ interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
     apps: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | Array<string>;
   };
 }
 
-const SectionDemonstration: React.FC<TheseProps> = ({ info, style, cases }) => {
+export function SectionDemonstration({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -48,5 +48,5 @@ const SectionDemonstration: React.FC<TheseProps> = ({ info, style, cases }) => {
       </div>
     </section>
   );
-};
+}
 export default SectionDemonstration;

@@ -18,11 +18,11 @@ interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     view: '-top-' | '-bottom-' | '-left-' | '-right-' | '-center-' | '-text-' | '-icon-';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
 }
 
-const DivisionPlaceholder: React.FC<TheseProps> = ({ info, style }) => {
+export function DivisionPlaceholder({ info }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -30,5 +30,5 @@ const DivisionPlaceholder: React.FC<TheseProps> = ({ info, style }) => {
   useEffect(() => {}, [pageName, blockName, labelName]);
 
   return <div className={`${info.labelName}-${info.blockName}_division-placeholder`}></div>;
-};
+}
 export default DivisionPlaceholder;

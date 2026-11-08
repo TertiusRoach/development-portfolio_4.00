@@ -32,7 +32,7 @@ function Hyperlink() {
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3);
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3);
 
-    setTimeout(() => {
+    const entryTimer = setTimeout(() => {
       /*--|🠋
       
       🠉|--*/
@@ -47,6 +47,7 @@ function Hyperlink() {
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
+      clearTimeout(entryTimer); //--|🠈 AI Code: Review Please 2026-11-08 · The 60s entry-point log was the one timer never cleared 🠈|--\\
     };
   }, ['[hyperlink]', '<body>', '(default)']);
 
@@ -61,7 +62,7 @@ function Hyperlink() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-      //--|🟥|--\\
+      {/*--|🟥|--*/}
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <HyperlinkLeftbar info={{ pageName: '[hyperlink]', blockName: '<leftbar>', labelName: '(default)' }} />}
       </Suspense>

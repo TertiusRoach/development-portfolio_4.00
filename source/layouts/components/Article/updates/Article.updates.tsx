@@ -1,14 +1,14 @@
 //--|🠊 Article.updates.tsx 🠈|--\\
-
-//--|🠋 Functions 🠋|--\\
-import { createClass } from './Article_updates';
-
-//--|🠋 Components 🠋|--\\
-
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
-interface TheseProps {
+//--|🠋 Components 🠋|--\\
+
+//--|🠋 Functions 🠋|--\\
+import createClass, { createLayout } from './Article_updates';
+
+//--|🠊 AI Code: Review Please 2026-11-08 · Exported so Article_updates.ts reads the types instead of repeating them 🠈|--\\
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -17,7 +17,7 @@ interface TheseProps {
 
   style: {
     shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
     view: '-justify-' | '-center-' | '-left-' | '-right-';
     size: '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>';
   };
@@ -29,27 +29,14 @@ interface TheseProps {
   };
 }
 
-const ArticleUpdates: React.FC<TheseProps> = ({ info, style, cases }) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the size and view maps moved to createLayout() in Article_updates.ts 🠈|--\\
+export function ArticleUpdates({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
-  const sizeClass: Record<TheseProps['style']['size'], string> = {
-    '<h1>': 'one',
-    '<h2>': 'two',
-    '<h3>': 'thr',
-    '<h4>': 'fou',
-    '<h5>': 'fiv',
-    '<h6>': 'six',
-    '<p>': 'par',
-  };
-  const viewClass: Record<TheseProps['style']['view'], string> = {
-    '-left-': 'lef',
-    '-right-': 'rig',
-    '-center-': 'cen',
-    '-justify-': 'jus',
-  };
+
   return (
     <article className={`${info.labelName}-${info.blockName}_updates-default ${createClass(style)}`}>
       <div className="wrap-card">
@@ -63,9 +50,9 @@ const ArticleUpdates: React.FC<TheseProps> = ({ info, style, cases }) => {
           ></img>
         </span>
         <h1 className="title">{cases.title}</h1>
-        <p className={`description ${sizeClass[style.size]}_${viewClass[style.view]}`}>{cases.description}</p>
+        <p className={`description ${createLayout(style.size, style.view)}`}>{cases.description}</p>
       </div>
     </article>
   );
-};
+}
 export default ArticleUpdates;

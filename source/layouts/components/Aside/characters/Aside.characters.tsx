@@ -1,13 +1,13 @@
 //--|🠊 Aside.characters.tsx 🠈|--\\
-//--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../tools/utilities';
-import { createClass } from './Aside_characters';
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import ButtonProfile from '../../Button/profile/Button.profile';
 
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
+//--|🠋 Functions 🠋|--\\
+import createClass from './Aside_characters';
+import { loadAsset } from '../../../tools/utilities';
 
 export interface TheseProps {
   info: {
@@ -19,7 +19,7 @@ export interface TheseProps {
     view: '-left-' | '-right-';
     shade: '~dark~' | '~light~';
     clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases?: {
     task: [
@@ -34,7 +34,7 @@ export interface TheseProps {
   onMouseLeave?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-function AsideCharacters({ info, style, cases }: TheseProps) {
+export function AsideCharacters({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;

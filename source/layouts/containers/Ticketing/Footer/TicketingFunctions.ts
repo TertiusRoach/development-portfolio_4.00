@@ -70,13 +70,15 @@ export function expandFooters(thisItem: HTMLElement) {
   blockViews(thisItem, 'ticketing', 'footer', 'expanded');
   blockViews(thisItem, 'ticketing', 'rightbar', 'unfolded'); //--|🠈 The pair matches the page's load state 🠈|--\\
 }
+//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 export function squareFooters(thisItem: HTMLElement) {
-  const footerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   let rightbarElement = document.querySelector('#ticketing-rightbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
     case 'unfolded':
-      footerElement.className = `default-footer squaring`;
-      rightbarElement.className = `default-rightbar collapsed`;
+      thisItem.classList.remove('locked-footer'); //--|🠈 A deliberate leave wins over the unfold's lock 🠈|--\\
+      rightbarElement.classList.remove('locked-rightbar');
+      blockViews(thisItem, 'ticketing', 'footer', 'squaring');
+      blockViews(thisItem, 'ticketing', 'rightbar', 'collapsed');
       break;
   }
 }
@@ -89,7 +91,7 @@ export function freezeFooters(pageName: 'ticketing', styleView: 'bot-rig') {
   }
 }
 //--|===|--\\
-const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
+const selectCharacter = (_thisItem: HTMLElement, _pageName: string, _blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {

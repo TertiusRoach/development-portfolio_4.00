@@ -7,13 +7,15 @@ export function unfoldHeaders(thisItem: HTMLElement) {
     blockViews(thisItem, 'components', 'leftbar', 'unfolded');
   }
 }
+//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 export function squareHeaders(thisItem: HTMLElement) {
-  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
-  const leftbarElement = document.querySelector('#components-leftbar') as HTMLElement;
+  let leftbarElement = document.querySelector('#components-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
     case 'unfolded':
-      headerElement.className = `default-header squaring`;
-      leftbarElement.className = `default-leftbar collapsed`;
+      thisItem.classList.remove('locked-header'); //--|🠈 A deliberate leave wins over the hover's lock 🠈|--\\
+      leftbarElement.classList.remove('locked-leftbar');
+      blockViews(thisItem, 'components', 'header', 'squaring');
+      blockViews(thisItem, 'components', 'leftbar', 'collapsed');
       break;
   }
 }

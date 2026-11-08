@@ -32,7 +32,7 @@ function Landing() {
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3);
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3);
 
-    setTimeout(() => {
+    const entryTimer = setTimeout(() => {
       /*--|🠋
       
       🠉|--*/
@@ -47,6 +47,7 @@ function Landing() {
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
+      clearTimeout(entryTimer); //--|🠈 AI Code: Review Please 2026-11-08 · The 60s entry-point log was the one timer never cleared 🠈|--\\
     };
   }, []);
 
@@ -61,7 +62,7 @@ function Landing() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <LandingFooter info={{ pageName: '[landing]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-      //--|🟪|--\\
+      {/*--|🟪|--*/}
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <LandingLeftbar info={{ pageName: '[landing]', blockName: '<leftbar>', labelName: '(default)' }} />}
       </Suspense>

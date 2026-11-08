@@ -30,7 +30,7 @@ export const createEntry = (entry: Omit<Overtime, 'clientId' | 'synced'>): Overt
   workingData.TrackTime.push(newEntry);
   return newEntry;
 };
-export const readEntry = (entry: Omit<Overtime, 'clientId' | 'synced'>): Database => {
+export const readEntry = (_entry: Omit<Overtime, 'clientId' | 'synced'>): Database => {
   return workingData;
 };
 export const updateEntry = (clientId: string, changes: Partial<Overtime>): void => {

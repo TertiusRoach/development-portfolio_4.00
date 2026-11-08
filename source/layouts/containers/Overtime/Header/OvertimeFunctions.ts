@@ -70,13 +70,15 @@ export function expandHeaders(thisItem: HTMLElement) {
   blockViews(thisItem, 'overtime', 'header', 'expanded');
   blockViews(thisItem, 'overtime', 'leftbar', 'unfolded'); //--|🠈 The pair matches the page's load state 🠈|--\\
 }
+//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 export function squareHeaders(thisItem: HTMLElement) {
-  const headerElement = document.querySelector(`#${thisItem.id}`) as HTMLElement;
   let leftbarElement = document.querySelector('#overtime-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {
     case 'unfolded':
-      headerElement.className = `default-header squaring`;
-      leftbarElement.className = `default-leftbar collapsed`;
+      thisItem.classList.remove('locked-header'); //--|🠈 A deliberate leave wins over the hover's lock 🠈|--\\
+      leftbarElement.classList.remove('locked-leftbar');
+      blockViews(thisItem, 'overtime', 'header', 'squaring');
+      blockViews(thisItem, 'overtime', 'leftbar', 'collapsed');
       break;
   }
 }
@@ -89,7 +91,7 @@ export function freezeHeaders(pageName: 'overtime', styleView: 'top-lef') {
   }
 }
 //--|===|--\\
-const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
+const selectCharacter = (_thisItem: HTMLElement, _pageName: string, _blockName: string): void => {
   console.log('Select Profile...');
 };
 let sequencedDemonstration = (profile: string): string => {

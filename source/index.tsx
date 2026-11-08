@@ -24,7 +24,7 @@ import { EmailProvider } from './modules/context/EmailContext';
 import { PasswordProvider } from './modules/context/PasswordContext';
 
 //--|🠋 Functions 🠋|--\\
-const themeScheme = (colorScheme: 'light' | 'dark'): void => {
+const themeScheme = (_colorScheme: 'light' | 'dark'): void => {
   const element = document.getElementsByTagName('body')[0];
   const currentHour = new Date().getHours();
 

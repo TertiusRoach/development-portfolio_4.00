@@ -18,7 +18,7 @@ interface TheseProps {
     image: string | undefined;
     shade: '~dark~' | '~light~';
     view: 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef' | undefined;
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
     tasks?: {
@@ -37,7 +37,7 @@ interface TheseProps {
   onDoubleClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
 }
 
-function NavigationDefault({ info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
+export function NavigationDefault({ info, style, cases, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -169,10 +169,10 @@ const HorizontalButtons = (
   style: TheseProps['style'],
   cases: TheseProps['cases'],
   //--|===|--\\
-  onClick: TheseProps['onClick'],
-  onMouseEnter: TheseProps['onMouseEnter'],
-  onMouseLeave: TheseProps['onMouseLeave'],
-  onDoubleClick: TheseProps['onDoubleClick'],
+  _onClick: TheseProps['onClick'], //--|🠈 AI Code: Review Please 2026-11-08 · _ marks handlers passed in but not handed on to the Navigation* views yet 🠈|--\\
+  _onMouseEnter: TheseProps['onMouseEnter'],
+  _onMouseLeave: TheseProps['onMouseLeave'],
+  _onDoubleClick: TheseProps['onDoubleClick'],
 ) => {
   switch (info.blockName) {
     case 'main':

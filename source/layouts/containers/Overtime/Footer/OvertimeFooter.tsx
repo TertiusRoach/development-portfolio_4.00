@@ -148,7 +148,7 @@ function OvertimeFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view, container) => {
+                  onClick: (_view, container) => {
                     expandFooters(container);
                     synchDemo(pageName, blockName, 'pick');
                   },

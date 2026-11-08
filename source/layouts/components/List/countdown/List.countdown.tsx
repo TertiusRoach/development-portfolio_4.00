@@ -1,17 +1,14 @@
-// List.countdown.tsx
+//--|🠊 List.countdown.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--\\
-//--|🠋 Context 🠋|--\\
-//--|🠉 Context 🠉|--\\
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
 //--|🠋 Components 🠋|--\\
-//--|🠉 Components 🠉|--\\
+
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../scripts/landing';
+import { stripBrackets } from '../../../tools/conversions'; //--|🠈 AI Code: Review Please 2026-11-08 · scripts/landing no longer exists; viewBlock, viewText and axiosError were never used here 🠈|--\\
 import { scaleText, createSquare } from './List_countdown';
-import { viewBlock, viewText, axiosError } from '../../../scripts/landing';
-//--|🠉 Functions 🠉|--\\
+
 interface InfoProps {
   info: {
     pageName: '[landing]' | '[overtime]' | '[ticketing]' | '[hyperlink]' | string;
@@ -27,7 +24,8 @@ type Counters = {
   minutes: number;
   seconds: number;
 };
-const ListCountdown: React.FC<InfoProps> = ({ info }) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const: the main function of the file 🠈|--\\
+export function ListCountdown({ info }: InfoProps) {
   const pageName = stripBrackets(info.pageName, '[]') as 'landing';
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
 
@@ -62,8 +60,7 @@ const ListCountdown: React.FC<InfoProps> = ({ info }) => {
       </li>
     </ol>
   );
-};
-export default ListCountdown;
+}
 
 const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
   //--|🠋 Select the footer element with an ID containing "footer" 🠋|--\\
@@ -146,3 +143,4 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
     if (interval) clearInterval(interval); //--|🠈 Clear the countdown interval if it exists 🠈|--\\
   };
 };
+export default ListCountdown;

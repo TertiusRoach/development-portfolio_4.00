@@ -176,7 +176,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
 
   let styleShade = '~dark~' as '~dark~' | '~light~';
   let styleColor = '(mono)' as '(red)' | '(green)' | '(blue)' | '(mono)';
-  let styleView = 'def' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
+  let styleView = '-def-' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-'; //--|🠈 AI Code: Review Please 2026-11-08 · Was 'def': the cast hid it until abbrView() stopped stripping dashes 🠈|--\\
   return (
     <>
       {/*--|🠊 <Article> 🠈|--*/}

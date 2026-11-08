@@ -77,7 +77,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (view, container) => {
+                  onClick: (_view, container) => {
                     expandHeaders(container);
                     synchDemo(pageName, blockName, 'pick');
                   },

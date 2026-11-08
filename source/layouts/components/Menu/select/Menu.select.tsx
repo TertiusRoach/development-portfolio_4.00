@@ -9,7 +9,7 @@ import ButtonRouting from '../../Button/routing/Button.routing';
 import { stripBrackets } from '../../../tools/conversions';
 import reloadElements, { modifyControl, selectFullscreen, createClass } from './Menu_select';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -34,7 +34,7 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
-function MenuSelect({ info, style, cases }: TheseProps) {
+export function MenuSelect({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -43,8 +43,9 @@ function MenuSelect({ info, style, cases }: TheseProps) {
     /*--|🠋
 
     🠉|--*/
-    reloadElements(pageName, blockName, labelName);
     modifyControl(pageName, blockName, labelName, cases.axis);
+    //--|🠊 AI Code: Review Please 2026-11-08 · Returned like <MenuSwipe>, so the resize listener stops when this menu unmounts 🠈|--\\
+    return reloadElements(pageName, blockName, labelName);
   }, [pageName, blockName, labelName]);
 
   let ListStyle = axisList[cases.axis] as React.ElementType;

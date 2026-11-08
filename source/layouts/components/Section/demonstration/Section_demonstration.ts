@@ -2,6 +2,7 @@
 //--|🠋 Functions 🠋|--\\
 import { abbrShade, abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { loadAsset } from '../../../tools/utilities';
+import type { TheseProps } from './Section.demonstration'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
 //--|🠋 Demonstration Information 🠋|--\\
 export interface DemonstrationSelection {
   appName: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin';
@@ -9,10 +10,6 @@ export interface DemonstrationSelection {
   description: string;
 }
 //--|🠋 Configure Container 🠋|--\\
-type StyleProps = {
-  shade: '~dark~' | '~light~';
-  color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
-};
 function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin' | string): {
   appName: string;
   branding: string;
@@ -46,7 +43,7 @@ function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' |
       };
   }
 }
-export const createClass = (style: StyleProps): string => {
+export const createClass = (style: TheseProps['style']): string => {
   //--|🠊 Class Build for <SectionDemonstration> 🠈|--\\
   //--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
   const classShade = abbrShade(style.shade);

@@ -1,36 +1,33 @@
 //--|🠊 Figure.rotation.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import React, { useEffect, useState, createContext, useContext } from 'react';
-//--|🠉 Dependencies 🠉|--\\
-//--|🠋 Functions 🠋|--\\
-//--|🠉 Functions 🠉|--\\
-//--|🠋 Context 🠋|--\\
-//--|🠉 Context 🠉|--\\
+import React, { useEffect } from 'react';
+
 //--|🠋 Components 🠋|--\\
-//--|🠉 Components 🠉|--\\
-interface InfoProps {
+
+//--|🠋 Functions 🠋|--\\
+
+interface TheseProps {
   style: {
     fadeView: 'find-a-link' | 'track-a-day' | 'log-a-ticket' | 'test-a-fade';
   };
 }
-const FigureRotation: React.FC<InfoProps> = ({ style }) => {
+//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the z-indexes live in Figure.rotation.scss, not inline 🠈|--\\
+export function FigureRotation({ style }: TheseProps) {
   const fadeView = style.fadeView as 'find-a-link' | 'track-a-day' | 'log-a-ticket' | 'test-a-fade';
-
-  const handleRotation = async () => {};
 
   useEffect(() => {}, []);
 
   return (
     <figure className={`rotation-figure ${fadeView}`}>
-      <figcaption className="fade-left" style={{ zIndex: 4 }}></figcaption>
+      <figcaption className="fade-left"></figcaption>
 
-      <svg className="top-rig" style={{ zIndex: 3 }}></svg>
-      <svg className="bot-rig" style={{ zIndex: 2 }}></svg>
-      <svg className="bot-lef" style={{ zIndex: 1 }}></svg>
-      <svg className="top-lef" style={{ zIndex: 0 }}></svg>
+      <svg className="top-rig"></svg>
+      <svg className="bot-rig"></svg>
+      <svg className="bot-lef"></svg>
+      <svg className="top-lef"></svg>
 
-      <figcaption className="fade-right" style={{ zIndex: 4 }}></figcaption>
+      <figcaption className="fade-right"></figcaption>
     </figure>
   );
-};
+}
 export default FigureRotation;

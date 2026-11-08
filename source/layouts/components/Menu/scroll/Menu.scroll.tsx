@@ -10,7 +10,7 @@ import reloadElements, { modifyingController, previewButtons, scrollingFullscree
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -18,7 +18,7 @@ interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)';
     view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   };
   cases: {
@@ -30,7 +30,7 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
-function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
+export function MenuScroll({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
@@ -39,8 +39,9 @@ function MenuScroll({ info, style, cases }: TheseProps): JSX.Element {
     /*--|🠋
 
     🠉|--*/
-    reloadElements(pageName, blockName, labelName);
     modifyingController(pageName, blockName, labelName);
+    //--|🠊 AI Code: Review Please 2026-11-08 · Returned like <MenuSwipe>, so the resize listener stops when this menu unmounts 🠈|--\\
+    return reloadElements(pageName, blockName, labelName);
   }, [pageName, blockName, labelName]);
 
   let stateView = 'downplay' as 'downplay' | 'highlight';

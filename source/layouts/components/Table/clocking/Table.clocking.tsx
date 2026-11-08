@@ -9,7 +9,7 @@ interface TheseProps {
     labelName: string;
   };
 }
-const TableClocking: React.FC<TheseProps> = ({ info }) => {
+export function TableClocking({ info }: TheseProps) {
   const pageName: string = info.pageName as 'overtime';
   const blockName: string = info.blockName as 'leftbar';
   const labelName: string = info.labelName as 'clocking';
@@ -353,5 +353,5 @@ const TableClocking: React.FC<TheseProps> = ({ info }) => {
       </tbody>
     </table>
   );
-};
+}
 export default TableClocking;

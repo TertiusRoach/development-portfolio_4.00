@@ -1,7 +1,5 @@
 //--|🠊 Division_conveyor.ts 🠈|--\\
 
-import reloadElements from '../../Menu/swipe/Menu_swipe';
-
 function findSpot(fullscreen: HTMLLIElement, conveyor: HTMLLIElement): void {
   /*
   const fullscreen = document.querySelector(`#${pageName}-main .${labelName}-main_fullscreen-default li[class*="fullscreen"]`) as HTMLLIElement;
@@ -14,7 +12,8 @@ function findSpot(fullscreen: HTMLLIElement, conveyor: HTMLLIElement): void {
 }
 
 //--|🠋 Functions & Elements 🠋|--\\
-function listenEvent(pageName: string, blockName: string, labelName: string): void {
+//--|🠊 AI Code: Review Please 2026-11-08 · Returns a cleanup, so the observer stops when the conveyor unmounts on the flip 🠈|--\\
+function listenEvent(pageName: string, blockName: string, labelName: string): (() => void) | undefined {
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLLIElement;
   const conveyor = findTags(pageName, blockName, labelName).conveyor as HTMLLIElement;
   if (!fullscreen || !conveyor) {
@@ -29,6 +28,10 @@ function listenEvent(pageName: string, blockName: string, labelName: string): vo
     attributes: true,
     attributeFilter: ['class'],
   });
+
+  return () => {
+    observer.disconnect(); //--|🠈 Stop watching once this conveyor is gone 🠈|--\\
+  };
 }
 
 //--|🠋 Configures Buttons & Elements 🠋|--\\

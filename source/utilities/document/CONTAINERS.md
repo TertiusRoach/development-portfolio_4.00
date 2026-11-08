@@ -64,10 +64,10 @@ The four outer containers are coupled in two pairs, and a coupled pair always mo
 
 | Pair                      | Unfolds through                      | Freezes through                     |
 | ------------------------- | ------------------------------------ | ----------------------------------- |
-| `<header>` + `<leftbar>`  | `Header/${PageName}Functions.ts`     | `freezeToggle()` in `scripts/Header.ts` |
-| `<footer>` + `<rightbar>` | `Footer/${PageName}Functions.ts`     | `freezeToggle()` in `scripts/Footer.ts` |
+| `<header>` + `<leftbar>`  | `Header/${PageName}Functions.ts`     | `freezeContainer()` in `layouts/scripts/Head_Foot.ts` |
+| `<footer>` + `<rightbar>` | `Footer/${PageName}Functions.ts`     | `freezeContainer()` in `layouts/scripts/Head_Foot.ts` |
 
-`<main>` belongs to neither pair. It's where both pairs fold back: `revertBlocks()` in `scripts/Main.ts` squares the header and footer and collapses both bars in one go. `<overlay>` sits above all of them and isn't part of a pair.
+`<main>` belongs to neither pair. It's where both pairs fold back: `revertContainers()` in `layouts/scripts/Main_Over.ts` squares the header and footer and collapses both bars in one go. It's also the one container that blurs: `obnubilateMain()` in `layouts/scripts/Head_Foot.ts` gives it `obnubilate` while the overlay is `.loading` or `.update` or any of the other four is `.expanded`, and takes it away otherwise (see RULEBOOK.md, Functions Files). `<overlay>` sits above all of them and isn't part of a pair.
 
 The pairs never change. A header never unfolds with the right bar, and a footer never freezes the left bar.
 

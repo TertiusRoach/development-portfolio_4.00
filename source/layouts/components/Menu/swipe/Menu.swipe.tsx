@@ -10,7 +10,7 @@ import reloadElements, { modifyingController, previewButtons, swipingFullscreen,
 //--|🠋 Components 🠋|--\\
 import ButtonDefault from '../../Button/default/Button.default';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -18,7 +18,7 @@ interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    color: '(red)' | '(green)' | '(blue)' | '(mono)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)';
     view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
   };
   cases: {
@@ -30,7 +30,7 @@ interface TheseProps {
   onMouseEnter?: () => void;
 }
 
-function MenuSwipe({ info, style, cases }: TheseProps): JSX.Element {
+export function MenuSwipe({ info, style, cases }: TheseProps) {
   const pageName: string = info.pageName as string;
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;

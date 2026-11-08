@@ -3,6 +3,7 @@
 import { abbrView, abbrShade, abbrColor } from '../../components';
 import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
 import { showingBootstrap } from '../../../tools/frameworks';
+import type { TheseProps } from './Menu.swipe'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
@@ -315,11 +316,6 @@ interface ChainedElements {
 
   fullscreen: HTMLDivElement | null;
 }
-interface StyleProps {
-  shade: '~dark~' | '~light~';
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
-  view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
-}
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType = 'swipe';
   const container = `${pageName}-${blockName}`;
@@ -336,7 +332,7 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
     controller,
   };
 }
-export function createClass(style: StyleProps): string {
+export function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <MenuSwipe> 🠈|--\\
   return `${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
 }

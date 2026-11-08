@@ -17,11 +17,11 @@ interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
 }
 
-const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
+export function DivisionTesting({ info, style }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -148,5 +148,5 @@ const DivisionTesting: React.FC<TheseProps> = ({ info, style }) => {
       />
     </div>
   );
-};
+}
 export default DivisionTesting;

@@ -17,6 +17,7 @@ export let collapseLeftbar = (pageName: string, blockName: 'leftbar') => {
   /*--|🠋 Used in...
     <Main> · revertBlocks();
     <Overlay> · shrinkBlocks();
+    <Header> · squareHeaders();
   🠉|--*/
 };
 export let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
@@ -26,6 +27,7 @@ export let collapseRightbar = (pageName: string, blockName: 'rightbar') => {
   /*--|🠋 Used in...
     <Main> · revertBlocks();
     <Overlay> · shrinkBlocks();
+    <Footer> · squareFooters();
   🠉|--*/
 };
 

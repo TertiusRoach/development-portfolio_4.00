@@ -1,3 +1,5 @@
+//--|🠊 List_countdown.ts 🠈|--\\
+//--|🠊 The inline font-size and height below are measured at runtime, the one case the No Inline Styles rule allows 🠈|--\\
 export const scaleText = () => {
   let updateText = () => {
     //--|🠋 Define an array containing the time units we need to scale text for 🠋|--\\

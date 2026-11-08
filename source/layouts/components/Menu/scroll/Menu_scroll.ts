@@ -3,6 +3,7 @@
 import { abbrView, abbrShade, abbrColor } from '../../components';
 import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
 import { showingBootstrap } from '../../../tools/frameworks';
+import type { TheseProps } from './Menu.scroll'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
@@ -17,6 +18,7 @@ export const modifyingController = (pageName: string, blockName: string, labelNa
 let revealTitles = (pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
+  if (control === null) return; //--|🠈 AI Code: Review Please 2026-11-08 · A flip can unmount the menu before the 1500ms timer runs, like Menu_select's guard 🠈|--\\
 
   //--|🠋 Step 1: Swipe Visible Window 🠋|--\\
   const revealActiveTitle = (
@@ -104,6 +106,7 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
 let revealButtons = (pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
+  if (control === null) return; //--|🠈 AI Code: Review Please 2026-11-08 · A flip can unmount the menu before the 1500ms timer runs 🠈|--\\
 
   //--|🠋 Step 1: Find Position 🠋|--\\
   const retrievePositions = (
@@ -316,11 +319,6 @@ interface ChainedElements {
 
   fullscreen: HTMLDivElement | null;
 }
-interface StyleProps {
-  shade: '~dark~' | '~light~';
-  color: '(red)' | '(green)' | '(blue)' | '(mono)';
-  view: '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-';
-}
 
 function findTags(pageName: string, blockName: string, labelName: string): ChainedElements {
   const menuType = 'scroll';
@@ -338,7 +336,7 @@ function findTags(pageName: string, blockName: string, labelName: string): Chain
     controller,
   };
 }
-export function createClass(style: StyleProps): string {
+export function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <MenuScroll> 🠈|--\\
   return `${abbrView(style.view)}_${abbrShade(style.shade)}_${abbrColor(style.color)}`;
 }

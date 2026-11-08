@@ -32,7 +32,7 @@ function Ticketing() {
     const leftbarTimer = setTimeout(() => setLeftbar(true), 250 * 3);
     const rightbarTimer = setTimeout(() => setRightbar(true), 250 * 3);
 
-    setTimeout(() => {
+    const entryTimer = setTimeout(() => {
       /*--|🠋
       
       🠉|--*/
@@ -47,6 +47,7 @@ function Ticketing() {
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
+      clearTimeout(entryTimer); //--|🠈 AI Code: Review Please 2026-11-08 · The 60s entry-point log was the one timer never cleared 🠈|--\\
     };
   }, ['[ticketing]', '<body>', '(default)']);
 
@@ -61,7 +62,7 @@ function Ticketing() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <TicketingFooter info={{ pageName: '[ticketing]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-      //--|🟦|--\\
+      {/*--|🟦|--*/}
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <TicketingLeftbar info={{ pageName: '[ticketing]', blockName: '<leftbar>', labelName: '(default)' }} />}
       </Suspense>

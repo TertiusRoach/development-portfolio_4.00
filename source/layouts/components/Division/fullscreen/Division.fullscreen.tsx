@@ -24,7 +24,7 @@ type InfoProps = {
   blockName: string;
   labelName: string;
 };
-function DivisionFullscreen({ info, cases, onWheel }: TheseProps) {
+export function DivisionFullscreen({ info, cases, onWheel }: TheseProps) {
   //--|🠊 Checks [x] or [y] axis 🠈|--\\
   const CallList = ({ '[x]': 'ul', '[y]': 'ol' } as Record<'[x]' | '[y]', 'ul' | 'ol'>)[cases.axis];
   const parentAxis: Record<'[x]' | '[y]', string> = {

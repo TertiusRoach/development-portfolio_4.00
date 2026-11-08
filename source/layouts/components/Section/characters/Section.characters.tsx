@@ -1,15 +1,15 @@
 //--|🠊 Section.characters.tsx 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+
+//--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
 import returnProfile, { createClass } from './Section_characters';
 import type { CharacterSelection } from './Section_characters';
 
-//--|🠋 Components 🠋|--\\
-
-//--|🠋 Dependencies 🠋|--\\
-import React, { useEffect } from 'react';
-
-interface TheseProps {
+//--|🠊 AI Code: Review Please 2026-11-08 · Exported so Section_characters.ts reads the types instead of repeating them 🠈|--\\
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -17,7 +17,7 @@ interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(yellow)' | '(purple)' | '(orange)' | '(pink)' | '(brown)' | '(turquoise)';
+    color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
     characters:
@@ -46,7 +46,7 @@ interface TheseProps {
   };
 }
 
-const SectionCharacters: React.FC<TheseProps> = ({ info, style, cases }) => {
+export function SectionCharacters({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -97,5 +97,5 @@ const SectionCharacters: React.FC<TheseProps> = ({ info, style, cases }) => {
       </div>
     </section>
   );
-};
+}
 export default SectionCharacters;
