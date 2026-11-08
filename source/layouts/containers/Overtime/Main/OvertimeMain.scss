@@ -5,8 +5,22 @@
   //--|🠋 Desktop: Overtime Main 🠋|--\\
   //--|🠊 <main id="overtime-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
-    div[class*='testing'] {
-      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
+    div[class*='slides-main'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      overflow: clip; //--|🠈 Slides II and III wait off to the right; clip them so they never show or scroll 🠈|--\\
+      div.slides-main_container {
+        display: grid; //--|🠈 gridbox: one slide per view (grid-auto-columns: 100%) 🠈|--\\
+        div[class*='first-slide'] {
+          background: rgba(Palettes.$green-dark, 0.75);
+        }
+        div[class*='second-slide'] {
+          background: rgba(Palettes.$blue-dark, 0.75);
+        }
+        div[class*='third-slide'] {
+          background: rgba(Palettes.$purple-dark, 0.75);
+        }
+      }
     }
   }
 }
@@ -14,8 +28,22 @@
   //--|🠋 Mobile: Overtime Main 🠋|--\\
   //--|🠊 <main id="overtime-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
-    div[class*='testing'] {
-      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
+    div[class*='slides-main'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      overflow: clip; //--|🠈 Slides II and III wait off to the right; clip them so they never show or scroll 🠈|--\\
+      div.slides-main_container {
+        display: grid; //--|🠈 gridbox: one slide per view (grid-auto-columns: 100%) 🠈|--\\
+        div[class*='first-slide'] {
+          background: rgba(Palettes.$green-dark, 0.75);
+        }
+        div[class*='second-slide'] {
+          background: rgba(Palettes.$blue-dark, 0.75);
+        }
+        div[class*='third-slide'] {
+          background: rgba(Palettes.$purple-dark, 0.75);
+        }
+      }
     }
   }
 }

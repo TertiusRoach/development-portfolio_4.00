@@ -18,6 +18,7 @@ import { loadPages } from '../../../tools/navigation';
 import { checkScreen, synchDemo } from '../../../tools/synching';
 import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
+import { showSlides } from '../Main/OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
 
 //--|🠋 Database 🠋|--\\
 import TrackTime from '../../../../modules/server/MongoDB/testing/TrackTime';
@@ -219,11 +220,17 @@ function OvertimeFooter({ info }: InfoProps) {
               cases={{
                 task: [
                   {
-                    click: () => synchDemo(pageName, blockName, 'click'),
+                    click: () => {
+                      synchDemo(pageName, blockName, 'click');
+                      showSlides(pageName, 1); //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
+                    },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
                   },
                   {
-                    click: () => synchDemo(pageName, blockName, 'click'),
+                    click: () => {
+                      synchDemo(pageName, blockName, 'click');
+                      showSlides(pageName, 3); //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
+                    },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   },
                 ],

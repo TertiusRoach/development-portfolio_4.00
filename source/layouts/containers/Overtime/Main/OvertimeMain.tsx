@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionTesting from '../../../components/Division/testing/Division.testing';
+import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen'; //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
+import DivisionPlaceholder from '../../../components/Division/placeholder/Division.placeholder'; //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 import { revertContainers } from '../../../scripts/Main_Over';
@@ -30,6 +31,7 @@ function OvertimeMain({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let startingPreview = 2 as number; //--|🠊 AI Code: Review Please 2026-11-08 12:54 · II is the default, the demo toggle picks I or III 🠈|--\\
   let blurName: string = 'obnubilate';
   return (
     <main
@@ -43,15 +45,18 @@ function OvertimeMain({ info }: InfoProps) {
       }}
     >
       <section className={`${blockName}-foreground`}>
-        <DivisionTesting
-          info={{
-            pageName: pageName,
-            blockName: blockName,
-            labelName: labelName,
+        {/*--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--*/}
+        <DivisionFullscreen
+          //--|🠊 <div class="slides-main_fullscreen-default"/> 🠈|--\\
+          cases={{
+            axis: '[x]',
+            show: startingPreview as number,
+            call: OvertimeSlides as React.ComponentType<InfoProps>,
           }}
-          style={{
-            shade: '~dark~',
-            color: '(green)',
+          info={{
+            labelName: 'slides',
+            blockName: blockName as '<main>',
+            pageName: pageName as '[overtime]',
           }}
         />
       </section>
@@ -60,4 +65,50 @@ function OvertimeMain({ info }: InfoProps) {
     </main>
   );
 }
+//--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
+const OvertimeSlides: React.FC<InfoProps> = ({ info }) => {
+  const blockName = info.blockName as 'main';
+  const pageName = info.pageName as 'overtime';
+
+  return (
+    <>
+      <DivisionPlaceholder
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'first-slide' as string,
+        }}
+        style={{
+          view: '-center-',
+          shade: '~dark~',
+          color: '(green)',
+        }}
+      />
+      <DivisionPlaceholder
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'second-slide' as string,
+        }}
+        style={{
+          view: '-center-',
+          shade: '~dark~',
+          color: '(blue)',
+        }}
+      />
+      <DivisionPlaceholder
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: 'third-slide' as string,
+        }}
+        style={{
+          view: '-center-',
+          shade: '~dark~',
+          color: '(purple)',
+        }}
+      />
+    </>
+  );
+};
 export default OvertimeMain;
