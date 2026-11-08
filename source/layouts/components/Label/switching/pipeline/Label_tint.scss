@@ -413,10 +413,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$gray-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$gray-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -458,7 +458,6 @@
               inset 0 0 0.5em Palettes.$gray-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -504,10 +503,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$gray-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$gray-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -548,6 +547,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -887,10 +887,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$red-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$red-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -932,7 +932,6 @@
               inset 0 0 0.5em Palettes.$red-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -978,10 +977,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$red-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$red-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -1022,6 +1021,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -1361,10 +1361,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$green-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$green-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -1406,7 +1406,6 @@
               inset 0 0 0.5em Palettes.$green-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -1452,10 +1451,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$green-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$green-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -1496,6 +1495,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -1835,10 +1835,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$blue-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$blue-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -1880,7 +1880,6 @@
               inset 0 0 0.5em Palettes.$blue-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -1926,10 +1925,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$blue-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$blue-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -1970,6 +1969,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -2309,10 +2309,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$purple-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$purple-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -2354,7 +2354,6 @@
               inset 0 0 0.5em Palettes.$purple-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -2400,10 +2399,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$purple-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$purple-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -2444,6 +2443,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -2783,10 +2783,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$orange-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$orange-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -2828,7 +2828,6 @@
               inset 0 0 0.5em Palettes.$orange-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -2874,10 +2873,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$orange-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$orange-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -2918,6 +2917,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -3257,10 +3257,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$pink-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$pink-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -3302,7 +3302,6 @@
               inset 0 0 0.5em Palettes.$pink-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -3348,10 +3347,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$pink-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$pink-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -3392,6 +3391,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -3731,10 +3731,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$yellow-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$yellow-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -3776,7 +3776,6 @@
               inset 0 0 0.5em Palettes.$yellow-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -3822,10 +3821,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$yellow-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$yellow-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -3866,6 +3865,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -4205,10 +4205,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$brown-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$brown-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -4250,7 +4250,6 @@
               inset 0 0 0.5em Palettes.$brown-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -4296,10 +4295,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$brown-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$brown-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -4340,6 +4339,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
@@ -4679,10 +4679,10 @@
             inset 0 1px 2px rgba(#000, 0.2),
             0 0 0 1px Palettes.$turquoise-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-11-08 · ~dark~ knob: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$turquoise-medium;
-            box-shadow:
-              inset 0 0.125em 0.25em #000,
+            //--|🠊 AI Code: Review Please 2026-10-30 · Light knob on a light track, a thin dark edge keeps it standing out 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig;
+            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
+              inset 0 0 4px $blaDar,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -4724,7 +4724,6 @@
               inset 0 0 0.5em Palettes.$turquoise-medium;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp dark edge on the light knob 🠈|--\\
-              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $neoLig; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old light one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $blaDar,
                 0 1px 2px rgba(#000, 0.3),
@@ -4770,10 +4769,10 @@
             inset 0 1px 2px rgba(#000, 0.3),
             0 0 0 1px Palettes.$turquoise-medium;
           &::after {
-            //--|🠊 AI Code: Review Please 2026-10-30 · Dark knob on a dark track, a light edge keeps it standing out 🠈|--\\
-            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar;
-            box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A soft inset fade instead of a sharp line 🠈|--\\
-              inset 0 0 4px $neoLig,
+            //--|🠊 AI Code: Review Please 2026-11-08 · ~light~ knob synchs with ~dark~: the medium colour, sunk in by a black inset drop shadow 🠈|--\\
+            background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), Palettes.$turquoise-medium;
+            box-shadow:
+              inset 0 0.125em 0.25em #000,
               0 1px 2px rgba(#000, 0.3),
               0 2px 6px rgba(#000, 0.15);
           }
@@ -4814,6 +4813,7 @@
               inset 0 0.125em 0.25em $blaDar;
             &::after {
               //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ keeps the sharp light edge on the dark knob 🠈|--\\
+              background: linear-gradient(180deg, rgba(#fff, 0.22) 0%, rgba(#fff, 0) 50%), $blaDar; //--|🠈 AI Code: Review Please 2026-11-08 · ⟨lucid⟩'s knob went medium, ⟨opaque⟩ keeps the old dark one 🠈|--\\
               box-shadow:
                 inset 0 0 0 1px $neoLig,
                 0 1px 2px rgba(#000, 0.3),
