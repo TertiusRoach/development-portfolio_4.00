@@ -139,7 +139,7 @@ One document per version of a membership. A promotion, a demotion or a new shift
 | `contractMinutes` | O4's contract hours, in minutes, Monday to Sunday (ISO 8601). `[480, 480, 480, 480, 480, 0, 0]` is 8 hours on weekdays. A day above 0 is a contract day (R11, R17). `null` for freelancers |
 | `contractStartsAt` | When the contract day starts, in local time (`"22:00"` for Seamus's nights). With `contractMinutes`, it says exactly which hours are ordinary and which are overtime. `null` for freelancers |
 | `proposedById`, `proposedAt`, `acceptedAt` | Who offered this version, and when it was accepted (GUIDELINES Section 5) |
-| `endedAt`, `endedById`, `endReason` | `Replaced`, `Declined`, `Removed`, `AccountDeleted`, `CompanyDeleted` or `Forfeited` (a freelancer accepting Established status elsewhere) |
+| `endedAt`, `endedById`, `endReason` | `Replaced`, `Declined`, `Removed`, `AccountDeleted`, `CompanyDeleted`, `Forfeited` (a freelancer accepting Established status elsewhere) or `Left` (resigned or retired, by the person themselves; counts as turnover, R28) |
 
 **Reading the chain:**
 - Tasneem's three versions are Employee, then Manager with HoD, then night-shift co-owner, each proposed by Hammad.
@@ -165,6 +165,7 @@ Four kinds.
 | `date`, `start`, `end` | Shift, Overtime, Leave | What the tracker shows: `'YYYY-MM-DD'` and `'HH:MM'` in the worker's own time. A night shift's `date` is the day it started (O4) |
 | `startsAt`, `endsAt`, `minutes` | Shift, Overtime, Leave | The same moments in UTC, which the server counts by (R29), and how long in minutes |
 | `openedBy` | Shift | `ClockIn`, `DefaultDay` (Clocking Logic 1: a forgotten day filled from the contract) or `OpenedLate` (3: the time the app was opened) |
+| `addedAfterwards` | Overtime | Asked about at the next clock-in after a forgotten clock-out (O6). A reviewer can reject it without ghost hours, like offline time |
 | `ticketId` | Invoice | The confirmed ticket the solution delivered |
 | `offline` | Shift, Overtime | Recorded offline (GUIDELINES Section 12) |
 | `closedBy` | Shift | `ClockOut`, `DefaultClockOut` (Clocking Logic 2: a forgotten clock-out) or `CutOff` |
@@ -254,7 +255,7 @@ Freelancers have no contract (O4), so their pattern lives here, not in the data.
 
 Generated on 2026-11-09. Everything matched the predictions except these. Each one is either a bug or a wrong rule, waiting for the owner:
 
-1. **Voidspire's overtime is 66 hours, not 68.** Dale forgets to clock out every second Friday, and Clocking Logic 2 closes his day at the contract's end. The hour he stayed for the push disappears without a request, so he can't even get ghost hours for it. The default meant to protect the worker quietly erases his overtime.
+1. ~~Voidspire's overtime is 66 hours, not 68.~~ **Solved by O6.** Dale forgets to clock out every second Friday; the app now asks him at Monday's clock-in, and both hours come back as requests marked as added afterwards. The replay is 68 hours, as predicted.
 2. **The confirmers aren't split evenly:** Jane 69 and Malik 75, Hammad 60 and Tasneem 64, instead of 72 and 62 each. R24 sends every ticket a confirmer logged themselves to the other one, and the cooldown waited 9 times. Points and totals are unaffected; the even split in the baselines was a simplification.
 3. **The window is local, not UTC.** Kady, Aelin, Nyra and Elliot start Monday 2 November while it's still Sunday 1 November in UTC. The data is right (O4: a day belongs to the date it starts), so "2 to 29 November" means each person's own dates. Anything counting the window must use the person's date (`date` in TrackTime), not the UTC one.
 4. **Half a point lands after the window.** R33's cooldown made a few late-November confirms wait their 3 days, so Jane's 0.375 and Malik's 0.125 arrive on 30 November or later. Over the whole replay, everyone's points still add up to the predicted 542.875 (290.75 + 252.125) exactly: 542.375 inside the window plus 0.5 after it. The baselines should say "confirmed by" a date, not "within" the window.

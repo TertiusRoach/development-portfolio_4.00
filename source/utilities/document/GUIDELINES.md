@@ -302,7 +302,7 @@ A reviewer may split one request, for example approve two hours of a four-hour r
 
 Overtime that nobody reviews doesn't wait forever. **Six months after the overtime was worked**, an unreviewed request expires. The clock starts on the day the overtime was worked and never restarts.
 
-An expired request counts as rejected. Its hours become ghost hours for the employee **and the owner**, not for any HoD. The owner is the one who benefits from unpaid work, so ignoring a request can never be cheaper for them than answering it.
+An expired request counts as rejected. Its hours become ghost hours for the employee **and the owner**, and a quarter of them for each HoD who could have answered it (added 2026-11-09; `track-a-day.md` O7). The owner is the one who benefits from unpaid work, so ignoring a request can never be cheaper for them than answering it, and an HoD's silence is never free either.
 
 The six-month period is fixed for now. Country-specific periods are outside this baseline (Section 15).
 

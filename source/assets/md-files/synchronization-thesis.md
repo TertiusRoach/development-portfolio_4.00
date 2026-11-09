@@ -137,6 +137,11 @@ Every edge case raised so far has a draft restriction rule. None is in GUIDELINE
 | Owners earning more | 0.125 profit per timely confirm, to the owner on shift; taken from nobody | `log-a-ticket.md` R34 |
 | Refusing a junk fix | A confirmer declines it with a note, free; a second confirmer gets the next look | `log-a-ticket.md` R35 |
 | Provoking a Manager into deleting | A deletion marked as junk pays the sender nothing | `log-a-ticket.md` R36 |
+| Do points become money? | Never; money moves through approved overtime and invoices only | `log-a-ticket.md` Points, `track-a-day.md` O5 |
+| A forgotten clock-out | Asked about at the next clock-in; a yes is overtime added afterwards | `track-a-day.md` O6 |
+| An HoD who never answers overtime | A quarter of the expired hours as ghost hours | `track-a-day.md` O7 |
+| A boss taking work that isn't overdue | 0.125 to the holder, 0.125 ghost points to the boss | `log-a-ticket.md` R37 |
+| Resigning or retiring | `Left`, counted as the owner's turnover | `log-a-ticket.md` R28 |
 | Two owners | A founder and a night- or day-shift co-owner; the owner on shift carries the owner's weight | `tralogfin-database.md` Co-owners |
 | Same three people, again | 3 days before the rotation pairs them again, unless nobody else can | `log-a-ticket.md` R33 |
 | One person, two companies, two roles | One membership per company, each with its own role | `tralogfin-database.md` Why Memberships |

@@ -28,7 +28,7 @@ Voidspire starts as a cult of one and ends as the most ethical company in the wo
 
 **Act 2: The push pays, and the cult pays its members first.** Voidspire wins: 144 tickets to Silverveil's 124, 53.73% of the $10,000,000 pot. But look at who earned it. Every extra ticket paid its fixer 1 and its sender 0.75. Jane's profit is 0.125 a ticket, 18 points in all. Alaric ends the month on **44** points, Dale on 41.75 and Kady on 41. Jane, with every confirm and every profit, ends on 38.25. The cult earns its members more than its leader.
 
-**Act 3: The bill, addressed to Jane.** In May 2027, six months after it was worked, the overtime nobody answered expires (GUIDELINES Section 9). That's 66 hours: 68 asked for, minus the 2 that Dale's forgotten Friday clock-outs ate. It all becomes ghost hours for the workers and for Jane, never Malik. Meanwhile Seamus works to his contract and Daniel hands back a ticket every week, using nothing but their rights. That costs Voidspire 16 tickets, $260,668.49. Every exploit has left Jane's name on the record, where everyone can see it.
+**Act 3: The bill, addressed to Jane.** In May 2027, six months after it was worked, the overtime nobody answered expires (GUIDELINES Section 9). That's 68 hours, Dale's two forgotten Fridays included: the app asked him on Monday, and he said yes (O6). It all becomes ghost hours for the workers and for Jane, and a quarter of them, 17 hours, for Malik (O7). Meanwhile Seamus works to his contract and Daniel hands back a ticket every week, using nothing but their rights. That costs Voidspire 16 tickets, $260,668.49. Every exploit has left Jane's name on the record, where everyone can see it.
 
 **Act 4: The edge.** Jane does what she always does and pushes harder. Two confirmers handle about 160 tickets a month. Past that, every lapse turns her 0.125 profit into 0.125 lost profit (R8), a swing of 0.25 per ticket, while her people still get paid in full when the ticket confirms itself. At 184 tickets, the 24 extra earn her workers 42 points and cost Jane 3 points and 3 ghost points. Pushing past the edge doesn't take from her people. It takes from her and gives to them.
 
@@ -102,7 +102,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 - **Good at:** automation, data visualisation, reading a system for its loopholes.
 - **Falls apart when:** he has to deliver bad news face to face, without a chart to hide behind.
 - **Wants:** a portfolio impressive enough to leave and consult for whoever pays the most, Silverveil included.
-- **Tests:** Lets overtime expire instead of rejecting it, so the ghost hours land on the employee and Jane, never on him (§9). Tries to approve Conrad's overtime and can't, because only the owner approves a Manager (§6). Tries to approve Conrad's link proposal and can't either (§7).
+- **Tests:** Lets overtime expire instead of rejecting it, so the ghost hours land on the employee and Jane. Since O7, a quarter of them land on him too (§9). Tries to approve Conrad's overtime and can't, because only the owner approves a Manager (§6). Tries to approve Conrad's link proposal and can't either (§7).
 
 ## **03.** Dimitri Lewis
 

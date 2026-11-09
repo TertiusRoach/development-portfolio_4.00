@@ -33,7 +33,7 @@ The 4-week beats are in the test data (`defineDuties_TEST.json`), and every tick
 | When | Who (what they know) | The move | What answers it |
 | --- | --- | --- | --- |
 | Week 1 | Malik (Service Coordination & Technical Delivery) | Builds the trip-fund dashboard: Alaric's overtime pay plus Daniel's invoices | — |
-| Weeks 1 to 4 | Malik | Never reviews anyone's overtime, Alaric's 20 hours included. The HoD who could fund the trip is the one sitting on the money | GUIDELINES §9: expired overtime falls on the worker and the owner, never the HoD. Malik pays nothing. **Loophole D** |
+| Weeks 1 to 4 | Malik | Never reviews anyone's overtime, Alaric's 20 hours included. The HoD who could fund the trip is the one sitting on the money | Since O7, expired overtime puts a quarter of its hours on every HoD who could have answered it: 17 hours for Malik in May 2027. **Loophole D, closed** |
 | Weeks 1 to 4 | Daniel (Technical Documentation & Knowledge Services) | Hands back one Voidspire ticket a week, his quiet resistance (R21) | 4 invoices instead of 8: $2,400 instead of $4,800 into the fund. His own resistance costs the trip |
 | Week 3 | Alaric (Cybersecurity & Compliance) | Rebrands the trip as "a security conference" so Voidspire pays, and gets Conrad to submit it | It's one of Conrad's proposals. It waits for Jane forever (H1, H14) |
 | Week 4 | Malik | Updates the dashboard: $0 of overtime, $2,400 of invoices. Trip postponed | — |
@@ -61,20 +61,20 @@ The 4-week beats are in the test data (`defineDuties_TEST.json`), and every tick
 | --- | --- | --- | --- |
 | Week 1 | Elliot (Operational Systems Management) | Assigns Sipho a ticket while he's clocked out | The work waits for a clock-in (GUIDELINES §8), and its 7 days only start at Sipho's first clock-in (R11) |
 | Week 1 | Elliot | Keeps assigning | After 2 in a week, Sipho is "unavailable" (R21), never why |
-| Week 2 | Elliot | Takes easy tickets from Zuberi and Victor to fix himself, then talks about it on the next all-hands call | Allowed: a Manager can take any ticket, any time (R32). The workers lose the work and get nothing for it. **Loophole E** |
+| Week 2 | Elliot | Takes easy tickets from Zuberi and Victor to fix himself, then talks about it on the next all-hands call | Allowed, but it costs him: Zuberi and Victor each gain 0.125, and Elliot gains 0.125 ghost points per take (R37). **Loophole E, closed** |
 | Weeks 1 to 4 | Elliot | One 4-hour overtime request a week | Hammad splits each one 2 and 2: 8 hours approved, 8 ghost hours each (track-a-day.md baseline) |
 | Week 3 | Sipho | The bridge: carries Voidspire's gossip to Dimitri and Silverveil's to Kady, who uses it to steer people away from trouble | Kady's "ethical gossip". No rule reaches it, and none should |
 | Week 4 | Elliot | No crisis comes. Silverveil's prediction works too well | He falls apart, exactly as his card says |
 
-## Loopholes Found (Owner to Decide)
+## Loopholes Found
 
-| | Loophole | Who uses it | What could answer it |
+| | Loophole | Who uses it | Decided (owner, 2026-11-09) |
 | --- | --- | --- | --- |
-| **A** | **Favouritism by difficulty.** 1 ticket = 1 point, with no rating, so handing a favourite the easy tickets doesn't show | Conrad, for Kady | The owner's no-rating decision stands. Time-to-resolve could sit beside the points, but R7 forbids speed scores. Maybe the history is enough |
-| **B** | **The arsonist firefighter.** Fixing a problem you caused earns a full point | Victor | A ticket could name what it's about (an endpoint, a form), so the history shows who keeps fixing their own work. Or leave it to the confirmer's decline (R35) |
-| **C** | **Prevention is unpaid** unless it's logged as a ticket | Kady | Probably by design: log the preventive work, and it pays like any other ticket |
-| **D** | **An HoD's silence costs the HoD nothing.** Expired overtime falls on the worker and the owner | Malik | By design today (the owner chose that HoD). A mirror of R28, where the owner carries a quarter of a Manager's ghost points, would put a share on the HoD |
-| **E** | **A Manager harvests easy tickets** by taking them at any time | Elliot | Mirror R25: a boss who takes a ticket someone has held for 24 hours pays them 0.125, and takes 0.125 ghost points |
+| **A** | **Favouritism by difficulty.** 1 ticket = 1 point, with no rating, so handing a favourite the easy tickets doesn't show | Conrad, for Kady | **Stays as story.** Points never turn into money, so it steals recognition, not pay. The history shows who handed out what |
+| **B** | **The arsonist firefighter.** Fixing a problem you caused earns a full point | Victor | **Stays as story,** for the same reason. The confirmer can decline a fix that isn't real (R35) |
+| **C** | **Prevention is unpaid** unless it's logged as a ticket | Kady | **By design.** Log the preventive work, and it pays like any other ticket |
+| **D** | **An HoD's silence costs the HoD nothing.** Expired overtime falls on the worker and the owner | Malik | **Closed** by O7: a quarter of expired overtime falls on each HoD who could have answered it |
+| **E** | **A Manager harvests easy tickets** by taking them at any time | Elliot | **Closed** by R37: a boss's take of a ticket that isn't overdue pays the holder 0.125 and costs the boss 0.125 ghost points |
 
 ## Seven Years (Draft)
 
@@ -110,7 +110,7 @@ A full calendar cycle is 28 years (7 weekdays × the 4-year leap cycle), and 400
 | 50 to 52 (Dec) | Kady, Aelin | Kady's leave in week 50; Aelin's Christmas leave in week 52 approves itself, unanswered | R15, O1 |
 | 53 | Everyone | ISO week 53 of 2026 | The tracker's week navigation (TABLE.md Section 4) |
 | 1 (Jan 2027) | Everyone | Ghost links start again at 0 | The yearly reset |
-| 18 to 22 (May) | Jane, Malik, the pushed four | The 66 unanswered hours expire into ghost hours for them and Jane, never Malik | 6-month expiry, Act 3 |
+| 18 to 22 (May) | Jane, Malik, the pushed four | The 68 unanswered hours expire into ghost hours for them and Jane, and a quarter, 17 hours, for Malik (O7) | 6-month expiry, Act 3 |
 | 30 | Kady | Finds out about the easy tickets and asks Conrad for the hard ones (Loophole A) | Favouritism, if it's closed |
 
 ### Year 2: The Edge (Nov 2027 to Nov 2028)
@@ -170,5 +170,5 @@ A full calendar cycle is 28 years (7 weekdays × the 4-year leap cycle), and 400
 
 ### Found by the Seven Years
 
-1. **Nobody can leave voluntarily.** A membership's `endReason` is `Replaced`, `Declined`, `Removed`, `AccountDeleted`, `CompanyDeleted` or `Forfeited`. Malik resigning, Victor and Dale retiring, Daniel and Sipho dropping a company: none of them fits. Suggestion: add **`Left`**, ended by the person themselves. A gap, waiting for the owner.
+1. **Nobody can leave voluntarily.** A membership's `endReason` is `Replaced`, `Declined`, `Removed`, `AccountDeleted`, `CompanyDeleted` or `Forfeited`. Malik resigning, Victor and Dale retiring, Daniel and Sipho dropping a company: none of them fits. **Settled (owner, 2026-11-09):** `Left` was added, ended by the person themselves, and it counts as the owner's turnover (R28).
 2. **Month arithmetic needs the clamping rule above** written into the rules, or 29 February 2028 has no 24-month anniversary.

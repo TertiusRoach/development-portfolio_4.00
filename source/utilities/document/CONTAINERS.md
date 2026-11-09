@@ -176,7 +176,7 @@ _Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../assets/pdf-fil
 These rules come from the original planning and keep the record fair without making the user babysit it. When a rule is unclear, it leans toward the employee.
 
 1. **Forgot to log a past day:** the default working hours from the profile fill it in.
-2. **Clocked in during the morning but forgot to clock out:** the default clock-out time is used.
+2. **Clocked in during the morning but forgot to clock out:** the default clock-out time is used. The next clock-in asks whether they stayed late; a yes becomes an overtime request marked as added afterwards (`track-a-day.md` O6).
 3. **First opened the app in the afternoon without clocking in:** the current time becomes the clock-in time.
 4. **Both times already logged for today:** the left bar opens, because the user most likely wants a second shift or to change another week.
 

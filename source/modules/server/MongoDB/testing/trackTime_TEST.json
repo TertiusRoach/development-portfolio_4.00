@@ -24,6 +24,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -61,6 +62,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -98,6 +100,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -135,6 +138,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -172,6 +176,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -209,6 +214,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -246,6 +252,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -283,6 +290,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -320,6 +328,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -357,6 +366,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -394,6 +404,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -431,6 +442,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -468,6 +480,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -505,6 +518,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -542,6 +556,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -579,6 +594,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -616,6 +632,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -653,6 +670,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -690,6 +708,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -727,6 +746,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -764,6 +784,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -801,6 +822,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -838,6 +860,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -875,6 +898,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -912,6 +936,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -949,6 +974,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -986,6 +1012,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1023,6 +1050,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1060,6 +1088,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1097,6 +1126,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1134,6 +1164,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1171,6 +1202,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1208,6 +1240,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1245,6 +1278,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1282,6 +1316,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1319,6 +1354,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1356,6 +1392,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1393,6 +1430,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1430,6 +1468,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1467,6 +1506,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1504,6 +1544,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1541,6 +1582,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1578,6 +1620,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1615,6 +1658,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1652,6 +1696,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1689,6 +1734,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1726,6 +1772,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1763,6 +1810,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1800,6 +1848,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1837,6 +1886,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1874,6 +1924,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1911,6 +1962,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1948,6 +2000,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -1985,6 +2038,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2022,6 +2076,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2059,6 +2114,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2096,6 +2152,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2133,6 +2190,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2170,6 +2228,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2207,6 +2266,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2244,6 +2304,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2281,6 +2342,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2318,6 +2380,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2355,6 +2418,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2392,6 +2456,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2407,6 +2472,44 @@
     },
     {
       "_id": "6ae1a000898694d600000042",
+      "kind": "Overtime",
+      "organizationId": "6ae0aa00898694d607cf4001",
+      "employeeId": "6ae06f3e898694d607cf1577",
+      "clientId": "8314768a-2563-5d32-9c4c-bce091054d63",
+      "synced": true,
+      "status": "Pending",
+      "date": "2026-11-06",
+      "start": "16:00",
+      "end": "17:00",
+      "startsAt": "2026-11-06T15:00:00Z",
+      "endsAt": "2026-11-06T16:00:00Z",
+      "minutes": 60,
+      "offline": false,
+      "openedBy": null,
+      "closedBy": null,
+      "approvedMinutes": null,
+      "rejectedMinutes": null,
+      "reviewerId": null,
+      "decidedAt": null,
+      "decisionNote": null,
+      "laterApprovedById": null,
+      "laterApprovedAt": null,
+      "addedAfterwards": true,
+      "ticketId": null,
+      "title": null,
+      "priceCents": null,
+      "currency": null,
+      "quotedAt": null,
+      "acceptedById": null,
+      "acceptedAt": null,
+      "invoicedAt": null,
+      "paidAt": null,
+      "createdAt": "2026-11-09T07:00:00Z",
+      "updatedAt": null,
+      "archivedAt": null
+    },
+    {
+      "_id": "6ae1a000898694d600000043",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2429,6 +2532,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2443,7 +2547,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000043",
+      "_id": "6ae1a000898694d600000044",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2466,6 +2570,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2480,7 +2585,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000044",
+      "_id": "6ae1a000898694d600000045",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2503,6 +2608,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2517,7 +2623,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000045",
+      "_id": "6ae1a000898694d600000046",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2540,6 +2646,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2554,7 +2661,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000046",
+      "_id": "6ae1a000898694d600000047",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2577,6 +2684,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2591,7 +2699,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000047",
+      "_id": "6ae1a000898694d600000048",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2614,6 +2722,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2628,7 +2737,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000048",
+      "_id": "6ae1a000898694d600000049",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2651,6 +2760,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2665,7 +2775,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000049",
+      "_id": "6ae1a000898694d60000004a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2688,6 +2798,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2702,7 +2813,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004a",
+      "_id": "6ae1a000898694d60000004b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2725,6 +2836,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2739,7 +2851,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004b",
+      "_id": "6ae1a000898694d60000004c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2762,6 +2874,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2776,7 +2889,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004c",
+      "_id": "6ae1a000898694d60000004d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2799,6 +2912,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2813,7 +2927,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004d",
+      "_id": "6ae1a000898694d60000004e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2836,6 +2950,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2850,7 +2965,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004e",
+      "_id": "6ae1a000898694d60000004f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2873,6 +2988,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2887,7 +3003,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000004f",
+      "_id": "6ae1a000898694d600000050",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2910,6 +3026,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2924,7 +3041,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000050",
+      "_id": "6ae1a000898694d600000051",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2947,6 +3064,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2961,7 +3079,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000051",
+      "_id": "6ae1a000898694d600000052",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -2984,6 +3102,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -2998,7 +3117,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000052",
+      "_id": "6ae1a000898694d600000053",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3021,6 +3140,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3035,7 +3155,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000053",
+      "_id": "6ae1a000898694d600000054",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3058,6 +3178,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3072,7 +3193,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000054",
+      "_id": "6ae1a000898694d600000055",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3095,6 +3216,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3109,7 +3231,45 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000055",
+      "_id": "6ae1a000898694d600000056",
+      "kind": "Overtime",
+      "organizationId": "6ae0aa00898694d607cf4001",
+      "employeeId": "6ae06f3e898694d607cf1577",
+      "clientId": "56d3a6af-9ea0-5ef1-92b8-9c5cffa898c6",
+      "synced": true,
+      "status": "Pending",
+      "date": "2026-11-20",
+      "start": "16:00",
+      "end": "17:00",
+      "startsAt": "2026-11-20T15:00:00Z",
+      "endsAt": "2026-11-20T16:00:00Z",
+      "minutes": 60,
+      "offline": false,
+      "openedBy": null,
+      "closedBy": null,
+      "approvedMinutes": null,
+      "rejectedMinutes": null,
+      "reviewerId": null,
+      "decidedAt": null,
+      "decisionNote": null,
+      "laterApprovedById": null,
+      "laterApprovedAt": null,
+      "addedAfterwards": true,
+      "ticketId": null,
+      "title": null,
+      "priceCents": null,
+      "currency": null,
+      "quotedAt": null,
+      "acceptedById": null,
+      "acceptedAt": null,
+      "invoicedAt": null,
+      "paidAt": null,
+      "createdAt": "2026-11-23T07:00:00Z",
+      "updatedAt": null,
+      "archivedAt": null
+    },
+    {
+      "_id": "6ae1a000898694d600000057",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3132,6 +3292,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3146,7 +3307,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000056",
+      "_id": "6ae1a000898694d600000058",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3169,6 +3330,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3183,7 +3345,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000057",
+      "_id": "6ae1a000898694d600000059",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3206,6 +3368,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3220,7 +3383,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000058",
+      "_id": "6ae1a000898694d60000005a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3243,6 +3406,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3257,7 +3421,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000059",
+      "_id": "6ae1a000898694d60000005b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3280,6 +3444,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3294,7 +3459,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005a",
+      "_id": "6ae1a000898694d60000005c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3317,6 +3482,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3331,7 +3497,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005b",
+      "_id": "6ae1a000898694d60000005d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3354,6 +3520,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3368,7 +3535,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005c",
+      "_id": "6ae1a000898694d60000005e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3391,6 +3558,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3405,7 +3573,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005d",
+      "_id": "6ae1a000898694d60000005f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3428,6 +3596,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3442,7 +3611,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005e",
+      "_id": "6ae1a000898694d600000060",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f3e898694d607cf1577",
@@ -3465,6 +3634,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3479,7 +3649,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000005f",
+      "_id": "6ae1a000898694d600000061",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3502,6 +3672,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3516,7 +3687,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000060",
+      "_id": "6ae1a000898694d600000062",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3539,6 +3710,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3553,7 +3725,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000061",
+      "_id": "6ae1a000898694d600000063",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3576,6 +3748,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3590,7 +3763,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000062",
+      "_id": "6ae1a000898694d600000064",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3613,6 +3786,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3627,7 +3801,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000063",
+      "_id": "6ae1a000898694d600000065",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3650,6 +3824,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3664,7 +3839,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000064",
+      "_id": "6ae1a000898694d600000066",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3687,6 +3862,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3701,7 +3877,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000065",
+      "_id": "6ae1a000898694d600000067",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3724,6 +3900,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3738,7 +3915,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000066",
+      "_id": "6ae1a000898694d600000068",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3761,6 +3938,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3775,7 +3953,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000067",
+      "_id": "6ae1a000898694d600000069",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3798,6 +3976,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3812,7 +3991,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000068",
+      "_id": "6ae1a000898694d60000006a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3835,6 +4014,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3849,7 +4029,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000069",
+      "_id": "6ae1a000898694d60000006b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3872,6 +4052,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3886,7 +4067,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006a",
+      "_id": "6ae1a000898694d60000006c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3909,6 +4090,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3923,7 +4105,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006b",
+      "_id": "6ae1a000898694d60000006d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3946,6 +4128,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3960,7 +4143,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006c",
+      "_id": "6ae1a000898694d60000006e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -3983,6 +4166,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -3997,7 +4181,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006d",
+      "_id": "6ae1a000898694d60000006f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4020,6 +4204,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4034,7 +4219,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006e",
+      "_id": "6ae1a000898694d600000070",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4057,6 +4242,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4071,7 +4257,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000006f",
+      "_id": "6ae1a000898694d600000071",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4094,6 +4280,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4108,7 +4295,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000070",
+      "_id": "6ae1a000898694d600000072",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4131,6 +4318,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4145,7 +4333,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000071",
+      "_id": "6ae1a000898694d600000073",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4168,6 +4356,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4182,7 +4371,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000072",
+      "_id": "6ae1a000898694d600000074",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4205,6 +4394,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4219,7 +4409,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000073",
+      "_id": "6ae1a000898694d600000075",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4242,6 +4432,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4256,7 +4447,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000074",
+      "_id": "6ae1a000898694d600000076",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4279,6 +4470,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4293,7 +4485,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000075",
+      "_id": "6ae1a000898694d600000077",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4316,6 +4508,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4330,7 +4523,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000076",
+      "_id": "6ae1a000898694d600000078",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4353,6 +4546,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4367,7 +4561,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000077",
+      "_id": "6ae1a000898694d600000079",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4390,6 +4584,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4404,7 +4599,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000078",
+      "_id": "6ae1a000898694d60000007a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4427,6 +4622,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4441,7 +4637,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000079",
+      "_id": "6ae1a000898694d60000007b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4464,6 +4660,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4478,7 +4675,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007a",
+      "_id": "6ae1a000898694d60000007c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4501,6 +4698,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4515,7 +4713,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007b",
+      "_id": "6ae1a000898694d60000007d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4538,6 +4736,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4552,7 +4751,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007c",
+      "_id": "6ae1a000898694d60000007e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4575,6 +4774,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4589,7 +4789,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007d",
+      "_id": "6ae1a000898694d60000007f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4612,6 +4812,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4626,7 +4827,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007e",
+      "_id": "6ae1a000898694d600000080",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4649,6 +4850,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4663,7 +4865,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000007f",
+      "_id": "6ae1a000898694d600000081",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4686,6 +4888,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4700,7 +4903,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000080",
+      "_id": "6ae1a000898694d600000082",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4723,6 +4926,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4737,7 +4941,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000081",
+      "_id": "6ae1a000898694d600000083",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4760,6 +4964,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4774,7 +4979,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000082",
+      "_id": "6ae1a000898694d600000084",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4797,6 +5002,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4811,7 +5017,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000083",
+      "_id": "6ae1a000898694d600000085",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4834,6 +5040,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4848,7 +5055,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000084",
+      "_id": "6ae1a000898694d600000086",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4871,6 +5078,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4885,7 +5093,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000085",
+      "_id": "6ae1a000898694d600000087",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4908,6 +5116,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4922,7 +5131,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000086",
+      "_id": "6ae1a000898694d600000088",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06f8f898694d607cf1578",
@@ -4945,6 +5154,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4959,7 +5169,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000087",
+      "_id": "6ae1a000898694d600000089",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -4982,6 +5192,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -4996,7 +5207,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000088",
+      "_id": "6ae1a000898694d60000008a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5019,6 +5230,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5033,7 +5245,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000089",
+      "_id": "6ae1a000898694d60000008b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5056,6 +5268,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5070,7 +5283,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008a",
+      "_id": "6ae1a000898694d60000008c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5093,6 +5306,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5107,7 +5321,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008b",
+      "_id": "6ae1a000898694d60000008d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5130,6 +5344,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5144,7 +5359,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008c",
+      "_id": "6ae1a000898694d60000008e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5167,6 +5382,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5181,7 +5397,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008d",
+      "_id": "6ae1a000898694d60000008f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5204,6 +5420,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5218,7 +5435,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008e",
+      "_id": "6ae1a000898694d600000090",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5241,6 +5458,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5255,7 +5473,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000008f",
+      "_id": "6ae1a000898694d600000091",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5278,6 +5496,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5292,7 +5511,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000090",
+      "_id": "6ae1a000898694d600000092",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5315,6 +5534,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5329,7 +5549,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000091",
+      "_id": "6ae1a000898694d600000093",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5352,6 +5572,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5366,7 +5587,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000092",
+      "_id": "6ae1a000898694d600000094",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5389,6 +5610,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5403,7 +5625,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000093",
+      "_id": "6ae1a000898694d600000095",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5426,6 +5648,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5440,7 +5663,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000094",
+      "_id": "6ae1a000898694d600000096",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5463,6 +5686,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5477,7 +5701,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000095",
+      "_id": "6ae1a000898694d600000097",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5500,6 +5724,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5514,7 +5739,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000096",
+      "_id": "6ae1a000898694d600000098",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5537,6 +5762,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5551,7 +5777,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000097",
+      "_id": "6ae1a000898694d600000099",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5574,6 +5800,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5588,7 +5815,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000098",
+      "_id": "6ae1a000898694d60000009a",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5611,6 +5838,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5625,7 +5853,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000099",
+      "_id": "6ae1a000898694d60000009b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5648,6 +5876,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5662,7 +5891,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009a",
+      "_id": "6ae1a000898694d60000009c",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5685,6 +5914,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5699,7 +5929,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009b",
+      "_id": "6ae1a000898694d60000009d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5722,6 +5952,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5736,7 +5967,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009c",
+      "_id": "6ae1a000898694d60000009e",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5759,6 +5990,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5773,7 +6005,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009d",
+      "_id": "6ae1a000898694d60000009f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5796,6 +6028,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5810,7 +6043,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009e",
+      "_id": "6ae1a000898694d6000000a0",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5833,6 +6066,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5847,7 +6081,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000009f",
+      "_id": "6ae1a000898694d6000000a1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5870,6 +6104,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5884,7 +6119,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a0",
+      "_id": "6ae1a000898694d6000000a2",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5907,6 +6142,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5921,7 +6157,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a1",
+      "_id": "6ae1a000898694d6000000a3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5944,6 +6180,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5958,7 +6195,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a2",
+      "_id": "6ae1a000898694d6000000a4",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -5981,6 +6218,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -5995,7 +6233,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a3",
+      "_id": "6ae1a000898694d6000000a5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6018,6 +6256,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6032,7 +6271,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a4",
+      "_id": "6ae1a000898694d6000000a6",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6055,6 +6294,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6069,7 +6309,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a5",
+      "_id": "6ae1a000898694d6000000a7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6092,6 +6332,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6106,7 +6347,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a6",
+      "_id": "6ae1a000898694d6000000a8",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6129,6 +6370,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6143,7 +6385,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a7",
+      "_id": "6ae1a000898694d6000000a9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6166,6 +6408,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6180,7 +6423,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a8",
+      "_id": "6ae1a000898694d6000000aa",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6203,6 +6446,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6217,7 +6461,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000a9",
+      "_id": "6ae1a000898694d6000000ab",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6240,6 +6484,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6254,7 +6499,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000aa",
+      "_id": "6ae1a000898694d6000000ac",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6277,6 +6522,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6291,7 +6537,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ab",
+      "_id": "6ae1a000898694d6000000ad",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6314,6 +6560,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6328,7 +6575,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ac",
+      "_id": "6ae1a000898694d6000000ae",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6351,6 +6598,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6365,7 +6613,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ad",
+      "_id": "6ae1a000898694d6000000af",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6388,6 +6636,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6402,7 +6651,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ae",
+      "_id": "6ae1a000898694d6000000b0",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -6425,6 +6674,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6439,7 +6689,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000af",
+      "_id": "6ae1a000898694d6000000b1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6462,6 +6712,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6476,7 +6727,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b0",
+      "_id": "6ae1a000898694d6000000b2",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6499,6 +6750,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6513,7 +6765,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b1",
+      "_id": "6ae1a000898694d6000000b3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6536,6 +6788,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6550,7 +6803,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b2",
+      "_id": "6ae1a000898694d6000000b4",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6573,6 +6826,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6587,7 +6841,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b3",
+      "_id": "6ae1a000898694d6000000b5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6610,6 +6864,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6624,7 +6879,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b4",
+      "_id": "6ae1a000898694d6000000b6",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6647,6 +6902,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6661,7 +6917,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b5",
+      "_id": "6ae1a000898694d6000000b7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6684,6 +6940,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6698,7 +6955,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b6",
+      "_id": "6ae1a000898694d6000000b8",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6721,6 +6978,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6735,7 +6993,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b7",
+      "_id": "6ae1a000898694d6000000b9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6758,6 +7016,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6772,7 +7031,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b8",
+      "_id": "6ae1a000898694d6000000ba",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6795,6 +7054,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6809,7 +7069,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000b9",
+      "_id": "6ae1a000898694d6000000bb",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6832,6 +7092,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6846,7 +7107,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ba",
+      "_id": "6ae1a000898694d6000000bc",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6869,6 +7130,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6883,7 +7145,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000bb",
+      "_id": "6ae1a000898694d6000000bd",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6906,6 +7168,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6920,7 +7183,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000bc",
+      "_id": "6ae1a000898694d6000000be",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6943,6 +7206,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6957,7 +7221,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000bd",
+      "_id": "6ae1a000898694d6000000bf",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -6980,6 +7244,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -6994,7 +7259,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000be",
+      "_id": "6ae1a000898694d6000000c0",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -7017,6 +7282,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7031,7 +7297,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000bf",
+      "_id": "6ae1a000898694d6000000c1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -7054,6 +7320,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7068,7 +7335,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c0",
+      "_id": "6ae1a000898694d6000000c2",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -7091,6 +7358,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7105,7 +7373,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c1",
+      "_id": "6ae1a000898694d6000000c3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -7128,6 +7396,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7142,7 +7411,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c2",
+      "_id": "6ae1a000898694d6000000c4",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae078d1898694d607cf157c",
@@ -7165,6 +7434,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7179,7 +7449,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c3",
+      "_id": "6ae1a000898694d6000000c5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7202,6 +7472,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7216,7 +7487,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c4",
+      "_id": "6ae1a000898694d6000000c6",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7239,6 +7510,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7253,7 +7525,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c5",
+      "_id": "6ae1a000898694d6000000c7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7276,6 +7548,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7290,7 +7563,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c6",
+      "_id": "6ae1a000898694d6000000c8",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7313,6 +7586,7 @@
       "decisionNote": "Two hours were the incident; two were the speech about it.",
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7327,7 +7601,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c7",
+      "_id": "6ae1a000898694d6000000c9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7350,6 +7624,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7364,7 +7639,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c8",
+      "_id": "6ae1a000898694d6000000ca",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7387,6 +7662,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7401,7 +7677,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000c9",
+      "_id": "6ae1a000898694d6000000cb",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7424,6 +7700,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7438,7 +7715,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ca",
+      "_id": "6ae1a000898694d6000000cc",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7461,6 +7738,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7475,7 +7753,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000cb",
+      "_id": "6ae1a000898694d6000000cd",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7498,6 +7776,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7512,7 +7791,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000cc",
+      "_id": "6ae1a000898694d6000000ce",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7535,6 +7814,7 @@
       "decisionNote": "Two hours were the incident; two were the speech about it.",
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7549,7 +7829,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000cd",
+      "_id": "6ae1a000898694d6000000cf",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7572,6 +7852,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7586,7 +7867,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ce",
+      "_id": "6ae1a000898694d6000000d0",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7609,6 +7890,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7623,7 +7905,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000cf",
+      "_id": "6ae1a000898694d6000000d1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7646,6 +7928,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7660,7 +7943,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d0",
+      "_id": "6ae1a000898694d6000000d2",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7683,6 +7966,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7697,7 +7981,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d1",
+      "_id": "6ae1a000898694d6000000d3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7720,6 +8004,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7734,7 +8019,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d2",
+      "_id": "6ae1a000898694d6000000d4",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7757,6 +8042,7 @@
       "decisionNote": "Two hours were the incident; two were the speech about it.",
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7771,7 +8057,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d3",
+      "_id": "6ae1a000898694d6000000d5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7794,6 +8080,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7808,7 +8095,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d4",
+      "_id": "6ae1a000898694d6000000d6",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7831,6 +8118,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7845,7 +8133,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d5",
+      "_id": "6ae1a000898694d6000000d7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7868,6 +8156,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7882,7 +8171,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d6",
+      "_id": "6ae1a000898694d6000000d8",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7905,6 +8194,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7919,7 +8209,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d7",
+      "_id": "6ae1a000898694d6000000d9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7942,6 +8232,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7956,7 +8247,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d8",
+      "_id": "6ae1a000898694d6000000da",
       "kind": "Overtime",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -7979,6 +8270,7 @@
       "decisionNote": "Two hours were the incident; two were the speech about it.",
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -7993,7 +8285,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000d9",
+      "_id": "6ae1a000898694d6000000db",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -8016,6 +8308,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8030,7 +8323,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000da",
+      "_id": "6ae1a000898694d6000000dc",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07d64898694d607cf157f",
@@ -8053,6 +8346,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8067,7 +8361,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000db",
+      "_id": "6ae1a000898694d6000000dd",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8090,6 +8384,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8104,7 +8399,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000dc",
+      "_id": "6ae1a000898694d6000000de",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8127,6 +8422,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8141,7 +8437,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000dd",
+      "_id": "6ae1a000898694d6000000df",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8164,6 +8460,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8178,7 +8475,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000de",
+      "_id": "6ae1a000898694d6000000e0",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8201,6 +8498,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8215,7 +8513,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000df",
+      "_id": "6ae1a000898694d6000000e1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8238,6 +8536,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8252,7 +8551,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e0",
+      "_id": "6ae1a000898694d6000000e2",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8275,6 +8574,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8289,7 +8589,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e1",
+      "_id": "6ae1a000898694d6000000e3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8312,6 +8612,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8326,7 +8627,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e2",
+      "_id": "6ae1a000898694d6000000e4",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8349,6 +8650,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8363,7 +8665,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e3",
+      "_id": "6ae1a000898694d6000000e5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8386,6 +8688,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8400,7 +8703,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e4",
+      "_id": "6ae1a000898694d6000000e6",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8423,6 +8726,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8437,7 +8741,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e5",
+      "_id": "6ae1a000898694d6000000e7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8460,6 +8764,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8474,7 +8779,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e6",
+      "_id": "6ae1a000898694d6000000e8",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8497,6 +8802,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8511,7 +8817,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e7",
+      "_id": "6ae1a000898694d6000000e9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8534,6 +8840,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8548,7 +8855,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e8",
+      "_id": "6ae1a000898694d6000000ea",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8571,6 +8878,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8585,7 +8893,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000e9",
+      "_id": "6ae1a000898694d6000000eb",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8608,6 +8916,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8622,7 +8931,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ea",
+      "_id": "6ae1a000898694d6000000ec",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8645,6 +8954,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8659,7 +8969,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000eb",
+      "_id": "6ae1a000898694d6000000ed",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8682,6 +8992,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8696,7 +9007,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ec",
+      "_id": "6ae1a000898694d6000000ee",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8719,6 +9030,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8733,7 +9045,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ed",
+      "_id": "6ae1a000898694d6000000ef",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8756,6 +9068,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8770,7 +9083,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ee",
+      "_id": "6ae1a000898694d6000000f0",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae080de898694d607cf1581",
@@ -8793,6 +9106,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8807,7 +9121,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ef",
+      "_id": "6ae1a000898694d6000000f1",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -8830,6 +9144,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8844,7 +9159,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f0",
+      "_id": "6ae1a000898694d6000000f2",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -8867,6 +9182,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8881,7 +9197,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f1",
+      "_id": "6ae1a000898694d6000000f3",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -8904,6 +9220,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8918,7 +9235,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f2",
+      "_id": "6ae1a000898694d6000000f4",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -8941,6 +9258,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8955,7 +9273,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f3",
+      "_id": "6ae1a000898694d6000000f5",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -8978,6 +9296,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -8992,7 +9311,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f4",
+      "_id": "6ae1a000898694d6000000f6",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9015,6 +9334,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9029,7 +9349,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f5",
+      "_id": "6ae1a000898694d6000000f7",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9052,6 +9372,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9066,7 +9387,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f6",
+      "_id": "6ae1a000898694d6000000f8",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9089,6 +9410,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9103,7 +9425,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f7",
+      "_id": "6ae1a000898694d6000000f9",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9126,6 +9448,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9140,7 +9463,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f8",
+      "_id": "6ae1a000898694d6000000fa",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9163,6 +9486,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9177,7 +9501,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000f9",
+      "_id": "6ae1a000898694d6000000fb",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9200,6 +9524,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9214,7 +9539,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000fa",
+      "_id": "6ae1a000898694d6000000fc",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9237,6 +9562,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9251,7 +9577,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000fb",
+      "_id": "6ae1a000898694d6000000fd",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9274,6 +9600,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9288,7 +9615,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000fc",
+      "_id": "6ae1a000898694d6000000fe",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9311,6 +9638,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9325,7 +9653,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000fd",
+      "_id": "6ae1a000898694d6000000ff",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9348,6 +9676,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9362,7 +9691,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000fe",
+      "_id": "6ae1a000898694d600000100",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9385,6 +9714,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9399,7 +9729,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d6000000ff",
+      "_id": "6ae1a000898694d600000101",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9422,6 +9752,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9436,7 +9767,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000100",
+      "_id": "6ae1a000898694d600000102",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9459,6 +9790,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9473,7 +9805,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000101",
+      "_id": "6ae1a000898694d600000103",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9496,6 +9828,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9510,7 +9843,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000102",
+      "_id": "6ae1a000898694d600000104",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae082cb898694d607cf1582",
@@ -9533,6 +9866,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9547,7 +9881,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000103",
+      "_id": "6ae1a000898694d600000105",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9570,6 +9904,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9584,7 +9919,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000104",
+      "_id": "6ae1a000898694d600000106",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9607,6 +9942,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9621,7 +9957,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000105",
+      "_id": "6ae1a000898694d600000107",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9644,6 +9980,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9658,7 +9995,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000106",
+      "_id": "6ae1a000898694d600000108",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9681,6 +10018,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9695,7 +10033,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000107",
+      "_id": "6ae1a000898694d600000109",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9718,6 +10056,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9732,7 +10071,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000108",
+      "_id": "6ae1a000898694d60000010a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9755,6 +10094,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9769,7 +10109,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000109",
+      "_id": "6ae1a000898694d60000010b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9792,6 +10132,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9806,7 +10147,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010a",
+      "_id": "6ae1a000898694d60000010c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9829,6 +10170,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9843,7 +10185,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010b",
+      "_id": "6ae1a000898694d60000010d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9866,6 +10208,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9880,7 +10223,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010c",
+      "_id": "6ae1a000898694d60000010e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9903,6 +10246,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9917,7 +10261,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010d",
+      "_id": "6ae1a000898694d60000010f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9940,6 +10284,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9954,7 +10299,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010e",
+      "_id": "6ae1a000898694d600000110",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -9977,6 +10322,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -9991,7 +10337,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000010f",
+      "_id": "6ae1a000898694d600000111",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10014,6 +10360,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10028,7 +10375,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000110",
+      "_id": "6ae1a000898694d600000112",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10051,6 +10398,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10065,7 +10413,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000111",
+      "_id": "6ae1a000898694d600000113",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10088,6 +10436,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10102,7 +10451,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000112",
+      "_id": "6ae1a000898694d600000114",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10125,6 +10474,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10139,7 +10489,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000113",
+      "_id": "6ae1a000898694d600000115",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10162,6 +10512,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10176,7 +10527,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000114",
+      "_id": "6ae1a000898694d600000116",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10199,6 +10550,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10213,7 +10565,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000115",
+      "_id": "6ae1a000898694d600000117",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10236,6 +10588,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10250,7 +10603,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000116",
+      "_id": "6ae1a000898694d600000118",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0836a898694d607cf1583",
@@ -10273,6 +10626,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10287,7 +10641,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000117",
+      "_id": "6ae1a000898694d600000119",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10310,6 +10664,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10324,7 +10679,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000118",
+      "_id": "6ae1a000898694d60000011a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10347,6 +10702,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10361,7 +10717,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000119",
+      "_id": "6ae1a000898694d60000011b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10384,6 +10740,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10398,7 +10755,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011a",
+      "_id": "6ae1a000898694d60000011c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10421,6 +10778,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10435,7 +10793,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011b",
+      "_id": "6ae1a000898694d60000011d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10458,6 +10816,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10472,7 +10831,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011c",
+      "_id": "6ae1a000898694d60000011e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10495,6 +10854,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10509,7 +10869,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011d",
+      "_id": "6ae1a000898694d60000011f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10532,6 +10892,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10546,7 +10907,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011e",
+      "_id": "6ae1a000898694d600000120",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10569,6 +10930,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10583,7 +10945,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000011f",
+      "_id": "6ae1a000898694d600000121",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10606,6 +10968,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10620,7 +10983,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000120",
+      "_id": "6ae1a000898694d600000122",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10643,6 +11006,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10657,7 +11021,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000121",
+      "_id": "6ae1a000898694d600000123",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10680,6 +11044,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10694,7 +11059,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000122",
+      "_id": "6ae1a000898694d600000124",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10717,6 +11082,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10731,7 +11097,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000123",
+      "_id": "6ae1a000898694d600000125",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10754,6 +11120,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10768,7 +11135,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000124",
+      "_id": "6ae1a000898694d600000126",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10791,6 +11158,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10805,7 +11173,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000125",
+      "_id": "6ae1a000898694d600000127",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10828,6 +11196,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10842,7 +11211,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000126",
+      "_id": "6ae1a000898694d600000128",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10865,6 +11234,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10879,7 +11249,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000127",
+      "_id": "6ae1a000898694d600000129",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10902,6 +11272,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10916,7 +11287,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000128",
+      "_id": "6ae1a000898694d60000012a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10939,6 +11310,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10953,7 +11325,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000129",
+      "_id": "6ae1a000898694d60000012b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -10976,6 +11348,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -10990,7 +11363,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012a",
+      "_id": "6ae1a000898694d60000012c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae0866f898694d607cf1584",
@@ -11013,6 +11386,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11027,7 +11401,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012b",
+      "_id": "6ae1a000898694d60000012d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11050,6 +11424,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11064,7 +11439,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012c",
+      "_id": "6ae1a000898694d60000012e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11087,6 +11462,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11101,7 +11477,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012d",
+      "_id": "6ae1a000898694d60000012f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11124,6 +11500,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11138,7 +11515,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012e",
+      "_id": "6ae1a000898694d600000130",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11161,6 +11538,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11175,7 +11553,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000012f",
+      "_id": "6ae1a000898694d600000131",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11198,6 +11576,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11212,7 +11591,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000130",
+      "_id": "6ae1a000898694d600000132",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11235,6 +11614,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11249,7 +11629,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000131",
+      "_id": "6ae1a000898694d600000133",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11272,6 +11652,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11286,7 +11667,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000132",
+      "_id": "6ae1a000898694d600000134",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11309,6 +11690,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11323,7 +11705,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000133",
+      "_id": "6ae1a000898694d600000135",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11346,6 +11728,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11360,7 +11743,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000134",
+      "_id": "6ae1a000898694d600000136",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11383,6 +11766,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11397,7 +11781,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000135",
+      "_id": "6ae1a000898694d600000137",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11420,6 +11804,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11434,7 +11819,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000136",
+      "_id": "6ae1a000898694d600000138",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11457,6 +11842,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11471,7 +11857,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000137",
+      "_id": "6ae1a000898694d600000139",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11494,6 +11880,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11508,7 +11895,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000138",
+      "_id": "6ae1a000898694d60000013a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11531,6 +11918,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11545,7 +11933,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000139",
+      "_id": "6ae1a000898694d60000013b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11568,6 +11956,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11582,7 +11971,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013a",
+      "_id": "6ae1a000898694d60000013c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11605,6 +11994,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11619,7 +12009,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013b",
+      "_id": "6ae1a000898694d60000013d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11642,6 +12032,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11656,7 +12047,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013c",
+      "_id": "6ae1a000898694d60000013e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11679,6 +12070,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11693,7 +12085,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013d",
+      "_id": "6ae1a000898694d60000013f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11716,6 +12108,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11730,7 +12123,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013e",
+      "_id": "6ae1a000898694d600000140",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11753,6 +12146,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11767,7 +12161,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000013f",
+      "_id": "6ae1a000898694d600000141",
       "kind": "Leave",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae0768f898694d607cf157b",
@@ -11790,6 +12184,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11804,7 +12199,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000140",
+      "_id": "6ae1a000898694d600000142",
       "kind": "Leave",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae08782898694d607cf1585",
@@ -11827,6 +12222,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11841,7 +12237,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000141",
+      "_id": "6ae1a000898694d600000143",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -11864,6 +12260,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11878,7 +12275,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000142",
+      "_id": "6ae1a000898694d600000144",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -11901,6 +12298,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000467",
       "title": "Prototype: search index 3x faster",
       "priceCents": 125000,
@@ -11915,7 +12313,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000143",
+      "_id": "6ae1a000898694d600000145",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -11938,6 +12336,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -11952,7 +12351,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000144",
+      "_id": "6ae1a000898694d600000146",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -11975,6 +12374,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000046c",
       "title": "UPS battery 3 fails its self-test",
       "priceCents": 40000,
@@ -11989,7 +12389,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000145",
+      "_id": "6ae1a000898694d600000147",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12012,6 +12412,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12026,7 +12427,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000146",
+      "_id": "6ae1a000898694d600000148",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12049,6 +12450,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12063,7 +12465,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000147",
+      "_id": "6ae1a000898694d600000149",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12086,6 +12488,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000475",
       "title": "Prototype: tyre wear prediction for 3 trucks",
       "priceCents": 460000,
@@ -12100,7 +12503,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000148",
+      "_id": "6ae1a000898694d60000014a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12123,6 +12526,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12137,7 +12541,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000149",
+      "_id": "6ae1a000898694d60000014b",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12160,6 +12564,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000047a",
       "title": "Depot gate motor 3 jams in the cold",
       "priceCents": 147000,
@@ -12174,7 +12579,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014a",
+      "_id": "6ae1a000898694d60000014c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12197,6 +12602,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12211,7 +12617,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014b",
+      "_id": "6ae1a000898694d60000014d",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12234,6 +12640,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000047f",
       "title": "Fleet handbook chapter 3 out of date",
       "priceCents": 220000,
@@ -12248,7 +12655,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014c",
+      "_id": "6ae1a000898694d60000014e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12271,6 +12678,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12285,7 +12693,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014d",
+      "_id": "6ae1a000898694d60000014f",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12308,6 +12716,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000484",
       "title": "Prototype: offline mode for the field app, version 10",
       "priceCents": 125000,
@@ -12322,7 +12731,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014e",
+      "_id": "6ae1a000898694d600000150",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12345,6 +12754,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12359,7 +12769,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000014f",
+      "_id": "6ae1a000898694d600000151",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12382,6 +12792,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000489",
       "title": "API docs missing 10 new endpoints",
       "priceCents": 60000,
@@ -12396,7 +12807,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000150",
+      "_id": "6ae1a000898694d600000152",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12419,6 +12830,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12433,7 +12845,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000151",
+      "_id": "6ae1a000898694d600000153",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12456,6 +12868,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000048e",
       "title": "Prototype: bay sensor dashboard, version 10",
       "priceCents": 460000,
@@ -12470,7 +12883,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000152",
+      "_id": "6ae1a000898694d600000154",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12493,6 +12906,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12507,7 +12921,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000153",
+      "_id": "6ae1a000898694d600000155",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12530,6 +12944,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000493",
       "title": "Air conditioning alarm in rack row 10",
       "priceCents": 40000,
@@ -12544,7 +12959,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000154",
+      "_id": "6ae1a000898694d600000156",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12567,6 +12982,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12581,7 +12997,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000155",
+      "_id": "6ae1a000898694d600000157",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12604,6 +13020,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000498",
       "title": "Driver app help pages missing 10 screens",
       "priceCents": 220000,
@@ -12618,7 +13035,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000156",
+      "_id": "6ae1a000898694d600000158",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12641,6 +13058,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12655,7 +13073,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000157",
+      "_id": "6ae1a000898694d600000159",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12678,6 +13096,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000049d",
       "title": "Charging bay 10 trips its breaker",
       "priceCents": 147000,
@@ -12692,7 +13111,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000158",
+      "_id": "6ae1a000898694d60000015a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12715,6 +13134,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12729,7 +13149,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000159",
+      "_id": "6ae1a000898694d60000015b",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12752,6 +13172,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004a2",
       "title": "Prototype: streaming export for 17 thousand rows",
       "priceCents": 125000,
@@ -12766,7 +13187,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015a",
+      "_id": "6ae1a000898694d60000015c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12789,6 +13210,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12803,7 +13225,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015b",
+      "_id": "6ae1a000898694d60000015d",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12826,6 +13248,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004a7",
       "title": "Back door badge reader rejects badge 17",
       "priceCents": 40000,
@@ -12840,7 +13263,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015c",
+      "_id": "6ae1a000898694d60000015e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -12863,6 +13286,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12877,7 +13301,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015d",
+      "_id": "6ae1a000898694d60000015f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12900,6 +13324,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12914,7 +13339,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015e",
+      "_id": "6ae1a000898694d600000160",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -12937,6 +13362,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004b0",
       "title": "Prototype: tyre wear prediction for 17 trucks",
       "priceCents": 460000,
@@ -12951,7 +13377,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000015f",
+      "_id": "6ae1a000898694d600000161",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -12974,6 +13400,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -12988,7 +13415,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000160",
+      "_id": "6ae1a000898694d600000162",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13011,6 +13438,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004b5",
       "title": "Depot gate motor 17 jams in the cold",
       "priceCents": 147000,
@@ -13025,7 +13453,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000161",
+      "_id": "6ae1a000898694d600000163",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13048,6 +13476,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13062,7 +13491,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000162",
+      "_id": "6ae1a000898694d600000164",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13085,6 +13514,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004ba",
       "title": "Fleet handbook chapter 17 out of date",
       "priceCents": 220000,
@@ -13099,7 +13529,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000163",
+      "_id": "6ae1a000898694d600000165",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13122,6 +13552,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13136,7 +13567,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000164",
+      "_id": "6ae1a000898694d600000166",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13159,6 +13590,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004bf",
       "title": "Prototype: search index 24x faster",
       "priceCents": 125000,
@@ -13173,7 +13605,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000165",
+      "_id": "6ae1a000898694d600000167",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13196,6 +13628,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13210,7 +13643,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000166",
+      "_id": "6ae1a000898694d600000168",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13233,6 +13666,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004c4",
       "title": "API docs missing 24 new endpoints",
       "priceCents": 60000,
@@ -13247,7 +13681,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000167",
+      "_id": "6ae1a000898694d600000169",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13270,6 +13704,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13284,7 +13719,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000168",
+      "_id": "6ae1a000898694d60000016a",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13307,6 +13742,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004c9",
       "title": "Prototype: bay sensor dashboard, version 24",
       "priceCents": 460000,
@@ -13321,7 +13757,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000169",
+      "_id": "6ae1a000898694d60000016b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13344,6 +13780,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13358,7 +13795,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016a",
+      "_id": "6ae1a000898694d60000016c",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13381,6 +13818,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004ce",
       "title": "Generator test 24 days overdue",
       "priceCents": 40000,
@@ -13395,7 +13833,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016b",
+      "_id": "6ae1a000898694d60000016d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13418,6 +13856,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13432,7 +13871,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016c",
+      "_id": "6ae1a000898694d60000016e",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13455,6 +13894,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004d3",
       "title": "Driver app help pages missing 24 screens",
       "priceCents": 220000,
@@ -13469,7 +13909,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016d",
+      "_id": "6ae1a000898694d60000016f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13492,6 +13932,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13506,7 +13947,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016e",
+      "_id": "6ae1a000898694d600000170",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13529,6 +13970,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004d8",
       "title": "Charging bay 24 trips its breaker",
       "priceCents": 147000,
@@ -13543,7 +13985,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000016f",
+      "_id": "6ae1a000898694d600000171",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13566,6 +14008,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13580,7 +14023,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000170",
+      "_id": "6ae1a000898694d600000172",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13603,6 +14046,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004dd",
       "title": "Flaky test runner, run 3: prototype a fix",
       "priceCents": 125000,
@@ -13617,7 +14061,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000171",
+      "_id": "6ae1a000898694d600000173",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13640,6 +14084,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13654,7 +14099,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000172",
+      "_id": "6ae1a000898694d600000174",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13677,6 +14122,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004e2",
       "title": "UPS battery 8 fails its self-test",
       "priceCents": 40000,
@@ -13691,7 +14137,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000173",
+      "_id": "6ae1a000898694d600000175",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13714,6 +14160,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13728,7 +14175,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000174",
+      "_id": "6ae1a000898694d600000176",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13751,6 +14198,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13765,7 +14213,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000175",
+      "_id": "6ae1a000898694d600000177",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13788,6 +14236,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004eb",
       "title": "Prototype: tyre wear prediction for 8 trucks",
       "priceCents": 460000,
@@ -13802,7 +14251,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000176",
+      "_id": "6ae1a000898694d600000178",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13825,6 +14274,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13839,7 +14289,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000177",
+      "_id": "6ae1a000898694d600000179",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -13862,6 +14312,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004f0",
       "title": "Depot gate motor 8 jams in the cold",
       "priceCents": 147000,
@@ -13876,7 +14327,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000178",
+      "_id": "6ae1a000898694d60000017a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13899,6 +14350,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13913,7 +14365,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000179",
+      "_id": "6ae1a000898694d60000017b",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -13936,6 +14388,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004f5",
       "title": "Fleet handbook chapter 8 out of date",
       "priceCents": 220000,
@@ -13950,7 +14403,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017a",
+      "_id": "6ae1a000898694d60000017c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -13973,6 +14426,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -13987,7 +14441,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017b",
+      "_id": "6ae1a000898694d60000017d",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14010,6 +14464,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004fa",
       "title": "Export hangs on 100,000 rows",
       "priceCents": 125000,
@@ -14024,7 +14479,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017c",
+      "_id": "6ae1a000898694d60000017e",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14047,6 +14502,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14061,7 +14517,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017d",
+      "_id": "6ae1a000898694d60000017f",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14084,6 +14540,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d6000004ff",
       "title": "API docs missing 15 new endpoints",
       "priceCents": 60000,
@@ -14098,7 +14555,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017e",
+      "_id": "6ae1a000898694d600000180",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14121,6 +14578,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14135,7 +14593,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000017f",
+      "_id": "6ae1a000898694d600000181",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14158,6 +14616,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000504",
       "title": "Prototype: bay sensor dashboard, version 15",
       "priceCents": 460000,
@@ -14172,7 +14631,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000180",
+      "_id": "6ae1a000898694d600000182",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14195,6 +14654,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14209,7 +14669,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000181",
+      "_id": "6ae1a000898694d600000183",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14232,6 +14692,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000509",
       "title": "Air conditioning alarm in rack row 15",
       "priceCents": 40000,
@@ -14246,7 +14707,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000182",
+      "_id": "6ae1a000898694d600000184",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14269,6 +14730,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14283,7 +14745,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000183",
+      "_id": "6ae1a000898694d600000185",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14306,6 +14768,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000050e",
       "title": "Driver app help pages missing 15 screens",
       "priceCents": 220000,
@@ -14320,7 +14783,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000184",
+      "_id": "6ae1a000898694d600000186",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14343,6 +14806,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14357,7 +14821,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000185",
+      "_id": "6ae1a000898694d600000187",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14380,6 +14844,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000513",
       "title": "Charging bay 15 trips its breaker",
       "priceCents": 147000,
@@ -14394,7 +14859,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000186",
+      "_id": "6ae1a000898694d600000188",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14417,6 +14882,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14431,7 +14897,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000187",
+      "_id": "6ae1a000898694d600000189",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14454,6 +14920,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000518",
       "title": "Flaky test runner, run 17: prototype a fix",
       "priceCents": 125000,
@@ -14468,7 +14935,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000188",
+      "_id": "6ae1a000898694d60000018a",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14491,6 +14958,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14505,7 +14973,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000189",
+      "_id": "6ae1a000898694d60000018b",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14528,6 +14996,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000051d",
       "title": "Back door badge reader rejects badge 22",
       "priceCents": 40000,
@@ -14542,7 +15011,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018a",
+      "_id": "6ae1a000898694d60000018c",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14565,6 +15034,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14579,7 +15049,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018b",
+      "_id": "6ae1a000898694d60000018d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14602,6 +15072,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14616,7 +15087,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018c",
+      "_id": "6ae1a000898694d60000018e",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14639,6 +15110,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000526",
       "title": "Prototype: tyre wear prediction for 22 trucks",
       "priceCents": 460000,
@@ -14653,7 +15125,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018d",
+      "_id": "6ae1a000898694d60000018f",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14676,6 +15148,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14690,7 +15163,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018e",
+      "_id": "6ae1a000898694d600000190",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -14713,6 +15186,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000052b",
       "title": "Bay scanner 3 broken since the last endpoint fix",
       "priceCents": 147000,
@@ -14727,7 +15201,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000018f",
+      "_id": "6ae1a000898694d600000191",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14750,6 +15224,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14764,7 +15239,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000190",
+      "_id": "6ae1a000898694d600000192",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14787,6 +15262,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000530",
       "title": "Fleet handbook chapter 22 out of date",
       "priceCents": 220000,
@@ -14801,7 +15277,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000191",
+      "_id": "6ae1a000898694d600000193",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14824,6 +15300,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14838,7 +15315,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000192",
+      "_id": "6ae1a000898694d600000194",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14861,6 +15338,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000535",
       "title": "Export hangs on 240,000 rows",
       "priceCents": 125000,
@@ -14875,7 +15353,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000193",
+      "_id": "6ae1a000898694d600000195",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14898,6 +15376,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14912,7 +15391,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000194",
+      "_id": "6ae1a000898694d600000196",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07389898694d607cf157a",
@@ -14935,6 +15414,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000053a",
       "title": "API docs missing 6 new endpoints",
       "priceCents": 60000,
@@ -14949,7 +15429,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000195",
+      "_id": "6ae1a000898694d600000197",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -14972,6 +15452,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -14986,7 +15467,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000196",
+      "_id": "6ae1a000898694d600000198",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae06cb4898694d607cf1576",
@@ -15009,6 +15490,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000053f",
       "title": "Prototype: bay sensor dashboard, version 6",
       "priceCents": 460000,
@@ -15023,7 +15505,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000197",
+      "_id": "6ae1a000898694d600000199",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -15046,6 +15528,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -15060,7 +15543,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000198",
+      "_id": "6ae1a000898694d60000019a",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4001",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -15083,6 +15566,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000544",
       "title": "Generator test 6 days overdue",
       "priceCents": 40000,
@@ -15097,7 +15581,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d600000199",
+      "_id": "6ae1a000898694d60000019b",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -15120,6 +15604,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -15134,7 +15619,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000019a",
+      "_id": "6ae1a000898694d60000019c",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07389898694d607cf157a",
@@ -15157,6 +15642,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d600000549",
       "title": "Driver app help pages missing 6 screens",
       "priceCents": 220000,
@@ -15171,7 +15657,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000019b",
+      "_id": "6ae1a000898694d60000019d",
       "kind": "Shift",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -15194,6 +15680,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": null,
       "title": null,
       "priceCents": null,
@@ -15208,7 +15695,7 @@
       "archivedAt": null
     },
     {
-      "_id": "6ae1a000898694d60000019c",
+      "_id": "6ae1a000898694d60000019e",
       "kind": "Invoice",
       "organizationId": "6ae0aa00898694d607cf4002",
       "employeeId": "6ae07f79898694d607cf1580",
@@ -15231,6 +15718,7 @@
       "decisionNote": null,
       "laterApprovedById": null,
       "laterApprovedAt": null,
+      "addedAfterwards": false,
       "ticketId": "6ae1b2c4898694d60000054e",
       "title": "Bay scanner 10 broken since the last endpoint fix",
       "priceCents": 147000,

@@ -51,7 +51,7 @@ Overtime that someone refused to recognise. The full rules are GUIDELINES Sectio
 | --- | --- | --- |
 | An HoD or the owner rejects overtime | The worker and the reviewer | The exact rejected duration, for each |
 | Overtime is split | The worker and the reviewer | Only the rejected part |
-| Overtime goes 6 months without a review | The worker and the owner (never an HoD) | All of it |
+| Overtime goes 6 months without a review | The worker and the owner; each HoD who could have answered it | All of it; a quarter for each HoD (O7) |
 | A member is removed, or the company deleted, with overtime pending | The worker and the owner | All of it |
 | A rejection is later changed into an approval (O3) | Still recorded, marked "later approved" | Stops counting for the worker, keeps counting for the reviewer |
 
@@ -76,10 +76,10 @@ The `[archive]` backend test plays the same 28 days (20 working days, 2 to 29 No
 | Approved | 0 | 8 h | 8 h |
 | Rejected (ghost hours now) | 0 | 8 h: Elliot 8, Hammad 8 | 8 h each side |
 | **Pending on day 28** | **68 h** | **0** | **68 h** |
-| Ghost hours due when it expires (6 months) | 68 h for the workers (20, 20, 20, 8) and 68 h for Jane; Malik 0 | — | 68 h each side |
+| Ghost hours due when it expires (6 months) | 68 h for the workers (20, 20, 20, 8), 68 h for Jane, and 17 h for Malik, a quarter (O7) | — | 68 h each side |
 | Freelancer invoices (one per confirmed ticket) | 24 planned, 20 actual (Daniel hands one back each week) | 24 | 48 planned, 44 actual |
 
-- **Voidspire's bill arrives late, addressed to Jane.** Malik never reviews the Employees' overtime and Jane ignores Conrad's (only she can approve a Manager). Nothing shows for 6 months, then everything expires into ghost hours for the workers and Jane, never Malik (GUIDELINES Section 9). The exploitation looks free inside the 4 weeks, and that's the trap.
+- **Voidspire's bill arrives late, addressed to Jane.** Malik never reviews the Employees' overtime and Jane ignores Conrad's (only she can approve a Manager). Nothing shows for 6 months, then everything expires into ghost hours for the workers and Jane, and a quarter for Malik (O7). The exploitation looks free inside the 4 weeks, and that's the trap.
 - **Silverveil's bill is paid weekly.** Every request is decided the week it's made. Hammad splits each of Elliot's 4-hour requests 2 and 2: his overtime is real, but not all of it is necessary, and both of them carry the difference.
 - **Seamus asks for nothing.** He works his contract and stops (the quiet resistance in `log-a-ticket.md`, Two Strategies), so the push never reaches his hours.
 - **Freelancers make no overtime and no ghost hours** (GUIDELINES Section 9). Their invoices follow the solutions they delivered: a confirmed ticket is a delivered solution (R8). Prices are agreed per solution, so the test counts invoices, not money.
@@ -128,4 +128,6 @@ Written 2026-11-09 to close the gaps GUIDELINES leaves open, and confirmed by th
 - **O2. A request can be withdrawn until it's decided.** The worker can withdraw an overtime or leave request any time before a reviewer acts on it. Withdrawing makes no ghost hours and is kept in the history. The hours stay as worked time; they just aren't claimed as overtime. Asking again later doesn't restart the six-month expiry, which always counts from the day the overtime was worked.
 - **O3. Decisions only change in the worker's favour.** An approval is final. A rejection can be changed into an approval, once, by the same reviewer or the owner. The ghost hours stay (they're permanent, Section 9) and are marked "later approved", so the record still shows what happened. They stop counting towards the worker's total, but keep counting towards the reviewer's.
 - **O4. The ordinary workday is part of the membership.** When an Established worker joins, the owner proposes their contract hours per weekday, and the worker accepts them together with Established status (Section 5's confirmation). Declining the hours declines Established status, so nobody is ever Established without agreed hours. Overtime is any time beyond that day's contract hours. A change needs the worker's acceptance again and never applies to days already worked. Freelancers have no contract hours. The contract also sets when the day starts (`contractStartsAt`, local time), and a working day belongs to the date it starts: Seamus's Thursday 22:00 to Friday 06:00 is Thursday's contract day, and overtime is anything after 06:00 (owner, 2026-11-09). See `tralogfin-database.md`, The Cast's Schedules.
-- **O5. Points and hours are shown side by side, never combined.** The same rule as `[ticketing]`'s R7: no points-per-hour, no ranking, no speed score.
+- **O5. Points and hours are shown side by side, never combined.** The same rule as `[ticketing]`'s R7: no points-per-hour, no ranking, no speed score. Points never turn into money: money moves only through approved overtime and freelancer invoices (owner, 2026-11-09).
+- **O6. A forgotten clock-out is asked about.** When a day closes at the default clock-out (Clocking Logic 2), the next clock-in asks: *"You didn't clock out yesterday. Did you stay late?"* A yes becomes an overtime request marked as added afterwards (`addedAfterwards`), which a reviewer can reject without ghost hours, like offline time. The hour is never silently lost, and never silently claimed (owner, 2026-11-09). *Why: the default meant to protect the worker shouldn't erase his overtime.*
+- **O7. An HoD's silence isn't free.** When overtime expires unreviewed, each HoD who could have answered it gets a quarter of its hours as ghost hours, on top of the worker's and the owner's (GUIDELINES Section 9). Minutes stay whole: a quarter of an hour is 15 minutes (owner, 2026-11-09). *Why: Malik could let everything expire and pay nothing. Now his silence shows.*
