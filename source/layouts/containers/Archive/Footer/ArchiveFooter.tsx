@@ -60,7 +60,7 @@ function ArchiveFooter({ info }: InfoProps) {
               style={{
                 view: 'bot-rig',
                 shade: '~dark~',
-                color: '(mono)',
+                color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
                 image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,
               }}
               cases={{

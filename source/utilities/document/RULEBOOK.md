@@ -666,6 +666,8 @@ Every colour comes in five tones (`-dark`, `-medium`, `-light`, `-neon`, plus `-
 | On   | Off | On    | On   | Turquoise |
 | On   | On  | On    | On   | Mono      |
 
+**Every page opens orange,** the company's colour: Red and Green start on (`cases: { type: '{toggle}', mark: true }`), and the component's `useEffect` runs `cases.task` once on load with that tint, so the preview matches the toggles before anything is clicked. To open on another colour, change which toggles get `mark: true`.
+
 The map is `tintMap` in `components/Division/colourize/Division_colourize.ts`. It returns the colour's abbreviation (`mon`, `red`, `pin` …), and each layout decides what to do with it through `cases.task`:
 
 ```tsx
@@ -753,7 +755,7 @@ Work moves through the applications in phases, and a phase only opens when the o
 | The toggle menu's `text` and icons           | `Established` / `Freelancing`, `7.3.1/solid/briefcase` / `6.5.1/solid/messages-dollar` | `Manager` / `Employee`, `7.3.1/solid/user-tie` / `6.5.1/solid/user-helmet-safety` | `Specialist` / `Technician`, `7.3.1/solid/award` / `7.3.1/solid/screwdriver-wrench` |
 | The app menu (`<MenuSwipe>`)                 | TraLogFin, Log a Ticket, Find a Link         | Track a Day, TraLogFin, Find a Link          | Track a Day, Log a Ticket, TraLogFin         |
 
-Everything else stays `(mono)`: the toggle menu, and `<AsideCharacters>` (`(mono)` + `⟨opaque⟩`). Only the cards that represent the application carry its colour; the other colours are too flamboyant. In the app menu, TraLogFin takes the current application's own slot, so the three always run Track a Day → Log a Ticket → Find a Link. Its `color`, `image` and `task` lists follow that same order, in both the Header and the Footer. The toggle menu keeps `labelName: 'demonstration'` in every application, because the slide rules select on it.
+Everything else stays `(mono)`: the toggle menu, and `<AsideCharacters>` (`(mono)` + `⟨opaque⟩`). Only the cards that represent the application carry its colour; the other colours are too flamboyant. In the app menu, TraLogFin takes the current application's own slot, so the three always run Track a Day → Log a Ticket → Find a Link. The TraLogFin logo (`pick-a-page/trinity-apps`) is always `(orange)`, the company's colour, wherever it shows: that slot in the app menu, and the `<NavigationDefault>` logo on `[archive]` and `[landing]`. Its `color`, `image` and `task` lists follow that same order, in both the Header and the Footer. The toggle menu keeps `labelName: 'demonstration'` in every application, because the slide rules select on it.
 
 **How to copy.** Compare each file under `containers/Overtime/` with the copy's file, the names swapped:
 

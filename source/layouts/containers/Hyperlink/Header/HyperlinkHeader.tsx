@@ -261,7 +261,7 @@ function HyperlinkHeader({ info }: InfoProps) {
                 align: '-mid-',
                 view: 'top-cen',
                 shade: '~light~',
-                color: ['(green)', '(blue)', '(mono)'],
+                color: ['(green)', '(blue)', '(orange)'], //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
                 image: [
                   loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
                   loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),

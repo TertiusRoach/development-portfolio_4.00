@@ -91,7 +91,7 @@ function TicketingFooter({ info }: InfoProps) {
                 align: '-mid-',
                 view: 'bot-cen',
                 shade: '~dark~',
-                color: ['(green)', '(mono)', '(red)'],
+                color: ['(green)', '(orange)', '(red)'], //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
                 image: [
                   loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
                   loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),

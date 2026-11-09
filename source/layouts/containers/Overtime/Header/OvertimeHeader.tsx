@@ -272,7 +272,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 align: '-mid-',
                 view: 'top-cen',
                 shade: '~light~',
-                color: ['(mono)', '(blue)', '(red)'],
+                color: ['(orange)', '(blue)', '(red)'], //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
                 image: [
                   loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),
                   loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
