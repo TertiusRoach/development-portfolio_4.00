@@ -25,6 +25,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 7. **Don't "fix" deliberate design.** Check RULEBOOK.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
 8. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
 9. **Don't run Git commands that change history or the remote** (commit, push, tag, delete) unless asked.
+10. **Keep your own files out of the project.** Notes, scratch scripts and test renders go in `.claude-notes/` at the root, which is ignored by Git and hidden in the owner's VS Code. The ten dotfile lines and `.claude` at the bottom of `.gitignore` cover empty placeholders the Claude Code sandbox creates; leave them in. Hide things in VS Code through **User** settings only: `.vscode/settings.json` is committed (see EDITOR.md, Hiding Folders).
 
 ## Commands
 
