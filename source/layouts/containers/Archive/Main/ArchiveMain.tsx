@@ -20,9 +20,10 @@ import DivisionElements from './elements/division-components/DivisionElements';
 import NavigationElements from './elements/navigation-components/NavigationElements';
 
 //--|🠋 Functions 🠋|--\\
-import { revertContainers } from '../../../scripts/Main_Over';
-import { stripBrackets } from '../../../tools/conversions';
+import startingPreview from './ArchiveFunctions';
 import { checkScreen } from '../../../tools/synching';
+import { stripBrackets } from '../../../tools/conversions';
+import { revertContainers } from '../../../scripts/Main_Over';
 
 interface InfoProps {
   info: {
@@ -43,7 +44,8 @@ function ArchiveMain({ info }: InfoProps) {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
-
+  // console.log(startingPreview('(button)', 2));
+  // console.log(startingPreview('(button)', 2));
   let startingPreview = 3 as number;
   let blurName = 'obnubilate' as string;
   return (
