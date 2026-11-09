@@ -29,6 +29,16 @@ Every application's `<main>` mirrors `[archive]` with the axes flipped: an outer
 
 Every record's `_id` is a 24-character hex string shaped like MongoDB's, stored as plain text (TABLE.md Section 6). Test characters in `TraLogFin.json` also carry a readable `profile` slug, which is what the front-end's `characterProfile` and the character images use. Records point at people by `_id` (`senderId`, `receiverId`, `byId`), never by name.
 
+## Pinned: Message Types
+
+Three kinds of message, set by the owner on 2026-11-09. Each app page uses one:
+
+| Message | What it means | Pages |
+| --- | --- | --- |
+| (helper) | Just loads and informs; nothing to do. The usual case, with a 6-second load animation (later) | `(manager)`, `(established)` |
+| (guidance) | Needs an action from the user | `(employee)`, `(freelancing)` |
+| (warning) | The system encountered an error. In `[hyperlink]`, it appears when you double-click a link | `(specialist)`, `(technician)` |
+
 ## How the Applications Interact
 
 **`[overtime]` holds the key.** The company a member is clocked into is the company `[ticketing]` and `[hyperlink]` work in. Nothing else switches company context.
@@ -48,6 +58,16 @@ Every record's `_id` is a 24-character hex string shaped like MongoDB's, stored 
 
 **The owner is everywhere at once.** They have no clock-in to switch, so their company context is the company they own.
 
+## Good and Ghost
+
+Every application keeps two counts: the good one, grounded and accurate, and the ghost one, for things that went wrong. When a count could go either way, it leans towards the worker. The two are shown side by side and never combined, and no app's counts are ever added to another's (R7, O5).
+
+| Application | Good | Ghost | Who sees the ghost count |
+| --- | --- | --- | --- |
+| `[overtime]` | Approved hours | Ghost hours: rejected or expired overtime | The worker, the reviewer and the owner |
+| `[ticketing]` | Points: confirmed completions (+1), the sender's 0.75, 0.25 for informing, 0.125 for a timely confirm | Ghost points: 0.125 per unconfirmed ticket, 0.25 per deletion of someone else's ticket (0.5 to archive it), 0.25 for overruling an Employee's deletion, 0.125 lost profit per lapse | Everyone in the company, except a freelancer's own (only them and the owner) |
+| `[hyperlink]` | Good clicks: company links | Ghost links: your own bookmark clicks this year (a parody) | Only you |
+
 ## Edge Cases
 
 Every edge case raised so far has a draft restriction rule. None is in GUIDELINES.md yet; each waits for the owner to confirm it.
@@ -59,7 +79,39 @@ Every edge case raised so far has a draft restriction rule. None is in GUIDELINE
 | A worker clocks out holding a ticket | It stays theirs; Managers see the mark and decide | `log-a-ticket.md` R4 |
 | A one-person company | The owner may claim their own tickets, for no point | `log-a-ticket.md` R5 |
 | Delete/restore tug-of-war | Whoever deletes, decides | `log-a-ticket.md` R1 |
-| Taking a point back | The first resolve is final for points | `log-a-ticket.md` R2 |
+| Taking a point back | The first confirmed completion is final; only `restore` costs a point | `log-a-ticket.md` R2 |
+| How points are calculated | Log +0.125 ghost; confirmed completion +1 to the fixer, +0.75 to the sender; restore −1 | `log-a-ticket.md` Points |
+| An HoD never confirms a completion | It confirms itself after 7 days | `log-a-ticket.md` R8 |
+| Points below zero | Never; the rest becomes ghost points | `log-a-ticket.md` R9 |
+| Restoring a ticket | Free within 30 days of the deletion, −1 after | `log-a-ticket.md` R10 |
+| Overloading one worker | Capped at 8 open; at the cap, each overdue ticket a Manager assigned costs them 0.125 ghost points | `log-a-ticket.md` R11, R12 |
+| Waiting out the HoDs | The ticket confirms itself, but the owner gets 0.125 ghost points (lost profit); a timely confirm earns the HoD 0.125 points | `log-a-ticket.md` R8 |
+| Deleting, restoring and deleting again | The second deletion archives it; informing pays once | `log-a-ticket.md` R13 |
+| Hoarding tickets | No claiming past 8 open tickets | `log-a-ticket.md` R14 |
+| Overloading by assignment | 1 a day, 4 per Manager, 8 in total | `log-a-ticket.md` R17 |
+| Burying a ticket by deleting it twice | Archived: 0.25 then 0.5 ghost points to the deleter | `log-a-ticket.md` R13 |
+| Deleting someone else's ticket | One to one: 0.25 points to the sender, 0.25 ghost points to the deleter | `log-a-ticket.md` R13 |
+| Farming deletions with junk tickets | Informing pays at most 0.25 a day; four days of junk never beats one real fix | `log-a-ticket.md` R19 |
+| Who carries the weight | Managers in full, Employees in part | `log-a-ticket.md` R20 |
+| A freelancer in two companies | 2 tickets a week per company, 8 open in total; the owner and Managers see "unavailable" | `log-a-ticket.md` R21 |
+| Who sees a freelancer's numbers | The freelancer and the owner: the highest of the high and the lowest of the low | `log-a-ticket.md` R22 |
+| Paying to see stats | Never; Paid isn't a worker permission | `log-a-ticket.md` R22, GUIDELINES Section 2 |
+| Keeping freelancers coming back | A weekly streak: 0.125, doubling to 0.5 at most | `log-a-ticket.md` R26 |
+| Deleting work someone's doing | 0.125 to a receiver who held it 24 hours; 0.375 ghost to the deleter | `log-a-ticket.md` R25 |
+| A sender's misclick | An undone deletion of your own doesn't count toward archiving | `log-a-ticket.md` R13 |
+| Three friends pushing tickets through | A quiet word from the owner after 5 times in 30 days | `log-a-ticket.md` R27 |
+| A bad Manager | The owner carries 25% of their ghost points, as it happens; turnover shows on the owner's profile | `log-a-ticket.md` R28 |
+| Odd decimals | Every number is a multiple of 0.125, stored in eighths | `log-a-ticket.md` Points |
+| How long ghost points count | 24 months, exactly like ghost hours | `log-a-ticket.md` Ghost Hours |
+| Checkpoint messages when points drop | None; only good news shows | `log-a-ticket.md` Points |
+| Removing workers | Counts as turnover on the owner's profile | `log-a-ticket.md` R28 |
+| Is a sector of 18 balanced? | Yes: 6 units of one Manager and two Employees; confirming is the bottleneck, one HoD per 4 Employees | `log-a-ticket.md` Predicted Balance |
+| A role changes after an action | The role at the moment of the action sets the price | `log-a-ticket.md` R23 |
+| Confirming your own ticket | Needs a third person | `log-a-ticket.md` R24 |
+| A deleted ticket someone was working on | The receiver's name stays in the history | `log-a-ticket.md` R25 |
+| Flooding the pool with tickets | 4 logs a day; deleting your own still counts | `log-a-ticket.md` R18 |
+| Tickets ageing during leave | Approved leave pauses the overdue clock | `log-a-ticket.md` R15, with `track-a-day.md` |
+| Releasing or reassigning overdue tickets | Release clears the count; reassign restarts 7 days | `log-a-ticket.md` R16 |
 | Endless reopens | Two for the sender, then Managers only | `log-a-ticket.md` R3 |
 | Unanswered leave | Approved automatically with 14 days' notice, otherwise it lapses | `track-a-day.md` O1 |
 | Withdrawing a request | Allowed until it's decided | `track-a-day.md` O2 |

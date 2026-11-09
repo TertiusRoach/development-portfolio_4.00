@@ -43,6 +43,25 @@ Freelancing entry ──► attendance ──► invoice (never changes the agre
 | Request leave | Established workers | Section 6. Same reviewers as overtime; never makes ghost hours. |
 | Log attendance | Freelancers | Section 9. A record of presence for the invoice. |
 
+## Ghost Hours
+
+Overtime that someone refused to recognise. The full rules are GUIDELINES Section 9; this is how they show up here.
+
+| When | Ghost hours for | How many |
+| --- | --- | --- |
+| An HoD or the owner rejects overtime | The worker and the reviewer | The exact rejected duration, for each |
+| Overtime is split | The worker and the reviewer | Only the rejected part |
+| Overtime goes 6 months without a review | The worker and the owner (never an HoD) | All of it |
+| A member is removed, or the company deleted, with overtime pending | The worker and the owner | All of it |
+| A rejection is later changed into an approval (O3) | Still recorded, marked "later approved" | Stops counting for the worker, keeps counting for the reviewer |
+
+- **Never for** ordinary contract hours, leave, freelancers, or overtime the worker withdrew (O2).
+- **Offline overtime** can be rejected without ghost hours. Ignoring it still expires into ghost hours (GUIDELINES Section 12).
+- **Permanent.** Nobody edits or deletes a ghost hour, not even the owner, and settling a dispute outside the app doesn't remove it.
+- **Totals count the last 24 months,** dated by the rejection or expiry. Older ones are kept, just not counted.
+- **Context, not a verdict.** Ghost hours show patterns; on their own they don't prove anyone did anything wrong.
+- **Never combined with points** from `[ticketing]` (O5).
+
 ## Edge Cases
 
 All already decided in GUIDELINES; listed here so the screens handle each one.

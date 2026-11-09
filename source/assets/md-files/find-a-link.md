@@ -71,6 +71,39 @@ Clock-in applies to every action, as GUIDELINES Section 8 says, with two excepti
 2. **A change applies to one version only.** It goes through while its target is still Published (`{ _id: replacesId, status: "Published" }`), and not after (H3).
 3. **Nothing is overwritten, only added.** A company link's text never changes once it's stored. An edit is a new version, and the old one stays as Replaced (H9).
 
+## Ghost Hours
+
+`[hyperlink]` doesn't have ghost hours. It has **ghost links**: how many times you clicked your own bookmarks this year. Clicking the company links page is **good clicks**. Clicking your personal page is ghost links. Nobody gets in trouble for either, but somebody had to keep score.
+
+Track a Day keeps ghost hours so nobody's overtime disappears. Log a Ticket keeps ghost points so nobody's ticket gets buried. Find a Link keeps a number. You clicked a link, and it went up by one. That's the whole audit.
+
+| | Ghost hours `[overtime]` | Ghost points `[ticketing]` | Ghost links `[hyperlink]` |
+| --- | --- | --- | --- |
+| Records | Overtime someone refused to recognise | Tickets logged, restored and overruled | You clicked your own bookmark |
+| Counts against | The worker and the reviewer | The sender, or the Manager who overruled | You. Only you. |
+| Seen by | The people involved | The people involved | You. Your employer never sees it. |
+| Edited or deleted | Never | Never | Never. Who'd want to? |
+| Counted over | 24 months | 24 months (draft) | This year. Fresh start every January. |
+| Reviewed by | An HoD or the owner | An HoD or the owner | Your conscience |
+| Edge cases | 17 | 20 | 31, for a bookmark |
+
+Thirty-one edge cases and thirteen restriction rules, for links. Here's the honest version: **it archives links. That's it, and it's useful.** Save the link, click the link. If it's a company link, the right people can change it. If it's yours, nobody else ever sees it. Every rule above exists because people can't be trusted with a shared bookmarks folder. The counter exists because you can.
+
+So save your stuff. Mwah.
+
+How it actually counts:
+
+- **Every click on a link adds one to its `clicks`.** That's it.
+- **A double-click shows the (warning) message.** The link opens once and counts once; the second click only brings up the warning. One tab, one click, honest numbers. The message: *"(warning) Easy, tiger. It's already open. One click is plenty."*
+- **Phones:** a second tap inside the browser's double-tap time is ignored without a warning. Fingers aren't mice.
+- **Every way of opening counts once:** a click, a middle-click, Ctrl- or Cmd-click, or Enter on the keyboard. Copying a link (right-click or long-press) doesn't count; it wasn't opened.
+- **Good clicks:** company links. One company-wide total per link, never who clicked, so nobody's browsing becomes evidence.
+- **Ghost links:** your bookmark clicks, added up per calendar year in your own time zone. Private like the bookmarks. The company never sees them, and neither does anyone else.
+- **An edited company link keeps its count** (H9). The new version starts from the old one's total.
+- **Offline:** bookmark clicks are counted on the device and added on top when it reconnects, never overwritten. Company clicks offline don't count, because company data is read-only offline (GUIDELINES Section 12).
+- **Never a ranking, and never shown next to hours or points** (R7, O5). Clicking a lot doesn't make you productive, and clicking a little doesn't make you lazy.
+- **The risk, said out loud:** anyone can click their own link a hundred times. Nothing rides on the number, so nothing needs protecting.
+
 ## The Record
 
 One `ArchiveAnchors` document per company-link version or per bookmark, following TABLE.md Section 6 (every field present, `null` when unknown, text IDs, UTC dates, status as a field, no lists of objects).
@@ -89,6 +122,7 @@ Conrad Guy, a Manager without HoD at Voidspire Systems, proposes an edit to a li
   "url": "https://wiki.voidspire.example/runbook",
   "note": "Moved from the old wiki.",
   "category": "Operations",
+  "clicks": 42,
   "authorId": "6ae07097898694d607cf1579",
   "decidedById": "6ae068b8898694d607cf1574",
   "decisionNote": null,
@@ -113,6 +147,7 @@ A personal bookmark uses the same fields:
   "url": "https://doc.rust-lang.org/book/",
   "note": null,
   "category": null,
+  "clicks": 7,
   "authorId": "6ae07f79898694d607cf1580",
   "decidedById": null,
   "decisionNote": null,
@@ -126,6 +161,7 @@ A personal bookmark uses the same fields:
 - **`status`:** `Proposed`, `Published`, `Declined`, `Withdrawn`, `Outdated`, `Replaced` or `Removed` for company links; always `Saved` for bookmarks.
 - **`authorId`** is whoever wrote the version: the proposer, or the HoD or owner who published it directly. For a bookmark it's the bookmark's owner.
 - **`decidedById`** is whoever closed or applied it: the owner who approved or declined, the proposer who withdrew, the person whose change made it Outdated, or the author themself when they published directly. When the system closes a proposal because its proposer was removed, it's the owner who removed them (H6).
+- **`clicks`** is the ghost-click counter: the only number on the record, and the only field that keeps changing while a version is live. A click doesn't touch `updatedAt`.
 - **`archivedAt`** is set when the company is deleted. `status` keeps whatever it was, so archived records still show their state.
 - **Version history is a chain,** not a list. Following `replacesId` backwards walks every earlier version. In MySQL nothing changes: it's one flat table with a self-reference.
 - **A `remove` document copies the title and URL** of the version it removes, so the history reads on its own.
