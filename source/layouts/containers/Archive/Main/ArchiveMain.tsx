@@ -77,10 +77,8 @@ function ArchiveMain({ info }: InfoProps) {
     </main>
   );
 }
-
 const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
-  const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
   return (
@@ -89,84 +87,84 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'article' as string,
+          labelName: '(article)' as string,
         }}
       />
       <AsideElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'aside' as string,
+          labelName: '(aside)' as string,
         }}
       />
       <ButtonElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'button' as string,
+          labelName: '(button)' as string,
         }}
       />
       <DivisionElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'division' as string,
+          labelName: '(division)' as string,
         }}
       />
       <FigureElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'figure' as string,
+          labelName: '(figure)' as string,
         }}
       />
       <FormElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'form' as string,
+          labelName: '(form)' as string,
         }}
       />
       <LabelElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'label' as string,
+          labelName: '(label)' as string,
         }}
       />
       <MenuElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'menu' as string,
+          labelName: '(menu)' as string,
         }}
       />
       <NavigationElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'navigation' as string,
+          labelName: '(navigation)' as string,
         }}
       />
       <SectionElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'section' as string,
+          labelName: '(section)' as string,
         }}
       />
       <TableElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'table' as string,
+          labelName: '(table)' as string,
         }}
       />
       <TimeElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'time' as string,
+          labelName: '(time)' as string,
         }}
       />
     </>

@@ -1,7 +1,7 @@
 //--|🠊 index.tsx (Entry Point) 🠈|--\\
 //--|🠋 Entry Point 🠋|--\\
 setTimeout(() => {
-  viewBody('overtime');
+  viewBody('archive');
   themeScheme('light');
 }, 250);
 

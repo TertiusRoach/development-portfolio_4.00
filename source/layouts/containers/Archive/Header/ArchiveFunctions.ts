@@ -7,7 +7,6 @@ export function unfoldHeaders(thisItem: HTMLElement) {
     blockViews(thisItem, 'components', 'leftbar', 'unfolded');
   }
 }
-//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 export function squareHeaders(thisItem: HTMLElement) {
   let leftbarElement = document.querySelector('#components-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {

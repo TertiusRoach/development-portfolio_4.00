@@ -1,2 +1,10 @@
 //--|🠊 Main/ArchiveFunctions.ts 🠈|--\\
-export function functionHolder(): void {}
+function startingPreview(labelName: '(default)' | number): void {
+  switch (labelName) {
+    default:
+    case '(default)':
+      break;
+  }
+}
+
+export default startingPreview;

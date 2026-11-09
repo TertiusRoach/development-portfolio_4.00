@@ -23,9 +23,9 @@ function AsideElements({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
+  const pageName = stripBrackets(info.pageName, '[]') as 'components';
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const labelName = stripBrackets(info.labelName, '()') as 'aside';
-  const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
     //--|🟨|--\\
@@ -42,9 +42,9 @@ function AsideElements({ info }: InfoProps) {
           call: AsideComponents as React.ComponentType<InfoProps>,
         }}
         info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: info.labelName,
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
         }}
       />
     </section>

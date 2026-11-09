@@ -44,9 +44,9 @@ function LabelElements({ info }: InfoProps) {
           call: LabelComponents as React.ComponentType<InfoProps>,
         }}
         info={{
-          pageName: info.pageName,
-          blockName: info.blockName,
-          labelName: info.labelName,
+          pageName: pageName,
+          blockName: blockName,
+          labelName: labelName,
         }}
       />
     </section>
