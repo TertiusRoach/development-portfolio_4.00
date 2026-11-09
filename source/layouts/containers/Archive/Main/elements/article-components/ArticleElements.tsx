@@ -51,7 +51,6 @@ function ArticleElements({ info }: InfoProps) {
     </section>
   );
 }
-
 const ArticleComponents: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName;
   const labelName = info.labelName;

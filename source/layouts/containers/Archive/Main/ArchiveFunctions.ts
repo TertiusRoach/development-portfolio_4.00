@@ -5,18 +5,18 @@ import { arabicToRoman, stripBrackets } from '../../../tools/conversions';
 
 async function startingPreview(
   element:
-    | '(article)'
-    | '(aside)'
-    | '(button)'
-    | '(division)'
-    | '(figure)'
     | '(form)'
-    | '(label)'
     | '(menu)'
-    | '(navigation)'
-    | '(section)'
+    | '(time)'
+    | '(label)'
+    | '(aside)'
     | '(table)'
-    | '(time)',
+    | '(button)'
+    | '(figure)'
+    | '(article)'
+    | '(section)'
+    | '(division)'
+    | '(navigation)',
   preview: number,
 ): Promise<void> {
   const labelName = stripBrackets(element, '()') as string;
@@ -27,45 +27,52 @@ async function startingPreview(
   const carousel = containers[1] as HTMLLIElement;
   const fullscreen = containers[0] as HTMLLIElement;
 
-  carouselPreview(element, fullscreen);
-  containerPreview(element, preview, labelName, carousel);
+  fullscreenPreview(element, fullscreen);
+  containerPreview(labelName, element, preview, carousel);
 }
 
 //--|🠋 Configure Preview 🠋|--\\
 const containerPreview = (
-  element:
-    | '(article)'
-    | '(aside)'
-    | '(button)'
-    | '(division)'
-    | '(figure)'
-    | '(form)'
-    | '(label)'
-    | '(menu)'
-    | '(navigation)'
-    | '(section)'
-    | '(table)'
-    | '(time)',
-  preview: number,
+  //--|🠋 Information 🠈|--\\
+  //--|🠊 pageName: string, 🠈|--\\
+  //--|🠊 blockName: string, 🠈|--\\
   labelName: string,
+
+  //--|🠋 Determinate 🠈|--\\
+  element:
+    | '(form)'
+    | '(menu)'
+    | '(time)'
+    | '(label)'
+    | '(aside)'
+    | '(table)'
+    | '(button)'
+    | '(figure)'
+    | '(article)'
+    | '(section)'
+    | '(division)'
+    | '(navigation)',
+
+  //--|🠋 Miscellaneous 🠈|--\\
+  preview: number,
   carousel: HTMLLIElement,
 ): void => {
-  //--|🠋 Carousel: keeps the preview inside the slides (below I shows nothing, past the last shows the last), then swaps the numeral class 🠋|--\\
+  //--|🠋 Fullscreen Preview 🠋|--\\
   let showSlide = preview as number;
-  let slides = carousel.querySelector(`:scope > div[class="${labelName}-main_container"]`) as HTMLDivElement | null; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+  let slides = carousel.querySelector(`:scope > div[class="${labelName}-main_container"]`) as HTMLDivElement | null;
   switch (true) {
     case !slides:
-      console.log(`|🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is 🠈|`); //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
-      return; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
-    case preview === 0: //--|🠊 AI Code: Review Please 2026-11-09 13:33 · Deliberate: 0 shows nothing (O), no warning 🠈|--\\
-      showSlide = 0 as number; //--|🠊 AI Code: Review Please 2026-11-09 13:33 🠈|--\\
-      break; //--|🠊 AI Code: Review Please 2026-11-09 13:33 🠈|--\\
-    case preview < 0: //--|🠊 AI Code: Review Please 2026-11-09 13:33 · Only a negative is a mistake now 🠈|--\\
+      console.log(`|🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is 🠈|`);
+      return;
+    case preview === 0:
+      showSlide = 0 as number;
+      break;
+    case preview < 0:
       console.log(`|🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O) 🠈|`);
       showSlide = 0 as number;
       break;
-    case preview > (slides as HTMLDivElement).children.length: //--|🠊 AI Code: Review Please 2026-11-09 13:08 · Safe: !slides returned above 🠈|--\\
-      showSlide = (slides as HTMLDivElement).children.length as number; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+    case preview > (slides as HTMLDivElement).children.length:
+      showSlide = (slides as HTMLDivElement).children.length as number;
       break;
     default:
       showSlide = preview as number;
@@ -76,23 +83,23 @@ const containerPreview = (
 
   carousel.classList.replace(prevClass, nextClass);
 };
-const carouselPreview = (
+const fullscreenPreview = (
   element:
-    | '(article)'
-    | '(aside)'
-    | '(button)'
-    | '(division)'
-    | '(figure)'
     | '(form)'
-    | '(label)'
     | '(menu)'
-    | '(navigation)'
-    | '(section)'
+    | '(time)'
+    | '(label)'
+    | '(aside)'
     | '(table)'
-    | '(time)',
+    | '(button)'
+    | '(figure)'
+    | '(article)'
+    | '(section)'
+    | '(division)'
+    | '(navigation)',
   fullscreen: HTMLLIElement,
 ): void => {
-  //--|🠋 Fullscreen: every element owns one page (article I … time XII), so the numeral class jumps to that element's page 🠋|--\\
+  //--|🠋 Carousel Preview 🠋|--\\
   let prevClass: string;
   let nextClass: string;
   switch (element) {
@@ -160,7 +167,9 @@ let findTags = async (labelName: string): Promise<Array<HTMLLIElement>> => {
     )) as HTMLLIElement;
     return [fullscreen, carousel] as Array<HTMLLIElement>;
   } catch {
-    console.log(`|🠊 Warning: ${labelName} never showed up in #components-main, so its preview stays where it is 🠈|`);
+    console.log(`|--🠊 Warning: ${labelName} never showed up inside #components-main, Main/ArchiveFunctions.ts 🠈--|`);
+    console.log(`|--🠊 Helper: Note that we still need this solution for #{pageName}-main, */*Functions.ts 🠈--|`);
+    console.log(`|--🠊 Guidance: Forgot your password? We have a page for that. Auto swipe to that page! 🠈--|`);
     return [] as Array<HTMLLIElement>;
   }
 };

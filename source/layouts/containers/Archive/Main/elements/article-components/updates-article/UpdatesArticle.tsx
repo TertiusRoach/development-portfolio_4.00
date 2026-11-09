@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import ArticleUpdates from '../../../../../../components/Article/updates/Article.updates';
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
@@ -22,9 +23,44 @@ function UpdatesArticle({ info }: InfoProps) {
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
+  let casesPages = ['~DarkMode~', '~LightMode~'] as Array<string>;
   return (
     <aside className="updates-article">
       <section className={`${blockName}-foreground`}>
+        <MenuSwipe
+          info={{
+            pageName: pageName as 'components',
+            blockName: blockName as 'main',
+            labelName: 'standard-left',
+          }}
+          style={{
+            view: '-lef-',
+            color: '(mono)',
+            shade: '~dark~',
+          }}
+          cases={{
+            axis: '[x]',
+            titles: casesPages as Array<string>,
+          }}
+        />
+        {/*
+        <MenuSwipe
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            shade: '~dark~',
+            color: '(mono)',
+            view: '-top-',
+          }}
+          cases={{
+            axis: '[x]',
+            titles: ['Updates'],
+          }}
+        />
+        */}
         <DivisionColourize
           info={{
             pageName: pageName,

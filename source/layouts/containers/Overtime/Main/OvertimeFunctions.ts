@@ -5,9 +5,9 @@ import { arabicToRoman, stripBrackets } from '../../../tools/conversions';
 
 async function startingPreview(
   element:
-    | '(established)'
     | '(vocation)'
-    | '(freelancing)', //--|🠊 AI Code: Review Please 2026-11-09 13:08 · Page order, not alphabetical 🠈|--\\
+    | '(established)'
+    | '(freelancing)', //--|🠊 AI Code: Review Please 2026-11-09 13:08 · Pyramid: shortest first 🠈|--\\
   preview: number,
 ): Promise<void> {
   const labelName = stripBrackets(element, '()') as string;
@@ -19,17 +19,17 @@ async function startingPreview(
   const fullscreen = containers[0] as HTMLLIElement;
 
   carouselPreview(element, fullscreen);
-  containerPreview(element, preview, labelName, carousel);
+  containerPreview(labelName, element, preview, carousel);
 }
 
 //--|🠋 Configure Preview 🠋|--\\
 const containerPreview = (
+  labelName: string,
   element:
-    | '(established)'
     | '(vocation)'
+    | '(established)'
     | '(freelancing)', //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
   preview: number,
-  labelName: string,
   carousel: HTMLLIElement,
 ): void => {
   //--|🠋 Carousel: keeps the preview inside the slides (below I shows nothing, past the last shows the last), then swaps the numeral class 🠋|--\\
@@ -60,8 +60,8 @@ const containerPreview = (
 };
 const carouselPreview = (
   element:
-    | '(established)'
     | '(vocation)'
+    | '(established)'
     | '(freelancing)', //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
   fullscreen: HTMLLIElement,
 ): void => {

@@ -245,6 +245,22 @@ throw new Error(`|🠊 Error: Invalid <${stripBrackets(size, '<>')}> or -${strip
 //--|🠈 |🠊 Error: Invalid <h7> or -top- 🠈| 🠈|--\\
 ```
 
+### Console Messages
+
+When something doesn't stop the page but someone should hear about it, the console says so in up to three lines, always in this order. Each is wrapped as `|--🠊 … 🠈--|` and starts with its kind:
+
+- **`Warning:`** says what went wrong and names the file that noticed it, from the container folder down: `Main/ArchiveFunctions.ts`. The browser can't read folders, so the path is written by hand. A warning always means something went wrong; deliberate quiet cases (like preview `0`) never log one.
+- **`Helper:`** talks to the developer: what is still to do, or where else the same fix is needed. Paths can use `*` for "every app": `*/*Functions.ts`.
+- **`Guidance:`** talks to the person using the page: what they can do next, or what the page is about to do for them.
+
+```ts
+console.log(`|--🠊 Warning: ${labelName} never showed up inside #components-main, Main/ArchiveFunctions.ts 🠈--|`);
+console.log(`|--🠊 Helper: Note that we still need this solution for #{pageName}-main, */*Functions.ts 🠈--|`);
+console.log(`|--🠊 Guidance: Forgot your password? We have a page for that. Auto swipe to that page! 🠈--|`);
+```
+
+A `Warning:` can stand alone; `Helper:` and `Guidance:` only follow one.
+
 ### Props and Events
 
 - **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). Every key in `info` ends in `Name`, a longer `className`: each one names something (the page, the block, the label, and what a screen reader says). `info.ariaName` follows the same logic. It's optional, sits between `blockName` and `labelName`, and is read aloud when a button has no visible text (`aria-label={info.ariaName}`); other components add it when they need it.
@@ -286,6 +302,45 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
   ```
 
   They name the file's own container and never change during a render, which is what `const` says. A `let` is for what the render works out from them (`let blurName`, `let stateName`). The order reads outside-in (page, container, label), the same way the names build the id and class, so every container's opening looks alike. This scope is fixed; deeper scopes (`elements/`, see [Container Skeleton](#container-skeleton)) keep their own order for now and may change.
+- **Parameters come in three groups, always in this order.** **Information** first: the names (`pageName`, `blockName`, `labelName`, in that order). Then **Determinate**: fixed strings, a union of set values like `element`, `menuAxis`, `alterAction` or `styleView`. Then **Miscellaneous**: everything else (numbers, free strings, elements like `thisItem` or `carousel`). A name stays a name even when its type is a fixed list (`labelName: 'switching' | 'textarea' | 'selection'` still goes first). With the names always up front, any function can find its page, block and label without reading the rest. Each group opens with a `//--|🠋 … 🠈|--\\` label, with a blank line between groups, and the names a function doesn't take stay in as commented-out placeholders, so every function shows the full order:
+
+  ```ts
+  const containerPreview = (
+    //--|🠋 Information 🠈|--\\
+    //--|🠊 pageName: string, 🠈|--\\
+    //--|🠊 blockName: string, 🠈|--\\
+    labelName: string,
+
+    //--|🠋 Determinate 🠈|--\\
+    element:
+      | '(form)'
+      | …
+      | '(navigation)',
+
+    //--|🠋 Miscellaneous 🠈|--\\
+    preview: number,
+    carousel: HTMLLIElement,
+  ): void => {
+  ```
+
+  Reorder one function at a time and run `npx tsc --noEmit -p tsconfig.json` after each: moving a parameter past one of a different type makes every caller you missed show up as an error. Two plain `string`s swapped are not caught, which is why the names never trade places with each other. Older functions that start with `thisItem`, a value (`switchColors(choice, labelName)`) or a fixed string move as they're touched; `blockViews()` and its handlers move last, together, as their own step.
+- **Unordered lists form a pyramid; ordered lists are alphabetical.** A list whose order means nothing to the code, like the values of a union, runs from shortest to longest, so it reads as a pyramid on its side. TypeScript ignores the order inside a union, so sorting one never changes what the code does. Values of the same length can sit in any order among themselves; in [archive] that's a free choice for the look. A list whose position means something stays alphabetical, like the `switch` in `carouselPreview`, where `(article)` is slide I and `(time)` is slide XII:
+
+  ```ts
+  element:
+    | '(form)'
+    | '(menu)'
+    | '(time)'
+    | '(label)'
+    | '(aside)'
+    | '(table)'
+    | '(button)'
+    | '(figure)'
+    | '(article)'
+    | '(section)'
+    | '(division)'
+    | '(navigation)',
+  ```
 - **Elements inside a function.** The container the call was launched from is a `const`; a container reached through a hard-coded selector is a `let`. In `squareFooters`, the footer that was tapped arrives as `thisItem`, and `let rightbarElement = document.querySelector('#overtime-rightbar')` is the partner it reaches out to. The squaring handlers in `layouts/scripts/Head_Foot.ts` read the same way: `const headerElement` for the block they're named after, while `obnubilateMain()` reaches every container through a selector, so each of its elements is a `let`. The variable is named after the container it holds, so a Footer file says `footerElement`, never `headerElement`.
 - **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)).
 
@@ -399,7 +454,7 @@ Callers import straight from the file that holds the function; there's no barrel
   - **It works on two levels.** `fullscreen` is the outer `<li>`, written out in full (`elements-main_fullscreen-default`), and it picks the group through `switch (element)`, one case per group, each written out. `carousel` is the `<li>` of the group inside it (`${labelName}-main_fullscreen-default`), and it picks the page (`preview`). `[archive]` lists its cases in alphabetical order, because it's an archive; the applications list theirs in page order (`[overtime]`: `(established)` I, `(vocation)` II, `(freelancing)` III).
   - **The axes are flipped between `[archive]` and the applications.** `[archive]`'s outer is `[y]` with `[x]` groups inside, so its path steps down `> ol > li` then `> ul > li`. `[overtime]`, `[ticketing]` and `[hyperlink]` slide their outer on `[x]`, with `[y]` pages inside, in both orientations: `> ul > li` then `> ol > li`. An application's page may be a `<DivisionSweeping>` instead of a `<DivisionFullscreen>` (`[overtime]`'s `(vocation)` sweeps), so its `findTags` accepts either `${labelName}-main_fullscreen-default` or `${labelName}-main_sweeping-default`, and `containerPreview` finds the container with `^=`, because a sweeping's container ends in its view (`vocation-main_container-bot`). Nothing else in the function changes.
   - **The function only hands off; three helpers do the work,** in [Declaration Order](#declaration-order): `const containerPreview` moves the carousel, `const carouselPreview` moves the fullscreen, and `let findTags` finds both `<li>`s.
-  - **It waits for the page.** Both `<li>`s come through `await asynchObserve(…)` inside `findTags`, so the call works before `<main>` has rendered. That makes it an `async function` returning `Promise<void>`. If one never shows up, the 6-second timeout lands in a `catch` that logs `|🠊 Warning: … 🠈|` and leaves the page as it is.
+  - **It waits for the page.** Both `<li>`s come through `await asynchObserve(…)` inside `findTags`, so the call works before `<main>` has rendered. That makes it an `async function` returning `Promise<void>`. If one never shows up, the 6-second timeout lands in a `catch` that logs a `Warning:`, `Helper:` and `Guidance:` line (see [Console Messages](#console-messages)) and leaves the page as it is.
   - **A `preview` out of range never leaves the carousel.** If the group has no `${labelName}-main_container` (a scope passed the wrong `labelName`), it logs a `|🠊 Warning: … 🠈|` and leaves the carousel where it is. `0` is deliberate and silent: it hides the carousel on purpose. Below 0 also becomes `0`, but logs a `|🠊 Warning: … 🠈|`, so a warning in the console always means something went wrong. Past the last shows the last. `0` is the `O` slide: `arabicToRoman(0)` gives `fullscreen-horizontal_O` (or `vertical_O`), which `Division.fullscreen.scss` parks on slide I with `opacity: 0` and `pointer-events: none`, so zero means nothing shows and nothing can be clicked. Any other number brings it back. It counts the slides in the group's `${labelName}-main_container`, so adding or removing a preview never needs the function changed.
   - **The `.tsx` calls it once in the `useEffect`**, above the colour flag: `startingPreview('(division)', 1);` in `ArchiveMain.tsx`. Move the call to land on what you're working on. An application always opens on its centre page: `startingPreview('(vocation)', 1);` in `OvertimeMain.tsx`, which shows the first preview in the centre's `<DivisionSweeping>`. Its demo buttons and the character pick call it too, from the header and footer.
 - **An `<li>` is only targeted through its known parent.** A `<DivisionFullscreen>` nests inside another one, so a loose `li[class*="fullscreen"]` can land on the wrong carousel. Name the parent `<div>` by its exact class and step down with `>`: `div[class="elements-main_fullscreen-default"] > ol > li` (`[y]` always renders an `<ol>`, `[x]` always a `<ul>`). A child carousel adds its own exact parent to that path, never a shorter one.
@@ -713,7 +768,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
   ```
 - The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
-- `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept.
+- `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept. Reordering code (moving parameters, arguments, union values or lines without changing them) doesn't get a flag, unless it obviously breaks something.
 - A commented-out line with `!important` is a test switch, not dead code: `//--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\`. Uncomment it to see what a selector reaches, and comment it back before committing (see [Test Tools](#test-tools)).
 - `Warning:` marks code that works today but can break something elsewhere, and says what: `//--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\`. It stays until the code is changed; that one went when the block was scoped to `footer[id*='overtime']`.
 - `Used in` is a back-reference: it names who calls a state handler in `layouts/scripts/` (`Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`). Those handlers are never called by name. `blockViews()` reaches them through `blockHandlers`, a lookup table keyed by `blockName` and `alterAction` (a dispatch table), so the editor's Find All References can't trace them. Keep the trail by hand: when a container starts calling `blockViews()` with a pair, add the caller to the block comment at the end of the handler that pair reaches, one caller per line as `<Container> · function();`, indented one step inside the block:
