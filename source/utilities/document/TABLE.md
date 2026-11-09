@@ -188,7 +188,7 @@ TraLogFin runs on MongoDB. But a company with its own server may want MySQL, so 
 3. **Lists hold simple values only,** like `"organizations": ["Voidspire Systems", "Silverveil Logistics"]`. In MySQL each list becomes its own linking table (for example `memberships`). Never a list of objects.
 4. **Point, don't nest.** A record refers to another record by its ID (`"employeeId": "dale-sutton"`), never by containing a copy of it.
 5. **Every document has every field.** If a value is unknown, it's `null`, not missing. That's a fixed schema, which is exactly what a MySQL table needs. The "Randomize Character" record in `TraLogFin.json` shows the complete set of fields.
-6. **IDs are text.** Readable slugs in test data (`"jane-lester"`) and UUIDs in real data (`crypto.randomUUID()`). Not MongoDB's `ObjectId`, which MySQL doesn't have.
+6. **IDs are text.** Every `_id` is a 24-character hex string shaped like MongoDB's (`"6ae068b8898694d607cf1574"`), but stored as plain text, never as an `ObjectId`, which MySQL doesn't have. Test characters also carry a readable `profile` slug (`"jane-lester"`) for lookups by hand and for the front-end's `characterProfile`.
 7. **Dates are UTC.** Stored as real dates in MongoDB, written as ISO 8601 text (`2026-10-27`, `2026-10-27T14:30:00Z`) in JSON and in transit. Local time is only for display.
 8. **Money is a whole number of cents.** `125000` means 1,250.00. Decimals drift; whole numbers don't. This matters for freelancer invoices.
 9. **Status is a field, not a place.** A record's state (`"status": "Enabled"`) is stored on the record. Records never move between collections to change state.
@@ -199,7 +199,8 @@ TraLogFin runs on MongoDB. But a company with its own server may want MySQL, so 
 
 ```json
 {
-  "_id": "dimitri-lewis",
+  "_id": "6ae06cb4898694d607cf1576",
+  "profile": "dimitri-lewis",
   "name": "Dimitri Lewis",
   "vocation": "Freelancing",
   "organizations": ["Voidspire Systems", "Silverveil Logistics"],
@@ -210,9 +211,9 @@ TraLogFin runs on MongoDB. But a company with its own server may want MySQL, so 
 
 ```
 PickPage                                         memberships
-_id            name           vocation     …     characterId    organization
-dimitri-lewis  Dimitri Lewis  Freelancing  …     dimitri-lewis  Voidspire Systems
-                                                 dimitri-lewis  Silverveil Logistics
+_id        profile        name           vocation     …     characterId  organization
+6ae06cb4…  dimitri-lewis  Dimitri Lewis  Freelancing  …     6ae06cb4…    Voidspire Systems
+                                                                6ae06cb4…    Silverveil Logistics
 ```
 
 > **Known exception:** the login code in `REVIEW/landing.js` still moves accounts between `pending`, `enabled` and `blocked` collections, which breaks rule 9. It will be brought in line when the login page is reworked.

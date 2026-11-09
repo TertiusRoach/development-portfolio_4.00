@@ -212,8 +212,8 @@ db.PickPage.insertMany(data.PickPage)
 ### Add ([video](https://www.youtube.com/watch?v=g3Z0Av9yRSs))
 
 ```js
-db.PickPage.insertOne({ _id: "test-person", name: "Test Person", vocation: "Freelancing", position: "Employee", organizations: [] })
-db.PickPage.insertMany([{ _id: "one", name: "One" }, { _id: "two", name: "Two" }])
+db.PickPage.insertOne({ _id: "6af000000000000000000001", profile: "test-person", name: "Test Person", vocation: "Freelancing", position: "Employee", organizations: [] })
+db.PickPage.insertMany([{ _id: "6af000000000000000000002", profile: "one", name: "One" }, { _id: "6af000000000000000000003", profile: "two", name: "Two" }])
 ```
 
 ### Find ([video](https://www.youtube.com/watch?v=FLl9m4XwbqQ))
@@ -222,7 +222,7 @@ db.PickPage.insertMany([{ _id: "one", name: "One" }, { _id: "two", name: "Two" }
 db.PickPage.find()                                            // Everything
 db.PickPage.find({}, { name: 1, bureau: 1 })                  // Only the name and bureau
 db.PickPage.find({ vocation: "Freelancing", status: "Enabled" })
-db.PickPage.findOne({ _id: "jane-lester" })
+db.PickPage.findOne({ profile: "jane-lester" })
 ```
 
 ### Sort, Limit and Count ([video](https://www.youtube.com/watch?v=vI4GdN5wBTQ))
@@ -249,16 +249,16 @@ db.PickPage.find({ organizations: { $all: ["Voidspire Systems", "Silverveil Logi
 ### Update ([video](https://www.youtube.com/watch?v=s8YG0GvQInY))
 
 ```js
-db.PickPage.updateOne({ _id: "dale-sutton" }, { $set: { bureau: "Network Operations" } })
+db.PickPage.updateOne({ profile: "dale-sutton" }, { $set: { bureau: "Network Operations" } })
 db.PickPage.updateMany({ status: "Pending" }, { $set: { status: "Enabled" } })
-db.PickPage.updateOne({ _id: "dimitri-lewis" }, { $pull: { organizations: "Silverveil Logistics" } })  // Remove from a list
-db.PickPage.updateOne({ _id: "dimitri-lewis" }, { $push: { organizations: "Silverveil Logistics" } })  // Add to a list
+db.PickPage.updateOne({ profile: "dimitri-lewis" }, { $pull: { organizations: "Silverveil Logistics" } })  // Remove from a list
+db.PickPage.updateOne({ profile: "dimitri-lewis" }, { $push: { organizations: "Silverveil Logistics" } })  // Add to a list
 ```
 
 ### Delete ([video](https://www.youtube.com/watch?v=hq7gGo-1CgM))
 
 ```js
-db.PickPage.deleteOne({ _id: "test-person" })
+db.PickPage.deleteOne({ profile: "test-person" })
 ```
 
 > These commands are for poking around by hand. The application's own code sticks to the simple, MySQL-friendly queries listed in [TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow).

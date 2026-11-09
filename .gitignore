@@ -21,6 +21,8 @@ public/desktop.ini
 source/desktop.ini
 DocumentLayout.json
 VSWorkspaceState.json
+source/utilities/vendors/university-tracker
+source/utilities/vendors/log-a-ticket
 
 .idea
 .zshrc
