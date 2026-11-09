@@ -17,5 +17,5 @@
     "noEmit": true
   },
   "include": ["source/", "source/layouts/pages/*", "source/layouts/styles/*"],
-  "exclude": ["node_modules/", "source/**/REVIEW/"]
+  "exclude": ["node_modules/", "source/**/REVIEW/", "source/utilities/vendors/log-a-ticket/", "source/utilities/vendors/university-tracker/"]
 }

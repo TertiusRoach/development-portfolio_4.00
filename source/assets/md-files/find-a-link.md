@@ -196,12 +196,13 @@ The same window as `[ticketing]` and `[overtime]`: **Monday 2 November to Sunday
 
 | 4 weeks | Voidspire (exploitation) | Silverveil (prediction) |
 | --- | --- | --- |
-| Company links live on day 1 | 4, always on, never updated | 8: Bay 1 and Bay 2 × Book, Upload, Store for November, plus 2 always-on Read links |
+| Company links live on day 1 | 11, always on, never updated: University Tracker's header (Calendar, Shifts, Info sheet, Downloads, Search, Archive, Email) and 4 for the work | 15: the same header, Bay 1 and Bay 2 × Book, Upload, Store for November, and 2 always-on Read links |
 | Links prepared during the window | 0 | 6: December's, published ahead and not shown until 1 December |
 | Proposals sent | 20: Conrad, one a working day (H14) | 0: the owners publish directly |
 | Proposals decided | 0. Jane never answers; all 20 wait (H1) | — |
 | Good clicks (2 per confirmed ticket: Read, then Store) | 288 (planned 320) | 248 |
 | Ghost links | Not predicted: private, and nothing rides on them | Not predicted |
+| Bookmarks | 82 across the cast, 4 to 6 each: real public sites picked from each person's job title (and, for Jane, Kady, Tasneem and Sipho, from the owner's commits). Not yet checked for dead links | |
 
 - **Voidspire's runbook is stale.** Conrad's proposal to move it to the new wiki waits for Jane, so 144 of Voidspire's clicks land on the old address. The lure still works; it just points somewhere tired.
 - **Silverveil's links follow the calendar.** On 1 December, November's six fade into the archive and December's six appear, without anyone touching anything.

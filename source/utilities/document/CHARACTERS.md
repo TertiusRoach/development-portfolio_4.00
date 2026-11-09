@@ -16,6 +16,30 @@ The two compete for the same clients and still can't function without each other
 
 From the outside, Voidspire looks like the place to be. Spend a month inside both and you'd swap that around. Mostly.
 
+### Voidspire's Arc: A Cult of One
+
+> *If it earns everyone money.*
+
+Voidspire starts as a cult of one and ends as the most ethical company in the world. Jane never changes. The maths does it for her. Every number below comes from the 4-week test (2 to 29 November 2026) and the rules in `source/assets/md-files/`.
+
+**The theorem.** In TraLogFin, nobody's point is ever taken from somebody else. Every point is *created* by work: 1 for the fix, 0.75 for the ask, 0.125 for the confirm, and 0.125 profit for the owner (R34). So the owner's profit is a fraction of everyone's earnings, and it can only grow when theirs grows. Exploitation still pays, but only while it pays the people being exploited. Past that point, it costs only the owner.
+
+**Act 1: The cult of one.** Jane is the only one who matters. She never clocks in, her overtime approves itself, and she answers nobody. Conrad sends one proposal a day and all 20 wait (H1, H14). Malik lets every overtime request sit. The push begins: 1.6 tickets a day from Dale, Alaric and Kady, where Silverveil asks for one.
+
+**Act 2: The push pays, and the cult pays its members first.** Voidspire wins: 144 tickets to Silverveil's 124, 53.73% of the $10,000,000 pot. But look at who earned it. Every extra ticket paid its fixer 1 and its sender 0.75. Jane's profit is 0.125 a ticket, 18 points in all. Alaric ends the month on **44** points, Dale on 41.75 and Kady on 41. Jane, with every confirm and every profit, ends on 38.25. The cult earns its members more than its leader.
+
+**Act 3: The bill, addressed to Jane.** In May 2027, six months after it was worked, the overtime nobody answered expires (GUIDELINES Section 9). That's 66 hours: 68 asked for, minus the 2 that Dale's forgotten Friday clock-outs ate. It all becomes ghost hours for the workers and for Jane, never Malik. Meanwhile Seamus works to his contract and Daniel hands back a ticket every week, using nothing but their rights. That costs Voidspire 16 tickets, $260,668.49. Every exploit has left Jane's name on the record, where everyone can see it.
+
+**Act 4: The edge.** Jane does what she always does and pushes harder. Two confirmers handle about 160 tickets a month. Past that, every lapse turns her 0.125 profit into 0.125 lost profit (R8), a swing of 0.25 per ticket, while her people still get paid in full when the ticket confirms itself. At 184 tickets, the 24 extra earn her workers 42 points and cost Jane 3 points and 3 ghost points. Pushing past the edge doesn't take from her people. It takes from her and gives to them.
+
+**Act 5: The most ethical company in the world.** Jane runs the numbers, because numbers are the only thing she trusts besides herself. The only way to grow her profit is to grow everyone's earnings. Everyone's earnings are capped by confirming, so she needs more HoDs: one for every four Employees. She finally gives Alaric the HoD toggle she promised him, as a Manager this time, because it's the only valid combination (§3). Answering overtime is cheaper than letting it expire onto her own record, so she answers it. Conrad's proposals get a yes or a no, one a day. Each step is pure self-interest, and each one is exactly what an ethical company would do.
+
+She never became good. The maths made good the only thing that pays. That's Voidspire's storyline: the cult of one becomes the most ethical company in the world, and its leader still thinks it was all her idea.
+
+### The Smaller Stories
+
+The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and Daniel's trip; Victor, Aelin and Nyra, with Danish watching; Elliot and Sipho) are told as beats week by week in `source/assets/md-files/rpg-timeline.md`, each one tested against the rules.
+
 ---
 
 ## How to Read a Character
@@ -58,6 +82,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** charisma, funding, strategic ruthlessness, spotting an opportunity before anyone else.
 - **Falls apart when:** things go quiet. Boredom is the one thing she can't fundraise her way out of.
 - **Wants:** a company so big that its success justifies all the damage, after the fact.
+- **From the commits:** drawn from the 90 of the owner's 1,881 commits that ship and celebrate: "Deployed!", "Let's publish and push to main.", "TraLogFin is Orange, find a nice shade of orange. Mwah!" She ships on a Sunday, the owner's busiest day, and calls it a launch.
 - **Tests:** Never clocks in and still sees everything (owner exemption, §4 and §6). Her own overtime approves itself (§6). Forgets the monthly payment because billing is boring, so Ads switch on while nobody's role changes (§11). Threatens to delete Voidspire and start over, which forces the keep-or-delete-account choice (§10).
 
 ## **02.** Malik Tremaine Carter
@@ -191,6 +216,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** emotional intelligence, forecasting conflict, soft power.
 - **Falls apart when:** someone she protected turns out not to have deserved it.
 - **Wants:** to keep order and shelter for the people she thinks are worth it.
+- **From the commits:** drawn from the 118 that test and catch: "If there's bugs there's bugs.", "Bug: Fourth slide is being skipped." And "I think I should take a break as to not burnout": Kady protecting someone, this time the owner.
 - **Tests:** Submits leave that any HoD may approve (§6). As a Specialist she opens on her private bookmarks, which nobody else can see (§7). Typed the email code wrong six times while testing the login, so she's Blocked for a day.
 
 ## **09.** Seamus O'Donnell
@@ -254,6 +280,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** documentation, energy, turning a broken system into a working one.
 - **Falls apart when:** the problem has no data, only experience she doesn't have yet.
 - **Wants:** to modernise a system that works on habit, believing order and fairness are the same thing.
+- **From the commits:** drawn from the 92 that plan and document: every "Todo:", "Establish this in Figma before building it here." and "Done with documentation today. Got to get back to slaving away in a warehouse." That last one is why she knows a fleet bay from the inside.
 - **Tests:** Approves two hours of a four-hour overtime request and rejects the other two; only those two become ghost hours (§9). Couldn't approve Elliot's overtime as an HoD, because he's a Manager (§6); as co-owner she can, on her shift. Publishes link changes directly, with no clock-in as co-owner (§7). Only Hammad, the founder, can remove her (`tralogfin-database.md`, Co-owners).
 
 ## **12.** Elliot Crane
@@ -292,6 +319,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** electrical and mechanical work, time management, finding rare parts.
 - **Falls apart when:** a job needs a committee.
 - **Wants:** to build his own financial future, with both companies as his tools.
+- **From the commits:** drawn from the 30 terse, hands-on ones: "Hid the background.", "Admin", "Syntax Check", "This was done by hand, oddly enough." He says exactly what was done, and not a word more.
 - **Tests:** Is a freelancer in both companies who receives tickets from Elliot while clocked out (§8). Can only be clocked into one company at a time (§8). No leave, no ghost hours, just per-solution invoices (§9). Blocked at the login screen.
 
 ## **14.** Zuberi Thorne

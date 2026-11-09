@@ -9,6 +9,7 @@ How Track a Day, Log a Ticket, Find a Link and Pick a Page interact. This is a d
 | `[ticketing]` | `log-a-ticket.md`    | `DefineDuties`   | `source/utilities/vendors/log-a-ticket/`       |
 | `[hyperlink]` | `find-a-link.md`     | `ArchiveAnchors` | `source/utilities/vendors/university-tracker/` |
 | `[landing]`   | —                    | `PickPage`       | —                                             |
+| All           | `rpg-timeline.md`    | — | The cast's storylines as beats, with the loopholes they found |
 | All           | `tralogfin-database.md` | The four above; `PickPage` also holds companies and memberships | Test data: `testing/tralogfin_TEST.json` |
 
 ## Pinned: `<main>` Fullscreen Labels

@@ -12,9 +12,9 @@ All in `source/modules/server/MongoDB/testing/`:
 | `pickPage_TEST.json` | Everyone and everything sensitive: the 18 characters and Randomize, Voidspire and Silverveil, and every membership with its version chain |
 | `trackTime_TEST.json` | The full 4 weeks: every shift, overtime request, leave and freelancer invoice |
 | `defineDuties_TEST.json` | The full 4 weeks: every ticket and every action |
-| `archiveAnchors_TEST.json` | Every company link, proposal and bookmark, with the window's clicks |
+| `archiveAnchors_TEST.json` | Every company link (each company's page copies University Tracker's header), Conrad's proposals, and 82 real bookmarks picked from each person's job title, with the window's clicks. The bookmark URLs haven't been checked for dead links yet |
 
-The full files replay the three Testing Baselines (Monday 2 to Sunday 29 November 2026), and they're generated, so every number traces to a rule. Each file holds one collection, named the way the code names it (`{ "TrackTime": [ … ] }`), like `TraLogFin.json` does for all four today. The replay is checked against the predictions; what doesn't match is listed in Replay Findings below.
+The full files replay the three Testing Baselines (Monday 2 to Sunday 29 November 2026), and they're generated, so every number traces to a rule. Every ticket describes a real problem in its fixer's job language (Dale's switch ports, Alaric's certificates, Nyra's architecture), and the story beats of `rpg-timeline.md` are played in them. Each file holds one collection, named the way the code names it (`{ "TrackTime": [ … ] }`), like `TraLogFin.json` does for all four today. The replay is checked against the predictions; what doesn't match is listed in Replay Findings below.
 
 ## The Shape in One Picture
 
@@ -256,6 +256,11 @@ Generated on 2026-11-09. Everything matched the predictions except these. Each o
 
 1. **Voidspire's overtime is 66 hours, not 68.** Dale forgets to clock out every second Friday, and Clocking Logic 2 closes his day at the contract's end. The hour he stayed for the push disappears without a request, so he can't even get ghost hours for it. The default meant to protect the worker quietly erases his overtime.
 2. **The confirmers aren't split evenly:** Jane 69 and Malik 75, Hammad 60 and Tasneem 64, instead of 72 and 62 each. R24 sends every ticket a confirmer logged themselves to the other one, and the cooldown waited 9 times. Points and totals are unaffected; the even split in the baselines was a simplification.
+3. **The window is local, not UTC.** Kady, Aelin, Nyra and Elliot start Monday 2 November while it's still Sunday 1 November in UTC. The data is right (O4: a day belongs to the date it starts), so "2 to 29 November" means each person's own dates. Anything counting the window must use the person's date (`date` in TrackTime), not the UTC one.
+4. **Half a point lands after the window.** R33's cooldown made a few late-November confirms wait their 3 days, so Jane's 0.375 and Malik's 0.125 arrive on 30 November or later. Over the whole replay, everyone's points still add up to the predicted 542.875 (290.75 + 252.125) exactly: 542.375 inside the window plus 0.5 after it. The baselines should say "confirmed by" a date, not "within" the window.
+5. **Checkpoint messages may be noisy.** At the pushed pace, Alaric reaches a new whole point about twice a working day: 44 messages in 4 weeks, 11 of them in week 1. Answered by the owner: keep them. "If it earns everyone money." That sentence became Voidspire's storyline (CHARACTERS.md, Voidspire's Arc).
+
+Played on 2026-11-09 with `.claude-notes/play-character.py`, which rolls a character the way the Randomize button does and plays their 4 weeks through all three apps. First roll: Dr. Alaric Voss. All 18 were then played; none broke a rule.
 
 ## How It Scales
 

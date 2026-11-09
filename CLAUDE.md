@@ -34,7 +34,7 @@ npm run app        # Development server on http://localhost:8080
 npm run deploy     # Production build into public/
 npm run stop       # Free port 8080
 npx sass --no-source-map path/to/file.scss > /dev/null   # Check that SCSS compiles
-npx tsc --noEmit -p tsconfig.json                        # Type-check (some errors already exist; the count must not go up)
+npx tsc --noEmit -p tsconfig.json                        # Type-check (0 errors; the two read-only originals in vendors/ are excluded; keep it at 0)
 ```
 
 There is no automated test suite. Components are tested visually on the Archive page; application rules are tested with the characters in `CHARACTERS.md`.
