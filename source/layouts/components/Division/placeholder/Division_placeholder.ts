@@ -1,6 +1,8 @@
 //--|🠊 Division_placeholder.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../tools/conversions';
+import { abbrShade, abbrColor } from '../../components'; //--|🠊 AI Code: Review Please 2026-11-09 13:41 🠈|--\\
+import type { TheseProps } from './Division.placeholder'; //--|🠊 AI Code: Review Please 2026-11-09 13:41 · The props are written in the .tsx, this only reads them 🠈|--\\
 
 function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer>' | '<overlay>' | '<leftbar>' | '<rightbar>') {
   let wrapperElement = document.querySelector(`#${pageName}-${stripBrackets(blockName, '<>')}`) as HTMLElement;
@@ -25,6 +27,14 @@ function testBlock(pageName: string, blockName: '<main>' | '<header>' | '<footer
       break;
   }
 }
+
+//--|🠋 Generate Classes 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-09 13:41 · Same build as <ArticleUpdates>: shade_color, e.g. dar_blu 🠈|--\\
+export const createClass = (style: TheseProps['style']): string => {
+  const classShade = abbrShade(style.shade);
+  const classColor = abbrColor(style.color);
+  return `${classShade}_${classColor}`;
+};
 
 const viewMain = (wrapper: HTMLElement) => {
   //--|🠋 This order is mandatory. 🠋|--\\

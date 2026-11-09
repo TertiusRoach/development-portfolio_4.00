@@ -3,17 +3,15 @@
   //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
   li[class*='horizontal'] {
     transition: transform 500ms ease-in-out;
-    div[class*='container'] {
-      display: flex;
-      > * {
-        height: 100svh;
-      }
-    }
     > div[class*='container'] {
       //--|🠊 Own container only, never a nested fullscreen 🠈|--\\
+      display: flex; //--|🠊 AI Code: Review Please 2026-11-09 13:03 · Moved from a descendant rule that leaked into every nested container 🠈|--\\
       flex-direction: row; //--|🠈 flexbox: slides side by side 🠈|--\\
       grid-auto-flow: column; //--|🠈 gridbox: slides side by side 🠈|--\\
       grid-auto-columns: 100%; //--|🠈 gridbox: one slide per view 🠈|--\\
+      > * {
+        height: 100svh; //--|🠊 AI Code: Review Please 2026-11-09 13:03 · One slide per view 🠈|--\\
+      }
     }
   }
 }
@@ -96,8 +94,12 @@
     transition: transform 500ms ease-in-out;
     > div[class*='container'] {
       //--|🠊 Own container only, never a nested fullscreen 🠈|--\\
+      display: flex; //--|🠊 AI Code: Review Please 2026-11-09 13:03 · [y] no longer borrows this from a [x] parent's leak 🠈|--\\
       flex-direction: column; //--|🠈 flexbox: slides stacked 🠈|--\\
       grid-auto-flow: row; //--|🠈 gridbox: slides stacked 🠈|--\\
+      > * {
+        height: 100svh; //--|🠊 AI Code: Review Please 2026-11-09 13:03 · One slide per view, matching translateY(-100svh) steps 🠈|--\\
+      }
     }
   }
 }

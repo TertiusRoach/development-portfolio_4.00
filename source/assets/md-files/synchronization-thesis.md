@@ -4,16 +4,18 @@ How Track a Day, Log a Ticket, Find a Link and Pick a Page interact. This is a d
 
 ## Pinned: `<main>` Fullscreen Labels
 
-Every application's `<main>` follows `[archive]`: an outer `[y]` fullscreen holding three `[x]` carousels, the left, middle and right pages. `startingPreview()` in `Main/${PageName}Functions.ts` toggles them, and each app opens on its middle page.
+Every application's `<main>` mirrors `[archive]` with the axes flipped: an outer `[x]` fullscreen named `elements` holding three `[y]` pages, left, centre and right. `startingPreview()` in `Main/${PageName}Functions.ts` toggles them, and each app opens on its centre page, which takes the app's own word (the field it's named after in `TraLogFin.json`).
 
-| Application   | Outer (was `elements`) | Left page       | Middle page  | Right page      | Opens with                          |
-| ------------- | ---------------------- | --------------- | ------------ | --------------- | ----------------------------------- |
-| `[overtime]`  | `vocation`             | `(established)` | `(reminder)` | `(freelancing)` | `startingPreview('(vocation)', 2)`   |
-| `[ticketing]` | `position`             | `(manager)`     | `(convey)`   | `(employee)`    | `startingPreview('(position)', 2)`   |
-| `[hyperlink]` | `occupation`           | `(specialist)`  | `(figures)`  | `(technician)`  | `startingPreview('(occupation)', 2)` |
-| `[landing]`   | `entrance`             | `(register)`    | `(login)`    | `(password)`    | `startingPreview('(entrance)', 2)`   |
+| Application   | Outer      | Left page       | Centre page       | Right page      | Opens with                               |
+| ------------- | ---------- | --------------- | ----------------- | --------------- | ---------------------------------------- |
+| `[overtime]`  | `elements` | `(established)` | `(vocation)`      | `(freelancing)` | `startingPreview('(vocation)', 1)`       |
+| `[ticketing]` | `elements` | `(manager)`     | `(position)`      | `(employee)`    | `startingPreview('(position)', 1)`       |
+| `[hyperlink]` | `elements` | `(specialist)`  | `(occupation)`    | `(technician)`  | `startingPreview('(occupation)', 1)`     |
+| `[landing]`   | `elements` | `(register)`    | `(demonstration)` | `(password)`    | `startingPreview('(demonstration)', 1)`  |
 
-Waiting on the placeholders.
+- The centre page opens the `<header>` on desktop and the `<footer>` on mobile. A character pick sends `<main>` back to it.
+- `[landing]` opens on `(demonstration)` while the user is logged out, and on `(application)` once they're logged in. It stays `(demonstration)` for now.
+- `[overtime]` is built. `[ticketing]` and `[hyperlink]` copy it when their turn comes; `[landing]` waits.
 
 ## How the Applications Interact
 

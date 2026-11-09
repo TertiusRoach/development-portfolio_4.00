@@ -89,7 +89,7 @@ function reloadElements(pageName: string, blockName: string, labelName: string) 
 }
 export default reloadElements;
 
-//--|🠋 Configures Headings 🠋|--\\
+//--|🠋 Configures Preview 🠋|--\\
 export const selectFullscreen = (thisItem: HTMLDivElement, pageName: string, blockName: string, labelName: string, menuAxis: '[x]' | '[y]'): void => {
   let orientation: 'horizontal' | 'vertical';
   switch (menuAxis) {

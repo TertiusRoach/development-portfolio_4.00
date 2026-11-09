@@ -154,12 +154,12 @@ body {
   div[id='landing-body'] {
     //--|🠋 Desktop (Landscape) 🠋|--\\
     @media screen and (orientation: landscape) {
-      //--|🟪| Landing |🟪|--\\
+      //--|🟧| Landing |🟧|--\\
       @include Mixins.landscape-grid;
     }
     //--|🠋 Mobile (Portrait) 🠋|--\\
     @media screen and (orientation: portrait) {
-      //--|🟪| Landing |🟪|--\\
+      //--|🟧| Landing |🟧|--\\
       @include Mixins.portrait-grid;
     }
   }

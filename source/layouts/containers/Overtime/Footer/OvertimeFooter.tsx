@@ -18,7 +18,7 @@ import { loadPages } from '../../../tools/navigation';
 import { checkScreen, synchDemo } from '../../../tools/synching';
 import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldFooters, expandFooters, squareFooters, freezeFooters } from './OvertimeFunctions';
-import { showSlides } from '../Main/OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
+import startingPreview from '../Main/OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
 
 //--|🠋 Database 🠋|--\\
 import TrackTime from '../../../../modules/server/MongoDB/testing/TrackTime';
@@ -152,6 +152,7 @@ function OvertimeFooter({ info }: InfoProps) {
                   onClick: (_view, container) => {
                     expandFooters(container);
                     synchDemo(pageName, blockName, 'pick');
+                    startingPreview('(vocation)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:38 · 1 = the sweeping shows its placeholder 🠈|--\\
                   },
                 },
               }}
@@ -222,14 +223,14 @@ function OvertimeFooter({ info }: InfoProps) {
                   {
                     click: () => {
                       synchDemo(pageName, blockName, 'click');
-                      showSlides(pageName, 1); //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
+                      startingPreview('(established)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
                     },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
                   },
                   {
                     click: () => {
                       synchDemo(pageName, blockName, 'click');
-                      showSlides(pageName, 3); //--|🠊 AI Code: Review Please 2026-11-08 12:54 🠈|--\\
+                      startingPreview('(freelancing)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
                     },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   },

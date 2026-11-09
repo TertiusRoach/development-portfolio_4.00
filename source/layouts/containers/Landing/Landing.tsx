@@ -62,7 +62,7 @@ function Landing() {
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <LandingFooter info={{ pageName: '[landing]', blockName: '<footer>', labelName: '(default)' }} />}
       </Suspense>
-      {/*--|🟪|--*/}
+      {/*--|🟧|--*/}
       <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <LandingLeftbar info={{ pageName: '[landing]', blockName: '<leftbar>', labelName: '(default)' }} />}
       </Suspense>

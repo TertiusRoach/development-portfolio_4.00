@@ -6,10 +6,10 @@ import React, { useEffect } from 'react';
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
-import testBlock from './Division_placeholder';
+import testBlock, { createClass } from './Division_placeholder'; //--|🠊 AI Code: Review Please 2026-11-09 13:41 🠈|--\\
 import { loadAsset } from '../../../tools/utilities';
 
-interface TheseProps {
+export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
@@ -22,13 +22,13 @@ interface TheseProps {
   };
 }
 
-export function DivisionPlaceholder({ info }: TheseProps) {
+export function DivisionPlaceholder({ info, style }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
 
   useEffect(() => {}, [pageName, blockName, labelName]);
 
-  return <div className={`${info.labelName}-${info.blockName}_division-placeholder`}></div>;
+  return <div className={`${info.labelName}-${info.blockName}_division-placeholder ${createClass(style)}`}></div>; //--|🠊 AI Code: Review Please 2026-11-09 13:41 · style now paints it (dar_blu) 🠈|--\\
 }
 export default DivisionPlaceholder;

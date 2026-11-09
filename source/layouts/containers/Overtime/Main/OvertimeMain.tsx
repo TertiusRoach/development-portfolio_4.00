@@ -3,10 +3,15 @@
 import React, { useState, useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen'; //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
-import DivisionPlaceholder from '../../../components/Division/placeholder/Division.placeholder'; //--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
+import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
+
+//--|🠋 Elements 🠋|--\\
+import VocationElements from './elements/vocation-components/VocationElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
+import EstablishedElements from './elements/established-components/EstablishedElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
+import FreelancingElements from './elements/freelancing-components/FreelancingElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
+import startingPreview from './OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
 import { revertContainers } from '../../../scripts/Main_Over';
 import { stripBrackets } from '../../../tools/conversions';
 import { checkScreen } from '../../../tools/synching';
@@ -27,11 +32,12 @@ function OvertimeMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
+    startingPreview('(vocation)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:38 · 1 = the sweeping shows its placeholder 🠈|--\\
     //--|🟩|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 2 as number; //--|🠊 AI Code: Review Please 2026-11-08 12:54 · II is the default, the demo toggle picks I or III 🠈|--\\
+  let viewName = 2 as number; //--|🠊 AI Code: Review Please 2026-11-09 13:07 · II is (vocation), the demo toggle picks I or III 🠈|--\\
   let blurName: string = 'obnubilate';
   return (
     <main
@@ -45,16 +51,16 @@ function OvertimeMain({ info }: InfoProps) {
       }}
     >
       <section className={`${blockName}-foreground`}>
-        {/*--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--*/}
+        {/*--|🠊 AI Code: Review Please 2026-11-09 13:07 · slides → elements, outer [x] like Archive's elements 🠈|--*/}
         <DivisionFullscreen
-          //--|🠊 <div class="slides-main_fullscreen-default"/> 🠈|--\\
+          //--|🠊 <div class="elements-main_fullscreen-default"/> 🠈|--\\
           cases={{
             axis: '[x]',
-            show: startingPreview as number,
-            call: OvertimeSlides as React.ComponentType<InfoProps>,
+            show: viewName as number,
+            call: OvertimeElements as React.ComponentType<InfoProps>,
           }}
           info={{
-            labelName: 'slides',
+            labelName: 'elements',
             blockName: blockName as '<main>',
             pageName: pageName as '[overtime]',
           }}
@@ -65,47 +71,32 @@ function OvertimeMain({ info }: InfoProps) {
     </main>
   );
 }
-//--|🠊 AI Code: Review Please 2026-11-08 12:48 🠈|--\\
-const OvertimeSlides: React.FC<InfoProps> = ({ info }) => {
+//--|🠊 AI Code: Review Please 2026-11-09 13:07 · Page order, not alphabetical: I (established), II (vocation), III (freelancing) 🠈|--\\
+const OvertimeElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'overtime';
 
   return (
     <>
-      <DivisionPlaceholder
+      <EstablishedElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'first-slide' as string,
-        }}
-        style={{
-          view: '-center-',
-          shade: '~dark~',
-          color: '(green)',
+          labelName: '(established)' as string,
         }}
       />
-      <DivisionPlaceholder
+      <VocationElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'second-slide' as string,
-        }}
-        style={{
-          view: '-center-',
-          shade: '~dark~',
-          color: '(blue)',
+          labelName: '(vocation)' as string,
         }}
       />
-      <DivisionPlaceholder
+      <FreelancingElements
         info={{
           pageName: pageName,
           blockName: blockName,
-          labelName: 'third-slide' as string,
-        }}
-        style={{
-          view: '-center-',
-          shade: '~dark~',
-          color: '(purple)',
+          labelName: '(freelancing)' as string,
         }}
       />
     </>

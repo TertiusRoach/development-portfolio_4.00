@@ -8,7 +8,124 @@
   //--|🠋 Mobile (Placeholder) 🠋|--\\
 }
 
+//--|===|--\\
+//--|🠊 AI Code: Review Please 2026-11-09 13:41 · One recipe for every colour, the shade picks dark or light 🠈|--\\
+@mixin placeholder-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    background: rgba(Palettes.$gray-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    background: rgba(Palettes.$gray-light, 0.75);
+  }
+}
+@mixin red-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_red'] {
+    background: rgba(Palettes.$red-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_red'] {
+    background: rgba(Palettes.$red-light, 0.75);
+  }
+}
+@mixin gre-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    background: rgba(Palettes.$green-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    background: rgba(Palettes.$green-light, 0.75);
+  }
+}
+@mixin blu-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    background: rgba(Palettes.$blue-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    background: rgba(Palettes.$blue-light, 0.75);
+  }
+}
+@mixin yel-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    background: rgba(Palettes.$yellow-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    background: rgba(Palettes.$yellow-light, 0.75);
+  }
+}
+@mixin pur-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    background: rgba(Palettes.$purple-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    background: rgba(Palettes.$purple-light, 0.75);
+  }
+}
+@mixin ora-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    background: rgba(Palettes.$orange-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    background: rgba(Palettes.$orange-light, 0.75);
+  }
+}
+@mixin pin-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    background: rgba(Palettes.$pink-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    background: rgba(Palettes.$pink-light, 0.75);
+  }
+}
+@mixin bro-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    background: rgba(Palettes.$brown-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    background: rgba(Palettes.$brown-light, 0.75);
+  }
+}
+@mixin tur-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    background: rgba(Palettes.$turquoise-dark, 0.75);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    background: rgba(Palettes.$turquoise-light, 0.75);
+  }
+}
+//--|===|--\\
 div[class*='placeholder'] {
+  @include placeholder-colors(); //--|🠊 AI Code: Review Please 2026-11-09 13:41 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

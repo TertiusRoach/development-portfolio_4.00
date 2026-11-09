@@ -27,7 +27,7 @@ function LandingLeftbar({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    //--|🟪|--\\
+    //--|🟧|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 

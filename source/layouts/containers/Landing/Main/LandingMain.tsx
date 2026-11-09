@@ -29,7 +29,7 @@ function LandingMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    //--|🟪|--\\
+    //--|🟧|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
@@ -54,7 +54,7 @@ function LandingMain({ info }: InfoProps) {
           }}
           style={{
             shade: '~dark~',
-            color: '(purple)',
+            color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 13:50 · Orange is the company colour 🠈|--\\
           }}
         />
       </section>
