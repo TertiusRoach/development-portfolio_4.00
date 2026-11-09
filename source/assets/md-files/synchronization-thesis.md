@@ -9,6 +9,7 @@ How Track a Day, Log a Ticket, Find a Link and Pick a Page interact. This is a d
 | `[ticketing]` | `log-a-ticket.md`    | `DefineDuties`   | `source/utilities/vendors/log-a-ticket/`       |
 | `[hyperlink]` | `find-a-link.md`     | `ArchiveAnchors` | `source/utilities/vendors/university-tracker/` |
 | `[landing]`   | —                    | `PickPage`       | —                                             |
+| All           | `tralogfin-database.md` | The four above; `PickPage` also holds companies and memberships | Test data: `testing/tralogfin_TEST.json` |
 
 ## Pinned: `<main>` Fullscreen Labels
 
@@ -29,6 +30,14 @@ Every application's `<main>` mirrors `[archive]` with the axes flipped: an outer
 
 Every record's `_id` is a 24-character hex string shaped like MongoDB's, stored as plain text (TABLE.md Section 6). Test characters in `TraLogFin.json` also carry a readable `profile` slug, which is what the front-end's `characterProfile` and the character images use. Records point at people by `_id` (`senderId`, `receiverId`, `byId`), never by name.
 
+## Pinned: Demo Accounts
+
+Every test email ends in `@tralogfin.com`, a placeholder until the company name is final (owner, 2026-11-09). The domain isn't ours, so no mail is ever sent to it. Signing in as a demo account plays itself: the unlock codes (activation and password) appear, and an animation types them into the field, so a visitor sees the whole login without needing an inbox. Everything else is tested when the front-end is ready for release.
+
+## Pinned: International Calendars
+
+A project of its own, for later (owner, 2026-11-09). For now, each worker's contract days (O4) take their weekends out, and approved leave covers holidays. When it's built: weekend days per country come from Unicode CLDR (`weekData`; the UAE is Saturday–Sunday since 2022, Iran is Friday only), and public holidays from the `date-holidays` package (offline, about 200 countries) or the free Nager.Date API. Weeks already follow ISO 8601 (TABLE.md Section 4).
+
 ## Pinned: Message Types
 
 Three kinds of message, set by the owner on 2026-11-09. Each app page uses one:
@@ -41,6 +50,8 @@ Three kinds of message, set by the owner on 2026-11-09. Each app page uses one:
 
 ## How the Applications Interact
 
+**`[overtime]` and `[ticketing]` are the ingredients; `[hyperlink]` is the lure** (owner, 2026-11-09): the free, simple, trustworthy way in. See `find-a-link.md`, The Lure.
+
 **`[overtime]` holds the key.** The company a member is clocked into is the company `[ticketing]` and `[hyperlink]` work in. Nothing else switches company context.
 
 | Event | `[overtime]` | `[ticketing]` | `[hyperlink]` |
@@ -50,7 +61,7 @@ Three kinds of message, set by the owner on 2026-11-09. Each app page uses one:
 | Member removed | Clock-in cut off; pending overtime → ghost hours; pending leave → rejected | Assigned tickets released to the pool; resolved tickets and points archived | Access ends; waiting proposals withdrawn (H6); published links stay with their name; bookmarks stay |
 | Worker deletes their account | As removal, in every company | As removal, in every company | Bookmarks deleted with the account |
 | Company deleted | Every clock-in cut off | Every ticket archived as it stands | Every link and proposal archived as it stands |
-| Promoted to Manager | Can't approve anything yet (needs HoD) | Can assign, reassign, delete and restore | Can propose link changes for the owner to approve |
+| Promoted to Manager | Can't approve anything yet (needs HoD) | Can assign, take, delete and restore | Can propose link changes for the owner to approve |
 | Made HoD | Can approve Established Employees | No change | Can publish link changes directly; proposals already waiting still wait for the owner (H4) |
 | Demoted | Pending approvals move to the other HoDs and the owner | Loses assign; their past assignments stay | Loses editing immediately; their published links stay; a waiting proposal keeps waiting for the owner and can still be withdrawn (H4) |
 | Offline | Clock-ins recorded, labelled offline | Read-only | Read-only company links; bookmarks editable, nothing lost on sync (H10) |
@@ -65,7 +76,7 @@ Every application keeps two counts: the good one, grounded and accurate, and the
 | Application | Good | Ghost | Who sees the ghost count |
 | --- | --- | --- | --- |
 | `[overtime]` | Approved hours | Ghost hours: rejected or expired overtime | The worker, the reviewer and the owner |
-| `[ticketing]` | Points: confirmed completions (+1), the sender's 0.75, 0.25 for informing, 0.125 for a timely confirm | Ghost points: 0.125 per unconfirmed ticket, 0.25 per deletion of someone else's ticket (0.5 to archive it), 0.25 for overruling an Employee's deletion, 0.125 lost profit per lapse | Everyone in the company, except a freelancer's own (only them and the owner) |
+| `[ticketing]` | Points: confirmed completions (+1), the sender's 0.75, 0.25 for informing, 0.125 for a timely confirm, and 0.125 profit to the owner (R34) | Ghost points: 0.125 per unconfirmed ticket, 0.25 per deletion of someone else's ticket (0.5 to archive it), 0.25 for overruling an Employee's deletion, 0.125 lost profit per lapse | Everyone in the company, except a freelancer's own (only them and the owner) |
 | `[hyperlink]` | Good clicks: company links | Ghost links: your own bookmark clicks this year (a parody) | Only you |
 
 ## Edge Cases
@@ -100,18 +111,34 @@ Every edge case raised so far has a draft restriction rule. None is in GUIDELINE
 | Deleting work someone's doing | 0.125 to a receiver who held it 24 hours; 0.375 ghost to the deleter | `log-a-ticket.md` R25 |
 | A sender's misclick | An undone deletion of your own doesn't count toward archiving | `log-a-ticket.md` R13 |
 | Three friends pushing tickets through | A quiet word from the owner after 5 times in 30 days | `log-a-ticket.md` R27 |
-| A bad Manager | The owner carries 25% of their ghost points, as it happens; turnover shows on the owner's profile | `log-a-ticket.md` R28 |
+| Flooding the owner with link proposals | One a day per Manager | `find-a-link.md` H14 |
+| A bad Manager | The owner gains 0.125 for every 0.5 of their ghost points, as it happens; turnover shows on the owner's profile | `log-a-ticket.md` R28 |
 | Odd decimals | Every number is a multiple of 0.125, stored in eighths | `log-a-ticket.md` Points |
 | How long ghost points count | 24 months, exactly like ghost hours | `log-a-ticket.md` Ghost Hours |
 | Checkpoint messages when points drop | None; only good news shows | `log-a-ticket.md` Points |
 | Removing workers | Counts as turnover on the owner's profile | `log-a-ticket.md` R28 |
 | Is a sector of 18 balanced? | Yes: 6 units of one Manager and two Employees; confirming is the bottleneck, one HoD per 4 Employees | `log-a-ticket.md` Predicted Balance |
 | A role changes after an action | The role at the moment of the action sets the price | `log-a-ticket.md` R23 |
-| Confirming your own ticket | Needs a third person | `log-a-ticket.md` R24 |
+| Confirming your own ticket | Needs a third person; with no HoD, the owner may, without the 0.125 | `log-a-ticket.md` R24 |
+| A ticket's history | Flat `Action` documents beside the `Ticket` in `DefineDuties`, never a list of objects; settled Open Conflict 1 (owner, 2026-11-09) | `log-a-ticket.md` The Record |
+| Time zones and device clocks | Server time; every window counted in hours | `log-a-ticket.md` R29 |
+| Leaving with a confirm still owed | Still paid, into the archived record | `log-a-ticket.md` R30 |
+| Part-time workers | One assignment per contract day | `log-a-ticket.md` R17 |
+| Reversing a decision | `[overtime]`: a rejection can become an approval once, with a (guidance) message to the reviewer, because a rejection leaves ghost hours. `[hyperlink]`: a declined proposal is simply sent again, which costs nobody anything (owner, 2026-11-09) | `track-a-day.md` O3, `find-a-link.md` |
+| Which days count | Overdue: the worker's contract days (O4); self-confirm and the freelancer's rolling week: calendar days | `log-a-ticket.md` R8, R11, R21 |
 | A deleted ticket someone was working on | The receiver's name stays in the history | `log-a-ticket.md` R25 |
 | Flooding the pool with tickets | 4 logs a day; deleting your own still counts | `log-a-ticket.md` R18 |
 | Tickets ageing during leave | Approved leave pauses the overdue clock | `log-a-ticket.md` R15, with `track-a-day.md` |
-| Releasing or reassigning overdue tickets | Release clears the count; reassign restarts 7 days | `log-a-ticket.md` R16 |
+| Releasing or taking overdue tickets | Release clears the count (unless you get it back within 7 days); take restarts 7 days | `log-a-ticket.md` R16 |
+| Taking a coworker's ticket | Only when it's overdue, as a rescue; Managers, HoDs and the owner any time | `log-a-ticket.md` R32 |
+| Friends confirming each other's tickets | Confirmers take turns; anyone eligible from day 5 | `log-a-ticket.md` R33 |
+| The owner hoarding tickets | 12 open at most, shared between co-owners | `log-a-ticket.md` R31 |
+| Owners earning more | 0.125 profit per timely confirm, to the owner on shift; taken from nobody | `log-a-ticket.md` R34 |
+| Refusing a junk fix | A confirmer declines it with a note, free; a second confirmer gets the next look | `log-a-ticket.md` R35 |
+| Provoking a Manager into deleting | A deletion marked as junk pays the sender nothing | `log-a-ticket.md` R36 |
+| Two owners | A founder and a night- or day-shift co-owner; the owner on shift carries the owner's weight | `tralogfin-database.md` Co-owners |
+| Same three people, again | 3 days before the rotation pairs them again, unless nobody else can | `log-a-ticket.md` R33 |
+| One person, two companies, two roles | One membership per company, each with its own role | `tralogfin-database.md` Why Memberships |
 | Endless reopens | Two for the sender, then Managers only | `log-a-ticket.md` R3 |
 | Unanswered leave | Approved automatically with 14 days' notice, otherwise it lapses | `track-a-day.md` O1 |
 | Withdrawing a request | Allowed until it's decided | `track-a-day.md` O2 |
@@ -127,14 +154,12 @@ Every edge case raised so far has a draft restriction rule. None is in GUIDELINE
 | `javascript:` or other non-web links | Refused; `https://` and `http://` only | `find-a-link.md` H8 |
 | Editing a published link | A new version; the old one stays | `find-a-link.md` H9 |
 | A bookmark changed on two devices | Both kept; an edit beats a delete | `find-a-link.md` H10 |
-| Links that change by date | Not supported; fixed addresses only | `find-a-link.md` H11 |
+| Links that change by date | Fixed addresses with a period; the page shows the ones covering today's server date | `find-a-link.md` H11, Purpose and Period |
 | An HoD publishing a Manager's proposal as their own | HoDs can't see proposals | `find-a-link.md` H12 |
 | HoDs re-adding a link the owner removed | Only the owner can | `find-a-link.md` H13, like `log-a-ticket.md` R1 |
 
 ## Open Conflicts
 
-Found during the `[hyperlink]` scan. Each one waits for the owner.
+New conflicts between the applications go here, each waiting for the owner.
 
-1. **`[ticketing]`'s `history` is a list of objects.** TABLE.md Section 6, rule 3 says lists hold simple values only, never objects. `[hyperlink]` keeps its history as a chain of flat documents (`replacesId`) instead. One of the two should change so both apps record history the same way.
-2. **Reversing a decision.** `[overtime]`'s O3 lets a rejection become an approval once. `[hyperlink]` has no such step: a declined proposal stays declined, and the proposer simply sends it again, which costs nobody anything.
-3. **TABLE.md Section 6, rule 4** gives `"employeeId": "dale-sutton"` as its example, a profile slug. The pinned IDs rule above says records point at people by `_id`.
+None right now. Settled on 2026-11-09: `[ticketing]`'s history became flat `Action` documents, reversing a decision stays different per app (Edge Cases), and TABLE.md rule 4 now points by `_id`.

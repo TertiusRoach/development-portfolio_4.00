@@ -10,7 +10,7 @@ They exist to break things. Every rule in [GUIDELINES.md](GUIDELINES.md) should 
 
 **Voidspire Systems**, owned by **Jane Lester**. Fast, loud and impressive from the outside. It raises money like breathing and burns people at the same rate. Voidspire runs on friction: visionaries break systems, specialists patch them, and somebody always rewrites the story afterwards so it looks like the plan.
 
-**Silverveil Logistics**, owned by **Hammad Dean**. Slower, quieter, and easy to underestimate. Hammad used to put out Jane's fires before he left to build the company he wished he'd worked for. Silverveil runs on loyalty, and loyalty always comes with a price tag somebody has to pay.
+**Silverveil Logistics**, owned by **Hammad Dean**, with **Tasneem Kemp** as his night-shift co-owner. Slower, quieter, and easy to underestimate. Hammad used to put out Jane's fires before he left to build the company he wished he'd worked for. Silverveil runs on loyalty, and loyalty always comes with a price tag somebody has to pay.
 
 The two compete for the same clients and still can't function without each other. Three freelancers, **Dimitri**, **Daniel** and **Sipho**, work for both. They're the bridge, the leak and the alibi, depending on who you ask.
 
@@ -146,7 +146,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 | ----------------- | ----------------------------- | ---- | --- | -------------- | ------- |
 | Voidspire Systems | Systems Operations Management | No   | No  | United Kingdom | Enabled |
 
-> Conrad is the one trying to bring order to Jane's chaos, and he'll tell you so. He believes Voidspire could run like a machine if people would just use the forms he spent months building. It's a noble fight, until you notice that every form puts one more decision through Conrad. He's a Manager without HoD status, so his link changes need the owner's approval. He submits them anyway, dozens a week, each one a perfectly formatted reminder that he's still waiting for the title. Bureaucratic excellence is a moral good to him. So is being needed.
+> Conrad is the one trying to bring order to Jane's chaos, and he'll tell you so. He believes Voidspire could run like a machine if people would just use the forms he spent months building. It's a noble fight, until you notice that every form puts one more decision through Conrad. He's a Manager without HoD status, so his link changes need the owner's approval. He'd submit dozens a week if the app let him. It allows one a day, and every one is a perfectly formatted reminder that he's still waiting for the title. Bureaucratic excellence is a moral good to him. So is being needed.
 
 - **Loves:** colour-coded folders, perfectly aligned documents, a request submitted in the correct format.
 - **Hates:** late expense claims, ad-hoc fixes, anyone who goes around him instead of through him.
@@ -233,7 +233,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** staying calm under pressure, diagnosing anything, political chess.
 - **Falls apart when:** he has to delegate. He still carries too much himself.
 - **Wants:** to prove that a company can be loyal to its people and still win.
-- **Tests:** Never clocks in (owner exemption, §4). Promoted Tasneem to Manager and explicitly chose HoD: Yes, and promoted Elliot with HoD: No (§5). Offered Zuberi Established status, which needed the double warning and typed confirmation (§5). Removed a contractor mid-shift, and the clock-in ended at that moment (§8, §10).
+- **Tests:** Never clocks in (owner exemption, §4). Promoted Tasneem to Manager and explicitly chose HoD: Yes, and promoted Elliot with HoD: No (§5). Offered Zuberi Established status, which needed the double warning and typed confirmation (§5). Removed a contractor mid-shift, and the clock-in ended at that moment (§8, §10). Made Tasneem his night-shift co-owner: he still pays, sets the shifts, and is the only one who can remove her.
 
 ## **11.** Tasneem Kemp
 
@@ -246,13 +246,15 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 | Silverveil Logistics | Fleet Technology & Maintenance | No   | Yes | India   | Enabled |
 
 > Tasneem is the ambitious one. She arrived with an engineering degree and a list of everything reactive about Silverveil's fleet systems, and Hammad, instead of feeling threatened, made her an HoD. Now she schedules maintenance before things break and approves overtime like she's reading evidence: carefully, and on time. She can come across as idealistic or arrogant, because she trusts data over gut feeling, and sometimes the gut was right. But no request on her desk has ever expired.
+>
+> Before Silverveil, she gave Voidspire five years, and Jane used every one of them. She left with the receipts: everything Jane's chaos costs, written down. Hammad made her his night-shift co-owner, and she's spent every night since turning those five years against Voidspire, one prediction at a time.
 
 - **Loves:** predictive models, detailed asset tracking, a plan that survives contact with reality.
 - **Hates:** "fix it when it breaks", waste, decisions made on vibes.
 - **Good at:** documentation, energy, turning a broken system into a working one.
 - **Falls apart when:** the problem has no data, only experience she doesn't have yet.
 - **Wants:** to modernise a system that works on habit, believing order and fairness are the same thing.
-- **Tests:** Approves two hours of a four-hour overtime request and rejects the other two; only those two become ghost hours (§9). Can't approve Elliot's overtime, because he's a Manager (§6). Publishes link changes directly while clocked in (§7).
+- **Tests:** Approves two hours of a four-hour overtime request and rejects the other two; only those two become ghost hours (§9). Couldn't approve Elliot's overtime as an HoD, because he's a Manager (§6); as co-owner she can, on her shift. Publishes link changes directly, with no clock-in as co-owner (§7). Only Hammad, the founder, can remove her (`tralogfin-database.md`, Co-owners).
 
 ## **12.** Elliot Crane
 
@@ -271,7 +273,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** motivation, deadlines, rallying a team that's already exhausted.
 - **Falls apart when:** the crisis ends and nobody needs a hero.
 - **Wants:** to be recognised as the company's hardest-working martyr.
-- **Tests:** Assigns tickets to Sipho while Sipho isn't clocked in. The assignment works, but the work waits for a clock-in (§8). Can't approve anything as a Manager without HoD (§6). Hammad rejected his overtime once, and the ghost hours went to both of them (§9).
+- **Tests:** Is Silverveil's only Manager besides its two owners. Assigns tickets to Sipho while Sipho isn't clocked in. The assignment works, but the work waits for a clock-in (§8). Can't approve anything as a Manager without HoD (§6). Hammad rejected his overtime once, and the ghost hours went to both of them (§9).
 
 ## **13.** Sipho Dlamini
 
@@ -309,7 +311,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** rapid deployment, negotiation, carrying no emotional baggage into a project.
 - **Falls apart when:** a promise is broken. He leaves first and explains later.
 - **Wants:** a professional life with no bad deals in it, and maybe, quietly, a place to belong.
-- **Tests:** Accepted Established status while still freelancing for another company. That membership ended on acceptance, and his clock-in there was cut off at the same moment (§5, §8). Can't join a second company as Established (§5).
+- **Tests:** Accepted Established status while still freelancing for another company. That membership ended on acceptance, and his clock-in there was cut off at the same moment (§5, §8). Can't join a second company as Established (§5). Secretly skims Silverveil with Danish: ping-pong tickets, junk for Elliot to delete, padded overtime. Every technique struggles (`log-a-ticket.md`, The Inside Job).
 
 ## **15.** Nyra Solari
 
@@ -366,7 +368,7 @@ From the outside, Voidspire looks like the place to be. Spend a month inside bot
 - **Good at:** policy language, public speaking, negotiation.
 - **Falls apart when:** someone asks him what he actually believes.
 - **Wants:** to protect the company from lawsuits and revolt, and to keep the machine turning, whoever it runs over.
-- **Tests:** Drafts a policy to wipe ghost hours once a dispute is settled outside the app. The system won't allow it, not even for the owner (§9). Blocked at the login screen.
+- **Tests:** Drafts a policy to wipe ghost hours once a dispute is settled outside the app. The system won't allow it, not even for the owner (§9). Secretly skims Silverveil with Zuberi, and finds every gap already closed (`log-a-ticket.md`, The Inside Job). Blocked at the login screen.
 
 ## **18.** Aelin Darrow
 

@@ -140,6 +140,19 @@ The owner alone can:
 
 Managers and HoDs do not receive authority to change another person's role settings merely because they can assign tickets, edit company links, or approve employee requests.
 
+### Co-owners
+
+A company has at most **two owners**: the **founder**, who created it, and one **co-owner**, chosen by the founder. They split the day into a **day shift** and a **night shift**, as the founder decides. Added on 2026-11-09.
+
+- **Becoming co-owner** is a promotion (Section 5): the founder proposes it to a member, and the member accepts it with the Established-status double warning and typed confirmation. The co-owner is set to Established, Manager and HoD, locked like the founder's, and can't own or join another company while they co-own this one.
+- **The founder alone** pays for the company (Paid stays with the founder), sets the shifts, removes the co-owner and deletes the company. Nobody can lock the founder out of their own company.
+- **The co-owner has every other owner authority:** adding and removing members (except the founder), changing roles, approving leave, overtime and link changes, and never needing to clock in.
+- **The owner on shift carries the owner's weight.** Expired overtime (Section 9), and every other cost or credit that falls on "the owner", goes to whichever owner's shift it happened in. With one owner, or no shifts set, that's the founder.
+- **The co-owner's own leave and overtime are approved by the founder.** The founder's own still approve themselves.
+- **Removing the co-owner** is a membership removal (Section 10). It's counted as turnover on the founder's profile, like any removal.
+
+Everywhere else in these guidelines, "the owner" means either owner, unless it says the founder.
+
 ## 5. Invitations, membership, promotions, and demotions
 
 ### Adding a member
@@ -426,7 +439,7 @@ Use these as backend and acceptance-test rules:
 2. HoD: Yes always implies Established + Manager.
 3. No account can be both Freelancing for one company and Established for another.
 4. An Established worker has at most one company membership; a freelancer may have multiple.
-5. One account owns at most one company at a time; an active owner cannot join another company as a worker.
+5. One account owns or co-owns at most one company at a time; an active owner cannot join another company as a worker. A company has at most two owners: the founder and one co-owner (Section 4).
 6. A company owner alone changes members' Vocation, Position, and HoD status.
 7. A promotion never grants its new permissions before acceptance; a decline leaves the previous valid state intact.
 8. A demotion is silent and immediately removes permissions that no longer apply.

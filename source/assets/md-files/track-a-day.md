@@ -62,6 +62,37 @@ Overtime that someone refused to recognise. The full rules are GUIDELINES Sectio
 - **Context, not a verdict.** Ghost hours show patterns; on their own they don't prove anyone did anything wrong.
 - **Never combined with points** from `[ticketing]` (O5).
 
+## Predicted Balance
+
+### The Testing Baseline: 4 Weeks
+
+The `[archive]` backend test plays the same 28 days (20 working days, 2 to 29 November 2026) as `[ticketing]`'s baseline, for the same cast, with the schedules in `tralogfin-database.md`. Leave is kept out of the window so both apps count the same days; leave is tested as its own case. Decided with the owner on 2026-11-09.
+
+| 4 weeks | Voidspire (exploitation) | Silverveil (prediction) | Sector |
+| --- | --- | --- | --- |
+| Established people | 7 | 8 | 15 |
+| Contract hours | 1,192 (Jane 232, six at 160) | 1,280 (eight at 160) | 2,472 |
+| Overtime asked for | 68 h: Dale, Alaric and Kady 20 each (the push, 1 h a day), Conrad 8 (side fixing, 2 h a week) | 16 h: Elliot, one 4-hour request a week | 84 h |
+| Approved | 0 | 8 h | 8 h |
+| Rejected (ghost hours now) | 0 | 8 h: Elliot 8, Hammad 8 | 8 h each side |
+| **Pending on day 28** | **68 h** | **0** | **68 h** |
+| Ghost hours due when it expires (6 months) | 68 h for the workers (20, 20, 20, 8) and 68 h for Jane; Malik 0 | — | 68 h each side |
+| Freelancer invoices (one per confirmed ticket) | 24 planned, 20 actual (Daniel hands one back each week) | 24 | 48 planned, 44 actual |
+
+- **Voidspire's bill arrives late, addressed to Jane.** Malik never reviews the Employees' overtime and Jane ignores Conrad's (only she can approve a Manager). Nothing shows for 6 months, then everything expires into ghost hours for the workers and Jane, never Malik (GUIDELINES Section 9). The exploitation looks free inside the 4 weeks, and that's the trap.
+- **Silverveil's bill is paid weekly.** Every request is decided the week it's made. Hammad splits each of Elliot's 4-hour requests 2 and 2: his overtime is real, but not all of it is necessary, and both of them carry the difference.
+- **Seamus asks for nothing.** He works his contract and stops (the quiet resistance in `log-a-ticket.md`, Two Strategies), so the push never reaches his hours.
+- **Freelancers make no overtime and no ghost hours** (GUIDELINES Section 9). Their invoices follow the solutions they delivered: a confirmed ticket is a delivered solution (R8). Prices are agreed per solution, so the test counts invoices, not money.
+- **The two apps check each other.** Voidspire's 68 pending hours sit beside its 144 tickets, never combined (O5), and they tell the same story: the extra work was done, and nobody has paid for it yet.
+
+## Messages
+
+Message types are in `synchronization-thesis.md`, Message Types. Which page each one appears on comes later.
+
+| Case | Type | Who sees it | Message |
+| --- | --- | --- | --- |
+| A reviewer has rejected overtime that can still be changed (O3) | (guidance) | The reviewer and the owner | You rejected **Name**'s overtime. Got it wrong? You can still approve it, once. Their ghost hours stop counting; yours stay. |
+
 ## Edge Cases
 
 All already decided in GUIDELINES; listed here so the screens handle each one.
@@ -84,14 +115,17 @@ All already decided in GUIDELINES; listed here so the screens handle each one.
 | A worker changes their mind about a request | They withdraw it before it's decided. No ghost hours (O2). |
 | A reviewer wants to undo a decision | Only a rejection can be changed, and only into an approval (O3). |
 | How long is an ordinary workday? | Whatever the worker's contract says, agreed by both sides (O4). |
+| A night shift crosses midnight | It belongs to the day it started; overtime is anything past the contract's end (O4). |
+| The co-owner asks for overtime or leave | The founder approves it. Only the founder's own requests approve themselves (GUIDELINES Section 4, Co-owners). |
+| Overtime expires at a company with two owners | The ghost hours go to the worker and the owner whose shift it was worked in (GUIDELINES Section 4, Co-owners). |
 | Points from `[ticketing]` next to hours | Side by side, never combined (O5). |
 
 ## Restriction Rules (Draft)
 
-Written 2026-11-09 to close the gaps GUIDELINES leaves open. Each one is a draft for the owner to confirm before it goes into GUIDELINES.md.
+Written 2026-11-09 to close the gaps GUIDELINES leaves open, and confirmed by the owner the same day: O1, O2 and O4 as written, O3 when the reversal conflict was settled, O5 as the twin of `[ticketing]`'s R7. They go into GUIDELINES.md next.
 
 - **O1. Ignoring leave is never cheaper than answering it.** A leave request made at least **14 days** before it starts, and still unanswered the day before it starts, is approved automatically. A request with less notice that nobody answers before it starts lapses: archived as rejected, without ghost hours. The worker can always ask again.
 - **O2. A request can be withdrawn until it's decided.** The worker can withdraw an overtime or leave request any time before a reviewer acts on it. Withdrawing makes no ghost hours and is kept in the history. The hours stay as worked time; they just aren't claimed as overtime. Asking again later doesn't restart the six-month expiry, which always counts from the day the overtime was worked.
 - **O3. Decisions only change in the worker's favour.** An approval is final. A rejection can be changed into an approval, once, by the same reviewer or the owner. The ghost hours stay (they're permanent, Section 9) and are marked "later approved", so the record still shows what happened. They stop counting towards the worker's total, but keep counting towards the reviewer's.
-- **O4. The ordinary workday is part of the membership.** When an Established worker joins, the owner proposes their contract hours per weekday, and the worker accepts them together with Established status (Section 5's confirmation). Declining the hours declines Established status, so nobody is ever Established without agreed hours. Overtime is any time beyond that day's contract hours. A change needs the worker's acceptance again and never applies to days already worked. Freelancers have no contract hours.
+- **O4. The ordinary workday is part of the membership.** When an Established worker joins, the owner proposes their contract hours per weekday, and the worker accepts them together with Established status (Section 5's confirmation). Declining the hours declines Established status, so nobody is ever Established without agreed hours. Overtime is any time beyond that day's contract hours. A change needs the worker's acceptance again and never applies to days already worked. Freelancers have no contract hours. The contract also sets when the day starts (`contractStartsAt`, local time), and a working day belongs to the date it starts: Seamus's Thursday 22:00 to Friday 06:00 is Thursday's contract day, and overtime is anything after 06:00 (owner, 2026-11-09). See `tralogfin-database.md`, The Cast's Schedules.
 - **O5. Points and hours are shown side by side, never combined.** The same rule as `[ticketing]`'s R7: no points-per-hour, no ranking, no speed score.

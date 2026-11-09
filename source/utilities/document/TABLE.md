@@ -183,10 +183,10 @@ TraLogFin runs on MongoDB. But a company with its own server may want MySQL, so 
 
 ### The Rules
 
-1. **One collection is one future table.** `PickPage`, `TrackTime`, `DefineDuties` and `ArchiveAnchors` each become one table, with the same name.
+1. **One collection is one future table.** `PickPage`, `TrackTime`, `DefineDuties` and `ArchiveAnchors` each become one table, with the same name. A collection that holds several kinds (told apart by `kind`) is still one table; a kind's unused fields are `null`. See `source/assets/md-files/tralogfin-database.md`.
 2. **Flat documents.** Every field holds a single value: text, number, true/false, date or `null`. No objects inside objects.
 3. **Lists hold simple values only,** like `"organizations": ["Voidspire Systems", "Silverveil Logistics"]`. In MySQL each list becomes its own linking table (for example `memberships`). Never a list of objects.
-4. **Point, don't nest.** A record refers to another record by its ID (`"employeeId": "dale-sutton"`), never by containing a copy of it.
+4. **Point, don't nest.** A record refers to another record by its `_id` (`"senderId": "6ae06f3e898694d607cf1577"`, Dale Sutton), never by its `profile` slug and never by containing a copy of it.
 5. **Every document has every field.** If a value is unknown, it's `null`, not missing. That's a fixed schema, which is exactly what a MySQL table needs. The "Randomize Character" record in `TraLogFin.json` shows the complete set of fields.
 6. **IDs are text.** Every `_id` is a 24-character hex string shaped like MongoDB's (`"6ae068b8898694d607cf1574"`), but stored as plain text, never as an `ObjectId`, which MySQL doesn't have. Test characters also carry a readable `profile` slug (`"jane-lester"`) for lookups by hand and for the front-end's `characterProfile`.
 7. **Dates are UTC.** Stored as real dates in MongoDB, written as ISO 8601 text (`2026-10-27`, `2026-10-27T14:30:00Z`) in JSON and in transit. Local time is only for display.
