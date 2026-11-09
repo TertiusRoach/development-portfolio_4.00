@@ -19,6 +19,12 @@
 }
 %hori-stack {
   li[class*='fullscreen'] {
+    &[class*='horizontal_O'] {
+      //--|🠊 AI Code: Review Please 2026-11-09 11:30 · Zero means nothing shows: sits on I, hidden and untouchable 🠈|--\\
+      transform: translateX(0);
+      opacity: 0;
+      pointer-events: none;
+    }
     &[class*='horizontal_I'] {
       transform: translateX(0);
     }
@@ -97,6 +103,12 @@
 }
 %vert-stack {
   li[class*='fullscreen'] {
+    &[class*='vertical_O'] {
+      //--|🠊 AI Code: Review Please 2026-11-09 11:30 · Zero means nothing shows: sits on I, hidden and untouchable 🠈|--\\
+      transform: translateY(0);
+      opacity: 0;
+      pointer-events: none;
+    }
     &[class*='vertical_I'] {
       transform: translateY(0);
     }

@@ -34,13 +34,13 @@ function LabelElements({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 1 as number;
+  let viewName = 1 as number;
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen
         cases={{
           axis: '[x]',
-          show: startingPreview,
+          show: viewName,
           call: LabelComponents as React.ComponentType<InfoProps>,
         }}
         info={{

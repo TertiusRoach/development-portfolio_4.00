@@ -33,7 +33,7 @@ function StretchButton({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 3 as number;
+  let viewName = 3 as number;
   let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;
   switch (getOrientation) {
     case 'landscape':
@@ -44,7 +44,7 @@ function StretchButton({ info }: InfoProps) {
               //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: startingPreview as number,
+                show: viewName as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -140,7 +140,7 @@ function StretchButton({ info }: InfoProps) {
               //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: startingPreview as number,
+                show: viewName as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -233,7 +233,7 @@ function StretchButton({ info }: InfoProps) {
               //--|🠊 <div class="darkside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: startingPreview as number,
+                show: viewName as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
               info={{
@@ -329,7 +329,7 @@ function StretchButton({ info }: InfoProps) {
               //--|🠊 <div class="lightside-main_fullscreen-default"/> 🠈|--\\
               cases={{
                 axis: '[y]',
-                show: startingPreview as number,
+                show: viewName as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
               info={{

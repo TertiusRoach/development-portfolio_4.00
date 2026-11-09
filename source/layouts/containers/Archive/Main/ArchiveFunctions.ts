@@ -1,5 +1,9 @@
 //--|🠊 Main/ArchiveFunctions.ts 🠈|--\\
-function startingPreview(
+//--|🠋 Functions 🠋|--\\
+import { arabicToRoman, stripBrackets } from '../../../tools/conversions';
+import { asynchObserve } from '../../../tools/synching'; //--|🠊 AI Code: Review Please 2026-11-09 10:54 🠈|--\\
+
+async function startingPreview(
   element:
     | '(article)'
     | '(aside)'
@@ -14,34 +18,95 @@ function startingPreview(
     | '(table)'
     | '(time)',
   preview: number,
-): number {
+): Promise<void> {
+  //--|🠊 AI Code: Review Please 2026-11-09 10:54 · Each <li> is reached through its known parent, and waits until it exists 🠈|--\\
+  const labelName = stripBrackets(element, '()') as string;
+  let fullscreen = null as HTMLLIElement | null;
+  let carousel = null as HTMLLIElement | null;
+  try {
+    fullscreen = (await asynchObserve(`#components-main div[class="elements-main_fullscreen-default"] > ol > li`)) as HTMLLIElement;
+    carousel = (await asynchObserve(
+      `#components-main div[class="elements-main_fullscreen-default"] > ol > li div[class="${labelName}-main_fullscreen-default"] > ul > li`,
+    )) as HTMLLIElement;
+  } catch {
+    console.log(`|🠊 Warning: ${element} never showed up in #components-main, so its preview stays where it is 🠈|`); //--|🠊 AI Code: Review Please 2026-11-09 11:12 🠈|--\\
+    return;
+  }
+  const slides = carousel.querySelector(`:scope > div[class="${labelName}-main_container"]`) as HTMLDivElement;
+
+  //--|===|--\\
+
+  //--|🠊 AI Code: Review Please 2026-11-09 11:30 · Below the first slide shows nothing (O), past the last shows the last 🠈|--\\
+  let showSlide = preview as number;
+  switch (true) {
+    case preview < 1:
+      console.log(`|🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O) 🠈|`);
+      showSlide = 0 as number;
+      break;
+    case preview > slides.children.length:
+      showSlide = slides.children.length as number;
+      break;
+    default:
+      showSlide = preview as number;
+  }
+  let prevClass = carousel.className as string;
+  let nextClass = `${carousel.className.split('_')[0]}_${arabicToRoman(showSlide as number)}` as string;
+
+  carousel.classList.replace(prevClass, nextClass);
   switch (element) {
     case '(article)':
-      return 1;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(1)}` as string;
+      break;
     case '(aside)':
-      return 2;
-    default:
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(2)}` as string;
+      break;
     case '(button)':
-      return 3;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(3)}` as string;
+      break;
     case '(division)':
-      return 4;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(4)}` as string;
+      break;
     case '(figure)':
-      return 5;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(5)}` as string;
+      break;
     case '(form)':
-      return 6;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(6)}` as string;
+      break;
     case '(label)':
-      return 7;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(7)}` as string;
+      break;
     case '(menu)':
-      return 8;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(8)}` as string;
+      break;
     case '(navigation)':
-      return 9;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(9)}` as string;
+      break;
     case '(section)':
-      return 10;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(10)}` as string;
+      break;
     case '(table)':
-      return 11;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(11)}` as string;
+      break;
     case '(time)':
-      return 12;
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(12)}` as string;
+      break;
+    default: //--|🠈 Move (default) up & down 🠈|--\\
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(3)}` as string;
   }
+  fullscreen.classList.replace(prevClass, nextClass);
 }
 
 export default startingPreview;

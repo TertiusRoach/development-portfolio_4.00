@@ -28,19 +28,18 @@ function ArticleElements({ info }: InfoProps) {
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
   const labelName = stripBrackets(info.labelName, '()') as 'article';
 
-  console.log(labelName);
   useEffect(() => {
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let startingPreview = 1 as number;
+  let viewName = 1 as number;
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen
         cases={{
           axis: '[x]',
-          show: startingPreview,
+          show: viewName,
           call: ArticleComponents as React.ComponentType<InfoProps>,
         }}
         info={{
