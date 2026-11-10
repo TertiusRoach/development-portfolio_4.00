@@ -1,11 +1,12 @@
-//--|🠊 Button_sparkling.ts 🠈|--\\
+//--|🠊 Button_glowing.ts 🠈|--\\
 import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
 import { stripBrackets } from '../../../tools/conversions';
-import type { TheseProps } from './Button.sparkling'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
+import type { MouseEvent } from 'react'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import type { TheseProps } from './Button.glowing'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 function createClass(style: TheseProps['style']): string {
-  //--|🠊 Class Build for <ButtonSparkling> 🠈|--\\
+  //--|🠊 Class Build for <ButtonGlowing> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, style.view);
   const classClarity = abbrClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
@@ -13,7 +14,7 @@ function createClass(style: TheseProps['style']): string {
   if (style.image == null) {
     return `${classLayout}_${classColor}_${classClarity}_alt`;
   } else {
-    return `${classLayout}_${classColor}_${classClarity}_spa`;
+    return `${classLayout}_${classColor}_${classClarity}_glo`;
   }
 }
 
@@ -57,5 +58,15 @@ const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['sty
   const classColor = abbrColor(color);
 
   return `${classShade}_${classColor}`;
+};
+//--|🠋 Glow 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-10 · Moves the spotlight to the pointer, measured from div.back 🠈|--\\
+export const trackGlow = (event: MouseEvent<HTMLButtonElement>): void => {
+  const backLayer = event.currentTarget.querySelector("div[class='back']") as HTMLDivElement;
+  const backBox = backLayer.getBoundingClientRect();
+
+  //--|🠊 A runtime pointer position, the one inline style RULEBOOK § No Inline Styles allows 🠈|--\\
+  backLayer.style.setProperty('--x', `${event.clientX - backBox.left}px`);
+  backLayer.style.setProperty('--y', `${event.clientY - backBox.top}px`);
 };
 export default createClass;

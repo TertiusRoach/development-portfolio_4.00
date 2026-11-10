@@ -41,7 +41,7 @@ function ArchiveMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    startingPreview('(article)', 2);
+    startingPreview('(button)', 5);
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);

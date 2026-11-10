@@ -1,0 +1,718 @@
+//--|🠊 glowing/pipeline/Button_corn.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
+@mixin desktop-corn {
+  //--|🠋 Desktop (Corners) 🠋|--\\
+  &[class*='_lef_'] {
+    &[class*='_glo'] {
+      div[class='text'] {
+        border-radius: 0 8px 8px 0;
+      }
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-height: 768px) {
+        div[class='text'] {
+          border-radius: 0 6px 6px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        div[class='text'] {
+          border-radius: 0 4px 4px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        div[class='text'] {
+          border-radius: 0 2px 2px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-height: 768px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    &[class*='_glo'] {
+      div[class='text'] {
+        border-radius: 8px 0 0 8px;
+      }
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-height: 768px) {
+        div[class='text'] {
+          border-radius: 6px 0 0 6px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        div[class='text'] {
+          border-radius: 4px 0 0 4px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        div[class='text'] {
+          border-radius: 2px 0 0 2px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-height: 768px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-height: 480px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-height: 360px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  &[class*='_top_'],
+  &[class*='_bot_'],
+  &[class*='_cen_'],
+  &[class*='_tex_'],
+  &[class*='_ico_'] {
+    div[class='text'],
+    div[class='back'] {
+      border-radius: 8px;
+    }
+    @media screen and (max-height: 768px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 6px;
+      }
+    }
+    @media screen and (max-height: 480px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 4px;
+      }
+    }
+    @media screen and (max-height: 360px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 2px;
+      }
+    }
+  }
+  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
+  div[class='back'] {
+    --glow-ring: 4px;
+    --glow-radius: 8px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    @media screen and (max-height: 768px) {
+      --glow-ring: 3px;
+      --glow-radius: 6px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+    @media screen and (max-height: 480px) {
+      --glow-ring: 2px;
+      --glow-radius: 4px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+    @media screen and (max-height: 360px) {
+      --glow-ring: 1px;
+      --glow-radius: 2px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+  }
+}
+@mixin mobile-corn {
+  //--|🠋 Mobile (Corners) 🠋|--\\
+  &[class*='_lef_'] {
+    &[class*='_glo'] {
+      div[class='text'] {
+        border-radius: 0 8px 8px 0;
+      }
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 768px) {
+        div[class='text'] {
+          border-radius: 0 6px 6px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        div[class='text'] {
+          border-radius: 0 4px 4px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        div[class='text'] {
+          border-radius: 0 2px 2px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 768px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  &[class*='_rig_'] {
+    &[class*='_glo'] {
+      div[class='text'] {
+        border-radius: 8px 0 0 8px;
+      }
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 768px) {
+        div[class='text'] {
+          border-radius: 6px 0 0 6px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        div[class='text'] {
+          border-radius: 4px 0 0 4px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        div[class='text'] {
+          border-radius: 2px 0 0 2px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+    &[class*='_alt'] {
+      div[class='text'],
+      div[class='icon'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 768px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  &[class*='_top_'],
+  &[class*='_bot_'],
+  &[class*='_cen_'],
+  &[class*='_tex_'],
+  &[class*='_ico_'] {
+    div[class='text'],
+    div[class='back'] {
+      border-radius: 8px;
+    }
+    @media screen and (max-width: 768px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 6px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 4px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 2px;
+      }
+    }
+  }
+  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
+  div[class='back'] {
+    --glow-ring: 4px;
+    --glow-radius: 8px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    @media screen and (max-width: 768px) {
+      --glow-ring: 3px;
+      --glow-radius: 6px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      --glow-ring: 2px;
+      --glow-radius: 4px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      --glow-ring: 1px;
+      --glow-radius: 2px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+    }
+  }
+}
+@mixin tablet-corn {
+  //--|🠋 Tablet (Corners) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    &[class*='_lef_'] {
+      &[class*='_glo'] {
+        div[class='text'] {
+          border-radius: 0 8px 8px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-width: 1920px) {
+          div[class='text'] {
+            border-radius: 0 6px 6px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          div[class='text'] {
+            border-radius: 0 4px 4px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          div[class='text'] {
+            border-radius: 0 2px 2px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+      &[class*='_alt'] {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-width: 1920px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+    &[class*='_rig_'] {
+      &[class*='_glo'] {
+        div[class='text'] {
+          border-radius: 8px 0 0 8px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-width: 1920px) {
+          div[class='text'] {
+            border-radius: 6px 0 0 6px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          div[class='text'] {
+            border-radius: 4px 0 0 4px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          div[class='text'] {
+            border-radius: 2px 0 0 2px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+      &[class*='_alt'] {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-width: 1920px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-width: 854px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+    &[class*='_top_'],
+    &[class*='_bot_'],
+    &[class*='_cen_'],
+    &[class*='_tex_'],
+    &[class*='_ico_'] {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 1920px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-width: 1366px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-width: 854px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    &[class*='_lef_'] {
+      &[class*='_glo'] {
+        div[class='text'] {
+          border-radius: 0 8px 8px 0;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-height: 1920px) {
+          div[class='text'] {
+            border-radius: 0 6px 6px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          div[class='text'] {
+            border-radius: 0 4px 4px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          div[class='text'] {
+            border-radius: 0 2px 2px 0;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+      &[class*='_alt'] {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-height: 1920px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+    &[class*='_rig_'] {
+      &[class*='_glo'] {
+        div[class='text'] {
+          border-radius: 8px 0 0 8px;
+        }
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-height: 1920px) {
+          div[class='text'] {
+            border-radius: 6px 0 0 6px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          div[class='text'] {
+            border-radius: 4px 0 0 4px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          div[class='text'] {
+            border-radius: 2px 0 0 2px;
+          }
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+      &[class*='_alt'] {
+        div[class='text'],
+        div[class='icon'],
+        div[class='back'] {
+          border-radius: 8px;
+        }
+        @media screen and (max-height: 1920px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 6px;
+          }
+        }
+        @media screen and (max-height: 1366px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 4px;
+          }
+        }
+        @media screen and (max-height: 854px) {
+          div[class='text'],
+          div[class='icon'],
+          div[class='back'] {
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+    &[class*='_top_'],
+    &[class*='_bot_'],
+    &[class*='_cen_'],
+    &[class*='_tex_'],
+    &[class*='_ico_'] {
+      div[class='text'],
+      div[class='back'] {
+        border-radius: 8px;
+      }
+      @media screen and (max-height: 1920px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 6px;
+        }
+      }
+      @media screen and (max-height: 1366px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 4px;
+        }
+      }
+      @media screen and (max-height: 854px) {
+        div[class='text'],
+        div[class='back'] {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring, one step earlier on the long side, like the corners 🠈|--\\
+  div[class='back'] {
+    @media screen and (orientation: landscape) {
+      --glow-ring: 3px;
+      --glow-radius: 6px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      @media screen and (max-width: 1366px) {
+        --glow-ring: 2px;
+        --glow-radius: 4px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        --glow-ring: 1px;
+        --glow-radius: 2px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      }
+    }
+    @media screen and (orientation: portrait) {
+      --glow-ring: 3px;
+      --glow-radius: 6px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      @media screen and (max-height: 1366px) {
+        --glow-ring: 2px;
+        --glow-radius: 4px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        --glow-ring: 1px;
+        --glow-radius: 2px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
+      }
+    }
+  }
+}

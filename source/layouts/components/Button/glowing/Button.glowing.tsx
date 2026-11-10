@@ -1,8 +1,8 @@
-//--|🠊 Button.sparkling.tsx 🠈|--\\
+//--|🠊 Button.glowing.tsx 🠈|--\\
 import React from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import createClass from './Button_sparkling';
+import createClass, { trackGlow } from './Button_glowing'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
 
 export interface TheseProps {
   info: {
@@ -32,6 +32,7 @@ export interface TheseProps {
   onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseMove?: (event: React.MouseEvent<HTMLButtonElement>) => void; //--|🠈 AI Code: Review Please 2026-11-10 · Used inside for the glow 🠈|--\\
   onTouchEnd?: (event: React.TouchEvent<HTMLButtonElement>) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onTouchStart?: (event: React.TouchEvent<HTMLButtonElement>) => void;
@@ -41,7 +42,7 @@ export interface TheseProps {
   */
 }
 
-export function ButtonSparkling({ info, style, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
+export function ButtonGlowing({ info, style, onClick, onMouseEnter, onMouseLeave, onDoubleClick }: TheseProps) {
   const CallSize = (
     { '<h1>': 'h1', '<h2>': 'h2', '<h3>': 'h3', '<h4>': 'h4', '<h5>': 'h5', '<h6>': 'h6', '<p>': 'p' } as Record<
       '<h1>' | '<h2>' | '<h3>' | '<h4>' | '<h5>' | '<h6>' | '<p>',
@@ -62,12 +63,13 @@ export function ButtonSparkling({ info, style, onClick, onMouseEnter, onMouseLea
   return (
     <button
       id={info.labelName || undefined}
-      className={`sparkling-button ${createClass(style)}`}
+      className={`glowing-button ${createClass(style)}`}
       //--|===|--\\
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onDoubleClick={onDoubleClick}
+      onMouseMove={trackGlow} //--|🠈 AI Code: Review Please 2026-11-10 · The spotlight follows the pointer 🠈|--\\
       //--|===|--\\
       aria-label={info.ariaName}
     >
@@ -89,4 +91,4 @@ export function ButtonSparkling({ info, style, onClick, onMouseEnter, onMouseLea
     </button>
   );
 }
-export default ButtonSparkling;
+export default ButtonGlowing;

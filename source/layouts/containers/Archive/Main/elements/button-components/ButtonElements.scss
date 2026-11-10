@@ -5,6 +5,7 @@
 @use './stretch-button/StretchButton.scss' as StretchButton;
 @use './routing-button/RoutingButton.scss' as RoutingButton;
 @use './profile-button/ProfileButton.scss' as ProfileButton;
+@use './glowing-button/GlowingButton.scss' as GlowingButton; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
 
 section[class*='button-main'] {
   div[class*='fullscreen'] {
@@ -23,6 +24,9 @@ section[class*='button-main'] {
           &[class*='profile'] {
             @include ProfileButton.desktop-landscape;
           }
+          &[class*='glowing'] {
+            @include GlowingButton.desktop-landscape; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+          }
         }
         @media screen and (orientation: portrait) {
           &[class*='default'] {
@@ -36,6 +40,9 @@ section[class*='button-main'] {
           }
           &[class*='profile'] {
             @include ProfileButton.mobile-portrait;
+          }
+          &[class*='glowing'] {
+            @include GlowingButton.mobile-portrait; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
           }
         }
       }
