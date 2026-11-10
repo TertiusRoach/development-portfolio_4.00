@@ -41,7 +41,7 @@ function ArchiveMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    startingPreview('(division)', 1);
+    startingPreview('(article)', 2);
     //--|🟨|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);

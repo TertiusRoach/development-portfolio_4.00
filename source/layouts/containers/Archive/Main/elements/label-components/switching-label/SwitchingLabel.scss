@@ -1,10 +1,14 @@
 //--|🠊 SwitchingLabel.scss 🠈|--\\
+@use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="switching-label"> 🠈|--\\
   section[class*='main-fore'] {
     display: grid; //--|🠈 Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
     label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 AI Code: Review Please 2026-11-10 · Invisible until it's hovered 🠈|--\\
+      }
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class='toggle'] {
@@ -118,6 +122,9 @@
   section[class*='main-fore'] {
     display: grid; //--|🠈 Two gutter rows top & bottom keep the rows clear of the corner logos 🠈|--\\
     label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 AI Code: Review Please 2026-11-10 · Invisible until it's hovered 🠈|--\\
+      }
       grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class='toggle'] {

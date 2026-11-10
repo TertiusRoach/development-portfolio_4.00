@@ -28,3 +28,31 @@ let updateAside = (color: string) => {
     buttonElements[i].classList.replace(prevClass, nextClass);
   }
 };
+//--|🠋 Aside Clarity Toggle 🠋|--\\
+export const toggleClarity = (element: HTMLFieldSetElement): void => {
+  const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
+
+  let clarity: string = '';
+  switch (checkedInput.value) {
+    case 'Lucid':
+      clarity = 'luc';
+      break;
+    case 'Opaque':
+      clarity = 'opa';
+      break;
+  }
+  updateClarity(clarity); //--|🠈 Swaps the clarity into every <AsideCharacters> 🠈|--\\
+};
+let updateClarity = (clarity: string) => {
+  const asideElements = document.querySelectorAll(
+    '#components-main aside[class="characters-aside"] aside[class*="characters-default"]',
+  ) as NodeListOf<HTMLElement>;
+
+  for (let i = 0; i < asideElements.length; i++) {
+    //--|🠊 view_shade_color_[clarity], so [3] is swapped 🠈|--\\
+    let prevClass = asideElements[i].classList[1] as string;
+    let nextClass = `${asideElements[i].classList[1].split('_')[0]}_${asideElements[i].classList[1].split('_')[1]}_${asideElements[i].classList[1].split('_')[2]}_${clarity}`;
+
+    asideElements[i].classList.replace(prevClass, nextClass);
+  }
+};

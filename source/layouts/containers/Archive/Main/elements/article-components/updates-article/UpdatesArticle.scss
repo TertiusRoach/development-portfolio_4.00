@@ -15,10 +15,14 @@
       grid-area: 4 / 4 / 5 / 7; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 1;
       grid-area: 2 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class*='fullscreen'] {
+      overflow: hidden; //--|🠈 AI Code: Review Please 2026-11-10 · Clips the off-screen shade slide, so it can't spill onto the next page 🠈|--\\
       z-index: 0;
       //--|🠊 display: flex; 🠈|--\\
       grid-area: 1 / 1 / 8 / 9; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -93,6 +97,9 @@
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     article[class*='updates'] {

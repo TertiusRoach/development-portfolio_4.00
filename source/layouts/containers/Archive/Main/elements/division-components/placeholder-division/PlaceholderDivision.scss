@@ -8,18 +8,21 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
+    label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 AI Code: Review Please 2026-11-10 · Invisible until it's hovered 🠈|--\\
+      }
+      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      z-index: 1; //--|🠈 Above the fullscreen, which spans the whole grid 🠈|--\\
+    }
     div[class*='fullscreen'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       // background: rgba(darkred, 0.25);
       div[class*='container'] {
         display: grid;
-
-        div[class*='top-view'] {
-          background: rgba(darkgreen, 0.25);
-        }
-        div[class*='bot-view'] {
-          background: rgba(purple, 0.25);
-        }
+      }
+      div[class*='placeholder'] {
+        @include Utilities.scanning-font();
       }
     }
   }
@@ -31,14 +34,22 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    div[class*='placeholder'] {
-      grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: rgba(darkblue, 0.25);
-      /*
-      button[id*='block'] {
-        border: 2px dashed Utilities.$gray-medium;
+    label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 AI Code: Review Please 2026-11-10 · Invisible until it's hovered 🠈|--\\
       }
-      */
+      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      z-index: 1; //--|🠈 Above the fullscreen, which spans the whole grid 🠈|--\\
+    }
+    div[class*='fullscreen'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      // background: rgba(darkblue, 0.25);
+      div[class*='container'] {
+        display: grid;
+      }
+      div[class*='placeholder'] {
+        @include Utilities.scanning-font();
+      }
     }
   }
 }

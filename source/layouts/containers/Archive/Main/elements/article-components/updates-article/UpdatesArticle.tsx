@@ -24,7 +24,16 @@ function UpdatesArticle({ info }: InfoProps) {
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
-  let viewShade = 1 as number;
+  useEffect(() => {
+    const colourizeDivisions = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="updates-article"] div[class*="_division-colourize"]`,
+    ) as NodeListOf<HTMLDivElement>;
+    for (let i = 0; i < colourizeDivisions.length; i++) {
+      colourizeDivisions[i].classList.add('downplay');
+    }
+  }, [pageName, blockName, labelName]);
+
+  let viewShade = 2 as number; //--|🠈 AI Code: Review Please 2026-11-10 · Opens on the second slide, the ~light~ card 🠈|--\\
   return (
     <aside className="updates-article">
       <section className={`${blockName}-foreground`}>

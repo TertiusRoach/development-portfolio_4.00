@@ -4,12 +4,13 @@ import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
 import AsideCharacters from '../../../../../../components/Aside/characters/Aside.characters';
+import LabelSwitching from '../../../../../../components/Label/switching/Label.switching';
 import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../../tools/conversions';
 import { checkScreen } from '../../../../../../tools/synching';
-import { toggleColors } from './CharactersFunctions';
+import { toggleColors, toggleClarity } from './CharactersFunctions';
 
 interface InfoProps {
   info: {
@@ -29,6 +30,14 @@ function CharactersAside({ info }: InfoProps) {
   useEffect(() => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
+  useEffect(() => {
+    const colourizeDivisions = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="characters-aside"] div[class*="_division-colourize"]`,
+    ) as NodeListOf<HTMLDivElement>;
+    for (let i = 0; i < colourizeDivisions.length; i++) {
+      colourizeDivisions[i].classList.add('downplay');
+    }
+  }, [getOrientation]);
 
   switch (getOrientation) {
     case 'landscape':
@@ -45,9 +54,53 @@ function CharactersAside({ info }: InfoProps) {
                 view: '-left-',
                 color: '(mono)',
                 shade: '~dark~',
-                clarity: '⟨lucid⟩',
+                clarity: '⟨opaque⟩',
               }}
             />
+            <fieldset
+              className="clarify-clarity"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  view: 'mid-lef',
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-dark',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  view: 'mid-rig',
+                  shade: '~light~',
+                  color: '(mono)',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-light',
+                }}
+              />
+            </fieldset>
             <DivisionColourize
               info={{
                 pageName: pageName,
@@ -71,7 +124,7 @@ function CharactersAside({ info }: InfoProps) {
                 view: '-right-',
                 color: '(mono)',
                 shade: '~light~',
-                clarity: '⟨lucid⟩',
+                clarity: '⟨opaque⟩',
               }}
             />
           </section>
@@ -96,9 +149,53 @@ function CharactersAside({ info }: InfoProps) {
                 view: '-left-',
                 color: '(mono)',
                 shade: '~dark~',
-                clarity: '⟨lucid⟩',
+                clarity: '⟨opaque⟩',
               }}
             />
+            <fieldset
+              className="clarify-clarity"
+              onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+                //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+                toggleClarity(event.currentTarget);
+              }}
+            >
+              <LabelSwitching
+                cases={{
+                  mark: false,
+                  type: '{option}',
+                }}
+                style={{
+                  view: 'mid-lef',
+                  shade: '~dark~',
+                  color: '(mono)',
+                  clarity: '⟨lucid⟩',
+                  text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'lucid-dark',
+                }}
+              />
+              <LabelSwitching
+                cases={{
+                  mark: true,
+                  type: '{option}',
+                }}
+                style={{
+                  view: 'mid-rig',
+                  shade: '~light~',
+                  color: '(mono)',
+                  clarity: '⟨opaque⟩',
+                  text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+                }}
+                info={{
+                  pageName: pageName,
+                  blockName: blockName,
+                  labelName: 'opaque-light',
+                }}
+              />
+            </fieldset>
             <DivisionColourize
               info={{
                 pageName: pageName,
@@ -122,7 +219,7 @@ function CharactersAside({ info }: InfoProps) {
                 view: '-right-',
                 color: '(mono)',
                 shade: '~light~',
-                clarity: '⟨lucid⟩',
+                clarity: '⟨opaque⟩',
               }}
             />
           </section>

@@ -28,6 +28,14 @@ function LoginForm({ info }: InfoProps) {
   useEffect(() => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
+  useEffect(() => {
+    const colourizeDivisions = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="login-form"] div[class*="_division-colourize"]`,
+    ) as NodeListOf<HTMLDivElement>;
+    for (let i = 0; i < colourizeDivisions.length; i++) {
+      colourizeDivisions[i].classList.add('downplay');
+    }
+  }, [getOrientation]);
 
   switch (getOrientation) {
     case 'landscape':

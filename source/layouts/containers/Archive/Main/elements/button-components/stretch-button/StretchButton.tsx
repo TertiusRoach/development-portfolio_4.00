@@ -32,6 +32,14 @@ function StretchButton({ info }: InfoProps) {
   useEffect(() => {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
+  useEffect(() => {
+    const colourizeDivisions = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="stretch-button"] div[class*="_division-colourize"]`,
+    ) as NodeListOf<HTMLDivElement>;
+    for (let i = 0; i < colourizeDivisions.length; i++) {
+      colourizeDivisions[i].classList.add('downplay');
+    }
+  }, [getOrientation]);
 
   let viewName = 3 as number;
   let casesPages = ['<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>'] as Array<string>;

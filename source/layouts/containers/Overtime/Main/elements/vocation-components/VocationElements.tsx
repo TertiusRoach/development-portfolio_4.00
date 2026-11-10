@@ -61,7 +61,7 @@ const VocationComponents: React.FC<InfoProps> = ({ info }) => {
     <>
       <DivisionPlaceholder
         info={{ labelName: 'placeholder' as string, pageName: pageName, blockName: blockName }}
-        style={{ view: '-center-', shade: '~dark~', color: '(blue)' }}
+        style={{ view: '-cen-', shade: '~dark~', color: '(blue)', clarity: '⟨lucid⟩' }}
       />
     </>
   );

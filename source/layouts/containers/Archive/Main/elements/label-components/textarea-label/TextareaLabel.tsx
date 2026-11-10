@@ -31,6 +31,17 @@ function TextareaLabel({ info }: InfoProps) {
 
   let inputList = listInputs() as Array<string>; //--|🠈 Every {input} <fieldset>'s data-input 🠈|--\\
   let pickerView = 'mid-cen' as 'mid-cen' | 'cen-mid'; //--|🠈 The colour picker: change by hand to 'cen-mid' to round both ends 🠈|--\\
+  let pickerColor = '(orange)' as '(orange)';
+  useEffect(() => {
+    switchColors(pickerColor, 'textarea'); //--|🠈 Re-runs on every flip, the new orientation's previews start (mono) 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-10 · The colour picker steps back until it's hovered 🠈|--\\
+    const colourPickers = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="textarea-label"] label[class*="colours"]`,
+    ) as NodeListOf<HTMLLabelElement>;
+    for (let i = 0; i < colourPickers.length; i++) {
+      colourPickers[i].classList.add('downplay');
+    }
+  }, [getOrientation]);
   switch (getOrientation) {
     case 'landscape':
       return (
@@ -46,8 +57,8 @@ function TextareaLabel({ info }: InfoProps) {
                 view: pickerView as 'mid-cen' | 'cen-mid',
                 shade: '~dark~',
                 color: '(mono)',
-                clarity: '⟨lucid⟩',
-                text: '(mono)',
+                clarity: '⟨opaque⟩',
+                text: pickerColor,
               }}
               cases={{
                 type: '{select}',
@@ -285,8 +296,8 @@ function TextareaLabel({ info }: InfoProps) {
                 view: pickerView as 'mid-cen' | 'cen-mid',
                 shade: '~dark~',
                 color: '(mono)',
-                clarity: '⟨lucid⟩',
-                text: '(mono)',
+                clarity: '⟨opaque⟩',
+                text: pickerColor,
               }}
               cases={{
                 type: '{select}',

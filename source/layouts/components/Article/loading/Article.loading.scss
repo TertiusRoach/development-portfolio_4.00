@@ -4,12 +4,6 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Article) 🠋|--\\
   img {
-    &[class='dark'] {
-      background: rgba(white, 0.5);
-    }
-    &[class='light'] {
-      background: rgba(black, 0.5);
-    }
     width: 1008px;
     height: 567px;
     border-radius: 64px;
@@ -33,12 +27,6 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Article) 🠋|--\\
   img {
-    &[class='dark'] {
-      background: rgba(white, 0.5);
-    }
-    &[class='light'] {
-      background: rgba(black, 0.5);
-    }
     width: 672px;
     height: 378px;
     border-radius: 48px;
@@ -108,10 +96,268 @@
   }
 }
 
-article[class*='loading'] {
+//--|===|--\\
+//--|🠊 AI Code: Review Please 2026-11-10 · Skeleton: the colour hub and ten empty recipes, the (mono) ⟨lucid⟩ look is designed next 🠈|--\\
+@mixin loading-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: the GIF on a half-transparent backing, each colour's own in its *-tint 🠈|--\\
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include yel-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_mon'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$gray-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (mono) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_mon'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$gray-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$gray-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (mono) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin red-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_red'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$red-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (red) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_red'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$red-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$red-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (red) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin gre-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_gre'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$green-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (green) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_gre'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$green-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$green-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (green) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin blu-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_blu'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$blue-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (blue) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_blu'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$blue-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$blue-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (blue) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin pur-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pur'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$purple-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (purple) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pur'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$purple-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$purple-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (purple) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin ora-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_ora'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$orange-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (orange) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_ora'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$orange-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$orange-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (orange) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin pin-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_pin'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$pink-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (pink) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_pin'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$pink-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$pink-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (pink) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin yel-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_yel'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$yellow-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (yellow) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_yel'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$yellow-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$yellow-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (yellow) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin bro-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_bro'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$brown-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (brown) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_bro'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$brown-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$brown-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (brown) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+@mixin tur-tint {
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_tur'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$turquoise-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 0.5); //--|🠈 AI Code: Review Please 2026-11-10 · The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+    /*--|🠋
+      (turquoise) ⟨lucid⟩ on ~dark~: not designed yet.
+    🠉|--*/
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_tur'] {
+    &[class*='_opa'] img {
+      background: rgba(Palettes.$turquoise-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ 🠈|--\\
+      box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$turquoise-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+    /*--|🠋
+      (turquoise) ⟨lucid⟩ on ~light~: not designed yet.
+    🠉|--*/
+  }
+}
+//--|===|--\\
+article[class*='_loading-'] { //--|🠈 AI Code: Review Please 2026-11-10 · The variant part, see RULEBOOK § Component Classes 🠈|--\\
   display: flex;
   align-items: center;
   justify-content: center;
+  @include loading-colors(); //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

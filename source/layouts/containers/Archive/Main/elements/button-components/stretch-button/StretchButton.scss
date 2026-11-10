@@ -42,6 +42,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       margin: $high-desk 0; //--|🠋 96px (Left & Right) for Design 🠋|--\\
       @media screen and (max-height: 768px) {
         margin: $test-desk 0; //--|🠋 64px (Left & Right) for Design 🠋|--\\
@@ -181,6 +184,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 1;
       grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -204,6 +210,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
     }
   }
@@ -380,6 +389,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 1;
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -457,6 +469,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
     }
   }

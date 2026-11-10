@@ -54,6 +54,7 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
         <label className={labelClass}>
           <select
             className="event"
+            defaultValue={style.text}
             //--|===|--\\
             onChange={onChange}
             onMouseDown={() => (pointerRef.current = true)} //--|🠈 Runs before onFocus, so a click is never mistaken for the keyboard 🠈|--\\

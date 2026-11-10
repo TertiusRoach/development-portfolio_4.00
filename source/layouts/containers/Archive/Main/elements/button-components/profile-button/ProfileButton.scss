@@ -19,6 +19,9 @@
   %desk-flex {
     //--|🠊 display: grid; 🠈|--\\
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       //--|🠊 display: flex; 🠈|--\\
       margin: $high-desk 0; //--|🠈 96px (Left & Right) for Design 🠈|--\\
       @media screen and (max-height: 768px) {
@@ -78,6 +81,9 @@
     }
 
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 2 / 4 / 7 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -149,6 +155,9 @@
   %mobi-flex {
     //--|🠊 display: grid; 🠈|--\\
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       //--|🠊 display: flex; 🠈|--\\
       margin: 0 64px; //--|🠈 64px (Left & Right) for Design 🠈|--\\
       @media screen and (max-width: 768px) {
@@ -208,6 +217,9 @@
     }
 
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 1;
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 4 / 1 / 5 / 6; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

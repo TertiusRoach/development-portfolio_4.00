@@ -38,3 +38,190 @@
     animation: none; //--|🠈 Still outlined, just not moving 🠈|--\\
   }
 }
+
+//--|===|--\\
+//--|🠋 Scanning Font 🠋|--\\
+/*--|🠋
+  Why: A calm, slow motion that keeps the eye on the page without pulling it away.
+  How: Include it on a component's root, inside a container's desktop-landscape and mobile-portrait.
+  The shade comes from createClass(): _dar_ or _lig_.
+  [data-text]: the text stays as a faint outline, and a copy from data-text types over it in its own colour.
+  [data-scan]: a soft band of light sweeps across the icon at the same rhythm.
+  15s: 6s typing in, 8s resting, 1s out. The cursor blinks once a second.
+🠉|--*/
+$scan-cycle: 15s;
+@keyframes scanning-font {
+  0% {
+    width: 0;
+  }
+  40% {
+    width: 100%; //--|🠈 6s typing in 🠈|--\\
+  }
+  93.33% {
+    width: 100%; //--|🠈 8s resting 🠈|--\\
+  }
+  100% {
+    width: 0; //--|🠈 1s out 🠈|--\\
+  }
+}
+@keyframes scanning-cursor {
+  50% {
+    border-right-color: transparent;
+  }
+}
+@keyframes scanning-icon {
+  0% {
+    background-position: 200% 0;
+    background-size: 10% 100%; //--|🠈 A thin sliver as it enters 🠈|--\\
+  }
+  20% {
+    background-position: 50% 0;
+    background-size: 60% 100%; //--|🠈 Widest over the middle of the logo 🠈|--\\
+  }
+  40% {
+    background-position: -100% 0; //--|🠈 Crosses while the text types 🠈|--\\
+    background-size: 10% 100%; //--|🠈 Thin again as it leaves 🠈|--\\
+  }
+  100% {
+    background-position: -100% 0;
+    background-size: 10% 100%;
+  }
+}
+@mixin scanning-font {
+  [data-text] {
+    position: relative;
+    -webkit-text-fill-color: color-mix(in srgb, currentColor 15%, transparent); //--|🠈 The faint text underneath 🠈|--\\
+    -webkit-text-stroke: 1px color-mix(in srgb, currentColor 45%, transparent);
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      -webkit-text-fill-color: currentColor; //--|🠈 The copy that types in 🠈|--\\
+      -webkit-text-stroke: 0;
+      border-right: 2px solid currentColor; //--|🠈 The cursor 🠈|--\\
+      animation:
+        scanning-font $scan-cycle ease-in-out infinite,
+        scanning-cursor 1s steps(1) infinite;
+    }
+  }
+  [data-scan] {
+    background-size: 10% 100%; //--|🠈 The keyframes grow and shrink it 🠈|--\\
+    background-repeat: no-repeat;
+    animation: scanning-icon $scan-cycle ease-in-out infinite;
+  }
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='_dar_'] {
+    [data-text]::before {
+      text-shadow: 0 0 12px color-mix(in srgb, currentColor 35%, transparent); //--|🠈 Glows on dark 🠈|--\\
+    }
+    [data-scan] {
+      background-image: linear-gradient(90deg, transparent, rgba(Palettes.$gray-neon, 0.45), transparent);
+    }
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='_lig_'] {
+    [data-text]::before {
+      text-shadow: 0 1px 2px rgba(Palettes.$gray-dark, 0.25); //--|🠈 Sits on light 🠈|--\\
+    }
+    [data-scan] {
+      background-image: linear-gradient(90deg, transparent, rgba(Palettes.$gray-dark, 0.35), transparent);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-text]::before {
+      width: 100%;
+      border-right-color: transparent;
+      animation: none; //--|🠈 Fully typed, no cursor 🠈|--\\
+    }
+    [data-scan] {
+      animation: none;
+      background-image: none;
+    }
+  }
+}
+
+//--|===|--\\
+//--|🠋 Highlight & Downplay 🠋|--\\
+/*--|🠋
+  Why: The Emphasize State for any component, not only <button>: what's chosen stays, the rest steps back.
+  How: A container includes them on the component's state classes, which its script swaps:
+  label.highlight { @include Utilities.highlight(); }
+  label.downplay { @include Utilities.downplay(); }
+  .downplay is invisible until it's hovered or reached with the keyboard, so it can still be picked.
+🠉|--*/
+$emphasize-fade: 250ms;
+@mixin highlight {
+  opacity: 1;
+  transition: opacity $emphasize-fade ease-in-out;
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+@mixin downplay {
+  opacity: 0;
+  transition: opacity $emphasize-fade ease-in-out;
+  &:hover,
+  &:focus-within {
+    opacity: 1; //--|🠈 Back when the pointer or the keyboard finds it 🠈|--\\
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+//--|===|--\\
+//--|🠋 Sparkling Sheen 🠋|--\\
+//--|🠊 AI Code: Review Please 2026-11-10 🠈|--\\
+/*--|🠋
+  Why: A glint of light that crosses a card now and then, like a polished surface catching the light.
+  How: Include it on an element that can hold an ::after (a card, a <div>, an <article>), never an <img>.
+  It clips itself, so the band follows the element's own rounded corners.
+  The shade comes from createClass(): dar_ or lig_. The band is brighter on ~light~, so it still shows.
+  8s: a 1.2s sweep, then it rests.
+🠉|--*/
+$sheen-cycle: 8s;
+@keyframes sparkling-sheen {
+  0% {
+    transform: translateX(-150%) skewX(-20deg); //--|🠈 Waits off the left edge 🠈|--\\
+  }
+  15% {
+    transform: translateX(350%) skewX(-20deg); //--|🠈 1.2s across 🠈|--\\
+  }
+  100% {
+    transform: translateX(350%) skewX(-20deg); //--|🠈 Rests off the right edge 🠈|--\\
+  }
+}
+@mixin sparkling-sheen {
+  position: relative;
+  overflow: hidden; //--|🠈 The band never leaves the element 🠈|--\\
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    transform: translateX(-150%) skewX(-20deg);
+    animation: sparkling-sheen $sheen-cycle ease-in-out infinite;
+    opacity: 0.666; //--|🠈 AI Code: Review Please 2026-11-10 · Two thirds 🠈|--\\
+    pointer-events: none; //--|🠈 Clicks still reach what's underneath 🠈|--\\
+  }
+  //--|🠊 Dark Shade 🠈|--\\
+  &[class*='dar_']::after { //--|🠈 No leading _: some classes start with the shade (lig_mon_opa) 🠈|--\\
+    background: linear-gradient(90deg, transparent, rgba(Palettes.$gray-neon, 0.25), transparent);
+  }
+  //--|🠊 Light Shade 🠈|--\\
+  &[class*='lig_']::after {
+    background: linear-gradient(90deg, transparent, rgba(Palettes.$gray-neon, 0.6), transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+      opacity: 0; //--|🠈 No sheen at all 🠈|--\\
+    }
+  }
+}

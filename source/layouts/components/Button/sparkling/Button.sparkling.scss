@@ -1,0 +1,40 @@
+//--|🠊 Button.sparkling.scss 🠈|--\\
+@use './pipeline/Button_flex.scss' as Button_flex;
+@use './pipeline/Button_grid.scss' as Button_grid;
+@use './pipeline/Button_size.scss' as Button_size;
+@use './pipeline/Button_tint.scss' as Button_tint;
+@use './pipeline/Button_corn.scss' as Button_corn;
+
+button[class*='sparkling'] {
+  @include Button_flex.sparkling-flexbox();
+  @include Button_grid.sparkling-gridbox();
+  @include Button_tint.sparkling-colors();
+
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 <ButtonSparkling> for [DesktopLandscape] 🠈|--\\
+    @include Button_flex.desktop-flex();
+    @include Button_grid.desktop-grid();
+    @include Button_size.desktop-size();
+    @include Button_tint.desktop-tint();
+    @include Button_corn.desktop-corn();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    //--|🠊 <ButtonSparkling> for [MobilePortrait] 🠈|--\\
+    @include Button_flex.mobile-flex();
+    @include Button_grid.mobile-grid();
+    @include Button_size.mobile-size();
+    @include Button_tint.mobile-tint();
+    @include Button_corn.mobile-corn();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    //--|🠊 <ButtonSparkling> for [TabletSquaring] 🠈|--\\
+    @include Button_flex.tablet-flex();
+    @include Button_grid.tablet-grid();
+    @include Button_size.tablet-size();
+    @include Button_tint.tablet-tint();
+    @include Button_corn.tablet-corn();
+  }
+}

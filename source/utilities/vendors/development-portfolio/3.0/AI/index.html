@@ -1,0 +1,57 @@
+<!doctype html>
+<!--|🠊 AI rebuild of development-portfolio_3.00, HTML, JavaScript and CSS only (2026-11-10) 🠈|-->
+<!--|🠊 Original: https://tertiusroach.github.io/development-portfolio_3.00/public/index.html 🠈|-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      href="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_3.00/8e693fe896721283aabb6ed16ba749fcbc750371/public/content/svg-files/signature-icon/primary-dark.svg"
+    />
+    <title>Index Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!--|🠋 Loading Screen, removed by script.js once the page is built 🠋|-->
+    <style id="loading-style">
+      .loading-body {
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        background: radial-gradient(circle, rgba(31, 49, 49, 1) 25%, rgba(61, 98, 98, 1) 100%, rgba(23, 37, 37, 1) 100%);
+      }
+      .loading-body main {
+        grid-row-end: 2;
+        grid-row-start: 1;
+        grid-column-end: 2;
+        grid-column-start: 1;
+      }
+      body article {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      body article img {
+        height: auto;
+        max-width: 100%;
+        filter: drop-shadow(0 0 1rem black);
+      }
+    </style>
+    <article id="loading-container" style="height: 100vh; display: flex">
+      <img
+        style="width: 100%"
+        src="https://raw.githubusercontent.com/TertiusRoach/development-portfolio_3.00/main/public/content/gif-files/1280x720%2C%2015fps/signature-light.gif"
+        alt="Loading Screen"
+      />
+    </article>
+
+    <!--|🠋 Page, script.js fills it 🠋|-->
+    <div id="index-body" class="default-body"></div>
+  </body>
+</html>

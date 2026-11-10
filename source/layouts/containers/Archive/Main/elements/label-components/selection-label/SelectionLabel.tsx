@@ -31,6 +31,17 @@ function SelectionLabel({ info }: InfoProps) {
   let voidspireList = listCharacters('voidspire') as Array<string>; //--|🠈 Every ~dark~ {select} & {combo} 🠈|--\\
   let silverveilList = listCharacters('silverveil') as Array<string>; //--|🠈 Every ~light~ {select} & {combo} 🠈|--\\
   let pickerView = 'mid-cen' as 'mid-cen' | 'cen-mid'; //--|🠈 The colour picker: change by hand to 'cen-mid' to round both ends 🠈|--\\
+  let pickerColor = '(orange)' as '(orange)';
+  useEffect(() => {
+    switchColors(pickerColor, 'selection'); //--|🠈 Re-runs on every flip, the new orientation's previews start (mono) 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-10 · The colour picker steps back until it's hovered 🠈|--\\
+    const colourPickers = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="selection-label"] label[class*="colours"]`,
+    ) as NodeListOf<HTMLLabelElement>;
+    for (let i = 0; i < colourPickers.length; i++) {
+      colourPickers[i].classList.add('downplay');
+    }
+  }, [getOrientation]);
   switch (getOrientation) {
     case 'landscape':
       return (
@@ -46,8 +57,8 @@ function SelectionLabel({ info }: InfoProps) {
                 view: pickerView,
                 shade: '~dark~',
                 color: '(mono)',
-                clarity: '⟨lucid⟩',
-                text: '(mono)',
+                clarity: '⟨opaque⟩',
+                text: pickerColor,
               }}
               cases={{
                 type: '{select}',
@@ -295,8 +306,8 @@ function SelectionLabel({ info }: InfoProps) {
                 view: pickerView,
                 shade: '~dark~',
                 color: '(mono)',
-                clarity: '⟨lucid⟩',
-                text: '(mono)',
+                clarity: '⟨opaque⟩',
+                text: pickerColor,
               }}
               cases={{
                 type: '{select}',

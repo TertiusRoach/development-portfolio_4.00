@@ -1,0 +1,471 @@
+/*--|🠊 style.css · AI rebuild of development-portfolio_3.00 (2026-11-10) 🠈|--*/
+/*--|🠊 Bootstrap is left out. The original's ~5,900 generated per-pixel rules are rewritten as vw/vh formulas 🠈|--*/
+
+/*--|🠋 Palette 🠋|--*/
+:root {
+  --teal-dark: #1f3131;
+  --teal-medium: #3d6262;
+  --teal-light: #9eb0b0;
+  --teal-darkest: #172525;
+}
+
+/*--|🠋 Reset 🠋|--*/
+* {
+  border: none;
+  box-sizing: border-box;
+  font-family: Rubik, Helvetica;
+  margin: 0;
+  padding: 0;
+}
+* h1,
+* h2,
+* h3,
+* h4,
+* h5,
+* h6 {
+  cursor: default;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  line-height: 1.2;
+}
+* p {
+  cursor: default;
+  white-space: wrap;
+}
+* button {
+  outline: none;
+}
+
+/*--|🠋 Font Sizes 🠋|--*/
+/*--|🠊 Landscape scaled with the width (80px h1 at 1920px wide), portrait with the height (48px h1 at 960px tall) 🠈|--*/
+@media screen and (orientation: landscape) {
+  html h1 { font-size: min(4.1667vw, 80px); }
+  html h2 { font-size: min(3.75vw, 72px); }
+  html h3 { font-size: min(3.3333vw, 64px); }
+  html h4 { font-size: min(2.9167vw, 56px); }
+  html h5 { font-size: min(2.5vw, 48px); }
+  html h6 { font-size: min(2.0833vw, 40px); }
+  html p { font-size: min(1.25vw, 24px); }
+}
+@media screen and (orientation: portrait) {
+  html h1 { font-size: min(5vh, 96px); }
+  html h2 { font-size: min(4.5833vh, 88px); }
+  html h3 { font-size: min(4.1667vh, 80px); }
+  html h4 { font-size: min(3.75vh, 72px); }
+  html h5 { font-size: min(3.3333vh, 64px); }
+  html h6 { font-size: min(2.9167vh, 56px); }
+  html p { font-size: min(2.0833vh, 40px); }
+}
+
+/*--|🠋 Body 🠋|--*/
+body {
+  background: linear-gradient(140deg, #1f3131, #3d6262 50%, #9eb0b0);
+  height: 100vh;
+  overflow: hidden;
+}
+body #index-body {
+  background: linear-gradient(140deg, #1f3131, #3d6262 75%, #1f3131);
+  display: grid;
+  height: 100vh;
+}
+@media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
+  body #index-body {
+    grid-template: 4rem 1fr 4rem / 6rem 1fr 6rem;
+  }
+  body #index-body header,
+  body #index-body main,
+  body #index-body footer {
+    background: rgba(102, 0, 0, 0.25); /*--|🠈 The original's test tint 🠈|--*/
+  }
+}
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+  body #index-body {
+    grid-template: 6rem 1fr 6rem / 4rem 1fr 4rem;
+  }
+  body #index-body header,
+  body #index-body main,
+  body #index-body footer {
+    background: rgba(7, 55, 99, 0.25); /*--|🠈 The original's test tint 🠈|--*/
+  }
+}
+@media screen and (max-aspect-ratio: 16/9) and (min-aspect-ratio: 1/1) {
+  body #index-body {
+    grid-template: 4rem 1fr 4rem / 4rem 1fr 4rem;
+  }
+  body #index-body header,
+  body #index-body main,
+  body #index-body footer {
+    background: rgba(39, 78, 19, 0.25); /*--|🠈 The original's test tint 🠈|--*/
+  }
+}
+
+/*--|🠋 Main 🠋|--*/
+main[id*='index'] {
+  background: #1f3131;
+  display: block;
+  grid-area: 1 / 1 / 4 / 4;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+main[id*='index']::-webkit-scrollbar {
+  display: none;
+}
+main[id*='index'] section {
+  display: grid;
+  height: 100vh; /*--|🠈 Was 2,049 rules, one per pixel of height 🠈|--*/
+}
+main[id*='index'] section > div {
+  display: inherit;
+  grid-area: 2 / 2 / 3 / 3;
+  min-height: 0;
+}
+@media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
+  main[id*='index'] section {
+    grid-template: 2rem 1fr 2rem / 3rem 1fr 3rem;
+  }
+}
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+  main[id*='index'] section {
+    grid-template: 3rem 1fr 3rem / 2rem 1fr 2rem;
+  }
+}
+@media screen and (max-aspect-ratio: 16/9) and (min-aspect-ratio: 1/1) {
+  main[id*='index'] section {
+    grid-template: 2rem 1fr 2rem / 2rem 1fr 2rem;
+  }
+}
+
+/*--|🠋 Typewriter Title 🠋|--*/
+@keyframes animate {
+  0% { border-right-color: rgba(158, 176, 176, 0.5); width: 0; }
+  50% { border-right-color: #1f3131; width: 100%; }
+  100% { border-right-color: rgba(158, 176, 176, 0.5); width: 0; }
+}
+section div[class*='home'] span[class*='title'] h1,
+section div[class*='home'] span[class*='title'] h3 {
+  align-items: flex-end;
+  color: #1f3131;
+  display: flex;
+  filter: drop-shadow(0 0 4px black);
+  justify-content: flex-start;
+  position: relative;
+  -webkit-text-stroke: 2px #3d6262;
+}
+section div[class*='home'] span[class*='title'] h1::before,
+section div[class*='home'] span[class*='title'] h3::before {
+  animation: animate 90s ease-in-out infinite;
+  border-right: 4px solid;
+  color: #9eb0b0;
+  content: attr(data-text);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/*--|🠋 Fades 🠋|--*/
+@keyframes fadeIn {
+  0% { filter: blur(1rem); opacity: 0; }
+  100% { filter: blur(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  0% { filter: blur(0); opacity: 1; }
+  100% { filter: blur(1rem); opacity: 0; }
+}
+
+/*--|🠋 Home: Desktop (Landscape) 🠋|--*/
+@media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
+  section div[class*='home'][class*='desktop-landscape'] {
+    grid-template: auto 1fr 0.5fr 4fr / repeat(5, 1fr);
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='title'] {
+    display: inherit;
+    grid-area: 1 / 1 / 2 / 4;
+    grid-template: 1fr / auto 1fr;
+    padding-top: 2rem;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='title'] h1 {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='buttons'] {
+    align-items: center;
+    display: flex;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-content: space-around;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='subject'] {
+    align-items: flex-end;
+    display: flex;
+    grid-area: 3 / 1 / 4 / 4;
+    justify-content: flex-start;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='subject'] h6 {
+    color: #9eb0b0;
+    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.75));
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='description'] {
+    display: flex;
+    flex-direction: column;
+    grid-area: 4 / 1 / 5 / 4;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    z-index: 1;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='description'] p {
+    line-height: 1.5;
+    padding: 0 4px;
+    text-align: justify;
+    word-spacing: 2px;
+  }
+  section div[class*='home'][class*='desktop-landscape'] span[class*='description'] p,
+  section div[class*='home'][class*='desktop-landscape'] span[class*='description'] h6 {
+    color: #fff;
+    filter: drop-shadow(0 0 4px black);
+  }
+  section div[class*='home'][class*='desktop-landscape'] .home-profile {
+    display: flex;
+    grid-area: 1 / 3 / 5 / 6;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    z-index: 0;
+  }
+  section div[class*='home'][class*='desktop-landscape'] canvas[class*='profile'] {
+    background: transparent;
+    cursor: none;
+    height: 100%;
+    justify-self: end; /*--|🠈 Was left: 66% + translate, which only worked at the original image size 🠈|--*/
+    z-index: 1;
+  }
+  section div[class*='home'][class*='desktop-landscape'] aside[class*='profile'] {
+    justify-content: flex-end;
+  }
+  section div[class*='home'][class*='desktop-landscape'] aside[class*='profile'] img {
+    cursor: default;
+    height: 100%;
+  }
+  section div[class*='home'][class*='desktop-landscape'] .hidden {
+    animation: fadeOut 1s ease-in-out;
+    opacity: 0;
+  }
+  section div[class*='home'][class*='desktop-landscape'] .visible {
+    animation: fadeIn 1s ease-in-out;
+    opacity: 1;
+  }
+}
+
+/*--|🠋 Home: Mobile (Portrait) 🠋|--*/
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+  section div[class*='home'][class*='mobile-portrait'] {
+    grid-template: auto repeat(4, 1fr) auto repeat(5, 1fr) 3rem / repeat(2, 1fr);
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='title'] {
+    display: inherit;
+    grid-area: 1 / 1 / 2 / 3; /*--|🠈 Was 1 / 1 / 2 / 4, one column past the grid 🠈|--*/
+    grid-template: 1fr / 1fr auto 1fr;
+    padding-top: 2rem;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='title'] h3 {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='title'] h3::before {
+    filter: drop-shadow(0 0 1rem rgba(61, 98, 98, 0.25));
+  }
+  section div[class*='home'][class*='mobile-portrait'] aside[class*='profile'] {
+    display: inherit;
+    grid-area: 2 / 1 / 12 / 3;
+    grid-template: auto / 1fr auto 1fr;
+    min-height: 0;
+    z-index: 0;
+  }
+  section div[class*='home'][class*='mobile-portrait'] aside[class*='profile'] img {
+    grid-area: 1 / 2 / 2 / 3;
+    height: 100%;
+    min-height: 0;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='subject'] {
+    align-items: flex-end;
+    display: flex;
+    grid-area: 6 / 1 / 7 / 3;
+    justify-content: flex-start;
+    z-index: 3;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='subject'] h6 {
+    color: #9eb0b0;
+    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.75));
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='description'] {
+    display: flex;
+    flex-direction: column;
+    grid-area: 7 / 1 / 12 / 3;
+    justify-content: space-between;
+    z-index: 1;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='description'] p {
+    padding: 0 2rem;
+    text-align: justify;
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class*='description'] p,
+  section div[class*='home'][class*='mobile-portrait'] span[class*='description'] h6 {
+    color: #fff;
+    filter: drop-shadow(0 0 4px black);
+  }
+  section div[class*='home'][class*='mobile-portrait'] span[class='home-button'] {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    grid-area: 2 / 1 / 6 / 2;
+    justify-content: space-around;
+    z-index: 2;
+  }
+}
+
+/*--|🠋 Home: Tablet (Squaring) 🠋|--*/
+@media screen and (max-aspect-ratio: 16/9) and (min-aspect-ratio: 1/1) {
+  section div[class*='home'][class*='tablet-square'] {
+    grid-template: auto 4fr auto 6fr / repeat(3, 1fr);
+  }
+  section div[class*='home'][class*='tablet-square'] aside[class*='profile'] {
+    display: inherit;
+    grid-area: 1 / 1 / 5 / 4; /*--|🠈 Was 1 / 1 / 7 / 4, past the four rows 🠈|--*/
+    grid-template: 3rem auto 3rem / 1fr auto 1fr;
+    min-height: 0;
+    z-index: 1;
+  }
+  section div[class*='home'][class*='tablet-square'] aside[class*='profile'] img {
+    grid-area: 2 / 2 / 3 / 3;
+    height: 100%;
+    min-height: 0;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='title'] {
+    display: inherit;
+    grid-area: 1 / 1 / 2 / 4;
+    grid-template: 1fr / 1fr auto 1fr;
+    padding-top: 2rem;
+    z-index: 0;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='title'] h1 {
+    align-items: center;
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='buttons'] {
+    align-items: center;
+    display: flex;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-content: space-around;
+    z-index: 2;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='subject'] {
+    display: flex;
+    grid-area: 3 / 1 / 4 / 4;
+    justify-content: flex-start;
+    padding-left: 8%;
+    z-index: 3;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='subject'] h3 {
+    color: #9eb0b0;
+    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.75));
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='description'] {
+    display: flex;
+    flex-direction: column;
+    grid-area: 4 / 1 / 5 / 4;
+    justify-content: space-between;
+    padding: 0 16% 2rem;
+    z-index: 4;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='description'] p {
+    line-height: 1.5;
+    padding: 0 4px;
+    text-align: justify;
+    word-spacing: 2px;
+  }
+  section div[class*='home'][class*='tablet-square'] span[class*='description'] p,
+  section div[class*='home'][class*='tablet-square'] span[class*='description'] h6 {
+    color: #fff;
+    filter: drop-shadow(0 0 4px black);
+  }
+}
+
+/*--|🠋 Glow Button 🠋|--*/
+button[class*='glow'] {
+  background: none;
+  border-radius: 0.25rem;
+  cursor: default;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.75));
+  overflow: hidden;
+  position: relative;
+}
+button[class*='glow'] h6 {
+  color: #3d6262;
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px black);
+  margin: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.25s ease-in-out;
+  z-index: 1;
+}
+button[class*='glow'] h6:hover {
+  color: #fff;
+  filter: drop-shadow(0 0 4px rgba(158, 176, 176, 0.25));
+}
+button[class*='glow'] h6:hover ~ div {
+  background: #9eb0b0;
+}
+button[class*='glow'] div {
+  background: #3d6262;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transition: 0.25s ease-in-out;
+  width: 100%;
+}
+button[class*='glow'] div::before {
+  /*--|🠊 The spotlight, it follows --x and --y 🠈|--*/
+  background: radial-gradient(#fff, transparent, transparent);
+  border-radius: 50%;
+  content: '';
+  height: 8rem;
+  left: var(--x);
+  opacity: 0;
+  position: absolute;
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s, top 0s, left 0s;
+  width: 8rem;
+}
+button[class*='glow'] div::after {
+  /*--|🠊 Covers all but a 2px ring, so only the edge lights up 🠈|--*/
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.75) 100%);
+  border-radius: 0.25rem;
+  content: '';
+  inset: 2px;
+  position: absolute;
+}
+button[class*='glow']:hover div::before {
+  opacity: 1;
+}
+
+/*--|🠋 Skills & Contact: empty in the original, test colours only 🠋|--*/
+@media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
+  section div[class*='skills'],
+  section div[class*='contact'] {
+    background: red;
+  }
+}
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+  section div[class*='skills'],
+  section div[class*='contact'] {
+    background: #3c90ff;
+  }
+}
+@media screen and (max-aspect-ratio: 16/9) and (min-aspect-ratio: 1/1) {
+  section div[class*='skills'],
+  section div[class*='contact'] {
+    background: lime;
+  }
+}

@@ -54,10 +54,32 @@
 
     //--|🠊 AI Code: Review Please 🠈|--\\
     .top {
+      height: 50%; //--|🠈 AI Code: Review Please 2026-11-10 · Half the row, same as Mobile 🠈|--\\
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       background: Utilities.$indexLand-lightMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
+      position: relative; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+      &::after {
+        //--|🠊 AI Code: Review Please 2026-11-10 · A soft shade below the strip: hides what slides under the title, gone by the end of the row 🠈|--\\
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 150%; //--|🠈 AI Code: Review Please 2026-11-10 · The other half of the row, then a little past it 🠈|--\\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Eased: holds dark under the title, then lets go gently, no hard edge 🠈|--\\
+        background: linear-gradient(
+          to bottom,
+          rgba(Utilities.$gray-dark, 0.95) 0%,
+          rgba(Utilities.$gray-dark, 0.9) 30%,
+          rgba(Utilities.$gray-dark, 0.7) 55%,
+          rgba(Utilities.$gray-dark, 0.4) 75%,
+          rgba(Utilities.$gray-dark, 0.15) 90%,
+          rgba(Utilities.$gray-dark, 0) 100%
+        );
+        pointer-events: none; //--|🠈 Clicks still reach what's underneath 🠈|--\\
+      }
     }
     div[class*='demo'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -146,6 +168,27 @@
       background: Utilities.$indexLand-lightMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
+      position: relative; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+      &::after {
+        //--|🠊 AI Code: Review Please 2026-11-10 · A soft shade below the strip: hides what slides under the title, gone by the end of the row 🠈|--\\
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 150%; //--|🠈 AI Code: Review Please 2026-11-10 · The other half of the row, then a little past it 🠈|--\\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Eased: holds dark under the title, then lets go gently, no hard edge 🠈|--\\
+        background: linear-gradient(
+          to bottom,
+          rgba(Utilities.$gray-dark, 0.95) 0%,
+          rgba(Utilities.$gray-dark, 0.9) 30%,
+          rgba(Utilities.$gray-dark, 0.7) 55%,
+          rgba(Utilities.$gray-dark, 0.4) 75%,
+          rgba(Utilities.$gray-dark, 0.15) 90%,
+          rgba(Utilities.$gray-dark, 0) 100%
+        );
+        pointer-events: none; //--|🠈 Clicks still reach what's underneath 🠈|--\\
+      }
     }
   }
   div[class*='header-back'] {

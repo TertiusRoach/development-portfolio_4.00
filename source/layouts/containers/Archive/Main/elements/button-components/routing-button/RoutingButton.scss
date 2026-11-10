@@ -15,6 +15,9 @@
     $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
 
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 2;
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
       grid-area: 2 / 3 / 5 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -614,6 +617,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       z-index: 1;
       grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
@@ -649,6 +655,9 @@
       }
     }
     div[class*='colourize'] {
+      &.downplay {
+        @include Utilities.downplay();
+      }
       display: flex; //--|🠈 Division.colourize.scss sets the direction 🠈|--\\
     }
   }
