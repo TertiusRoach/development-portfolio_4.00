@@ -1,5 +1,5 @@
 //--|🠊 ArchiveRightbar.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 Desktop <Rightbar> 🠈|--\\
@@ -11,7 +11,7 @@
 
     .rig {
       grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
+      background: Utilities.$indexLand-darkMode;
     }
   }
   div[class*='rightbar-back'] {
@@ -30,7 +30,7 @@
 
     .rig {
       grid-area: 1 / 3 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
+      background: Utilities.$indexLand-darkMode;
     }
   }
   div[class*='rightbar-back'] {

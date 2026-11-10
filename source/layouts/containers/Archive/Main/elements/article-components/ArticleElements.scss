@@ -2,7 +2,7 @@
 @use './loading-article/LoadingArticle.scss' as LoadingArticle;
 @use './updates-article/UpdatesArticle.scss' as UpdatesArticle;
 
-@use '../../../../../styles/Palettes.scss' as Palettes;
+@use '../../../../../styles/Utilities.scss' as Utilities;
 
 section[class*='article-main'] {
   div[class*='fullscreen'] {

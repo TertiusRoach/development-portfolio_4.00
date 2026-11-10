@@ -1,5 +1,5 @@
 //--|🠊 TicketingOverlay.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Overlay) 🠋|--\\
@@ -14,9 +14,9 @@
   div[class*='background'] {
     background: linear-gradient(
       220deg,
-      rgba(Palettes.$indexLand-dark, 0.75) 0%,
-      rgba(Palettes.$indexLand-medium, 0.65) 50%,
-      rgba(Palettes.$indexLand-light, 0.25) 100%
+      rgba(Utilities.$indexLand-dark, 0.75) 0%,
+      rgba(Utilities.$indexLand-medium, 0.65) 50%,
+      rgba(Utilities.$indexLand-light, 0.25) 100%
     );
   }
 }
@@ -33,9 +33,9 @@
   div[class*='background'] {
     background: linear-gradient(
       55deg,
-      rgba(Palettes.$indexLand-dark, 0.75) 0%,
-      rgba(Palettes.$indexLand-medium, 0.65) 50%,
-      rgba(Palettes.$indexLand-light, 0.25) 100%
+      rgba(Utilities.$indexLand-dark, 0.75) 0%,
+      rgba(Utilities.$indexLand-medium, 0.65) 50%,
+      rgba(Utilities.$indexLand-light, 0.25) 100%
     );
   }
 }

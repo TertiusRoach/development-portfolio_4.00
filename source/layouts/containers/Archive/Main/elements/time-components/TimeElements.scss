@@ -1,6 +1,6 @@
 //--|🠊 TimeElements.scss 🠈|--\\
 @use './default-time/DefaultTime.scss' as DefaultTime;
-@use '../../../../../styles/Palettes.scss' as Palettes;
+@use '../../../../../styles/Utilities.scss' as Utilities;
 
 section[class*='time'] {
   div[class*='fullscreen'] {

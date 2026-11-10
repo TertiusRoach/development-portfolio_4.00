@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import ButtonDefault from '../../Button/default/Button.default';
 
 //--|🠋 Functions 🠋|--\\
-import testBlock, { createClass } from './Division_placeholder'; //--|🠊 AI Code: Review Please 2026-11-09 13:41 🠈|--\\
+import createClass from './Division_placeholder';
 import { loadAsset } from '../../../tools/utilities';
 
 export interface TheseProps {

@@ -229,8 +229,12 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 - **One door in.** `index.tsx` imports `index.scss`, and that is the only `.scss` import in any `.tsx` or `.ts` file. Every other stylesheet arrives through `@use`, so the whole look is one `index.css` that the browser loads before it draws anything.
 - **Why.** A `.scss` imported inside a lazy-loaded `.tsx` becomes its own small CSS file that arrives late: the page draws for a moment without those styles, and the late copy lands after everything else, so it can override rules that were meant to win.
 - **Two gathering points.** Components `@use` from `styles/Barrel.scss`: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`. Containers `@use` from their application's file (`containers/Overtime/Overtime.scss` gathers Main, Header, Footer, Overlay, Leftbar and Rightbar), and `index.scss` uses that file under the application's flag (`//--|🠋 Overtime 🠋|--\\`).
-- **`styles/Utilities.scss` is for containers only.** It houses the small showpiece effects, each as a mixin with its own keyframes (today the marching ants that outline the Archive menu pages). A container `@use`s it `as Utilities` and includes what it needs: `@include Utilities.marching-ants();`. Sass loads it once, so the keyframes ship once however many containers use it. **A component in `components/` never uses it:** components reach every page through the Barrel, so an effect pulled in there would land in every container that renders the component and overlap with that container's own effects as the project grows. When a component needs an effect, the container around it includes it. A container that copies a utility into its own file instead of using it is moved over to `Utilities.scss`.
-- **Never twice.** A stylesheet appears in exactly one `@use`.
+- **Each layer has its own tool, so the first `@use` tells you where you are.**
+  - **Components use `styles/Palettes.scss`** (`as Palettes`) and write `Palettes.$blue-dark`. A component never uses `Utilities.scss`: components are reused on every page through the Barrel, so an effect pulled in there would land in every container that renders them and overlap with that container's own effects as the project grows. When a component needs an effect, the container around it includes it.
+  - **Containers use `styles/Utilities.scss`** (`as Utilities`), never `Palettes.scss` directly. Utilities forwards every colour (`@forward './Palettes.scss';`), so a container writes `Utilities.$indexLand-darkMode`, the same colour under its own layer's name. Every container file has the line, even one with no colour yet, so a container always reads the same at the top.
+  - **`styles/Mixins.scss` is used only by `styles/Skeleton.scss`.** The skeleton grid lives there and nowhere else.
+- **`Utilities.scss` holds the small showpiece effects,** each as a mixin with its own keyframes (today the marching ants that outline the Archive menu pages), and a container includes what it needs: `@include Utilities.marching-ants();`. Sass loads the file once, so the keyframes ship once however many containers use them. A container that copies a utility into its own file is moved over to `Utilities.scss`.
+- **Never twice.** A component's or container's stylesheet appears in exactly one `@use`. The tools in `styles/` are the exception: each is used by every file of its own layer (see above).
 - **Every `@use` names its namespace with `as`,** even where Sass would pick the same name: `@use '../../../styles/Palettes.scss' as Palettes;`, `@use 'sass:color' as color;`. It reads like a TypeScript import, so a prefix always says where it comes from.
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
 - **A component no container renders stays commented out** in its Barrel group, in a `/* … */` block right under the group's flag, so it ships no CSS. Uncomment its line in the same step a container starts using it.
@@ -581,7 +585,7 @@ There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>
 
 **Components scale on tablet, containers don't. This is strict.** Every component in `components/` has all three mixins. Every file in `containers/` (the application pages, the Archive pages, the global page grid) has only `desktop-landscape` and `mobile-portrait`, never `tablet-squaring`. If a container ever seems to need tablet values, turn that piece into a component and scale it there. On a near-square screen the page keeps its bigger size while the component inside it has already stepped down. That's deliberate: the deeper element is always one step ahead, so a component always fits inside its container. Anything sized to the global grid stays on the desktop and mobile values for the same reason: the `<MenuSwipe>` and `<MenuScroll>` row height, the `<DivisionConveyor>` slide, and the conveyor margins in the Archive `<header>` and `<footer>`. Only what sits inside a menu row (button grids, side paddings) scales on tablet.
 
-**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split; never merge only part of a file. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
+**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split. **A component never merges only part of a file:** every rule sits in the three mixins, or none does. A container (a scope above the components) may merge part of a file, but only after it's been agreed in a Q&A with the owner. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
 Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
@@ -672,23 +676,24 @@ Components with a `pipeline/` folder follow the same rule per file: `Button_size
 
 In `tablet-*` mixins, the landscape/portrait split comes first, right under the flag, and everything else sits inside the `//--|🠊 Desktop 🠈|--\\` and `//--|🠊 Mobile 🠈|--\\` branches (see `routing/pipeline/Button_grid.scss`).
 
+The reference implementation is `source/layouts/components/Aside/characters/Aside.characters.scss`.
+
 ### Fades
 
 > **Rule:** a fade (`mask-image: linear-gradient(…)`) only goes on a component that fills the exact measures of the screen, or on one with a fixed width or height that clips the children scrolling through it. Nothing else fades.
 
-| Component | What fades | Size |
-| --- | --- | --- |
-| `<DivisionFullscreen>` | All four edges, **outer only** | Half the global grid: one row top and bottom, half a column on the sides |
-| `<DivisionSweeping>` | Nothing of its own | It sits inside the outer `<DivisionFullscreen>` and shows that fade |
-| `<MenuSelect>` | The `<menu>` that scrolls (`lef_top`, `rig_bot`) | 1 / 0.75 / 0.5 / 0.25rem |
-| `<AsideCharacters>` | The character list (`div.characters`) when it scrolls | 1 / 0.75 / 0.5 / 0.25rem |
+| Component                      | What fades                                                                                                                                                          | Size                                                                                                                    |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `<DivisionFullscreen>`         | All four edges, **outer only**                                                                                                                                      | Half the global grid: one row top and bottom, half a column on the sides                                                |
+| `<DivisionSweeping>`           | Nothing of its own                                                                                                                                                  | It sits inside the outer `<DivisionFullscreen>` and shows that fade                                                     |
+| `<MenuSelect>`                 | The `<menu>` that scrolls (`lef_top`, `rig_bot`)                                                                                                                    | 1 / 0.75 / 0.5 / 0.25rem                                                                                                |
+| `<AsideCharacters>`            | The character list (`div.characters`) when it scrolls                                                                                                               | 1 / 0.75 / 0.5 / 0.25rem                                                                                                |
 | `<MenuSwipe>` · `<MenuScroll>` | The title text (`h3 span`), in place of an ellipsis. Top and bottom stay sharp; `-def-` fades left and right, `-lef-` only the right end, `-rig-` only the left end | One skeleton square (`$high` / `$test` / `$misc` / `$tiny`): 128 / 96 / 64 / 48px desktop, 192 / 160 / 96 / 64px mobile |
 
 - **Outer only.** A `<DivisionFullscreen>` inside another one never fades (`mask-image: none`), so the inner pages don't fade twice and the main transitions stay clean.
 - **Fades scale like everything else**, through all three mixins. A fade is a harmless style effect, so it may be a component's only content in `tablet-squaring`, stepping down one size ahead like the rest of tablet.
+- **A menu title fills its row.** Its `<h3>` is `width: 100%` between the buttons, with `min-width: 0` so a long title clips; `text-align` follows the view (`-def-` centre, `-lef-` left, `-rig-` right). A title that shrank to its text would carry the fade onto its own letters.
 - **Two directions at once** use two gradients with `mask-composite: intersect`.
-
-The reference implementation is `source/layouts/components/Aside/characters/Aside.characters.scss`.
 
 ---
 
@@ -696,7 +701,7 @@ The reference implementation is `source/layouts/components/Aside/characters/Asid
 
 ### The Ten Colours
 
-`styles/Palettes.scss` holds every colour, in this order. Mono comes first because it's the default colour. Every colour list (types, maps, includes, mixins) follows the same order: `mon · red · gre · blu · pur · ora · pin · yel · bro · tur`. `<Button>` already does; other components are moved over as they're refactored.
+`styles/Palettes.scss` holds every colour, in this order. Mono comes first because it's the default colour. Every colour list (types, maps, includes, mixins) follows the same order: `mon · red · gre · blu · pur · ora · pin · yel · bro · tur`. `<Button>` already does; other components are moved over as they're refactored. The table names the colours the way a component writes them; a container writes the same names through `Utilities.$` (see [Style Imports](#style-imports)).
 
 | #   | Colour    | In `.tsx`       | Class  | In `.scss`              |
 | --- | --------- | --------------- | ------ | ----------------------- |
@@ -862,9 +867,9 @@ The TypeScript check currently reports some errors that already existed. Compare
 
 Test tools use `!important` on purpose: they have to win over everything, and they're never part of the design.
 
-- **`display-testing` in `styles/Mixins.scss`** tints the page blocks (header, main, footer and the `fore`/`mid`/`back` layers) so the grid can be checked by eye. Include it by hand; it's never left on.
+- **`display-testing` in `styles/Mixins.scss`** tints the page blocks (header, main, footer and the `fore`/`mid`/`back` layers) so the grid can be checked by eye. Include it by hand in `styles/Skeleton.scss` (the only file that uses `Mixins.scss`); it's never left on.
 - **`<DivisionTesting>`** has a button per block (`<header>`, `<main>`, `<footer>`, `<leftbar>`, `<overlay>`, `<rightbar>`) that runs the block's transitions and flashes its background with `.emphasize` / `.emphasize-${colour}` (`Division.testing.scss`). Its dashed outline, the marching ants, takes the colour of its `style.color`.
-- **Marching ants on the `<Menu>` pages.** `SwipeMenu.scss`, `ScrollMenu.scss` and `SelectMenu.scss` outline every `<menu>` with marching ants, so each menu's bounds show without a fill behind it. Unlike the other tools here it has no `!important` and stays on: it's part of how those pages read. Each file keeps its own `@mixin marching-ants` and `@keyframes marching-ants` under a `//--|🠋 Marching Ants 🠋|--\\` flag, right below the `@use` line, and both mixins apply it with `> menu { @include marching-ants(); }`. A border can't animate, so the outline is four dashed gradient strips (top, bottom, left, right) that slide clockwise: an 8px dash, an 8px gap, 2px thick, `$indexLand-medium` at 75%, one lap of the dash a second. Under `prefers-reduced-motion` it stays drawn but stops moving. To tune it, change `$ants-color`, the `16px` repeat (dash plus gap), the `2px` thickness or the `1s`, the same in all three files. The old test fills stay beside each menu as commented-out lines (`//--|🠊 background: rgba(darkred, 0.25); 🠈|--\\`): uncomment one to see the whole cell a menu or panel fills.
+- **Marching ants on the `<Menu>` pages.** `SwipeMenu.scss` and `ScrollMenu.scss` outline every `<menu>` with marching ants, so each menu's bounds show without a fill behind it. `SelectMenu.scss` has none. Unlike the other tools here it has no `!important` and stays on: it's part of how those pages read. The one copy lives in `styles/Utilities.scss` (see [Style Imports](#style-imports)); both mixins of each page apply it to their own menus only, `> menu[class*='swipe'] { @include Utilities.marching-ants(); }` and `> menu[class*='scroll'] { … }`. A border can't animate, so the outline is four dashed gradient strips (top, bottom, left, right) that slide clockwise: an 8px dash, an 8px gap, 2px thick, `$indexLand-medium` at 75%, one lap of the dash a second. Under `prefers-reduced-motion` it stays drawn but stops moving. To tune it, change `$ants-color`, the `16px` repeat (dash plus gap), the `2px` thickness or the `1s` in `Utilities.scss`, once. The old test fills stay beside each menu as commented-out lines (`//--|🠊 background: rgba(darkred, 0.25); 🠈|--\\`): uncomment one to see the whole cell a menu or panel fills.
 - **Scope selectors in `styles/Transition.scss`.** `%header-children` and `%footer-children` start with empty `section[class*='foreground']`, `figure[class*='midground']` and `div[class*='background']` rules. They're kept empty to show what each selector reaches: uncomment the test background inside one and look. They compile as descendant selectors, so they reach every match inside the `<header>` or `<footer>`, not only its direct children.
 
 ### REVIEW Folders

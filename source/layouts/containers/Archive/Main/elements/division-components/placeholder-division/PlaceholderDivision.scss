@@ -1,5 +1,5 @@
 //--|🠊 PlaceholderDivision.scss 🠈|--\\
-@use '../../../../../../styles/Palettes.scss' as Palettes;
+@use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="placeholder-division"> 🠈|--\\
@@ -36,7 +36,7 @@
       background: rgba(darkblue, 0.25);
       /*
       button[id*='block'] {
-        border: 2px dashed Palettes.$gray-medium;
+        border: 2px dashed Utilities.$gray-medium;
       }
       */
     }

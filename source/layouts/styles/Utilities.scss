@@ -1,4 +1,5 @@
 //--|🠊 Utilities.scss 🠈|--\\
+@forward './Palettes.scss'; //--|🠈 Containers reach every colour through Utilities.$… 🠈|--\\
 @use './Palettes.scss' as Palettes;
 
 //--|🠋 Marching Ants 🠋|--\\

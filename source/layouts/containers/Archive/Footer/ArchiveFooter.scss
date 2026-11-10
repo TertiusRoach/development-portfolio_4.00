@@ -1,6 +1,6 @@
 //--|🠊 ArchiveFooter.scss 🠈|--\\
 
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠋 Desktop <Footer> 🠋|--\\
@@ -33,7 +33,7 @@
       height: 50%;
       margin-top: auto;
       grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
+      background: Utilities.$indexLand-darkMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
@@ -74,7 +74,7 @@
 
     .bot {
       grid-area: 5 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
+      background: Utilities.$indexLand-darkMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }

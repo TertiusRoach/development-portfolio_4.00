@@ -1,5 +1,5 @@
 //--|🠊 ArchiveHeader.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 Desktop <Header> 🠈|--\\
@@ -34,7 +34,7 @@
 
     .top {
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
+      background: Utilities.$indexLand-lightMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
@@ -72,7 +72,7 @@
     .top {
       height: 50%;
       grid-area: 1 / 1 / 2 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
+      background: Utilities.$indexLand-lightMode;
       opacity: 1;
       transition: opacity 250ms ease-in-out; //--|🠈 Fades out when squaring: AI Code: Review Please 2026-11-07 🠈|--\\
     }
@@ -82,8 +82,8 @@
     header {
       grid-area: 1 / 1 / 2 / 4;
       background: rgba(green, 0.25);
-      //--|🠊 background: Palettes.$indexLand-lightMode; 🠈|--\\
-      //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Palettes.$indexLand-light, 0.75)); 🠈|--\\
+      //--|🠊 background: Utilities.$indexLand-lightMode; 🠈|--\\
+      //--|🠊 filter: drop-shadow(0 1.5rem 1.5rem rgba(Utilities.$indexLand-light, 0.75)); 🠈|--\\
     }
     */
   }

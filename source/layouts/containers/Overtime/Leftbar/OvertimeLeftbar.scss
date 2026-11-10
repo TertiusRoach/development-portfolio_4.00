@@ -1,5 +1,5 @@
 //--|🠊 OvertimeLeftbar.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 @mixin desktop-landscape {
   //--|🠊 Desktop <Leftbar> 🠈|--\\
   section[class*='leftbar-fore'] {
@@ -11,7 +11,7 @@
     //--|🠊 AI Code: Review Please 🠈|--\\
     .lef {
       grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
+      background: Utilities.$indexLand-lightMode;
     }
   }
   div[class*='leftbar-back'] {
@@ -31,7 +31,7 @@
     //--|🠊 AI Code: Review Please 🠈|--\\
     .lef {
       grid-area: 1 / 1 / 6 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
+      background: Utilities.$indexLand-lightMode;
     }
   }
   div[class*='leftbar-back'] {

@@ -1,5 +1,5 @@
 //--|🠊 DefaultButton.scss 🠈|--\\
-@use '../../../../../../styles/Palettes.scss' as Palettes;
+@use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 <aside className="default-button"> 🠈|--\\
@@ -114,12 +114,12 @@
 
     .left-side {
       grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-darkMode;
+      background: Utilities.$indexLand-darkMode;
       filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
     }
     .right-side {
       grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
-      background: Palettes.$indexLand-lightMode;
+      background: Utilities.$indexLand-lightMode;
       filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
     }
     grid-template-columns: 1fr calc($high-desk * 2) 1fr; //--|🠈 Width: 1920px 🠈|--\\
@@ -359,11 +359,11 @@
     section[class*='stack'] {
       &.top-stack {
         grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
-        background: Palettes.$indexLand-darkMode;
+        background: Utilities.$indexLand-darkMode;
       }
       &.bot-stack {
         grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
-        background: Palettes.$indexLand-lightMode;
+        background: Utilities.$indexLand-lightMode;
       }
     }
   }

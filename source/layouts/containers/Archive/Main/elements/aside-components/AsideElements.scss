@@ -1,7 +1,7 @@
 //--|🠊 AsideElements.scss 🠈|--\\
 @use './characters-aside/CharactersAside.scss' as CharactersAside;
 
-@use '../../../../../styles/Palettes.scss' as Palettes;
+@use '../../../../../styles/Utilities.scss' as Utilities;
 
 section[class*='aside'] {
   div[class*='fullscreen'] {

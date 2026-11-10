@@ -1,5 +1,5 @@
 //--|🠊 ArchiveMain.scss 🠈|--\\
-@use '../../../styles/Palettes.scss' as Palettes;
+@use '../../../styles/Utilities.scss' as Utilities;
 
 @use './elements/article-components/ArticleElements.scss' as ArticleElements;
 @use './elements/aside-components/AsideElements.scss' as AsideElements;
@@ -21,34 +21,34 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       /*
       section[class*='article'] {
-        //--|🠊 background: rgba(Palettes.$red-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$red-dark, 0.75); 🠈|--\\
       }
       section[class*='aside'] {
-        //--|🠊 background: rgba(Palettes.$green-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$green-dark, 0.75); 🠈|--\\
       }
       section[class*='button'] {
-        //--|🠊 background: rgba(Palettes.$blue-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$blue-dark, 0.75); 🠈|--\\
       }
       section[class*='division'] {
-        //--|🠊 background: rgba(Palettes.$purple-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$purple-dark, 0.75); 🠈|--\\
       }
       section[class*='figure'] {
-        //--|🠊 background: rgba(Palettes.$orange-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
       }
       section[class*='menu'] {
-        //--|🠊 background: rgba(Palettes.$pink-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$pink-dark, 0.75); 🠈|--\\
       }
       section[class*='navigation'] {
-        //--|🠊 background: rgba(Palettes.$yellow-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$yellow-dark, 0.75); 🠈|--\\
       }
       section[class*='section'] {
-        //--|🠊 background: rgba(Palettes.$brown-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$brown-dark, 0.75); 🠈|--\\
       }
       section[class*='table'] {
-        //--|🠊 background: rgba(Palettes.$turquoise-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$turquoise-dark, 0.75); 🠈|--\\
       }
       section[class*='time'] {
-        //--|🠊 background: rgba(Palettes.$gray-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$gray-dark, 0.75); 🠈|--\\
       }
       */
     }
@@ -66,34 +66,34 @@
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       /*
       section[class*='article'] {
-        //--|🠊 background: rgba(Palettes.$red-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$red-dark, 0.75); 🠈|--\\
       }
       section[class*='aside'] {
-        //--|🠊 background: rgba(Palettes.$green-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$green-dark, 0.75); 🠈|--\\
       }
       section[class*='button'] {
-        //--|🠊 background: rgba(Palettes.$blue-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$blue-dark, 0.75); 🠈|--\\
       }
       section[class*='division'] {
-        //--|🠊 background: rgba(Palettes.$purple-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$purple-dark, 0.75); 🠈|--\\
       }
       section[class*='figure'] {
-        //--|🠊 background: rgba(Palettes.$orange-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
       }
       section[class*='menu'] {
-        //--|🠊 background: rgba(Palettes.$pink-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$pink-dark, 0.75); 🠈|--\\
       }
       section[class*='navigation'] {
-        //--|🠊 background: rgba(Palettes.$yellow-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$yellow-dark, 0.75); 🠈|--\\
       }
       section[class*='section'] {
-        //--|🠊 background: rgba(Palettes.$brown-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$brown-dark, 0.75); 🠈|--\\
       }
       section[class*='table'] {
-        //--|🠊 background: rgba(Palettes.$turquoise-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$turquoise-dark, 0.75); 🠈|--\\
       }
       section[class*='time'] {
-        //--|🠊 background: rgba(Palettes.$gray-dark, 0.75); 🠈|--\\
+        //--|🠊 background: rgba(Utilities.$gray-dark, 0.75); 🠈|--\\
       }
       */
     }

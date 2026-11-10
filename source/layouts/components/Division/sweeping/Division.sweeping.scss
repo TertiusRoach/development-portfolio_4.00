@@ -1,6 +1,7 @@
 //--|🠊 Division.sweeping.scss 🠈|--\\
 div[class*='sweeping'] {
-  %hori-scope-desk {
+  //--|🠋 Shared (Sweeping) 🠋|--\\
+  %hori-scope {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='horizontal'] {
       transition: opacity 250ms ease-in-out;
@@ -13,7 +14,7 @@ div[class*='sweeping'] {
       }
     }
   }
-  %hori-stack-desk {
+  %hori-stack {
     //--|🠊 <ul class="hori-X-axis"> 🠈|--\\
     li[class*='sweeping'] {
       &[class*='horizontal_O'] {
@@ -54,12 +55,7 @@ div[class*='sweeping'] {
       }
     }
   }
-  ul[class*='hori-X-axis'] {
-    @extend %hori-scope-desk;
-    @extend %hori-stack-desk;
-  }
-
-  %vert-scope-desk {
+  %vert-scope {
     //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
     li[class*='vertical'] {
       transition: opacity 250ms ease-in-out;
@@ -72,7 +68,7 @@ div[class*='sweeping'] {
       }
     }
   }
-  %vert-stack-desk {
+  %vert-stack {
     //--|🠊 <ol class="vert-Y-axis"> 🠈|--\\
     li[class*='sweeping'] {
       &[class*='vertical_O'] {
@@ -113,8 +109,12 @@ div[class*='sweeping'] {
       }
     }
   }
+  ul[class*='hori-X-axis'] {
+    @extend %hori-scope;
+    @extend %hori-stack;
+  }
   ol[class*='vert-Y-axis'] {
-    @extend %vert-stack-desk;
-    @extend %vert-scope-desk;
+    @extend %vert-stack;
+    @extend %vert-scope;
   }
 }
