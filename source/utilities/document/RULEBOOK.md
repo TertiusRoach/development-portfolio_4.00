@@ -229,6 +229,7 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 - **One door in.** `index.tsx` imports `index.scss`, and that is the only `.scss` import in any `.tsx` or `.ts` file. Every other stylesheet arrives through `@use`, so the whole look is one `index.css` that the browser loads before it draws anything.
 - **Why.** A `.scss` imported inside a lazy-loaded `.tsx` becomes its own small CSS file that arrives late: the page draws for a moment without those styles, and the late copy lands after everything else, so it can override rules that were meant to win.
 - **Two gathering points.** Components `@use` from `styles/Barrel.scss`: `@use '../components/Division/colourize/Division.colourize.scss' as DivisionColourize;`. Containers `@use` from their application's file (`containers/Overtime/Overtime.scss` gathers Main, Header, Footer, Overlay, Leftbar and Rightbar), and `index.scss` uses that file under the application's flag (`//--|🠋 Overtime 🠋|--\\`).
+- **`styles/Utilities.scss` is for containers only.** It houses the small showpiece effects, each as a mixin with its own keyframes (today the marching ants that outline the Archive menu pages). A container `@use`s it `as Utilities` and includes what it needs: `@include Utilities.marching-ants();`. Sass loads it once, so the keyframes ship once however many containers use it. **A component in `components/` never uses it:** components reach every page through the Barrel, so an effect pulled in there would land in every container that renders the component and overlap with that container's own effects as the project grows. When a component needs an effect, the container around it includes it. A container that copies a utility into its own file instead of using it is moved over to `Utilities.scss`.
 - **Never twice.** A stylesheet appears in exactly one `@use`.
 - **Every `@use` names its namespace with `as`,** even where Sass would pick the same name: `@use '../../../styles/Palettes.scss' as Palettes;`, `@use 'sass:color' as color;`. It reads like a TypeScript import, so a prefix always says where it comes from.
 - **The Barrel is grouped by tag**, under `//--|🠋 <Division> 🠋|--\\` and the like, and the alias is the component's name. Inside a group, the shortest line goes first.
@@ -425,7 +426,7 @@ export default DefaultButton;
 - **The `Elements` flag.** A file that imports scoped elements from inside a container gets a fourth flag, `//--|🠋 Elements 🠋|--\\`, between `Components` and `Functions`. Elements are the `.tsx` files scoped to one container block: the coupled `<header>` + `<leftbar>` and `<footer>` + `<rightbar>` pairs (the two swap jobs on the flip), and `<main>` and `<overlay>`, which aren't coupled to anything and work the same in both orientations. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip). `ArchiveMain.tsx` imports `ButtonElements` there, and `ButtonElements.tsx` imports `DefaultButton` there. A file that imports no elements leaves the flag out.
 - **`interface InfoProps` sits right above the main function**, with `pageName`, `blockName` and `labelName` as strings.
 - **The `function` (first depth).** Inside it, in this order: the `getOrientation` state, the `info` values given their exact types (`blockName`, `labelName`, `pageName`), the `useEffect` that returns `checkScreen(setOrientation)`, then the `let` values for this render. It returns from `switch (getOrientation)`, with a full `'landscape'` and a full `'portrait'` case, each an `<aside>` holding a `-foreground` `<section>`, a `-midground` `<figure>` and a `-background` `<div>`.
-- **The SCSS selects the three layers by their full suffix:** `section[class*='foreground']`, `figure[class*='midground']` and `div[class*='background']`, never a shortened `footer-fore` or `header-back`, so the header's and footer's files read alike. When a container's `<AsideCharacters>` are `⟨opaque⟩`, the background paints their panels instead: `.lef` (`$gray-darkMode`) and `.rig` (`$gray-lightMode`) run the full height with sharp ends, at the aside's own widths, 398 / 321 / 230 / 139px on Desktop and 218 / 171 / 114 / 73px on Mobile. That's the chosen look; `⟨lucid⟩` asides keep their own panels with faded ends. See [CONTAINERS.md, Mirroring a Layout](CONTAINERS.md#mirroring-a-layout).
+- **The SCSS selects the three layers by their full suffix:** `section[class*='foreground']`, `figure[class*='midground']` and `div[class*='background']`, never a shortened `footer-fore` or `header-back`, so the header's and footer's files read alike. When a container's `<AsideCharacters>` are `⟨opaque⟩`, the background paints their panels instead: `.lef` (`$gray-darkMode`) and `.rig` (`$gray-lightMode`) run the full height with sharp ends, at the aside's own widths, 398 / 321 / 230 / 139px on Desktop and 218 / 171 / 114 / 73px on Mobile. That's the chosen look; `⟨lucid⟩` asides keep their own panels, also with sharp ends. Only the character list inside them fades, as it scrolls (see [Fades](#fades)). See [CONTAINERS.md, Mirroring a Layout](CONTAINERS.md#mirroring-a-layout).
 - **The `const` (second depth)** is written `const Name: React.FC<InfoProps> = ({ info }) => {` … `};`. The `function` uses it, here by passing it as `cases.call` to `<DivisionFullscreen>`. It lists the `let` views and gives each its own `labelName`.
 - **The `let` (third depth)** is written `let Name = ({ info }: InfoProps) => {` … `};`, with no `React.FC`. It returns from `switch (true)`, one `case` per shade (`info.labelName.includes('dark')`, `…('light')`).
 - **The `var` (fourth depth)** is written the same way, as `var Name = ({ info }: InfoProps) => {};`. It goes last, just above the export. It only exists when the calls really go that deep: `TaskOne` above is there to show the shape, and `DefaultButton.tsx` itself has none. Never write an empty `var` to fill the slot.
@@ -670,6 +671,22 @@ Components with a `pipeline/` folder follow the same rule per file: `Button_size
 ```
 
 In `tablet-*` mixins, the landscape/portrait split comes first, right under the flag, and everything else sits inside the `//--|🠊 Desktop 🠈|--\\` and `//--|🠊 Mobile 🠈|--\\` branches (see `routing/pipeline/Button_grid.scss`).
+
+### Fades
+
+> **Rule:** a fade (`mask-image: linear-gradient(…)`) only goes on a component that fills the exact measures of the screen, or on one with a fixed width or height that clips the children scrolling through it. Nothing else fades.
+
+| Component | What fades | Size |
+| --- | --- | --- |
+| `<DivisionFullscreen>` | All four edges, **outer only** | Half the global grid: one row top and bottom, half a column on the sides |
+| `<DivisionSweeping>` | Nothing of its own | It sits inside the outer `<DivisionFullscreen>` and shows that fade |
+| `<MenuSelect>` | The `<menu>` that scrolls (`lef_top`, `rig_bot`) | 1 / 0.75 / 0.5 / 0.25rem |
+| `<AsideCharacters>` | The character list (`div.characters`) when it scrolls | 1 / 0.75 / 0.5 / 0.25rem |
+| `<MenuSwipe>` · `<MenuScroll>` | The title text (`h3 span`), in place of an ellipsis. Top and bottom stay sharp; `-def-` fades left and right, `-lef-` only the right end, `-rig-` only the left end | One skeleton square (`$high` / `$test` / `$misc` / `$tiny`): 128 / 96 / 64 / 48px desktop, 192 / 160 / 96 / 64px mobile |
+
+- **Outer only.** A `<DivisionFullscreen>` inside another one never fades (`mask-image: none`), so the inner pages don't fade twice and the main transitions stay clean.
+- **Fades scale like everything else**, through all three mixins. A fade is a harmless style effect, so it may be a component's only content in `tablet-squaring`, stepping down one size ahead like the rest of tablet.
+- **Two directions at once** use two gradients with `mask-composite: intersect`.
 
 The reference implementation is `source/layouts/components/Aside/characters/Aside.characters.scss`.
 

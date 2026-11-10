@@ -360,12 +360,10 @@
       &.top-stack {
         grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
         background: Palettes.$indexLand-darkMode;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 0px, black calc(100% - 5rem), transparent 100%);
       }
       &.bot-stack {
         grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
         background: Palettes.$indexLand-lightMode;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 5rem, black 100%, transparent 100%);
       }
     }
   }

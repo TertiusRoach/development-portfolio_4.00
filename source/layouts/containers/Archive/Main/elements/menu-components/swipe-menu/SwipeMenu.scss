@@ -1,45 +1,6 @@
 //--|🠊 SwipeMenu.scss 🠈|--\\
 @use '../../../../../../styles/Palettes.scss' as Palettes;
-
-//--|🠋 Marching Ants 🠋|--\\
-/*--|🠋
-  AI Code: Review Please 2026-11-07
-  Why: Shows each <menu>'s bounds now that the test fills are commented out.
-  How: A border can't move, so four dashed gradient strips (top, bottom, left, right)
-  slide along the edges. 8px dash, 8px gap, 2px thick, clockwise.
-🠉|--*/
-@keyframes marching-ants {
-  to {
-    background-position:
-      16px 0,
-      -16px 100%,
-      0 -16px,
-      100% 16px; //--|🠈 top → right, bottom → left, left ↑, right ↓ 🠈|--\\
-  }
-}
-@mixin marching-ants {
-  $ants-color: rgba(Palettes.$indexLand-medium, 0.75);
-  background-image:
-    linear-gradient(90deg, $ants-color 50%, transparent 50%),
-    linear-gradient(90deg, $ants-color 50%, transparent 50%),
-    linear-gradient(0deg, $ants-color 50%, transparent 50%),
-    linear-gradient(0deg, $ants-color 50%, transparent 50%);
-  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-  background-size:
-    16px 2px,
-    16px 2px,
-    2px 16px,
-    2px 16px;
-  background-position:
-    0 0,
-    0 100%,
-    0 0,
-    100% 0;
-  animation: marching-ants 1s linear infinite;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none; //--|🠈 Still outlined, just not moving 🠈|--\\
-  }
-}
+@use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
@@ -53,7 +14,7 @@
     div[class*='swipe'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       > menu {
-        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+        @include Utilities.marching-ants();
       }
       $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
       $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -224,7 +185,7 @@
     div[class*='swipe'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
       > menu {
-        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+        @include Utilities.marching-ants();
       }
       $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
       $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\

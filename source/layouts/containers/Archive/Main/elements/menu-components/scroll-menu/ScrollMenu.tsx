@@ -27,7 +27,6 @@ function ScrollMenu({ info }: InfoProps) {
     functionHolder();
   }, [pageName, blockName, labelName]);
 
-  let casesPages = ['<MenuScroll>', '<MenuScroll>', '<MenuScroll>'] as Array<string>;
   let copyImage = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/copy') as string;
   return (
     <aside className="scroll-menu">
@@ -46,7 +45,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[x]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-lef-'", "color: '(mono)'", "shade: '~dark~'", "axis: '[x]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -62,7 +61,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[x]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-rig-'", "color: '(mono)'", "shade: '~dark~'", "axis: '[x]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -78,7 +77,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[x]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-cen-'", "color: '(mono)'", "shade: '~dark~'", "axis: '[x]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -94,7 +93,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[x]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-def-'", "color: '(mono)'", "shade: '~dark~'", "axis: '[x]'"] as Array<string>,
             }}
           />
 
@@ -173,7 +172,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[y]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-top-'", "color: '(mono)'", "shade: '~light~'", "axis: '[y]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -189,7 +188,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[y]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-bot-'", "color: '(mono)'", "shade: '~light~'", "axis: '[y]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -205,7 +204,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[y]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-mid-'", "color: '(mono)'", "shade: '~light~'", "axis: '[y]'"] as Array<string>,
             }}
           />
           <MenuScroll
@@ -221,7 +220,7 @@ function ScrollMenu({ info }: InfoProps) {
             }}
             cases={{
               axis: '[y]',
-              titles: casesPages as Array<string>,
+              titles: ["view: '-def-'", "color: '(mono)'", "shade: '~light~'", "axis: '[y]'"] as Array<string>,
             }}
           />
 

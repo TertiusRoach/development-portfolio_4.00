@@ -3,6 +3,10 @@
 
 @mixin desktop-landscape {
   //--|🠋 Desktop (Swipe) 🠋|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   $bold-weight: 650;
   $italic-weight: 250;
   $default-weight: 450;
@@ -138,16 +142,30 @@
       height: inherit; //--|🠈 height: @media; 🠈|--\\
       flex-direction: row;
       aside {
-        min-width: 0; //--|🠈 For Ellipsis 🠈|--\\
+        min-width: 0; //--|🠈 Lets the title clip, so the fade shows 🠈|--\\
         flex: 0 0 100%;
         display: inherit; //--|🠈 display: flex; 🠈|--\\
         align-items: center;
+        h3 {
+          width: 100%; //--|🠈 As wide as the space between the buttons, so the fade sits on the edges, not the text 🠈|--\\
+          min-width: 0; //--|🠈 Lets a long title clip instead of pushing 🠈|--\\
+        }
         h3 span {
           display: block;
           overflow-x: hidden;
           white-space: nowrap;
-          text-overflow: ellipsis;
           font-weight: $default-weight;
+          //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
+          mask-image: linear-gradient(to right, transparent 0rem, black $high-desk, black calc(100% - $high-desk), transparent 100%);
+          @media screen and (max-height: 768px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $test-desk, black calc(100% - $test-desk), transparent 100%);
+          }
+          @media screen and (max-height: 480px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $misc-desk, black calc(100% - $misc-desk), transparent 100%);
+          }
+          @media screen and (max-height: 360px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $tiny-desk, black calc(100% - $tiny-desk), transparent 100%);
+          }
           b {
             font-weight: $bold-weight;
           }
@@ -173,10 +191,37 @@
     li[class*='showing'] {
       @extend %titles-x-desktop;
     }
+    &[class*='lef_'] li[class*='showing'] aside h3 span {
+      //--|🠊 -lef-: only the right end fades, the text starts sharp 🠈|--\\
+      mask-image: linear-gradient(to right, black 0rem, black calc(100% - $high-desk), transparent 100%);
+      @media screen and (max-height: 768px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $test-desk), transparent 100%);
+      }
+      @media screen and (max-height: 480px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $misc-desk), transparent 100%);
+      }
+      @media screen and (max-height: 360px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $tiny-desk), transparent 100%);
+      }
+    }
+    &[class*='rig_'] li[class*='showing'] aside h3 span {
+      //--|🠊 -rig-: only the left end fades, the text ends sharp 🠈|--\\
+      mask-image: linear-gradient(to right, transparent 0rem, black $high-desk, black 100%);
+      @media screen and (max-height: 768px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $test-desk, black 100%);
+      }
+      @media screen and (max-height: 480px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $misc-desk, black 100%);
+      }
+      @media screen and (max-height: 360px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $tiny-desk, black 100%);
+      }
+    }
     height: 128px; //--|🠈 128px for Squares 🠈|--\\
     &[class*='lef_'] li[class*='showing'] {
       aside {
         justify-content: flex-start;
+        text-align: left; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
         padding-left: calc(128px * 2);
       }
@@ -184,6 +229,7 @@
     &[class*='rig_'] li[class*='showing'] {
       aside {
         justify-content: flex-end;
+        text-align: right; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
         padding-right: calc(128px * 2);
       }
@@ -197,6 +243,7 @@
       aside {
         padding: 0 128px;
         justify-content: center;
+        text-align: center; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
       }
     }
@@ -658,6 +705,10 @@
 }
 @mixin mobile-portrait {
   //--|🠋 Mobile (Swipe) 🠋|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   $bold-weight: 650;
   $italic-weight: 250;
   $default-weight: 450;
@@ -793,16 +844,30 @@
       height: inherit; //--|🠈 height: @media; 🠈|--\\
       flex-direction: row;
       aside {
-        min-width: 0; //--|🠈 For Ellipsis 🠈|--\\
+        min-width: 0; //--|🠈 Lets the title clip, so the fade shows 🠈|--\\
         flex: 0 0 100%;
         display: inherit; //--|🠈 display: flex; 🠈|--\\
         align-items: center;
+        h3 {
+          width: 100%; //--|🠈 As wide as the space between the buttons, so the fade sits on the edges, not the text 🠈|--\\
+          min-width: 0; //--|🠈 Lets a long title clip instead of pushing 🠈|--\\
+        }
         h3 span {
           display: block;
           overflow-x: hidden;
           white-space: nowrap;
-          text-overflow: ellipsis;
           font-weight: $default-weight;
+          //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
+          mask-image: linear-gradient(to right, transparent 0rem, black $high-mobi, black calc(100% - $high-mobi), transparent 100%);
+          @media screen and (max-width: 768px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $test-mobi, black calc(100% - $test-mobi), transparent 100%);
+          }
+          @media screen and (max-width: 480px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $misc-mobi, black calc(100% - $misc-mobi), transparent 100%);
+          }
+          @media screen and (max-width: 360px) {
+            mask-image: linear-gradient(to right, transparent 0rem, black $tiny-mobi, black calc(100% - $tiny-mobi), transparent 100%);
+          }
           b {
             font-weight: $bold-weight;
           }
@@ -827,10 +892,37 @@
     li[class*='showing'] {
       @extend %titles-x-mobile;
     }
+    &[class*='lef_'] li[class*='showing'] aside h3 span {
+      //--|🠊 -lef-: only the right end fades, the text starts sharp 🠈|--\\
+      mask-image: linear-gradient(to right, black 0rem, black calc(100% - $high-mobi), transparent 100%);
+      @media screen and (max-width: 768px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $test-mobi), transparent 100%);
+      }
+      @media screen and (max-width: 480px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $misc-mobi), transparent 100%);
+      }
+      @media screen and (max-width: 360px) {
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $tiny-mobi), transparent 100%);
+      }
+    }
+    &[class*='rig_'] li[class*='showing'] aside h3 span {
+      //--|🠊 -rig-: only the left end fades, the text ends sharp 🠈|--\\
+      mask-image: linear-gradient(to right, transparent 0rem, black $high-mobi, black 100%);
+      @media screen and (max-width: 768px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $test-mobi, black 100%);
+      }
+      @media screen and (max-width: 480px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $misc-mobi, black 100%);
+      }
+      @media screen and (max-width: 360px) {
+        mask-image: linear-gradient(to right, transparent 0rem, black $tiny-mobi, black 100%);
+      }
+    }
     height: 192px; //--|🠈 192px for Squares 🠈|--\\
     &[class*='lef_'] li[class*='showing'] {
       aside {
         justify-content: flex-start;
+        text-align: left; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
         padding-left: calc(192px * 2);
       }
@@ -838,6 +930,7 @@
     &[class*='rig_'] li[class*='showing'] {
       aside {
         justify-content: flex-end;
+        text-align: right; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
         padding-right: calc(192px * 2);
       }
@@ -851,6 +944,7 @@
       aside {
         padding: 0 192px;
         justify-content: center;
+        text-align: center; //--|🠈 The full-width title sits like justify-content 🠈|--\\
         //--|🠊 display: flex; 🠈|--\\
       }
     }
@@ -1311,9 +1405,56 @@
 }
 @mixin tablet-squaring {
   //--|🠋 Tablet (Swipe) 🠋|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     ul[class*='hori-X-swipe'] {
+      li[class*='showing'] aside h3 span {
+        //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
+        mask-image: linear-gradient(to right, transparent 0rem, black $high-desk, black calc(100% - $high-desk), transparent 100%);
+        @media screen and (max-width: 1920px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $test-desk, black calc(100% - $test-desk), transparent 100%);
+        }
+        @media screen and (max-width: 1366px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $misc-desk, black calc(100% - $misc-desk), transparent 100%);
+        }
+        @media screen and (max-width: 854px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $tiny-desk, black calc(100% - $tiny-desk), transparent 100%);
+        }
+      }
+      &[class*='lef_'] li[class*='showing'] aside h3 span {
+        //--|🠊 -lef-: only the right end fades, the text starts sharp 🠈|--\\
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $high-desk), transparent 100%);
+        @media screen and (max-width: 1920px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $test-desk), transparent 100%);
+        }
+        @media screen and (max-width: 1366px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $misc-desk), transparent 100%);
+        }
+        @media screen and (max-width: 854px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $tiny-desk), transparent 100%);
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] aside h3 span {
+        //--|🠊 -rig-: only the left end fades, the text ends sharp 🠈|--\\
+        mask-image: linear-gradient(to right, transparent 0rem, black $high-desk, black 100%);
+        @media screen and (max-width: 1920px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $test-desk, black 100%);
+        }
+        @media screen and (max-width: 1366px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $misc-desk, black 100%);
+        }
+        @media screen and (max-width: 854px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $tiny-desk, black 100%);
+        }
+      }
       %buttons-x-tablet-desktop {
         //--|🠊 Left 🠈|--\\
         &[class*='horizontal-lef'] {
@@ -1571,6 +1712,45 @@
   @media screen and (orientation: portrait) {
     //--|🠊 Mobile 🠈|--\\
     ul[class*='hori-X-swipe'] {
+      li[class*='showing'] aside h3 span {
+        //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
+        mask-image: linear-gradient(to right, transparent 0rem, black $high-mobi, black calc(100% - $high-mobi), transparent 100%);
+        @media screen and (max-height: 1920px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $test-mobi, black calc(100% - $test-mobi), transparent 100%);
+        }
+        @media screen and (max-height: 1366px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $misc-mobi, black calc(100% - $misc-mobi), transparent 100%);
+        }
+        @media screen and (max-height: 854px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $tiny-mobi, black calc(100% - $tiny-mobi), transparent 100%);
+        }
+      }
+      &[class*='lef_'] li[class*='showing'] aside h3 span {
+        //--|🠊 -lef-: only the right end fades, the text starts sharp 🠈|--\\
+        mask-image: linear-gradient(to right, black 0rem, black calc(100% - $high-mobi), transparent 100%);
+        @media screen and (max-height: 1920px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $test-mobi), transparent 100%);
+        }
+        @media screen and (max-height: 1366px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $misc-mobi), transparent 100%);
+        }
+        @media screen and (max-height: 854px) {
+          mask-image: linear-gradient(to right, black 0rem, black calc(100% - $tiny-mobi), transparent 100%);
+        }
+      }
+      &[class*='rig_'] li[class*='showing'] aside h3 span {
+        //--|🠊 -rig-: only the left end fades, the text ends sharp 🠈|--\\
+        mask-image: linear-gradient(to right, transparent 0rem, black $high-mobi, black 100%);
+        @media screen and (max-height: 1920px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $test-mobi, black 100%);
+        }
+        @media screen and (max-height: 1366px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $misc-mobi, black 100%);
+        }
+        @media screen and (max-height: 854px) {
+          mask-image: linear-gradient(to right, transparent 0rem, black $tiny-mobi, black 100%);
+        }
+      }
       %buttons-x-tablet-mobile {
         //--|🠊 Left 🠈|--\\
         &[class*='horizontal-lef'] {

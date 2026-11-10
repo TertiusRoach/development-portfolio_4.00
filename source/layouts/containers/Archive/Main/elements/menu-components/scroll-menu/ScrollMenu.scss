@@ -1,45 +1,6 @@
 //--|🠊 ScrollMenu.scss 🠈|--\\
 @use '../../../../../../styles/Palettes.scss' as Palettes;
-
-//--|🠋 Marching Ants 🠋|--\\
-/*--|🠋
-  AI Code: Review Please 2026-11-07
-  Why: Shows each <menu>'s bounds now that the test fills are commented out.
-  How: A border can't move, so four dashed gradient strips (top, bottom, left, right)
-  slide along the edges. 8px dash, 8px gap, 2px thick, clockwise.
-🠉|--*/
-@keyframes marching-ants {
-  to {
-    background-position:
-      16px 0,
-      -16px 100%,
-      0 -16px,
-      100% 16px; //--|🠈 top → right, bottom → left, left ↑, right ↓ 🠈|--\\
-  }
-}
-@mixin marching-ants {
-  $ants-color: rgba(Palettes.$indexLand-medium, 0.75);
-  background-image:
-    linear-gradient(90deg, $ants-color 50%, transparent 50%),
-    linear-gradient(90deg, $ants-color 50%, transparent 50%),
-    linear-gradient(0deg, $ants-color 50%, transparent 50%),
-    linear-gradient(0deg, $ants-color 50%, transparent 50%);
-  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-  background-size:
-    16px 2px,
-    16px 2px,
-    2px 16px,
-    2px 16px;
-  background-position:
-    0 0,
-    0 100%,
-    0 0,
-    100% 0;
-  animation: marching-ants 1s linear infinite;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none; //--|🠈 Still outlined, just not moving 🠈|--\\
-  }
-}
+@use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
   //--|🠊 Desktop (Elements) 🠈|--\\
@@ -52,8 +13,8 @@
     display: grid;
     div[class*='scroll'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
-      > menu {
-        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+      > menu[class*='scroll'] {
+        @include Utilities.marching-ants();
       }
       $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
       $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
@@ -62,26 +23,26 @@
       &.hori-scroll {
         //--|🠊 display: grid; 🠈|--\\
         //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
-        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
         //--|🠊 Left Menu - [x] 🠈|--\\
         menu:nth-child(1) {
-          grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Right Menu - [x] 🠈|--\\
         menu:nth-child(2) {
-          grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
         //--|🠊 Center Menu - [x] 🠈|--\\
         menu:nth-child(3) {
-          grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 6 / 1 / 7 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           //--|🠊 background: rgba(orange, 0.125); 🠈|--\\
         }
         //--|🠊 Default Menu - [x] 🠈|--\\
         menu:nth-child(4) {
-          grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 8 / 1 / 9 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
           //--|🠊 background: rgba(yellow, 0.125); 🠈|--\\
         }
 
@@ -93,41 +54,41 @@
 
           //--|🠋 Width: 1920px 🠋|--\\
           grid-template-rows: $high-desk-hori-rows; //--|🠈 rows 🠈|--//
-          grid-template-columns: $high-desk 1fr; //--|🠈 columns 🠈|--\\
+          grid-template-columns: 1fr $high-desk; //--|🠈 columns 🠈|--\\
           @media screen and (max-height: 768px) {
             //--|🠋 Width: 1366px 🠋|--\\
             grid-template-rows: $test-desk-hori-rows; //--|🠈 rows 🠈|--//
-            grid-template-columns: $test-desk 1fr; //--|🠈 columns 🠈|--\\
+            grid-template-columns: 1fr $test-desk; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 480px) {
             //--|🠋 Width: 854px 🠋|--\\
             grid-template-rows: $misc-desk-hori-rows; //--|🠈 rows 🠈|--//
-            grid-template-columns: $misc-desk 1fr; //--|🠈 columns 🠈|--\\
+            grid-template-columns: 1fr $misc-desk; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 360px) {
             //--|🠋 Width: 640px 🠋|--\\
             grid-template-rows: $tiny-desk-hori-rows; //--|🠈 rows 🠈|--//
-            grid-template-columns: $tiny-desk 1fr; //--|🠈 columns 🠈|--\\
+            grid-template-columns: 1fr $tiny-desk; //--|🠈 columns 🠈|--\\
           }
         }
 
         #copy-hori-lef {
-          grid-area: 4 / 1 / 5 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
         #copy-hori-rig {
-          grid-area: 6 / 1 / 7 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 4 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
         #copy-hori-cen {
-          grid-area: 8 / 1 / 9 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 6 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
         #copy-hori-mid {
-          grid-area: 2 / 1 / 3 / 2; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+          grid-area: 8 / 2 / 9 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
         }
       }
       &.vert-scroll {
         //--|🠊 display: grid; 🠈|--\\
         //--|🠊 background: rgba(darkblue, 0.25); 🠈|--\\
-        grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+        grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
 
         //--|🠊 Top Menu - [y] 🠈|--\\
         menu:nth-child(1) {
@@ -189,24 +150,24 @@
       //--|🠊 96px (Left & Right) for Design 🠈|--\\
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
         8rem 1fr 8rem //--|🠈 rows 🠈|--//
-        / 48px 1fr auto 48px; //--|🠈 columns 🠈|--\\
+        / 48px auto 1fr 48px; //--|🠈 columns 🠈|--\\
       @media screen and (max-height: 768px) {
         //--|🠊 64px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 1366px 🠋|--\\
           6rem 1fr 6rem //--|🠈 rows 🠈|--//
-          / 32px 1fr auto 32px; //--|🠈 columns 🠈|--\\
+          / 32px auto 1fr 32px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 480px) {
         //--|🠊 48px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 854px 🠋|--\\
           4rem 1fr 4rem //--|🠈 rows 🠈|--//
-          / 24px 1fr auto 24px; //--|🠈 columns 🠈|--\\
+          / 24px auto 1fr 24px; //--|🠈 columns 🠈|--\\
       }
       @media screen and (max-height: 360px) {
         //--|🠊 32px (Left & Right) for Design 🠈|--\\
         grid-template: //--|🠋 Width: 640px 🠋|--\\
           3rem 1fr 3rem //--|🠈 rows 🠈|--//
-          / 16px 1fr auto 16px; //--|🠈 columns 🠈|--\\
+          / 16px auto 1fr 16px; //--|🠈 columns 🠈|--\\
       }
     }
   }
@@ -222,8 +183,8 @@
     display: grid;
     div[class*='scroll'] {
       display: inherit; //--|🠈 display: grid; 🠈|--\\
-      > menu {
-        @include marching-ants(); //--|🠈 AI Code: Review Please 2026-11-07 🠈|--\\
+      > menu[class*='scroll'] {
+        @include Utilities.marching-ants();
       }
       $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
       $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\

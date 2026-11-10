@@ -70,27 +70,23 @@
       grid-template: //--|🠋 Width: 1920px 🠋|--\\
         64px auto 1fr 64px //--|🠈 rows 🠈|--\\
         / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
       @media screen and (max-height: 768px) {
         width: 321px; //--|🠊 64px for Left & Right 🠈|--\\
         grid-template: //--|🠋 Width: 1366px 🠋|--\\
           48px auto 1fr 48px //--|🠈 rows 🠈|--\\
           / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
       }
       @media screen and (max-height: 480px) {
         width: 230px; //--|🠊 48px for Left & Right 🠈|--\\
         grid-template: //--|🠋 Width: 854px 🠋|--\\
           32px auto 1fr 32px //--|🠈 rows 🠈|--\\
           / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 1rem, black calc(100% - 1rem), transparent 100%);
       }
       @media screen and (max-height: 360px) {
         width: 139px; //--|🠊 32px for Left & Right 🠈|--\\
         grid-template: //--|🠋 Width: 640px 🠋|--\\
           24px 1fr auto 1fr 24px //--|🠈 rows 🠈|--\\
           / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
       }
     }
   }
@@ -266,12 +262,10 @@
       grid-template: //--|🠋 Height: 1920px 🠋|--\\
         96px 9fr 1fr 96px //--|🠈 rows 🠈|--\\
         / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
-      mask-image: linear-gradient(to bottom, transparent 0%, black 3rem, black calc(100% - 3rem), transparent 100%);
       @media screen and (max-width: 768px) {
         grid-template: //--|🠋 Height: 1366px 🠋|--\\
           80px 9fr 1fr 80px //--|🠈 rows 🠈|--\\
           / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 2.5rem, black calc(100% - 2.5rem), transparent 100%);
         div[class='characters'] {
           mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
           button:first-child {
@@ -283,7 +277,6 @@
         grid-template: //--|🠋 Height: 854px 🠋|--\\
           48px 9fr 1fr 48px //--|🠈 rows 🠈|--\\
           / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
         div[class='characters'] {
           mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
           button:first-child {
@@ -295,7 +288,6 @@
         grid-template: //--|🠋 Height: 640px 🠋|--\\
           32px 9fr 1fr 32px //--|🠈 rows 🠈|--\\
           / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 1rem, black calc(100% - 1rem), transparent 100%);
         div[class='characters'] {
           mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
           button:first-child {
@@ -472,27 +464,23 @@
         grid-template: //--|🠋 Width: 1920px 🠋|--\\
           64px auto 1fr 64px //--|🠈 rows 🠈|--\\
           / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
         @media screen and (max-width: 1920px) {
           width: 321px; //--|🠊 64px for Left & Right 🠈|--\\
           grid-template: //--|🠋 Width: 1366px 🠋|--\\
             48px auto 1fr 48px //--|🠈 rows 🠈|--\\
             / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
         }
         @media screen and (max-width: 1366px) {
           width: 230px; //--|🠊 48px for Left & Right 🠈|--\\
           grid-template: //--|🠋 Width: 854px 🠋|--\\
             32px auto 1fr 32px //--|🠈 rows 🠈|--\\
             / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 1rem, black calc(100% - 1rem), transparent 100%);
         }
         @media screen and (max-width: 854px) {
           width: 139px; //--|🠊 32px for Left & Right 🠈|--\\
           grid-template: //--|🠋 Width: 640px 🠋|--\\
             24px 1fr auto 1fr 24px //--|🠈 rows 🠈|--\\
             / 16px 1fr 16px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
         }
       }
       @media screen and (orientation: portrait) {
@@ -500,7 +488,6 @@
         grid-template: //--|🠋 Height: 1920px 🠋|--\\
           96px 9fr 1fr 96px //--|🠈 rows 🠈|--\\
           / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
-        mask-image: linear-gradient(to bottom, transparent 0%, black 3rem, black calc(100% - 3rem), transparent 100%);
         div[class='characters'] {
           mask-image: linear-gradient(to bottom, transparent 0rem, black 1rem, black calc(100% - 1rem), transparent 100%);
           button:first-child {
@@ -511,7 +498,6 @@
           grid-template: //--|🠋 Height: 1366px 🠋|--\\
             80px 9fr 1fr 80px //--|🠈 rows 🠈|--\\
             / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 2.5rem, black calc(100% - 2.5rem), transparent 100%);
           div[class='characters'] {
             mask-image: linear-gradient(to bottom, transparent 0rem, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
             button:first-child {
@@ -523,7 +509,6 @@
           grid-template: //--|🠋 Height: 854px 🠋|--\\
             48px 9fr 1fr 48px //--|🠈 rows 🠈|--\\
             / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
           div[class='characters'] {
             mask-image: linear-gradient(to bottom, transparent 0rem, black 0.5rem, black calc(100% - 0.5rem), transparent 100%);
             button:first-child {
@@ -535,7 +520,6 @@
           grid-template: //--|🠋 Height: 640px 🠋|--\\
             32px 9fr 1fr 32px //--|🠈 rows 🠈|--\\
             / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
-          mask-image: linear-gradient(to bottom, transparent 0%, black 1rem, black calc(100% - 1rem), transparent 100%);
           div[class='characters'] {
             mask-image: linear-gradient(to bottom, transparent 0rem, black 0.25rem, black calc(100% - 0.25rem), transparent 100%);
             button:first-child {
