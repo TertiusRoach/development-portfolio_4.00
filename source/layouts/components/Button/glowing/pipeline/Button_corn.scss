@@ -1,5 +1,4 @@
 //--|🠊 glowing/pipeline/Button_corn.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
 @mixin desktop-corn {
   //--|🠋 Desktop (Corners) 🠋|--\\
   &[class*='_lef_'] {
@@ -162,7 +161,7 @@
       }
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
+  //--|🠊 The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
   div[class='back'] {
     --glow-ring: 4px;
     --glow-radius: 8px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
@@ -342,7 +341,7 @@
       }
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
+  //--|🠊 The glow ring: 4 / 3 / 2 / 1px, one step with the corners 🠈|--\\
   div[class='back'] {
     --glow-ring: 4px;
     --glow-radius: 8px; //--|🠈 The card's own corner, so the body can sit concentric inside the ring 🠈|--\\
@@ -688,7 +687,7 @@
       }
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · The glow ring, one step earlier on the long side, like the corners 🠈|--\\
+  //--|🠊 The glow ring, one step earlier on the long side, like the corners 🠈|--\\
   div[class='back'] {
     @media screen and (orientation: landscape) {
       --glow-ring: 3px;

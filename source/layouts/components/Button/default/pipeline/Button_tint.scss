@@ -59,6 +59,13 @@
       opacity: 0;
     }
   }
+  //--|🠊 AI Code: Review Please 2026-11-10 · From <ButtonGlowing>: the text box and icon halo only show on hover, the crossfade fades ::after in 🠈|--\\
+  div[class='text'],
+  div[class='icon'] {
+    &::before {
+      opacity: 0; //--|🠈 No shadow at rest 🠈|--\\
+    }
+  }
   div[class='text'] {
     transition: color 500ms $tint-fade;
     &::before,

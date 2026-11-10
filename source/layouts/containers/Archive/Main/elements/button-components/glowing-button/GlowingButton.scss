@@ -1,5 +1,4 @@
 //--|🠊 GlowingButton.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <StretchButton>, only the names changed 🠈|--\\
 @use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
@@ -20,24 +19,24 @@
           //--|🠋 96px (Left & Right) for Design 🠋|--\\
           grid-template: //--|🠋 Width: 1920px 🠋|--\\
             repeat(2, 4rem) auto repeat(3, 1fr) repeat(2, 4rem) //--|🠈 rows 🠈|--//
-            / 48px repeat(2, minmax(0, 1fr)) 48px; //--|🠈 columns: minmax(0, …) so a card can't widen its half · AI Code: Review Please 2026-11-10 🠈|--\\
+            / 48px repeat(2, minmax(0, 1fr)) 48px; //--|🠈 columns: minmax(0, …) so a card can't widen its half 🠈|--\\
           @media screen and (max-height: 768px) {
             //--|🠋 64px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 1366px 🠋|--\\
               repeat(2, 3rem) auto repeat(3, 1fr) repeat(2, 3rem) //--|🠈 rows 🠈|--//
-              / 32px repeat(2, minmax(0, 1fr)) 32px; //--|🠈 columns: minmax(0, …) so a card can't widen its half · AI Code: Review Please 2026-11-10 🠈|--\\
+              / 32px repeat(2, minmax(0, 1fr)) 32px; //--|🠈 columns: minmax(0, …) so a card can't widen its half 🠈|--\\
           }
           @media screen and (max-height: 480px) {
             //--|🠋 48px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 854px 🠋|--\\
               repeat(2, 2rem) auto repeat(3, 1fr) repeat(2, 2rem) //--|🠈 rows 🠈|--//
-              / 24px repeat(2, minmax(0, 1fr)) 24px; //--|🠈 columns: minmax(0, …) so a card can't widen its half · AI Code: Review Please 2026-11-10 🠈|--\\
+              / 24px repeat(2, minmax(0, 1fr)) 24px; //--|🠈 columns: minmax(0, …) so a card can't widen its half 🠈|--\\
           }
           @media screen and (max-height: 360px) {
             //--|🠋 32px (Left & Right) for Design 🠋|--\\
             grid-template: //--|🠋 Width: 640px 🠋|--\\
               repeat(2, 1.5rem) auto repeat(3, 1fr) repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
-              / 16px repeat(2, minmax(0, 1fr)) 16px; //--|🠈 columns: minmax(0, …) so a card can't widen its half · AI Code: Review Please 2026-11-10 🠈|--\\
+              / 16px repeat(2, minmax(0, 1fr)) 16px; //--|🠈 columns: minmax(0, …) so a card can't widen its half 🠈|--\\
           }
         }
       }
@@ -118,13 +117,9 @@
 
     .left-side {
       grid-column: 1 / 2; //--|🠈 col-start / col-end 🠈|--\\
-      background: Utilities.$indexLand-darkMode;
-      filter: drop-shadow(1rem 0px 1rem rgba(white, 0.25));
     }
     .right-side {
       grid-column: 3 / 4; //--|🠈 col-start / col-end 🠈|--\\
-      background: Utilities.$indexLand-lightMode;
-      filter: drop-shadow(-1rem 0px 1rem rgba(black, 0.25));
     }
     grid-template-columns: 1fr calc($high-desk * 2) 1fr; //--|🠈 Width: 1920px 🠈|--\\
     @media screen and (max-height: 768px) {
@@ -158,19 +153,19 @@
       }
       section[class*='glowing'] {
         button[class*='_top_'] {
-          grid-area: 4 / 2 / 6 / 3; //--|🠈 AI Code: Review Please 2026-11-10 · Under its eyebrow 🠈|--\\
+          grid-area: 4 / 2 / 6 / 3; //--|🠈 Under its eyebrow 🠈|--\\
         }
         button[class*='_bot_'] {
-          grid-area: 4 / 3 / 6 / 4; //--|🠈 AI Code: Review Please 2026-11-10 · Under its eyebrow 🠈|--\\
+          grid-area: 4 / 3 / 6 / 4; //--|🠈 Under its eyebrow 🠈|--\\
         }
         button[class*='_lef_'] {
-          grid-area: 3 / 2 / 4 / 3; //--|🠈 AI Code: Review Please 2026-11-10 · An eyebrow over -top- 🠈|--\\
+          grid-area: 3 / 2 / 4 / 3; //--|🠈 An eyebrow over -top- 🠈|--\\
         }
         button[class*='_rig_'] {
-          grid-area: 3 / 3 / 4 / 4; //--|🠈 AI Code: Review Please 2026-11-10 · An eyebrow over -bot- 🠈|--\\
+          grid-area: 3 / 3 / 4 / 4; //--|🠈 An eyebrow over -bot- 🠈|--\\
         }
         button[class*='_cen_'] {
-          grid-area: 6 / 2 / 7 / 4; //--|🠈 AI Code: Review Please 2026-11-10 · Under -top- and -bot- 🠈|--\\
+          grid-area: 6 / 2 / 7 / 4; //--|🠈 Under -top- and -bot- 🠈|--\\
         }
       }
       &[class*='lightside'] {
@@ -363,11 +358,9 @@
     section[class*='stack'] {
       &.top-stack {
         grid-row: 1 / 2; //--|🠈 row-start / row-end 🠈|--\\
-        background: Utilities.$indexLand-darkMode;
       }
       &.bot-stack {
         grid-row: 3 / 4; //--|🠈 row-start / row-end 🠈|--\\
-        background: Utilities.$indexLand-lightMode;
       }
     }
   }

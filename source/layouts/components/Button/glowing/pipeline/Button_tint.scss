@@ -148,7 +148,7 @@
   }
 
   //--|🠋 Glow 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-11-10 · The 3.00 glow button: a body inside a lit rim, a spotlight that follows the cursor 🠈|--\\
+  //--|🠊 The 3.00 glow button: a body inside a lit rim, a spotlight that follows the cursor 🠈|--\\
   /*--|🠋
     Why: <ButtonGlowing> is <ButtonDefault>'s shape with the development-portfolio_3.00 light.
     How: div.back::before is the rim (the colour, with the spotlight on top while hovered),
@@ -156,14 +156,14 @@
     The spotlight sits at --x and --y, which trackGlow() in Button_glowing.ts writes on mouse move.
     Included last, so on equal specificity it wins over the crossfade above.
   🠉|--*/
-  div[class='text'] {
-    &::before,
-    &::after {
-      background: none; //--|🠈 No text box, the body is the box (like <ButtonStretch>) 🠈|--\\
-      box-shadow: none;
+  //--|🠊 The text box and icon halo only show on hover: the resting layer is clear, the crossfade above fades ::after in 🠈|--\\
+  div[class='text'],
+  div[class='icon'] {
+    &::before {
+      opacity: 0; //--|🠈 No shadow at rest 🠈|--\\
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · -top-: the text sits at the top of its card, so its fade runs the other way 🠈|--\\
+  //--|🠊 -top-: the text sits at the top of its card, so its fade runs the other way 🠈|--\\
   &[class*='_top_'] div[class='text'] {
     &::before,
     &::after {
@@ -178,12 +178,12 @@
     }
     &::after {
       inset: var(--glow-ring, 2px); //--|🠈 The ring: 4 / 3 / 2 / 1px (Set in Button_corn.scss) 🠈|--\\
-      border-radius: calc(var(--glow-radius, 8px) - var(--glow-ring, 2px)); //--|🠈 AI Code: Review Please 2026-11-10 · Concentric: the card's corner minus the ring 🠈|--\\
+      border-radius: calc(var(--glow-radius, 8px) - var(--glow-ring, 2px)); //--|🠈 Concentric: the card's corner minus the ring 🠈|--\\
       opacity: 1;
       transition: opacity 250ms $tint-fade;
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · Spotlight per size: r = 4rem × (1/8)^(n/6), halving every two steps; the solid core grows 10% a step 🠈|--\\
+  //--|🠊 Spotlight per size: r = 4rem × (1/8)^(n/6), halving every two steps; the solid core grows 10% a step 🠈|--\\
   /*--|🠋
     <h1> keeps the soft glow, <p> ends as a small dot with a faint outline.
     n:     0      1        2      3        4      5        6
@@ -250,9 +250,9 @@
       }
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩ needs no cut-out any more: its box fills the ring like ⟨lucid⟩'s body (Set in *-glow) 🠈|--\\
+  //--|🠊 ⟨opaque⟩ needs no cut-out any more: its box fills the ring like ⟨lucid⟩'s body (Set in *-glow) 🠈|--\\
   &[class*='_opa_'] div[class='back']::before {
-    opacity: 1; //--|🠈 AI Code: Review Please 2026-11-10 · Keeps the ring: <ButtonDefault>'s ⟨opaque⟩ rule hides ::before 🠈|--\\
+    opacity: 1; //--|🠈 Keeps the ring: <ButtonDefault>'s ⟨opaque⟩ rule hides ::before 🠈|--\\
   }
   @include mon-glow();
   @include red-glow();
@@ -3825,1274 +3825,2381 @@
   }
 }
 //--|===|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · The glow recipe: copy it per colour, swap the palette names 🠈|--\\
+//--|🠊 The glow recipe: copy it per colour, swap the palette names 🠈|--\\
+/*--|🠋
+  ⟨lucid⟩: <ButtonProfile>'s box inside a ring in the text's shade.
+  ⟨opaque⟩: ⟨lucid⟩'s outline and glows at full strength with no box, the page shows through.
+  Both burn the text and ring white (black on ~light~) while the text is hovered,
+  a dot follows the pointer and the body glows from inside.
+  Hover rules repeat &:hover, so they outrank the <ButtonDefault> fades included before them.
+🠉|--*/
 @mixin mon-glow {
-  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$gray-light, 0.85) 0%,
+    rgba(Palettes.$gray-light, 0.85) var(--glow-core),
+    rgba(Palettes.$gray-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$gray-dark, 0.8) 0%,
+    rgba(Palettes.$gray-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$gray-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$gray-light, 0.9),
+    0 0 0.8em rgba(Palettes.$gray-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$gray-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$gray-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_mon']:where(:not(.highlight)),
   &[class*='lig_mon']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$gray-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$gray-light, 0.9),
-            0 0 0.8em rgba(Palettes.$gray-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$gray-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$gray-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$gray-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$gray-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$gray-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$gray-light, 0.85) 0%,
-          rgba(Palettes.$gray-light, 0.85) var(--glow-core),
-          rgba(Palettes.$gray-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$gray-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$gray-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$gray-light, 0.85) 0%,
-          rgba(Palettes.$gray-light, 0.85) var(--glow-core),
-          rgba(Palettes.$gray-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$gray-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$gray-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$gray-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_mon']:where(:not(.highlight)),
   &[class*='dar_mon']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$gray-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$gray-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$gray-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$gray-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$gray-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$gray-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$gray-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$gray-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$gray-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$gray-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$gray-neon, 0.25) 100%),
-          Palettes.$gray-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$gray-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$gray-dark, 0.8) 0%,
-          rgba(Palettes.$gray-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$gray-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$gray-neon, 0.25) 100%),
-        Palettes.$gray-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$gray-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$gray-dark, 0.8) 0%,
-          rgba(Palettes.$gray-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$gray-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$gray-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$gray-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$gray-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$gray-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$gray-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$gray-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin red-glow {
-  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$red-light, 0.85) 0%,
+    rgba(Palettes.$red-light, 0.85) var(--glow-core),
+    rgba(Palettes.$red-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$red-dark, 0.8) 0%,
+    rgba(Palettes.$red-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$red-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$red-light, 0.9),
+    0 0 0.8em rgba(Palettes.$red-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$red-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$red-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_red']:where(:not(.highlight)),
   &[class*='lig_red']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$red-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$red-light, 0.9),
-            0 0 0.8em rgba(Palettes.$red-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$red-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$red-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$red-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$red-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$red-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$red-light, 0.85) 0%,
-          rgba(Palettes.$red-light, 0.85) var(--glow-core),
-          rgba(Palettes.$red-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$red-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$red-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$red-light, 0.85) 0%,
-          rgba(Palettes.$red-light, 0.85) var(--glow-core),
-          rgba(Palettes.$red-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$red-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$red-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$red-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_red']:where(:not(.highlight)),
   &[class*='dar_red']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$red-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$red-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$red-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$red-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$red-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$red-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$red-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$red-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$red-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$red-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$red-neon, 0.25) 100%),
-          Palettes.$red-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$red-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$red-dark, 0.8) 0%,
-          rgba(Palettes.$red-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$red-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$red-neon, 0.25) 100%),
-        Palettes.$red-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$red-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$red-dark, 0.8) 0%,
-          rgba(Palettes.$red-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$red-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$red-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$red-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$red-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$red-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$red-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$red-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin gre-glow {
-  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$green-light, 0.85) 0%,
+    rgba(Palettes.$green-light, 0.85) var(--glow-core),
+    rgba(Palettes.$green-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$green-dark, 0.8) 0%,
+    rgba(Palettes.$green-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$green-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$green-light, 0.9),
+    0 0 0.8em rgba(Palettes.$green-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$green-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$green-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_gre']:where(:not(.highlight)),
   &[class*='lig_gre']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$green-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$green-light, 0.9),
-            0 0 0.8em rgba(Palettes.$green-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$green-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$green-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$green-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$green-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$green-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$green-light, 0.85) 0%,
-          rgba(Palettes.$green-light, 0.85) var(--glow-core),
-          rgba(Palettes.$green-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$green-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$green-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$green-light, 0.85) 0%,
-          rgba(Palettes.$green-light, 0.85) var(--glow-core),
-          rgba(Palettes.$green-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$green-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$green-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$green-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_gre']:where(:not(.highlight)),
   &[class*='dar_gre']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$green-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$green-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$green-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$green-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$green-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$green-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$green-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$green-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$green-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$green-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$green-neon, 0.25) 100%),
-          Palettes.$green-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$green-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$green-dark, 0.8) 0%,
-          rgba(Palettes.$green-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$green-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$green-neon, 0.25) 100%),
-        Palettes.$green-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$green-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$green-dark, 0.8) 0%,
-          rgba(Palettes.$green-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$green-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$green-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$green-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$green-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$green-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$green-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$green-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin blu-glow {
-  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$blue-light, 0.85) 0%,
+    rgba(Palettes.$blue-light, 0.85) var(--glow-core),
+    rgba(Palettes.$blue-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$blue-dark, 0.8) 0%,
+    rgba(Palettes.$blue-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$blue-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$blue-light, 0.9),
+    0 0 0.8em rgba(Palettes.$blue-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$blue-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$blue-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_blu']:where(:not(.highlight)),
   &[class*='lig_blu']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$blue-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$blue-light, 0.9),
-            0 0 0.8em rgba(Palettes.$blue-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$blue-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$blue-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$blue-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$blue-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$blue-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$blue-light, 0.85) 0%,
-          rgba(Palettes.$blue-light, 0.85) var(--glow-core),
-          rgba(Palettes.$blue-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$blue-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$blue-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$blue-light, 0.85) 0%,
-          rgba(Palettes.$blue-light, 0.85) var(--glow-core),
-          rgba(Palettes.$blue-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$blue-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$blue-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$blue-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_blu']:where(:not(.highlight)),
   &[class*='dar_blu']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$blue-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$blue-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$blue-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$blue-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$blue-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$blue-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$blue-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$blue-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$blue-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$blue-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$blue-neon, 0.25) 100%),
-          Palettes.$blue-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$blue-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$blue-dark, 0.8) 0%,
-          rgba(Palettes.$blue-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$blue-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$blue-neon, 0.25) 100%),
-        Palettes.$blue-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$blue-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$blue-dark, 0.8) 0%,
-          rgba(Palettes.$blue-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$blue-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$blue-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$blue-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$blue-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$blue-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$blue-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$blue-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin pur-glow {
-  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$purple-light, 0.85) 0%,
+    rgba(Palettes.$purple-light, 0.85) var(--glow-core),
+    rgba(Palettes.$purple-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$purple-dark, 0.8) 0%,
+    rgba(Palettes.$purple-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$purple-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$purple-light, 0.9),
+    0 0 0.8em rgba(Palettes.$purple-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$purple-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$purple-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_pur']:where(:not(.highlight)),
   &[class*='lig_pur']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$purple-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$purple-light, 0.9),
-            0 0 0.8em rgba(Palettes.$purple-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$purple-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$purple-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$purple-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$purple-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$purple-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$purple-light, 0.85) 0%,
-          rgba(Palettes.$purple-light, 0.85) var(--glow-core),
-          rgba(Palettes.$purple-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$purple-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$purple-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$purple-light, 0.85) 0%,
-          rgba(Palettes.$purple-light, 0.85) var(--glow-core),
-          rgba(Palettes.$purple-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$purple-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$purple-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$purple-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_pur']:where(:not(.highlight)),
   &[class*='dar_pur']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$purple-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$purple-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$purple-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$purple-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$purple-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$purple-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$purple-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$purple-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$purple-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$purple-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$purple-neon, 0.25) 100%),
-          Palettes.$purple-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$purple-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$purple-dark, 0.8) 0%,
-          rgba(Palettes.$purple-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$purple-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$purple-neon, 0.25) 100%),
-        Palettes.$purple-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$purple-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$purple-dark, 0.8) 0%,
-          rgba(Palettes.$purple-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$purple-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$purple-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$purple-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$purple-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$purple-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$purple-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$purple-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin ora-glow {
-  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$orange-light, 0.85) 0%,
+    rgba(Palettes.$orange-light, 0.85) var(--glow-core),
+    rgba(Palettes.$orange-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$orange-dark, 0.8) 0%,
+    rgba(Palettes.$orange-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$orange-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$orange-light, 0.9),
+    0 0 0.8em rgba(Palettes.$orange-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$orange-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$orange-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_ora']:where(:not(.highlight)),
   &[class*='lig_ora']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$orange-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$orange-light, 0.9),
-            0 0 0.8em rgba(Palettes.$orange-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$orange-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$orange-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$orange-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$orange-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$orange-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$orange-light, 0.85) 0%,
-          rgba(Palettes.$orange-light, 0.85) var(--glow-core),
-          rgba(Palettes.$orange-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$orange-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$orange-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$orange-light, 0.85) 0%,
-          rgba(Palettes.$orange-light, 0.85) var(--glow-core),
-          rgba(Palettes.$orange-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$orange-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$orange-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$orange-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_ora']:where(:not(.highlight)),
   &[class*='dar_ora']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$orange-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$orange-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$orange-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$orange-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$orange-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$orange-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$orange-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$orange-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$orange-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$orange-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$orange-neon, 0.25) 100%),
-          Palettes.$orange-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$orange-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$orange-dark, 0.8) 0%,
-          rgba(Palettes.$orange-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$orange-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$orange-neon, 0.25) 100%),
-        Palettes.$orange-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$orange-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$orange-dark, 0.8) 0%,
-          rgba(Palettes.$orange-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$orange-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$orange-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$orange-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$orange-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$orange-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$orange-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$orange-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin pin-glow {
-  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$pink-light, 0.85) 0%,
+    rgba(Palettes.$pink-light, 0.85) var(--glow-core),
+    rgba(Palettes.$pink-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$pink-dark, 0.8) 0%,
+    rgba(Palettes.$pink-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$pink-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$pink-light, 0.9),
+    0 0 0.8em rgba(Palettes.$pink-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$pink-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$pink-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_pin']:where(:not(.highlight)),
   &[class*='lig_pin']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$pink-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$pink-light, 0.9),
-            0 0 0.8em rgba(Palettes.$pink-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$pink-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$pink-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$pink-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$pink-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$pink-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$pink-light, 0.85) 0%,
-          rgba(Palettes.$pink-light, 0.85) var(--glow-core),
-          rgba(Palettes.$pink-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$pink-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$pink-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$pink-light, 0.85) 0%,
-          rgba(Palettes.$pink-light, 0.85) var(--glow-core),
-          rgba(Palettes.$pink-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$pink-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$pink-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$pink-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_pin']:where(:not(.highlight)),
   &[class*='dar_pin']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$pink-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$pink-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$pink-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$pink-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$pink-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$pink-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$pink-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$pink-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$pink-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$pink-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$pink-neon, 0.25) 100%),
-          Palettes.$pink-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$pink-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$pink-dark, 0.8) 0%,
-          rgba(Palettes.$pink-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$pink-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$pink-neon, 0.25) 100%),
-        Palettes.$pink-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$pink-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$pink-dark, 0.8) 0%,
-          rgba(Palettes.$pink-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$pink-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$pink-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$pink-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$pink-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$pink-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$pink-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$pink-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin yel-glow {
-  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$yellow-light, 0.85) 0%,
+    rgba(Palettes.$yellow-light, 0.85) var(--glow-core),
+    rgba(Palettes.$yellow-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$yellow-dark, 0.8) 0%,
+    rgba(Palettes.$yellow-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$yellow-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$yellow-light, 0.9),
+    0 0 0.8em rgba(Palettes.$yellow-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$yellow-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$yellow-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_yel']:where(:not(.highlight)),
   &[class*='lig_yel']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$yellow-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$yellow-light, 0.9),
-            0 0 0.8em rgba(Palettes.$yellow-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$yellow-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$yellow-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$yellow-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$yellow-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$yellow-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$yellow-light, 0.85) 0%,
-          rgba(Palettes.$yellow-light, 0.85) var(--glow-core),
-          rgba(Palettes.$yellow-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$yellow-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$yellow-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$yellow-light, 0.85) 0%,
-          rgba(Palettes.$yellow-light, 0.85) var(--glow-core),
-          rgba(Palettes.$yellow-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$yellow-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$yellow-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$yellow-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_yel']:where(:not(.highlight)),
   &[class*='dar_yel']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$yellow-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$yellow-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$yellow-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$yellow-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$yellow-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$yellow-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$yellow-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$yellow-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$yellow-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$yellow-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$yellow-neon, 0.25) 100%),
-          Palettes.$yellow-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$yellow-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$yellow-dark, 0.8) 0%,
-          rgba(Palettes.$yellow-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$yellow-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$yellow-neon, 0.25) 100%),
-        Palettes.$yellow-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$yellow-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$yellow-dark, 0.8) 0%,
-          rgba(Palettes.$yellow-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$yellow-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$yellow-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$yellow-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$yellow-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$yellow-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$yellow-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$yellow-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin bro-glow {
-  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$brown-light, 0.85) 0%,
+    rgba(Palettes.$brown-light, 0.85) var(--glow-core),
+    rgba(Palettes.$brown-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$brown-dark, 0.8) 0%,
+    rgba(Palettes.$brown-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$brown-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$brown-light, 0.9),
+    0 0 0.8em rgba(Palettes.$brown-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$brown-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$brown-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_bro']:where(:not(.highlight)),
   &[class*='lig_bro']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$brown-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$brown-light, 0.9),
-            0 0 0.8em rgba(Palettes.$brown-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$brown-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$brown-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$brown-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$brown-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$brown-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$brown-light, 0.85) 0%,
-          rgba(Palettes.$brown-light, 0.85) var(--glow-core),
-          rgba(Palettes.$brown-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$brown-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$brown-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$brown-light, 0.85) 0%,
-          rgba(Palettes.$brown-light, 0.85) var(--glow-core),
-          rgba(Palettes.$brown-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$brown-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$brown-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$brown-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_bro']:where(:not(.highlight)),
   &[class*='dar_bro']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$brown-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$brown-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$brown-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$brown-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$brown-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$brown-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$brown-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$brown-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$brown-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$brown-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$brown-neon, 0.25) 100%),
-          Palettes.$brown-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$brown-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$brown-dark, 0.8) 0%,
-          rgba(Palettes.$brown-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$brown-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$brown-neon, 0.25) 100%),
-        Palettes.$brown-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$brown-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$brown-dark, 0.8) 0%,
-          rgba(Palettes.$brown-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$brown-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$brown-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$brown-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$brown-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$brown-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$brown-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$brown-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }
 @mixin tur-glow {
-  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%); //--|🠈 AI Code: Review Please 2026-11-10 · <ButtonProfile>'s box colours 🠈|--\\
+  $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
-  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-11-10 · The ⟨opaque⟩ ~dark~ text, so the outline can match it 🠈|--\\
-  //--|🠊 Dark Shade: a broody body in a medium rim; hovered text burns white 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%);
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%);
+  $darBox: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+  $ligBox: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
+  $dotLig: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$turquoise-light, 0.85) 0%,
+    rgba(Palettes.$turquoise-light, 0.85) var(--glow-core),
+    rgba(Palettes.$turquoise-light, 0) 100%
+  );
+  $dotDar: radial-gradient(
+    circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
+    rgba(Palettes.$turquoise-dark, 0.8) 0%,
+    rgba(Palettes.$turquoise-dark, 0.8) var(--glow-core),
+    rgba(Palettes.$turquoise-dark, 0) 100%
+  );
+  $burnLig: //--|🠋 The text glow on ~dark~ 🠋|--\\
+    0 0 0.05em #fff,
+    0 0 0.3em rgba(Palettes.$turquoise-light, 0.9),
+    0 0 0.8em rgba(Palettes.$turquoise-light, 0.6);
+  $burnDar: //--|🠋 The text glow on ~light~ 🠋|--\\
+    0 0 0.05em #000,
+    0 0 0.3em rgba(Palettes.$turquoise-dark, 0.6),
+    0 0 0.8em rgba(Palettes.$turquoise-dark, 0.35);
+
+  //--|🠊 Dark Shade 🠈|--\\
   &[class*='dar_tur']:where(:not(.highlight)),
   &[class*='lig_tur']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$turquoise-medium; //--|🠈 Dim at rest, so the jump to white is as big as it gets 🠈|--\\
-      *:hover {
-        color: #fff;
-        span {
-          text-shadow:
-            0 0 0.05em #fff,
-            0 0 0.3em rgba(Palettes.$turquoise-light, 0.9),
-            0 0 0.8em rgba(Palettes.$turquoise-light, 0.6); //--|🠈 The glow, three layers wide 🠈|--\\
+    //--|🠊 ⟨lucid⟩: the box in a ring of the text's own shade 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$turquoise-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$turquoise-neon, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$turquoise-medium; //--|🠈 The rim 🠈|--\\
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 The ring, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: $darBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-          Palettes.$turquoise-darkMode; //--|🠈 Broody: the colour's own dark, under a deep veil 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
+      &:hover div[class='back']::after {
+        background: $dotLig, $darBox; //--|🠈 The dot follows the pointer (trackGlow) 🠈|--\\
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$turquoise-neon, 0.6); //--|🠈 No light wash in the middle: the centre stays dark behind the light text 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff; //--|🠈 The ring burns white with the text 🠈|--\\
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$turquoise-light, 0.85) 0%,
-          rgba(Palettes.$turquoise-light, 0.85) var(--glow-core),
-          rgba(Palettes.$turquoise-light, 0) 100%
-        ),
-        radial-gradient(circle at 50% 120%, rgba(#000, 0.55) 0%, rgba(#000, 0.85) 70%, rgba(#000, 0.95) 100%),
-        Palettes.$turquoise-darkMode; //--|🠈 The contrasting dot: light, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$turquoise-light, 0.55); //--|🠈 The inner glow, on hover only 🠈|--\\
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #fff; //--|🠈 The rim burns white with the text 🠈|--\\
-    }
-    &[class*='_opa_'] div[class='back']::before {
-      background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The outline in the text's own shade 🠈|--\\
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$turquoise-light, 0.85) 0%,
-          rgba(Palettes.$turquoise-light, 0.85) var(--glow-core),
-          rgba(Palettes.$turquoise-light, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Light text on the dark button, glowing white into neon 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $neoLig; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: $neoLig;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #fff;
+            span {
+              text-shadow:
+                0 0 0.05em #fff,
+                0 0 0.3em rgba(#fff, 0.9),
+                0 0 0.6em rgba(Palettes.$turquoise-neon, 0.9),
+                0 0 1.2em rgba(Palettes.$turquoise-neon, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $neoLig; //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s outline, in the text's shade 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotLig; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength, kept to the rim 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$turquoise-neon, 0.6);
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #fff;
+      }
     }
   }
-  //--|🠊 Light Shade: a flamboyant body that blends in, in a medium rim; hovered text goes black 🠈|--\\
+  //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_tur']:where(:not(.highlight)),
   &[class*='dar_tur']:where(.highlight) {
-    &[class*='_luc_'] div[class='text'] {
-      color: Palettes.$turquoise-medium;
-      *:hover {
-        color: #000;
-        span {
-          text-shadow:
-            0 0 0.05em #000,
-            0 0 0.3em rgba(Palettes.$turquoise-dark, 0.6),
-            0 0 0.8em rgba(Palettes.$turquoise-dark, 0.35);
+    //--|🠊 ⟨lucid⟩: the bright box in a medium ring, with a soft bright glow inside 🠈|--\\
+    &[class*='_luc_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: Palettes.$turquoise-dark; //--|🠈 The icon in the text's shade 🠈|--\\
+        }
+        div[class='text'] {
+          color: Palettes.$turquoise-dark;
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$turquoise-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$turquoise-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$turquoise-medium, 0.6);
+            }
+          }
         }
       }
-    }
-    div[class='back'] {
-      &::before {
-        background-color: Palettes.$turquoise-medium;
+      div[class='back'] {
+        &::before {
+          background-color: Palettes.$turquoise-dark; //--|🠈 The ring, in the text's shade, like ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: $ligBox;
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+          transition: box-shadow 250ms ease-in-out;
+        }
       }
-      &::after {
-        background:
-          linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$turquoise-neon, 0.25) 100%),
-          Palettes.$turquoise-lightMode; //--|🠈 Flamboyant: the colour's own light, washed so it blends in 🠈|--\\
-        transition: box-shadow 250ms ease-in-out;
-        box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · A bright inner glow at rest, soft enough that the hover still pops 🠈|--\\
+      &:hover div[class='back']::after {
+        background: $dotDar, $ligBox;
+        box-shadow: //--|🠋 The inner glow: white at the edge, neon behind it, the colour's light underneath 🠋|--\\
+          inset 0 0 0.3em rgba(#fff, 0.7),
+          inset 0 0 0.8em rgba(Palettes.$turquoise-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
       }
     }
-    &:hover div[class='back']::after {
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$turquoise-dark, 0.8) 0%,
-          rgba(Palettes.$turquoise-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$turquoise-dark, 0) 100%
-        ),
-        linear-gradient(135deg, rgba(#fff, 0.45) 0%, rgba(#fff, 0.1) 50%, rgba(Palettes.$turquoise-neon, 0.25) 100%),
-        Palettes.$turquoise-lightMode; //--|🠈 The contrasting dot: dark, following the pointer (trackGlow) 🠈|--\\
-      box-shadow: inset 0 0 1em rgba(Palettes.$turquoise-dark, 0.45);
-    }
-    div[class='text']:hover ~ div[class='back']::before {
-      background-color: #000;
-    }
-    //--|🠊 AI Code: Review Please 2026-11-10 · ⟨opaque⟩: <ButtonProfile>'s box inside the ring, the dot still follows the pointer 🠈|--\\
-    &[class*='_opa_'] div[class='back']::after {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · The same bright inner glow 🠈|--\\
-    }
-    &[class*='_opa_']:hover div[class='back']::after {
-      opacity: 1;
-      background:
-        radial-gradient(
-          circle var(--glow-size) at calc(var(--x, -100%) - var(--glow-ring, 2px)) calc(var(--y, -100%) - var(--glow-ring, 2px)),
-          rgba(Palettes.$turquoise-dark, 0.8) 0%,
-          rgba(Palettes.$turquoise-dark, 0.8) var(--glow-core),
-          rgba(Palettes.$turquoise-dark, 0) 100%
-        ),
-        linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
-      box-shadow: inset 0 0 1em rgba(Palettes.$turquoise-dark, 0.45); //--|🠈 AI Code: Review Please 2026-11-10 · The hover glow, so it still beats the resting one 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ⟨lucid⟩'s outline and glows, no box · AI Code: Review Please 2026-11-10 🠈|--\\
+    &[class*='_opa_'] {
+      &,
+      &:hover {
+        //--|🠊 Dark text on the light button, glowing dark into medium 🠈|--\\
+        div[class='icon'] img:not([src]) {
+          background: $blaDar; //--|🠈 The icon in the text's shade · AI Code: Review Please 2026-11-10 🠈|--\\
+        }
+        div[class='text'] {
+          color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · Matches the strong outline 🠈|--\\
+          span {
+            text-shadow:
+              0 0 0.05em transparent,
+              0 0 0.3em transparent,
+              0 0 0.6em transparent,
+              0 0 1.2em transparent; //--|🠈 No glow at rest; four clear layers so the hover glow fades in 🠈|--\\
+          }
+          *:hover {
+            color: #000;
+            span {
+              text-shadow:
+                0 0 0.05em #000,
+                0 0 0.3em rgba(Palettes.$turquoise-dark, 0.8),
+                0 0 0.6em rgba(Palettes.$turquoise-medium, 0.9),
+                0 0 1.2em rgba(Palettes.$turquoise-medium, 0.6);
+            }
+          }
+        }
+      }
+      div[class='back'] {
+        &::before {
+          background-color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · The strongest dark: the outline is the boldest tone, like the near-white one on ~dark~ 🠈|--\\
+        }
+        &::after {
+          background: transparent; //--|🠈 AI Code: Review Please 2026-11-10 · No box: only the outline and the inset glow 🠈|--\\
+          box-shadow: inset 0 0 0.6em rgba(Palettes.$turquoise-neon, 0.4); //--|🠈 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s resting glow 🠈|--\\
+          transition:
+            background-color 250ms ease-in-out,
+            box-shadow 250ms ease-in-out;
+        }
+      }
+      &:hover div[class='back']::after {
+        background: $dotDar; //--|🠈 AI Code: Review Please 2026-11-10 · Still no box on hover, just the dot 🠈|--\\
+          box-shadow: //--|🠋 AI Code: Review Please 2026-11-10 · ⟨lucid⟩'s hover glow at full strength 🠋|--\\
+            inset 0 0 0.3em rgba(#fff, 0.7),
+            inset 0 0 0.8em rgba(Palettes.$turquoise-neon, 0.6); //--|🠈 AI Code: Review Please 2026-11-10 · ~dark~ ⟨lucid⟩'s hover glow, kept to the rim 🠈|--\\
+      }
+      div[class='text']:hover ~ div[class='back']::before {
+        background-color: #000;
+      }
     }
   }
 }

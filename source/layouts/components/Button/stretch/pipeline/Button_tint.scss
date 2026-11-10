@@ -58,6 +58,12 @@
       opacity: 0;
     }
   }
+  //--|🠊 AI Code: Review Please 2026-11-10 · From <ButtonDefault>: the icon halo only shows on hover, the crossfade fades ::after in (no text box here) 🠈|--\\
+  div[class='icon'] {
+    &::before {
+      opacity: 0; //--|🠈 No shadow at rest 🠈|--\\
+    }
+  }
   div[class='text'] {
     transition: color 500ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
     * {

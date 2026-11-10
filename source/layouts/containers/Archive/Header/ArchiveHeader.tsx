@@ -212,7 +212,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Button_Default>', '<Button_Stretch>', '<Button_Routing>', '<Button_Profile>', '<Button_Glowing>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-10 · <Button_Glowing> added 🠈|--\\
+          titles: ['<Button_Default>', '<Button_Stretch>', '<Button_Routing>', '<Button_Profile>', '<Button_Glowing>'] as Array<string>, //--|🠈 <Button_Glowing> added 🠈|--\\
         }}
         info={{
           labelName: 'button',

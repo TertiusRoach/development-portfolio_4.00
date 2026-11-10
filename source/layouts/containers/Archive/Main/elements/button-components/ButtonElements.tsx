@@ -10,7 +10,7 @@ import DefaultButton from './default-button/DefaultButton';
 import StretchButton from './stretch-button/StretchButton';
 import RoutingButton from './routing-button/RoutingButton';
 import ProfileButton from './profile-button/ProfileButton';
-import GlowingButton from './glowing-button/GlowingButton'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import GlowingButton from './glowing-button/GlowingButton';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../tools/conversions';
@@ -65,7 +65,7 @@ const ButtonComponents: React.FC<InfoProps> = ({ info }) => {
       <StretchButton info={{ labelName: 'stretch' as string, pageName: pageName, blockName: blockName }} />
       <RoutingButton info={{ labelName: 'routing' as string, pageName: pageName, blockName: blockName }} />
       <ProfileButton info={{ labelName: 'profile' as string, pageName: pageName, blockName: blockName }} />
-      {/* //--|🠊 AI Code: Review Please 2026-11-10 · <ButtonGlowing>, right after <ButtonProfile> 🠈|--\\ */}
+      {/* //--|🠊 <ButtonGlowing>, right after <ButtonProfile> 🠈|--\\ */}
       <GlowingButton info={{ labelName: 'glowing' as string, pageName: pageName, blockName: blockName }} />
       {/* <CleanedButton info={{ labelName: 'cleaned' as string, pageName: pageName, blockName: blockName }} /> */}
     </>

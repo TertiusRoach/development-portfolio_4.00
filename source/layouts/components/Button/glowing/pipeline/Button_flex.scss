@@ -1,9 +1,8 @@
 //--|🠊 glowing/pipeline/Button_flex.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Text padding is 0 by 0.9 × the font (the 3.00 ratio), 0.45 × on -top-/-bot-/-cen- with the icon margin, so the square card's ring sits 0.45em from everything; the grid row gives the height 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
+//--|🠊 Text padding is 0 by 0.9 × the font (the 3.00 ratio), 0.45 × on -top-/-bot-/-cen- with the icon margin, so the square card's ring sits 0.45em from everything; the grid row gives the height 🠈|--\\
 @mixin glowing-flexbox {
   //--|🠋 Global (Flex) 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-11-10 · Centred in its row both ways, so -top- gets the same gap from the ring as -bot- 🠈|--\\
+  //--|🠊 Centred in its row both ways, so -top- gets the same gap from the ring as -bot- 🠈|--\\
   div[class='text'] {
     display: flex;
     align-items: center;

@@ -1,5 +1,4 @@
 //--|🠊 GlowingButton.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <StretchButton>, only the names changed 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -97,7 +96,7 @@ function GlowingButton({ info }: InfoProps) {
             >
               <LabelSwitching
                 cases={{
-                  mark: false,
+                  mark: true, //--|🠈 ⟨lucid⟩ is <ButtonGlowing>'s default here 🠈|--\\
                   type: '{option}',
                 }}
                 style={{
@@ -114,7 +113,7 @@ function GlowingButton({ info }: InfoProps) {
               />
               <LabelSwitching
                 cases={{
-                  mark: true, //--|🠈 ⟨opaque⟩ is <ButtonGlowing>'s default here 🠈|--\\
+                  mark: false,
                   type: '{option}',
                 }}
                 style={{
@@ -193,7 +192,7 @@ function GlowingButton({ info }: InfoProps) {
             >
               <LabelSwitching
                 cases={{
-                  mark: false,
+                  mark: true, //--|🠈 ⟨lucid⟩ is <ButtonGlowing>'s default here 🠈|--\\
                   type: '{option}',
                 }}
                 style={{
@@ -210,7 +209,7 @@ function GlowingButton({ info }: InfoProps) {
               />
               <LabelSwitching
                 cases={{
-                  mark: true, //--|🠈 ⟨opaque⟩ is <ButtonGlowing>'s default here 🠈|--\\
+                  mark: false,
                   type: '{option}',
                 }}
                 style={{
@@ -286,7 +285,7 @@ function GlowingButton({ info }: InfoProps) {
             >
               <LabelSwitching
                 cases={{
-                  mark: false,
+                  mark: true, //--|🠈 ⟨lucid⟩ is <ButtonGlowing>'s default here 🠈|--\\
                   type: '{option}',
                 }}
                 style={{
@@ -303,7 +302,7 @@ function GlowingButton({ info }: InfoProps) {
               />
               <LabelSwitching
                 cases={{
-                  mark: true, //--|🠈 ⟨opaque⟩ is <ButtonGlowing>'s default here 🠈|--\\
+                  mark: false,
                   type: '{option}',
                 }}
                 style={{
@@ -382,7 +381,7 @@ function GlowingButton({ info }: InfoProps) {
             >
               <LabelSwitching
                 cases={{
-                  mark: false,
+                  mark: true, //--|🠈 ⟨lucid⟩ is <ButtonGlowing>'s default here 🠈|--\\
                   type: '{option}',
                 }}
                 style={{
@@ -399,7 +398,7 @@ function GlowingButton({ info }: InfoProps) {
               />
               <LabelSwitching
                 cases={{
-                  mark: true, //--|🠈 ⟨opaque⟩ is <ButtonGlowing>'s default here 🠈|--\\
+                  mark: false,
                   type: '{option}',
                 }}
                 style={{
@@ -553,7 +552,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -572,7 +571,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -591,7 +590,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -610,7 +609,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -629,7 +628,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -653,7 +652,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -672,7 +671,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -691,7 +690,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -710,7 +709,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -729,7 +728,7 @@ let ViewOne = ({ info }: InfoProps) => {
               size: '<h1>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconOne as string,
@@ -758,7 +757,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconTwo as string,
@@ -777,7 +776,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -797,7 +796,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -817,7 +816,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -837,7 +836,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -862,7 +861,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -882,7 +881,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -902,7 +901,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -922,7 +921,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -942,7 +941,7 @@ let ViewTwo = ({ info }: InfoProps) => {
               size: '<h2>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -972,7 +971,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -991,7 +990,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1011,7 +1010,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -1030,7 +1029,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -1049,7 +1048,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1074,7 +1073,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -1093,7 +1092,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -1112,7 +1111,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
               image: iconThr as string,
@@ -1131,7 +1130,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1151,7 +1150,7 @@ let ViewThr = ({ info }: InfoProps) => {
               size: '<h3>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1181,7 +1180,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1201,7 +1200,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1221,7 +1220,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1241,7 +1240,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1261,7 +1260,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1286,7 +1285,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1303,7 +1302,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1320,7 +1319,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1337,7 +1336,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1354,7 +1353,7 @@ let ViewFou = ({ info }: InfoProps) => {
               size: '<h4>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1381,7 +1380,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1401,7 +1400,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1421,7 +1420,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1441,7 +1440,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1461,7 +1460,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1486,7 +1485,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1506,7 +1505,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1526,7 +1525,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1546,7 +1545,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1566,7 +1565,7 @@ let ViewFiv = ({ info }: InfoProps) => {
               size: '<h5>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1596,7 +1595,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1616,7 +1615,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1636,7 +1635,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1656,7 +1655,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1676,7 +1675,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1701,7 +1700,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1721,7 +1720,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1741,7 +1740,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1761,7 +1760,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1781,7 +1780,7 @@ let ViewSix = ({ info }: InfoProps) => {
               size: '<h6>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1811,7 +1810,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-top-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1831,7 +1830,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-bottom-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1851,7 +1850,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-left-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1871,7 +1870,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-right-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1891,7 +1890,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-center-',
               shade: '~dark~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1916,7 +1915,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-top-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1936,7 +1935,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-bottom-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1956,7 +1955,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-left-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1976,7 +1975,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-right-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 
@@ -1996,7 +1995,7 @@ let ViewSev = ({ info }: InfoProps) => {
               size: '<p>',
               view: '-center-',
               shade: '~light~',
-              clarity: '⟨opaque⟩',
+              clarity: '⟨lucid⟩',
               color: '(mono)',
               text: 'Button Here',
 

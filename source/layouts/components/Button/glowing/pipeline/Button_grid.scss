@@ -1,6 +1,5 @@
 //--|🠊 glowing/pipeline/Button_grid.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Text rows are 2.1 × the font (1.2 line + 0.9 padding, the 3.00 ratio on <h3> at 854); -top-/-bot- gutters are half the text row (odd rows rounded up to even), so every card is an exact square 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
+//--|🠊 Text rows are 2.1 × the font (1.2 line + 0.9 padding, the 3.00 ratio on <h3> at 854); -top-/-bot- gutters are half the text row (odd rows rounded up to even), so every card is an exact square 🠈|--\\
 @mixin glowing-gridbox {
   //--|🠋 Global (Grid) 🠋|--\\
   width: 100%;
@@ -12,7 +11,7 @@
       grid-area: 2 / 2 / 3 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class='back'] {
-      grid-area: 2 / 2 / 4 / 5; //--|🠈 AI Code: Review Please 2026-11-10 · A square card over the text and the icon 🠈|--\\
+      grid-area: 2 / 2 / 4 / 5; //--|🠈 A square card over the text and the icon 🠈|--\\
     }
     div[class='icon'] {
       grid-area: 3 / 3 / 4 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -23,7 +22,7 @@
       grid-area: 3 / 2 / 4 / 5; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class='back'] {
-      grid-area: 2 / 2 / 4 / 5; //--|🠈 AI Code: Review Please 2026-11-10 · A square card over the text and the icon 🠈|--\\
+      grid-area: 2 / 2 / 4 / 5; //--|🠈 A square card over the text and the icon 🠈|--\\
     }
     div[class='icon'] {
       grid-area: 2 / 3 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\

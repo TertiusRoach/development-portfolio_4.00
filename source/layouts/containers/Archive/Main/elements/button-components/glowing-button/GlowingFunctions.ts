@@ -1,5 +1,4 @@
 //--|🠊 glowing-button/GlowingFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <StretchButton>, only the names changed 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { arabicToRoman, romanToArabic } from '../../../../../../tools/conversions';
 //--|🠋 Documenting Code Duplication 🠋|--\\
@@ -1879,7 +1878,7 @@ let updateButtons = (color: string) => {
   ) as NodeListOf<HTMLButtonElement>;
 
   for (let i = 0; i < 35; i++) {
-    //--|🠊 21 on purpose, not .length: it marks how many <ButtonGlowing>s each side holds (7 sizes × -top-, -bot-, -lef-, -rig-, -cen-) · AI Code: Review Please 2026-11-10 🠈|--\\
+    //--|🠊 35 on purpose, not .length: it marks how many <ButtonGlowing>s each side holds (7 sizes × -top-, -bot-, -lef-, -rig-, -cen-) 🠈|--\\
     let prevDarkClass = wrapperDarkside[i].classList[1] as string;
     let prevLightClass = wrapperLightside[i].classList[1] as string;
 
