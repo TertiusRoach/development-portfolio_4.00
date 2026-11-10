@@ -137,10 +137,10 @@ $findLink-darkMode:
   );
 
 //--|🠊 background: Palettes.$red-neon; 🠈|--\\
-$gray-neon: #fffffc; //--|🠈 rgba() 🠈|--\\
+$gray-neon: #ffffff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #fffffc 🠈|--\\
 $gray-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-$gray-light: #cecebe; //--|🠈 rgba() 🠈|--\\
-$gray-medium: #737373; //--|🠈 rgba() 🠈|--\\
+$gray-light: #edede8; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cecebe 🠈|--\\
+$gray-medium: #77767b; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #737373 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $gray-darkMode: light on top, $gray-medium at the bottom instead of black, base mixed with $gray-medium 🠈|--\\
 $gray-lightMode:
   linear-gradient(180deg, rgba($gray-light, 0.7) 0%, rgba($gray-light, 0) 52%, rgba($gray-medium, 0.3) 100%),
@@ -165,10 +165,10 @@ $gray-darkMode:
     color.mix($gray-dark, $gray-medium, 82%) 100%
   );
 
-$red-neon: #ff9090; //--|🠈 rgba() 🠈|--\\
+$red-neon: #ff424b; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff9090 🠈|--\\
 $red-dark: #290a0a; //--|🠈 rgba() 🠈|--\\
-$red-light: #ffd1d1; //--|🠈 rgba() 🠈|--\\
-$red-medium: #ab2424; //--|🠈 rgba() 🠈|--\\
+$red-light: #ffdbdd; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffd1d1 🠈|--\\
+$red-medium: #e01b24; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #ab2424 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $red-darkMode: light on top, $red-medium at the bottom instead of black, base mixed with $red-medium 🠈|--\\
 $red-lightMode:
   linear-gradient(180deg, rgba($red-light, 0.7) 0%, rgba($red-light, 0) 52%, rgba($red-medium, 0.3) 100%),
@@ -183,10 +183,10 @@ $red-darkMode:
   radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
   linear-gradient(135deg, color.mix($red-dark, #000, 84%) 0%, color.mix($red-dark, $red-medium, 70%) 55%, color.mix($red-dark, $red-medium, 82%) 100%);
 
-$green-neon: #63ff9c; //--|🠈 rgba() 🠈|--\\
+$green-neon: #1fff83; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #63ff9c 🠈|--\\
 $green-dark: #062112; //--|🠈 rgba() 🠈|--\\
-$green-light: #cffae0; //--|🠈 rgba() 🠈|--\\
-$green-medium: #079707; //--|🠈 rgba() 🠈|--\\
+$green-light: #dbffeb; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cffae0 🠈|--\\
+$green-medium: #33d17a; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #079707 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $green-darkMode: light green on top, $green-medium at the bottom instead of black, base mixed with $green-medium 🠈|--\\
 $green-lightMode:
   linear-gradient(180deg, rgba($green-light, 0.7) 0%, rgba($green-light, 0) 52%, rgba($green-medium, 0.3) 100%),
@@ -211,10 +211,10 @@ $green-darkMode:
     color.mix($green-dark, $green-medium, 82%) 100%
   );
 
-$blue-neon: #7dc0ff; //--|🠈 rgba() 🠈|--\\
+$blue-neon: #52a0ff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #7dc0ff 🠈|--\\
 $blue-dark: #07122d; //--|🠈 rgba() 🠈|--\\
-$blue-light: #d6e6ff; //--|🠈 rgba() 🠈|--\\
-$blue-medium: #0d56a6; //--|🠈 rgba() 🠈|--\\
+$blue-light: #dbebff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #d6e6ff 🠈|--\\
+$blue-medium: #3584e4; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #0d56a6 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $blue-darkMode: light on top, $blue-medium at the bottom instead of black, base mixed with $blue-medium 🠈|--\\
 $blue-lightMode:
   linear-gradient(180deg, rgba($blue-light, 0.7) 0%, rgba($blue-light, 0) 52%, rgba($blue-medium, 0.3) 100%),
@@ -239,10 +239,10 @@ $blue-darkMode:
     color.mix($blue-dark, $blue-medium, 82%) 100%
   );
 
-$purple-neon: #c98fff; //--|🠈 rgba() 🠈|--\\
+$purple-neon: #d65cff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #c98fff 🠈|--\\
 $purple-dark: #140a2a; //--|🠈 rgba() 🠈|--\\
-$purple-light: #eadcff; //--|🠈 rgba() 🠈|--\\
-$purple-medium: #68179d; //--|🠈 rgba() 🠈|--\\
+$purple-light: #f6dbff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #eadcff 🠈|--\\
+$purple-medium: #9141ac; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #68179d 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $purple-darkMode: light on top, $purple-medium at the bottom instead of black, base mixed with $purple-medium 🠈|--\\
 $purple-lightMode:
   linear-gradient(180deg, rgba($purple-light, 0.7) 0%, rgba($purple-light, 0) 52%, rgba($purple-medium, 0.3) 100%),
@@ -267,10 +267,10 @@ $purple-darkMode:
     color.mix($purple-dark, $purple-medium, 82%) 100%
   );
 
-$orange-neon: #ff9900; //--|🠈 rgba() 🠈|--\\
+$orange-neon: #ff9333; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff9900 🠈|--\\
 $orange-dark: #421500; //--|🠈 rgba() 🠈|--\\
-$orange-light: #ffe2c2; //--|🠈 rgba() 🠈|--\\
-$orange-medium: #d97e00; //--|🠈 rgba() 🠈|--\\
+$orange-light: #ffe7d1; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffe2c2 🠈|--\\
+$orange-medium: #ff7800; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #d97e00 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $orange-darkMode: light on top, $orange-medium at the bottom instead of black, base mixed with $orange-medium 🠈|--\\
 $orange-lightMode:
   linear-gradient(180deg, rgba($orange-light, 0.7) 0%, rgba($orange-light, 0) 52%, rgba($orange-medium, 0.3) 100%),
@@ -295,10 +295,10 @@ $orange-darkMode:
     color.mix($orange-dark, $orange-medium, 82%) 100%
   );
 
-$pink-neon: #ff00c8; //--|🠈 rgba() 🠈|--\\
+$pink-neon: #ff3d8f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff00c8 🠈|--\\
 $pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
-$pink-light: #ffd1e6; //--|🠈 rgba() 🠈|--\\
-$pink-medium: #b4236a; //--|🠈 rgba() 🠈|--\\
+$pink-light: #ffdbea; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffd1e6 🠈|--\\
+$pink-medium: #b82e68; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #b4236a 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $pink-darkMode: light on top, $pink-medium at the bottom instead of black, base mixed with $pink-medium 🠈|--\\
 $pink-lightMode:
   linear-gradient(180deg, rgba($pink-light, 0.7) 0%, rgba($pink-light, 0) 52%, rgba($pink-medium, 0.3) 100%),
@@ -323,10 +323,10 @@ $pink-darkMode:
     color.mix($pink-dark, $pink-medium, 82%) 100%
   );
 
-$yellow-neon: #ffdd55; //--|🠈 rgba() 🠈|--\\
+$yellow-neon: #ffec1f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ffdd55 🠈|--\\
 $yellow-dark: #705010; //--|🠈 rgba() 🠈|--\\
-$yellow-light: #f5e7ad; //--|🠈 rgba() 🠈|--\\
-$yellow-medium: #caa42a; //--|🠈 rgba() 🠈|--\\
+$yellow-light: #fff4c2; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #f5e7ad 🠈|--\\
+$yellow-medium: #f6d32d; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #caa42a 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $yellow-darkMode: light on top, $yellow-medium at the bottom instead of black, base mixed with $yellow-medium 🠈|--\\
 $yellow-lightMode:
   linear-gradient(180deg, rgba($yellow-light, 0.7) 0%, rgba($yellow-light, 0) 52%, rgba($yellow-medium, 0.3) 100%),
@@ -351,10 +351,10 @@ $yellow-darkMode:
     color.mix($yellow-dark, $yellow-medium, 82%) 100%
   );
 
-$brown-neon: #d9a066; //--|🠈 rgba() 🠈|--\\
+$brown-neon: #f2a15f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #d9a066 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
-$brown-light: #f0dcc8; //--|🠈 rgba() 🠈|--\\
-$brown-medium: #7b4a2e; //--|🠈 rgba() 🠈|--\\
+$brown-light: #ffe6d1; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #f0dcc8 🠈|--\\
+$brown-medium: #986a44; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #7b4a2e 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $brown-darkMode: light on top, $brown-medium at the bottom instead of black, base mixed with $brown-medium 🠈|--\\
 $brown-lightMode:
   linear-gradient(180deg, rgba($brown-light, 0.7) 0%, rgba($brown-light, 0) 52%, rgba($brown-medium, 0.3) 100%),
@@ -379,10 +379,10 @@ $brown-darkMode:
     color.mix($brown-dark, $brown-medium, 82%) 100%
   );
 
-$turquoise-neon: #2de2e6; //--|🠈 rgba() 🠈|--\\
+$turquoise-neon: #1af6ff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #2de2e6 🠈|--\\
 $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
-$turquoise-light: #cffafe; //--|🠈 rgba() 🠈|--\\
-$turquoise-medium: #0e7490; //--|🠈 rgba() 🠈|--\\
+$turquoise-light: #dbfeff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cffafe 🠈|--\\
+$turquoise-medium: #34aaaf; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #0e7490 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $turquoise-darkMode: light on top, $turquoise-medium at the bottom instead of black, base mixed with $turquoise-medium 🠈|--\\
 $turquoise-lightMode:
   linear-gradient(180deg, rgba($turquoise-light, 0.7) 0%, rgba($turquoise-light, 0) 52%, rgba($turquoise-medium, 0.3) 100%),

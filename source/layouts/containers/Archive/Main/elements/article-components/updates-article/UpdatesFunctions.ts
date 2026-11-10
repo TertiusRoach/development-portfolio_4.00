@@ -4,12 +4,18 @@ import { arabicToRoman, romanToArabic } from '../../../../../../tools/conversion
 
 //--|🠋 Article Colors Toggle 🠋|--\\
 function toggleColors(tint: string): void {
-  const article = document.querySelector('#components-main .updates-article article[class*="updates-default"]') as HTMLElement;
+  //--|🠊 AI Code: Review Please 2026-11-10 · One article per slide now, so each shade is found and swapped on its own 🠈|--\\
+  const articleDark = document.querySelector('#components-main .updates-main_shade-dark article[class*="updates-default"]') as HTMLElement;
+  const articleLight = document.querySelector('#components-main .updates-main_shade-light article[class*="updates-default"]') as HTMLElement;
 
-  let prevClass: string = article.classList[1] as string; //--|🠈 Example: 'dar_mon' 🠈|--\\
-  let nextClass: string = `${prevClass.split('_')[0]}_${tint}`; //--|🠈 Keeps the shade, swaps the color: 'dar_red' 🠈|--\\
+  let prevDarkClass: string = articleDark.classList[1] as string; //--|🠈 Example: 'dar_mon' 🠈|--\\
+  let prevLightClass: string = articleLight.classList[1] as string; //--|🠈 Example: 'lig_mon' 🠈|--\\
 
-  article.classList.replace(prevClass, nextClass);
+  let nextDarkClass: string = `${prevDarkClass.split('_')[0]}_${tint}`; //--|🠈 Keeps the shade, swaps the color: 'dar_red' 🠈|--\\
+  let nextLightClass: string = `${prevLightClass.split('_')[0]}_${tint}`; //--|🠈 Keeps the shade, swaps the color: 'lig_red' 🠈|--\\
+
+  articleDark.classList.replace(prevDarkClass, nextDarkClass);
+  articleLight.classList.replace(prevLightClass, nextLightClass);
 }
 
 //--|🠋 Button Colors Toggle 🠋|--\\

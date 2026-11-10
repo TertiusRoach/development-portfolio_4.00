@@ -424,9 +424,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$gray-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -514,9 +521,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$gray-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -898,9 +912,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$red-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -988,9 +1009,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$red-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -1372,9 +1400,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$green-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -1462,9 +1497,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$green-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -1846,9 +1888,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$blue-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -1936,9 +1985,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$blue-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -2320,9 +2376,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$purple-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -2410,9 +2473,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$purple-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -2794,9 +2864,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$orange-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -2884,9 +2961,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$orange-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -3268,9 +3352,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$pink-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -3358,9 +3449,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$pink-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -3742,9 +3840,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$yellow-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -3832,9 +3937,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$yellow-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -4216,9 +4328,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$brown-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -4306,9 +4425,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$brown-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -4690,9 +4816,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$turquoise-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),
@@ -4780,9 +4913,16 @@
       }
       &:hover,
       &:has(:focus-visible) {
-        //--|🠊 AI Code: Review Please 2026-10-30 · Hover lands halfway: a resting one takes the medium between the two shades, a checked one stays as it is 🠈|--\
+        //--|🠊 AI Code: Review Please 2026-11-10 · Hover lands halfway: a resting one and a checked one both take the medium between the two shades 🠈|--\
         input[class='event'] {
           &:not(:checked) + span[class='switch'] {
+            background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
+            box-shadow:
+              inset 0 1px 2px rgba(#000, 0.25),
+              0 0 0 1px Palettes.$turquoise-medium;
+          }
+          &:checked + span[class='switch'] {
+            //--|🠊 AI Code: Review Please 2026-11-10 · A checked one fades halfway back toward the resting shade 🠈|--\\
             background: linear-gradient(180deg, rgba(#fff, 0.12) 0%, rgba(#fff, 0) 44%, rgba(#000, 0.25) 100%), color.mix($darMed, $ligMed); //--|🠈 Halfway between both tracks' gradients 🠈|--\
             box-shadow:
               inset 0 1px 2px rgba(#000, 0.25),

@@ -431,7 +431,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_mon'] {
     div[class*='wrap'] {
-      color: Palettes.$gray-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -446,7 +446,7 @@
         background: Palettes.$gray-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -479,7 +479,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_red'] {
     div[class*='wrap'] {
-      color: Palettes.$red-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -494,7 +494,7 @@
         background: Palettes.$red-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -527,7 +527,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_gre'] {
     div[class*='wrap'] {
-      color: Palettes.$green-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -542,7 +542,7 @@
         background: Palettes.$green-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -575,7 +575,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_blu'] {
     div[class*='wrap'] {
-      color: Palettes.$blue-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -590,7 +590,7 @@
         background: Palettes.$blue-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -623,7 +623,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_yel'] {
     div[class*='wrap'] {
-      color: Palettes.$yellow-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -638,7 +638,7 @@
         background: Palettes.$yellow-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -671,7 +671,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_pur'] {
     div[class*='wrap'] {
-      color: Palettes.$purple-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -686,7 +686,7 @@
         background: Palettes.$purple-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -719,7 +719,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_ora'] {
     div[class*='wrap'] {
-      color: Palettes.$orange-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -734,7 +734,7 @@
         background: Palettes.$orange-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -767,7 +767,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_pin'] {
     div[class*='wrap'] {
-      color: Palettes.$pink-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -782,7 +782,7 @@
         background: Palettes.$pink-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -815,7 +815,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_bro'] {
     div[class*='wrap'] {
-      color: Palettes.$brown-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -830,7 +830,7 @@
         background: Palettes.$brown-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }
@@ -863,7 +863,7 @@
   //--|🠊 Light Shade 🠈|--\\
   &[class*='lig_tur'] {
     div[class*='wrap'] {
-      color: Palettes.$turquoise-dark;
+      color: $blaDar; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the description takes the title's colour 🠈|--\\
       background: none;
       box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
       &::before {
@@ -878,7 +878,7 @@
         background: Palettes.$turquoise-medium;
       }
       h1 {
-        color: $blaDar;
+        color: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-11-10 · ~light~ swap: the title takes the description's colour 🠈|--\\
       }
     }
   }

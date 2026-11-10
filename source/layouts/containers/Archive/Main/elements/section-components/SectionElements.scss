@@ -2,6 +2,7 @@
 @use '../../../../../styles/Palettes.scss' as Palettes;
 
 @use './characters-section/CharactersSection.scss' as CharactersSection;
+@use './demonstration-section/DemonstrationSection.scss' as DemonstrationSection;
 
 section[class*='section-main'] {
   div[class*='fullscreen'] {
@@ -11,10 +12,16 @@ section[class*='section-main'] {
           &[class*='characters'] {
             @include CharactersSection.desktop-landscape;
           }
+          &[class*='demonstration'] {
+            @include DemonstrationSection.desktop-landscape;
+          }
         }
         @media screen and (orientation: portrait) {
           &[class*='characters'] {
             @include CharactersSection.mobile-portrait;
+          }
+          &[class*='demonstration'] {
+            @include DemonstrationSection.mobile-portrait;
           }
         }
       }
