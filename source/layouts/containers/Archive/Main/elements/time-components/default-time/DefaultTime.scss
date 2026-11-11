@@ -8,11 +8,9 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    h1 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    div[class*='placeholder'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      @include Utilities.scanning-font(); //--|🠈 AI Code: Review Please 2026-11-11 · Types the name like the <DivisionPlaceholder> page 🠈|--\\
     }
   }
   figure[class*='main-mid'] {
@@ -27,6 +25,10 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
+    div[class*='placeholder'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      @include Utilities.scanning-font(); //--|🠈 AI Code: Review Please 2026-11-11 · Types the name like the <DivisionPlaceholder> page 🠈|--\\
+    }
   }
   figure[class*='main-mid'] {
   }

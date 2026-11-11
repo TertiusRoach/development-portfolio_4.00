@@ -34,7 +34,7 @@ function MenuElements({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let viewName = 1 as number;
+  let viewName = 2 as number; //--|🠈 <MenuSelect> opens first 🠈|--\\
   return (
     <section className={`${labelName}-${blockName}`}>
       <DivisionFullscreen

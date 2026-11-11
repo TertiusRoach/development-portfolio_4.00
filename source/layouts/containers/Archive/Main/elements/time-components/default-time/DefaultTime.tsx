@@ -3,8 +3,10 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder'; //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
+import { loadAsset } from '../../../../../../tools/utilities'; //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
 import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
@@ -21,7 +23,22 @@ function DefaultTime({ info }: InfoProps) {
   return (
     <aside className="default-time">
       <section className={`${blockName}-foreground`}>
-        <h1 className="display-1">{`<DefaultTime>`}</h1>
+        <DivisionPlaceholder
+          //--|🠊 AI Code: Review Please 2026-11-11 · Stands in until <Time> is built, with <MenuSelect>'s icon 🠈|--\\
+          info={{
+            pageName: info.pageName,
+            blockName: blockName,
+            labelName: labelName,
+          }}
+          style={{
+            view: '-top-',
+            shade: '~dark~',
+            color: '(green)',
+            clarity: '⟨lucid⟩',
+            text: `<Time>`,
+            image: loadAsset('-svg-', '/tralogfin-pages/archive/time-element'),
+          }}
+        />
       </section>
       <figure className={`${blockName}-midground`}></figure>
       <div className={`${blockName}-background`}></div>
