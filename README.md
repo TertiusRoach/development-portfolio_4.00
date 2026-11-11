@@ -86,7 +86,7 @@ Designed in Figma first, then built by hand.
 
 ### Prerequisites
 
-[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/document/GITHUB.md#2-machine-setup)**.
+[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/document/GITHUB.md#7-set-up-a-new-computer)**.
 
 Check that Node is ready:
 
@@ -521,7 +521,7 @@ Contributions are welcome, as long as they keep the project readable. Before you
 
 1. **Read the [RULEBOOK](source/utilities/document/RULEBOOK.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/document/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
-3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/document/GITHUB.md#3-release-cycle).
+3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/document/GITHUB.md#4-finish-a-version-and-start-the-next).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

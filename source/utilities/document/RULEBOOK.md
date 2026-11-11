@@ -178,7 +178,7 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|ðŸ
 
 ### Git
 
-Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](GITHUB.md#1-naming-rules).
+Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](GITHUB.md#9-names-and-numbers).
 
 ---
 
