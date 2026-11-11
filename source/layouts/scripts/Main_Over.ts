@@ -7,20 +7,29 @@ import { asynchObserve } from '../tools/synching';
 //--|🠋 Class Changes 🠋|--\\
 async function obnubilateContainer(pageName: string, blockName: string) {
   const bodyContainer = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
-  const overlayContainer = document.querySelector(`#${pageName}-${blockName}`) as HTMLElement;
+  /*--|🠋
+    AI Code: Review Please 2026-11-11
+    Why: This function runs while <Overlay> renders, before its <section> is on the page.
+    A querySelector here found nothing on a slow first load, so the overlay is now
+    found below, with the other containers, once it exists.
+    How long: 30 seconds covers a phone on Regular 3G (750 Kbps), the slow end of
+    South Africa's mobile networks. The old 6 second limit gave up on a cold cache.
+  🠉|--*/
+  let waitingTime = 30000 as number; //--|🠈 AI Code: Review Please 2026-11-11 · 30 seconds to download every container 🠈|--\\
   switch (!transitioning.has(pageName)) {
     case true:
       try {
         observeOverlay('overlay'); //--|🠈 Observe <Overlay> to avoid stacking 🠈|--\\
         transitioning.add(pageName);
         if (bodyContainer) {
-          //--|🠋 Wait until all five containers exist on the page 🠋|--\\
-          let [mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
-            asynchObserve(`#${pageName}-main`),
-            asynchObserve(`#${pageName}-header`),
-            asynchObserve(`#${pageName}-footer`),
-            asynchObserve(`#${pageName}-leftbar`),
-            asynchObserve(`#${pageName}-rightbar`),
+          //--|🠋 Wait until <Overlay> and all five containers exist on the page 🠋|--\\
+          let [overlayBlock, mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
+            asynchObserve(`#${pageName}-${blockName}`, waitingTime), //--|🠈 AI Code: Review Please 2026-11-11 · <Overlay> itself, found after it renders 🠈|--\\
+            asynchObserve(`#${pageName}-main`, waitingTime),
+            asynchObserve(`#${pageName}-header`, waitingTime),
+            asynchObserve(`#${pageName}-footer`, waitingTime),
+            asynchObserve(`#${pageName}-leftbar`, waitingTime),
+            asynchObserve(`#${pageName}-rightbar`, waitingTime),
           ]);
           setTimeout(() => {
             clearBlur(pageName, headBlock, footBlock, leftBlock, rightBlock); //--|🠈 AI Code: Review Please 2026-11-08 · <main> is left to obnubilateMain() 🠈|--\\
@@ -28,9 +37,14 @@ async function obnubilateContainer(pageName: string, blockName: string) {
 
           setTimeout(() => {
             shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
-            blockViews(overlayContainer, pageName, 'overlay', 'collapsed'); //--|🠈 AI Code: Review Please 2026-11-08 · Hidden through hidingOverlay(), then <main> checks again 🠈|--\\
+            blockViews(overlayBlock, pageName, 'overlay', 'collapsed'); //--|🠈 AI Code: Review Please 2026-11-08 · Hidden through hidingOverlay(), then <main> checks again 🠈|--\\
+            forgetReload(pageName); //--|🠈 AI Code: Review Please 2026-11-11 · Loaded fine: the next visit may reload once again 🠈|--\\
           }, 2750);
         }
+      } catch (error) {
+        //--|🠊 AI Code: Review Please 2026-11-11 · A container still missing after waitingTime: the download stalled 🠈|--\\
+        console.error(error);
+        reloadOnce(pageName); //--|🠈 AI Code: Review Please 2026-11-11 · Reload once, what's already downloaded comes from the cache 🠈|--\\
       } finally {
         transitioning.delete(pageName);
       }
@@ -94,6 +108,39 @@ let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, 
       blockViews(container, pageName, blockName, alterAction);
     }
   });
+};
+//--|🠊 AI Code: Review Please 2026-11-11 · Stalled Downloads 🠈|--\\
+/*--|🠋
+  Why: A stalled first load left the loading screen up until the visitor reloaded by hand.
+  How: reloadOnce() writes a note in sessionStorage, then reloads the page.
+  If the note is already there, this tab has reloaded once before, so it doesn't
+  reload again: a dead connection would otherwise reload forever.
+  forgetReload() wipes the note once the overlay hides, so a later stall can reload again.
+  Note: sessionStorage throws in some private windows, so both read it inside a try.
+🠉|--*/
+let reloadOnce = (pageName: string) => {
+  let reloadNote = null as string | null;
+  try {
+    reloadNote = sessionStorage.getItem('reloaded');
+  } catch (error) {
+    return; //--|🠈 No storage: no note, so no reload either 🠈|--\\
+  }
+  switch (reloadNote === null) {
+    case true:
+      sessionStorage.setItem('reloaded', pageName);
+      window.location.reload();
+      break;
+    case false:
+      console.warn(`//--|🠊 #${pageName}-body already reloaded once, waiting on a manual reload 🠈|--\\\\`);
+      break;
+  }
+};
+let forgetReload = (_pageName: string) => {
+  try {
+    sessionStorage.removeItem('reloaded');
+  } catch (error) {
+    return;
+  }
 };
 
 //--|🠊 1. Expanded Functions 🠈|--\\
