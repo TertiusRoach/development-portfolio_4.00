@@ -37,8 +37,6 @@
         repeat(2, 1.5rem) 1fr repeat(2, 1.5rem) //--|🠈 rows 🠈|--//
         / 16px repeat(2, 1fr) 16px; //--|🠈 columns 🠈|--\\
     }
-
-    background: rgba(red, 0.25);
   }
 }
 @mixin mobile-portrait {
