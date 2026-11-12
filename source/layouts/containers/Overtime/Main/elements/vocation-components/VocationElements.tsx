@@ -8,6 +8,7 @@ import DivisionSweeping from '../../../../../components/Division/sweeping/Divisi
 import DivisionPlaceholder from '../../../../../components/Division/placeholder/Division.placeholder';
 
 //--|🠋 Functions 🠋|--\\
+import { loadAsset } from '../../../../../tools/utilities';
 import { stripBrackets } from '../../../../../tools/conversions';
 import { checkScreen } from '../../../../../tools/synching';
 
@@ -61,7 +62,14 @@ const VocationComponents: React.FC<InfoProps> = ({ info }) => {
     <>
       <DivisionPlaceholder
         info={{ labelName: 'placeholder' as string, pageName: pageName, blockName: blockName }}
-        style={{ view: '-cen-', shade: '~dark~', color: '(blue)', clarity: '⟨lucid⟩' }}
+        style={{
+          view: '-cen-',
+          shade: '~dark~',
+          color: '(blue)',
+          clarity: '⟨lucid⟩',
+          text: `[Overtime]`,
+          image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium'),
+        }}
       />
     </>
   );

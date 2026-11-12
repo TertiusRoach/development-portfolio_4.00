@@ -160,7 +160,7 @@ The server runs on `http://localhost:3000` and restarts by itself whenever you s
 
 `npx` runs the copy of `nodemon` that `npm install` already put in the project. If you prefer typing just `nodemon landing`, install it once for the whole computer with `npm install -g nodemon`.
 
-> **Known issue:** `landing.js` loads its secrets with `dotenv.config({ path: '../../../build/.env' })`. That path is counted from the terminal's current folder, and from `REVIEW/` three levels up is `source/modules/`, not the project root. So the server looks for `source/modules/build/.env` and doesn't find the real file. The fix is a one-line change to build the path from the file's own location (`path.resolve(__dirname, '../../../../../build/.env')`). It's on the list for when the server code is reworked.
+> **Where the secrets come from:** `landing.js` loads them with `dotenv.config({ path: path.resolve(__dirname, '../../../../../build/.env') })`. `__dirname` is the folder `landing.js` sits in, so the path is counted from the file, not from the terminal: five levels up from `REVIEW/` is the project root, and the server finds `build/.env` whichever folder you start it from. (It used to be `'../../../build/.env'`, counted from the terminal, which pointed at `source/modules/build/.env` and found nothing. Fixed 2026-11-12.)
 
 ---
 

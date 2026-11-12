@@ -26,6 +26,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 8. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
 9. **Don't run Git commands that change history or the remote** (commit, push, tag, delete) unless asked.
 10. **Keep your own files out of the project.** Notes, scratch scripts and test renders go in `.claude-notes/` at the root, which is ignored by Git and hidden in the owner's VS Code. The ten dotfile lines and `.claude` at the bottom of `.gitignore` cover empty placeholders the Claude Code sandbox creates; leave them in. Hide things in VS Code through **User** settings only: `.vscode/settings.json` is committed (see EDITOR.md, Hiding Folders).
+11. **Re-scan before every decision.** Re-read the files and folders involved as they are on disk now, not as you remember them, and the documents in `source/utilities/document/` that cover them, `RULEBOOK.md` first. Decide from the documents and cite the section. If they don't settle it, use the rules; if those don't either, ask.
 
 ## Commands
 

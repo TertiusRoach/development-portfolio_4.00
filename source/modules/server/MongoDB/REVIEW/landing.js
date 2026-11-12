@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const { connectDatabase, getDatabase } = require('./data'); // Fixed import to match the function names in data.js
 
 let database;
@@ -14,7 +15,7 @@ const port = 3000;
 const root = 'users';
 const server = express();
 server.use(express.json());
-dotenv.config({ path: '../../../build/.env' });
+dotenv.config({ path: path.resolve(__dirname, '../../../../../build/.env') });
 
 let link = 'http://localhost:8080';
 server.use(cors({ origin: 'http://localhost:8080', credentials: true }));

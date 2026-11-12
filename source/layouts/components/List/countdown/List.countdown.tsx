@@ -1,6 +1,6 @@
 //--|🠊 List.countdown.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
-import axios from 'axios';
+/* import axios from 'axios'; */
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
@@ -109,7 +109,8 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
             return; //--|🠈 Stop execution if the email input field is missing 🠈|--\\
           }
 
-          //--|🠋 Make an API request to fetch the countdown expiration date 🠋|--\\
+          /*--|🠋 Countdown request: commented out so the <List> is visual-only, it comes back through scripts/Footer.ts and PickPage (SERVER.md §5) 🠉|--*/
+          /*
           let route = 'blocked';
           let link = 'http://localhost:3000';
           axios
@@ -128,6 +129,7 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
               interval = setInterval(() => updateCountdown(targetDate), 1000);
             })
             .catch((error) => console.error('Error fetching countdown:', error));
+          */
         }
       }
     }
