@@ -91,8 +91,8 @@ export function freezeFooters(pageName: 'overtime', styleView: 'bot-rig') {
   }
 }
 //--|===|--\\
-const selectCharacter = (_thisItem: HTMLElement, _pageName: string, _blockName: string): void => {
-  console.log('Select Profile...');
+const selectCharacter = (_thisItem: HTMLElement, pageName: string, blockName: string): void => {
+  console.log(`//--|🠊 Select Profile: #${pageName}-${blockName} 🠈|--\\\\`); //--|🠈 AI Code: Review Please 2026-11-12 · Was 'Select Profile...' 🠈|--\\
 };
 let sequencedDemonstration = (profile: string): string => {
   switch (profile) {

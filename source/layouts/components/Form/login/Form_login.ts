@@ -71,15 +71,10 @@ export function axiosError(error: unknown) {
     }
 
     //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--\\
-    console.error('Axios Error Details:', {
-      status, //--|🠈 The HTTP status code (like 404, 500) 🠈|--\\
-      message, //--|🠈 The error message from the server 🠈|--\\
-      url: error.config?.url, //--|🠈 The URL that was requested 🠈|--\\
-      method: error.config?.method, //--|🠈 The HTTP method (GET, POST, etc.) 🠈|--\\
-    });
+    console.log(`|--🠊 Warning: ${error.config?.method?.toUpperCase()} ${error.config?.url} answered ${status}, ${message}, Form/login/Form_login.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error('Axios Error Details:', {…}) 🠈|--\\
   } else {
     //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--\\
-    return console.error('Unexpected Error:', error);
+    return console.log(`|--🠊 Warning: ${error} did not come from axios, Form/login/Form_login.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error('Unexpected Error:', error) 🠈|--\\
   }
 }
 export function retrieveEndpoint(

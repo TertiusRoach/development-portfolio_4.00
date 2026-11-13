@@ -56,8 +56,6 @@ export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   const position1Based = nextIndex + 1;
 
   //--|🠊 (9) Logging / side effects go here (NOT needed for the class switching itself) 🠈|--\\
-  console.log('action:', blockAction);
-  console.log('from:', currentRoman, 'to:', nextRoman);
-  console.log('position (1-based):', position1Based);
+  console.log(`//--|🠊 Scroll: ${blockAction}, ${currentRoman} to ${nextRoman} (week ${position1Based}) 🠈|--\\\\`); //--|🠈 AI Code: Review Please 2026-11-12 · Three debug lines in one 🠈|--\\
 }
 export default scrollTable;

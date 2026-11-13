@@ -105,7 +105,7 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
           const emailInput = document.querySelector<HTMLInputElement>('div[class*="inputs"] #email');
 
           if (!emailInput) {
-            console.error('Email input not found.');
+            console.log(`|--🠊 Warning: #email never showed up inside div[class*="inputs"], List/countdown/List.countdown.tsx 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 🠈|--\\
             return; //--|🠈 Stop execution if the email input field is missing 🠈|--\\
           }
 

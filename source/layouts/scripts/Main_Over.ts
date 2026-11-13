@@ -43,7 +43,8 @@ async function obnubilateContainer(pageName: string, blockName: string) {
         }
       } catch (error) {
         //--|🠊 AI Code: Review Please 2026-11-11 · A container still missing after waitingTime: the download stalled 🠈|--\\
-        console.error(error);
+        console.log(`|--🠊 Warning: a container never showed up inside #${pageName}-body, scripts/Main_Over.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error(error) 🠈|--\\
+        console.log(`|--🠊 Guidance: The page reloads once to finish downloading. 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 🠈|--\\
         reloadOnce(pageName); //--|🠈 AI Code: Review Please 2026-11-11 · Reload once, what's already downloaded comes from the cache 🠈|--\\
       } finally {
         transitioning.delete(pageName);

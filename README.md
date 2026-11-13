@@ -453,7 +453,7 @@ The UI system. This is where the application becomes readable. The split between
 
 | Directory  | Purpose                                                                                   |
 | ---------- | ----------------------------------------------------------------------------------------- |
-| `scripts/` | One script per block (`Header.ts`, `Main.ts`, `Overlay.ts`…)                              |
+| `scripts/` | One script per block pair: `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                |
 | `styles/`  | Shared styling system: `Palettes`, `Mixins`, `Global`, `Skeleton`, `Transition`, `Barrel` |
 | `tools/`   | Layout helpers: `conversions.ts`, `navigation.ts`, `utilities.ts`                         |
 
