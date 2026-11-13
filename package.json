@@ -6,6 +6,7 @@
   "scripts": {
     "app": "npm run launch",
     "stop": "npx kill-port 8080",
+    "guard": "gulp guard",
     "deploy": "webpack --mode production",
     "launch": "webpack-dev-server --mode development"
   },
@@ -39,6 +40,7 @@
     "dotenv-webpack": "^8.1.1",
     "express": "^4.22.1",
     "file-loader": "^6.2.0",
+    "gulp": "^5.0.1",
     "html-webpack-plugin": "^5.6.6",
     "jquery": "^3.7.1",
     "kill-port": "^2.0.1",
