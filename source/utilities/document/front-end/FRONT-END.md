@@ -46,6 +46,7 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 | ------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | **RULEBOOK.md** (this page)          | How code is written: naming, files, scaling, colours, comments                                      |
 | [GUIDELINES.md](../GUIDELINES.md)    | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
+| [AGREEMENT.md](../AGREEMENT.md)      | The folder structure and file types the front end and back end share: twins, imports, crossings    |
 | [TOGGLES.md](TOGGLES.md)             | Which page each toggle opens (Vocation, Position, Occupation)                                       |
 | [CONTAINERS.md](CONTAINERS.md)       | The six containers every page is built from, how they pair and flip, and what each one does per app |
 | [CHARACTERS.md](../CHARACTERS.md)    | The 18 test characters, their facts, their psychology and the rules they test                       |
@@ -56,7 +57,7 @@ Every document lives in `source/utilities/document/`. If you're unsure about any
 | [EDITOR.md](../EDITOR.md)            | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
 | [REFERENCE.md](../REFERENCE.md)      | The template the main `README.md` follows                                                           |
 
-**When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
+**When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, AGREEMENT.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
 ---
 

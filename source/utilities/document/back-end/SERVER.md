@@ -1,6 +1,6 @@
 # Server
 
-How the back end in `source/modules/` is organised, how the front end shares what a user types, and where the server code is headed. Setting it up on your machine is in [MODULES.md](MODULES.md); how the records are shaped is in [TABLE.md](../front-end/TABLE.md).
+The structure both sides share is in [AGREEMENT.md](../AGREEMENT.md). This page covers how the back end in `source/modules/` is organised, how the front end shares what a user types, and where the server code is headed. Setting it up on your machine is in [MODULES.md](MODULES.md); how the records are shaped is in [TABLE.md](../front-end/TABLE.md).
 
 ---
 
@@ -74,7 +74,7 @@ The front end and the back end meet in `modules/scripts/`, and nowhere else.
 <Component>.tsx  →  scripts/Header.ts  →  TrackTime.createEntry()  →  online/ or offline/  →  Server
 ```
 
-**The clones.** Each block-level container has a `*.jsx` clone controlled by the back end, in the same folder as its `*.tsx`: the page root (`Overtime/Overtime.jsx`) and its six blocks (`Overtime/Header/OvertimeHeader.jsx`), 35 in all. Nothing in `elements/` or `components/` is cloned. This repository may not have access to them, so Git ignores them (`source/layouts/containers/**/*.jsx` in `.gitignore`). They never reach the app: Webpack resolves only `.tsx`, `.ts` and `.js`, and TypeScript skips a `.jsx` when a `.tsx` of the same name sits beside it.
+**The clones.** [AGREEMENT.md](../AGREEMENT.md) sets the rule: every `.tsx` gets a `.jsx` twin in `source/modules/`, at the same path. Until that move is made, this is how it stands: each block-level container has a `*.jsx` clone controlled by the back end, in the same folder as its `*.tsx`: the page root (`Overtime/Overtime.jsx`) and its six blocks (`Overtime/Header/OvertimeHeader.jsx`), 35 in all. Nothing in `elements/` or `components/` is cloned. This repository may not have access to them, so Git ignores them (`source/layouts/containers/**/*.jsx` in `.gitignore`). They never reach the app: Webpack resolves only `.tsx`, `.ts` and `.js`, and TypeScript skips a `.jsx` when a `.tsx` of the same name sits beside it.
 
 **Proving a clone is at fault.** Each block file logs what it sends and what comes back, in the console format from [RULEBOOK, Console Messages](../front-end/RULEBOOK.md#console-messages):
 
