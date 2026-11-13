@@ -1,0 +1,1 @@
+{"version":3,"sources":["code/events/indexSidebar/DefaultSidebar.ts"],"names":[],"mappings":";;;;IACA,IAAiB,cAAc,CAM9B;IAND,WAAiB,cAAc;QAC7B;YACE;gBACE,OAAO,CAAC,GAAG,CAAC,4BAA4B,CAAC,CAAC;YAC5C,CAAC;YACH,qBAAC;QAAD,CAJA,AAIC,IAAA;QAJY,6BAAc,iBAI1B,CAAA;IACH,CAAC,EANgB,cAAc,GAAd,sBAAc,KAAd,sBAAc,QAM9B","file":"DefaultSidebar.js","sourceRoot":"../../../../src"}

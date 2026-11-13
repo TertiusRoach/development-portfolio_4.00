@@ -1,0 +1,62 @@
+<!--▲ style="display: grid" ▲-->
+<!--► class="manage-main" ◄-->
+<header id="manage-header">
+  <span class="notification">
+    <h2 style="background: #f8af58">0</h2>
+  </span>
+  <h1 class="text">${userDepartment}</h1>
+</header>
+
+<button id="open-employees">
+  <i class="fad fa-city fa-2x"></i>
+</button>
+
+<button id="pending-tab" class="active-tab" onClick="$('.active-tab').removeClass('active-tab'); $(this).addClass('active-tab');">
+  <div><h1>Pending</h1></div>
+</button>
+<button id="deleted-tab" class="" onClick="$('.active-tab').removeClass('active-tab'); $(this).addClass('active-tab');">
+  <div><h1>Deleted</h1></div>
+</button>
+
+<section>
+  <header>
+    <button id="dates-tickets">
+      <i class="fad fa-sort-numeric-down"></i>
+      <h4>Date</h4>
+    </button>
+
+    <div id="subject-tickets">
+      <h4>Subject</h4>
+    </div>
+
+    <button id="sender-tickets">
+      <i class="fad fa-sort-alpha-down"></i>
+      <h4>Sender</h4>
+    </button>
+  </header>
+  <div id="tickets-container" class="pending-tickets">
+    <article class="pending" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <p class="shortdate">${dateShort}</p>
+      <p class="subject">${subjectText}</p>
+      <p class="sender">${senderName}</p>
+    </article>
+
+    <article class="assigned" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <p class="dateshort">${dateShort}</p>
+      <p class="subject">${subjectText}</p>
+      <p class="sender">${senderName}</p>
+    </article>
+    <article class="resolved" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <p class="dateshort">${dateShort}</p>
+      <p class="subject">${subjectText}</p>
+      <p class="sender">${senderName}</p>
+    </article>
+    <article class="deleted" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <p class="dateshort">${dateShort}</p>
+      <p class="subject">${subjectText}</p>
+      <p class="sender">${senderName}</p>
+    </article>
+  </div>
+
+  <div id="tickets-background"></div>
+</section>

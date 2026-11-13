@@ -1,0 +1,45 @@
+<!--▲ Default: style="display: grid" ▲-->
+<!--► class="user-assigned" ◄-->
+<button id="close-overlay">
+  <div><i class="fad fa-times fa-2x"></i></div>
+</button>
+
+<section id="ticket-container" style="display: grid">
+  <header id="ticket-top">
+    <input id="ticket-subject" value="${subjectText}" type="text" readonly />
+
+    <div id="resolve-ticket">
+      <button class="">
+        <i class="fad fa-check fa-4x"></i>
+        <h1>Resolve Ticket</h1>
+      </button>
+    </div>
+  </header>
+  <footer id="ticket-bot">
+    <textarea id="ticket-description" readonly>${descriptionText}</textarea>
+
+    <section>
+      <h4 id="sender-department">${senderDepartment}</h4>
+      <h4 id="colleague-name">${colleagueName}</h4>
+
+      <h4 id="pending-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="assigned-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="resolved-date" class="disabled-text">undefined</h4>
+      <h4 id="deleted-date" class="disabled-text">undefined</h4>
+    </section>
+  </footer>
+</section>
+
+<div class="assigned-mark" style="background: #084887"><h1>Assigned</h1></div>
+<div class="resolved-mark"><h1>Resolved</h1></div>
+<!--▼ Button Sample ▼-->
+<div id="delete-ticket">
+  <button class="">
+    <i class="fad fa-trash-alt fa-3x"></i>
+    <h2>Delete Ticket</h2>
+  </button>
+</div>
+<!--▲ Button Sample ▲-->
+
+<div id="overlay-canvas"></div>
+<div id="overlay-background"></div>

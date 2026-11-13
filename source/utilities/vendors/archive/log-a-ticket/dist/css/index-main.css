@@ -1,0 +1,595 @@
+@charset "UTF-8";
+/*--|►| Colors |◄|--*/
+/*--|►| #index-main <Main> |◄|--*/
+/*--▼ .default-main ▼--*/
+#index-main {
+  grid-column: 1/13;
+  grid-row: 2/23;
+  display: grid;
+  grid-template-columns: 5rem 1fr 1rem 1fr 1rem 1fr 1rem 1fr 5rem;
+  grid-template-rows: repeat(20, 1fr) 40px;
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+#index-main button {
+  background: none;
+  overflow: hidden;
+  border: none;
+  color: white;
+  background: #909cc2;
+}
+#index-main button div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+#index-main button div svg {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+#index-main section {
+  grid-column: 2/9;
+  grid-row: 4/19;
+  display: grid;
+  grid-template-columns: 7rem 4fr 1fr 1rem;
+  grid-template-rows: 40px 1fr;
+  border-top: solid 4px #084887;
+  border-right: solid 4px #084887;
+  border-bottom: solid 4px #084887;
+  border-left: solid 4px #084887;
+}
+#index-main section header {
+  grid-column: 1/5;
+  height: 40px;
+  display: grid;
+  grid-template-columns: 7rem 4fr 1fr 1rem;
+  background: #084887;
+}
+#index-main section header button {
+  align-items: center;
+  background: none;
+  overflow: hidden;
+  display: flex;
+  border: none;
+  padding-left: 1rem;
+  color: white;
+}
+#index-main section header button h4 {
+  padding-left: 1rem;
+}
+#index-main section header button svg:hover,
+#index-main section header button h4:hover {
+  cursor: pointer;
+}
+#index-main section header div {
+  cursor: default;
+}
+#index-main section header div h4 {
+  display: flex;
+  align-items: center;
+  margin: 8px 0 0 1rem;
+  color: white;
+}
+#index-main section #tickets-container {
+  grid-column: 1/5;
+  grid-row: 2/3;
+  overflow-y: scroll;
+}
+#index-main section #tickets-container article:hover {
+  cursor: pointer;
+}
+#index-main section #tickets-container article {
+  grid-template-columns: 7rem 4fr 1fr;
+}
+#index-main section #tickets-container article p {
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 1rem;
+  color: #084887;
+}
+#index-main section #tickets-container .active-ticket {
+  box-shadow: inset 0 0 6px #084887;
+}
+#index-main section #tickets-container .pending:hover {
+  box-shadow: inset 0 0 6px #f8af58;
+}
+#index-main section #tickets-container .assigned:hover {
+  box-shadow: inset 0 0 6px #4c72a4;
+}
+#index-main section #tickets-container .resolved:hover {
+  box-shadow: inset 0 0 6px #08870c;
+}
+#index-main section #tickets-container .deleted:hover {
+  box-shadow: inset 0 0 6px #f95555;
+}
+#index-main section .pending-tickets article {
+  border-bottom: solid 1px #f8af58;
+}
+#index-main section .pending-tickets .pending {
+  display: grid;
+}
+#index-main section .pending-tickets .assigned,
+#index-main section .pending-tickets .resolved,
+#index-main section .pending-tickets .deleted {
+  display: none;
+}
+#index-main section .pending-tickets ~ #tickets-background {
+  border-left: solid 2px #f8af58;
+  border-right: solid 2px #f8af58;
+}
+#index-main section .assigned-tickets article {
+  border-bottom: solid 1px #4c72a4;
+}
+#index-main section .assigned-tickets .assigned {
+  display: grid;
+}
+#index-main section .assigned-tickets .pending,
+#index-main section .assigned-tickets .resolved,
+#index-main section .assigned-tickets .deleted {
+  display: none;
+}
+#index-main section .assigned-tickets ~ #tickets-background {
+  border-left: solid 2px #4c72a4;
+  border-right: solid 2px #4c72a4;
+}
+#index-main section .resolved-tickets article {
+  border-bottom: solid 1px #08870c;
+}
+#index-main section .resolved-tickets .resolved {
+  display: grid;
+}
+#index-main section .resolved-tickets .pending,
+#index-main section .resolved-tickets .assigned,
+#index-main section .resolved-tickets .deleted {
+  display: none;
+}
+#index-main section .resolved-tickets ~ #tickets-background {
+  border-left: solid 2px #08870c;
+  border-right: solid 2px #08870c;
+}
+#index-main section .deleted-tickets article {
+  border-bottom: solid 1px #f95555;
+}
+#index-main section .deleted-tickets .deleted {
+  display: grid;
+}
+#index-main section .deleted-tickets .pending,
+#index-main section .deleted-tickets .assigned,
+#index-main section .deleted-tickets .resolved {
+  display: none;
+}
+#index-main section .deleted-tickets ~ #tickets-background {
+  border-left: solid 2px #f95555;
+  border-right: solid 2px #f95555;
+}
+#index-main section .everything-tickets article {
+  border-bottom: solid 1px #084887;
+}
+#index-main section .everything-tickets .pending,
+#index-main section .everything-tickets .assigned,
+#index-main section .everything-tickets .resolved,
+#index-main section .everything-tickets .deleted {
+  display: grid;
+}
+#index-main section .everything-tickets ~ #tickets-background {
+  border-left: solid 2px #084887;
+  border-right: solid 2px #084887;
+}
+#index-main section #tickets-background {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  z-index: -1;
+  /*
+  border-left: solid 2px $primary-dark;
+  border-right: solid 2px $primary-dark;
+  */
+}
+#index-main span {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  justify-content: center;
+}
+#index-main span h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: white;
+}
+#index-main [id*=header] {
+  display: flex;
+  cursor: default;
+  overflow: hidden;
+  align-items: center;
+}
+#index-main [id*=header] span {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+#index-main [id*=header] span h2 {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+#index-main [id*=header] h1 {
+  display: inherit;
+  align-items: center;
+  color: #084887;
+  padding-left: 1rem;
+}
+#index-main [id*=tab] h1 {
+  filter: drop-shadow(0 0 4px #084887);
+  cursor: pointer;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+#index-main [id*=tab] h1:hover {
+  color: #f58a07;
+}
+#index-main [id*=name] {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  color: #084887;
+}
+#index-main [id*=open] {
+  background: #084887;
+}
+#index-main [id*=tab]:hover {
+  background: #4c72a4;
+}
+#index-main [class*=active-tab],
+#index-main [class*=active-tab]:hover {
+  cursor: default;
+  background: #084887;
+}
+#index-main [class*=active-tab] div h1:hover,
+#index-main [class*=active-tab]:hover div h1:hover {
+  cursor: default;
+  color: white;
+}
+
+/*--▼ .logged-main ▼--*/
+.logged-main {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.logged-main #open-coworkers {
+  grid-column: 1/2;
+  grid-row: 1/3;
+  margin-right: 1rem;
+  border-radius: 0 0 1rem 0;
+}
+.logged-main #open-coworkers svg:hover {
+  cursor: pointer;
+  color: #f58a07;
+}
+.logged-main #logged-header {
+  grid-column: 6/10;
+  grid-row: 2/4;
+}
+.logged-main #pending-tab {
+  grid-column: 2/3;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.logged-main #assigned-tab {
+  grid-column: 4/5;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.logged-main #deleted-tab {
+  grid-column: 8/9;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.logged-main section {
+  border-radius: 0 1rem 0 1rem;
+}
+.logged-main section header #dates-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.logged-main section header #subject-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.logged-main section header #receiver-tickets {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+
+/*--▼ .manage-main ▼--*/
+.manage-main {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.manage-main #open-employees {
+  grid-column: 9/10;
+  grid-row: 1/3;
+  margin-left: 1rem;
+  border-radius: 0 0 0 1rem;
+}
+.manage-main #open-employees svg:hover {
+  cursor: pointer;
+  color: #f58a07;
+}
+.manage-main #manage-header {
+  grid-column: 4/9;
+  grid-row: 2/4;
+  display: flex;
+  cursor: default;
+  overflow: hidden;
+}
+.manage-main #manage-header #manage-notification {
+  display: inherit;
+  align-items: center;
+  color: white;
+}
+.manage-main #manage-header #manage-notification h2 {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.manage-main #manage-header h1 {
+  display: inherit;
+  align-items: center;
+  color: #084887;
+  padding-left: 1rem;
+}
+.manage-main #pending-tab {
+  grid-column: 2/3;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.manage-main #everything-tab {
+  grid-column: 2/3;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.manage-main #deleted-tab {
+  grid-column: 8/9;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.manage-main section {
+  border-radius: 0 1rem 0 1rem;
+}
+.manage-main section header {
+  grid-row: 1/2;
+}
+.manage-main section header #dates-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.manage-main section header #subject-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.manage-main section header #receiver-tickets {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+
+/*--▼ .coworker-main ▼--*/
+.coworker-main {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.coworker-main #open-coworkers {
+  grid-column: 1/2;
+  grid-row: 1/3;
+  margin-right: 1rem;
+  border-radius: 0 0 1rem 0;
+}
+.coworker-main #open-coworkers svg {
+  cursor: pointer;
+  color: #f58a07;
+}
+.coworker-main #open-coworkers:hover {
+  background: #4c72a4;
+}
+.coworker-main #resolved-tab {
+  grid-column: 8/9;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.coworker-main #deleted-tab {
+  grid-column: 8/9;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.coworker-main #coworker-header {
+  grid-column: 2/8;
+  grid-row: 2/4;
+}
+.coworker-main section {
+  border-radius: 1rem 0 0 1rem;
+}
+.coworker-main section header {
+  grid-row: 1/2;
+}
+.coworker-main section header #dates-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.coworker-main section header #subject-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.coworker-main section header #sender-tickets {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+
+/*--▼ .user-main ▼--*/
+.user-main {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.user-main #open-employees {
+  grid-column: 9/10;
+  grid-row: 1/3;
+  margin-left: 1rem;
+  border-radius: 0 0 0 1rem;
+}
+.user-main #open-employees svg {
+  cursor: pointer;
+  color: #f58a07;
+}
+.user-main #open-employees:hover {
+  background: #4c72a4;
+}
+.user-main #user-notification {
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+.user-main #assigned-tab {
+  grid-column: 4/5;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.user-main #resolved-tab {
+  grid-column: 8/9;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.user-main #deleted-tab {
+  grid-column: 8/9;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.user-main section {
+  border-radius: 1rem 0 0 1rem;
+}
+.user-main section header {
+  grid-row: 1/2;
+}
+.user-main section header #dates-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.user-main section header #subject-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.user-main section header #sender-tickets {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+.user-main #user-name {
+  grid-column: 2/8;
+  grid-row: 19/21;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  color: #084887;
+}
+
+/*--▼ .colleague-main ▼--*/
+.colleague-main {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.colleague-main #open-employees {
+  grid-column: 9/10;
+  grid-row: 1/3;
+  margin-left: 1rem;
+  border-radius: 0 0 0 1rem;
+  color: #f58a07;
+}
+.colleague-main #open-employees svg:hover {
+  cursor: pointer;
+  color: #f58a07;
+}
+.colleague-main #open-employees:hover {
+  color: white;
+  background: #4c72a4;
+}
+.colleague-main #assigned-tab {
+  grid-column: 4/5;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.colleague-main #resolved-tab {
+  grid-column: 8/9;
+  grid-row: 2/4;
+  border-radius: 1rem 1rem 0 0;
+}
+.colleague-main #deleted-tab {
+  grid-column: 8/9;
+  grid-row: 19/21;
+  border-radius: 0 0 1rem 1rem;
+}
+.colleague-main section {
+  border-radius: 1rem 0 0 1rem;
+}
+.colleague-main section header {
+  grid-row: 1/2;
+}
+.colleague-main section header #dates-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.colleague-main section header #subject-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.colleague-main section header #sender-tickets {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+.colleague-main #colleague-notification {
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+.colleague-main #colleague-name {
+  grid-column: 2/8;
+  grid-row: 19/21;
+}

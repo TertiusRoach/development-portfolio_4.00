@@ -1,0 +1,37 @@
+<!--▲ Default: style="display: grid" ▲-->
+<!--► class="user-deleted" ◄-->
+<button id="close-overlay">
+  <div><i class="fad fa-times fa-2x"></i></div>
+</button>
+
+<section id="ticket-container" style="display: grid">
+  <header id="ticket-top">
+    <input id="ticket-subject" value="${subjectText}" type="text" readonly />
+
+    <div id="recycle-ticket">
+      <button class="">
+        <i class="fad fa-trash-undo-alt fa-4x"></i>
+        <h1>Recycle Ticket</h1>
+      </button>
+    </div>
+  </header>
+  <footer id="ticket-bot">
+    <textarea id="ticket-description" readonly>${descriptionText}</textarea>
+
+    <section>
+      <h4 id="sender-department">${senderDepartment}</h4>
+      <h4 id="colleague-name">${senderName}</h4>
+
+      <h4 id="pending-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="assigned-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="deleted-date">${00 Weekday, Month YYYY}</h4>
+      <textarea id="deleted-note" readonly>${deletedNote}</textarea>
+    </section>
+  </footer>
+</section>
+
+<div class="deleted-mark" style="background: #084887"><h1>Deleted</h1></div>
+<div class="assigned-mark"><h1>Assigned</h1></div>
+
+<div id="overlay-canvas"></div>
+<div id="overlay-background"></div>

@@ -1,0 +1,29 @@
+<!--▲ Default: style="display: grid" ▲-->
+<!--► class="coworker-resolved" ◄-->
+<button id="close-overlay">
+  <div><i class="fad fa-times fa-2x"></i></div>
+</button>
+
+<section id="ticket-container" style="display: grid">
+  <header id="ticket-top">
+    <input id="ticket-subject" value="${subjectText}" type="text" readonly />
+  </header>
+  <footer id="ticket-bot">
+    <textarea id="ticket-description" readonly>${descriptionText}</textarea>
+
+    <section>
+      <h4 id="receiver-department">${receiverDepartment}</h4>
+      <h4 id="colleague-name">${colleagueName}</h4>
+
+      <h4 id="pending-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="assigned-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="resolved-date">${00 Weekday, Month YYYY}</h4>
+      <textarea id="resolved-note" readonly>${resolvedNote}</textarea>
+    </section>
+  </footer>
+</section>
+
+<div class="resolved-mark" style="background: #084887"><h1>Resolved</h1></div>
+
+<div id="overlay-canvas"></div>
+<div id="overlay-background"></div>

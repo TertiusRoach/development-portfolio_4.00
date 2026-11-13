@@ -1,0 +1,72 @@
+@import 'colors.scss';
+/*--|►| #index-body <Body> |◄|--*/
+* {
+  font-family: 'Baloo Bhai 2', arial;
+  padding: 0;
+  margin: 0;
+}
+/*--▼ .default-body ▼--*/
+#index-body {
+  display: grid;
+  height: 100vh;
+
+  grid-template-columns: 80px repeat(10, 1fr) 80px;
+  grid-template-rows: 40px repeat(20, 1fr) 40px;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.default-body {
+  #user-form {
+    grid-column: 5/8;
+    grid-row: 1/2;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    select {
+      width: 75%;
+      cursor: pointer;
+
+      border-radius: 1rem;
+      padding-left: 1rem;
+      line-height: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 5px 0;
+      height: 30px;
+
+      color: $primary-dark;
+      border: 2px solid $primary-light;
+    }
+    select:hover {
+      border: 2px solid $secondary-dark;
+    }
+  }
+
+  #preloader {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    z-index: 4;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: white;
+  }
+}

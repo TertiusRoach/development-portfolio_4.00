@@ -1,0 +1,78 @@
+<!--▲ Default: style="display: grid" ▲-->
+<!--► class="manage-pending" ◄-->
+<button id="close-overlay">
+  <div><i class="fad fa-times fa-2x"></i></div>
+</button>
+
+<section id="ticket-container" style="display: grid">
+  <header id="ticket-top">
+    <input id="ticket-subject" value="${subjectText}" type="text" readonly />
+
+    <div id="assign-ticket" style="display: none">
+      <!--► Default: class="disabled-button" ◄-->
+      <button class="disabled-button">
+        <i class="fad fa-user-plus fa-4x"></i>
+        <h1>Assign Ticket</h1>
+      </button>
+    </div>
+    <div id="claim-ticket">
+      <button class="">
+        <i class="fad fa-plus fa-4x"></i>
+        <h1>Claim Ticket</h1>
+      </button>
+    </div>
+    <div id="move-ticket" style="display: none">
+      <!--► Default: class="disabled-button" ◄-->
+      <button class="disabled-button">
+        <i class="fad fa-truck-moving fa-4x"></i>
+        <h1>Move Ticket</h1>
+      </button>
+    </div>
+    <div id="save-ticket" style="display: none">
+      <!--► Default: class="disabled-button" ◄-->
+      <button class="disabled-button">
+        <i class="fad fa-save fa-4x"></i>
+        <h1>Save Ticket</h1>
+      </button>
+    </div>
+  </header>
+  <footer id="ticket-bot">
+    <textarea id="ticket-description" readonly>${descriptionText}</textarea>
+
+    <section>
+      <form id="department-form">
+        <select>
+          <option value="department-select" selected>${departmentName}</option>
+        </select>
+      </form>
+
+      <form id="colleague-form">
+        <select>
+          <option value="colleague-select" disabled>Pick Colleague</option>
+
+          <option value="name-surname" selected>${userName}</option>
+          <option value="name-surname">Name Surname</option>
+          <option value="name-surname">Name Surname</option>
+        </select>
+      </form>
+
+      <h4 id="pending-date">${00 Weekday, Month YYYY}</h4>
+      <h4 id="assigned-date" class="disabled-text">undefined</h4>
+      <h4 id="deleted-date" class="disabled-text">undefined</h4>
+    </section>
+  </footer>
+</section>
+
+<div class="pending-mark" style="background: #084887"><h1>Pending</h1></div>
+<div class="assigned-mark"><h1>Assigned</h1></div>
+<!--▼ Button Sample ▼-->
+<div id="delete-ticket">
+  <button class="">
+    <i class="fad fa-trash-alt fa-3x"></i>
+    <h2>Delete Ticket</h2>
+  </button>
+</div>
+<!--▲ Button Sample ▲-->
+
+<div id="overlay-canvas"></div>
+<div id="overlay-background"></div>

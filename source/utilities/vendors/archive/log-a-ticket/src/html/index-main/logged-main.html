@@ -1,0 +1,141 @@
+<!--▲ style="display: grid" ▲-->
+<!--► class="logged-main" ◄-->
+<header id="logged-header">
+  <span class="notification">
+    <h2 style="background: #f8af58">0</h2>
+  </span>
+  <h1 class="text">${userName}</h1>
+</header>
+
+<button id="open-coworkers">
+  <i class="fad fa-user-friends fa-2x"></i>
+</button>
+
+<button id="pending-tab" class="active-tab" onClick="$('.active-tab').removeClass('active-tab'); $(this).addClass('active-tab');">
+  <div><h1>Pending</h1></div>
+</button>
+<button id="assigned-tab" class="" onClick="$('.active-tab').removeClass('active-tab'); $(this).addClass('active-tab');">
+  <div><h1>Assigned</h1></div>
+</button>
+<button id="deleted-tab" class="" onClick="$('.active-tab').removeClass('active-tab'); $(this).addClass('active-tab');">
+  <div><h1>Deleted</h1></div>
+</button>
+
+<section>
+  <header>
+    <button id="dates-tickets">
+      <i class="fad fa-sort-numeric-down"></i>
+      <h4>Date</h4>
+    </button>
+
+    <div id="subject-tickets">
+      <h4>Subject</h4>
+    </div>
+
+    <button id="receiver-tickets">
+      <i class="fad fa-sort-alpha-down"></i>
+      <h4>Receiver</h4>
+    </button>
+  </header>
+
+  <div id="tickets-container" class="pending-tickets">
+    <article class="pending" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <header>
+        <p class="shortdate">${dateShort}</p>
+        <p class="subject">${subjectText}</p>
+        <p class="receiver">${receiverName}</p>
+      </header>
+      <footer style="display: none">
+        <p class="ticket-status">${ticketStatus}</p>
+        <p class="ticket-rating">${ticketRating}</p>
+        <p class="subject-text">${subjectText}</p>
+        <p class="description-text">${descriptionText}</p>
+        <p class="sender-name">${senderName}</p>
+        <p class="sender-department">${senderDepartment}</p>
+        <p class="receiver-name">${receiverName}</p>
+        <p class="receiver-department">${receiverDepartment}</p>
+        <p class="date-short">${dateShort}</p>
+        <p class="date-pending">${datePending}</p>
+        <p class="date-assigned">${dateAssigned}</p>
+        <p class="date-resolved">${dateResolved}</p>
+        <p class="note-resolved">${noteResolved}</p>
+        <p class="date-deleted">${dateDeleted}</p>
+        <p class="note-deleted">${noteDeleted}</p>
+      </footer>
+    </article>
+    <article class="assigned" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <header>
+        <p class="shortdate">${dateShort}</p>
+        <p class="subject">${subjectText}</p>
+        <p class="receiver">${receiverName}</p>
+      </header>
+      <footer style="display: none">
+        <p class="ticket-status">${ticketStatus}</p>
+        <p class="ticket-rating">${ticketRating}</p>
+        <p class="subject-text">${subjectText}</p>
+        <p class="description-text">${descriptionText}</p>
+        <p class="sender-name">${senderName}</p>
+        <p class="sender-department">${senderDepartment}</p>
+        <p class="receiver-name">${receiverName}</p>
+        <p class="receiver-department">${receiverDepartment}</p>
+        <p class="date-short">${dateShort}</p>
+        <p class="date-pending">${datePending}</p>
+        <p class="date-assigned">${dateAssigned}</p>
+        <p class="date-resolved">${dateResolved}</p>
+        <p class="note-resolved">${noteResolved}</p>
+        <p class="date-deleted">${dateDeleted}</p>
+        <p class="note-deleted">${noteDeleted}</p>
+      </footer>
+    </article>
+    <article class="resolved" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <header>
+        <p class="shortdate">${dateShort}</p>
+        <p class="subject">${subjectText}</p>
+        <p class="receiver">${receiverName}</p>
+      </header>
+      <footer style="display: none">
+        <p class="ticket-status">${ticketStatus}</p>
+        <p class="ticket-rating">${ticketRating}</p>
+        <p class="subject-text">${subjectText}</p>
+        <p class="description-text">${descriptionText}</p>
+        <p class="sender-name">${senderName}</p>
+        <p class="sender-department">${senderDepartment}</p>
+        <p class="receiver-name">${receiverName}</p>
+        <p class="receiver-department">${receiverDepartment}</p>
+        <p class="date-short">${dateShort}</p>
+        <p class="date-pending">${datePending}</p>
+        <p class="date-assigned">${dateAssigned}</p>
+        <p class="date-resolved">${dateResolved}</p>
+        <p class="note-resolved">${noteResolved}</p>
+        <p class="date-deleted">${dateDeleted}</p>
+        <p class="note-deleted">${noteDeleted}</p>
+      </footer>
+    </article>
+    <article class="deleted" onClick="$('.active-ticket').removeClass('active-ticket'); $(this).addClass('active-ticket');">
+      <header>
+        <p class="shortdate">${dateShort}</p>
+        <p class="subject">${subjectText}</p>
+        <p class="receiver">${receiverName}</p>
+      </header>
+      <footer style="display: none">
+        <p class="ticket-status">${ticketStatus}</p>
+        <p class="ticket-rating">${ticketRating}</p>
+        <p class="subject-text">${subjectText}</p>
+        <p class="description-text">${descriptionText}</p>
+        <p class="sender-name">${senderName}</p>
+        <p class="sender-department">${senderDepartment}</p>
+        <p class="receiver-name">${receiverName}</p>
+        <p class="receiver-department">${receiverDepartment}</p>
+        <p class="date-short">${dateShort}</p>
+        <p class="date-pending">${datePending}</p>
+        <p class="date-assigned">${dateAssigned}</p>
+        <p class="date-resolved">${dateResolved}</p>
+        <p class="note-resolved">${noteResolved}</p>
+        <p class="date-deleted">${dateDeleted}</p>
+        <p class="note-deleted">${noteDeleted}</p>
+      </footer>
+    </article>
+  </div>
+
+  <div id="tickets-background"></div>
+</section>

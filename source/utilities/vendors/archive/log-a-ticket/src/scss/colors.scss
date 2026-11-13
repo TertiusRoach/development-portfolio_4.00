@@ -1,0 +1,32 @@
+/*--|►| Colors |◄|--*/
+$primary-dark: #084887;
+$primary-medium: #4c72a4;
+$primary-light: #909cc2;
+
+$secondary-dark: #f58a07;
+$secondary-medium: #f8af58;
+$secondary-light: #fcd5aa;
+
+$tertiary-dark: #024d04;
+$tertiary-medium: #08870c;
+$tertiary-light: #94be94;
+
+// ---------------------- //
+$pending-default: #f8af58;
+$pending-opacity: rgba(245, 138, 7, 0.15);
+
+$assigned-default: #4c72a4;
+$assigned-opacity: rgba(144, 156, 194, 0.75);
+$assigned-note: #94a9c5;
+
+$resolved-default: #08870c;
+$resolved-opacity: rgba(8, 135, 12, 0.15);
+$resolved-note: #cce2cc;
+
+$deleted-default: #f95555;
+$deleted-opacity: rgba(249, 85, 85, 0.15);
+$deleted-note: #e7c3c3;
+
+$ticket-odd: #eef0f6;
+$ticket-even: #cdd2e3;
+$disabled-default: #646e7e;

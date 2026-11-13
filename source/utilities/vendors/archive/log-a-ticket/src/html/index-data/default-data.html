@@ -1,0 +1,105 @@
+<!--► class="default-data" ◄-->
+<!--▲ Default: style="display: none" ▲-->
+<div id="departments-data">
+  <article id="${departmentName}">
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+  </article>
+
+  <article id="${departmentName}">
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+  </article>
+
+  <article id="${departmentName}">
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+
+    <span onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="firstName-lastName">${firstName} ${lastName}</h1>
+    </span>
+  </article>
+</div>
+
+<div id="employees-data">
+  <article id="${firstName}-{middleName}-${lastName}-${department}">
+    <p class="first-name">${firstName}</p>
+    <p class="middle-name">${middleName}</p>
+    <p class="last-name">${lastName}</p>
+    <p class="department">${department}</p>
+    <p class="occupation">${occupation}</p>
+    <p class="role">${role}</p>
+    <p class="email">${email}</p>
+    <p class="phone">${phone}</p>
+  </article>
+
+  <article id="${department}-${firstName}-{middleName}-${lastName}">
+    <p class="first-name">${firstName}</p>
+    <p class="middle-name">${middleName}</p>
+    <p class="last-name">${lastName}</p>
+    <p class="department">${department}</p>
+    <p class="occupation">${occupation}</p>
+    <p class="role">${role}</p>
+    <p class="email">${email}</p>
+    <p class="phone">${phone}</p>
+  </article>
+</div>
+
+<div id="tickets-data">
+  <article class="${ticketStatus.toLowerCase()}">
+    <header>
+      <p class="shortdate">${dateShort}</p>
+      <p class="subject">${subjectText}</p>
+      <p class="receiver">${receiverDefault()}</p>
+    </header>
+    <footer>
+      <p class="ticket-status">${ticketStatus}</p>
+      <p class="ticket-rating">${ticketRating}</p>
+      <p class="subject-text">${subjectText}</p>
+      <p class="description-text">${descriptionText}</p>
+      <p class="sender-name">${senderName}</p>
+      <p class="sender-department">${senderDepartment}</p>
+      <p class="receiver-name">${receiverName}</p>
+      <p class="receiver-department">${receiverDepartment}</p>
+      <p class="date-short">${dateShort}</p>
+      <p class="date-pending">${datePending}</p>
+      <p class="date-assigned">${dateAssigned}</p>
+      <p class="date-resolved">${dateResolved}</p>
+      <p class="note-resolved">${noteResolved}</p>
+      <p class="date-deleted">${dateDeleted}</p>
+      <p class="note-deleted">${noteDeleted}</p>
+    </footer>
+  </article>
+</div>

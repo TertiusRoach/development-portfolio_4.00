@@ -1,0 +1,106 @@
+@import 'colors.scss';
+/*--|►| #index-header <Header> |◄|--*/
+#index-header {
+  grid-column: 1/13;
+  width: 100%;
+  z-index: 1;
+
+  display: grid;
+  position: fixed;
+  grid-template-columns: 80px repeat(10, 1fr) 80px;
+  grid-template-rows: 40px;
+
+  height: 40px;
+  background: $primary-dark;
+  div {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    button {
+      grid-column: 2/3;
+      grid-row: 1/2;
+
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      h4 {
+        overflow: hidden;
+        white-space: nowrap;
+
+        line-height: 1rem;
+        padding-left: 1rem;
+      }
+      border: none;
+      color: white;
+      background: none;
+    }
+    button:hover {
+      color: $secondary-dark;
+    }
+
+    .active-page {
+      cursor: default;
+      color: $secondary-dark;
+    }
+  }
+
+  @media only screen and (max-width: 910px) {
+    #logged-tickets,
+    #manage-tickets {
+      button {
+        h4 {
+          white-space: pre-wrap;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 650px) {
+    #log-a-ticket {
+      button {
+        h4 {
+          overflow: visible;
+          display: inherit;
+        }
+      }
+    }
+    #logged-tickets,
+    #manage-tickets {
+      button {
+        h4 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .default-header ▼--*/
+.default-header {
+  #logged-tickets {
+    grid-column: 2/4;
+    justify-content: left;
+  }
+  #log-a-ticket {
+    grid-column: 8/10;
+    grid-row: 1/2;
+    justify-content: center;
+  }
+  #manage-tickets {
+    grid-column: 10/12;
+    grid-row: 1/2;
+    justify-content: right;
+  }
+
+  #user-form {
+    grid-column: 5/7;
+  }
+}

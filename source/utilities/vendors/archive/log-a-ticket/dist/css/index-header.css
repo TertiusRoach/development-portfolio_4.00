@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/*--|►| Colors |◄|--*/
+/*--|►| #index-header <Header> |◄|--*/
+#index-header {
+  grid-column: 1/13;
+  width: 100%;
+  z-index: 1;
+  display: grid;
+  position: fixed;
+  grid-template-columns: 80px repeat(10, 1fr) 80px;
+  grid-template-rows: 40px;
+  height: 40px;
+  background: #084887;
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+#index-header div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+#index-header div button {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: none;
+  color: white;
+  background: none;
+}
+#index-header div button h4 {
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+#index-header div button:hover {
+  color: #f58a07;
+}
+#index-header div .active-page {
+  cursor: default;
+  color: #f58a07;
+}
+@media only screen and (max-width: 910px) {
+  #index-header #logged-tickets button h4,
+#index-header #manage-tickets button h4 {
+    white-space: pre-wrap;
+  }
+}
+@media only screen and (max-width: 650px) {
+  #index-header #log-a-ticket button h4 {
+    overflow: visible;
+    display: inherit;
+  }
+  #index-header #logged-tickets button h4,
+#index-header #manage-tickets button h4 {
+    display: none;
+  }
+}
+
+/*--▼ .default-header ▼--*/
+.default-header #logged-tickets {
+  grid-column: 2/4;
+  justify-content: left;
+}
+.default-header #log-a-ticket {
+  grid-column: 8/10;
+  grid-row: 1/2;
+  justify-content: center;
+}
+.default-header #manage-tickets {
+  grid-column: 10/12;
+  grid-row: 1/2;
+  justify-content: right;
+}
+.default-header #user-form {
+  grid-column: 5/7;
+}

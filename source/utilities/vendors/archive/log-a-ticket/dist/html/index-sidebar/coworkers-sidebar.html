@@ -1,0 +1,66 @@
+<!--▲ Default: style="display: grid" ▲-->
+<!--► class="coworkers-sidebar" ◄-->
+<section id="view-coworkers">
+  <header>
+    <form id="department-form">
+      <select>
+        <option value="department" selected>${userDepartment}</option>
+        <option value="department">${coworkerDepartment}</option>
+        <option value="department">${coworkerDepartment}</option>
+        <option value="department">${coworkerDepartment}</option>
+      </select>
+    </form>
+  </header>
+
+  <footer>
+    <span class="active-colleague" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">+99</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">+99</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">+99</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">+99</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">0</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+    <span class="" onClick="$('.active-colleague').removeClass('active-colleague'); $(this).addClass('active-colleague');">
+      <h1 class="notification">+99</h1>
+      <h1 class="text">${coworkerName}</h1>
+    </span>
+  </footer>
+</section>
+
+<div id="close-coworkers">
+  <button>
+    <i class="fad fa-times fa-2x"></i>
+    <!-- <i class="fad fa-user-plus fa-2x"></i> -->
+  </button>
+</div>
+
+<div id="sidebar-background"></div>

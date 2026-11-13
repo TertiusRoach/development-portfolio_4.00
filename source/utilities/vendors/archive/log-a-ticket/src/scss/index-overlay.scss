@@ -1,0 +1,1735 @@
+@import 'colors.scss';
+/*--|►| #index-overlay <Section> |◄|--*/
+/*--▼ .default-overlay ▼--*/
+#index-overlay {
+  grid-column: 1/13;
+  grid-row: 1/23;
+  z-index: 3;
+
+  display: grid;
+  grid-template-columns: 5rem 1fr 1rem 1fr 1rem 1fr 1rem 1fr 5rem;
+  grid-template-rows: 40px repeat(20, 1fr) 40px;
+
+  button {
+    background: none;
+    overflow: hidden;
+    border: none;
+    svg,
+    div {
+      cursor: pointer;
+    }
+  }
+  section {
+    display: inherit;
+    overflow: hidden;
+    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-rows: 1rem 5rem 1fr 1rem;
+
+    header {
+      filter: drop-shadow(0 0 8px black);
+      grid-column: 2/3;
+      grid-row: 2/3;
+
+      display: inherit;
+      grid-template-columns: 1fr 24rem;
+      grid-template-rows: 5rem;
+
+      input {
+        resize: none;
+        display: flex;
+        outline: none;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 1rem;
+        padding-left: 1rem;
+        line-height: 1rem;
+        margin-top: 14px;
+        font-weight: 600;
+        font-size: 1rem;
+        height: 3rem;
+
+        border: 2px solid $primary-light;
+        color: $primary-dark;
+      }
+      input:hover {
+        filter: drop-shadow(0 0 8px black);
+        border: 2px solid $secondary-light;
+      }
+      input:read-only {
+        cursor: default;
+        border: none;
+        color: white;
+        background: none;
+
+        padding-left: 8px;
+      }
+    }
+    footer {
+      filter: drop-shadow(0 0 8px black);
+      grid-column: 2/3;
+      grid-row: 3/4;
+
+      display: inherit;
+      grid-template-columns: 1fr 24rem;
+      grid-template-rows: 1fr;
+
+      textarea {
+        resize: none;
+        display: flex;
+        outline: none;
+        align-items: center;
+        justify-content: center;
+
+        padding: 8px 8px 0 8px;
+        border-radius: 1rem;
+        line-height: 1rem;
+        font-weight: 600;
+        font-size: 1rem;
+        height: 98%;
+
+        border: 2px solid $primary-light;
+        color: $primary-dark;
+      }
+      textarea:hover {
+        filter: drop-shadow(0 0 8px black);
+        border: 2px solid $secondary-light;
+      }
+      textarea:read-only {
+        cursor: default;
+        resize: none;
+        border: none;
+        display: flex;
+        outline: none;
+        background: none;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0 8px 0 8px;
+        border-radius: 1rem;
+        line-height: 1rem;
+        font-weight: 600;
+        font-size: 1rem;
+
+        color: white;
+      }
+
+      #resolved-note {
+        color: $resolved-note;
+      }
+      #deleted-note {
+        color: $deleted-note;
+      }
+
+      section {
+        grid-column: 2/3;
+        grid-row: 1/2;
+
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+        form {
+          margin-left: 1rem;
+          select {
+            width: 100%;
+            cursor: pointer;
+
+            border-radius: 1rem;
+            padding-left: 1rem;
+            line-height: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            height: 3rem;
+
+            color: $primary-dark;
+            border: 2px solid $primary-light;
+          }
+          select:hover {
+            border: 2px solid $secondary-light;
+          }
+        }
+        h4 {
+          cursor: default;
+          margin: 0 0 1rem 1rem;
+        }
+        h4:hover {
+          filter: drop-shadow(0 0 8px black);
+        }
+
+        [id*='name'] {
+          color: white;
+        }
+        [id*='pending'] {
+          color: $pending-default;
+        }
+        [id*='assigned'] {
+          color: $assigned-note;
+        }
+        [id*='resolved'] {
+          color: $resolved-note;
+        }
+        [id*='deleted'] {
+          color: $deleted-note;
+        }
+
+        #sender-department,
+        #receiver-department {
+          cursor: default;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          color: white;
+        }
+      }
+      section .disabled-text {
+        color: $disabled-default;
+        opacity: 0.5;
+      }
+      button {
+        grid-column: 2/3;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 24rem;
+        div {
+          font-size: 2rem;
+          padding-left: 1rem;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+
+  [class*='mark'] {
+    display: flex;
+    cursor: default;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    background: $primary-medium;
+  }
+  .pending-mark {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    border-radius: 1rem 1rem 0 0;
+  }
+  .assigned-mark {
+    grid-column: 4/5;
+    grid-row: 3/5;
+
+    border-radius: 1rem 1rem 0 0;
+  }
+  .resolved-mark {
+    grid-column: 8/9;
+    grid-row: 3/5;
+
+    border-radius: 1rem 1rem 0 0;
+  }
+  .deleted-mark {
+    grid-column: 8/9;
+    grid-row: 20/22;
+
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  #overlay-background {
+    grid-column: 1/10;
+    grid-row: 1/23;
+    z-index: -2;
+
+    opacity: 0.75;
+    background-color: black;
+  }
+
+  #close-overlay {
+    div {
+      filter: drop-shadow(0 0 4px $primary-dark);
+      cursor: default;
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      svg {
+        grid-column: 2/3;
+        grid-row: 1/2;
+
+        width: 100%;
+      }
+      svg:hover {
+        cursor: pointer;
+        color: $secondary-dark;
+      }
+    }
+  }
+  #close-overlay:hover {
+    background: $primary-medium;
+  }
+
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .default-overlay ▼--*/
+.default-overlay {
+  grid-column: 3/8;
+  grid-row: 3/21;
+
+  display: grid;
+  grid-template-columns: 1rem 1fr 1rem;
+  grid-template-rows: 1rem 1fr 1rem 3fr 1rem;
+  header {
+    grid-column: 3/8;
+    grid-row: 3/11;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    div {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 7.5rem;
+      }
+    }
+  }
+  footer {
+    grid-column: 3/8;
+    grid-row: 6/21;
+
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr 150px 1fr;
+      grid-template-rows: 1fr 105px 1fr;
+    }
+    #manager-tickets {
+      grid-column: 1/2;
+      grid-row: 1/2;
+
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        color: white;
+      }
+      button:hover {
+        svg,
+        h1 {
+          cursor: pointer;
+          color: $secondary-dark;
+        }
+      }
+    }
+    #employee-tickets {
+      grid-column: 2/3;
+      grid-row: 1/2;
+
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        color: white;
+      }
+      button:hover {
+        svg,
+        h1 {
+          cursor: pointer;
+          color: $secondary-dark;
+        }
+      }
+    }
+  }
+
+  #overlay-canvas {
+    grid-column: 3/8;
+    grid-row: 3/21;
+    z-index: -1;
+
+    border-radius: 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .log-overlay ▼--*/
+.log-overlay {
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+  }
+  #ticket-container {
+    #ticket-top #log-ticket,
+    #ticket-top #assign-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 0 1rem 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .logged-pending ▼--*/
+.logged-pending {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #delete-ticket,
+    #ticket-top #assign-ticket,
+    #ticket-top #move-ticket,
+    #ticket-top #save-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+
+    /*
+    #ticket-top {
+      .delete-ticket {
+        color: $deleted-default;
+      }
+      .assign-ticket {
+        color: $assigned-default;
+      }
+    }
+    */
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 0 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .logged-assigned ▼--*/
+.logged-assigned {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top {
+      .delete-ticket {
+        color: $deleted-default;
+      }
+      .assign-ticket {
+        color: $assigned-default;
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .logged-resolved ▼--*/
+.logged-resolved {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top {
+      .delete-ticket {
+        color: $deleted-default;
+      }
+      .assign-ticket {
+        color: $assigned-default;
+      }
+    }
+    #ticket-bot {
+      #resolved-note:read-only {
+        margin-left: 1rem;
+        height: 100%;
+        border: 2px solid $resolved-default;
+        color: white;
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .logged-deleted ▼--*/
+.logged-deleted {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top {
+      .delete-ticket {
+        color: $deleted-default;
+      }
+      .assign-ticket {
+        color: $assigned-default;
+      }
+    }
+    /*
+    #ticket-bot {
+      #deleted-note:read-only {
+        margin-left: 1rem;
+        height: 100%;
+        border: 2px solid $deleted-default;
+        color: white;
+      }
+    }
+    */
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .manage-pending ▼--*/
+.manage-pending {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #assign-ticket,
+    #ticket-top #claim-ticket,
+    #ticket-top #move-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 0 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+
+  #delete-ticket {
+    grid-column: 8/9;
+    grid-row: 20/22;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    button {
+      cursor: pointer;
+      grid-column: 2/3;
+      grid-row: 2/3;
+      width: 100%;
+
+      display: flex;
+      overflow: visible;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        white-space: nowrap;
+
+        line-height: 1rem;
+        padding-left: 1rem;
+      }
+      border: none;
+      color: white;
+      background: none;
+    }
+    button:hover {
+      color: $deleted-default;
+    }
+    .disabled-button,
+    .disabled-button:hover {
+      filter: drop-shadow(0 0 8px black);
+      cursor: default;
+      color: $disabled-default;
+      opacity: 0.75;
+      svg {
+        cursor: default;
+      }
+    }
+
+    border-radius: 0 0 1rem 1rem;
+    background: $primary-light;
+  }
+  #delete-ticket:hover {
+    background: $primary-medium;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .manage-deleted ▼--*/
+.manage-deleted {
+  #close-overlay {
+    grid-column: 4/5;
+    grid-row: 3/5;
+    // z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    width: 3rem;
+    border-radius: 1rem 1rem 0 0;
+    background: $primary-light;
+    svg {
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #restore-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+  #department-name {
+    grid-column: 4/9;
+    grid-row: 3/5;
+    z-index: -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    cursor: default;
+
+    margin-left: 4rem;
+    color: white;
+  }
+
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 0 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .user-assigned ▼--*/
+.user-assigned {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #resolve-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 0 1rem;
+    background-color: $primary-dark;
+  }
+
+  #delete-ticket {
+    grid-column: 8/9;
+    grid-row: 20/22;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    button {
+      cursor: pointer;
+      grid-column: 2/3;
+      grid-row: 2/3;
+      width: 100%;
+
+      display: flex;
+      overflow: visible;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        white-space: nowrap;
+
+        line-height: 1rem;
+        padding-left: 1rem;
+      }
+      border: none;
+      color: white;
+      background: none;
+    }
+    button:hover {
+      color: $deleted-default;
+    }
+    .disabled-button,
+    .disabled-button:hover {
+      filter: drop-shadow(0 0 8px black);
+      cursor: default;
+      color: $disabled-default;
+      opacity: 0.75;
+      svg {
+        cursor: default;
+      }
+    }
+
+    border-radius: 0 0 1rem 1rem;
+    background: $primary-light;
+  }
+  #delete-ticket:hover {
+    background: $primary-medium;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .user-resolved ▼--*/
+.user-resolved {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #unlock-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .user-deleted ▼--*/
+.user-deleted {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #recycle-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+    /*
+    #ticket-bot {
+      #deleted-note:read-only {
+        margin-left: 1rem;
+        height: 100%;
+        border: 2px solid $deleted-default;
+        color: white;
+      }
+      */
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .colleague-assigned ▼--*/
+.colleague-assigned {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+
+    #ticket-top #take-ticket {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $secondary-dark;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .colleague-resolved ▼--*/
+.colleague-resolved {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .colleague-deleted ▼--*/
+.colleague-deleted {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .coworker-resolved ▼--*/
+.coworker-resolved {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .coworker-deleted ▼--*/
+.coworker-deleted {
+  #close-overlay {
+    grid-column: 2/3;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 2/9;
+    grid-row: 5/20;
+  }
+  #overlay-canvas {
+    grid-column: 2/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+
+/*--▼ .resolve-overlay ▼--*/
+.resolve-overlay {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 5/9;
+    grid-row: 5/20;
+
+    #ticket-note {
+      grid-column: 2/3;
+      grid-row: 3/4;
+
+      resize: none;
+      display: flex;
+      outline: none;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 1rem;
+      line-height: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem;
+
+      border: 2px solid $primary-light;
+      color: $primary-dark;
+    }
+    #ticket-note:hover {
+      border: 2px solid $resolved-default;
+    }
+
+    #resolve-ticket {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $resolved-default;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 5/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 0 1rem 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+/*--▼ .delete-overlay ▼--*/
+.delete-overlay {
+  #close-overlay {
+    grid-column: 6/7;
+    grid-row: 3/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 40%;
+    border-radius: 1rem 1rem 0 0;
+    color: white;
+    background: $primary-light;
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 4rem;
+    }
+  }
+  #ticket-container {
+    grid-column: 5/9;
+    grid-row: 5/20;
+
+    #ticket-note {
+      grid-column: 2/3;
+      grid-row: 3/4;
+
+      resize: none;
+      display: flex;
+      outline: none;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 1rem;
+      line-height: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem;
+
+      border: 2px solid $primary-light;
+      color: $primary-dark;
+    }
+    #ticket-note:hover {
+      border: 2px solid $deleted-default;
+    }
+
+    #delete-ticket {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      button {
+        grid-column: 2/3;
+        grid-row: 2/3;
+
+        display: flex;
+        overflow: visible;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        h1 {
+          white-space: nowrap;
+
+          line-height: 1rem;
+          padding-left: 1rem;
+        }
+        border: none;
+        color: white;
+        background: none;
+      }
+      button:hover {
+        color: $deleted-default;
+      }
+      .disabled-button,
+      .disabled-button:hover {
+        cursor: default;
+        color: $disabled-default;
+        opacity: 0.5;
+        svg {
+          cursor: default;
+        }
+      }
+    }
+  }
+  #overlay-canvas {
+    grid-column: 5/9;
+    grid-row: 5/20;
+    z-index: -1;
+
+    border-radius: 1rem 1rem 0 1rem;
+    background-color: $primary-dark;
+  }
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}

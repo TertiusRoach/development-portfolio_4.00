@@ -1,0 +1,1605 @@
+@charset "UTF-8";
+/*--|►| Colors |◄|--*/
+/*--|►| #index-overlay <Section> |◄|--*/
+/*--▼ .default-overlay ▼--*/
+#index-overlay {
+  grid-column: 1/13;
+  grid-row: 1/23;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 5rem 1fr 1rem 1fr 1rem 1fr 1rem 1fr 5rem;
+  grid-template-rows: 40px repeat(20, 1fr) 40px;
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+#index-overlay button {
+  background: none;
+  overflow: hidden;
+  border: none;
+}
+#index-overlay button svg,
+#index-overlay button div {
+  cursor: pointer;
+}
+#index-overlay section {
+  display: inherit;
+  overflow: hidden;
+  grid-template-columns: 1rem 1fr 1rem;
+  grid-template-rows: 1rem 5rem 1fr 1rem;
+}
+#index-overlay section header {
+  filter: drop-shadow(0 0 8px black);
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: inherit;
+  grid-template-columns: 1fr 24rem;
+  grid-template-rows: 5rem;
+}
+#index-overlay section header input {
+  resize: none;
+  display: flex;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  line-height: 1rem;
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 3rem;
+  border: 2px solid #909cc2;
+  color: #084887;
+}
+#index-overlay section header input:hover {
+  filter: drop-shadow(0 0 8px black);
+  border: 2px solid #fcd5aa;
+}
+#index-overlay section header input:read-only {
+  cursor: default;
+  border: none;
+  color: white;
+  background: none;
+  padding-left: 8px;
+}
+#index-overlay section footer {
+  filter: drop-shadow(0 0 8px black);
+  grid-column: 2/3;
+  grid-row: 3/4;
+  display: inherit;
+  grid-template-columns: 1fr 24rem;
+  grid-template-rows: 1fr;
+}
+#index-overlay section footer textarea {
+  resize: none;
+  display: flex;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 8px 0 8px;
+  border-radius: 1rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 98%;
+  border: 2px solid #909cc2;
+  color: #084887;
+}
+#index-overlay section footer textarea:hover {
+  filter: drop-shadow(0 0 8px black);
+  border: 2px solid #fcd5aa;
+}
+#index-overlay section footer textarea:read-only {
+  cursor: default;
+  resize: none;
+  border: none;
+  display: flex;
+  outline: none;
+  background: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px 0 8px;
+  border-radius: 1rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+#index-overlay section footer #resolved-note {
+  color: #cce2cc;
+}
+#index-overlay section footer #deleted-note {
+  color: #e7c3c3;
+}
+#index-overlay section footer section {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#index-overlay section footer section form {
+  margin-left: 1rem;
+}
+#index-overlay section footer section form select {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  line-height: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 3rem;
+  color: #084887;
+  border: 2px solid #909cc2;
+}
+#index-overlay section footer section form select:hover {
+  border: 2px solid #fcd5aa;
+}
+#index-overlay section footer section h4 {
+  cursor: default;
+  margin: 0 0 1rem 1rem;
+}
+#index-overlay section footer section h4:hover {
+  filter: drop-shadow(0 0 8px black);
+}
+#index-overlay section footer section [id*=name] {
+  color: white;
+}
+#index-overlay section footer section [id*=pending] {
+  color: #f8af58;
+}
+#index-overlay section footer section [id*=assigned] {
+  color: #94a9c5;
+}
+#index-overlay section footer section [id*=resolved] {
+  color: #cce2cc;
+}
+#index-overlay section footer section [id*=deleted] {
+  color: #e7c3c3;
+}
+#index-overlay section footer section #sender-department,
+#index-overlay section footer section #receiver-department {
+  cursor: default;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: white;
+}
+#index-overlay section footer section .disabled-text {
+  color: #646e7e;
+  opacity: 0.5;
+}
+#index-overlay section footer button {
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24rem;
+}
+#index-overlay section footer button div {
+  font-size: 2rem;
+  padding-left: 1rem;
+  font-weight: bolder;
+}
+#index-overlay [class*=mark] {
+  display: flex;
+  cursor: default;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #4c72a4;
+}
+#index-overlay .pending-mark {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  border-radius: 1rem 1rem 0 0;
+}
+#index-overlay .assigned-mark {
+  grid-column: 4/5;
+  grid-row: 3/5;
+  border-radius: 1rem 1rem 0 0;
+}
+#index-overlay .resolved-mark {
+  grid-column: 8/9;
+  grid-row: 3/5;
+  border-radius: 1rem 1rem 0 0;
+}
+#index-overlay .deleted-mark {
+  grid-column: 8/9;
+  grid-row: 20/22;
+  border-radius: 0 0 1rem 1rem;
+}
+#index-overlay #overlay-background {
+  grid-column: 1/10;
+  grid-row: 1/23;
+  z-index: -2;
+  opacity: 0.75;
+  background-color: black;
+}
+#index-overlay #close-overlay div {
+  filter: drop-shadow(0 0 4px #084887);
+  cursor: default;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+#index-overlay #close-overlay div svg {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 100%;
+}
+#index-overlay #close-overlay div svg:hover {
+  cursor: pointer;
+  color: #f58a07;
+}
+#index-overlay #close-overlay:hover {
+  background: #4c72a4;
+}
+
+/*--▼ .default-overlay ▼--*/
+.default-overlay {
+  grid-column: 3/8;
+  grid-row: 3/21;
+  display: grid;
+  grid-template-columns: 1rem 1fr 1rem;
+  grid-template-rows: 1rem 1fr 1rem 3fr 1rem;
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.default-overlay header {
+  grid-column: 3/8;
+  grid-row: 3/11;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.default-overlay header div {
+  display: flex;
+  justify-content: center;
+}
+.default-overlay header div img {
+  width: 7.5rem;
+}
+.default-overlay footer {
+  grid-column: 3/8;
+  grid-row: 6/21;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.default-overlay footer div {
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  grid-template-rows: 1fr 105px 1fr;
+}
+.default-overlay footer #manager-tickets {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.default-overlay footer #manager-tickets button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  color: white;
+}
+.default-overlay footer #manager-tickets button:hover svg,
+.default-overlay footer #manager-tickets button:hover h1 {
+  cursor: pointer;
+  color: #f58a07;
+}
+.default-overlay footer #employee-tickets {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.default-overlay footer #employee-tickets button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  color: white;
+}
+.default-overlay footer #employee-tickets button:hover svg,
+.default-overlay footer #employee-tickets button:hover h1 {
+  cursor: pointer;
+  color: #f58a07;
+}
+.default-overlay #overlay-canvas {
+  grid-column: 3/8;
+  grid-row: 3/21;
+  z-index: -1;
+  border-radius: 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .log-overlay ▼--*/
+.log-overlay {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.log-overlay #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.log-overlay #ticket-container #ticket-top #log-ticket,
+.log-overlay #ticket-container #ticket-top #assign-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.log-overlay #ticket-container #ticket-top #log-ticket button,
+.log-overlay #ticket-container #ticket-top #assign-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.log-overlay #ticket-container #ticket-top #log-ticket button h1,
+.log-overlay #ticket-container #ticket-top #assign-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.log-overlay #ticket-container #ticket-top #log-ticket button:hover,
+.log-overlay #ticket-container #ticket-top #assign-ticket button:hover {
+  color: #f58a07;
+}
+.log-overlay #ticket-container #ticket-top #log-ticket .disabled-button,
+.log-overlay #ticket-container #ticket-top #log-ticket .disabled-button:hover,
+.log-overlay #ticket-container #ticket-top #assign-ticket .disabled-button,
+.log-overlay #ticket-container #ticket-top #assign-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.log-overlay #ticket-container #ticket-top #log-ticket .disabled-button svg,
+.log-overlay #ticket-container #ticket-top #log-ticket .disabled-button:hover svg,
+.log-overlay #ticket-container #ticket-top #assign-ticket .disabled-button svg,
+.log-overlay #ticket-container #ticket-top #assign-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.log-overlay #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 0 1rem 1rem 1rem;
+  background-color: #084887;
+}
+.log-overlay #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.log-overlay #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+
+/*--▼ .logged-pending ▼--*/
+.logged-pending {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.logged-pending #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.logged-pending #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.logged-pending #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  /*
+  #ticket-top {
+    .delete-ticket {
+      color: $deleted-default;
+    }
+    .assign-ticket {
+      color: $assigned-default;
+    }
+  }
+  */
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket,
+.logged-pending #ticket-container #ticket-top #assign-ticket,
+.logged-pending #ticket-container #ticket-top #move-ticket,
+.logged-pending #ticket-container #ticket-top #save-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket button,
+.logged-pending #ticket-container #ticket-top #assign-ticket button,
+.logged-pending #ticket-container #ticket-top #move-ticket button,
+.logged-pending #ticket-container #ticket-top #save-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket button h1,
+.logged-pending #ticket-container #ticket-top #assign-ticket button h1,
+.logged-pending #ticket-container #ticket-top #move-ticket button h1,
+.logged-pending #ticket-container #ticket-top #save-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket button:hover,
+.logged-pending #ticket-container #ticket-top #assign-ticket button:hover,
+.logged-pending #ticket-container #ticket-top #move-ticket button:hover,
+.logged-pending #ticket-container #ticket-top #save-ticket button:hover {
+  color: #f58a07;
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket .disabled-button,
+.logged-pending #ticket-container #ticket-top #delete-ticket .disabled-button:hover,
+.logged-pending #ticket-container #ticket-top #assign-ticket .disabled-button,
+.logged-pending #ticket-container #ticket-top #assign-ticket .disabled-button:hover,
+.logged-pending #ticket-container #ticket-top #move-ticket .disabled-button,
+.logged-pending #ticket-container #ticket-top #move-ticket .disabled-button:hover,
+.logged-pending #ticket-container #ticket-top #save-ticket .disabled-button,
+.logged-pending #ticket-container #ticket-top #save-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.logged-pending #ticket-container #ticket-top #delete-ticket .disabled-button svg,
+.logged-pending #ticket-container #ticket-top #delete-ticket .disabled-button:hover svg,
+.logged-pending #ticket-container #ticket-top #assign-ticket .disabled-button svg,
+.logged-pending #ticket-container #ticket-top #assign-ticket .disabled-button:hover svg,
+.logged-pending #ticket-container #ticket-top #move-ticket .disabled-button svg,
+.logged-pending #ticket-container #ticket-top #move-ticket .disabled-button:hover svg,
+.logged-pending #ticket-container #ticket-top #save-ticket .disabled-button svg,
+.logged-pending #ticket-container #ticket-top #save-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.logged-pending #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 0 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .logged-assigned ▼--*/
+.logged-assigned {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.logged-assigned #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.logged-assigned #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.logged-assigned #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.logged-assigned #ticket-container #ticket-top .delete-ticket {
+  color: #f95555;
+}
+.logged-assigned #ticket-container #ticket-top .assign-ticket {
+  color: #4c72a4;
+}
+.logged-assigned #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .logged-resolved ▼--*/
+.logged-resolved {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.logged-resolved #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.logged-resolved #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.logged-resolved #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.logged-resolved #ticket-container #ticket-top .delete-ticket {
+  color: #f95555;
+}
+.logged-resolved #ticket-container #ticket-top .assign-ticket {
+  color: #4c72a4;
+}
+.logged-resolved #ticket-container #ticket-bot #resolved-note:read-only {
+  margin-left: 1rem;
+  height: 100%;
+  border: 2px solid #08870c;
+  color: white;
+}
+.logged-resolved #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .logged-deleted ▼--*/
+.logged-deleted {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.logged-deleted #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.logged-deleted #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.logged-deleted #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  /*
+  #ticket-bot {
+    #deleted-note:read-only {
+      margin-left: 1rem;
+      height: 100%;
+      border: 2px solid $deleted-default;
+      color: white;
+    }
+  }
+  */
+}
+.logged-deleted #ticket-container #ticket-top .delete-ticket {
+  color: #f95555;
+}
+.logged-deleted #ticket-container #ticket-top .assign-ticket {
+  color: #4c72a4;
+}
+.logged-deleted #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .manage-pending ▼--*/
+.manage-pending {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.manage-pending #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.manage-pending #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.manage-pending #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket,
+.manage-pending #ticket-container #ticket-top #claim-ticket,
+.manage-pending #ticket-container #ticket-top #move-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket button,
+.manage-pending #ticket-container #ticket-top #claim-ticket button,
+.manage-pending #ticket-container #ticket-top #move-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket button h1,
+.manage-pending #ticket-container #ticket-top #claim-ticket button h1,
+.manage-pending #ticket-container #ticket-top #move-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket button:hover,
+.manage-pending #ticket-container #ticket-top #claim-ticket button:hover,
+.manage-pending #ticket-container #ticket-top #move-ticket button:hover {
+  color: #f58a07;
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket .disabled-button,
+.manage-pending #ticket-container #ticket-top #assign-ticket .disabled-button:hover,
+.manage-pending #ticket-container #ticket-top #claim-ticket .disabled-button,
+.manage-pending #ticket-container #ticket-top #claim-ticket .disabled-button:hover,
+.manage-pending #ticket-container #ticket-top #move-ticket .disabled-button,
+.manage-pending #ticket-container #ticket-top #move-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.manage-pending #ticket-container #ticket-top #assign-ticket .disabled-button svg,
+.manage-pending #ticket-container #ticket-top #assign-ticket .disabled-button:hover svg,
+.manage-pending #ticket-container #ticket-top #claim-ticket .disabled-button svg,
+.manage-pending #ticket-container #ticket-top #claim-ticket .disabled-button:hover svg,
+.manage-pending #ticket-container #ticket-top #move-ticket .disabled-button svg,
+.manage-pending #ticket-container #ticket-top #move-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.manage-pending #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 0 1rem 0 1rem;
+  background-color: #084887;
+}
+.manage-pending #delete-ticket {
+  grid-column: 8/9;
+  grid-row: 20/22;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-radius: 0 0 1rem 1rem;
+  background: #909cc2;
+}
+.manage-pending #delete-ticket button {
+  cursor: pointer;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  width: 100%;
+  display: flex;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  background: none;
+}
+.manage-pending #delete-ticket button h2 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.manage-pending #delete-ticket button:hover {
+  color: #f95555;
+}
+.manage-pending #delete-ticket .disabled-button,
+.manage-pending #delete-ticket .disabled-button:hover {
+  filter: drop-shadow(0 0 8px black);
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.75;
+}
+.manage-pending #delete-ticket .disabled-button svg,
+.manage-pending #delete-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.manage-pending #delete-ticket:hover {
+  background: #4c72a4;
+}
+
+/*--▼ .manage-deleted ▼--*/
+.manage-deleted {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.manage-deleted #close-overlay {
+  grid-column: 4/5;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 3rem;
+  border-radius: 1rem 1rem 0 0;
+  background: #909cc2;
+}
+.manage-deleted #close-overlay svg {
+  width: 4rem;
+}
+.manage-deleted #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket button:hover {
+  color: #f58a07;
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket .disabled-button,
+.manage-deleted #ticket-container #ticket-top #restore-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.manage-deleted #ticket-container #ticket-top #restore-ticket .disabled-button svg,
+.manage-deleted #ticket-container #ticket-top #restore-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.manage-deleted #department-name {
+  grid-column: 4/9;
+  grid-row: 3/5;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  cursor: default;
+  margin-left: 4rem;
+  color: white;
+}
+.manage-deleted #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 0 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .user-assigned ▼--*/
+.user-assigned {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.user-assigned #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.user-assigned #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.user-assigned #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket button:hover {
+  color: #f58a07;
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket .disabled-button,
+.user-assigned #ticket-container #ticket-top #resolve-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.user-assigned #ticket-container #ticket-top #resolve-ticket .disabled-button svg,
+.user-assigned #ticket-container #ticket-top #resolve-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.user-assigned #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 0 1rem;
+  background-color: #084887;
+}
+.user-assigned #delete-ticket {
+  grid-column: 8/9;
+  grid-row: 20/22;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-radius: 0 0 1rem 1rem;
+  background: #909cc2;
+}
+.user-assigned #delete-ticket button {
+  cursor: pointer;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  width: 100%;
+  display: flex;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  background: none;
+}
+.user-assigned #delete-ticket button h2 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.user-assigned #delete-ticket button:hover {
+  color: #f95555;
+}
+.user-assigned #delete-ticket .disabled-button,
+.user-assigned #delete-ticket .disabled-button:hover {
+  filter: drop-shadow(0 0 8px black);
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.75;
+}
+.user-assigned #delete-ticket .disabled-button svg,
+.user-assigned #delete-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.user-assigned #delete-ticket:hover {
+  background: #4c72a4;
+}
+
+/*--▼ .user-resolved ▼--*/
+.user-resolved {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.user-resolved #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.user-resolved #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.user-resolved #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket button:hover {
+  color: #f58a07;
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket .disabled-button,
+.user-resolved #ticket-container #ticket-top #unlock-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.user-resolved #ticket-container #ticket-top #unlock-ticket .disabled-button svg,
+.user-resolved #ticket-container #ticket-top #unlock-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.user-resolved #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .user-deleted ▼--*/
+.user-deleted {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.user-deleted #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.user-deleted #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.user-deleted #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  /*
+  #ticket-bot {
+    #deleted-note:read-only {
+      margin-left: 1rem;
+      height: 100%;
+      border: 2px solid $deleted-default;
+      color: white;
+    }
+    */
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket button:hover {
+  color: #f58a07;
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket .disabled-button,
+.user-deleted #ticket-container #ticket-top #recycle-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.user-deleted #ticket-container #ticket-top #recycle-ticket .disabled-button svg,
+.user-deleted #ticket-container #ticket-top #recycle-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.user-deleted #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .colleague-assigned ▼--*/
+.colleague-assigned {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.colleague-assigned #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.colleague-assigned #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.colleague-assigned #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket button:hover {
+  color: #f58a07;
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket .disabled-button,
+.colleague-assigned #ticket-container #ticket-top #take-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.colleague-assigned #ticket-container #ticket-top #take-ticket .disabled-button svg,
+.colleague-assigned #ticket-container #ticket-top #take-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.colleague-assigned #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .colleague-resolved ▼--*/
+.colleague-resolved {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.colleague-resolved #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.colleague-resolved #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.colleague-resolved #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.colleague-resolved #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .colleague-deleted ▼--*/
+.colleague-deleted {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.colleague-deleted #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.colleague-deleted #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.colleague-deleted #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.colleague-deleted #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .coworker-resolved ▼--*/
+.coworker-resolved {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.coworker-resolved #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.coworker-resolved #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.coworker-resolved #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.coworker-resolved #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .coworker-deleted ▼--*/
+.coworker-deleted {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.coworker-deleted #close-overlay {
+  grid-column: 2/3;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.coworker-deleted #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.coworker-deleted #ticket-container {
+  grid-column: 2/9;
+  grid-row: 5/20;
+}
+.coworker-deleted #overlay-canvas {
+  grid-column: 2/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .resolve-overlay ▼--*/
+.resolve-overlay {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.resolve-overlay #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.resolve-overlay #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.resolve-overlay #ticket-container {
+  grid-column: 5/9;
+  grid-row: 5/20;
+}
+.resolve-overlay #ticket-container #ticket-note {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  resize: none;
+  display: flex;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem;
+  border: 2px solid #909cc2;
+  color: #084887;
+}
+.resolve-overlay #ticket-container #ticket-note:hover {
+  border: 2px solid #08870c;
+}
+.resolve-overlay #ticket-container #resolve-ticket {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.resolve-overlay #ticket-container #resolve-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.resolve-overlay #ticket-container #resolve-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.resolve-overlay #ticket-container #resolve-ticket button:hover {
+  color: #08870c;
+}
+.resolve-overlay #ticket-container #resolve-ticket .disabled-button,
+.resolve-overlay #ticket-container #resolve-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.resolve-overlay #ticket-container #resolve-ticket .disabled-button svg,
+.resolve-overlay #ticket-container #resolve-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.resolve-overlay #overlay-canvas {
+  grid-column: 5/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: #084887;
+}
+
+/*--▼ .delete-overlay ▼--*/
+.delete-overlay {
+  /*
+  @media only screen and (max-width: 1920px) {
+  }
+  @media only screen and (max-width: 1366px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  */
+}
+.delete-overlay #close-overlay {
+  grid-column: 6/7;
+  grid-row: 3/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  border-radius: 1rem 1rem 0 0;
+  color: white;
+  background: #909cc2;
+}
+.delete-overlay #close-overlay svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+.delete-overlay #ticket-container {
+  grid-column: 5/9;
+  grid-row: 5/20;
+}
+.delete-overlay #ticket-container #ticket-note {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  resize: none;
+  display: flex;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem;
+  border: 2px solid #909cc2;
+  color: #084887;
+}
+.delete-overlay #ticket-container #ticket-note:hover {
+  border: 2px solid #f95555;
+}
+.delete-overlay #ticket-container #delete-ticket {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.delete-overlay #ticket-container #delete-ticket button {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background: none;
+}
+.delete-overlay #ticket-container #delete-ticket button h1 {
+  white-space: nowrap;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+.delete-overlay #ticket-container #delete-ticket button:hover {
+  color: #f95555;
+}
+.delete-overlay #ticket-container #delete-ticket .disabled-button,
+.delete-overlay #ticket-container #delete-ticket .disabled-button:hover {
+  cursor: default;
+  color: #646e7e;
+  opacity: 0.5;
+}
+.delete-overlay #ticket-container #delete-ticket .disabled-button svg,
+.delete-overlay #ticket-container #delete-ticket .disabled-button:hover svg {
+  cursor: default;
+}
+.delete-overlay #overlay-canvas {
+  grid-column: 5/9;
+  grid-row: 5/20;
+  z-index: -1;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: #084887;
+}
