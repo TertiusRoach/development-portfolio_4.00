@@ -385,7 +385,7 @@ The owner cannot keep the company active after confirming deletion. Deletion mus
 
 ## 12. Offline mode
 
-TraLogFin works offline in two ways: fully, for people without an account, and read-only, for people with one. The technical side (IndexedDB, caching, syncing) lives in [TABLE.md](TABLE.md).
+TraLogFin works offline in two ways: fully, for people without an account, and read-only, for people with one. The technical side (IndexedDB, caching, syncing) lives in [TABLE.md](front-end/TABLE.md).
 
 ### Without an account
 

@@ -2,7 +2,7 @@
 
 Every application page is built from the same six containers. Each one has one job, and it does that same job in every app, so muscle memory carries over: the left bar is always where you act, the footer always where you're told what happened. Memorisation and habits are critical, for the user and for development.
 
-Which page a user sees is decided by their toggle, as mapped in [TOGGLES.md](TOGGLES.md). What they're allowed to do inside it is decided by [GUIDELINES.md](GUIDELINES.md).
+Which page a user sees is decided by their toggle, as mapped in [TOGGLES.md](TOGGLES.md). What they're allowed to do inside it is decided by [GUIDELINES.md](../GUIDELINES.md).
 
 ---
 

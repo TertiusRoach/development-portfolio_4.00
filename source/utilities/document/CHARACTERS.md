@@ -44,7 +44,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## How to Read a Character
 
-**The three toggles** come first, coloured the same way as the brand: **Vocation** for Track a Day, **Position** for Log a Ticket, **Occupation** for Find a Link (see [TOGGLES.md](TOGGLES.md)).
+**The three toggles** come first, coloured the same way as the brand: **Vocation** for Track a Day, **Position** for Log a Ticket, **Occupation** for Find a Link (see [TOGGLES.md](front-end/TOGGLES.md)).
 
 **The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
 
@@ -67,7 +67,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **01.** Jane Lester
 
-![jane-lester](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/jane-lester.png)
+![jane-lester](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/jane-lester.png)
 
 **Established · Manager · Specialist**
 
@@ -87,7 +87,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **02.** Malik Tremaine Carter
 
-![malik-tremaine-carter](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/malik-tremaine-carter.png)
+![malik-tremaine-carter](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/malik-tremaine-carter.png)
 
 **Established · Manager · Specialist**
 
@@ -106,7 +106,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **03.** Dimitri Lewis
 
-![dimitri-lewis](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/dimitri-lewis.png)
+![dimitri-lewis](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/dimitri-lewis.png)
 
 **Freelancing · Employee · Specialist**
 
@@ -125,7 +125,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **04.** Dale Sutton
 
-![dale-sutton](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/dale-sutton.png)
+![dale-sutton](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/dale-sutton.png)
 
 **Established · Employee · Technician**
 
@@ -144,7 +144,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **05.** Dr. Alaric Voss
 
-![alaric-voss](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/alaric-voss.png)
+![alaric-voss](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/alaric-voss.png)
 
 **Established · Employee · Specialist**
 
@@ -163,7 +163,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **06.** Conrad Guy
 
-![conrad-guy](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/conrad-guy.png)
+![conrad-guy](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/conrad-guy.png)
 
 **Established · Manager · Specialist**
 
@@ -182,7 +182,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **07.** Daniel Meyers
 
-![daniel-meyers](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/daniel-meyers.png)
+![daniel-meyers](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/daniel-meyers.png)
 
 **Freelancing · Employee · Technician**
 
@@ -201,7 +201,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **08.** Ms. Kady Deacon
 
-![kady-deacon](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/kady-deacon.png)
+![kady-deacon](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/kady-deacon.png)
 
 **Established · Employee · Specialist**
 
@@ -221,7 +221,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **09.** Seamus O'Donnell
 
-![seamus-odonnell](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/seamus-odonnell.png)
+![seamus-odonnell](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/seamus-odonnell.png)
 
 **Established · Employee · Technician**
 
@@ -244,7 +244,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **10.** Hammad Dean
 
-![hammad-dean](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/hammad-dean.png)
+![hammad-dean](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/hammad-dean.png)
 
 **Established · Manager · Technician**
 
@@ -263,7 +263,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **11.** Tasneem Kemp
 
-![tasneem-kemp](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/tasneem-kemp.png)
+![tasneem-kemp](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/tasneem-kemp.png)
 
 **Established · Manager · Technician**
 
@@ -285,7 +285,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **12.** Elliot Crane
 
-![elliot-crane](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/elliot-crane.png)
+![elliot-crane](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/elliot-crane.png)
 
 **Established · Manager · Specialist**
 
@@ -304,7 +304,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **13.** Sipho Dlamini
 
-![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/sipho-dlamini.png)
+![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/sipho-dlamini.png)
 
 **Freelancing · Employee · Technician**
 
@@ -324,7 +324,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **14.** Zuberi Thorne
 
-![zuberi-thorne](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/zuberi-thorne.png)
+![zuberi-thorne](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/zuberi-thorne.png)
 
 **Established · Employee · Technician**
 
@@ -343,7 +343,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **15.** Nyra Solari
 
-![nyra-solari](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/nyra-solari.png)
+![nyra-solari](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/nyra-solari.png)
 
 **Established · Employee · Specialist**
 
@@ -362,7 +362,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **16.** Victor Langston
 
-![victor-langston](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/victor-langston.png)
+![victor-langston](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/victor-langston.png)
 
 **Established · Employee · Technician**
 
@@ -381,7 +381,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **17.** Danish Copeland
 
-![danish-copeland](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/danish-copeland.png)
+![danish-copeland](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/danish-copeland.png)
 
 **Established · Employee · Specialist**
 
@@ -400,7 +400,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **18.** Aelin Darrow
 
-![aelin-darrow](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/aelin-darrow.png)
+![aelin-darrow](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/aelin-darrow.png)
 
 **Established · Employee · Specialist**
 
@@ -421,7 +421,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 ## **19.** Randomize Character
 
-![randomize-character](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/archive-images/tralogfin-application/demonstration/original/radomize-character.png)
+![randomize-character](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/randomize-character.png)
 
 **Freelancing / Established · Employee / Manager · Technician / Specialist**
 
@@ -430,5 +430,3 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 | Voidspire Systems / Silverveil Logistics  | Randomize | Yes / No | Yes / No | From IP | Enabled / Pending / Blocked / Deleted |
 
 > Randomize isn't a person. It's a button that picks one of the 18 characters above, so testers don't always reach for the same favourite. It can roll anyone, but only valid combinations, because the 18 are already valid. The country comes from the visitor's IP address. In `TraLogFin.json`, its record is the complete one: every field the app and the login system use, so the shape of a full record lives in one place.
-
-> **Note:** the image file is named `radomize-character.png`, with the typo. The link above matches the file as it is.

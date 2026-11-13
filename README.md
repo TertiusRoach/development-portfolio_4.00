@@ -64,7 +64,7 @@ Each application asks one question. The answer becomes a `roleName` class on `<d
 - **Find a Link:** a fast index for the links a team actually uses. Spreadsheets, schedules, docs and dashboards.
 - **Pick a Page:** the character roster that feeds the other three. It adapts to `.landscape`, `.portrait` and `.square` screens. Excel and Google Sheets integrations (`.microsoft` · `.google`) are planned.
 
-The full map from toggle to page is in **[TOGGLES.md](source/utilities/document/TOGGLES.md)**.
+The full map from toggle to page is in **[TOGGLES.md](source/utilities/document/front-end/TOGGLES.md)**.
 
 ### Built With
 
@@ -168,7 +168,7 @@ npm install --save-dev @babel/core @babel/preset-env
 
 ### Back End
 
-The front end runs on its own. To work on the server, you also need MongoDB, a secrets file (`build/.env`) and a Mailtrap test inbox. Everything, for every operating system, is in **[MODULES.md](source/utilities/document/MODULES.md)**.
+The front end runs on its own. To work on the server, you also need MongoDB, a secrets file (`build/.env`) and a Mailtrap test inbox. Everything, for every operating system, is in **[MODULES.md](source/utilities/document/back-end/MODULES.md)**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -248,7 +248,7 @@ Each page lives in `source/layouts/containers/${PageName}/` and is mounted into 
 | **Header**   | `<header>`  | `${pageName}-header`   | Controls and configuration        |
 | **Footer**   | `<footer>`  | `${pageName}-footer`   | Short status messages             |
 
-What each container does in each application is in **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)**. The state classes they switch between (`.active`, `.expanded`, `.locked-${blockName}`…) are in the **[RULEBOOK](source/utilities/document/RULEBOOK.md#state-classes)**.
+What each container does in each application is in **[CONTAINERS.md](source/utilities/document/front-end/CONTAINERS.md)**. The state classes they switch between (`.active`, `.expanded`, `.locked-${blockName}`…) are in the **[FRONT-END rulebook](source/utilities/document/front-end/FRONT-END.md#state-classes)**.
 
 ### Components
 
@@ -260,7 +260,7 @@ Components are the building blocks in `source/layouts/components/`. Every one fo
 - **Ten colours** from `styles/Palettes.scss`, each in a dark and a light shade.
 - **Comment flags** (`//--|🠊 … 🠈|--\\`) make the structure of every file readable at a glance.
 
-All of it, with examples, is in the **[RULEBOOK](source/utilities/document/RULEBOOK.md)**.
+All of it, with examples, is in the **[FRONT-END rulebook](source/utilities/document/front-end/FRONT-END.md)**.
 
 ### Company Comparisons
 
@@ -341,6 +341,22 @@ root/
 │   │   └── server/
 │   ├── utilities/
 │   │   ├── document/                # All project documentation
+│   │   │   ├── back-end/            # Server, data and setup (mirrored by the back-end repo)
+│   │   │   │   ├── BACK-END.md      # Back-end rulebook
+│   │   │   │   ├── DATA.md
+│   │   │   │   ├── MODULES.md
+│   │   │   │   ├── REFERENCE.md
+│   │   │   │   └── SERVER.md
+│   │   │   ├── front-end/           # Pages, containers and components
+│   │   │   │   ├── CONTAINERS.md
+│   │   │   │   ├── CONTEXTS.md
+│   │   │   │   ├── FRONT-END.md     # Front-end rulebook
+│   │   │   │   ├── TABLE.md
+│   │   │   │   └── TOGGLES.md
+│   │   │   ├── CHARACTERS.md        # Shared by both sides
+│   │   │   ├── EDITOR.md
+│   │   │   ├── GITHUB.md
+│   │   │   └── GUIDELINES.md
 │   │   ├── vendors/
 │   │   ├── ~flex-setup/
 │   │   └── ~grid-setup/
@@ -443,7 +459,7 @@ The UI system. This is where the application becomes readable. The split between
 
 #### `source/modules/`
 
-Application logic and infrastructure that supports the UI. Setup is in [MODULES.md](source/utilities/document/MODULES.md), and how data travels is in [TABLE.md](source/utilities/document/TABLE.md).
+Application logic and infrastructure that supports the UI. Setup is in [MODULES.md](source/utilities/document/back-end/MODULES.md), and how data travels is in [DATA.md](source/utilities/document/back-end/DATA.md).
 
 | Folder                    | Purpose                                                                          |
 | ------------------------- | -------------------------------------------------------------------------------- |
@@ -477,20 +493,36 @@ Editor configuration for consistent debugging and project workflows. What each f
 
 ## Documentation
 
-Everything lives in **`source/utilities/document/`**. If you're unsure about anything, start with the **RULEBOOK**.
+Everything lives in **`source/utilities/document/`**, split three ways: shared documents at the top, then **`front-end/`** and **`back-end/`**. The back-end repository mirrors the `back-end/` folder. If you're unsure about anything, start with the rulebook for your side.
+
+#### Shared
 
 | Document                                                     | What it answers                                                                                 |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| **[RULEBOOK.md](source/utilities/document/RULEBOOK.md)**     | How code is written: philosophy, naming, components, scaling, colours, comments                 |
 | **[GUIDELINES.md](source/utilities/document/GUIDELINES.md)** | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
-| **[TOGGLES.md](source/utilities/document/TOGGLES.md)**       | Which page each toggle opens                                                                    |
-| **[CONTAINERS.md](source/utilities/document/CONTAINERS.md)** | The six containers and what they do in each application                                         |
 | **[CHARACTERS.md](source/utilities/document/CHARACTERS.md)** | The 18 test characters, their psychology and the rules they test                                |
-| **[TABLE.md](source/utilities/document/TABLE.md)**           | Tables, ISO weeks, how data travels, MongoDB-to-MySQL rules, offline storage                    |
-| **[MODULES.md](source/utilities/document/MODULES.md)**       | Database, secrets, test emails and server setup on any OS                                       |
 | **[GITHUB.md](source/utilities/document/GITHUB.md)**         | Machine setup, releases, tags, syncing machines, fixing Git trouble                             |
 | **[EDITOR.md](source/utilities/document/EDITOR.md)**         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                                    |
-| **[REFERENCE.md](source/utilities/document/REFERENCE.md)**   | The template this README follows                                                                |
+
+#### Front End
+
+| Document                                                                 | What it answers                                                                 |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| **[FRONT-END.md](source/utilities/document/front-end/FRONT-END.md)**     | How code is written: philosophy, naming, components, scaling, colours, comments |
+| **[TOGGLES.md](source/utilities/document/front-end/TOGGLES.md)**         | Which page each toggle opens                                                    |
+| **[CONTAINERS.md](source/utilities/document/front-end/CONTAINERS.md)**   | The six containers and what they do in each application                         |
+| **[CONTEXTS.md](source/utilities/document/front-end/CONTEXTS.md)**       | How the `<Form>`s on a page share what a user types                             |
+| **[TABLE.md](source/utilities/document/front-end/TABLE.md)**             | When to use `<table>`, the `<Table>` component, ISO weeks                       |
+
+#### Back End
+
+| Document                                                             | What it answers                                                       |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **[BACK-END.md](source/utilities/document/back-end/BACK-END.md)**    | How back-end code is written (being written)                          |
+| **[SERVER.md](source/utilities/document/back-end/SERVER.md)**        | How `source/modules/` is organised and where the server code is headed |
+| **[DATA.md](source/utilities/document/back-end/DATA.md)**            | How data travels, MongoDB-to-MySQL rules, offline storage             |
+| **[MODULES.md](source/utilities/document/back-end/MODULES.md)**      | Database, secrets, test emails and server setup on any OS             |
+| **[REFERENCE.md](source/utilities/document/back-end/REFERENCE.md)**  | The template this README follows                                      |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -509,7 +541,7 @@ Everything lives in **`source/utilities/document/`**. If you're unsure about any
 - [ ] A data layer that can switch from MongoDB to MySQL
 - [ ] Unpaid-solutions record for freelancers
 
-The full list of decisions waiting to be built is in the [RULEBOOK](source/utilities/document/RULEBOOK.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/document/GITHUB.md#10-status-log).
+The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/document/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/document/GITHUB.md#10-status-log).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -519,7 +551,7 @@ The full list of decisions waiting to be built is in the [RULEBOOK](source/utili
 
 Contributions are welcome, as long as they keep the project readable. Before you change anything:
 
-1. **Read the [RULEBOOK](source/utilities/document/RULEBOOK.md).** Readability beats brevity, match what's already there, one step at a time.
+1. **Read the [FRONT-END rulebook](source/utilities/document/front-end/FRONT-END.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/document/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
 3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/document/GITHUB.md#4-finish-a-version-and-start-the-next).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.

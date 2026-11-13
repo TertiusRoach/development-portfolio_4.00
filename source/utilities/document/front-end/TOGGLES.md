@@ -8,7 +8,7 @@ Every application in TraLogFin asks the user one question, and the answer decide
 | **Log a Ticket** | What's your position?   | **Position**   | Manager · Employee             |
 | **Find a Link**  | What's your occupation? | **Occupation** | Specialist · Technician        |
 
-This page is the map from toggle to page. The rules behind each toggle (who may change it, which combinations are allowed, what each role is permitted to do) live in [GUIDELINES.md](GUIDELINES.md). The containers each page is built from live in [CONTAINERS.md](CONTAINERS.md).
+This page is the map from toggle to page. The rules behind each toggle (who may change it, which combinations are allowed, what each role is permitted to do) live in [GUIDELINES.md](../GUIDELINES.md). The containers each page is built from live in [CONTAINERS.md](CONTAINERS.md).
 
 ---
 
@@ -52,10 +52,10 @@ Both values open the same page with the same containers. Occupation only changes
 
 ## Rules
 
-1. **A toggle picks a page, nothing more.** It never grants or removes a permission. What a user may actually do on that page is decided by [GUIDELINES.md](GUIDELINES.md).
+1. **A toggle picks a page, nothing more.** It never grants or removes a permission. What a user may actually do on that page is decided by [GUIDELINES.md](../GUIDELINES.md).
 2. **Only the company owner changes Vocation and Position.** Moving up (Freelancing → Established, Employee → Manager) waits until the user accepts. Moving down applies immediately and silently.
 3. **Occupation belongs to the user.** They can switch it at any time, because it only changes the launch page.
 4. **HoD, Paid and Ads are not page toggles.** They change permissions and adverts, never which page opens.
 5. **Every app shares the same frame.** `<div class="default-body">` and `<section class="default-overlay">` look and behave the same in all three apps. Only the containers inside change.
 
-The "Test with" characters come from [CHARACTERS.md](CHARACTERS.md). The sales pitch for each app, as shown on the landing page, lives in `source/layouts/components/Section/demonstration/Section_demonstration.ts`.
+The "Test with" characters come from [CHARACTERS.md](../CHARACTERS.md). The sales pitch for each app, as shown on the landing page, lives in `source/layouts/components/Section/demonstration/Section_demonstration.ts`.

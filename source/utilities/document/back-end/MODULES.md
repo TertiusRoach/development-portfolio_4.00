@@ -1,8 +1,8 @@
 # Modules
 
-How to set up the back end on your own machine: the database, the secrets file, test emails and the server itself, on Windows, macOS and Linux. You only need this to work on the server side. The front end runs without it (see the [README](../../../README.md#quick-start)).
+How to set up the back end on your own machine: the database, the secrets file, test emails and the server itself, on Windows, macOS and Linux. You only need this to work on the server side. The front end runs without it (see the [README](../../../../README.md#quick-start)).
 
-Git and Node.js come first; they're set up in [GITHUB.md](GITHUB.md#7-set-up-a-new-computer). How the data itself is structured is in [TABLE.md](TABLE.md); how the back end is organised and where it's headed is in [SERVER.md](SERVER.md).
+Git and Node.js come first; they're set up in [GITHUB.md](../GITHUB.md#7-set-up-a-new-computer). How the data itself is structured is in [TABLE.md](../front-end/TABLE.md); how the back end is organised and where it's headed is in [SERVER.md](SERVER.md).
 
 ---
 
@@ -261,7 +261,7 @@ db.PickPage.updateOne({ profile: "dimitri-lewis" }, { $push: { organizations: "S
 db.PickPage.deleteOne({ profile: "test-person" })
 ```
 
-> These commands are for poking around by hand. The application's own code sticks to the simple, MySQL-friendly queries listed in [TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow).
+> These commands are for poking around by hand. The application's own code sticks to the simple, MySQL-friendly queries listed in [TABLE.md](DATA.md#2-mongodb-today-mysql-tomorrow).
 
 ---
 

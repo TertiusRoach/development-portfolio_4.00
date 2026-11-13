@@ -1,4 +1,4 @@
-# Rulebook
+# Front-end Rulebook
 
 How code is written in this repository. Every rule here exists because breaking it once cost me time. If you're about to change something and you're not sure how, the answer is either on this page or in one of the documents it points to.
 
@@ -42,19 +42,19 @@ How code is written in this repository. Every rule here exists because breaking 
 
 Every document lives in `source/utilities/document/`. If you're unsure about anything, look here first.
 
-| Document                       | What it answers                                                                                     |
-| ------------------------------ | --------------------------------------------------------------------------------------------------- |
-| **RULEBOOK.md** (this page)    | How code is written: naming, files, scaling, colours, comments                                      |
-| [GUIDELINES.md](GUIDELINES.md) | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
-| [TOGGLES.md](TOGGLES.md)       | Which page each toggle opens (Vocation, Position, Occupation)                                       |
-| [CONTAINERS.md](CONTAINERS.md) | The six containers every page is built from, how they pair and flip, and what each one does per app |
-| [CHARACTERS.md](CHARACTERS.md) | The 18 test characters, their facts, their psychology and the rules they test                       |
-| [TABLE.md](TABLE.md)           | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB                     |
-| [MODULES.md](MODULES.md)       | Setting up the database, secrets, test emails and the server on any OS                              |
-| [SERVER.md](SERVER.md)         | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
-| [GITHUB.md](GITHUB.md)         | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
-| [EDITOR.md](EDITOR.md)         | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
-| [REFERENCE.md](REFERENCE.md)   | The template the main `README.md` follows                                                           |
+| Document                             | What it answers                                                                                     |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| **RULEBOOK.md** (this page)          | How code is written: naming, files, scaling, colours, comments                                      |
+| [GUIDELINES.md](../GUIDELINES.md)    | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
+| [TOGGLES.md](TOGGLES.md)             | Which page each toggle opens (Vocation, Position, Occupation)                                       |
+| [CONTAINERS.md](CONTAINERS.md)       | The six containers every page is built from, how they pair and flip, and what each one does per app |
+| [CHARACTERS.md](../CHARACTERS.md)    | The 18 test characters, their facts, their psychology and the rules they test                       |
+| [TABLE.md](TABLE.md)                 | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB                     |
+| [MODULES.md](../back-end/MODULES.md) | Setting up the database, secrets, test emails and the server on any OS                              |
+| [SERVER.md](../back-end/SERVER.md)   | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
+| [GITHUB.md](../GITHUB.md)            | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
+| [EDITOR.md](../EDITOR.md)            | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
+| [REFERENCE.md](../REFERENCE.md)      | The template the main `README.md` follows                                                           |
 
 **When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
@@ -124,14 +124,14 @@ Documents in `source/utilities/document/` are named in **CAPITALS** (`GUIDELINES
 
 State classes are intentionally simple. They act like a contract between the scripts and the styles: scripts only ever swap these classes, and styles only ever react to them.
 
-| State Type          | Classes                                         | Alternatives              | Purpose                                                                                 |
-| ------------------- | ----------------------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- |
-| **Operating State** | `.active` · `.asleep`                           | `.running` · `.disabled`  | Whether a page (`#${pageName}-body`) is in use                                          |
-| **Preview State**   | `.visible` · `.hidden`                          | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`                               |
-| **Indexed State**   | `.expanded` · `.collapsed`                      | `.unfolded` · `.squaring` | Blocks that open and close while staying part of the page                               |
+| State Type          | Classes                                         | Alternatives              | Purpose                                                                                                                                                                                                                                                        |
+| ------------------- | ----------------------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Operating State** | `.active` · `.asleep`                           | `.running` · `.disabled`  | Whether a page (`#${pageName}-body`) is in use                                                                                                                                                                                                                 |
+| **Preview State**   | `.visible` · `.hidden`                          | `.reveal` · `.conceal`    | Show or hide elements, mainly inside `layouts/components`                                                                                                                                                                                                      |
+| **Indexed State**   | `.expanded` · `.collapsed`                      | `.unfolded` · `.squaring` | Blocks that open and close while staying part of the page                                                                                                                                                                                                      |
 | **Emphasize State** | `.highlight` · `.downplay`                      |                           | On a `<button>`: `.highlight` swaps it to the opposite shade, `.downplay` keeps its own. Anywhere else, the container includes `Utilities.highlight()` and `Utilities.downplay()`: `.downplay` stays invisible until it's hovered or reached with the keyboard |
-| **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely                   |
-| **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM                      |
+| **Locked State**    | `.locked-${blockName}` · `.frozen-${blockName}` |                           | Block repeat clicks while a container animates, or freeze it entirely                                                                                                                                                                                          |
+| **Daytime State**   | `.ante-meridiem` · `.post-meridiem`             |                           | Set on `<body>` by the clock: 05:00 to 16:59 is AM, the rest is PM                                                                                                                                                                                             |
 
 `.running` is a reserved name; it isn't used in the code yet. `.conceal` blurs a `<SectionDemonstration>` card away while a character preview slides in (Track a Day, Log a Ticket and Find a Link). `.emphasize` and `.emphasize-${colour}` are testing-only: `<DivisionTesting>` adds them to flash a container's background (see [Test Tools](#test-tools)).
 
@@ -159,16 +159,16 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|�
 - **Always through `loadAsset()`.** Never paste a GitHub link by hand, and never one pinned to a commit (`…/b345dfe…/source/assets/…`): it stops following `main` and quietly goes out of date. Every image now goes through it, the GIFs in `Figure.loading.tsx` included.
 - **A runtime SVG is a mask, set inline.** A silhouette from `loadAsset()` goes on the element as `maskImage` / `WebkitMaskImage`, never as a URL in SCSS. It's the one inline style the [No Inline Styles](#no-inline-styles) rule allows, because the path only exists at runtime.
 
-| Folder                                                  | Holds                                                                                                       | Example path                                    |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `svg-files/tralogfin-application/${app}/`               | The app logos: `track-a-day`, `log-a-ticket`, `find-a-link` (`primary-dark`, `-medium`, `-light`), and `pick-a-page` (`trinity-apps`, `logo-black`, `logo-white`) | `/tralogfin-application/pick-a-page/trinity-apps` |
-| `svg-files/tralogfin-pages/${page}/`                    | Icons a page draws for itself: `archive` (`*-element`, `default-buttons/h1` … `p`), `overtime`, `ticketing`, `hyperlink`, `landing`, `résumé` | `/tralogfin-pages/archive/default-buttons/h1`   |
-| `svg-files/archive-images/font-awesome/${version}/${style}/` | FontAwesome (below)                                                                                    | `/archive-images/font-awesome/7.3.1/solid/star` |
-| `svg-files/archive-images/my-signature/`                | The signature                                                                                               | `/archive-images/my-signature/signature-icon/primary-light` |
-| `svg-files/archive-images/arabic-numerals/`             | Numerals                                                                                                    |                                                 |
-| `png-files/character-testing/original/`                 | The 18 character portraits and `randomize-character`, with `upscaled/` beside it                            | `/character-testing/original/jane-lester`       |
-| `png-files/tralogfin-application/${version}/`           | App pictures, by release (`1.0.0`, `4.4.0`)                                                                 |                                                 |
-| `gif-files/`                                            | The loading animations (`signature`, `trinity-apps`)                                                        |                                                 |
+| Folder                                                       | Holds                                                                                                                                                             | Example path                                                |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `svg-files/tralogfin-application/${app}/`                    | The app logos: `track-a-day`, `log-a-ticket`, `find-a-link` (`primary-dark`, `-medium`, `-light`), and `pick-a-page` (`trinity-apps`, `logo-black`, `logo-white`) | `/tralogfin-application/pick-a-page/trinity-apps`           |
+| `svg-files/tralogfin-pages/${page}/`                         | Icons a page draws for itself: `archive` (`*-element`, `default-buttons/h1` … `p`), `overtime`, `ticketing`, `hyperlink`, `landing`, `résumé`                     | `/tralogfin-pages/archive/default-buttons/h1`               |
+| `svg-files/archive-images/font-awesome/${version}/${style}/` | FontAwesome (below)                                                                                                                                               | `/archive-images/font-awesome/7.3.1/solid/star`             |
+| `svg-files/archive-images/my-signature/`                     | The signature                                                                                                                                                     | `/archive-images/my-signature/signature-icon/primary-light` |
+| `svg-files/archive-images/arabic-numerals/`                  | Numerals                                                                                                                                                          |                                                             |
+| `png-files/character-testing/original/`                      | The 18 character portraits and `randomize-character`, with `upscaled/` beside it                                                                                  | `/character-testing/original/jane-lester`                   |
+| `png-files/tralogfin-application/${version}/`                | App pictures, by release (`1.0.0`, `4.4.0`)                                                                                                                       |                                                             |
+| `gif-files/`                                                 | The loading animations (`signature`, `trinity-apps`)                                                                                                              |                                                             |
 
 **Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owner. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
 
@@ -178,7 +178,7 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|�
 
 ### Git
 
-Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](GITHUB.md#9-names-and-numbers).
+Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](../GITHUB.md#9-names-and-numbers).
 
 ---
 
@@ -212,7 +212,7 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 - **One `.scss` per Form,** split into `%desk-`, `%mobi-` and `%tabl-` placeholders (flex, grid, tint), with all three mixins. Inner parts are selected from the `<form>` with `>` (`> div[class='header'] > div[class='text']`), because `<ButtonDefault>` has its own `div.text` and `div.icon`.
 - **The card** takes `<SectionDemonstration>`'s sizes: 448×672, 285×416, 214×312, 165×240. The old ratios are on record in git: `git show d3b4ec09:source/layouts/components/Form/login/Form.login.scss`. On the two small cards, the header hides and the bottom row shrinks to fit, which is the old Desktop 480px rule carried over to every orientation.
 - **`defineButton()`** in `Form_*.ts` keeps the old size swap for the secondary buttons: `<h6>` with text, or a `<p>` icon at `<= 768px` and on a near-square screen whose long side is 1920px or less (the steps where the card shrinks). It runs once per render.
-- **Visual-only for now.** `onSubmit={(event) => event.preventDefault()}` is the one live handler, because a `<ButtonDefault>` inside a `<form>` submits it. The old submit handler sits under the component in a `/* … */` block, with `passwordHash` renamed to `password` (see [SERVER.md, Section 3](SERVER.md#3-how-a-form-reaches-the-server-today)). The old helpers (`viewText`, `viewPass`, `axiosError`, `retrieveEndpoint`), each Form's own helpers and the old server route from its `Form_*.js` are commented out at the bottom of its `Form_*.ts`.
+- **Visual-only for now.** `onSubmit={(event) => event.preventDefault()}` is the one live handler, because a `<ButtonDefault>` inside a `<form>` submits it. The old submit handler sits under the component in a `/* … */` block, with `passwordHash` renamed to `password` (see [SERVER.md, Section 3](../back-end/SERVER.md#2-how-a-form-reaches-the-server-today)). The old helpers (`viewText`, `viewPass`, `axiosError`, `retrieveEndpoint`), each Form's own helpers and the old server route from its `Form_*.js` are commented out at the bottom of its `Form_*.ts`.
 - **Only the Archive renders them.** `LandingMain.tsx` still imports `<FormLogin>`, `<FormRegister>` and `<FormPassword>` without rendering them, from before the rewrite. A container that renders a Form passes `info.labelName` and `style.color`, the way the `form-components/` harness pages do.
 
 ### Pipeline Files
@@ -282,7 +282,7 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 ### Component Rules
 
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
-- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](TABLE.md#5-how-data-reaches-a-table).
+- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](../back-end/DATA.md#1-how-data-reaches-a-table).
 - **Components survive the flip.** Turning the screen unmounts one orientation's markup and mounts the other's, so a listener or timer a component starts is returned from its `useEffect`, and anything added to one orientation gets its mirror in the other. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip).
 
 ### Declaration Order
@@ -309,6 +309,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
   ```
 
   They name the file's own container and never change during a render, which is what `const` says. A `let` is for what the render works out from them (`let blurName`, `let stateName`). The order reads outside-in (page, container, label), the same way the names build the id and class, so every container's opening looks alike. This scope is fixed; deeper scopes (`elements/`, see [Container Skeleton](#container-skeleton)) keep their own order for now and may change.
+
 - **Parameters come in three groups, always in this order.** **Information** first: the names (`pageName`, `blockName`, `labelName`, in that order). Then **Determinate**: fixed strings, a union of set values like `element`, `menuAxis`, `alterAction` or `styleView`. Then **Miscellaneous**: everything else (numbers, free strings, elements like `thisItem` or `carousel`). A name stays a name even when its type is a fixed list (`labelName: 'switching' | 'textarea' | 'selection'` still goes first). With the names always up front, any function can find its page, block and label without reading the rest. Each group opens with a `//--|🠋 … 🠈|--\\` label, with a blank line between groups, and the names a function doesn't take stay in as commented-out placeholders, so every function shows the full order:
 
   ```ts
@@ -331,6 +332,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
   ```
 
   Reorder one function at a time and run `npx tsc --noEmit -p tsconfig.json` after each: moving a parameter past one of a different type makes every caller you missed show up as an error. Two plain `string`s swapped are not caught, which is why the names never trade places with each other. Older functions that start with `thisItem`, a value (`switchColors(choice, labelName)`) or a fixed string move as they're touched; `blockViews()` and its handlers move last, together, as their own step.
+
 - **Unordered lists form a pyramid; ordered lists are alphabetical.** A list whose order means nothing to the code, like the values of a union, runs from shortest to longest, so it reads as a pyramid on its side. TypeScript ignores the order inside a union, so sorting one never changes what the code does. Values of the same length can sit in any order among themselves; in [archive] that's a free choice for the look. A list whose position means something stays alphabetical, like the `switch` in `carouselPreview`, where `(article)` is slide I and `(time)` is slide XII:
 
   ```ts
@@ -348,6 +350,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
     | '(division)'
     | '(navigation)',
   ```
+
 - **Elements inside a function.** The container the call was launched from is a `const`; a container reached through a hard-coded selector is a `let`. In `squareFooters`, the footer that was tapped arrives as `thisItem`, and `let rightbarElement = document.querySelector('#overtime-rightbar')` is the partner it reaches out to. The squaring handlers in `layouts/scripts/Head_Foot.ts` read the same way: `const headerElement` for the block they're named after, while `obnubilateMain()` reaches every container through a selector, so each of its elements is a `let`. The variable is named after the container it holds, so a Footer file says `footerElement`, never `headerElement`.
 - **Types are shared, not copied.** The `.tsx` owns them and the `.ts` imports them (see [Props and Events](#props-and-events)).
 
@@ -446,11 +449,11 @@ The sibling `.ts` file (`${Name}Functions.ts`) follows [Declaration Order](#decl
 
 **Three homes for shared code:**
 
-| Folder                 | Holds                                                                    | Files                                                                                                                                                                         |
-| ---------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `layouts/tools/`       | What the whole project shares, one file per job                          | `conversions.ts` (`stripBrackets`, `arabicToRoman`, `romanToArabic`), `frameworks.ts` (`showingBootstrap`), `navigation.ts` (`loadPages`), `synching.ts` (`synchDemo`, `checkScreen`, `asynchObserve`), `utilities.ts` (`loadAsset`) |
-| `layouts/scripts/`     | What a container pair shares, run by every application                   | `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                                                                                                                                |
-| `layouts/containers/`  | `containers.ts`: `blockViews()`, the dispatcher every state change goes through | `containers.ts`                                                                                                                                                         |
+| Folder                | Holds                                                                           | Files                                                                                                                                                                                                                                |
+| --------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `layouts/tools/`      | What the whole project shares, one file per job                                 | `conversions.ts` (`stripBrackets`, `arabicToRoman`, `romanToArabic`), `frameworks.ts` (`showingBootstrap`), `navigation.ts` (`loadPages`), `synching.ts` (`synchDemo`, `checkScreen`, `asynchObserve`), `utilities.ts` (`loadAsset`) |
+| `layouts/scripts/`    | What a container pair shares, run by every application                          | `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                                                                                                                                                                                      |
+| `layouts/containers/` | `containers.ts`: `blockViews()`, the dispatcher every state change goes through | `containers.ts`                                                                                                                                                                                                                      |
 
 Callers import straight from the file that holds the function; there's no barrel file in between.
 
@@ -472,7 +475,7 @@ Callers import straight from the file that holds the function; there's no barrel
 - **`Main_Over.ts` and `containers.ts` import each other.** It works because nothing calls across the two while they load: `blockHandlers` holds arrows that only run on a click or a timer. If something ever does (a `blockViews()` written outside a function), `errorHandlers()` catches the `ReferenceError` and shows a `|🠊 Warning: … 🠈|` popup naming the block and the state, then lets the error through.
 - **Pass values, not events.** The `.tsx` hands over what the function needs (`onChange={(event) => switchColors(event.target.value, 'textarea')}`, `task: [(tint) => toggleColors(tint)]`), so the `.ts` never imports React types.
 - **Lookup maps are written out**, one line per entry (`'(red)': 'red'`, `'(green)': 'gre'` …), never derived with a shortcut like `.slice(0, 3)`.
-- **Colour switching swaps one slot of the class.** The `export const` turns the choice into its abbreviation and passes it to a `let`, which loops over the elements and rebuilds `classList[1]` from its `.split('_')` parts, changing only the colour: `[3]` on a `<Button>` (size*view_shade***color**_clarity_variant), `[4]` on a `<Label>` (size_type_view_shade_**color**\_clarity_def), `[2]` on `<AsideCharacters>` (view_shade_**color**\_clarity), `[0]` on a `<Form>` (**color**\_def). A `<Form>` page's `toggleColors` swaps all three: the `<form>`, then each `<button>` and `<label>` inside it. Shade never changes. Clarity switches the same way on `<ButtonDefault>`'s page: `toggleClarity(fieldset)` in `DefaultFunctions.ts` reads the checked `{option}`'s value (`'Lucid'` or `'Opaque'`) and passes it to `updateClarity`, which swaps `[4]` on one side only, the side named by the `<fieldset>`'s class (`clarify-darkside`). `RoutingFunctions.ts` does the same per side; `ProfileFunctions.ts` has no sides, so the `<fieldset>`'s class picks the shade (`_dar_` or `_lig_`) instead. Every page under `elements/` keeps its colour switcher in its own `*Functions.ts`, and pages that need the same one each keep a copy written line for line alike (see the scope rule above): the three `<Label>` pages each hold `switchColors(choice, labelName)`, which skips the page's own colour `{select}`, and the `<Button>` pages each hold `toggleColors`.
+- **Colour switching swaps one slot of the class.** The `export const` turns the choice into its abbreviation and passes it to a `let`, which loops over the elements and rebuilds `classList[1]` from its `.split('_')` parts, changing only the colour: `[3]` on a `<Button>` (size\*view*shade**\*color**\_clarity_variant), `[4]` on a `<Label>` (size_type_view_shade***color**\_clarity*def), `[2]` on `<AsideCharacters>` (view_shade***color**\_clarity), `[0]` on a `<Form>` (**color**\_def). A `<Form>` page's `toggleColors` swaps all three: the `<form>`, then each `<button>` and `<label>` inside it. Shade never changes. Clarity switches the same way on `<ButtonDefault>`'s page: `toggleClarity(fieldset)` in `DefaultFunctions.ts` reads the checked `{option}`'s value (`'Lucid'` or `'Opaque'`) and passes it to `updateClarity`, which swaps `[4]` on one side only, the side named by the `<fieldset>`'s class (`clarify-darkside`). `RoutingFunctions.ts` does the same per side; `ProfileFunctions.ts` has no sides, so the `<fieldset>`'s class picks the shade (`_dar_` or `_lig_`) instead. Every page under `elements/` keeps its colour switcher in its own `*Functions.ts`, and pages that need the same one each keep a copy written line for line alike (see the scope rule above): the three `<Label>` pages each hold `switchColors(choice, labelName)`, which skips the page's own colour `{select}`, and the `<Button>` pages each hold `toggleColors`.
 - **Loops count with `.length`**, so adding or removing a preview never breaks them. **The one exception** is `updateButtons` in `DefaultFunctions.ts`: its `i < 49` is deliberate, a marker showing how many `<ButtonDefault>`s each side holds. Leave it.
 - **The control keeps its own colour.** The `<DivisionColourize>` toggles and the colour `{select}` stay `(mono)`; they're part of the page, not the preview.
 
@@ -556,7 +559,7 @@ Props are written with brackets that show their type at a glance. `stripBrackets
 - **No text frame on `<ButtonDefault>`:** its `⟨opaque⟩` box has no frame around the text.
 - **`<ButtonDefault>`'s shadows only show on hover, on both clarities:** the resting layer (`::before`) of `div[class='text']` and `div[class='icon']` is clear, so the text box and icon halo appear only when the hover crossfade fades `::after` in. `<ButtonGlowing>` does the same, and `<ButtonStretch>` does it for the icon (its text has no box). `<ButtonRouting>` and `<ButtonProfile>` have no crossfade layers, so there's nothing to hide.
 - **`<ButtonRouting>` and `<ButtonProfile>` keep their frame:** the `.fore` frame (Routing) and ring (Profile) stay visible, and follow the same colour rule as the icon: the shade's own colour at rest, the resting `⟨lucid⟩` colour on hover. They have no crossfade layers, so the back itself fades (`opacity` 0 → 1 over 750ms; a gradient can't fade, it snaps). **Real pictures dim at rest** (`img[src]` at `opacity: 0.5`, back to `1` on hover, over the icon's 250ms); silhouettes only change colour.
-- **`<AsideCharacters>` `⟨opaque⟩` drops its background:** the panel's colour goes `transparent` (on the `<aside>` on desktop, on its `::before` on mobile), so only the characters are left. `⟨lucid⟩` keeps the coloured panel. The aside passes its clarity on to every `<ButtonProfile>` inside it, so the characters follow the `<ButtonProfile>` rules above. Its class is view_shade_color_clarity: `rig_lig_mon_luc`. Clarity is the last slot, so there's no trailing underscore: select it with `[class*='_opa']`, not the `_opa_` of a `<Label>` or `<Button>`.
+- **`<AsideCharacters>` `⟨opaque⟩` drops its background:** the panel's colour goes `transparent` (on the `<aside>` on desktop, on its `::before` on mobile), so only the characters are left. `⟨lucid⟩` keeps the coloured panel. The aside passes its clarity on to every `<ButtonProfile>` inside it, so the characters follow the `<ButtonProfile>` rules above. Its class is view*shade_color_clarity: `rig_lig_mon_luc`. Clarity is the last slot, so there's no trailing underscore: select it with `[class*='_opa']`, not the `\_opa*`of a`<Label>`or`<Button>`.
 
 - **`<ArticleLoading>` `⟨opaque⟩` is the GIF on a half-transparent backing in its own colour:** the colour's `-light` at 25% on `~dark~` and its `-dark` at 25% on `~light~` (`(mono)` is close to the white and black it always had), framed with a softer card edge at half strength: a light inner glow on `~dark~`, a dark inner shadow and a drop shadow on `~light~`. Each colour's `_opa` block sits in its own `*-tint`. `⟨lucid⟩` isn't designed yet. Its class is shade_color_clarity: `lig_mon_opa`, so, like `<AsideCharacters>`, select the clarity with `[class*='_opa']`. Every caller (the five Overlays and the `[archive]` page) passes `(mono)` and `⟨opaque⟩` for now.
 
@@ -793,6 +796,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
     repeat(2, 4rem) 1fr repeat(2, 4rem) //--|🠈 rows 🠈|--//
     / 398px 1fr 398px; //--|🠈 columns 🠈|--\\
   ```
+
 - The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
 - `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept. Reordering code (moving parameters, arguments, union values or lines without changing them) doesn't get a flag, unless it obviously breaks something.
@@ -809,6 +813,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
   ```
 
   When a caller stops, take its line out. A handler with no note isn't wired to anything yet. This keeps the indirection readable instead of turning it into spaghetti code.
+
 - A coloured square tags the application a file belongs to, usually as the first line inside a container's `useEffect`: `//--|🟨|--\\` Archive (`components`), 🟩 Track a Day (`overtime`), 🟦 Log a Ticket (`ticketing`), 🟥 Find a Link (`hyperlink`), 🟧 Pick a Page (`landing`). It makes a code review show at a glance which app you're in. Orange is the company's colour, so `[landing]`, the company's front door, carries it; red, green and blue stay with the three applications.
 
 ---
@@ -828,14 +833,14 @@ Work moves through the applications in phases, and a phase only opens when the o
 
 **What a copy keeps per application.** `[overtime]` is the skeleton: a copy takes its structure, classes, SCSS and functions line for line, and changes only these:
 
-| Part                                         | `[overtime]`                                 | `[ticketing]`                                | `[hyperlink]`                                |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| Names, flag and module                       | `overtime`, 🟩, `TrackTime`                  | `ticketing`, 🟦, `DefineDuties`              | `hyperlink`, 🟥, `ArchiveAnchors`            |
-| `<NavigationDefault>` logo                   | `(green)`, `track-a-day/primary-medium`      | `(blue)`, `log-a-ticket/primary-medium`      | `(red)`, `find-a-link/primary-medium`        |
-| The `apps:` card and the `<SectionCharacters>` | `(green)`, `apps: 'track-a-day'`           | `(blue)`, `apps: 'log-a-ticket'`             | `(red)`, `apps: 'find-a-link'`               |
-| `<DivisionTesting>` in `<Main>` and the two `<ArticleUpdates>` in `<Overlay>` | `(green)`; `<Main>` has no `<DivisionTesting>`, its pages took its place on 2026-11-08 | `(blue)` | `(red)` |
-| The toggle menu's `text` and icons           | `Established` / `Freelancing`, `7.3.1/solid/briefcase` / `6.5.1/solid/messages-dollar` | `Manager` / `Employee`, `7.3.1/solid/user-tie` / `6.5.1/solid/user-helmet-safety` | `Specialist` / `Technician`, `7.3.1/solid/award` / `7.3.1/solid/screwdriver-wrench` |
-| The app menu (`<MenuSwipe>`)                 | TraLogFin, Log a Ticket, Find a Link         | Track a Day, TraLogFin, Find a Link          | Track a Day, Log a Ticket, TraLogFin         |
+| Part                                                                          | `[overtime]`                                                                           | `[ticketing]`                                                                     | `[hyperlink]`                                                                       |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Names, flag and module                                                        | `overtime`, 🟩, `TrackTime`                                                            | `ticketing`, 🟦, `DefineDuties`                                                   | `hyperlink`, 🟥, `ArchiveAnchors`                                                   |
+| `<NavigationDefault>` logo                                                    | `(green)`, `track-a-day/primary-medium`                                                | `(blue)`, `log-a-ticket/primary-medium`                                           | `(red)`, `find-a-link/primary-medium`                                               |
+| The `apps:` card and the `<SectionCharacters>`                                | `(green)`, `apps: 'track-a-day'`                                                       | `(blue)`, `apps: 'log-a-ticket'`                                                  | `(red)`, `apps: 'find-a-link'`                                                      |
+| `<DivisionTesting>` in `<Main>` and the two `<ArticleUpdates>` in `<Overlay>` | `(green)`; `<Main>` has no `<DivisionTesting>`, its pages took its place on 2026-11-08 | `(blue)`                                                                          | `(red)`                                                                             |
+| The toggle menu's `text` and icons                                            | `Established` / `Freelancing`, `7.3.1/solid/briefcase` / `6.5.1/solid/messages-dollar` | `Manager` / `Employee`, `7.3.1/solid/user-tie` / `6.5.1/solid/user-helmet-safety` | `Specialist` / `Technician`, `7.3.1/solid/award` / `7.3.1/solid/screwdriver-wrench` |
+| The app menu (`<MenuSwipe>`)                                                  | TraLogFin, Log a Ticket, Find a Link                                                   | Track a Day, TraLogFin, Find a Link                                               | Track a Day, Log a Ticket, TraLogFin                                                |
 
 Everything else stays `(mono)`: the toggle menu, and `<AsideCharacters>` (`(mono)` + `⟨opaque⟩`). Only the cards that represent the application carry its colour; the other colours are too flamboyant. In the app menu, TraLogFin takes the current application's own slot, so the three always run Track a Day → Log a Ticket → Find a Link. The TraLogFin logo (`pick-a-page/trinity-apps`) is always `(orange)`, the company's colour, wherever it shows: that slot in the app menu, and the `<NavigationDefault>` logo on `[archive]` and `[landing]`. Its `color`, `image` and `task` lists follow that same order, in both the Header and the Footer. The toggle menu keeps `labelName: 'demonstration'` in every application, because the slide rules select on it.
 
@@ -857,7 +862,7 @@ Every line the `diff` shows is either a row of the table, which the copy keeps, 
 
 **Visually:** the **Archive** page (`#components-body`) is the testing surface. Its element groups (`<Article>`, `<Aside>`, `<Button>` …) always run alphabetically, in every file that lists them: `ArchiveMain.tsx` and `ArchiveMain.scss`, the Leftbar and Rightbar menus (icons, links and `pages` count), and the Header and Footer `MenuSwipe`s. A new group slots into its letter in all six, so `<Form>` sits between `<Figure>` and `<Label>`. Inside a group, the page order, the default preview and the harness layouts change with the work, so the documents don't fix them; the code decides. Every component gets a test harness in `containers/Archive/Main/elements/${element}-components/${variant}-${element}/` that renders the real component with toggles for its props. The folder's `${Element}Elements.tsx` decides which preview it renders on, through `let viewName` (see [Element Scopes](#element-scopes)), and `startingPreview()` in `ArchiveMain.tsx` opens the page on one group and preview. To open a different page, change the `viewBody('archive')` call at the top of `source/index.tsx`. A `<Label>` page shows every `cases.type` at once, one row each, in both shades and both clarities. Each cell is a bare `<fieldset>`, so `data-` attributes and `{option}` groups can be tested.
 
-**Rules:** test the application rules with the characters in [CHARACTERS.md](CHARACTERS.md). Each one lists the rules it exists to break.
+**Rules:** test the application rules with the characters in [CHARACTERS.md](../CHARACTERS.md). Each one lists the rules it exists to break.
 
 **From the terminal:**
 
@@ -887,14 +892,14 @@ When old code is replaced but should be kept, the untouched original goes in a `
 
 Decided, but not built yet. Don't start any of these without a conversation first.
 
-| What                                      | Where it's headed                                                                                                                                                                      |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bootstrap into `Global.scss`               | Carry over only the Bootstrap rules the app uses, then drop the framework and rename `display-1` … to `disp~one` …. Never select those as `[class*='disp~one']`. Only with near-certainty, since it moves the baseline |
-| Smooth fades between colours              | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first                                                                               |
-| `<ButtonRouting>` effects                 | Special animations when it's inside `<NavigationDefault>`                                                                                                                              |
-| `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS |
-| `blockViews()` parameter order            | `blockViews()` and its 32 handlers move to names-first ([Declaration Order](#declaration-order)): about 62 calls in 14 files, in one reorder-only commit right after a clean one     |
-| Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                   |
-| Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                           |
-| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](TABLE.md#6-mongodb-today-mysql-tomorrow))                               |
-| Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                         |
+| What                                      | Where it's headed                                                                                                                                                                                                      |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bootstrap into `Global.scss`              | Carry over only the Bootstrap rules the app uses, then drop the framework and rename `display-1` … to `disp~one` …. Never select those as `[class*='disp~one']`. Only with near-certainty, since it moves the baseline |
+| Smooth fades between colours              | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first                                                                                                               |
+| `<ButtonRouting>` effects                 | Special animations when it's inside `<NavigationDefault>`                                                                                                                                                              |
+| `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS                                 |
+| `blockViews()` parameter order            | `blockViews()` and its 32 handlers move to names-first ([Declaration Order](#declaration-order)): about 62 calls in 14 files, in one reorder-only commit right after a clean one                                       |
+| Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                                                   |
+| Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                                                           |
+| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow))                                                    |
+| Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](../GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                                                      |
