@@ -28,6 +28,7 @@ interface TheseProps {
       onDoubleClick?: (view: string, container: HTMLElement) => void;
     };
     image: Array<string> | undefined;
+    menus: Array<HTMLMenuElement> | undefined;
     view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
   };
   //--|===|--\\
@@ -190,7 +191,7 @@ const HorizontalButtons = (
   }
 };
 
-var NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -198,7 +199,7 @@ var NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], case
   // console.log('<Main> Loaded!');
   return <></>;
 };
-var NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -206,7 +207,7 @@ var NavigationHeader = (info: TheseProps['info'], style: TheseProps['style'], ca
   // console.log('<Header> Loaded!');
   return <></>;
 };
-var NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -214,7 +215,7 @@ var NavigationFooter = (info: TheseProps['info'], style: TheseProps['style'], ca
   // console.log('<Footer> Loaded!');
   return <></>;
 };
-var NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -222,7 +223,7 @@ var NavigationOverlay = (info: TheseProps['info'], style: TheseProps['style'], c
   // console.log('<Overlay> Loaded!');
   return <></>;
 };
-var NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
@@ -230,7 +231,7 @@ var NavigationLeftbar = (info: TheseProps['info'], style: TheseProps['style'], c
   // console.log('<Leftbar> Loaded!');
   return <></>;
 };
-var NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
+let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
   const pageCases = cases as TheseProps['cases'];
