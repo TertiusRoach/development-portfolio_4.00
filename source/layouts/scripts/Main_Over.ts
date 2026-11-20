@@ -136,7 +136,7 @@ let reloadOnce = (pageName: string) => {
       break;
   }
 };
-let forgetReload = (_pageName: string) => {
+let forgetReload = (pageName: string) => {
   try {
     sessionStorage.removeItem('reloaded');
   } catch (error) {

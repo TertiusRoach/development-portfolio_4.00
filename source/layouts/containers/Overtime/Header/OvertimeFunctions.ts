@@ -91,7 +91,7 @@ export function freezeHeaders(pageName: 'overtime', styleView: 'top-lef') {
   }
 }
 //--|===|--\\
-const selectCharacter = (_thisItem: HTMLElement, pageName: string, blockName: string): void => {
+const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
   console.log(`//--|🠊 Select Profile: #${pageName}-${blockName} 🠈|--\\\\`); //--|🠈 AI Code: Review Please 2026-11-12 · Was 'Select Profile...' 🠈|--\\
 };
 let sequencedDemonstration = (profile: string): string => {

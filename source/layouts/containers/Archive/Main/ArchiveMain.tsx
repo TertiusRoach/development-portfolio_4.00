@@ -41,12 +41,12 @@ function ArchiveMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    startingPreview('(figure)', 1);
     //--|🟨|--\\
+    startingPreview('(navigation)', 1);
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let viewName = 1 as number;
+  let tagsName = 1 as number;
   let blurName = 'obnubilate' as string;
   return (
     <main
@@ -64,7 +64,7 @@ function ArchiveMain({ info }: InfoProps) {
           //--|🠊 <div class="elements-main_fullscreen-default"/> 🠈|--\\
           cases={{
             axis: '[y]',
-            show: viewName as number,
+            show: tagsName as number,
             call: ComponentsElements as React.ComponentType<InfoProps>,
           }}
           info={{

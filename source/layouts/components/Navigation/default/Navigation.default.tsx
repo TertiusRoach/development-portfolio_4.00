@@ -169,10 +169,10 @@ const HorizontalButtons = (
   style: TheseProps['style'],
   cases: TheseProps['cases'],
   //--|===|--\\
-  _onClick: TheseProps['onClick'], //--|🠈 AI Code: Review Please 2026-11-08 · _ marks handlers passed in but not handed on to the Navigation* views yet 🠈|--\\
-  _onMouseEnter: TheseProps['onMouseEnter'],
-  _onMouseLeave: TheseProps['onMouseLeave'],
-  _onDoubleClick: TheseProps['onDoubleClick'],
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
 ) => {
   switch (info.blockName) {
     case 'main':

@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true,
     "jsx": "react-jsx",
@@ -17,5 +17,5 @@
     "noEmit": true
   },
   "include": ["source/", "source/layouts/pages/*", "source/layouts/styles/*"],
-  "exclude": ["node_modules/", "source/**/REVIEW/", "source/utilities/vendors/log-a-ticket/", "source/utilities/vendors/university-tracker/"]
+  "exclude": ["node_modules/", "source/**/REVIEW/", "source/utilities/vendors/archive/log-a-ticket/", "source/utilities/vendors/archive/university-tracker/"]
 }

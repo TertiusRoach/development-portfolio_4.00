@@ -21,17 +21,7 @@
 
 //--|🠋 Type Definitions 🠋|--\\
 type ScreenName = 'mobile-portrait' | 'tablet-squaring' | 'desktop-landscape';
-type ProfileName =
-  | 'DSL'
-  | 'GPRS'
-  | 'Wi-Fi'
-  | 'Cached'
-  | 'Unknown'
-  | 'Good 2G'
-  | 'Good 3G'
-  | 'Regular 2G'
-  | 'Regular 3G'
-  | 'Regular 4G / LTE';
+type ProfileName = 'DSL' | 'GPRS' | 'Wi-Fi' | 'Cached' | 'Unknown' | 'Good 2G' | 'Good 3G' | 'Regular 2G' | 'Regular 3G' | 'Regular 4G / LTE';
 type ConnectionDetails = {
   effectiveType?: string; //--|🠈 Chrome & Edge only: 'slow-2g', '2g', '3g' or '4g' 🠈|--\\
   saveData?: boolean; //--|🠈 Chrome & Edge only: the visitor asked for less data 🠈|--\\
@@ -199,12 +189,13 @@ export async function logInformation(
 ): Promise<void> {
   const informationReport = await collectInformation(pageName);
   console.log(`|🠊 Information: <div id="${pageName}-body"> 🠈|`);
-  console.table(informationReport); //--|🠈 One row per field: easy to read, easy to copy 🠈|--\\
+  //--|🠋 One row per field: easy to read, easy to copy 🠈|--\\
+  //--|🠊 console.table(informationReport); 🠈|--\\
 }
 
 //--|🠋 Readings 🠋|--\\
 //--|🠊 offlineDeviceId: made once, kept in this browser until its site data is cleared 🠈|--\\
-const readDeviceId = (_pageName: string): string | null => {
+const readDeviceId = (pageName: string): string | null => {
   let deviceId = null as string | null;
   try {
     deviceId = localStorage.getItem('offlineDeviceId');
@@ -225,7 +216,7 @@ const readDeviceId = (_pageName: string): string | null => {
   reports, so it never replaces userIP. When Express is hosted, the server fills userIP itself.
   api.ipify.org answers with IPv4; api64.ipify.org would answer with IPv6 when the visitor has it.
 🠉|--*/
-const readLookup = async (_pageName: string): Promise<string | null> => {
+const readLookup = async (pageName: string): Promise<string | null> => {
   const abortController = new AbortController();
   /*--|🠋
     5 minutes: on Regular 3G the answer queues behind the page's own downloads.
@@ -263,7 +254,7 @@ const readLookup = async (_pageName: string): Promise<string | null> => {
   replaces country. When Express is hosted, the server looks up country from userIP itself.
   Trustworthy IP: countryIP that disagrees with timeZone and languageRegion hints at a VPN or proxy.
 🠉|--*/
-const readCountry = async (_pageName: string): Promise<string | null> => {
+const readCountry = async (pageName: string): Promise<string | null> => {
   const abortController = new AbortController();
   const abortTimer = setTimeout(() => abortController.abort(), 300000); //--|🠈 5 minutes, the same as readLookup() 🠈|--\\
   let countryIP = null as string | null;
@@ -289,7 +280,7 @@ const readCountry = async (_pageName: string): Promise<string | null> => {
   return countryIP;
 };
 //--|🠊 R29: the server's Date header is the true time, the device's clock is only compared to it 🠈|--\\
-const readClock = async (_pageName: string) => {
+const readClock = async (pageName: string) => {
   const deviceNow = Date.now() as number;
   /*--|🠋
     clockJumpSeconds: performance.timeOrigin is the device's clock when the page opened,
@@ -318,7 +309,7 @@ const readClock = async (_pageName: string) => {
   };
 };
 //--|🠊 TABLE.md Section 7: offline data only lasts if the browser promised to keep it 🠈|--\\
-const readStorage = async (_pageName: string) => {
+const readStorage = async (pageName: string) => {
   let storagePersisted = null as boolean | null;
   let storageQuotaMegabytes = null as number | null;
   try {
@@ -338,7 +329,7 @@ const readStorage = async (_pageName: string) => {
   };
 };
 //--|🠊 Speed is measured from the files this page already downloaded, so it costs no extra data 🠈|--\\
-const readNetwork = (_pageName: string) => {
+const readNetwork = (pageName: string) => {
   const connectionDetails = (navigator as Navigator & { connection?: ConnectionDetails }).connection;
   const pageEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
   const fileEntries = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
@@ -383,7 +374,7 @@ const readNetwork = (_pageName: string) => {
   };
 };
 //--|🠊 The same three queries as the SCSS, tablet first (see showingBootstrap() in frameworks.ts) 🠈|--\\
-const readScreen = (_pageName: string) => {
+const readScreen = (pageName: string) => {
   return {
     screenName: nameScreen(),
     viewportWidth: window.innerWidth,
@@ -393,7 +384,7 @@ const readScreen = (_pageName: string) => {
     pixelRatioPercent: Math.round(window.devicePixelRatio * 100) as number,
   };
 };
-const readSoftware = (_pageName: string) => {
+const readSoftware = (pageName: string) => {
   const agentText = navigator.userAgent as string;
   return {
     browserName: nameBrowser(agentText),
@@ -403,7 +394,7 @@ const readSoftware = (_pageName: string) => {
     cookiesEnabled: navigator.cookieEnabled,
   };
 };
-const readRegion = (_pageName: string) => {
+const readRegion = (pageName: string) => {
   const language = (navigator.language || 'en') as string;
   let languageRegion = null as string | null;
   try {
@@ -418,7 +409,7 @@ const readRegion = (_pageName: string) => {
     languageRegion: languageRegion,
   };
 };
-const readInput = (_pageName: string) => {
+const readInput = (pageName: string) => {
   let pointerType = 'none' as 'none' | 'fine' | 'coarse';
   if (window.matchMedia('(pointer: coarse)').matches) {
     pointerType = 'coarse';

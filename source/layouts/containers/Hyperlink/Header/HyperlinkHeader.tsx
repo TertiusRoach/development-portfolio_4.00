@@ -75,7 +75,7 @@ function HyperlinkHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (_view, container) => {
+                  onClick: (view, container) => {
                     expandHeaders(container);
                     synchDemo(pageName, blockName, 'pick');
                   },

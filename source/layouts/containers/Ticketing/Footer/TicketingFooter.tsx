@@ -144,7 +144,7 @@ function TicketingFooter({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (_view, container) => {
+                  onClick: (view, container) => {
                     expandFooters(container);
                     synchDemo(pageName, blockName, 'pick');
                   },

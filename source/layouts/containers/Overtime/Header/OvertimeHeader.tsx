@@ -78,7 +78,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 view: undefined,
                 image: undefined,
                 tasks: {
-                  onClick: (_view, container) => {
+                  onClick: (view, container) => {
                     expandHeaders(container);
                     synchDemo(pageName, blockName, 'pick');
                     startingPreview('(vocation)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:38 · 1 = the sweeping shows its placeholder 🠈|--\\

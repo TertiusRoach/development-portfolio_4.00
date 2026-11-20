@@ -70,7 +70,7 @@ function PlaceholderDivision({ info }: InfoProps) {
             blockName: info.blockName as '<main>',
             pageName: info.pageName as '[components]',
           }}
-          onWheel={(_event: React.WheelEvent<HTMLDivElement>): void => {
+          onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
             /*
             if (event.deltaY < 0) {
               scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');

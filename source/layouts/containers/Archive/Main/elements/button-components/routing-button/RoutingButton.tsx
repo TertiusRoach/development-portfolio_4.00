@@ -77,7 +77,7 @@ function RoutingButton({ info }: InfoProps) {
                 show: casesShow as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
-              onWheel={(_event: React.WheelEvent<HTMLDivElement>): void => {
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
                 /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
@@ -173,7 +173,7 @@ function RoutingButton({ info }: InfoProps) {
                 show: casesShow as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
-              onWheel={(_event: React.WheelEvent<HTMLDivElement>): void => {
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
                 /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
@@ -266,7 +266,7 @@ function RoutingButton({ info }: InfoProps) {
                 show: casesShow as number,
                 call: ButtonsDarkside as React.ComponentType<InfoProps>,
               }}
-              onWheel={(_event: React.WheelEvent<HTMLDivElement>): void => {
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
                 /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');
@@ -362,7 +362,7 @@ function RoutingButton({ info }: InfoProps) {
                 show: casesShow as number,
                 call: ButtonsLightside as React.ComponentType<InfoProps>,
               }}
-              onWheel={(_event: React.WheelEvent<HTMLDivElement>): void => {
+              onWheel={(event: React.WheelEvent<HTMLDivElement>): void => {
                 /*
                 if (event.deltaY < 0) {
                   scrollSide(event.currentTarget as HTMLDivElement, 'view-prev');

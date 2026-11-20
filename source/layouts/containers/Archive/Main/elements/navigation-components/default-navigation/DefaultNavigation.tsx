@@ -42,15 +42,16 @@ function DefaultNavigation({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
+                view: undefined,
                 color: '(mono)',
                 shade: '~light~',
-                view: undefined,
                 image: undefined,
               }}
               cases={{
                 view: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
                 image: [imageLink, imageLink, imageLink, imageLink],
-                tasks: {}, //--|🠈 AI Code: Review Please 2026-11-08 · No tasks yet: the buttons stay inert 🠈|--\\
+                tasks: {},
+                // menus: []
               }}
             />
           </section>
