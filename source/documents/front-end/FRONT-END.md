@@ -271,7 +271,7 @@ A `Warning:` can stand alone; `Helper:` and `Guidance:` only follow one.
 
 ### Props and Events
 
-- **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). Every key in `info` ends in `Name`, a longer `className`: each one names something (the page, the block, the label, and what a screen reader says). `info.ariaName` follows the same logic. It's optional, sits between `blockName` and `labelName`, and is read aloud when a button has no visible text (`aria-label={info.ariaName}`); other components add it when they need it.
+- **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). Every key in `info` ends in `Name`, a longer `className`: each one names something (the page, the block, the label, and what a screen reader says). `info.ariaName` follows the same logic. It's optional, sits between `blockName` and `labelName`, and is read aloud when a button has no visible text (`aria-label={info.ariaName}`); other components add it when they need it. Why it's its own key is in [Accessibility](#accessibility).
 - **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.selection';` and uses `TheseProps['style']['shade']`. The three `<Label>`s follow this; the others move over as they're refactored.
 - **`cases.type` decides what a component is, `style` decides how it looks.** One component covers several elements with a classic `switch (cases.type)`, and each element's HTML is written right inside its own `case`, wrapped in braces: `case '{chip}': { … }`. The braces mark where one element ends and the next begins, and keep a case's own variables (`plusImage`, `checkImage`) inside it. There are no separate case functions, so nothing has to be passed along: every case reads `style`, `cases` and `onChange` straight from the component. Event handlers a case uses (`markKeyboard()`, `stepNumber()`, `nextBlock()`) still live below the component, under a heading named after their case: `//--|🠋 Number 🠋|--\\`. Props only one case needs are optional and marked with a trailing comment (`text?: string; //--|🠈 {chip}'s words, {option}'s value 🠈|--\\`). When the browser already has a sensible default, there's no prop at all, which leaves the calls lean and the door open to add a prop later when a real use needs one. A `cases.type` belongs with the others when it holds the same kind of value: `<LabelSwitching>` is only on & off, so a `{slide}` with many values will be its own component. Hooks stay at the top of the component, above the `switch`, because React needs them in the same order on every render.
 - **Every `<Button>` and `<Label>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick` on a `<Button>`, `onChange` on a `<Label>`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
@@ -285,6 +285,36 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
 - **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](../back-end/DATA.md#1-how-data-reaches-a-table).
 - **Components survive the flip.** Turning the screen unmounts one orientation's markup and mounts the other's, so a listener or timer a component starts is returned from its `useEffect`, and anything added to one orientation gets its mirror in the other. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip).
+
+### Accessibility
+
+Every component has to work for someone who can't see the screen or can't use a mouse. It's a feature like any other: built and settled on `<ButtonDefault>` and its Archive page first, then copied to the other components in the same syntax (see [The Philosophy](#1-the-philosophy), point 9). What the server owes the same people is in [BACK-END.md, Accessibility](../back-end/BACK-END.md#1-accessibility).
+
+- **Every control has a name.** A `<button>` with visible text is named by it. One without (an `-icon-` button, the corner buttons, the Leftbar and Rightbar icons) gets `info.ariaName`, which becomes its `aria-label` (see [Props and Events](#props-and-events), and below for why it's its own key). The `<Form>`s already do this (`ariaName: 'Show password'`); the rest move over as their files are refactored:
+
+  ```tsx
+  info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Upload article', labelName: 'article-upload' }}
+  ```
+
+- **Clickable means focusable.** Anything with `onClick` is a `<button>`, an `<a>`, or a `<label>` around an input, so the keyboard can reach it. A new `<div>`, `<span>` or `<figure>` never takes `onClick`; the existing ones move over as their files are refactored.
+- **Images say what they show.** An `<img>` from `loadAsset()` always has `alt`: the character's name on a portrait, the application's name on a logo. A purely decorative one gets `alt=""`, so a screen reader skips it. A mask (`maskImage`) can't be read at all, so a mask that means something sits inside a named control, or carries `role="img"` and `aria-label` itself.
+- **The keyboard reaches what the mouse reaches.** Whatever hover shows, focus shows too: every `onMouseEnter` that changes what's on screen gets an `onFocus` twin from the commented-out events block, and every `:hover` rule that reveals something gets `:focus-visible` beside it. A focus outline is never removed without a replacement.
+- **Motion respects `prefers-reduced-motion`.** Like the marching ants: still drawn, no longer moving. Fades, the loading blur and the `Utilities.scss` effects follow the same rule.
+- **Colour is never the only signal.** The ten colours say which application you're in. A state (selected, error, offline) also shows as text, an icon or a shape. Text keeps at least 4.5:1 contrast against its background in both shades and both clarities; the `<Label>` pages show every case in all four, so check there.
+- **What the person needs to know reaches the page.** A form error shows next to its field, linked with `aria-describedby`. A `Guidance:` console message is for developers; the person gets the same words on screen.
+- **Test it in the Archive.** Tab through each harness page with the keyboard only, and run Firefox's Accessibility Inspector (**Check for issues → All issues**) on it. A new component isn't settled until both pass.
+
+**Why `ariaName` is its own key, and not `labelName` reused.** The two name the same control for two different readers:
+
+| Key         | Names                   | Ends up as                         | Read by         | Written as                        |
+| ----------- | ----------------------- | ---------------------------------- | --------------- | --------------------------------- |
+| `labelName` | The styling hook        | The first part of the class        | The SCSS        | Bare and hyphenated: `'article-upload'` |
+| `ariaName`  | The control, out loud   | `aria-label`                       | A screen reader | Plain words, capital first: `'Upload article'` |
+
+- **One job per key.** A `labelName` is chosen so a selector can find it (`menu[class*='demonstration']`); an `ariaName` is chosen so a person understands it. Renaming one for its reader never breaks the other: a clearer spoken name can't break a style, and a renamed class can't silence a button.
+- **It follows the `info` pattern.** Every key ends in `Name` and names one thing, so a new key slots in without a new shape. It sits between `blockName` and `labelName`: the page, the block and the spoken name describe *where and what*, the `labelName` describes *how it looks*.
+- **Optional, because visible text already names a button.** Requiring it everywhere would mean writing every button's text twice. It's added where there's nothing visible to read: icon-only buttons today, and any other component the moment it renders a control without words.
+- **Clear, distinct HTML.** `class` stays a list of styling hooks and `aria-label` stays human language. Neither leaks into the other, so the HTML can be read at a glance by a developer and out loud by a screen reader.
 
 ### Declaration Order
 

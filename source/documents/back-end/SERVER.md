@@ -10,6 +10,7 @@ The structure both sides share is in [AGREEMENT.md](../AGREEMENT.md). This page 
 2. [How a Form Reaches the Server Today](#2-how-a-form-reaches-the-server-today)
 3. [Where It's Headed](#3-where-its-headed)
 4. [Entry-Point Communication](#4-entry-point-communication)
+5. [Devices](#5-devices)
 
 ---
 
@@ -87,3 +88,35 @@ If what left the block file is correct and what came back is wrong, the `.jsx` s
 **What `Apps.ts` can't do.** The password stays in memory, is sent once over HTTPS and is hashed only on the server ([Section 2](../front-end/CONTEXTS.md)). A key in the browser can be read by the browser, so `Apps.ts` never holds the only copy of a secret.
 
 Still to decide: who may read the `.jsx` clones, and whether `Apps.ts` encrypts the offline cache, the block traffic, or both.
+
+---
+
+## 5. Devices
+
+Four machines, each with one job. Addresses, logins and share settings stay out of this repository: it's public.
+
+| Device                          | Role                     | Does                                                                                      |
+| ------------------------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
+| **MIERNES** (PC, Linux Mint)    | Server, host             | Always on. Runs the server and holds the primary database: MongoDB today, MySQL beside it ([DATA.md, Section 2](DATA.md#2-mongodb-today-mysql-tomorrow)) |
+| **TERTIUS** (desktop PC)        | Development, admin       | Where this repository is written. Pulls a backup from MIERNES every night                  |
+| **WILLEPILLE** (MacBook)        | User                     | Pulls a backup from MIERNES whenever it's on                                               |
+| **Samsung A30** (phone)         | Offline testing          | Runs the app in its browser to test offline mode, with the cache in IndexedDB ([DATA.md, Section 3](DATA.md#3-offline-storage-indexeddb)) |
+
+**Backups are pulled, never pushed.** The computers fetch copies from MIERNES; MIERNES holds no keys to them. It may wake TERTIUS for the nightly pull, and a computer it woke shuts down again only if nobody has logged in since. The MacBook can't be woken from shutdown, so it catches up when it's on.
+
+**MIERNES is reached through an outbound tunnel,** never an open router port, so the home address stays hidden. The site and the server share one domain (`app.` and `api.`) so login cookies can stay `SameSite=Strict`.
+
+**On MIERNES beside the server.** The machine already does other work, and the server has to share it:
+
+- **Plex Media Server and a Samba media share** for the household. Neither touches the application, but both use the same disk and upload, and the router gives MIERNES first place in its streaming queue.
+- **Timeshift** takes a local system snapshot every hour.
+- **A backup timer** (05:00, 11:00 and two minutes after startup) copies MIERNES's own documents to TERTIUS. Copy only: it never deletes, moves or replaces a newer file, and logs `SKIPPED` when TERTIUS can't be reached.
+
+Still open before MIERNES hosts anything:
+
+- [ ] **That timer pushes.** It writes to TERTIUS with a saved login, which goes against "pulled, never pushed" above, and MIERNES has been read-only on TERTIUS's shares since 2026-11-14. Either TERTIUS pulls those documents too, or the exception gets written down here.
+- [ ] **It only runs while someone is logged in.** An always-on server has to work with nobody at the keyboard (lingering for the account, or a system service).
+- [ ] **Something restarts at 11:00,** and nobody has found what. A server that restarts daily needs to know why.
+- [ ] **MIERNES gets a fixed address** from the router (a DHCP reservation), so the tunnel and the backups always find it.
+
+The full rebuild notes (addresses, configs, router steps) are kept outside this repository.
