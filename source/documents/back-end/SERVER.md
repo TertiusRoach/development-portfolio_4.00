@@ -105,3 +105,18 @@ Four machines, each with one job. Addresses, logins and share settings stay out 
 **Backups are pulled, never pushed.** The computers fetch copies from MIERNES; MIERNES holds no keys to them. It may wake TERTIUS for the nightly pull, and a computer it woke shuts down again only if nobody has logged in since. The MacBook can't be woken from shutdown, so it catches up when it's on.
 
 **MIERNES is reached through an outbound tunnel,** never an open router port, so the home address stays hidden. The site and the server share one domain (`app.` and `api.`) so login cookies can stay `SameSite=Strict`.
+
+**On MIERNES beside the server.** The machine already does other work, and the server has to share it:
+
+- **Plex Media Server and a Samba media share** for the household. Neither touches the application, but both use the same disk and upload, and the router gives MIERNES first place in its streaming queue.
+- **Timeshift** takes a local system snapshot every hour.
+- **A backup timer** (05:00, 11:00 and two minutes after startup) copies MIERNES's own documents to TERTIUS. Copy only: it never deletes, moves or replaces a newer file, and logs `SKIPPED` when TERTIUS can't be reached.
+
+Still open before MIERNES hosts anything:
+
+- [ ] **That timer pushes.** It writes to TERTIUS with a saved login, which goes against "pulled, never pushed" above, and MIERNES has been read-only on TERTIUS's shares since 2026-11-14. Either TERTIUS pulls those documents too, or the exception gets written down here.
+- [ ] **It only runs while someone is logged in.** An always-on server has to work with nobody at the keyboard (lingering for the account, or a system service).
+- [ ] **Something restarts at 11:00,** and nobody has found what. A server that restarts daily needs to know why.
+- [ ] **MIERNES gets a fixed address** from the router (a DHCP reservation), so the tunnel and the backups always find it.
+
+The full rebuild notes (addresses, configs, router steps) are kept outside this repository.
