@@ -42,7 +42,7 @@ The four module names follow the applications: **PickPage** is Pick a Page (the 
 - **Emails** (verification and reset codes) go through nodemailer, with Mailtrap for testing ([MODULES.md, Section 4](MODULES.md#4-test-emails-with-mailtrap)).
 - **The password field** was called `passwordHash`. It carries the plain password; the server hashes it with `bcrypt`. A name that says "hash" makes the value look safe already, so someone could log it, store it or send it over plain HTTP thinking nothing can be read from it. It's renamed so the name says what the value really is.
 
-The `<Form>`s are visual-only for now: their old submit handlers, which called `axios` themselves, are commented out under each component (see [RULEBOOK, Component Anatomy](../front-end/RULEBOOK.md#4-component-anatomy)). Calling `axios` from a component breaks the rule in [TABLE.md, Section 5](DATA.md#1-how-data-reaches-a-table) that components never talk to the server directly, so the handlers come back through the data layer below, not as they were.
+The `<Form>`s are visual-only for now: their old submit handlers, which called `axios` themselves, are commented out under each component (see [FRONT-END.md, Component Anatomy](../front-end/FRONT-END.md#4-component-anatomy)). Calling `axios` from a component breaks the rule in [TABLE.md, Section 5](DATA.md#1-how-data-reaches-a-table) that components never talk to the server directly, so the handlers come back through the data layer below, not as they were.
 
 ---
 
@@ -55,7 +55,7 @@ The shape is already decided in [TABLE.md, Section 5](DATA.md#1-how-data-reaches
 3. **`testing/` stays the playground.** It runs against `TraLogFin.json` and the characters in [CHARACTERS.md](../CHARACTERS.md), so the rules can be tested without a database.
 4. **The login server is rewritten from `REVIEW/landing.js`** into `routes/` and `server/MongoDB/online/`, one step at a time, with the `REVIEW/` folder kept until the new one works. The known fixes travel with it: the `status` field and the `password` name. The `.env` path is already fixed in `landing.js`; the new files build it from their own folder the same way ([MODULES.md, Section 5](MODULES.md#5-run-the-server)).
 
-Nothing in this section is built yet. Each step starts with a conversation (see [RULEBOOK, Parked for Later](../front-end/RULEBOOK.md#10-parked-for-later)).
+Nothing in this section is built yet. Each step starts with a conversation (see [FRONT-END.md, Parked for Later](../front-end/FRONT-END.md#10-parked-for-later)).
 
 ---
 
@@ -77,7 +77,7 @@ The front end and the back end meet in `modules/scripts/`, and nowhere else.
 
 **The clones.** [AGREEMENT.md](../AGREEMENT.md) sets the rule: every `.tsx` gets a `.jsx` twin in `source/modules/`, at the same path. Until that move is made, this is how it stands: each block-level container has a `*.jsx` clone controlled by the back end, in the same folder as its `*.tsx`: the page root (`Overtime/Overtime.jsx`) and its six blocks (`Overtime/Header/OvertimeHeader.jsx`), 35 in all. Nothing in `elements/` or `components/` is cloned. This repository may not have access to them, so Git ignores them (`source/layouts/containers/**/*.jsx` in `.gitignore`). They never reach the app: Webpack resolves only `.tsx`, `.ts` and `.js`, and TypeScript skips a `.jsx` when a `.tsx` of the same name sits beside it.
 
-**Proving a clone is at fault.** Each block file logs what it sends and what comes back, in the console format from [RULEBOOK, Console Messages](../front-end/RULEBOOK.md#console-messages):
+**Proving a clone is at fault.** Each block file logs what it sends and what comes back, in the console format from [FRONT-END.md, Console Messages](../front-end/FRONT-END.md#console-messages):
 
 ```ts
 console.log(`|--🠊 Warning: ${labelName} sent the right entry, Header.ts received the wrong answer 🠈--|`);

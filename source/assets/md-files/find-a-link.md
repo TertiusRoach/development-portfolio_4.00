@@ -1,6 +1,6 @@
 # Find a Link
 
-`[hyperlink]` · `ArchiveAnchors`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The permissions it follows come from [GUIDELINES.md](../../utilities/document/GUIDELINES.md), Sections 6, 7, 8, 10 and 12; this file is how the loop behaves inside them.
+`[hyperlink]` · `ArchiveAnchors`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The permissions it follows come from [GUIDELINES.md](../../utilities/documents/GUIDELINES.md), Sections 6, 7, 8, 10 and 12; this file is how the loop behaves inside them.
 
 Built from a scan of the original University Tracker (2.00), kept read-only in `source/utilities/vendors/university-tracker/`. The original had no loop to keep: its links were hard-coded in the source, with no roles, approval or history. What it got wrong is listed at the bottom so it isn't copied.
 

@@ -8,11 +8,13 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 
 ## Read the Documents First
 
-**If you're unsure about anything, read `source/utilities/document/` before guessing.** Start with `RULEBOOK.md`: it explains how code is written here and points to every other document.
+**If you're unsure about anything, read `source/utilities/documents/` before guessing.** Start with `front-end/FRONT-END.md`, the rulebook: it explains how code is written here and points to every other document.
 
-- How code is written → `RULEBOOK.md`
+- How code is written → `front-end/FRONT-END.md`
 - What the application allows → `GUIDELINES.md`
-- Pages, containers, characters, data, setup, server, Git → `TOGGLES.md`, `CONTAINERS.md`, `CHARACTERS.md`, `TABLE.md`, `MODULES.md`, `SERVER.md`, `GITHUB.md`, `EDITOR.md`
+- Shared folder structure and file types → `AGREEMENT.md`
+- Pages, containers, contexts, characters, tables, Git, editor → `TOGGLES.md`, `CONTAINERS.md`, `CONTEXTS.md`, `CHARACTERS.md`, `TABLE.md`, `GITHUB.md`, `EDITOR.md`
+- Back end: code, server, data, setup → `back-end/BACK-END.md`, `SERVER.md`, `DATA.md`, `MODULES.md`
 
 ## How to Work Here
 
@@ -20,13 +22,13 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 2. **One step at a time.** Small, scoped changes. No broad refactors, no "while I'm here" cleanups.
 3. **Match the existing code exactly:** naming, comment flags (`//--|🠊 … 🠈|--\\`), file layout and order. No new patterns or abstractions.
 4. **Readability beats brevity.** Repetition is fine; clever shortcuts are not.
-5. **Visible components scale through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** `<section>`, `<div>` and `<nav>` may merge into one set of rules when every orientation behaves the same. See RULEBOOK.md, Scaling Pattern.
-6. **No inline styles.** Use SASS and state classes; never `element.style.*` or a `style="…"` attribute unless truly necessary. See RULEBOOK.md, No Inline Styles.
-7. **Don't "fix" deliberate design.** Check RULEBOOK.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
+5. **Visible components scale through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** `<section>`, `<div>` and `<nav>` may merge into one set of rules when every orientation behaves the same. See FRONT-END.md, Scaling Pattern.
+6. **No inline styles.** Use SASS and state classes; never `element.style.*` or a `style="…"` attribute unless truly necessary. See FRONT-END.md, No Inline Styles.
+7. **Don't "fix" deliberate design.** Check FRONT-END.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
 8. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
 9. **Don't run Git commands that change history or the remote** (commit, push, tag, delete) unless asked.
 10. **Keep your own files out of the project.** Notes, scratch scripts and test renders go in `.claude-notes/` at the root, which is ignored by Git and hidden in the owner's VS Code. The ten dotfile lines and `.claude` at the bottom of `.gitignore` cover empty placeholders the Claude Code sandbox creates; leave them in. Hide things in VS Code through **User** settings only: `.vscode/settings.json` is committed (see EDITOR.md, Hiding Folders).
-11. **Re-scan before every decision.** Re-read the files and folders involved as they are on disk now, not as you remember them, and the documents in `source/utilities/document/` that cover them, `RULEBOOK.md` first. Decide from the documents and cite the section. If they don't settle it, use the rules; if those don't either, ask.
+11. **Re-scan before every decision.** Re-read the files and folders involved as they are on disk now, not as you remember them, and the documents in `source/utilities/documents/` that cover them, `FRONT-END.md` first. Decide from the documents and cite the section. If they don't settle it, use the rules; if those don't either, ask.
 
 ## Commands
 

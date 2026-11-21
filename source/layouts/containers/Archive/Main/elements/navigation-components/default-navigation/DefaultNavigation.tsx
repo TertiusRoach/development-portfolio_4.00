@@ -185,7 +185,6 @@ function DefaultNavigation({ info }: InfoProps) {
               }}
               cases={{
                 tasks: {},
-                //--|🠊 AI Code: Review Please 2026-11-21 13:58 · Copied from the landscape branch to test [Mobile] & [Tablet] 🠈|--\\
                 menus: [
                   {
                     align: '-top-',
@@ -244,12 +243,12 @@ function DefaultNavigation({ info }: InfoProps) {
                           color: '(mono)',
                           shade: '~light~',
                           //--|===|--\\
-                          size: '<p>',
                           image: [
                             loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
                             loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
                             loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
                           ] as Array<string>,
+                          size: ['<p>', '<h4>', '<h1>'] as Array<'<h1>' | '<h4>' | '<p>'>,
                         }}
                         cases={{
                           pages: 3,

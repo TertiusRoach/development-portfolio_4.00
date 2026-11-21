@@ -1,6 +1,6 @@
 # Synchronization Thesis
 
-How Track a Day, Log a Ticket, Find a Link and Pick a Page interact. This is a draft: it lives in `source/assets/md-files/` until the edge cases are worked out, then it moves to `source/utilities/document/`.
+How Track a Day, Log a Ticket, Find a Link and Pick a Page interact. This is a draft: it lives in `source/assets/md-files/` until the edge cases are worked out, then it moves to `source/utilities/documents/`.
 
 | Application   | File                 | Collection       | Original (read-only)                          |
 | ------------- | -------------------- | ---------------- | --------------------------------------------- |

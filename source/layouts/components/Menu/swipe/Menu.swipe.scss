@@ -1461,23 +1461,26 @@
           @media screen and (max-width: 1920px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 96px 96px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 64px 64px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
             Width: 48px;
-            Height: @media;
+            Height: 48px;
             🠉|--*/
-            grid-template-columns: 48px 48px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 48px //--|🠈 rows 🠈|--//
+              / 48px 48px 1fr; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Right 🠈|--\\
@@ -1485,23 +1488,26 @@
           @media screen and (max-width: 1920px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 1fr 96px 96px; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 1fr 96px 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 1fr 64px 64px; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 1fr 64px 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
             Width: 48px;
-            Height: @media;
+            Height: 48px;
             🠉|--*/
-            grid-template-columns: 1fr 48px 48px; //--|🠈 columns 🠈|--\\
+            grid-template: 48px //--|🠈 rows 🠈|--//
+              / 1fr 48px 48px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Center 🠈|--\\
@@ -1509,23 +1515,26 @@
           @media screen and (max-width: 1920px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
             Width: 48px;
-            Height: @media;
+            Height: 48px;
             🠉|--*/
-            grid-template-columns: 1fr 48px 48px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 48px //--|🠈 rows 🠈|--//
+              / 1fr 48px 48px 1fr; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Default 🠈|--\\
@@ -1533,23 +1542,26 @@
           @media screen and (max-width: 1920px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 96px 1fr 96px; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 96px 1fr 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
             Width: 48px;
-            Height: @media;
+            Height: 48px;
             🠉|--*/
-            grid-template-columns: 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+            grid-template: 48px //--|🠈 rows 🠈|--//
+              / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
           }
         }
       }
@@ -1572,6 +1584,7 @@
         }
       }
       @media screen and (max-width: 1920px) {
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(96px * 2);
         }
@@ -1583,6 +1596,7 @@
         }
       }
       @media screen and (max-width: 1366px) {
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(64px * 2);
         }
@@ -1594,6 +1608,7 @@
         }
       }
       @media screen and (max-width: 854px) {
+        height: 48px; //--|🠈 48px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(48px * 2);
         }
@@ -1611,101 +1626,358 @@
         &[class*='horizontal-top'] {
           @media screen and (max-width: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 96px 96px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 64px 64px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 48px;
             Height: 48px;
             🠉|--*/
-            grid-template-rows: 48px 48px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 48px 48px 1fr //--|🠈 rows 🠈|--//
+              / 48px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Bottom 🠈|--\\
         &[class*='horizontal-bot'] {
           @media screen and (max-width: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 1fr 96px 96px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 1fr 64px 64px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 48px;
             Height: 48px;
             🠉|--*/
-            grid-template-rows: 1fr 48px 48px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 48px 48px //--|🠈 rows 🠈|--//
+              / 48px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Middle 🠈|--\\
         &[class*='horizontal-mid'] {
           @media screen and (max-width: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 1fr 96px 96px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 1fr 64px 64px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 48px;
             Height: 48px;
             🠉|--*/
-            grid-template-rows: 1fr 48px 48px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 48px 48px 1fr //--|🠈 rows 🠈|--//
+              / 48px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Default 🠈|--\\
         &[class*='horizontal-def'] {
           @media screen and (max-width: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 96px 1fr 96px; //--|🠈 rows 🠈|--\\
+            grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 64px 1fr 64px; //--|🠈 rows 🠈|--\\
+            grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 48px;
             Height: 48px;
             🠉|--*/
-            grid-template-rows: 48px 1fr 48px; //--|🠈 rows 🠈|--\\
+            grid-template: 48px 1fr 48px //--|🠈 rows 🠈|--//
+              / 48px; //--|🠈 columns 🠈|--\\
           }
         }
       }
       li[class*='preview'] {
         @extend %buttons-y-tablet-desktop;
+      }
+      %showing-y-tablet-desktop { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        &[class*='horizontal_I'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 0));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 0));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 0));
+          }
+        }
+        &[class*='horizontal_II'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 1));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 1));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 1));
+          }
+        }
+        &[class*='horizontal_III'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 2));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 2));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 2));
+          }
+        }
+        &[class*='horizontal_IV'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 3));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 3));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 3));
+          }
+        }
+        &[class*='horizontal_V'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 4));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 4));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 4));
+          }
+        }
+        &[class*='horizontal_VI'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 5));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 5));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 5));
+          }
+        }
+        &[class*='horizontal_VII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 6));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 6));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 6));
+          }
+        }
+        &[class*='horizontal_VIII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 7));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 7));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 7));
+          }
+        }
+        &[class*='horizontal_IX'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 8));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 8));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 8));
+          }
+        }
+        &[class*='horizontal_X'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 9));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 9));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 9));
+          }
+        }
+        &[class*='horizontal_XI'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 10));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 10));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 10));
+          }
+        }
+        &[class*='horizontal_XII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 11));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 11));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 11));
+          }
+        }
+        &[class*='horizontal_XIII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 12));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 12));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 12));
+          }
+        }
+        &[class*='horizontal_XIV'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 13));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 13));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 13));
+          }
+        }
+        &[class*='horizontal_XV'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 14));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 14));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 14));
+          }
+        }
+        &[class*='horizontal_XVI'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 15));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 15));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 15));
+          }
+        }
+        &[class*='horizontal_XVII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 16));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 16));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 16));
+          }
+        }
+        &[class*='horizontal_XVIII'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 17));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 17));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 17));
+          }
+        }
+        &[class*='horizontal_XIX'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 18));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 18));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 18));
+          }
+        }
+        &[class*='horizontal_XX'] {
+          @media screen and (max-width: 1920px) {
+            transform: translateX(calc(-96px * 19));
+          }
+          @media screen and (max-width: 1366px) {
+            transform: translateX(calc(-64px * 19));
+          }
+          @media screen and (max-width: 854px) {
+            transform: translateX(calc(-48px * 19));
+          }
+        }
+      }
+      li[class*='showing'] {
+        @extend %showing-y-tablet-desktop;
+      }
+      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        @media screen and (max-width: 1920px) {
+          width: 96px; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 1366px) {
+          width: 64px; //--|🠈 64px for Squares 🠈|--\\
+        }
+        @media screen and (max-width: 854px) {
+          width: 48px; //--|🠈 48px for Squares 🠈|--\\
+        }
+      }
+      @media screen and (max-width: 1920px) {
+        width: 96px; //--|🠈 96px for Squares 🠈|--\\
+      }
+      @media screen and (max-width: 1366px) {
+        width: 64px; //--|🠈 64px for Squares 🠈|--\\
+      }
+      @media screen and (max-width: 854px) {
+        width: 48px; //--|🠈 48px for Squares 🠈|--\\
       }
     }
   }
@@ -1757,23 +2029,26 @@
           @media screen and (max-height: 1920px) {
             /*--|🠋
             Width: 160px;
-            Height: @media;
+            Height: 160px;
             🠉|--*/
-            grid-template-columns: 160px 160px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 160px //--|🠈 rows 🠈|--//
+              / 160px 160px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 96px 96px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 64px 64px 1fr; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Right 🠈|--\\
@@ -1781,23 +2056,26 @@
           @media screen and (max-height: 1920px) {
             /*--|🠋
             Width: 160px;
-            Height: @media;
+            Height: 160px;
             🠉|--*/
-            grid-template-columns: 1fr 160px 160px; //--|🠈 columns 🠈|--\\
+            grid-template: 160px //--|🠈 rows 🠈|--//
+              / 1fr 160px 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 1fr 96px 96px; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 1fr 96px 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 1fr 64px 64px; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 1fr 64px 64px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Center 🠈|--\\
@@ -1805,23 +2083,26 @@
           @media screen and (max-height: 1920px) {
             /*--|🠋
             Width: 160px;
-            Height: @media;
+            Height: 160px;
             🠉|--*/
-            grid-template-columns: 1fr 160px 160px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 160px //--|🠈 rows 🠈|--//
+              / 1fr 160px 160px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Default 🠈|--\\
@@ -1829,23 +2110,26 @@
           @media screen and (max-height: 1920px) {
             /*--|🠋
             Width: 160px;
-            Height: @media;
+            Height: 160px;
             🠉|--*/
-            grid-template-columns: 160px 1fr 160px; //--|🠈 columns 🠈|--\\
+            grid-template: 160px //--|🠈 rows 🠈|--//
+              / 160px 1fr 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
             Width: 96px;
-            Height: @media;
+            Height: 96px;
             🠉|--*/
-            grid-template-columns: 96px 1fr 96px; //--|🠈 columns 🠈|--\\
+            grid-template: 96px //--|🠈 rows 🠈|--//
+              / 96px 1fr 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
             Width: 64px;
-            Height: @media;
+            Height: 64px;
             🠉|--*/
-            grid-template-columns: 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+            grid-template: 64px //--|🠈 rows 🠈|--//
+              / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
           }
         }
       }
@@ -1868,6 +2152,7 @@
         }
       }
       @media screen and (max-height: 1920px) {
+        height: 160px; //--|🠈 160px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(160px * 2);
         }
@@ -1879,6 +2164,7 @@
         }
       }
       @media screen and (max-height: 1366px) {
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(96px * 2);
         }
@@ -1890,6 +2176,7 @@
         }
       }
       @media screen and (max-height: 854px) {
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(64px * 2);
         }
@@ -1907,101 +2194,358 @@
         &[class*='horizontal-top'] {
           @media screen and (max-height: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 160px;
             Height: 160px;
             🠉|--*/
-            grid-template-rows: 160px 160px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 160px 160px 1fr //--|🠈 rows 🠈|--//
+              / 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 96px 96px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 64px 64px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Bottom 🠈|--\\
         &[class*='horizontal-bot'] {
           @media screen and (max-height: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 160px;
             Height: 160px;
             🠉|--*/
-            grid-template-rows: 1fr 160px 160px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 160px 160px //--|🠈 rows 🠈|--//
+              / 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 1fr 96px 96px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 1fr 64px 64px; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Middle 🠈|--\\
         &[class*='horizontal-mid'] {
           @media screen and (max-height: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 160px;
             Height: 160px;
             🠉|--*/
-            grid-template-rows: 1fr 160px 160px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 160px 160px 1fr //--|🠈 rows 🠈|--//
+              / 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 1fr 96px 96px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 1fr 64px 64px 1fr; //--|🠈 rows 🠈|--\\
+            grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
         }
         //--|🠊 Default 🠈|--\\
         &[class*='horizontal-def'] {
           @media screen and (max-height: 1920px) {
             /*--|🠋
-            Width: @media;
+            Width: 160px;
             Height: 160px;
             🠉|--*/
-            grid-template-rows: 160px 1fr 160px; //--|🠈 rows 🠈|--\\
+            grid-template: 160px 1fr 160px //--|🠈 rows 🠈|--//
+              / 160px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 1366px) {
             /*--|🠋
-            Width: @media;
+            Width: 96px;
             Height: 96px;
             🠉|--*/
-            grid-template-rows: 96px 1fr 96px; //--|🠈 rows 🠈|--\\
+            grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--//
+              / 96px; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-height: 854px) {
             /*--|🠋
-            Width: @media;
+            Width: 64px;
             Height: 64px;
             🠉|--*/
-            grid-template-rows: 64px 1fr 64px; //--|🠈 rows 🠈|--\\
+            grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--//
+              / 64px; //--|🠈 columns 🠈|--\\
           }
         }
       }
       li[class*='preview'] {
         @extend %buttons-y-tablet-mobile;
+      }
+      %showing-y-tablet-mobile { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        &[class*='horizontal_I'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 0));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 0));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 0));
+          }
+        }
+        &[class*='horizontal_II'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 1));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 1));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 1));
+          }
+        }
+        &[class*='horizontal_III'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 2));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 2));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 2));
+          }
+        }
+        &[class*='horizontal_IV'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 3));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 3));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 3));
+          }
+        }
+        &[class*='horizontal_V'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 4));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 4));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 4));
+          }
+        }
+        &[class*='horizontal_VI'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 5));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 5));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 5));
+          }
+        }
+        &[class*='horizontal_VII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 6));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 6));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 6));
+          }
+        }
+        &[class*='horizontal_VIII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 7));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 7));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 7));
+          }
+        }
+        &[class*='horizontal_IX'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 8));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 8));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 8));
+          }
+        }
+        &[class*='horizontal_X'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 9));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 9));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 9));
+          }
+        }
+        &[class*='horizontal_XI'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 10));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 10));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 10));
+          }
+        }
+        &[class*='horizontal_XII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 11));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 11));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 11));
+          }
+        }
+        &[class*='horizontal_XIII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 12));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 12));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 12));
+          }
+        }
+        &[class*='horizontal_XIV'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 13));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 13));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 13));
+          }
+        }
+        &[class*='horizontal_XV'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 14));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 14));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 14));
+          }
+        }
+        &[class*='horizontal_XVI'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 15));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 15));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 15));
+          }
+        }
+        &[class*='horizontal_XVII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 16));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 16));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 16));
+          }
+        }
+        &[class*='horizontal_XVIII'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 17));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 17));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 17));
+          }
+        }
+        &[class*='horizontal_XIX'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 18));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 18));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 18));
+          }
+        }
+        &[class*='horizontal_XX'] {
+          @media screen and (max-height: 1920px) {
+            transform: translateX(calc(-160px * 19));
+          }
+          @media screen and (max-height: 1366px) {
+            transform: translateX(calc(-96px * 19));
+          }
+          @media screen and (max-height: 854px) {
+            transform: translateX(calc(-64px * 19));
+          }
+        }
+      }
+      li[class*='showing'] {
+        @extend %showing-y-tablet-mobile;
+      }
+      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        @media screen and (max-height: 1920px) {
+          width: 160px; //--|🠈 160px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 1366px) {
+          width: 96px; //--|🠈 96px for Squares 🠈|--\\
+        }
+        @media screen and (max-height: 854px) {
+          width: 64px; //--|🠈 64px for Squares 🠈|--\\
+        }
+      }
+      @media screen and (max-height: 1920px) {
+        width: 160px; //--|🠈 160px for Squares 🠈|--\\
+      }
+      @media screen and (max-height: 1366px) {
+        width: 96px; //--|🠈 96px for Squares 🠈|--\\
+      }
+      @media screen and (max-height: 854px) {
+        width: 64px; //--|🠈 64px for Squares 🠈|--\\
       }
     }
   }

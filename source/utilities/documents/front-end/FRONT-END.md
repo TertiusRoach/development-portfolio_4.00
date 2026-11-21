@@ -40,22 +40,25 @@ How code is written in this repository. Every rule here exists because breaking 
 
 ## 2. Where to Find What
 
-Every document lives in `source/utilities/document/`. If you're unsure about anything, look here first.
+Every document lives in `source/utilities/documents/`. If you're unsure about anything, look here first.
 
-| Document                             | What it answers                                                                                     |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| **RULEBOOK.md** (this page)          | How code is written: naming, files, scaling, colours, comments                                      |
-| [GUIDELINES.md](../GUIDELINES.md)    | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
-| [AGREEMENT.md](../AGREEMENT.md)      | The folder structure and file types the front end and back end share: twins, imports, crossings    |
-| [TOGGLES.md](TOGGLES.md)             | Which page each toggle opens (Vocation, Position, Occupation)                                       |
-| [CONTAINERS.md](CONTAINERS.md)       | The six containers every page is built from, how they pair and flip, and what each one does per app |
-| [CHARACTERS.md](../CHARACTERS.md)    | The 18 test characters, their facts, their psychology and the rules they test                       |
-| [TABLE.md](TABLE.md)                 | `<table>` rules, ISO weeks, how data travels, MongoDB-to-MySQL rules, IndexedDB                     |
-| [MODULES.md](../back-end/MODULES.md) | Setting up the database, secrets, test emails and the server on any OS                              |
-| [SERVER.md](../back-end/SERVER.md)   | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
-| [GITHUB.md](../GITHUB.md)            | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
-| [EDITOR.md](../EDITOR.md)            | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
-| [REFERENCE.md](../REFERENCE.md)      | The template the main `README.md` follows                                                           |
+| Document                                 | What it answers                                                                                     |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **FRONT-END.md** (this page)             | How code is written: naming, files, scaling, colours, comments                                      |
+| [GUIDELINES.md](../GUIDELINES.md)        | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
+| [AGREEMENT.md](../AGREEMENT.md)          | The folder structure and file types the front end and back end share: twins, imports, crossings    |
+| [TOGGLES.md](TOGGLES.md)                 | Which page each toggle opens (Vocation, Position, Occupation)                                       |
+| [CONTAINERS.md](CONTAINERS.md)           | The six containers every page is built from, how they pair and flip, and what each one does per app |
+| [CONTEXTS.md](CONTEXTS.md)               | How the `<Form>`s on a page share what a user types                                                 |
+| [CHARACTERS.md](../CHARACTERS.md)        | The 18 test characters, their facts, their psychology and the rules they test                       |
+| [TABLE.md](TABLE.md)                     | When to use `<table>`, the `<Table>` component, ISO weeks                                           |
+| [BACK-END.md](../back-end/BACK-END.md)   | How the server treats the people using it                                                           |
+| [DATA.md](../back-end/DATA.md)           | How data travels, MongoDB-to-MySQL rules, offline storage                                           |
+| [MODULES.md](../back-end/MODULES.md)     | Setting up the database, secrets, test emails and the server on any OS                              |
+| [SERVER.md](../back-end/SERVER.md)       | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
+| [GITHUB.md](../GITHUB.md)                | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
+| [EDITOR.md](../EDITOR.md)                | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
+| [REFERENCE.md](../back-end/REFERENCE.md) | The template the main `README.md` follows                                                           |
 
 **When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, AGREEMENT.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
@@ -106,6 +109,7 @@ A component's outer element gets two classes: who placed it, then what it looks 
 - **The root selector matches the variant part, not just the variant name:** `label[class*='_selection-']`, never `label[class*='select']`. The first half of the class comes from the caller, so a `labelName` like `select` would otherwise pull the wrong styles onto another `<Label>`. Each case is then `&[class*='selection-select']` inside it.
 - **`labelName` is required** (`labelName: string`) wherever it builds the class, and callers write it bare: `'default'`, not `'(default)'`. Components don't strip its brackets, so they'd end up in the class.
 - **Repeating a class is fine.** `<DivisionColourize>` renders four `{toggle}` `<LabelSwitching>`s with the same class. That's why components don't use `labelName` as an `id`.
+- **Except where a script finds the component by its class.** The `<Menu>` scripts look their `<menu>` up with `querySelector` (`findTags()` in `Menu_scroll.ts`), which returns the first match in the container. Two `<MenuScroll>`s with the same `labelName` in one `#${pageName}-${blockName}` give the same class, so both timers reveal the first one and the second stays invisible. Give every `<Menu>` a `labelName` no other menu of its type in that container uses.
 
 **The exception is `<Button>`:** its class is `${variant}-button` (`default-button thr_lef_dar_blu_luc_def`) and `info.labelName` becomes its `id`. The three `_division-${variant}` names (`colourize`, `testing`, `placeholder`) are older and are renamed one at a time (see [Parked for Later](#10-parked-for-later)).
 
@@ -119,7 +123,7 @@ A component's outer element gets two classes: who placed it, then what it looks 
 | `pipeline/${Element}_${part}.scss` | `Button_tint.scss`    | One concern per file (see below)               |
 | `${PageName}${BlockName}.tsx`      | `OvertimeLeftbar.tsx` | One container of one page                      |
 
-Documents in `source/utilities/document/` are named in **CAPITALS** (`GUIDELINES.md`).
+Documents in `source/utilities/documents/` are named in **CAPITALS** (`GUIDELINES.md`).
 
 ### State Classes
 
@@ -173,7 +177,7 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|�
 
 **Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owner. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
 
-**`md-files/` holds drafts, not images.** The synchronization thesis and one file per application (`track-a-day.md`, `log-a-ticket.md`, `find-a-link.md`) live there until their edge cases are worked out, then move to `source/utilities/document/`. Nothing loads them.
+**`md-files/` holds drafts, not images.** The synchronization thesis and one file per application (`track-a-day.md`, `log-a-ticket.md`, `find-a-link.md`) live there until their edge cases are worked out, then move to `source/utilities/documents/`. Nothing loads them.
 
 **When a folder moves,** change every `loadAsset()` path in the same step: search `source/` (not `source/assets/`) for the old path, fix each hit, and update the table above. The folders were last reorganised on 2026-11-07, when `archive-images/character-testing` became `character-testing`, `archive-images/trinity-apps` became `tralogfin-application`, and `project-pages/components-page` became `tralogfin-pages/archive`.
 
@@ -269,9 +273,12 @@ console.log(`|--🠊 Guidance: Forgot your password? We have a page for that. Au
 
 A `Warning:` can stand alone; `Helper:` and `Guidance:` only follow one.
 
+**Log from the `useEffect`, not from the function body.** The body runs on every render, so a `console.log` there repeats each time state changes, and it runs before the markup is on the page. The `useEffect` runs after the page is drawn, only when its dependencies change, so it's also the place to look up a real element with `querySelector`. In development `<React.StrictMode>` (`source/index.tsx`) runs every effect twice on purpose, so each log shows twice; `npm run deploy` runs it once.
+
 ### Props and Events
 
 - **`info` is the same everywhere:** `pageName`, `blockName` and `labelName`, even when a component doesn't use them. Uniformity is what makes the files memorable. `labelName` is required wherever it builds the class (see [Component Classes](#component-classes)). Every key in `info` ends in `Name`, a longer `className`: each one names something (the page, the block, the label, and what a screen reader says). `info.ariaName` follows the same logic. It's optional, sits between `blockName` and `labelName`, and is read aloud when a button has no visible text (`aria-label={info.ariaName}`); other components add it when they need it. Why it's its own key is in [Accessibility](#accessibility).
+- **A component passed as a prop is a `React.JSX.Element`, not an `HTMLElement`.** `<MenuSwipe … />` is React's description of what to draw; the `<menu>` (`HTMLMenuElement`) only exists once React has drawn it, and the two types don't overlap, so `as HTMLMenuElement` fails (TS2352). Type the prop `React.JSX.Element` (`cases.menus` in `<NavigationDefault>`), render an array of them with `.map()` and a `key` (only `[0]` draws only the first), and reach the real element from the `useEffect` (see [Console Messages](#console-messages)).
 - **Props are written out in the `.tsx`.** Every prop's shape lives in the component's own `export interface TheseProps`, written in full under `info`: `style: { shade: …; color: … }`, `cases: { list: Array<string> }`. There are no separate `StyleProps` or `CaseProps` types in the `.ts`, so one file shows everything a component takes. The `.ts` reads the types back with `import type { TheseProps } from './Label.selection';` and uses `TheseProps['style']['shade']`. The three `<Label>`s follow this; the others move over as they're refactored.
 - **`cases.type` decides what a component is, `style` decides how it looks.** One component covers several elements with a classic `switch (cases.type)`, and each element's HTML is written right inside its own `case`, wrapped in braces: `case '{chip}': { … }`. The braces mark where one element ends and the next begins, and keep a case's own variables (`plusImage`, `checkImage`) inside it. There are no separate case functions, so nothing has to be passed along: every case reads `style`, `cases` and `onChange` straight from the component. Event handlers a case uses (`markKeyboard()`, `stepNumber()`, `nextBlock()`) still live below the component, under a heading named after their case: `//--|🠋 Number 🠋|--\\`. Props only one case needs are optional and marked with a trailing comment (`text?: string; //--|🠈 {chip}'s words, {option}'s value 🠈|--\\`). When the browser already has a sensible default, there's no prop at all, which leaves the calls lean and the door open to add a prop later when a real use needs one. A `cases.type` belongs with the others when it holds the same kind of value: `<LabelSwitching>` is only on & off, so a `{slide}` with many values will be its own component. Hooks stay at the top of the component, above the `switch`, because React needs them in the same order on every render.
 - **Every `<Button>` and `<Label>` lists every event.** The ones it uses (`onClick`, `onMouseEnter`, `onMouseLeave`, `onDoubleClick` on a `<Button>`, `onChange` on a `<Label>`) are live. The rest stay in a `/* … */` block under them, typed with their real event (`KeyboardEvent`, `FocusEvent`, `TouchEvent`…), ready to switch on.
@@ -283,7 +290,7 @@ Smaller components keep everything in one `.scss` file and split it with placeho
 ### Component Rules
 
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
-- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [TABLE.md](../back-end/DATA.md#1-how-data-reaches-a-table).
+- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [DATA.md](../back-end/DATA.md#1-how-data-reaches-a-table).
 - **Components survive the flip.** Turning the screen unmounts one orientation's markup and mounts the other's, so a listener or timer a component starts is returned from its `useEffect`, and anything added to one orientation gets its mirror in the other. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip).
 
 ### Accessibility
@@ -328,6 +335,7 @@ Every `.ts` and `.tsx` file in `components/` and `containers/` declares its func
 | `var`      | Fourth | Called by a `let`. The deepest level; nothing goes below it    |
 
 - **The main function is a `function`, never an arrow.** Props are pulled apart in the brackets and typed after them: `function SwitchingLabel({ info }: InfoProps) {` … `}`. Not `const SwitchingLabel: React.FC<InfoProps> = ({ info }) => {` … `};`, because a `const` at the top means second depth (see the table above).
+- **JSX braces take an expression, never a statement.** `{HorizontalButtons(…)}` works, `{ if (…) { … } }` doesn't: an `if` has no value to draw. Move the statements into a file-level helper that returns the JSX and put the call in the braces. A helper can't see the `function`'s own `pageName`, `blockName` and `labelName`, so it takes `info` as a parameter, like `HorizontalButtons()` in `Navigation.default.tsx`.
 - **One main function, exported twice.** A file with one main function declares it as `export function` in `components/` and as a plain `function` in `containers/`, and the last line of the file repeats it on its own: `export default ButtonDefault;`. The separate line is deliberate: the end of every file says what the file is. Helpers stay at file level, unexported, and are never nested inside another function.
 - **Several main functions, no default.** A file of equal utilities (like the files in `layouts/tools/`) uses named exports only, so a default export always means "the one this file is about".
 - **Values inside a function.** A flag worked out once per render is a `let` with its type written after the value with `as`, and its reason as a trailing comment: `let casesShow = 3 as number; //--|🠈 … 🠈|--\\`. A `let` declared without a value has nothing to put `as` after, so it keeps its type after the name: `let stateName: 'expanded' | 'collapsed';`. Some files in `components/` still write `let styleImage: boolean = …`; they move to `as` when they're refactored. Lookup maps (`parentFont`) and results (`const classColor = createColor(…)`) are `const`; they're values, not second-level functions.
@@ -622,7 +630,7 @@ There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>
 | Visible    | `<article>` · `<aside>` · `<button>` · `<fieldset>` · `<figure>` · `<form>` · `<label>` · `<menu>` · `<span>` · `<table>` · `<time>` · lists | Always all three mixins                     |
 | Structural | `<section>` · `<div>` · `<nav>`                                                                                                              | All three mixins, or one merged set (below) |
 
-**Components scale on tablet, containers don't. This is strict.** Every component in `components/` has all three mixins. Every file in `containers/` (the application pages, the Archive pages, the global page grid) has only `desktop-landscape` and `mobile-portrait`, never `tablet-squaring`. If a container ever seems to need tablet values, turn that piece into a component and scale it there. On a near-square screen the page keeps its bigger size while the component inside it has already stepped down. That's deliberate: the deeper element is always one step ahead, so a component always fits inside its container. Anything sized to the global grid stays on the desktop and mobile values for the same reason: the `<MenuSwipe>` and `<MenuScroll>` row height, the `<DivisionConveyor>` slide, and the conveyor margins in the Archive `<header>` and `<footer>`. Only what sits inside a menu row (button grids, side paddings) scales on tablet.
+**Components scale on tablet, containers don't. This is strict.** Every component in `components/` has all three mixins. Every file in `containers/` (the application pages, the Archive pages, the global page grid) has only `desktop-landscape` and `mobile-portrait`, never `tablet-squaring`. If a container ever seems to need tablet values, turn that piece into a component and scale it there. On a near-square screen the page keeps its bigger size while the component inside it has already stepped down. That's deliberate: the deeper element is always one step ahead, so a component always fits inside its container. Anything sized to the global grid stays on the desktop and mobile values for the same reason: the `<DivisionConveyor>` slide and the conveyor margins in the Archive `<header>` and `<footer>`. The `<Menu>` components are the exception: their whole row scales on tablet (row height, title slide, button grids, side paddings), so they line up with the `<NavigationDefault>` cells they sit in. The trade-off is accepted: a `<DivisionConveyor>` still slides one global row, so on a near-square screen the next menu can peek in.
 
 **Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split. **A component never merges only part of a file:** every rule sits in the three mixins, or none does. A container (a scope above the components) may merge part of a file, but only after it's been agreed in a Q&A with the owner. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
@@ -636,7 +644,11 @@ Sass can't `@extend` a placeholder from outside the `@media` block it sits in, s
 
 Near-square screens (tablets, split windows) don't fit the desktop or mobile breakpoints well, so `tablet-squaring` measures the long side instead and steps down one size earlier. It reuses the exact values from the other two mixins, which are measured against the `styles/Mixins.scss` skeleton. It's included last, so it overrides both orientations.
 
-The component's root selector includes all three, each under its own flag: `Desktop (Landscape)`, `Mobile (Portrait)` and `Tablet (Squaring)`, so the three includes read as three sections. Every orientation query that holds `@include`s gets its flag the same way, wherever it sits: components, pipeline components (`Button.default.scss`), containers and `styles/Skeleton.scss`. A flag ends in `|--\\`, never `|--//`, except the rows comment of a multi-line `grid-template` (see [Comment Flags](#8-comment-flags)):
+**A tablet step sets both directions of a square.** A tablet screen still matches `(orientation: landscape)` or `(orientation: portrait)`, so every value the tablet mixin leaves out falls back to the desktop or mobile step, which is measured on the other side of the screen. A button grid that only steps its columns on tablet gets tablet-wide, desktop-tall squares. Write the full `grid-template` (rows and columns) in each tablet step, and step a list's thickness (`height` on `[x]`, `width` on `[y]`) with its length. `Menu.scroll.scss` and `Menu.swipe.scss` show the full set, including the title slide (`translateY` / `translateX` per numeral, in the same I → XX order as desktop, because `[class*='vertical_I']` also matches `vertical_IV` and only the later rule keeps that safe).
+
+**Square variables next to a slash are interpolated.** In a shorthand like `grid-template: … / …`, Sass treats a `/` with a variable beside it as division: `$high-desk 1fr $high-desk / $high-desk 1fr $high-desk` compiles to `8rem 1fr 1 1fr 8rem`, which the browser throws away, plus a deprecation warning. Typed-out numbers (`8rem 1fr 8rem / …`) never trigger it. Wrap the variables in `#{}`, which turns them into text Sass won't do maths on: `#{$high-desk} 1fr #{$high-desk}`. See the nav grid in `Navigation.default.scss`. The values then work in `calc()` but not in bare Sass maths (`$high-desk * 2`).
+
+The component's root selector includes all three, each under its own flag: `Desktop (Landscape)`, `Mobile (Portrait)` and `Tablet (Squaring)`, so the three includes read as three sections. Every orientation query that holds `@include`s gets its flag the same way, wherever it sits: components, pipeline components (`Button.default.scss`), containers and `styles/Skeleton.scss`. How a flag ends is in [Comment Flags](#8-comment-flags):
 
 ```scss
 aside[class*='characters-default'] {
@@ -830,7 +842,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 
 - The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
-- `AI Code: Review Please`, with the date, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\`. The owner removes it once the line is understood and kept. Reordering code (moving parameters, arguments, union values or lines without changing them) doesn't get a flag, unless it obviously breaks something.
+- `AI Code: Review Please`, with the date and the local time it was written, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-11-21 14:21 🠈|--\\`. A copied or generated block gets one flag on its first line, not one per line. The owner removes it once the line is understood and kept. Reordering code (moving parameters, arguments, union values or lines without changing them) doesn't get a flag, unless it obviously breaks something.
 - A commented-out line with `!important` is a test switch, not dead code: `//--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\`. Uncomment it to see what a selector reaches, and comment it back before committing (see [Test Tools](#test-tools)).
 - `Warning:` marks code that works today but can break something elsewhere, and says what: `//--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\`. It stays until the code is changed; that one went when the block was scoped to `footer[id*='overtime']`.
 - `Used in` is a back-reference: it names who calls a state handler in `layouts/scripts/` (`Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`). Those handlers are never called by name. `blockViews()` reaches them through `blockHandlers`, a lookup table keyed by `blockName` and `alterAction` (a dispatch table), so the editor's Find All References can't trace them. Keep the trail by hand: when a container starts calling `blockViews()` with a pair, add the caller to the block comment at the end of the handler that pair reaches, one caller per line as `<Container> · function();`, indented one step inside the block:
@@ -928,9 +940,10 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | Bootstrap into `Global.scss`              | Carry over only the Bootstrap rules the app uses, then drop the framework and rename `display-1` … to `disp~one` …. Never select those as `[class*='disp~one']`. Only with near-certainty, since it moves the baseline |
 | Smooth fades between colours              | Move the hue into `background-color` so gradients fade too. Needs testing in the Archive and Figma first                                                                                                               |
 | `<ButtonRouting>` effects                 | Special animations when it's inside `<NavigationDefault>`                                                                                                                                                              |
+| `<Menu>` rows on tablet                   | `<MenuScroll>` and `<MenuSwipe>` are done ([Scaling Pattern](#6-scaling-pattern)); `<MenuSelect>` (list widths, margins) and `<MenuToggle>` (no `tablet-squaring` yet) follow the same method                          |
 | `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS                                 |
 | `blockViews()` parameter order            | `blockViews()` and its 32 handlers move to names-first ([Declaration Order](#declaration-order)): about 62 calls in 14 files, in one reorder-only commit right after a clean one                                       |
 | Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                                                   |
 | Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                                                           |
-| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([TABLE.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow))                                                    |
+| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([DATA.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow))                                                    |
 | Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](../GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                                                      |

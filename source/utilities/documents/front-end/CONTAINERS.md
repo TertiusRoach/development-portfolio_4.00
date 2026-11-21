@@ -54,6 +54,13 @@ Each page lives in `source/layouts/containers/${PageName}/`, where `${PageName}.
 
 [Archive] is the one exception. Its Navigation page tests the component inside `<main>`, wrapped in `<aside class="default-navigation">`, so there the parent is that wrapper instead of `<main>`. Its purpose doesn't change: the parent is always the block the navigation belongs to.
 
+**What it holds.** The nav is a 3 × 3 grid of skeleton squares with two layers:
+
+- **`cases.buttons`**: the `<ButtonRouting>` corners (`'top-lef'`, `'top-rig'`, `'bot-rig'`, `'bot-lef'`), drawn in `<ul class="vert-Y-${blockName}">`.
+- **`cases.menus`**: up to four `<Menu>`s, one per side, as `{ align: '-top-' | '-rig-' | '-bot-' | '-lef-', menu: <MenuSwipe … /> }`. Any of `<MenuScroll>`, `<MenuSelect>`, `<MenuSwipe>` and `<MenuToggle>` fits. Each lands in `<li class="set-${align}">` inside `<ol class="hori-X-${blockName}">`, the middle column. `set-top` and `set-bot` run across it; `set-rig` and `set-lef` are pushed out one square, between the corner buttons. The `set-*` cells only place a menu; how it looks inside stays with the menu's own props. Give each menu a `labelName` unique in its container (see [FRONT-END.md, Component Classes](FRONT-END.md#component-classes)).
+
+Pass `undefined` for either one a container doesn't use. The layout is the same in all three orientations; only the square sizes change.
+
 ---
 
 ## Pairs and the Flip
@@ -67,7 +74,7 @@ The four outer containers are coupled in two pairs, and a coupled pair always mo
 | `<header>` + `<leftbar>`  | `Header/${PageName}Functions.ts`     | `freezeContainer()` in `layouts/scripts/Head_Foot.ts` |
 | `<footer>` + `<rightbar>` | `Footer/${PageName}Functions.ts`     | `freezeContainer()` in `layouts/scripts/Head_Foot.ts` |
 
-`<main>` belongs to neither pair. It's where both pairs fold back: `revertContainers()` in `layouts/scripts/Main_Over.ts` squares the header and footer and collapses both bars in one go. It's also the one container that blurs: `obnubilateMain()` in `layouts/scripts/Head_Foot.ts` gives it `obnubilate` while the overlay is `.loading` or `.update` or any of the other four is `.expanded`, and takes it away otherwise (see RULEBOOK.md, Functions Files). `<overlay>` sits above all of them and isn't part of a pair.
+`<main>` belongs to neither pair. It's where both pairs fold back: `revertContainers()` in `layouts/scripts/Main_Over.ts` squares the header and footer and collapses both bars in one go. It's also the one container that blurs: `obnubilateMain()` in `layouts/scripts/Head_Foot.ts` gives it `obnubilate` while the overlay is `.loading` or `.update` or any of the other four is `.expanded`, and takes it away otherwise (see [FRONT-END.md, Functions Files](FRONT-END.md#functions-files)). `<overlay>` sits above all of them and isn't part of a pair.
 
 The pairs never change. A header never unfolds with the right bar, and a footer never freezes the left bar.
 
@@ -139,7 +146,7 @@ The tables below list each app's own containers. `<main>` has no state toggles; 
 
 ## Track a Day
 
-_Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../assets/pdf-files/archive-documents/logical-structure/track-a-day.pdf)_
+_Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../../assets/pdf-files/archive-documents/logical-structure/track-a-day.pdf)_
 
 ### Established
 
@@ -184,7 +191,7 @@ These rules come from the original planning and keep the record fair without mak
 
 ## Log a Ticket
 
-_Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../assets/pdf-files/archive-documents/logical-structure/log-a-ticket.pdf)_
+_Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../../assets/pdf-files/archive-documents/logical-structure/log-a-ticket.pdf)_
 
 > **Note:** these descriptions are placeholders. Log a Ticket will be rebuilt from my original jQuery ticketing system, which already has a complete claim-to-score loop. Its descriptions will be rewritten from that code. Until then, the rules below stand.
 
@@ -244,7 +251,7 @@ _Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../assets/pdf-fi
 
 ## Find a Link
 
-_Toggle: **Occupation**. Original planning: [find-a-link.pdf](../../assets/pdf-files/archive-documents/logical-structure/find-a-link.pdf)_
+_Toggle: **Occupation**. Original planning: [find-a-link.pdf](../../../assets/pdf-files/archive-documents/logical-structure/find-a-link.pdf)_
 
 Specialists and Technicians get the same page with the same containers. Occupation only decides where it opens: Technicians start on the company's links, Specialists on their own bookmarks.
 

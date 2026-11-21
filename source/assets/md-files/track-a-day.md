@@ -1,6 +1,6 @@
 # Track a Day
 
-`[overtime]` · `TrackTime`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The rules it follows live in [GUIDELINES.md](../../utilities/document/GUIDELINES.md), Sections 8, 9, 10 and 12; this file is how the loop behaves inside them, and never repeats a rule word for word. (The full copy of GUIDELINES this file used to hold is in commit `f8ad188d`.)
+`[overtime]` · `TrackTime`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The rules it follows live in [GUIDELINES.md](../../utilities/documents/GUIDELINES.md), Sections 8, 9, 10 and 12; this file is how the loop behaves inside them, and never repeats a rule word for word. (The full copy of GUIDELINES this file used to hold is in commit `f8ad188d`.)
 
 ## `<main>` Pages
 

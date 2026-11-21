@@ -55,7 +55,7 @@ The `<Table>` components (`clocking`, `tracking`, and those still to come) only 
 - **No business logic inside.** Permissions, totals and ghost hours are calculated before the data arrives.
 - **Little or no internal state.** The table renders the truth; it doesn't change it.
 
-They follow the same file pattern and [scaling rules](RULEBOOK.md#6-scaling-pattern) as every other component.
+They follow the same file pattern and [scaling rules](FRONT-END.md#6-scaling-pattern) as every other component.
 
 ---
 
@@ -149,4 +149,4 @@ The component receives `listWeeks(year)` as rows and renders them with the class
 </table>
 ```
 
-When it's built, `Table_weeks.ts` will live in `source/layouts/components/Table/weeks/`, following the component [file pattern](RULEBOOK.md#4-component-anatomy).
+When it's built, `Table_weeks.ts` will live in `source/layouts/components/Table/weeks/`, following the component [file pattern](FRONT-END.md#4-component-anatomy).

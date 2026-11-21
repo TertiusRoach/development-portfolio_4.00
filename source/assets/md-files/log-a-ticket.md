@@ -1,6 +1,6 @@
 # Log a Ticket
 
-`[ticketing]` · `DefineDuties`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The permissions it follows come from [GUIDELINES.md](../../utilities/document/GUIDELINES.md), Sections 6, 8 and 10; this file is how the loop behaves inside them.
+`[ticketing]` · `DefineDuties`. A draft until its edge cases are worked out; see `synchronization-thesis.md`. The permissions it follows come from [GUIDELINES.md](../../utilities/documents/GUIDELINES.md), Sections 6, 8 and 10; this file is how the loop behaves inside them.
 
 Built from a scan of the original Log a Ticket (6.13.1), kept read-only in `source/utilities/vendors/log-a-ticket/`. Its loop is kept; its bugs are listed at the bottom so they aren't copied.
 
