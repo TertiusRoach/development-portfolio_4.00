@@ -75,7 +75,8 @@ function OvertimeHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view, container) => {
@@ -250,7 +251,8 @@ function OvertimeHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view) => {

@@ -8,21 +8,10 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
     nav[class*='default'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      //--|===|--\\
-      padding: 64px;
-      @media screen and (max-height: 768px) {
-        padding: 48px;
-      }
-      @media screen and (max-height: 480px) {
-        padding: 32px;
-      }
-      @media screen and (max-height: 360px) {
-        padding: 24px;
-      }
     }
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
   }
   figure[class*='main-mid'] {
     //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\
@@ -65,21 +54,10 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
     nav[class*='default'] {
       grid-area: 2 / 2 / 5 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-      //--|===|--\\
-      padding: 96px;
-      @media screen and (max-width: 768px) {
-        padding: 80px;
-      }
-      @media screen and (max-width: 480px) {
-        padding: 48px;
-      }
-      @media screen and (max-width: 360px) {
-        padding: 32px;
-      }
     }
+    //--|🠊 background: rgba(darkred, 0.25); 🠈|--\\
   }
   figure[class*='main-mid'] {
     //--|🠊 background: rgba(darkgreen, 0.25); 🠈|--\\

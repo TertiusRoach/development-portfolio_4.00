@@ -22,21 +22,21 @@
       //--|🠊 Left 🠈|--\\
       &[class*='horizontal-lef'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px //--|🠈 rows 🠈|--\\
+        grid-template: 128px //--|🠈 rows 🠈|--//
           / 128px 128px 1fr; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 96px 96px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 64px 64px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px //--|🠈 rows 🠈|--\\
+          grid-template: 48px //--|🠈 rows 🠈|--//
             / 48px 48px 1fr; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -49,21 +49,21 @@
       //--|🠊 Right 🠈|--\\
       &[class*='horizontal-rig'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px //--|🠈 rows 🠈|--\\
+        grid-template: 128px //--|🠈 rows 🠈|--//
           / 1fr 128px 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 1fr 96px 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 1fr 64px 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px //--|🠈 rows 🠈|--\\
+          grid-template: 48px //--|🠈 rows 🠈|--//
             / 1fr 48px 48px; //--|🠈 columns 🠈|--\\
         }
 
@@ -77,21 +77,21 @@
       //--|🠊 Center 🠈|--\\
       &[class*='horizontal-cen'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px //--|🠈 rows 🠈|--\\
+        grid-template: 128px //--|🠈 rows 🠈|--//
           / 1fr 128px 128px 1fr; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px //--|🠈 rows 🠈|--\\
+          grid-template: 48px //--|🠈 rows 🠈|--//
             / 1fr 48px 48px 1fr; //--|🠈 columns 🠈|--\\
         }
 
@@ -105,21 +105,21 @@
       //--|🠊 Default 🠈|--\\
       &[class*='horizontal-def'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px //--|🠈 rows 🠈|--\\
+        grid-template: 128px //--|🠈 rows 🠈|--//
           / 128px 1fr 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 96px 1fr 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px //--|🠈 rows 🠈|--\\
+          grid-template: 48px //--|🠈 rows 🠈|--//
             / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
         }
 
@@ -297,21 +297,21 @@
       //--|🠊 Top 🠈|--\\
       &[class*='horizontal-top'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px 128px 1fr //--|🠈 rows 🠈|--\\
+        grid-template: 128px 128px 1fr //--|🠈 rows 🠈|--//
           / 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px 48px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 48px 48px 1fr //--|🠈 rows 🠈|--//
             / 48px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -324,21 +324,21 @@
       //--|🠊 Bottom 🠈|--\\
       &[class*='horizontal-bot'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 1fr 128px 128px //--|🠈 rows 🠈|--\\
+        grid-template: 1fr 128px 128px //--|🠈 rows 🠈|--//
           / 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 1fr 48px 48px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 48px 48px //--|🠈 rows 🠈|--//
             / 48px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -351,21 +351,21 @@
       //--|🠊 Middle 🠈|--\\
       &[class*='horizontal-mid'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 1fr 128px 128px 1fr //--|🠈 rows 🠈|--\\
+        grid-template: 1fr 128px 128px 1fr //--|🠈 rows 🠈|--//
           / 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 1fr 48px 48px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 48px 48px 1fr //--|🠈 rows 🠈|--//
             / 48px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -378,21 +378,21 @@
       //--|🠊 Default 🠈|--\\
       &[class*='horizontal-def'] {
         //--|🠊 128px for Squares 🠈|--\\
-        grid-template: 128px 1fr 128px //--|🠈 rows 🠈|--\\
+        grid-template: 128px 1fr 128px //--|🠈 rows 🠈|--//
           / 128px; //--|🠈 columns 🠈|--\\
         @media screen and (max-height: 768px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 480px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-height: 360px) {
           //--|🠊 48px for Squares 🠈|--\\
-          grid-template: 48px 1fr 48px //--|🠈 rows 🠈|--\\
+          grid-template: 48px 1fr 48px //--|🠈 rows 🠈|--//
             / 48px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -724,21 +724,21 @@
       //--|🠊 Left 🠈|--\\
       &[class*='horizontal-lef'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px //--|🠈 rows 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
           / 192px 192px 1fr; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px //--|🠈 rows 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
             / 160px 160px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 96px 96px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 64px 64px 1fr; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -751,21 +751,21 @@
       //--|🠊 Right 🠈|--\\
       &[class*='horizontal-rig'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px //--|🠈 rows 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
           / 1fr 192px 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px //--|🠈 rows 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
             / 1fr 160px 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 1fr 96px 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 1fr 64px 64px; //--|🠈 columns 🠈|--\\
         }
 
@@ -779,21 +779,21 @@
       //--|🠊 Center 🠈|--\\
       &[class*='horizontal-cen'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px //--|🠈 rows 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
           / 1fr 192px 192px 1fr; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px //--|🠈 rows 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
             / 1fr 160px 160px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 1fr 96px 96px 1fr; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 1fr 64px 64px 1fr; //--|🠈 columns 🠈|--\\
         }
 
@@ -807,21 +807,21 @@
       //--|🠊 Default 🠈|--\\
       &[class*='horizontal-def'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px //--|🠈 rows 🠈|--\\
+        grid-template: 192px //--|🠈 rows 🠈|--//
           / 192px 1fr 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px //--|🠈 rows 🠈|--\\
+          grid-template: 160px //--|🠈 rows 🠈|--//
             / 160px 1fr 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px //--|🠈 rows 🠈|--//
             / 96px 1fr 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px //--|🠈 rows 🠈|--//
             / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
         }
 
@@ -998,21 +998,21 @@
       //--|🠊 Top 🠈|--\\
       &[class*='horizontal-top'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px 192px 1fr //--|🠈 rows 🠈|--\\
+        grid-template: 192px 192px 1fr //--|🠈 rows 🠈|--//
           / 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px 160px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 160px 160px 1fr //--|🠈 rows 🠈|--//
             / 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 96px 96px 1fr //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 64px 64px 1fr //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -1025,21 +1025,21 @@
       //--|🠊 Bottom 🠈|--\\
       &[class*='horizontal-bot'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 1fr 192px 192px //--|🠈 rows 🠈|--\\
+        grid-template: 1fr 192px 192px //--|🠈 rows 🠈|--//
           / 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 1fr 160px 160px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 160px 160px //--|🠈 rows 🠈|--//
             / 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 96px 96px //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 64px 64px //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -1052,21 +1052,21 @@
       //--|🠊 Middle 🠈|--\\
       &[class*='horizontal-mid'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 1fr 192px 192px 1fr //--|🠈 rows 🠈|--\\
+        grid-template: 1fr 192px 192px 1fr //--|🠈 rows 🠈|--//
           / 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 1fr 160px 160px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 160px 160px 1fr //--|🠈 rows 🠈|--//
             / 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 96px 96px 1fr //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--\\
+          grid-template: 1fr 64px 64px 1fr //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -1079,21 +1079,21 @@
       //--|🠊 Default 🠈|--\\
       &[class*='horizontal-def'] {
         //--|🠊 192px for Squares 🠈|--\\
-        grid-template: 192px 1fr 192px //--|🠈 rows 🠈|--\\
+        grid-template: 192px 1fr 192px //--|🠈 rows 🠈|--//
           / 192px; //--|🠈 columns 🠈|--\\
         @media screen and (max-width: 768px) {
           //--|🠊 160px for Squares 🠈|--\\
-          grid-template: 160px 1fr 160px //--|🠈 rows 🠈|--\\
+          grid-template: 160px 1fr 160px //--|🠈 rows 🠈|--//
             / 160px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 480px) {
           //--|🠊 96px for Squares 🠈|--\\
-          grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--\\
+          grid-template: 96px 1fr 96px //--|🠈 rows 🠈|--//
             / 96px; //--|🠈 columns 🠈|--\\
         }
         @media screen and (max-width: 360px) {
           //--|🠊 64px for Squares 🠈|--\\
-          grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--\\
+          grid-template: 64px 1fr 64px //--|🠈 rows 🠈|--//
             / 64px; //--|🠈 columns 🠈|--\\
         }
         .prev-view {
@@ -2021,6 +2021,7 @@ menu[class*='swipe'] {
     @include tablet-squaring();
   }
   //--|===|--\\
+  height: 100%;
   &[class*='swipe'] {
     ul[class*='hori-X-swipe'],
     ol[class*='hori-Y-swipe'] {

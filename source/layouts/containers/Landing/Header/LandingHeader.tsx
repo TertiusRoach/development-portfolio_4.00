@@ -62,7 +62,8 @@ function LandingHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view) => {
@@ -111,7 +112,8 @@ function LandingHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view) => {

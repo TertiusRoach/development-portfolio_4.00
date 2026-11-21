@@ -69,7 +69,8 @@ function TicketingFooter({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-dark') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view) => {
@@ -141,7 +142,8 @@ function TicketingFooter({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view, container) => {

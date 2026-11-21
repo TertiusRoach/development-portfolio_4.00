@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
+import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
+import MenuScroll from '../../../../../../components/Menu/scroll/Menu.scroll';
+import MenuSelect from '../../../../../../components/Menu/select/Menu.select';
 import NavigationDefault from '../../../../../../components/Navigation/default/Navigation.default';
 
 //--|🠋 Functions 🠋|--\\
@@ -28,9 +31,9 @@ function DefaultNavigation({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let imageLink = loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/star') as string;
   switch (getOrientation) {
     case 'landscape':
+      let imageDesktop = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/desktop') as string;
       return (
         <aside className="default-navigation">
           <section className={`${blockName}-foreground`}>
@@ -49,9 +52,110 @@ function DefaultNavigation({ info }: InfoProps) {
               }}
               cases={{
                 tasks: {},
-                menus: undefined,
-                view: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
-                image: [imageLink, imageLink, imageLink, imageLink],
+                menus: [
+                  {
+                    align: '-top-',
+                    menu: (
+                      <MenuSwipe
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'top-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          view: '-def-',
+                          color: '(mono)',
+                          shade: '~light~',
+                        }}
+                        cases={{
+                          axis: '[x]',
+                          titles: ['[Landing]', '[Archive]', '[Overtime]', '[Ticketing]', '[Hyperlink]'] as Array<string>,
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-rig-',
+                    menu: (
+                      <MenuScroll
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'rig-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          view: '-def-',
+                          color: '(mono)',
+                          shade: '~light~',
+                        }}
+                        cases={{
+                          axis: '[y]',
+                          titles: ['[Landing]', '[Archive]', '[Overtime]', '[Ticketing]', '[Hyperlink]'] as Array<string>,
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-bot-',
+                    menu: (
+                      <MenuSelect
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'bot-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          align: '-rig-',
+                          view: 'bot-cen',
+                          color: '(mono)',
+                          shade: '~light~',
+                          //--|===|--\\
+                          image: [
+                            loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+                          ] as Array<string>,
+                          size: ['<p>', '<h4>', '<h1>'] as Array<'<h1>' | '<h4>' | '<p>'>,
+                        }}
+                        cases={{
+                          pages: 3,
+                          axis: '[x]',
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-lef-',
+                    menu: (
+                      <MenuSelect
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'lef-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          align: '-lef-',
+                          view: 'mid-lef',
+                          color: '(mono)',
+                          shade: '~light~',
+                          //--|===|--\\
+                          image: [
+                            loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+                          ] as Array<string>,
+                          size: ['<h1>', '<h4>', '<p>'] as Array<'<h1>' | '<h4>' | '<p>'>,
+                        }}
+                        cases={{
+                          pages: 3,
+                          axis: '[y]',
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                ],
+                buttons: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
+                image: [imageDesktop, imageDesktop, imageDesktop, imageDesktop],
               }}
             />
           </section>
@@ -62,6 +166,7 @@ function DefaultNavigation({ info }: InfoProps) {
         </aside>
       );
     case 'portrait':
+      let imageMobile = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/mobile-alt') as string;
       return (
         <aside className="default-navigation">
           <section className={`${blockName}-foreground`}>
@@ -80,9 +185,111 @@ function DefaultNavigation({ info }: InfoProps) {
               }}
               cases={{
                 tasks: {},
-                menus: undefined,
-                view: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
-                image: [imageLink, imageLink, imageLink, imageLink],
+                //--|🠊 AI Code: Review Please 2026-11-21 13:58 · Copied from the landscape branch to test [Mobile] & [Tablet] 🠈|--\\
+                menus: [
+                  {
+                    align: '-top-',
+                    menu: (
+                      <MenuSwipe
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'top-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          view: '-def-',
+                          color: '(mono)',
+                          shade: '~light~',
+                        }}
+                        cases={{
+                          axis: '[x]',
+                          titles: ['[Landing]', '[Archive]', '[Overtime]', '[Ticketing]', '[Hyperlink]'] as Array<string>,
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-rig-',
+                    menu: (
+                      <MenuScroll
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'rig-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          view: '-def-',
+                          color: '(mono)',
+                          shade: '~light~',
+                        }}
+                        cases={{
+                          axis: '[y]',
+                          titles: ['[Landing]', '[Archive]', '[Overtime]', '[Ticketing]', '[Hyperlink]'] as Array<string>,
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-bot-',
+                    menu: (
+                      <MenuSelect
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'bot-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          align: '-rig-',
+                          view: 'bot-cen',
+                          color: '(mono)',
+                          shade: '~light~',
+                          //--|===|--\\
+                          size: '<p>',
+                          image: [
+                            loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+                          ] as Array<string>,
+                        }}
+                        cases={{
+                          pages: 3,
+                          axis: '[x]',
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                  {
+                    align: '-lef-',
+                    menu: (
+                      <MenuSelect
+                        info={{
+                          blockName: blockName as 'main',
+                          labelName: 'lef-nav' as string,
+                          pageName: pageName as 'components',
+                        }}
+                        style={{
+                          align: '-lef-',
+                          view: 'mid-lef',
+                          color: '(mono)',
+                          shade: '~light~',
+                          //--|===|--\\
+                          image: [
+                            loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+                          ] as Array<string>,
+                          size: ['<h1>', '<h4>', '<p>'] as Array<'<h1>' | '<h4>' | '<p>'>,
+                        }}
+                        cases={{
+                          pages: 3,
+                          axis: '[y]',
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                ],
+                buttons: ['top-lef', 'top-rig', 'bot-rig', 'bot-lef'],
+                image: [imageMobile, imageMobile, imageMobile, imageMobile],
               }}
             />
           </section>

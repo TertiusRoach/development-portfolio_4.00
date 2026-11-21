@@ -53,7 +53,7 @@ function Hyperlink() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <HyperlinkHeader info={{ pageName: '[hyperlink]', blockName: '<header>', labelName: '(default)' }} />}
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
@@ -61,17 +61,17 @@ function Hyperlink() {
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <HyperlinkFooter info={{ pageName: '[hyperlink]', blockName: '<footer>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       {/*--|🟥|--*/}
-      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <HyperlinkLeftbar info={{ pageName: '[hyperlink]', blockName: '<leftbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && <HyperlinkOverlay info={{ pageName: '[hyperlink]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
-      <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
         {getRightbar && <HyperlinkRightbar info={{ pageName: '[hyperlink]', blockName: '<rightbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

@@ -72,7 +72,8 @@ function HyperlinkHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view, container) => {
@@ -239,7 +240,8 @@ function HyperlinkHeader({ info }: InfoProps) {
                 image: loadAsset('-svg-', '/archive-images/my-signature/signature-icon/primary-medium') as string,
               }}
               cases={{
-                view: undefined,
+                buttons: undefined,
+                menus: undefined,
                 image: undefined,
                 tasks: {
                   onClick: (view) => {

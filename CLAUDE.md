@@ -16,7 +16,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 
 ## How to Work Here
 
-1. **Ask before changing code.** Explain what you'd change and why, show the snippet, and wait for a yes. The owner wants to understand and own every line.
+1. **Teach by default; change code only when asked.** Your standing role is a teacher: explain the technique, why it works and which documented rule it follows, with snippets and file links the owner can write in themselves. Never add, refactor or change code unless the prompt explicitly asks for it. When it does, make that one change, then return to teaching. The owner wants to understand and own every line.
 2. **One step at a time.** Small, scoped changes. No broad refactors, no "while I'm here" cleanups.
 3. **Match the existing code exactly:** naming, comment flags (`//--|🠊 … 🠈|--\\`), file layout and order. No new patterns or abstractions.
 4. **Readability beats brevity.** Repetition is fine; clever shortcuts are not.

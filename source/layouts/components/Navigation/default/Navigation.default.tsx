@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import ButtonRouting from '../../Button/routing/Button.routing';
 
 //--|🠋 Functions 🠋|--\\
+import { stripBrackets } from '../../../tools/conversions';
 
 interface TheseProps {
   info: {
@@ -21,15 +22,16 @@ interface TheseProps {
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {
+    image: Array<string> | undefined;
+    buttons: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
+    menus: Array<{ align: '-top-' | '-rig-' | '-bot-' | '-lef-'; menu: React.JSX.Element }> | undefined;
+    //--|===|--\\
     tasks?: {
       onClick?: (view: string, container: HTMLElement) => void;
       onMouseEnter?: (view: string, container: HTMLElement) => void;
       onMouseLeave?: (view: string, container: HTMLElement) => void;
       onDoubleClick?: (view: string, container: HTMLElement) => void;
     };
-    image: Array<string> | undefined;
-    menus: Array<HTMLMenuElement> | undefined;
-    view: Array<'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef'> | undefined;
   };
   //--|===|--\\
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => string | number | void;
@@ -43,7 +45,19 @@ export function NavigationDefault({ info, style, cases, onClick, onMouseEnter, o
   const blockName: string = info.blockName as string;
   const labelName: string = info.labelName as string;
 
-  useEffect(() => {}, [pageName, blockName, labelName]);
+  useEffect(() => {
+    if (`${pageName} ${blockName} ${labelName}` === 'components main default') {
+      /*
+      console.log('Menu:', cases.menus?.[0].menu);
+      console.log('Align:', stripBrackets(`${cases.menus?.[0].align}`, '--'));
+      const menuElement = document.querySelectorAll(
+        `#${pageName}-${blockName} nav[class*="${blockName}_navigation-default"] menu`,
+      ) as NodeListOf<HTMLMenuElement>; //--|🠈 AI Code: Review Please 2026-11-21 · Uncommented: every <menu>, scroll, select, swipe or toggle 🠈|--\\
+      console.log(menuElement[0].childNodes);
+      console.log(menuElement[1].childNodes);
+      */
+    }
+  }, [pageName, blockName, labelName]);
 
   let handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     var view = event.currentTarget.id.split('_').pop() as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef';
@@ -73,7 +87,7 @@ export function NavigationDefault({ info, style, cases, onClick, onMouseEnter, o
   return (
     <nav className={`${labelName}-${blockName}_navigation-default`}>
       <ol className={`hori-X-${blockName}`}>
-        {HorizontalButtons(
+        {HorizontalMenus(
           info,
           style,
           cases,
@@ -99,7 +113,27 @@ export function NavigationDefault({ info, style, cases, onClick, onMouseEnter, o
     </nav>
   );
 }
-
+const HorizontalMenus = (
+  info: TheseProps['info'],
+  style: TheseProps['style'],
+  cases: TheseProps['cases'],
+  //--|===|--\\
+  onClick: TheseProps['onClick'],
+  onMouseEnter: TheseProps['onMouseEnter'],
+  onMouseLeave: TheseProps['onMouseLeave'],
+  onDoubleClick: TheseProps['onDoubleClick'],
+) => {
+  switch (true) {
+    case cases.menus !== undefined:
+      return cases.menus.map((path, index) => (
+        <li className={`set-${stripBrackets(cases.menus?.[index].align as string, '--')}`} key={index}>
+          {cases.menus?.[index as number].menu}
+        </li>
+      ));
+    default:
+      return null;
+  }
+};
 const VerticalButtons = (
   info: TheseProps['info'],
   style: TheseProps['style'],
@@ -111,15 +145,16 @@ const VerticalButtons = (
   onDoubleClick: TheseProps['onDoubleClick'],
 ) => {
   switch (true) {
-    case cases.view !== undefined:
-      return cases.view.map((path, index) => (
+    case cases.buttons !== undefined:
+      return cases.buttons.map((path, index) => (
         <li className={path} key={index}>
           <ButtonRouting
             style={{
               size: '<h1>',
+              clarity: '⟨lucid⟩',
+              //--|===|--\\
               color: style.color,
               shade: style.shade,
-              clarity: '⟨lucid⟩',
               image: cases.image?.[index] as string,
               view: path as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef',
             }}
@@ -142,10 +177,11 @@ const VerticalButtons = (
           <ButtonRouting
             style={{
               size: '<h1>',
+              clarity: '⟨lucid⟩',
+              //--|===|--\\
               view: style.view,
               color: style.color,
               shade: style.shade,
-              clarity: '⟨lucid⟩',
               image: style.image as string,
             }}
             info={{
@@ -165,32 +201,8 @@ const VerticalButtons = (
       return null;
   }
 };
-const HorizontalButtons = (
-  info: TheseProps['info'],
-  style: TheseProps['style'],
-  cases: TheseProps['cases'],
-  //--|===|--\\
-  onClick: TheseProps['onClick'],
-  onMouseEnter: TheseProps['onMouseEnter'],
-  onMouseLeave: TheseProps['onMouseLeave'],
-  onDoubleClick: TheseProps['onDoubleClick'],
-) => {
-  switch (info.blockName) {
-    case 'main':
-      return NavigationMain(info, style, cases);
-    case 'header':
-      return NavigationHeader(info, style, cases);
-    case 'footer':
-      return NavigationFooter(info, style, cases);
-    case 'overlay':
-      return NavigationOverlay(info, style, cases);
-    case 'leftbar':
-      return NavigationLeftbar(info, style, cases);
-    case 'rightbar':
-      return NavigationRightbar(info, style, cases);
-  }
-};
 
+/*
 let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
   const pageInfo = info as TheseProps['info'];
   const pageStyle = style as TheseProps['style'];
@@ -239,4 +251,5 @@ let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], 
   // console.log('<Rightbar> Loaded!');
   return <></>;
 };
+*/
 export default NavigationDefault;

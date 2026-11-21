@@ -53,7 +53,7 @@ function Overtime() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <OvertimeHeader info={{ pageName: '[overtime]', blockName: '<header>', labelName: '(default)' }} />}
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
@@ -61,17 +61,17 @@ function Overtime() {
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <OvertimeFooter info={{ pageName: '[overtime]', blockName: '<footer>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       {/*--|🟩|--*/}
-      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <OvertimeLeftbar info={{ pageName: '[overtime]', blockName: '<leftbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && <OvertimeOverlay info={{ pageName: '[overtime]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
-      <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
         {getRightbar && <OvertimeRightbar info={{ pageName: '[overtime]', blockName: '<rightbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

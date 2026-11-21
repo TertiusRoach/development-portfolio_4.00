@@ -725,8 +725,7 @@
   }
 }
 @mixin tablet-squaring {
-  //--|🠋 Tablet: Select Menu 🠋|--\\
-  //--|🠊 Expansion bookmark: only the scroll fade scales on tablet for now, one step ahead 🠈|--\\
+  //--|🠋 Tablet (Elements) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     &:has([class*='lef_top']),
@@ -759,9 +758,11 @@
       }
     }
   }
+  //--|🠊 Expansion bookmark: only the scroll fade scales on tablet for now, one step ahead 🠈|--\\
 }
 
 menu[class*='select'] {
+  height: 100%;
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

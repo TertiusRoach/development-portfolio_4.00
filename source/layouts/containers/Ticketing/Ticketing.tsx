@@ -53,7 +53,7 @@ function Ticketing() {
 
   return (
     <>
-      <Suspense fallback={<div className="display-1">Loading Header...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Header...</div>}>
         {getHeader && <TicketingHeader info={{ pageName: '[ticketing]', blockName: '<header>', labelName: '(default)' }} />}
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Main...</div>}>
@@ -61,17 +61,17 @@ function Ticketing() {
       </Suspense>
       <Suspense fallback={<div className="display-1">Loading Footer...</div>}>
         {getFooter && <TicketingFooter info={{ pageName: '[ticketing]', blockName: '<footer>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       {/*--|🟦|--*/}
-      <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Leftbar...</div>}>
         {getLeftbar && <TicketingLeftbar info={{ pageName: '[ticketing]', blockName: '<leftbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<div className="display-1">Loading Overlay...</div>}>
         {getOverlay && <TicketingOverlay info={{ pageName: '[ticketing]', blockName: '<overlay>', labelName: '(default)' }} />}
       </Suspense>
-      <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
+      {/* <Suspense fallback={<div className="display-1">Loading Rightbar...</div>}>
         {getRightbar && <TicketingRightbar info={{ pageName: '[ticketing]', blockName: '<rightbar>', labelName: '(default)' }} />}
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
