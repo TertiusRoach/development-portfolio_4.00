@@ -1,5 +1,5 @@
 //--|🠊 SpotlightCanvas.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, always visible 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -27,6 +27,13 @@ function SpotlightCanvas({ info }: InfoProps) {
   let pickerShade = '~dark~' as '~dark~';
   useEffect(() => {
     switchColors(pickerColor, 'spotlight');
+    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
+    const spotlightPickers = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="spotlight-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="spotlight-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+    ) as NodeListOf<HTMLLabelElement>;
+    for (let i = 0; i < spotlightPickers.length; i++) {
+      spotlightPickers[i].classList.add('downplay');
+    }
   }, [pageName, blockName, labelName]);
 
   return (

@@ -133,7 +133,8 @@
   transition:
     --particles-one 500ms $tint-fade,
     --particles-two 500ms $tint-fade,
-    opacity 500ms $tint-fade;
+    background 500ms $tint-fade,
+    box-shadow 500ms $tint-fade;
   @include mon-tint();
   @include red-tint();
   @include gre-tint();
@@ -146,223 +147,263 @@
   @include tur-tint();
 }
 @mixin mon-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_mon'] {
-    --particles-one: #{Palettes.$gray-dark};
-    --particles-two: #{Palettes.$gray-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$gray-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_mon'] {
     --particles-one: #{Palettes.$gray-light};
     --particles-two: #{Palettes.$gray-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$gray-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$gray-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$gray-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$gray-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$gray-medium, 0.25),
+      0 0 24px rgba(Palettes.$gray-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_mon'] {
+    --particles-one: #{Palettes.$gray-dark};
+    --particles-two: #{Palettes.$gray-medium};
+    background: rgba(Palettes.$gray-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$gray-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$gray-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$gray-medium, 0.2),
+      0 0 24px rgba(Palettes.$gray-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin red-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_red'] {
-    --particles-one: #{Palettes.$red-dark};
-    --particles-two: #{Palettes.$red-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$red-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_red'] {
     --particles-one: #{Palettes.$red-light};
     --particles-two: #{Palettes.$red-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$red-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$red-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$red-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$red-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$red-medium, 0.25),
+      0 0 24px rgba(Palettes.$red-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_red'] {
+    --particles-one: #{Palettes.$red-dark};
+    --particles-two: #{Palettes.$red-medium};
+    background: rgba(Palettes.$red-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$red-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$red-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$red-medium, 0.2),
+      0 0 24px rgba(Palettes.$red-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin gre-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_gre'] {
-    --particles-one: #{Palettes.$green-dark};
-    --particles-two: #{Palettes.$green-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$green-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_gre'] {
     --particles-one: #{Palettes.$green-light};
     --particles-two: #{Palettes.$green-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$green-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$green-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$green-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$green-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$green-medium, 0.25),
+      0 0 24px rgba(Palettes.$green-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_gre'] {
+    --particles-one: #{Palettes.$green-dark};
+    --particles-two: #{Palettes.$green-medium};
+    background: rgba(Palettes.$green-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$green-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$green-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$green-medium, 0.2),
+      0 0 24px rgba(Palettes.$green-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin blu-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_blu'] {
-    --particles-one: #{Palettes.$blue-dark};
-    --particles-two: #{Palettes.$blue-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$blue-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_blu'] {
     --particles-one: #{Palettes.$blue-light};
     --particles-two: #{Palettes.$blue-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$blue-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$blue-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$blue-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$blue-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$blue-medium, 0.25),
+      0 0 24px rgba(Palettes.$blue-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_blu'] {
+    --particles-one: #{Palettes.$blue-dark};
+    --particles-two: #{Palettes.$blue-medium};
+    background: rgba(Palettes.$blue-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$blue-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$blue-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$blue-medium, 0.2),
+      0 0 24px rgba(Palettes.$blue-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin yel-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_yel'] {
-    --particles-one: #{Palettes.$yellow-dark};
-    --particles-two: #{Palettes.$yellow-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$yellow-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_yel'] {
     --particles-one: #{Palettes.$yellow-light};
     --particles-two: #{Palettes.$yellow-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$yellow-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$yellow-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$yellow-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$yellow-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$yellow-medium, 0.25),
+      0 0 24px rgba(Palettes.$yellow-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_yel'] {
+    --particles-one: #{Palettes.$yellow-dark};
+    --particles-two: #{Palettes.$yellow-medium};
+    background: rgba(Palettes.$yellow-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$yellow-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$yellow-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$yellow-medium, 0.2),
+      0 0 24px rgba(Palettes.$yellow-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin pur-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_pur'] {
-    --particles-one: #{Palettes.$purple-dark};
-    --particles-two: #{Palettes.$purple-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$purple-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_pur'] {
     --particles-one: #{Palettes.$purple-light};
     --particles-two: #{Palettes.$purple-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$purple-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$purple-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$purple-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$purple-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$purple-medium, 0.25),
+      0 0 24px rgba(Palettes.$purple-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_pur'] {
+    --particles-one: #{Palettes.$purple-dark};
+    --particles-two: #{Palettes.$purple-medium};
+    background: rgba(Palettes.$purple-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$purple-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$purple-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$purple-medium, 0.2),
+      0 0 24px rgba(Palettes.$purple-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin ora-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_ora'] {
-    --particles-one: #{Palettes.$orange-dark};
-    --particles-two: #{Palettes.$orange-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$orange-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_ora'] {
     --particles-one: #{Palettes.$orange-light};
     --particles-two: #{Palettes.$orange-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$orange-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$orange-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$orange-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$orange-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$orange-medium, 0.25),
+      0 0 24px rgba(Palettes.$orange-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_ora'] {
+    --particles-one: #{Palettes.$orange-dark};
+    --particles-two: #{Palettes.$orange-medium};
+    background: rgba(Palettes.$orange-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$orange-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$orange-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$orange-medium, 0.2),
+      0 0 24px rgba(Palettes.$orange-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin pin-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_pin'] {
-    --particles-one: #{Palettes.$pink-dark};
-    --particles-two: #{Palettes.$pink-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$pink-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_pin'] {
     --particles-one: #{Palettes.$pink-light};
     --particles-two: #{Palettes.$pink-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$pink-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$pink-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$pink-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$pink-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$pink-medium, 0.25),
+      0 0 24px rgba(Palettes.$pink-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_pin'] {
+    --particles-one: #{Palettes.$pink-dark};
+    --particles-two: #{Palettes.$pink-medium};
+    background: rgba(Palettes.$pink-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$pink-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$pink-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$pink-medium, 0.2),
+      0 0 24px rgba(Palettes.$pink-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin bro-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_bro'] {
-    --particles-one: #{Palettes.$brown-dark};
-    --particles-two: #{Palettes.$brown-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$brown-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_bro'] {
     --particles-one: #{Palettes.$brown-light};
     --particles-two: #{Palettes.$brown-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$brown-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$brown-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$brown-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$brown-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$brown-medium, 0.25),
+      0 0 24px rgba(Palettes.$brown-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_bro'] {
+    --particles-one: #{Palettes.$brown-dark};
+    --particles-two: #{Palettes.$brown-medium};
+    background: rgba(Palettes.$brown-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$brown-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$brown-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$brown-medium, 0.2),
+      0 0 24px rgba(Palettes.$brown-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 @mixin tur-tint {
-  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: light dots, -light into -medium, in a dark frame lit from inside 🠈|--\\
   &[class*='dar_tur'] {
-    --particles-one: #{Palettes.$turquoise-dark};
-    --particles-two: #{Palettes.$turquoise-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$turquoise-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
-    }
-  }
-  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
-  &[class*='lig_tur'] {
     --particles-one: #{Palettes.$turquoise-light};
     --particles-two: #{Palettes.$turquoise-medium};
-    &[class*='_luc'] {
-      background: rgba(Palettes.$turquoise-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
-      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
-        inset 0 0 8px rgba(Palettes.$turquoise-dark, 0.5),
-        0 8px 16px rgba(#000, 0.35);
-    }
+    background: rgba(Palettes.$turquoise-dark, 0.35);
+    box-shadow: //--|🠋 Sunk edge, a lit rim, a soft inner glow and a halo, so the frame pops off the page 🠋|--\\
+      inset 0 0 8px rgba(#000, 0.6),
+      inset 0 1px 0 rgba(Palettes.$turquoise-light, 0.35),
+      inset 0 0 32px rgba(Palettes.$turquoise-medium, 0.25),
+      0 0 24px rgba(Palettes.$turquoise-neon, 0.2),
+      0 8px 16px rgba(#000, 0.35);
+  }
+  //--|🠊 Light Shade: the mirror, dark dots, -dark into -medium, in a light frame 🠈|--\\
+  &[class*='lig_tur'] {
+    --particles-one: #{Palettes.$turquoise-dark};
+    --particles-two: #{Palettes.$turquoise-medium};
+    background: rgba(Palettes.$turquoise-light, 0.35);
+    box-shadow: //--|🠋 A bright inner glow, a shaded lower rim, a light halo and a drop shadow 🠋|--\\
+      inset 0 0 8px rgba(Palettes.$turquoise-neon, 0.6),
+      inset 0 -1px 0 rgba(Palettes.$turquoise-dark, 0.3),
+      inset 0 0 32px rgba(Palettes.$turquoise-medium, 0.2),
+      0 0 24px rgba(Palettes.$turquoise-light, 0.35),
+      0 8px 16px rgba(#000, 0.25);
   }
 }
 //--|===|--\\
@@ -370,13 +411,7 @@ canvas[class*='particles'] {
   display: block;
   pointer-events: auto; //--|🠈 Like <CanvasSpotlight>, it answers the pointer: the dots dodge it 🠈|--\\
   @include particles-colors();
-  //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay hides it and its script stops, .highlight shows it while the mouse is over it 🠈|--\\
-  &.downplay {
-    opacity: 0;
-  }
-  &.highlight {
-    opacity: 1;
-  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay is the empty frame and its script stops, .highlight fills it while the mouse is inside; the script fades the dots itself, so the frame never fades 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--\\
   @media screen and (orientation: landscape) {
     @include desktop-landscape();

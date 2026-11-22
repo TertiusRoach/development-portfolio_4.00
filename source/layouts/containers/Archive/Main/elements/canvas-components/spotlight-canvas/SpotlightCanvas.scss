@@ -1,5 +1,5 @@
 //--|🠊 SpotlightCanvas.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.scss: colours on top, shades at the bottom, both always visible, the circle centred in the midground 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · The shared [archive] canvas grid: (colour) on top, the toggle in the middle, (shade) at the bottom, the dropdowns hidden until hovered, the toggles always visible; the <canvas> in the midground 🠈|--\\
 @use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
@@ -9,15 +9,19 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    pointer-events: none; //--|🠈 AI Code: Review Please 2026-11-22 · Lets the hover through to the spotlight in the midground 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
     label {
-      pointer-events: auto; //--|🠈 The pickers still catch their own clicks 🠈|--\\
+      pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 The dropdowns only show while they're hovered 🠈|--\\
+      }
     }
     label[class*='colours'] {
-      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the top 🠈|--\\
     }
     label[class*='shades'] {
-      grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the bottom 🠈|--\\
     }
   }
   figure[class*='main-mid'] {
@@ -36,15 +40,19 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    pointer-events: none; //--|🠈 AI Code: Review Please 2026-11-22 · Lets the hover through to the spotlight in the midground 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
     label {
-      pointer-events: auto; //--|🠈 The pickers still catch their own clicks 🠈|--\\
+      pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 The dropdowns only show while they're hovered 🠈|--\\
+      }
     }
     label[class*='colours'] {
-      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the top 🠈|--\\
     }
     label[class*='shades'] {
-      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the bottom 🠈|--\\
     }
   }
   figure[class*='main-mid'] {

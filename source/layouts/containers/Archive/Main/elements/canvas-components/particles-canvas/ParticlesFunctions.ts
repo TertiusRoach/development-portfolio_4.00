@@ -1,5 +1,5 @@
 //--|🠊 particles-canvas/ParticlesFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from RotationsFunctions.ts; the class is shade_color_clarity, so the slots are [0], [1] and [2] 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from SpotlightFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
 //--|🠋 Colour Switching 🠋|--\\
 export const switchColors = (choice: string, labelName: 'particles'): void => {
   const colorMap: Record<string, string> = {
@@ -26,25 +26,8 @@ export const switchShades = (choice: string, labelName: 'particles'): void => {
 
   updateCanvases(shadeMap[choice], 0, labelName); //--|🠈 The {select} picks the shade, this swaps it into every <CanvasParticles> on that page 🠈|--\\
 };
-//--|🠋 Clarity Toggle 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from DefaultFunctions.ts toggleClarity(), for the third slot 🠈|--\\
-export const toggleClarity = (element: HTMLFieldSetElement, labelName: 'particles'): void => {
-  //--|🠊 The checked radio's value picks the clarity 🠈|--\\
-  const checkedInput = element.querySelector('input:checked') as HTMLInputElement;
-
-  let clarity: string = '';
-  switch (checkedInput.value) {
-    case 'Lucid':
-      clarity = 'luc';
-      break;
-    case 'Opaque':
-      clarity = 'opa';
-      break;
-  }
-  updateCanvases(clarity, 2, labelName); //--|🠈 Swaps the clarity into every <CanvasParticles> on that page 🠈|--\\
-};
-let updateCanvases = (value: string, slot: 0 | 1 | 2, labelName: 'particles') => {
-  //--|🠊 shade_color_clarity: slot 0 is the shade, slot 1 the colour, slot 2 the clarity 🠈|--\\
+let updateCanvases = (value: string, slot: 0 | 1, labelName: 'particles') => {
+  //--|🠊 shade_color: slot 0 is the shade, slot 1 the colour 🠈|--\\
   const archiveCanvases = document.querySelectorAll(
     `#components-main .${labelName}-canvas canvas[class*="_canvas-${labelName}"]`,
   ) as NodeListOf<HTMLCanvasElement>;
@@ -54,13 +37,10 @@ let updateCanvases = (value: string, slot: 0 | 1 | 2, labelName: 'particles') =>
     let nextClass: string;
     switch (slot) {
       case 0:
-        nextClass = `${value}_${prevClass.split('_')[1]}_${prevClass.split('_')[2]}`;
+        nextClass = `${value}_${prevClass.split('_')[1]}`;
         break;
       case 1:
-        nextClass = `${prevClass.split('_')[0]}_${value}_${prevClass.split('_')[2]}`;
-        break;
-      case 2:
-        nextClass = `${prevClass.split('_')[0]}_${prevClass.split('_')[1]}_${value}`;
+        nextClass = `${prevClass.split('_')[0]}_${value}`;
         break;
     }
 

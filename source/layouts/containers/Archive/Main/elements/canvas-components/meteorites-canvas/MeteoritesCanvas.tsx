@@ -26,9 +26,9 @@ function MeteoritesCanvas({ info }: InfoProps) {
   let pickerShade = '~dark~' as '~dark~';
   useEffect(() => {
     switchColors(pickerColor, 'meteorites');
-    //--|🠊 The pickers step back until they're hovered 🠈|--\\
+    //--|🠊 The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
     const meteoritesPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="meteorites-canvas"] label[class*="colours"], #${pageName}-${blockName} aside[class="meteorites-canvas"] label[class*="shades"]`,
+      `#${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < meteoritesPickers.length; i++) {
       meteoritesPickers[i].classList.add('downplay');

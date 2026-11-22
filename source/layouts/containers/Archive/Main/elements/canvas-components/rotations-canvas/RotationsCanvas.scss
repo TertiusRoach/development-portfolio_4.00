@@ -1,5 +1,5 @@
 //--|🠊 RotationsCanvas.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.scss: the toggles centred as one group, the <canvas> fills the midground 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · The shared [archive] canvas grid: (colour) on top, the toggle in the middle, (shade) at the bottom, the dropdowns hidden until hovered, the toggles always visible; the <canvas> in the midground 🠈|--\\
 @use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
@@ -9,19 +9,24 @@
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · The toggles sit in the middle cell; the 1fr tracks share what's left 🠈|--\\
-    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--\\
-    div[class='toggles'] {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
+    label {
+      pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 The dropdowns only show while they're hovered 🠈|--\\
+      }
+    }
+    label[class*='colours'] {
+      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the top 🠈|--\\
     }
     fieldset[class*='clarify'] {
       //--|🠊 DefaultButton.scss's darkside toggle, two squares wide 🠈|--\\
       display: flex;
       align-items: center;
       justify-content: space-around;
+      place-self: center;
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the middle 🠈|--\\
 
       height: $high-desk;
       width: calc($high-desk * 2);
@@ -37,6 +42,9 @@
         height: $tiny-desk;
         width: calc($tiny-desk * 2);
       }
+    }
+    label[class*='shades'] {
+      grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the bottom 🠈|--\\
     }
   }
   figure[class*='main-mid'] {
@@ -54,19 +62,24 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · The toggles sit in the middle cell; the 1fr tracks share what's left 🠈|--\\
-    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--\\
-    div[class='toggles'] {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
+    label {
+      pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 The dropdowns only show while they're hovered 🠈|--\\
+      }
+    }
+    label[class*='colours'] {
+      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the top 🠈|--\\
     }
     fieldset[class*='clarify'] {
       //--|🠊 DefaultButton.scss's darkside toggle, one square 🠈|--\\
       display: flex;
       align-items: center;
       justify-content: space-around;
+      place-self: center;
+      grid-area: 3 / 2 / 4 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the middle 🠈|--\\
 
       width: $high-mobi;
       height: $high-mobi;
@@ -82,6 +95,9 @@
         width: $tiny-mobi;
         height: $tiny-mobi;
       }
+    }
+    label[class*='shades'] {
+      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end · always the bottom 🠈|--\\
     }
   }
   figure[class*='main-mid'] {

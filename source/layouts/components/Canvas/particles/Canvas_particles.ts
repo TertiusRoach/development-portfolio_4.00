@@ -3,7 +3,7 @@
 //--|🠊 AI Code: Review Please 2026-11-22 · Three kinds of picture: an .svg (Path2D, as before), a .gif (ImageDecoder, written live frame by frame) and any other image (.png, .jpg) 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { TheseProps } from './Canvas.particles';
-import { abbrShade, abbrColor, abbrClarity } from '../../components';
+import { abbrShade, abbrColor } from '../../components';
 
 interface Particle {
   originX: number; //--|🠈 Home: a dot's place in the picture 🠈|--\\
@@ -34,8 +34,7 @@ interface Playback {
 function createClass(style: TheseProps['style']): string {
   const classShade = abbrShade(style.shade);
   const classColor = abbrColor(style.color);
-  const classClarity = abbrClarity(style.clarity);
-  return `${classShade}_${classColor}_${classClarity}`;
+  return `${classShade}_${classColor}`;
 }
 
 //--|🠋 Start the Propel 🠋|--\\
@@ -54,9 +53,52 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
   let startTime = 0 as number; //--|🠈 The .gif starts from its first frame once the dots are ready 🠈|--\\
   let pointerX = Infinity as number;
   let pointerY = Infinity as number;
-  let pointerInside = false as boolean;
   let frameId = 0 as number;
-  let isLucid = (): boolean => canvas.className.includes('_luc'); //--|🠈 AI Code: Review Please 2026-11-22 · Read live, so the Lucid/Opaque toggle works without a reload 🠈|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · The loading .gif: played while the dots are being made, then faded out as they come in 🠈|--\\
+  const sketch = document.createElement('canvas') as HTMLCanvasElement; //--|🠈 Where the .gif is tinted before it's drawn 🠈|--\\
+  let placeholder = null as VideoFrame | null; //--|🠈 The .gif frame showing now 🠈|--\\
+  let placeholderOn = false as boolean;
+  let placeholderCount = 0 as number; //--|🠈 Each play gets a number, so an older one stops itself 🠈|--\\
+  let fadeStart = -1 as number; //--|🠈 -1: not fading yet, the dots aren't ready 🠈|--\\
+  let presence = 0 as number; //--|🠈 AI Code: Review Please 2026-11-22 · 0 to 1: the dots fade in and out inside the frame, which always shows 🠈|--\\
+  let lastTime = -1 as number;
+  let looping = false as boolean; //--|🠈 Still drawing: awake, or fading out 🠈|--\\
+
+  let playPlaceholder = async (): Promise<void> => {
+    //--|🠊 Its own ImageDecoder, one frame per screen frame: an <img> left off the page doesn't animate on a canvas in every browser 🠈|--\\
+    placeholderCount++;
+    const thisPlay = placeholderCount as number;
+    placeholderOn = true;
+    fadeStart = -1;
+    const decoder = new ImageDecoder({ data: (picture as Picture).bytes as ArrayBuffer, type: 'image/gif' });
+    await decoder.tracks.ready;
+    const frameCount = (decoder.tracks.selectedTrack as ImageTrack).frameCount as number;
+    const begin = performance.now() as number;
+    while (placeholderOn && !stopped && thisPlay === placeholderCount) {
+      let index = (Math.floor((performance.now() - begin) / (1000 / fps)) % frameCount) as number;
+      let decoded = await decoder.decode({ frameIndex: index });
+      placeholder?.close();
+      placeholder = decoded.image;
+      await new Promise((resolve) => requestAnimationFrame(resolve)); //--|🠈 No faster than the screen 🠈|--\\
+    }
+    decoder.close();
+    switch (true) {
+      case thisPlay === placeholderCount:
+        placeholder?.close();
+        placeholder = null;
+        break;
+      default:
+        break; //--|🠈 A newer play owns the frame now 🠈|--\\
+    }
+  };
+  let startPlaceholder = (): void => {
+    switch (true) {
+      case stillMotion || picture === null || (picture as Picture).kind !== 'frames':
+        return; //--|🠈 Only a .gif has one, and reduced motion skips it 🠈|--\\
+      default:
+        playPlaceholder();
+    }
+  };
 
   let spawnParticles = (): void => {
     //--|🠊 Reset: fresh copies of the template, so the dots fly in again, or the .gif starts again from frame 0 🠈|--\\
@@ -74,6 +116,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     }
     particles = fresh;
     playback = ready.playback;
+    fadeStart = placeholderOn ? performance.now() : -1; //--|🠈 The dots are ready: the loading .gif starts to fade 🠈|--\\
     startTime = performance.now();
   };
   let buildParticles = async (): Promise<void> => {
@@ -105,12 +148,22 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     }
   };
   let drawFrame = (time: number): void => {
+    //--|🠊 500ms in or out, like the tint fades, measured in real time so a slow frame doesn't slow the fade 🠈|--\\
+    let step = (lastTime < 0 ? 0 : (time - lastTime) / 500) as number;
+    lastTime = time;
+    presence = (awake ? Math.min(1, presence + step) : Math.max(0, presence - step)) as number;
     switch (true) {
-      case !awake:
-        return; //--|🠈 Asleep: a frame already asked for draws nothing 🠈|--\\
+      case !awake && presence <= 0:
+        //--|🠊 Faded out: the frame is empty again, the loop stops and the effect resets 🠈|--\\
+        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        particles = [];
+        looping = false;
+        lastTime = -1;
+        return;
       default:
         break;
     }
+    let shown = (presence * presence * (3 - 2 * presence)) as number; //--|🠈 Eased 🠈|--\\
     let elapsed = Math.max(0, time - startTime) as number;
     let frame = (playback.frameCount > 0 ? Math.floor(elapsed / playback.frameTime) % playback.frameCount : -1) as number; //--|🠈 -1: a still picture 🠈|--\\
     switch (true) {
@@ -120,7 +173,18 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
       default:
         break; //--|🠈 Reduced motion: the dots sit at home and don't dodge; a .gif shows the frame it holds longest 🠈|--\\
     }
-    drawParticles(canvas, context, particles);
+    drawParticles(canvas, context, particles, shown);
+    let fade = (fadeStart < 0 ? 0 : Math.min(1, Math.max(0, time - fadeStart) / 500)) as number; //--|🠈 500ms, like the tint fades 🠈|--\\
+    switch (true) {
+      case placeholderOn && fade >= 1:
+        placeholderOn = false; //--|🠈 Faded out: its decoder stops on its own 🠈|--\\
+        break;
+      case placeholderOn && placeholder !== null:
+        drawPlaceholder(canvas, context, sketch, placeholder as VideoFrame, (1 - fade * fade * (3 - 2 * fade)) * shown); //--|🠈 Eased out, the dots eased in underneath 🠈|--\\
+        break;
+      default:
+        break;
+    }
     frameId = requestAnimationFrame(drawFrame);
   };
   let wakeCanvas = (): void => {
@@ -131,6 +195,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
         spawnParticles();
         break;
       case picture !== null:
+        startPlaceholder();
         buildParticles(); //--|🠈 The size changed while it slept 🠈|--\\
         break;
       case !loading:
@@ -142,6 +207,13 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
               return; //--|🠈 The page closed while the picture was on its way 🠈|--\\
             default:
               picture = loaded;
+              switch (true) {
+                case awake:
+                  startPlaceholder(); //--|🠈 Shows the .gif while it's broken into dots 🠈|--\\
+                  break;
+                default:
+                  break;
+              }
               buildParticles();
           }
         });
@@ -149,13 +221,19 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
       default:
         break; //--|🠈 Still on its way from an earlier hover 🠈|--\\
     }
-    frameId = requestAnimationFrame(drawFrame);
+    switch (true) {
+      case looping:
+        break; //--|🠈 Back before it faded out: the loop is still running 🠈|--\\
+      default:
+        looping = true;
+        frameId = requestAnimationFrame(drawFrame);
+    }
   };
   let sleepCanvas = (): void => {
-    awake = false;
-    cancelAnimationFrame(frameId); //--|🠈 Disabled: no more frames until the mouse comes back 🠈|--\\
+    awake = false; //--|🠈 The loop fades the dots out, then stops and resets them 🠈|--\\
     canvas.classList.replace('highlight', 'downplay');
-    particles = []; //--|🠈 Reset: the next hover starts from the template again 🠈|--\\
+    placeholderOn = false;
+    fadeStart = -1;
     pointerX = Infinity;
     pointerY = Infinity;
   };
@@ -163,13 +241,12 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     //--|🠊 The whole page is watched, not the canvas: it may sit under the foreground 🠈|--\\
     const box = canvas.getBoundingClientRect();
     const inside = (box.width > 0 && event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom) as boolean;
-    pointerInside = inside;
     switch (true) {
       case inside && !awake:
         wakeCanvas();
         break;
-      case !inside && awake && !isLucid():
-        sleepCanvas(); //--|🠈 ⟨lucid⟩ never sleeps 🠈|--\\
+      case !inside && awake:
+        sleepCanvas();
         break;
       default:
         break;
@@ -178,11 +255,10 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     pointerY = event.clientY - box.top;
   };
   let losePage = (): void => {
-    pointerInside = false;
     pointerX = Infinity;
     pointerY = Infinity;
     switch (true) {
-      case awake && !isLucid():
+      case awake:
         sleepCanvas(); //--|🠈 The mouse left the window 🠈|--\\
         break;
       default:
@@ -194,6 +270,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     template = null; //--|🠈 A new size is a new grid 🠈|--\\
     switch (true) {
       case awake:
+        startPlaceholder(); //--|🠈 The .gif fills in while the new grid is made 🠈|--\\
         buildParticles();
         break;
       default:
@@ -201,37 +278,15 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
     }
   });
 
-  let classObserver = new MutationObserver(() => {
-    //--|🠊 The class changed: the clarity toggle, a colour or this script's own .downplay / .highlight swap 🠈|--\\
-    switch (true) {
-      case isLucid() && !awake:
-        wakeCanvas(); //--|🠈 ⟨lucid⟩: shown from the start 🠈|--\\
-        break;
-      case !isLucid() && awake && !pointerInside:
-        sleepCanvas(); //--|🠈 Back to ⟨opaque⟩ with the mouse elsewhere 🠈|--\\
-        break;
-      default:
-        break;
-    }
-  });
-
   resizeObserver.observe(canvas);
-  classObserver.observe(canvas, { attributes: true, attributeFilter: ['class'] });
-  switch (true) {
-    case isLucid():
-      wakeCanvas();
-      break;
-    default:
-      break;
-  }
   document.addEventListener('mousemove', watchPointer);
   document.documentElement.addEventListener('mouseleave', losePage);
   return () => {
     stopped = true;
     awake = false;
+    placeholderOn = false;
     cancelAnimationFrame(frameId);
     resizeObserver.disconnect();
-    classObserver.disconnect();
     document.removeEventListener('mousemove', watchPointer);
     document.documentElement.removeEventListener('mouseleave', losePage);
   };
@@ -506,8 +561,39 @@ let moveParticles = (canvas: HTMLCanvasElement, particles: Array<Particle>, play
   }
 };
 
+//--|🠋 Draw the Loading .gif 🠋|--\\
+let drawPlaceholder = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, sketch: HTMLCanvasElement, frame: VideoFrame, alpha: number): void => {
+  //--|🠊 AI Code: Review Please 2026-11-22 · The .gif's own shape filled with the dots' gradient, edge to edge like the sampled frames, so it shows on either shade and the dots land on it 🠈|--\\
+  const width = canvas.clientWidth as number;
+  const height = canvas.clientHeight as number;
+  const computed = getComputedStyle(canvas) as CSSStyleDeclaration;
+  switch (true) {
+    case sketch.width !== canvas.width || sketch.height !== canvas.height:
+      sketch.width = canvas.width; //--|🠈 Real pixels, like the canvas, so it stays sharp 🠈|--\\
+      sketch.height = canvas.height;
+      break;
+    default:
+      break;
+  }
+  let sketchContext = sketch.getContext('2d') as CanvasRenderingContext2D;
+  sketchContext.globalCompositeOperation = 'source-over';
+  sketchContext.clearRect(0, 0, sketch.width, sketch.height);
+  sketchContext.drawImage(frame, 0, 0, sketch.width, sketch.height);
+  sketchContext.globalCompositeOperation = 'source-in'; //--|🠈 Paint only where the .gif has ink 🠈|--\\
+  let tone = sketchContext.createLinearGradient(0, 0, sketch.width, sketch.height);
+  tone.addColorStop(0, computed.getPropertyValue('--particles-one'));
+  tone.addColorStop(1, computed.getPropertyValue('--particles-two'));
+  sketchContext.fillStyle = tone;
+  sketchContext.fillRect(0, 0, sketch.width, sketch.height);
+  sketchContext.globalCompositeOperation = 'source-over';
+
+  context.globalAlpha = alpha;
+  context.drawImage(sketch, 0, 0, width, height);
+  context.globalAlpha = 1;
+};
+
 //--|🠋 Draw One Frame 🠋|--\\
-let drawParticles = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, particles: Array<Particle>): void => {
+let drawParticles = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, particles: Array<Particle>, alpha: number): void => {
   const width = canvas.clientWidth as number;
   const height = canvas.clientHeight as number;
   const computed = getComputedStyle(canvas) as CSSStyleDeclaration;
@@ -532,7 +618,9 @@ let drawParticles = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2
     }
   }
   context.fillStyle = tone;
+  context.globalAlpha = alpha;
   context.fill();
+  context.globalAlpha = 1;
 };
 
 export default createClass;

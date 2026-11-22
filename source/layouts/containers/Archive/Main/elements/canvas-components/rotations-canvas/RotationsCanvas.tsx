@@ -27,95 +27,99 @@ function RotationsCanvas({ info }: InfoProps) {
   let pickerShade = '~light~' as '~light~'; //--|🠈 Opens on <FigureRotation>'s own recipe, white into -light into -dark 🠈|--\\
   useEffect(() => {
     switchColors(pickerColor, 'rotations');
+    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
+    const rotationsPickers = document.querySelectorAll(
+      `#${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+    ) as NodeListOf<HTMLLabelElement>;
+    for (let i = 0; i < rotationsPickers.length; i++) {
+      rotationsPickers[i].classList.add('downplay');
+    }
   }, [pageName, blockName, labelName]);
 
   return (
     <aside className="rotations-canvas">
       <section className={`${blockName}-foreground`}>
-        <div className="toggles">
-          {/*--|🠊 AI Code: Review Please 2026-11-22 · The three toggles as one group, centred in the foreground's 1fr auto 1fr grid 🠈|--*/}
-          <LabelSelection
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'colours',
+          }}
+          style={{
+            view: 'mid-cen',
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨opaque⟩',
+            text: pickerColor,
+          }}
+          cases={{
+            type: '{select}',
+            list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchColors(event.target.value, 'rotations')} //--|🠈 Recolours every <CanvasRotations> on this page 🠈|--\\
+        />
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'shades',
+          }}
+          style={{
+            view: 'mid-cen',
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨opaque⟩',
+            text: pickerShade,
+          }}
+          cases={{
+            type: '{select}',
+            list: ['~dark~', '~light~'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchShades(event.target.value, 'rotations')} //--|🠈 Swaps the tones to the other shade 🠈|--\\
+        />
+        <fieldset
+          //--|🠊 AI Code: Review Please 2026-11-22 · Copied from DefaultButton.tsx's clarify-darkside toggle 🠈|--\\
+          className="clarify-rotations"
+          onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
+            //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
+            toggleClarity(event.currentTarget, 'rotations');
+          }}
+        >
+          <LabelSwitching
+            cases={{
+              mark: true,
+              type: '{option}',
+            }}
+            style={{
+              shade: '~dark~',
+              color: '(mono)',
+              clarity: '⟨lucid⟩',
+              text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
+            }}
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: 'colours',
+              labelName: 'lucid-rotations',
+            }}
+          />
+          <LabelSwitching
+            cases={{
+              mark: false,
+              type: '{option}',
             }}
             style={{
-              view: 'mid-cen',
               shade: '~dark~',
               color: '(mono)',
               clarity: '⟨opaque⟩',
-              text: pickerColor,
+              text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
             }}
-            cases={{
-              type: '{select}',
-              list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
-            }}
-            onChange={(event) => switchColors(event.target.value, 'rotations')} //--|🠈 Recolours every <CanvasRotations> on this page 🠈|--\\
-          />
-          <LabelSelection
             info={{
               pageName: pageName,
               blockName: blockName,
-              labelName: 'shades',
+              labelName: 'opaque-rotations',
             }}
-            style={{
-              view: 'mid-cen',
-              shade: '~dark~',
-              color: '(mono)',
-              clarity: '⟨opaque⟩',
-              text: pickerShade,
-            }}
-            cases={{
-              type: '{select}',
-              list: ['~dark~', '~light~'], //--|🠈 {select} & {combo} only 🠈|--\\
-            }}
-            onChange={(event) => switchShades(event.target.value, 'rotations')} //--|🠈 Swaps the tones to the other shade 🠈|--\\
           />
-          <fieldset
-            //--|🠊 AI Code: Review Please 2026-11-22 · Copied from DefaultButton.tsx's clarify-darkside toggle 🠈|--\\
-            className="clarify-rotations"
-            onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
-              //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\
-              toggleClarity(event.currentTarget, 'rotations');
-            }}
-          >
-            <LabelSwitching
-              cases={{
-                mark: true,
-                type: '{option}',
-              }}
-              style={{
-                shade: '~dark~',
-                color: '(mono)',
-                clarity: '⟨lucid⟩',
-                text: 'Lucid', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: 'lucid-rotations',
-              }}
-            />
-            <LabelSwitching
-              cases={{
-                mark: false,
-                type: '{option}',
-              }}
-              style={{
-                shade: '~dark~',
-                color: '(mono)',
-                clarity: '⟨opaque⟩',
-                text: 'Opaque', //--|🠈 {option}: the value toggleClarity() reads, and what a screen reader says 🠈|--\\
-              }}
-              info={{
-                pageName: pageName,
-                blockName: blockName,
-                labelName: 'opaque-rotations',
-              }}
-            />
-          </fieldset>
-        </div>
+        </fieldset>
       </section>
       <figure className={`${blockName}-midground`}>
         <CanvasRotations

@@ -17,7 +17,6 @@ export interface TheseProps {
   style: {
     shade: '~dark~' | '~light~';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
-    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ hidden until hovered, ⟨lucid⟩ shown and running from the start on ArticleLoading's card 🠈|--\\
   };
   cases: {
     image: string; //--|🠈 A loadAsset() path: an .svg of plain <path>s, a .gif that writes itself, or a .png/.jpg read by its transparency 🠈|--\\
