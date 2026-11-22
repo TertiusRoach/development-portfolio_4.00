@@ -1,15 +1,15 @@
-//--|🠊 SpotlightCanvas.scss 🠈|--\\
+//--|🠊 SpotlightFigure.scss 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-22 · The shared [archive] canvas grid: (colour) on top, the toggle in the middle, (shade) at the bottom, the dropdowns hidden until hovered, the toggles always visible; the <canvas> in the midground 🠈|--\\
 @use '../../../../../../styles/Utilities.scss' as Utilities;
 
 @mixin desktop-landscape {
-  //--|🠊 <aside className="spotlight-canvas"> 🠈|--\\
+  //--|🠊 <aside className="spotlight-figure"> 🠈|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
   $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
   $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
   $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · The same grid as every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
     pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
     label {
       pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\
@@ -34,13 +34,13 @@
   }
 }
 @mixin mobile-portrait {
-  //--|🠊 <aside className="spotlight-canvas"> 🠈|--\\
+  //--|🠊 <aside className="spotlight-figure"> 🠈|--\\
   $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
   $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · One grid for every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · The same grid as every [archive] canvas page: (colour) on top, the toggle in the middle, (shade) at the bottom 🠈|--\\
     pointer-events: none; //--|🠈 Lets the hover through to the canvas in the midground 🠈|--\\
     label {
       pointer-events: auto; //--|🠈 The labels still catch their own clicks 🠈|--\\

@@ -50,7 +50,7 @@ export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
     cancelAnimationFrame(frameId); //--|🠈 Disabled: no more frames until the mouse comes back 🠈|--\\
     canvas.classList.replace('highlight', 'downplay');
   };
-  let watchPointer = (event: MouseEvent): void => {
+  let watchPointer = (event: PointerEvent): void => {
     //--|🠊 The whole page is watched, not the canvas: it may sit under the foreground or let clicks through 🠈|--\\
     const box = canvas.getBoundingClientRect();
     const inside = (box.width > 0 && event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom) as boolean;
@@ -79,13 +79,15 @@ export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
   });
 
   resizeObserver.observe(canvas);
-  document.addEventListener('mousemove', watchPointer);
+  document.addEventListener('pointermove', watchPointer); //--|🠈 AI Code: Review Please 2026-11-22 · Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
+  document.addEventListener('pointerdown', watchPointer); //--|🠈 A tap on the canvas wakes it, a tap elsewhere puts it to sleep 🠈|--\\
   document.documentElement.addEventListener('mouseleave', losePage);
   return () => {
     awake = false;
     cancelAnimationFrame(frameId);
     resizeObserver.disconnect();
-    document.removeEventListener('mousemove', watchPointer);
+    document.removeEventListener('pointermove', watchPointer);
+    document.removeEventListener('pointerdown', watchPointer);
     document.documentElement.removeEventListener('mouseleave', losePage);
   };
 };

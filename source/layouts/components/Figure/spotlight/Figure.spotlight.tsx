@@ -1,4 +1,5 @@
-//--|🠊 Canvas.spotlight.tsx 🠈|--\\
+//--|🠊 Figure.spotlight.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Was <CanvasSpotlight>: a <Figure> is a picture a script draws that's always on show, so it skips the <Canvas> hover-sleep rule; it still draws on a <canvas> 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-22 · development-portfolio_2.00's résumé profile: two rings turning opposite ways, the photo floating over them 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useRef } from 'react';
@@ -6,7 +7,7 @@ import React, { useEffect, useRef } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import createClass, { spinSpotlight } from './Canvas_spotlight';
+import createClass, { spinSpotlight } from './Figure_spotlight';
 
 export interface TheseProps {
   info: {
@@ -23,7 +24,7 @@ export interface TheseProps {
   };
 }
 
-export function CanvasSpotlight({ info, style, cases }: TheseProps) {
+export function FigureSpotlight({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;
   const labelName = info.labelName as string;
@@ -33,6 +34,6 @@ export function CanvasSpotlight({ info, style, cases }: TheseProps) {
     return spinSpotlight(canvasRef.current as HTMLCanvasElement, cases.image); //--|🠈 Stops the loop and the hover listeners on the flip and when the page closes 🠈|--\\
   }, [pageName, blockName, labelName, cases.image]);
 
-  return <canvas ref={canvasRef} className={`${labelName}-${blockName}_canvas-spotlight ${createClass(style)}`} aria-hidden="true"></canvas>;
+  return <canvas ref={canvasRef} className={`${labelName}-${blockName}_figure-spotlight ${createClass(style)}`} aria-hidden="true"></canvas>;
 }
-export default CanvasSpotlight;
+export default FigureSpotlight;

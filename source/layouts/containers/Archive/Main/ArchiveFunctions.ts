@@ -7,6 +7,7 @@ async function startingPreview(
   element:
     | '(form)'
     | '(menu)'
+    | '(figure)'
     | '(time)'
     | '(label)'
     | '(aside)'
@@ -42,6 +43,7 @@ const containerPreview = (
   element:
     | '(form)'
     | '(menu)'
+    | '(figure)'
     | '(time)'
     | '(label)'
     | '(aside)'
@@ -87,6 +89,7 @@ const fullscreenPreview = (
   element:
     | '(form)'
     | '(menu)'
+    | '(figure)'
     | '(time)'
     | '(label)'
     | '(aside)'
@@ -123,33 +126,37 @@ const fullscreenPreview = (
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(5)}` as string;
       break;
-    case '(form)':
+    case '(figure)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(6)}` as string;
       break;
-    case '(label)':
+    case '(form)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(7)}` as string;
       break;
-    case '(menu)':
+    case '(label)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(8)}` as string;
       break;
-    case '(navigation)':
+    case '(menu)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(9)}` as string;
       break;
-    case '(section)':
+    case '(navigation)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(10)}` as string;
       break;
-    case '(table)':
+    case '(section)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(11)}` as string;
       break;
-    case '(time)':
+    case '(table)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(12)}` as string;
+      break;
+    case '(time)':
+      prevClass = fullscreen.className as string;
+      nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(13)}` as string;
       break;
     default: //--|🠈 Move (default) up & down 🠈|--\\
       prevClass = fullscreen.className as string;

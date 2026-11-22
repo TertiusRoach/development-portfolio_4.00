@@ -16,7 +16,6 @@
 //--|🠋 <Canvas> 🠋|--\\
 @use '../components/Canvas/particles/Canvas.particles.scss' as CanvasParticles;
 @use '../components/Canvas/rotations/Canvas.rotations.scss' as CanvasRotations;
-@use '../components/Canvas/spotlight/Canvas.spotlight.scss' as CanvasSpotlight;
 @use '../components/Canvas/meteorites/Canvas.meteorites.scss' as CanvasMeteorites;
 
 //--|🠋 <Division> 🠋|--\\
@@ -28,9 +27,7 @@
 @use '../components/Division/placeholder/Division.placeholder.scss' as DivisionPlaceholder;
 
 //--|🠋 <Figure> 🠋|--\\
-/*
-@use '../components/Figure/loading/Figure.loading.scss' as FigureLoading;
-*/
+@use '../components/Figure/spotlight/Figure.spotlight.scss' as FigureSpotlight;
 
 //--|🠋 <Form> 🠋|--\\
 @use '../components/Form/login/Form.login.scss' as FormLogin;

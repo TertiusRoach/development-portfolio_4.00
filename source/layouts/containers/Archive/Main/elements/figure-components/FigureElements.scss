@@ -1,0 +1,24 @@
+//--|🠊 FigureElements.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from CanvasElements.scss 🠈|--\\
+@use '../../../../../styles/Utilities.scss' as Utilities;
+
+@use './spotlight-figure/SpotlightFigure.scss' as SpotlightFigure;
+
+section[class*='figure'] {
+  div[class*='fullscreen'] {
+    div.figure-main_container {
+      aside[class*='figure'] {
+        @media screen and (orientation: landscape) {
+          &[class*='spotlight'] {
+            @include SpotlightFigure.desktop-landscape;
+          }
+        }
+        @media screen and (orientation: portrait) {
+          &[class*='spotlight'] {
+            @include SpotlightFigure.mobile-portrait;
+          }
+        }
+      }
+    }
+  }
+}

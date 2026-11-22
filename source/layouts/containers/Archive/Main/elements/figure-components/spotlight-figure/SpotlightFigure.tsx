@@ -1,10 +1,11 @@
-//--|🠊 SpotlightCanvas.tsx 🠈|--\\
+//--|🠊 SpotlightFigure.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Moved from canvas-components/spotlight-canvas/: <CanvasSpotlight> is now <FigureSpotlight>, the first page of the [archive] <Figure> group 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import CanvasSpotlight from '../../../../../../components/Canvas/spotlight/Canvas.spotlight';
+import FigureSpotlight from '../../../../../../components/Figure/spotlight/Figure.spotlight';
 import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
 
 //--|🠋 Functions 🠋|--\\
@@ -18,7 +19,7 @@ interface InfoProps {
     pageName: string;
   };
 }
-function SpotlightCanvas({ info }: InfoProps) {
+function SpotlightFigure({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
@@ -27,9 +28,9 @@ function SpotlightCanvas({ info }: InfoProps) {
   let pickerShade = '~dark~' as '~dark~';
   useEffect(() => {
     switchColors(pickerColor, 'spotlight');
-    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
+    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same as the canvas pages 🠈|--\\
     const spotlightPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="spotlight-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="spotlight-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+      `#${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < spotlightPickers.length; i++) {
       spotlightPickers[i].classList.add('downplay');
@@ -37,7 +38,7 @@ function SpotlightCanvas({ info }: InfoProps) {
   }, [pageName, blockName, labelName]);
 
   return (
-    <aside className="spotlight-canvas">
+    <aside className="spotlight-figure">
       <section className={`${blockName}-foreground`}>
         <LabelSelection
           info={{
@@ -56,7 +57,7 @@ function SpotlightCanvas({ info }: InfoProps) {
             type: '{select}',
             list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
           }}
-          onChange={(event) => switchColors(event.target.value, 'spotlight')} //--|🠈 Recolours every <CanvasSpotlight> on this page 🠈|--\\
+          onChange={(event) => switchColors(event.target.value, 'spotlight')} //--|🠈 Recolours every <FigureSpotlight> on this page 🠈|--\\
         />
         <LabelSelection
           info={{
@@ -79,7 +80,7 @@ function SpotlightCanvas({ info }: InfoProps) {
         />
       </section>
       <figure className={`${blockName}-midground`}>
-        <CanvasSpotlight
+        <FigureSpotlight
           info={{
             pageName: pageName,
             blockName: blockName,
@@ -98,4 +99,4 @@ function SpotlightCanvas({ info }: InfoProps) {
     </aside>
   );
 }
-export default SpotlightCanvas;
+export default SpotlightFigure;

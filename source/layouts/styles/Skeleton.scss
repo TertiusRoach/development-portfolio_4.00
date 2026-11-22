@@ -213,6 +213,7 @@ body {
       aside[class*='article'],
       aside[class*='section'],
       aside[class*='division'],
+      aside[class*='figure'],
       aside[class*='navigation'] {
         width: 100vw;
         height: 100svh;
@@ -228,6 +229,7 @@ body {
         aside[class*='canvas'],
         aside[class*='article'],
         aside[class*='division'],
+        aside[class*='figure'],
         aside[class*='navigation'] {
           @include Mixins.landscape-grid;
         }
@@ -246,6 +248,7 @@ body {
         aside[class*='canvas'],
         aside[class*='article'],
         aside[class*='division'],
+        aside[class*='figure'],
         aside[class*='navigation'] {
           @include Mixins.portrait-grid;
         }

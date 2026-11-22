@@ -7,6 +7,7 @@ import DivisionFullscreen from '../../../components/Division/fullscreen/Division
 
 //--|🠋 Elements 🠋|--\\
 import FormElements from './elements/form-components/FormElements';
+import FigureElements from './elements/figure-components/FigureElements'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';
@@ -42,7 +43,7 @@ function ArchiveMain({ info }: InfoProps) {
 
   useEffect(() => {
     //--|🟨|--\\
-    startingPreview('(canvas)', 4);
+    startingPreview('(figure)', 1);
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
@@ -118,6 +119,13 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
           pageName: pageName,
           blockName: blockName,
           labelName: '(division)' as string,
+        }}
+      />
+      <FigureElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: '(figure)' as string,
         }}
       />
       <FormElements

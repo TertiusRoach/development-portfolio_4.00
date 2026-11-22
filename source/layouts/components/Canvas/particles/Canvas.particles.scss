@@ -409,7 +409,7 @@
 //--|===|--\\
 canvas[class*='particles'] {
   display: block;
-  pointer-events: auto; //--|🠈 Like <CanvasSpotlight>, it answers the pointer: the dots dodge it 🠈|--\\
+  pointer-events: auto; //--|🠈 Like <FigureSpotlight>, it answers the pointer: the dots dodge it 🠈|--\\
   @include particles-colors();
   //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay is the empty frame and its script stops, .highlight fills it while the mouse is inside; the script fades the dots itself, so the frame never fades 🠈|--\\
   //--|🠋 Desktop (Landscape) 🠋|--\\

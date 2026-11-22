@@ -57,6 +57,7 @@ function ArchiveLeftbar({ info }: InfoProps) {
                   loadAsset('-svg-', '/tralogfin-pages/archive/button-element'),
                   loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/paintbrush'), //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas> stands in with a Free icon until it has its own 🠈|--\\
                   loadAsset('-svg-', '/tralogfin-pages/archive/division-element'),
+                  loadAsset('-svg-', '/tralogfin-pages/archive/figure-element'), //--|🠈 AI Code: Review Please 2026-11-22 · <Figure>, between <Division> and <Form> 🠈|--\\
                   loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/file-pen'),
                   loadAsset('-svg-', '/archive-images/font-awesome/7.3.1/solid/tags'),
                   loadAsset('-svg-', '/tralogfin-pages/archive/menu-element'),
@@ -67,7 +68,7 @@ function ArchiveLeftbar({ info }: InfoProps) {
                 ],
               }}
               cases={{
-                pages: 12,
+                pages: 13,
                 axis: '[y]',
                 link: [
                   'article',
@@ -75,6 +76,7 @@ function ArchiveLeftbar({ info }: InfoProps) {
                   'button',
                   'canvas',
                   'division',
+                  'figure',
                   'form',
                   'label',
                   'menu',

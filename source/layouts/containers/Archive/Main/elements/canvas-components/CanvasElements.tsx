@@ -7,7 +7,6 @@ import DivisionFullscreen from '../../../../../components/Division/fullscreen/Di
 
 //--|🠋 Elements 🠋|--\\
 import ParticlesCanvas from './particles-canvas/ParticlesCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
-import SpotlightCanvas from './spotlight-canvas/SpotlightCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
 import RotationsCanvas from './rotations-canvas/RotationsCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
 import MeteoritesCanvas from './meteorites-canvas/MeteoritesCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
 
@@ -65,7 +64,6 @@ const CanvasComponents: React.FC<InfoProps> = ({ info }) => {
     <>
       <MeteoritesCanvas info={defaultInfo} />
       <RotationsCanvas info={defaultInfo} />
-      <SpotlightCanvas info={defaultInfo} />
       <ParticlesCanvas info={defaultInfo} />
     </>
   );

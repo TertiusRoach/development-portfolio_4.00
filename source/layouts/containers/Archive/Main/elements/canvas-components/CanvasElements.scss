@@ -3,7 +3,6 @@
 
 @use './meteorites-canvas/MeteoritesCanvas.scss' as MeteoritesCanvas;
 @use './rotations-canvas/RotationsCanvas.scss' as RotationsCanvas;
-@use './spotlight-canvas/SpotlightCanvas.scss' as SpotlightCanvas;
 @use './particles-canvas/ParticlesCanvas.scss' as ParticlesCanvas;
 
 section[class*='canvas'] {
@@ -17,9 +16,6 @@ section[class*='canvas'] {
           &[class*='rotations'] {
             @include RotationsCanvas.desktop-landscape;
           }
-          &[class*='spotlight'] {
-            @include SpotlightCanvas.desktop-landscape;
-          }
           &[class*='particles'] {
             @include ParticlesCanvas.desktop-landscape;
           }
@@ -30,9 +26,6 @@ section[class*='canvas'] {
           }
           &[class*='rotations'] {
             @include RotationsCanvas.mobile-portrait;
-          }
-          &[class*='spotlight'] {
-            @include SpotlightCanvas.mobile-portrait;
           }
           &[class*='particles'] {
             @include ParticlesCanvas.mobile-portrait;

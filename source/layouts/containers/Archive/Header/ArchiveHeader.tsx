@@ -244,7 +244,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Canvas_Meteorites>', '<Canvas_Rotations>', '<Canvas_Spotlight>', '<Canvas_Particles>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas> replaces <Figure> 🠈|--\\
+          titles: ['<Canvas_Meteorites>', '<Canvas_Rotations>', '<Canvas_Particles>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas_Spotlight> moved to <Figure> 🠈|--\\
         }}
         info={{
           labelName: 'canvas',
@@ -265,6 +265,23 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
         }}
         info={{
           labelName: 'division',
+          blockName: blockName as 'header',
+          pageName: pageName as 'components',
+        }}
+        style={{
+          view: styleView,
+          color: styleColor,
+          shade: styleShade,
+        }}
+      />
+      {/*--|🠊 <Figure> 🠈|--*/}
+      <MenuSwipe
+        cases={{
+          axis: '[x]',
+          titles: ['<Figure_Spotlight>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <CanvasSpotlight> became <FigureSpotlight> 🠈|--\\
+        }}
+        info={{
+          labelName: 'figure',
           blockName: blockName as 'header',
           pageName: pageName as 'components',
         }}
