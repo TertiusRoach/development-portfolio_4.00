@@ -1,0 +1,392 @@
+//--|🠊 Canvas.particles.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Canvas.propel from 3.00; the <canvas> reads these values every frame 🠈|--\\
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠋 Registered Properties 🠋|--\\
+//--|🠊 Registered, so getComputedStyle() hands the script 'rgb(r, g, b)' and '6px', and the tones can fade between colours 🠈|--\\
+@property --particles-one {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --particles-two {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --particles-size {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 6px;
+}
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Particles) 🠋|--\\
+  //--|🠊 AI Code: Review Please 2026-11-22 · The exact sizes and corners of the loading screen, Article.loading.scss: 16:9, the shape of the .gif 🠈|--\\
+  width: 1008px;
+  border-radius: 64px;
+  height: 567px;
+  --particles-size: 6px; //--|🠈 3.00's PARTICLE_DIAMETER 🠈|--\\
+  @media screen and (max-height: 768px) {
+    width: 672px;
+    border-radius: 48px;
+    height: 378px;
+    --particles-size: 4px;
+  }
+  @media screen and (max-height: 480px) {
+    width: 384px;
+    border-radius: 32px;
+    height: 216px;
+    --particles-size: 3px;
+  }
+  @media screen and (max-height: 360px) {
+    width: 288px;
+    border-radius: 24px;
+    height: 162px;
+    --particles-size: 3px;
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Particles) 🠋|--\\
+  width: 672px;
+  border-radius: 48px;
+  height: 378px;
+  --particles-size: 4px;
+  @media screen and (max-width: 768px) {
+    width: 384px;
+    border-radius: 32px;
+    height: 216px;
+    --particles-size: 3px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 288px;
+    border-radius: 24px;
+    height: 162px;
+    --particles-size: 3px;
+  }
+  @media screen and (max-width: 360px) {
+    width: 256px;
+    border-radius: 16px;
+    height: 144px;
+    --particles-size: 3px;
+  }
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Particles) 🠋|--\\
+  //--|🠊 One step ahead: the long side is measured, so 1920px already takes the 1366px size 🠈|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    width: 1008px;
+    border-radius: 64px;
+    height: 567px;
+    --particles-size: 6px;
+    @media screen and (max-width: 1920px) {
+      width: 672px;
+      border-radius: 48px;
+      height: 378px;
+      --particles-size: 4px;
+    }
+    @media screen and (max-width: 1366px) {
+      width: 384px;
+      border-radius: 32px;
+      height: 216px;
+      --particles-size: 3px;
+    }
+    @media screen and (max-width: 854px) {
+      width: 288px;
+      border-radius: 24px;
+      height: 162px;
+      --particles-size: 3px;
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    width: 672px;
+    border-radius: 48px;
+    height: 378px;
+    --particles-size: 4px;
+    @media screen and (max-height: 1920px) {
+      width: 384px;
+      border-radius: 32px;
+      height: 216px;
+      --particles-size: 3px;
+    }
+    @media screen and (max-height: 1366px) {
+      width: 288px;
+      border-radius: 24px;
+      height: 162px;
+      --particles-size: 3px;
+    }
+    @media screen and (max-height: 854px) {
+      width: 256px;
+      border-radius: 16px;
+      height: 144px;
+      --particles-size: 3px;
+    }
+  }
+}
+
+//--|===|--\\
+@mixin particles-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    --particles-one 500ms $tint-fade,
+    --particles-two 500ms $tint-fade,
+    opacity 500ms $tint-fade;
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_mon'] {
+    --particles-one: #{Palettes.$gray-dark};
+    --particles-two: #{Palettes.$gray-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$gray-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_mon'] {
+    --particles-one: #{Palettes.$gray-light};
+    --particles-two: #{Palettes.$gray-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$gray-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$gray-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin red-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_red'] {
+    --particles-one: #{Palettes.$red-dark};
+    --particles-two: #{Palettes.$red-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$red-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_red'] {
+    --particles-one: #{Palettes.$red-light};
+    --particles-two: #{Palettes.$red-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$red-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$red-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin gre-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_gre'] {
+    --particles-one: #{Palettes.$green-dark};
+    --particles-two: #{Palettes.$green-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$green-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_gre'] {
+    --particles-one: #{Palettes.$green-light};
+    --particles-two: #{Palettes.$green-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$green-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$green-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin blu-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_blu'] {
+    --particles-one: #{Palettes.$blue-dark};
+    --particles-two: #{Palettes.$blue-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$blue-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_blu'] {
+    --particles-one: #{Palettes.$blue-light};
+    --particles-two: #{Palettes.$blue-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$blue-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$blue-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin yel-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_yel'] {
+    --particles-one: #{Palettes.$yellow-dark};
+    --particles-two: #{Palettes.$yellow-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$yellow-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_yel'] {
+    --particles-one: #{Palettes.$yellow-light};
+    --particles-two: #{Palettes.$yellow-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$yellow-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$yellow-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin pur-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_pur'] {
+    --particles-one: #{Palettes.$purple-dark};
+    --particles-two: #{Palettes.$purple-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$purple-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_pur'] {
+    --particles-one: #{Palettes.$purple-light};
+    --particles-two: #{Palettes.$purple-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$purple-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$purple-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin ora-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_ora'] {
+    --particles-one: #{Palettes.$orange-dark};
+    --particles-two: #{Palettes.$orange-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$orange-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_ora'] {
+    --particles-one: #{Palettes.$orange-light};
+    --particles-two: #{Palettes.$orange-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$orange-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$orange-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin pin-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_pin'] {
+    --particles-one: #{Palettes.$pink-dark};
+    --particles-two: #{Palettes.$pink-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$pink-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_pin'] {
+    --particles-one: #{Palettes.$pink-light};
+    --particles-two: #{Palettes.$pink-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$pink-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$pink-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin bro-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_bro'] {
+    --particles-one: #{Palettes.$brown-dark};
+    --particles-two: #{Palettes.$brown-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$brown-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_bro'] {
+    --particles-one: #{Palettes.$brown-light};
+    --particles-two: #{Palettes.$brown-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$brown-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$brown-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+@mixin tur-tint {
+  //--|🠊 Dark Shade: -dark into -medium, top-left to bottom-right 🠈|--\\
+  &[class*='dar_tur'] {
+    --particles-one: #{Palettes.$turquoise-dark};
+    --particles-two: #{Palettes.$turquoise-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$turquoise-light, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 0.5); //--|🠈 The card edge: a light inner glow on ~dark~ 🠈|--\\
+    }
+  }
+  //--|🠊 Light Shade: the mirror, -light into -medium 🠈|--\\
+  &[class*='lig_tur'] {
+    --particles-one: #{Palettes.$turquoise-light};
+    --particles-two: #{Palettes.$turquoise-medium};
+    &[class*='_luc'] {
+      background: rgba(Palettes.$turquoise-dark, 0.25); //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩: ArticleLoading's card 🠈|--\\
+      box-shadow: //--|🠋 The card edge: a dark inner shadow and a drop shadow on ~light~ 🠋|--\\
+        inset 0 0 8px rgba(Palettes.$turquoise-dark, 0.5),
+        0 8px 16px rgba(#000, 0.35);
+    }
+  }
+}
+//--|===|--\\
+canvas[class*='particles'] {
+  display: block;
+  pointer-events: auto; //--|🠈 Like <CanvasSpotlight>, it answers the pointer: the dots dodge it 🠈|--\\
+  @include particles-colors();
+  //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay hides it and its script stops, .highlight shows it while the mouse is over it 🠈|--\\
+  &.downplay {
+    opacity: 0;
+  }
+  &.highlight {
+    opacity: 1;
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

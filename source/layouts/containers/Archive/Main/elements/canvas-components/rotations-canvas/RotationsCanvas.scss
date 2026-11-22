@@ -1,0 +1,94 @@
+//--|🠊 RotationsCanvas.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.scss: the toggles centred as one group, the <canvas> fills the midground 🠈|--\\
+@use '../../../../../../styles/Utilities.scss' as Utilities;
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="rotations-canvas"> 🠈|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    //--|🠊 AI Code: Review Please 2026-11-22 · The toggles sit in the middle cell; the 1fr tracks share what's left 🠈|--\\
+    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--\\
+    div[class='toggles'] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    fieldset[class*='clarify'] {
+      //--|🠊 DefaultButton.scss's darkside toggle, two squares wide 🠈|--\\
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      height: $high-desk;
+      width: calc($high-desk * 2);
+      @media screen and (max-height: 768px) {
+        height: $test-desk;
+        width: calc($test-desk * 2);
+      }
+      @media screen and (max-height: 480px) {
+        height: $misc-desk;
+        width: calc($misc-desk * 2);
+      }
+      @media screen and (max-height: 360px) {
+        height: $tiny-desk;
+        width: calc($tiny-desk * 2);
+      }
+    }
+  }
+  figure[class*='main-mid'] {
+    canvas[class*='rotations'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  div[class*='main-back'] {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="rotations-canvas"> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    //--|🠊 AI Code: Review Please 2026-11-22 · The toggles sit in the middle cell; the 1fr tracks share what's left 🠈|--\\
+    grid-template: 1fr auto 1fr / 1fr auto 1fr; //--|🠈 rows / columns 🠈|--\\
+    div[class='toggles'] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-area: 2 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    fieldset[class*='clarify'] {
+      //--|🠊 DefaultButton.scss's darkside toggle, one square 🠈|--\\
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      width: $high-mobi;
+      height: $high-mobi;
+      @media screen and (max-width: 768px) {
+        width: $test-mobi;
+        height: $test-mobi;
+      }
+      @media screen and (max-width: 480px) {
+        width: $misc-mobi;
+        height: $misc-mobi;
+      }
+      @media screen and (max-width: 360px) {
+        width: $tiny-mobi;
+        height: $tiny-mobi;
+      }
+    }
+  }
+  figure[class*='main-mid'] {
+    canvas[class*='rotations'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  div[class*='main-back'] {
+  }
+}

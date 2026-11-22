@@ -1,0 +1,339 @@
+//--|🠊 Canvas.rotations.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Figure.rotation.scss's tones and grid gutters; the <canvas> reads these values every frame 🠈|--\\
+@use 'sass:color' as color;
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠋 Registered Properties 🠋|--\\
+//--|🠊 Registered, so getComputedStyle() hands the script 'rgb(r, g, b)', '96px' and '0.6', and the tones and clarities can fade between colours 🠈|--\\
+@property --rotation-one {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --rotation-two {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --rotation-three {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --rotation-ground {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
+}
+@property --rotation-light {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
+}
+@property --rotation-centre {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 1;
+}
+@property --rotation-gutter {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Rotations) 🠋|--\\
+  --rotation-gutter: 6rem; //--|🠈 1920px · the old 6rem column 🠈|--\\
+  @media screen and (max-height: 768px) {
+    --rotation-gutter: 4rem; //--|🠈 1366px 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    --rotation-gutter: 3rem; //--|🠈 854px 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    --rotation-gutter: 2rem; //--|🠈 640px 🠈|--\\
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Rotations) 🠋|--\\
+  --rotation-gutter: 2rem; //--|🠈 1920px · the old 2rem column 🠈|--\\
+  @media screen and (max-width: 768px) {
+    --rotation-gutter: 1.5rem; //--|🠈 1366px 🠈|--\\
+  }
+  @media screen and (max-width: 480px) {
+    --rotation-gutter: 1rem; //--|🠈 854px 🠈|--\\
+  }
+  @media screen and (max-width: 360px) {
+    --rotation-gutter: 0.75rem; //--|🠈 640px 🠈|--\\
+  }
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Rotations) 🠋|--\\
+  //--|🠊 One step ahead: the long side is measured, so 1920px already takes the 1366px gutter 🠈|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    @media screen and (max-width: 1920px) {
+      --rotation-gutter: 4rem;
+    }
+    @media screen and (max-width: 1366px) {
+      --rotation-gutter: 3rem;
+    }
+    @media screen and (max-width: 854px) {
+      --rotation-gutter: 2rem;
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    @media screen and (max-height: 1920px) {
+      --rotation-gutter: 1.5rem;
+    }
+    @media screen and (max-height: 1366px) {
+      --rotation-gutter: 1rem;
+    }
+    @media screen and (max-height: 854px) {
+      --rotation-gutter: 0.75rem;
+    }
+  }
+}
+
+//--|===|--\\
+@mixin rotations-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    --rotation-one 500ms $tint-fade,
+    --rotation-two 500ms $tint-fade,
+    --rotation-three 500ms $tint-fade,
+    --rotation-ground 500ms $tint-fade,
+    --rotation-light 500ms $tint-fade,
+    --rotation-centre 500ms $tint-fade,
+    opacity 500ms $tint-fade;
+  //--|🠊 AI Code: Review Please 2026-11-22 · Clarity: ⟨lucid⟩ paints the whole room, ⟨opaque⟩ only the light, at 60%, so the page shows through 🠈|--\\
+  &[class*='_luc'] {
+    --rotation-ground: 1;
+    --rotation-light: 1;
+    --rotation-centre: 1;
+  }
+  &[class*='_opa'] {
+    --rotation-ground: 0;
+    --rotation-light: 0.6;
+    --rotation-centre: 0;
+  }
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_mon'] {
+    --rotation-one: #{color.mix(Palettes.$gray-dark, Palettes.$gray-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$gray-dark, 50%)};
+    --rotation-three: #{Palettes.$gray-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_mon'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$gray-light, 55%)};
+    --rotation-two: #{Palettes.$gray-light};
+    --rotation-three: #{color.mix(Palettes.$gray-medium, Palettes.$gray-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$gray-light, Palettes.$gray-neon, 70%)};
+    }
+  }
+}
+@mixin red-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_red'] {
+    --rotation-one: #{color.mix(Palettes.$red-dark, Palettes.$red-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$red-dark, 50%)};
+    --rotation-three: #{Palettes.$red-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_red'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$red-light, 55%)};
+    --rotation-two: #{Palettes.$red-light};
+    --rotation-three: #{color.mix(Palettes.$red-medium, Palettes.$red-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$red-light, Palettes.$red-neon, 70%)};
+    }
+  }
+}
+@mixin gre-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_gre'] {
+    --rotation-one: #{color.mix(Palettes.$green-dark, Palettes.$green-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$green-dark, 50%)};
+    --rotation-three: #{Palettes.$green-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_gre'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$green-light, 55%)};
+    --rotation-two: #{Palettes.$green-light};
+    --rotation-three: #{color.mix(Palettes.$green-medium, Palettes.$green-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$green-light, Palettes.$green-neon, 70%)};
+    }
+  }
+}
+@mixin blu-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_blu'] {
+    --rotation-one: #{color.mix(Palettes.$blue-dark, Palettes.$blue-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$blue-dark, 50%)};
+    --rotation-three: #{Palettes.$blue-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_blu'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$blue-light, 55%)};
+    --rotation-two: #{Palettes.$blue-light};
+    --rotation-three: #{color.mix(Palettes.$blue-medium, Palettes.$blue-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$blue-light, Palettes.$blue-neon, 70%)};
+    }
+  }
+}
+@mixin yel-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_yel'] {
+    --rotation-one: #{color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$yellow-dark, 50%)};
+    --rotation-three: #{Palettes.$yellow-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_yel'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$yellow-light, 55%)};
+    --rotation-two: #{Palettes.$yellow-light};
+    --rotation-three: #{color.mix(Palettes.$yellow-medium, Palettes.$yellow-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$yellow-light, Palettes.$yellow-neon, 70%)};
+    }
+  }
+}
+@mixin pur-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_pur'] {
+    --rotation-one: #{color.mix(Palettes.$purple-dark, Palettes.$purple-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$purple-dark, 50%)};
+    --rotation-three: #{Palettes.$purple-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_pur'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$purple-light, 55%)};
+    --rotation-two: #{Palettes.$purple-light};
+    --rotation-three: #{color.mix(Palettes.$purple-medium, Palettes.$purple-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$purple-light, Palettes.$purple-neon, 70%)};
+    }
+  }
+}
+@mixin ora-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_ora'] {
+    --rotation-one: #{color.mix(Palettes.$orange-dark, Palettes.$orange-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$orange-dark, 50%)};
+    --rotation-three: #{Palettes.$orange-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_ora'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$orange-light, 55%)};
+    --rotation-two: #{Palettes.$orange-light};
+    --rotation-three: #{color.mix(Palettes.$orange-medium, Palettes.$orange-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$orange-light, Palettes.$orange-neon, 70%)};
+    }
+  }
+}
+@mixin pin-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_pin'] {
+    --rotation-one: #{color.mix(Palettes.$pink-dark, Palettes.$pink-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$pink-dark, 50%)};
+    --rotation-three: #{Palettes.$pink-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_pin'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$pink-light, 55%)};
+    --rotation-two: #{Palettes.$pink-light};
+    --rotation-three: #{color.mix(Palettes.$pink-medium, Palettes.$pink-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$pink-light, Palettes.$pink-neon, 70%)};
+    }
+  }
+}
+@mixin bro-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_bro'] {
+    --rotation-one: #{color.mix(Palettes.$brown-dark, Palettes.$brown-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$brown-dark, 50%)};
+    --rotation-three: #{Palettes.$brown-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_bro'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$brown-light, 55%)};
+    --rotation-two: #{Palettes.$brown-light};
+    --rotation-three: #{color.mix(Palettes.$brown-medium, Palettes.$brown-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$brown-light, Palettes.$brown-neon, 70%)};
+    }
+  }
+}
+@mixin tur-tint {
+  //--|🠊 AI Code: Review Please 2026-11-22 · Dark Shade: a deep room, a lamp of -medium walking past the corners, the centre lifted into the colour 🠈|--\\
+  &[class*='dar_tur'] {
+    --rotation-one: #{color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, 70%)};
+    --rotation-two: #{color.mix(Palettes.$gray-dark, Palettes.$turquoise-dark, 50%)};
+    --rotation-three: #{Palettes.$turquoise-medium};
+  }
+  //--|🠊 AI Code: Review Please 2026-11-22 · Light Shade: soft daylight, a near-white centre on -light, the colour pooling in from the corner 🠈|--\\
+  &[class*='lig_tur'] {
+    --rotation-one: #{color.mix(Palettes.$gray-neon, Palettes.$turquoise-light, 55%)};
+    --rotation-two: #{Palettes.$turquoise-light};
+    --rotation-three: #{color.mix(Palettes.$turquoise-medium, Palettes.$turquoise-dark, 60%)};
+    //--|🠊 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ swaps the shadow for brightness: the light that turns is -light with a touch of -neon 🠈|--\\
+    &[class*='_opa'] {
+      --rotation-three: #{color.mix(Palettes.$turquoise-light, Palettes.$turquoise-neon, 70%)};
+    }
+  }
+}
+//--|===|--\\
+canvas[class*='rotations'] {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none; //--|🠈 Scenery: clicks fall through to what's behind it 🠈|--\\
+  @include rotations-colors();
+  //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay hides it and its script stops, .highlight shows it while the mouse is over it 🠈|--\\
+  &.downplay {
+    opacity: 0;
+  }
+  &.highlight {
+    opacity: 1;
+  }
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

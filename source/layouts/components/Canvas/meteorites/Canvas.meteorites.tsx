@@ -30,6 +30,6 @@ export function CanvasMeteorites({ info, style }: TheseProps) {
     return fallMeteorites(canvasRef.current as HTMLCanvasElement); //--|🠈 Stops the loop on the flip and when the page closes 🠈|--\\
   }, [pageName, blockName, labelName]);
 
-  return <canvas ref={canvasRef} className={`${labelName}-${blockName}_canvas-meteorites ${createClass(style)}`} aria-hidden="true"></canvas>;
+  return <canvas ref={canvasRef} className={`${labelName}-${blockName}_canvas-meteorites ${createClass(style)} downplay`} aria-hidden="true"></canvas>;
 }
 export default CanvasMeteorites;

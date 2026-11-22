@@ -2,6 +2,9 @@
 @use '../../../../../styles/Utilities.scss' as Utilities;
 
 @use './meteorites-canvas/MeteoritesCanvas.scss' as MeteoritesCanvas;
+@use './rotations-canvas/RotationsCanvas.scss' as RotationsCanvas;
+@use './spotlight-canvas/SpotlightCanvas.scss' as SpotlightCanvas;
+@use './particles-canvas/ParticlesCanvas.scss' as ParticlesCanvas;
 
 section[class*='canvas'] {
   div[class*='fullscreen'] {
@@ -11,10 +14,28 @@ section[class*='canvas'] {
           &[class*='meteorites'] {
             @include MeteoritesCanvas.desktop-landscape;
           }
+          &[class*='rotations'] {
+            @include RotationsCanvas.desktop-landscape;
+          }
+          &[class*='spotlight'] {
+            @include SpotlightCanvas.desktop-landscape;
+          }
+          &[class*='particles'] {
+            @include ParticlesCanvas.desktop-landscape;
+          }
         }
         @media screen and (orientation: portrait) {
           &[class*='meteorites'] {
             @include MeteoritesCanvas.mobile-portrait;
+          }
+          &[class*='rotations'] {
+            @include RotationsCanvas.mobile-portrait;
+          }
+          &[class*='spotlight'] {
+            @include SpotlightCanvas.mobile-portrait;
+          }
+          &[class*='particles'] {
+            @include ParticlesCanvas.mobile-portrait;
           }
         }
       }

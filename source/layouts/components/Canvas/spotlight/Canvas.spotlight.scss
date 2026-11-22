@@ -1,0 +1,295 @@
+//--|🠊 Canvas.spotlight.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · the 2.00 résumé's .home-profile; the squares are <DivisionPlaceholder>'s icon sizes, the <canvas> reads the tones every frame 🠈|--\\
+@use 'sass:color' as color;
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠋 Registered Properties 🠋|--\\
+//--|🠊 Registered, so getComputedStyle() hands the script 'rgb(r, g, b)' or 'rgba(r, g, b, a)', and the tones can fade between colours 🠈|--\\
+@property --spotlight-one {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --spotlight-two {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --spotlight-glow {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --spotlight-inner {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Spotlight) 🠋|--\\
+  width: 448px; //--|🠈 1920px · the old 861px outer ring, on the skeleton squares 🠈|--\\
+  height: 448px;
+  @media screen and (max-height: 768px) {
+    width: 258px; //--|🠈 1366px 🠈|--\\
+    height: 258px;
+  }
+  @media screen and (max-height: 480px) {
+    width: 214px; //--|🠈 854px 🠈|--\\
+    height: 214px;
+  }
+  @media screen and (max-height: 360px) {
+    width: 165px; //--|🠈 640px 🠈|--\\
+    height: 165px;
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Spotlight) 🠋|--\\
+  width: 448px; //--|🠈 1920px · the old 861px outer ring, on the skeleton squares 🠈|--\\
+  height: 448px;
+  @media screen and (max-width: 768px) {
+    width: 258px; //--|🠈 1366px 🠈|--\\
+    height: 258px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 214px; //--|🠈 854px 🠈|--\\
+    height: 214px;
+  }
+  @media screen and (max-width: 360px) {
+    width: 165px; //--|🠈 640px 🠈|--\\
+    height: 165px;
+  }
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Spotlight) 🠋|--\\
+  //--|🠊 One step ahead: the long side is measured, so 1920px already takes the 1366px square 🠈|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    @media screen and (max-width: 1920px) {
+      width: 258px;
+      height: 258px;
+    }
+    @media screen and (max-width: 1366px) {
+      width: 214px;
+      height: 214px;
+    }
+    @media screen and (max-width: 854px) {
+      width: 165px;
+      height: 165px;
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    @media screen and (max-height: 1920px) {
+      width: 258px;
+      height: 258px;
+    }
+    @media screen and (max-height: 1366px) {
+      width: 214px;
+      height: 214px;
+    }
+    @media screen and (max-height: 854px) {
+      width: 165px;
+      height: 165px;
+    }
+  }
+}
+
+//--|===|--\\
+@mixin spotlight-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    --spotlight-one 500ms $tint-fade,
+    --spotlight-two 500ms $tint-fade,
+    --spotlight-glow 500ms $tint-fade,
+    --spotlight-inner 500ms $tint-fade;
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_mon'] {
+    --spotlight-one: #{Palettes.$gray-light};
+    --spotlight-two: #{Palettes.$gray-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$gray-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$gray-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_mon'] {
+    --spotlight-one: #{Palettes.$gray-dark};
+    --spotlight-two: #{Palettes.$gray-light};
+    --spotlight-inner: #{Palettes.$gray-light};
+    --spotlight-glow: #{rgba(Palettes.$gray-medium, 0.25)};
+  }
+}
+@mixin red-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_red'] {
+    --spotlight-one: #{Palettes.$red-light};
+    --spotlight-two: #{Palettes.$red-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$red-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$red-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_red'] {
+    --spotlight-one: #{Palettes.$red-dark};
+    --spotlight-two: #{Palettes.$red-light};
+    --spotlight-inner: #{Palettes.$red-light};
+    --spotlight-glow: #{rgba(Palettes.$red-medium, 0.25)};
+  }
+}
+@mixin gre-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_gre'] {
+    --spotlight-one: #{Palettes.$green-light};
+    --spotlight-two: #{Palettes.$green-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$green-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$green-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_gre'] {
+    --spotlight-one: #{Palettes.$green-dark};
+    --spotlight-two: #{Palettes.$green-light};
+    --spotlight-inner: #{Palettes.$green-light};
+    --spotlight-glow: #{rgba(Palettes.$green-medium, 0.25)};
+  }
+}
+@mixin blu-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_blu'] {
+    --spotlight-one: #{Palettes.$blue-light};
+    --spotlight-two: #{Palettes.$blue-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$blue-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$blue-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_blu'] {
+    --spotlight-one: #{Palettes.$blue-dark};
+    --spotlight-two: #{Palettes.$blue-light};
+    --spotlight-inner: #{Palettes.$blue-light};
+    --spotlight-glow: #{rgba(Palettes.$blue-medium, 0.25)};
+  }
+}
+@mixin yel-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_yel'] {
+    --spotlight-one: #{Palettes.$yellow-light};
+    --spotlight-two: #{Palettes.$yellow-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$yellow-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$yellow-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_yel'] {
+    --spotlight-one: #{Palettes.$yellow-dark};
+    --spotlight-two: #{Palettes.$yellow-light};
+    --spotlight-inner: #{Palettes.$yellow-light};
+    --spotlight-glow: #{rgba(Palettes.$yellow-medium, 0.25)};
+  }
+}
+@mixin pur-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_pur'] {
+    --spotlight-one: #{Palettes.$purple-light};
+    --spotlight-two: #{Palettes.$purple-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$purple-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$purple-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_pur'] {
+    --spotlight-one: #{Palettes.$purple-dark};
+    --spotlight-two: #{Palettes.$purple-light};
+    --spotlight-inner: #{Palettes.$purple-light};
+    --spotlight-glow: #{rgba(Palettes.$purple-medium, 0.25)};
+  }
+}
+@mixin ora-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_ora'] {
+    --spotlight-one: #{Palettes.$orange-light};
+    --spotlight-two: #{Palettes.$orange-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$orange-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$orange-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_ora'] {
+    --spotlight-one: #{Palettes.$orange-dark};
+    --spotlight-two: #{Palettes.$orange-light};
+    --spotlight-inner: #{Palettes.$orange-light};
+    --spotlight-glow: #{rgba(Palettes.$orange-medium, 0.25)};
+  }
+}
+@mixin pin-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_pin'] {
+    --spotlight-one: #{Palettes.$pink-light};
+    --spotlight-two: #{Palettes.$pink-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$pink-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$pink-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_pin'] {
+    --spotlight-one: #{Palettes.$pink-dark};
+    --spotlight-two: #{Palettes.$pink-light};
+    --spotlight-inner: #{Palettes.$pink-light};
+    --spotlight-glow: #{rgba(Palettes.$pink-medium, 0.25)};
+  }
+}
+@mixin bro-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_bro'] {
+    --spotlight-one: #{Palettes.$brown-light};
+    --spotlight-two: #{Palettes.$brown-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$brown-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$brown-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_bro'] {
+    --spotlight-one: #{Palettes.$brown-dark};
+    --spotlight-two: #{Palettes.$brown-light};
+    --spotlight-inner: #{Palettes.$brown-light};
+    --spotlight-glow: #{rgba(Palettes.$brown-medium, 0.25)};
+  }
+}
+@mixin tur-tint {
+  //--|🠊 Dark Shade: the résumé's own look, -light into -dark on the page's dark tone, a -medium glow 🠈|--\\
+  &[class*='dar_tur'] {
+    --spotlight-one: #{Palettes.$turquoise-light};
+    --spotlight-two: #{Palettes.$turquoise-dark};
+    --spotlight-inner: #{color.mix(Palettes.$gray-dark, Palettes.$turquoise-dark, 50%)};
+    --spotlight-glow: #{rgba(Palettes.$turquoise-medium, 0.25)};
+  }
+  //--|🠊 Light Shade: the mirror, -dark into -light on the pale tone 🠈|--\\
+  &[class*='lig_tur'] {
+    --spotlight-one: #{Palettes.$turquoise-dark};
+    --spotlight-two: #{Palettes.$turquoise-light};
+    --spotlight-inner: #{Palettes.$turquoise-light};
+    --spotlight-glow: #{rgba(Palettes.$turquoise-medium, 0.25)};
+  }
+}
+//--|===|--\\
+canvas[class*='spotlight'] {
+  display: block;
+  pointer-events: auto; //--|🠈 Unlike the other canvases, it answers the hover: both rings close and the photo grows 🠈|--\\
+  @include spotlight-colors();
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

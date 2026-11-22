@@ -244,7 +244,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Canvas_Meteorites>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas> replaces <Figure> 🠈|--\\
+          titles: ['<Canvas_Meteorites>', '<Canvas_Rotations>', '<Canvas_Spotlight>', '<Canvas_Particles>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas> replaces <Figure> 🠈|--\\
         }}
         info={{
           labelName: 'canvas',

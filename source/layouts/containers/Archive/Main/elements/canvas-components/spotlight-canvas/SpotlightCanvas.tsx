@@ -1,0 +1,94 @@
+//--|🠊 SpotlightCanvas.tsx 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, always visible 🠈|--\\
+//--|🠋 Dependencies 🠋|--\\
+import React, { useEffect } from 'react';
+
+//--|🠋 Components 🠋|--\\
+import CanvasSpotlight from '../../../../../../components/Canvas/spotlight/Canvas.spotlight';
+import LabelSelection from '../../../../../../components/Label/selection/Label.selection';
+
+//--|🠋 Functions 🠋|--\\
+import { loadAsset } from '../../../../../../tools/utilities';
+import { switchColors, switchShades } from './SpotlightFunctions';
+
+interface InfoProps {
+  info: {
+    blockName: string;
+    labelName: string;
+    pageName: string;
+  };
+}
+function SpotlightCanvas({ info }: InfoProps) {
+  const blockName = info.blockName as 'main';
+  const labelName = info.labelName as 'default';
+  const pageName = info.pageName as 'components';
+
+  let pickerColor = '(orange)' as '(orange)';
+  let pickerShade = '~dark~' as '~dark~';
+  useEffect(() => {
+    switchColors(pickerColor, 'spotlight');
+  }, [pageName, blockName, labelName]);
+
+  return (
+    <aside className="spotlight-canvas">
+      <section className={`${blockName}-foreground`}>
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'colours',
+          }}
+          style={{
+            view: 'mid-cen',
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨opaque⟩',
+            text: pickerColor,
+          }}
+          cases={{
+            type: '{select}',
+            list: ['(mono)', '(red)', '(green)', '(blue)', '(purple)', '(orange)', '(pink)', '(yellow)', '(brown)', '(turquoise)'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchColors(event.target.value, 'spotlight')} //--|🠈 Recolours every <CanvasSpotlight> on this page 🠈|--\\
+        />
+        <LabelSelection
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'shades',
+          }}
+          style={{
+            view: 'mid-cen',
+            shade: '~dark~',
+            color: '(mono)',
+            clarity: '⟨opaque⟩',
+            text: pickerShade,
+          }}
+          cases={{
+            type: '{select}',
+            list: ['~dark~', '~light~'], //--|🠈 {select} & {combo} only 🠈|--\\
+          }}
+          onChange={(event) => switchShades(event.target.value, 'spotlight')} //--|🠈 Swaps the tones to the other shade 🠈|--\\
+        />
+      </section>
+      <figure className={`${blockName}-midground`}>
+        <CanvasSpotlight
+          info={{
+            pageName: pageName,
+            blockName: blockName,
+            labelName: 'spotlight',
+          }}
+          style={{
+            shade: pickerShade,
+            color: '(mono)',
+          }}
+          cases={{
+            image: loadAsset('-png-', '/archive-images/résumé-images/profile-pictures/money-picture') as string, //--|🠈 The 2.00 circular-profile photo (same file), a transparent cut-out, so the head rises over the disk 🠈|--\\
+          }}
+        />
+      </figure>
+      <div className={`${blockName}-background`}></div>
+    </aside>
+  );
+}
+export default SpotlightCanvas;

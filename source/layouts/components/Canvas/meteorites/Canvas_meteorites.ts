@@ -23,30 +23,76 @@ function createClass(style: TheseProps['style']): string {
 export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
   const context = canvas.getContext('2d') as CanvasRenderingContext2D;
   const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches as boolean;
-  const meteorites = [...createMeteorites(10, 'back'), ...createMeteorites(65, 'front')] as Array<Meteorite>; //--|🠈 The old rain-bottom (10, blurred) and rain-top (65) 🠈|--\\
 
+  let meteorites = [] as Array<Meteorite>;
+  let awake = false as boolean; //--|🠈 AI Code: Review Please 2026-11-22 · Asleep and hidden (.downplay) until the mouse is over it 🠈|--\\
+  let startTime = 0 as number;
   let frameId = 0 as number;
   let drawFrame = (time: number): void => {
-    drawMeteorites(canvas, context, meteorites, time);
-    if (!stillMotion) {
-      frameId = requestAnimationFrame(drawFrame);
+    switch (true) {
+      case !awake:
+        return; //--|🠈 Asleep: a frame already asked for draws nothing 🠈|--\\
+      default:
+        break;
+    }
+    drawMeteorites(canvas, context, meteorites, stillMotion ? 0 : Math.max(0, time - startTime)); //--|🠈 AI Code: Review Please 2026-11-22 · Reduced motion freezes the clock, but still repaints a colour change 🠈|--\\
+    frameId = requestAnimationFrame(drawFrame);
+  };
+  let wakeCanvas = (): void => {
+    awake = true;
+    meteorites = [...createMeteorites(10, 'back'), ...createMeteorites(65, 'front')]; //--|🠈 Reset: a fresh rain every time, the old rain-bottom (10, blurred) and rain-top (65) 🠈|--\\
+    startTime = performance.now(); //--|🠈 The clock starts again 🠈|--\\
+    canvas.classList.replace('downplay', 'highlight');
+    frameId = requestAnimationFrame(drawFrame);
+  };
+  let sleepCanvas = (): void => {
+    awake = false;
+    cancelAnimationFrame(frameId); //--|🠈 Disabled: no more frames until the mouse comes back 🠈|--\\
+    canvas.classList.replace('highlight', 'downplay');
+  };
+  let watchPointer = (event: MouseEvent): void => {
+    //--|🠊 The whole page is watched, not the canvas: it may sit under the foreground or let clicks through 🠈|--\\
+    const box = canvas.getBoundingClientRect();
+    const inside = (box.width > 0 && event.clientX >= box.left && event.clientX <= box.right && event.clientY >= box.top && event.clientY <= box.bottom) as boolean;
+    switch (true) {
+      case inside && !awake:
+        wakeCanvas();
+        break;
+      case !inside && awake:
+        sleepCanvas();
+        break;
+      default:
+        break;
+    }
+  };
+  let losePage = (): void => {
+    switch (true) {
+      case awake:
+        sleepCanvas(); //--|🠈 The mouse left the window 🠈|--\\
+        break;
+      default:
+        break;
     }
   };
   let resizeObserver = new ResizeObserver(() => {
     sizeCanvas(canvas, context);
-    drawMeteorites(canvas, context, meteorites, performance.now()); //--|🠈 A resize clears the canvas, so reduced motion gets its still frame back 🠈|--\\
   });
 
   resizeObserver.observe(canvas);
-  frameId = requestAnimationFrame(drawFrame);
+  document.addEventListener('mousemove', watchPointer);
+  document.documentElement.addEventListener('mouseleave', losePage);
   return () => {
+    awake = false;
     cancelAnimationFrame(frameId);
     resizeObserver.disconnect();
+    document.removeEventListener('mousemove', watchPointer);
+    document.documentElement.removeEventListener('mouseleave', losePage);
   };
 };
 
 //--|🠋 Build the Meteorites 🠋|--\\
 let createMeteorites = (amount: number, layer: 'front' | 'back'): Array<Meteorite> => {
+
   let meteorites = [] as Array<Meteorite>;
   for (let i = 0; i < amount; i++) {
     meteorites.push({

@@ -14,6 +14,9 @@
 @use '../components/Button/glowing/Button.glowing.scss' as ButtonGlowing;
 
 //--|🠋 <Canvas> 🠋|--\\
+@use '../components/Canvas/particles/Canvas.particles.scss' as CanvasParticles;
+@use '../components/Canvas/rotations/Canvas.rotations.scss' as CanvasRotations;
+@use '../components/Canvas/spotlight/Canvas.spotlight.scss' as CanvasSpotlight;
 @use '../components/Canvas/meteorites/Canvas.meteorites.scss' as CanvasMeteorites;
 
 //--|🠋 <Division> 🠋|--\\
@@ -27,7 +30,6 @@
 //--|🠋 <Figure> 🠋|--\\
 /*
 @use '../components/Figure/loading/Figure.loading.scss' as FigureLoading;
-@use '../components/Figure/rotation/Figure.rotation.scss' as FigureRotation;
 */
 
 //--|🠋 <Form> 🠋|--\\
