@@ -64,7 +64,25 @@ function ArchiveHeader({ info }: InfoProps) {
               }}
               cases={{
                 buttons: undefined,
-                menus: undefined,
+                menus: [
+                  {
+                    align: '-top-',
+                    menu: (
+                      <DivisionConveyor
+                        //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
+                        cases={{
+                          axis: '[y]',
+                          call: MenuSwipes as React.ComponentType<InfoProps>,
+                        }}
+                        info={{
+                          labelName: 'elements',
+                          blockName: blockName as 'header',
+                          pageName: pageName as 'components',
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                ],
                 image: undefined,
                 tasks: {
                   onClick: () => {
@@ -73,6 +91,7 @@ function ArchiveHeader({ info }: InfoProps) {
                 },
               }}
             />
+            {/*
             <DivisionConveyor
               //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
               cases={{
@@ -85,6 +104,7 @@ function ArchiveHeader({ info }: InfoProps) {
                 pageName: pageName as 'components',
               }}
             />
+            */}
           </section>
           <figure className={`${blockName}-midground`}>
             <div className="top"></div>
@@ -118,7 +138,40 @@ function ArchiveHeader({ info }: InfoProps) {
               }}
               cases={{
                 buttons: undefined,
-                menus: undefined,
+                menus: [
+                  //--|🠊 AI Code: Review Please 2026-11-22 · <MenuSelect> moved inside the <nav>, same as landscape 🠈|--\\
+                  {
+                    align: '-top-',
+                    menu: (
+                      <MenuSelect
+                        info={{
+                          blockName: blockName as 'main',
+                          pageName: pageName as 'components',
+                          labelName: `${pageName}-applications` as string,
+                        }}
+                        style={{
+                          align: '-mid-',
+                          view: 'top-cen',
+                          shade: '~light~',
+                          color: ['(green)', '(blue)', '(red)'],
+
+                          image: [
+                            loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
+                            loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
+                          ] as Array<string>,
+                          size: '<h4>',
+                        }}
+                        cases={{
+                          pages: 3,
+                          axis: '[x]',
+                          link: undefined,
+                          task: [() => loadPages('overtime'), () => loadPages('ticketing'), () => loadPages('hyperlink')],
+                        }}
+                      />
+                    ) as React.JSX.Element,
+                  },
+                ],
                 image: undefined,
                 tasks: {
                   onClick: (view) => {
@@ -130,6 +183,7 @@ function ArchiveHeader({ info }: InfoProps) {
                 },
               }}
             />
+            {/*
             <MenuSelect
               info={{
                 blockName: blockName as 'main',
@@ -156,6 +210,7 @@ function ArchiveHeader({ info }: InfoProps) {
                 task: [() => loadPages('overtime'), () => loadPages('ticketing'), () => loadPages('hyperlink')],
               }}
             />
+            */}
           </section>
           <figure className={`${blockName}-midground`}>
             <div className="top"></div>

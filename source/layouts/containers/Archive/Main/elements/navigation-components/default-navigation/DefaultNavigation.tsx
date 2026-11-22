@@ -31,9 +31,10 @@ function DefaultNavigation({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
+  let imageDesktop = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/desktop') as string;
+  let imageMobile = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/mobile-alt') as string;
   switch (getOrientation) {
     case 'landscape':
-      let imageDesktop = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/desktop') as string;
       return (
         <aside className="default-navigation">
           <section className={`${blockName}-foreground`}>
@@ -164,7 +165,6 @@ function DefaultNavigation({ info }: InfoProps) {
         </aside>
       );
     case 'portrait':
-      let imageMobile = loadAsset('-svg-', '/archive-images/font-awesome/5.13.0/solid/mobile-alt') as string;
       return (
         <aside className="default-navigation">
           <section className={`${blockName}-foreground`}>
