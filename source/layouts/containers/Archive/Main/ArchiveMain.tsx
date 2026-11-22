@@ -12,7 +12,7 @@ import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';
 import AsideElements from './elements/aside-components/AsideElements';
 import LabelElements from './elements/label-components/LabelElements';
-import FigureElements from './elements/figure-components/FigureElements';
+import CanvasElements from './elements/canvas-components/CanvasElements';
 import ButtonElements from './elements/button-components/ButtonElements';
 import ArticleElements from './elements/article-components/ArticleElements';
 import SectionElements from './elements/section-components/SectionElements';
@@ -42,7 +42,7 @@ function ArchiveMain({ info }: InfoProps) {
 
   useEffect(() => {
     //--|🟨|--\\
-    startingPreview('(navigation)', 1);
+    startingPreview('(canvas)', 1);
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
@@ -106,18 +106,18 @@ const ComponentsElements: React.FC<InfoProps> = ({ info }) => {
           labelName: '(button)' as string,
         }}
       />
+      <CanvasElements
+        info={{
+          pageName: pageName,
+          blockName: blockName,
+          labelName: '(canvas)' as string,
+        }}
+      />
       <DivisionElements
         info={{
           pageName: pageName,
           blockName: blockName,
           labelName: '(division)' as string,
-        }}
-      />
-      <FigureElements
-        info={{
-          pageName: pageName,
-          blockName: blockName,
-          labelName: '(figure)' as string,
         }}
       />
       <FormElements

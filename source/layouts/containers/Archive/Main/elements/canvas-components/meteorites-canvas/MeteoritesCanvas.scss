@@ -1,0 +1,60 @@
+//--|🠊 MeteoritesCanvas.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · Copied from PlaceholderDivision.scss: colours on top, shades at the bottom, the <canvas> fills the midground 🠈|--\\
+@use '../../../../../../styles/Utilities.scss' as Utilities;
+
+@mixin desktop-landscape {
+  //--|🠊 <aside className="meteorites-canvas"> 🠈|--\\
+  $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
+  $test-desk: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $misc-desk: 64px; //--|🠈 64px for Squares 🠈|--\\
+  $tiny-desk: 48px; //--|🠈 48px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 Invisible until it's hovered 🠈|--\\
+      }
+      grid-area: 1 / 2 / 3 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    label[class*='shades'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 Invisible until it's hovered 🠈|--\\
+      }
+      grid-area: 4 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='main-mid'] {
+    canvas[class*='meteorites'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  div[class*='main-back'] {
+  }
+}
+@mixin mobile-portrait {
+  //--|🠊 <aside className="meteorites-canvas"> 🠈|--\\
+  $high-mobi: 192px; //--|🠈 192px for Squares 🠈|--\\
+  $test-mobi: 160px; //--|🠈 160px for Squares 🠈|--\\
+  $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
+  $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
+  section[class*='main-fore'] {
+    label[class*='colours'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 Invisible until it's hovered 🠈|--\\
+      }
+      grid-area: 1 / 2 / 2 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    label[class*='shades'] {
+      &.downplay {
+        @include Utilities.downplay(); //--|🠈 Invisible until it's hovered 🠈|--\\
+      }
+      grid-area: 5 / 2 / 6 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  figure[class*='main-mid'] {
+    canvas[class*='meteorites'] {
+      grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+  }
+  div[class*='main-back'] {
+  }
+}

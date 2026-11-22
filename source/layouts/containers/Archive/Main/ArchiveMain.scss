@@ -4,8 +4,8 @@
 @use './elements/article-components/ArticleElements.scss' as ArticleElements;
 @use './elements/aside-components/AsideElements.scss' as AsideElements;
 @use './elements/button-components/ButtonElements.scss' as ButtonElements;
+@use './elements/canvas-components/CanvasElements.scss' as CanvasElements;
 @use './elements/division-components/DivisionElements.scss' as DivisionElements;
-@use './elements/figure-components/FigureElements.scss' as FigureElements;
 @use './elements/form-components/FormElements.scss' as FormElements;
 @use './elements/label-components/LabelElements.scss' as LabelElements;
 @use './elements/menu-components/MenuElements.scss' as MenuElements;
@@ -29,11 +29,11 @@
       section[class*='button'] {
         //--|🠊 background: rgba(Utilities.$blue-dark, 0.75); 🠈|--\\
       }
+      section[class*='canvas'] {
+        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
+      }
       section[class*='division'] {
         //--|🠊 background: rgba(Utilities.$purple-dark, 0.75); 🠈|--\\
-      }
-      section[class*='figure'] {
-        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
       }
       section[class*='menu'] {
         //--|🠊 background: rgba(Utilities.$pink-dark, 0.75); 🠈|--\\
@@ -74,11 +74,11 @@
       section[class*='button'] {
         //--|🠊 background: rgba(Utilities.$blue-dark, 0.75); 🠈|--\\
       }
+      section[class*='canvas'] {
+        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
+      }
       section[class*='division'] {
         //--|🠊 background: rgba(Utilities.$purple-dark, 0.75); 🠈|--\\
-      }
-      section[class*='figure'] {
-        //--|🠊 background: rgba(Utilities.$orange-dark, 0.75); 🠈|--\\
       }
       section[class*='menu'] {
         //--|🠊 background: rgba(Utilities.$pink-dark, 0.75); 🠈|--\\

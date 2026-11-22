@@ -1,0 +1,23 @@
+//--|🠊 CanvasElements.scss 🠈|--\\
+@use '../../../../../styles/Utilities.scss' as Utilities;
+
+@use './meteorites-canvas/MeteoritesCanvas.scss' as MeteoritesCanvas;
+
+section[class*='canvas'] {
+  div[class*='fullscreen'] {
+    div.canvas-main_container {
+      aside[class*='canvas'] {
+        @media screen and (orientation: landscape) {
+          &[class*='meteorites'] {
+            @include MeteoritesCanvas.desktop-landscape;
+          }
+        }
+        @media screen and (orientation: portrait) {
+          &[class*='meteorites'] {
+            @include MeteoritesCanvas.mobile-portrait;
+          }
+        }
+      }
+    }
+  }
+}

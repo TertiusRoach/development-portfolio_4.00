@@ -1,4 +1,4 @@
-//--|🠊 FigureElements.tsx 🠈|--\\
+//--|🠊 CanvasElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import DefaultFigure from './default-figure/DefaultFigure';
+import MeteoritesCanvas from './meteorites-canvas/MeteoritesCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../tools/conversions';
@@ -19,12 +19,12 @@ interface InfoProps {
     labelName: string;
   };
 }
-function FigureElements({ info }: InfoProps) {
+function CanvasElements({ info }: InfoProps) {
   const [getOrientation, setOrientation] = useState<'landscape' | 'portrait'>(
     window.matchMedia('(orientation: landscape)').matches ? 'landscape' : 'portrait',
   ); //--|🠈 Updates state when the orientation changes 🠈|--\\
   const blockName = stripBrackets(info.blockName, '<>') as 'main';
-  const labelName = stripBrackets(info.labelName, '()') as 'figure';
+  const labelName = stripBrackets(info.labelName, '()') as 'canvas';
   const pageName = stripBrackets(info.pageName, '[]') as 'components';
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function FigureElements({ info }: InfoProps) {
         cases={{
           axis: '[x]',
           show: viewName,
-          call: FigureComponents as React.ComponentType<InfoProps>,
+          call: CanvasComponents as React.ComponentType<InfoProps>,
         }}
         info={{
           pageName: pageName,
@@ -51,7 +51,7 @@ function FigureElements({ info }: InfoProps) {
   );
 }
 
-const FigureComponents: React.FC<InfoProps> = ({ info }) => {
+const CanvasComponents: React.FC<InfoProps> = ({ info }) => {
   let defaultInfo = {
     pageName: info.pageName,
     blockName: info.blockName,
@@ -60,8 +60,8 @@ const FigureComponents: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <>
-      <DefaultFigure info={defaultInfo} />
+      <MeteoritesCanvas info={defaultInfo} />
     </>
   );
 };
-export default FigureElements;
+export default CanvasElements;

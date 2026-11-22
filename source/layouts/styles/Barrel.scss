@@ -13,6 +13,9 @@
 @use '../components/Button/stretch/Button.stretch.scss' as ButtonStretch;
 @use '../components/Button/glowing/Button.glowing.scss' as ButtonGlowing;
 
+//--|🠋 <Canvas> 🠋|--\\
+@use '../components/Canvas/meteorites/Canvas.meteorites.scss' as CanvasMeteorites;
+
 //--|🠋 <Division> 🠋|--\\
 @use '../components/Division/testing/Division.testing.scss' as DivisionTesting;
 @use '../components/Division/sweeping/Division.sweeping.scss' as DivisionSweeping;

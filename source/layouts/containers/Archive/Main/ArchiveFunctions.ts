@@ -12,7 +12,7 @@ async function startingPreview(
     | '(aside)'
     | '(table)'
     | '(button)'
-    | '(figure)'
+    | '(canvas)'
     | '(article)'
     | '(section)'
     | '(division)'
@@ -47,7 +47,7 @@ const containerPreview = (
     | '(aside)'
     | '(table)'
     | '(button)'
-    | '(figure)'
+    | '(canvas)'
     | '(article)'
     | '(section)'
     | '(division)'
@@ -92,7 +92,7 @@ const fullscreenPreview = (
     | '(aside)'
     | '(table)'
     | '(button)'
-    | '(figure)'
+    | '(canvas)'
     | '(article)'
     | '(section)'
     | '(division)'
@@ -115,11 +115,11 @@ const fullscreenPreview = (
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(3)}` as string;
       break;
-    case '(division)':
+    case '(canvas)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(4)}` as string;
       break;
-    case '(figure)':
+    case '(division)':
       prevClass = fullscreen.className as string;
       nextClass = `${fullscreen.className.split('_')[0]}_${arabicToRoman(5)}` as string;
       break;

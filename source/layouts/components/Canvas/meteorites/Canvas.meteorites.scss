@@ -1,0 +1,261 @@
+//--|🠊 Canvas.meteorites.scss 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-22 · rain-main from University Tracker's index-main.scss; the <canvas> reads these values every frame 🠈|--\\
+@use '../../../styles/Palettes.scss' as Palettes;
+
+//--|🠋 Registered Properties 🠋|--\\
+//--|🠊 Registered, so getComputedStyle() hands the script 'rgb(r, g, b)' and '125px', and the tones can fade between colours 🠈|--\\
+@property --meteor-one {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --meteor-two {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --meteor-three {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --meteor-length {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 125px;
+}
+
+@mixin desktop-landscape {
+  //--|🠋 Desktop (Meteorites) 🠋|--\\
+  --meteor-length: 125px; //--|🠈 1920px · the old <i> height 🠈|--\\
+  @media screen and (max-height: 768px) {
+    --meteor-length: 96px; //--|🠈 1366px 🠈|--\\
+  }
+  @media screen and (max-height: 480px) {
+    --meteor-length: 64px; //--|🠈 854px 🠈|--\\
+  }
+  @media screen and (max-height: 360px) {
+    --meteor-length: 48px; //--|🠈 640px 🠈|--\\
+  }
+}
+@mixin mobile-portrait {
+  //--|🠋 Mobile (Meteorites) 🠋|--\\
+  --meteor-length: 125px; //--|🠈 1920px · the old <i> height 🠈|--\\
+  @media screen and (max-width: 768px) {
+    --meteor-length: 96px; //--|🠈 1366px 🠈|--\\
+  }
+  @media screen and (max-width: 480px) {
+    --meteor-length: 64px; //--|🠈 854px 🠈|--\\
+  }
+  @media screen and (max-width: 360px) {
+    --meteor-length: 48px; //--|🠈 640px 🠈|--\\
+  }
+}
+@mixin tablet-squaring {
+  //--|🠋 Tablet (Meteorites) 🠋|--\\
+  //--|🠊 One step ahead: the long side is measured, so 1920px already takes the 1366px length 🠈|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    @media screen and (max-width: 1920px) {
+      --meteor-length: 96px;
+    }
+    @media screen and (max-width: 1366px) {
+      --meteor-length: 64px;
+    }
+    @media screen and (max-width: 854px) {
+      --meteor-length: 48px;
+    }
+  }
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    @media screen and (max-height: 1920px) {
+      --meteor-length: 96px;
+    }
+    @media screen and (max-height: 1366px) {
+      --meteor-length: 64px;
+    }
+    @media screen and (max-height: 854px) {
+      --meteor-length: 48px;
+    }
+  }
+}
+
+//--|===|--\\
+@mixin meteorites-colors {
+  //--|🠋 Global (Tint) 🠋|--\\
+  $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    --meteor-one 500ms $tint-fade,
+    --meteor-two 500ms $tint-fade,
+    --meteor-three 500ms $tint-fade;
+  @include mon-tint();
+  @include red-tint();
+  @include gre-tint();
+  @include blu-tint();
+  @include yel-tint();
+  @include pur-tint();
+  @include ora-tint();
+  @include pin-tint();
+  @include bro-tint();
+  @include tur-tint();
+}
+@mixin mon-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_mon'] {
+    --meteor-one: #{Palettes.$gray-light};
+    --meteor-two: #{Palettes.$gray-medium};
+    --meteor-three: #{Palettes.$gray-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_mon'] {
+    --meteor-one: #{Palettes.$gray-dark};
+    --meteor-two: #{Palettes.$gray-medium};
+    --meteor-three: #{Palettes.$gray-light};
+  }
+}
+@mixin red-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_red'] {
+    --meteor-one: #{Palettes.$red-light};
+    --meteor-two: #{Palettes.$red-medium};
+    --meteor-three: #{Palettes.$red-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_red'] {
+    --meteor-one: #{Palettes.$red-dark};
+    --meteor-two: #{Palettes.$red-medium};
+    --meteor-three: #{Palettes.$red-light};
+  }
+}
+@mixin gre-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_gre'] {
+    --meteor-one: #{Palettes.$green-light};
+    --meteor-two: #{Palettes.$green-medium};
+    --meteor-three: #{Palettes.$green-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_gre'] {
+    --meteor-one: #{Palettes.$green-dark};
+    --meteor-two: #{Palettes.$green-medium};
+    --meteor-three: #{Palettes.$green-light};
+  }
+}
+@mixin blu-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_blu'] {
+    --meteor-one: #{Palettes.$blue-light};
+    --meteor-two: #{Palettes.$blue-medium};
+    --meteor-three: #{Palettes.$blue-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_blu'] {
+    --meteor-one: #{Palettes.$blue-dark};
+    --meteor-two: #{Palettes.$blue-medium};
+    --meteor-three: #{Palettes.$blue-light};
+  }
+}
+@mixin yel-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_yel'] {
+    --meteor-one: #{Palettes.$yellow-light};
+    --meteor-two: #{Palettes.$yellow-medium};
+    --meteor-three: #{Palettes.$yellow-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_yel'] {
+    --meteor-one: #{Palettes.$yellow-dark};
+    --meteor-two: #{Palettes.$yellow-medium};
+    --meteor-three: #{Palettes.$yellow-light};
+  }
+}
+@mixin pur-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_pur'] {
+    --meteor-one: #{Palettes.$purple-light};
+    --meteor-two: #{Palettes.$purple-medium};
+    --meteor-three: #{Palettes.$purple-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_pur'] {
+    --meteor-one: #{Palettes.$purple-dark};
+    --meteor-two: #{Palettes.$purple-medium};
+    --meteor-three: #{Palettes.$purple-light};
+  }
+}
+@mixin ora-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_ora'] {
+    --meteor-one: #{Palettes.$orange-light};
+    --meteor-two: #{Palettes.$orange-medium};
+    --meteor-three: #{Palettes.$orange-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_ora'] {
+    --meteor-one: #{Palettes.$orange-dark};
+    --meteor-two: #{Palettes.$orange-medium};
+    --meteor-three: #{Palettes.$orange-light};
+  }
+}
+@mixin pin-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_pin'] {
+    --meteor-one: #{Palettes.$pink-light};
+    --meteor-two: #{Palettes.$pink-medium};
+    --meteor-three: #{Palettes.$pink-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_pin'] {
+    --meteor-one: #{Palettes.$pink-dark};
+    --meteor-two: #{Palettes.$pink-medium};
+    --meteor-three: #{Palettes.$pink-light};
+  }
+}
+@mixin bro-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_bro'] {
+    --meteor-one: #{Palettes.$brown-light};
+    --meteor-two: #{Palettes.$brown-medium};
+    --meteor-three: #{Palettes.$brown-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_bro'] {
+    --meteor-one: #{Palettes.$brown-dark};
+    --meteor-two: #{Palettes.$brown-medium};
+    --meteor-three: #{Palettes.$brown-light};
+  }
+}
+@mixin tur-tint {
+  //--|🠊 Dark Shade: light, medium and dark, the old rain on its dark gradient 🠈|--\\
+  &[class*='dar_tur'] {
+    --meteor-one: #{Palettes.$turquoise-light};
+    --meteor-two: #{Palettes.$turquoise-medium};
+    --meteor-three: #{Palettes.$turquoise-dark};
+  }
+  //--|🠊 Light Shade: the mirror, dark first 🠈|--\\
+  &[class*='lig_tur'] {
+    --meteor-one: #{Palettes.$turquoise-dark};
+    --meteor-two: #{Palettes.$turquoise-medium};
+    --meteor-three: #{Palettes.$turquoise-light};
+  }
+}
+//--|===|--\\
+canvas[class*='meteorites'] {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none; //--|🠈 Scenery: clicks fall through to what's behind it 🠈|--\\
+  @include meteorites-colors();
+  //--|🠋 Desktop (Landscape) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    @include desktop-landscape();
+  }
+  //--|🠋 Mobile (Portrait) 🠋|--\\
+  @media screen and (orientation: portrait) {
+    @include mobile-portrait();
+  }
+  //--|🠋 Tablet (Squaring) 🠋|--\\
+  @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
+    @include tablet-squaring();
+  }
+}

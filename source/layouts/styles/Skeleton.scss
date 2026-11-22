@@ -209,7 +209,7 @@ body {
       aside[class*='aside'],
       aside[class*='label'],
       aside[class*='button'],
-      aside[class*='figure'],
+      aside[class*='canvas'],
       aside[class*='article'],
       aside[class*='section'],
       aside[class*='division'],
@@ -225,7 +225,7 @@ body {
         @include Mixins.landscape-grid;
         aside[class*='time'],
         aside[class*='table'],
-        aside[class*='figure'],
+        aside[class*='canvas'],
         aside[class*='article'],
         aside[class*='division'],
         aside[class*='navigation'] {
@@ -243,7 +243,7 @@ body {
         @include Mixins.portrait-grid;
         aside[class*='time'],
         aside[class*='table'],
-        aside[class*='figure'],
+        aside[class*='canvas'],
         aside[class*='article'],
         aside[class*='division'],
         aside[class*='navigation'] {

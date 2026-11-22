@@ -240,14 +240,14 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
-      {/*--|🠊 <Division> 🠈|--*/}
+      {/*--|🠊 <Canvas> 🠈|--*/}
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Division_Placeholder>', '<Division_Testing>'] as Array<string>,
+          titles: ['<Canvas_Meteorites>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas> replaces <Figure> 🠈|--\\
         }}
         info={{
-          labelName: 'division',
+          labelName: 'canvas',
           blockName: blockName as 'header',
           pageName: pageName as 'components',
         }}
@@ -257,14 +257,14 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
           shade: styleShade,
         }}
       />
-      {/*--|🠊 <Figure> 🠈|--*/}
+      {/*--|🠊 <Division> 🠈|--*/}
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Figure_Default>'] as Array<string>,
+          titles: ['<Division_Placeholder>', '<Division_Testing>'] as Array<string>,
         }}
         info={{
-          labelName: 'figure',
+          labelName: 'division',
           blockName: blockName as 'header',
           pageName: pageName as 'components',
         }}
