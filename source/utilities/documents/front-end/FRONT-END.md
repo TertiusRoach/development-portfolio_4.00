@@ -214,7 +214,7 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 
 - **What's inside.** Every field is a `<LabelTextarea>` in `⟨opaque⟩`: `{input}` in a `<fieldset>` with its own `data-input` (`{email}`, `{password}`, `{text}`), and six `{block}`s in a `<fieldset class="code">` for the Verify and Reset codes. Every button is a `<ButtonDefault>` in `⟨lucid⟩`, with the old sizes and shades. `<ButtonDefault>` fills its grid cell, so the cell decides its size. The eye and generate buttons are the exception: `<p>` `-icon-` in `⟨opaque⟩`, so they have no box, laid over the right end of the password like the old ones (generate, then the eye). They sit on the right because on the left they'd cover the text, and `<LabelTextarea>`'s padding is its own. A `<p>` icon is taller than the input, so it reaches a little above and below it.
 - **Props.** `info` like every component, and `style: { color }` with all ten colours. The class is `${labelName}-${blockName}_${variant}-default color_def` (`login-main_login-default mon_def`), selected with `form[class*='_login-']`. The colour is slot `[0]`; `_def` is a placeholder, the same as a `<Label>`'s. The `<Form>` hands `style.color` to every `<Label>` and `<Button>` inside it.
-- **One `.scss` per Form,** split into `%desk-`, `%mobi-` and `%tabl-` placeholders (flex, grid, tint), with all three mixins. Inner parts are selected from the `<form>` with `>` (`> div[class='header'] > div[class='text']`), because `<ButtonDefault>` has its own `div.text` and `div.icon`.
+- **One `.scss` per Form,** with all three mixins. Inner parts are selected from the `<form>` with `>` (`> div[class='header'] > div[class='text']`), because `<ButtonDefault>` has its own `div.text` and `div.icon`.
 - **The card** takes `<SectionDemonstration>`'s sizes: 448×672, 285×416, 214×312, 165×240. The old ratios are on record in git: `git show d3b4ec09:source/layouts/components/Form/login/Form.login.scss`. On the two small cards, the header hides and the bottom row shrinks to fit, which is the old Desktop 480px rule carried over to every orientation.
 - **`defineButton()`** in `Form_*.ts` keeps the old size swap for the secondary buttons: `<h6>` with text, or a `<p>` icon at `<= 768px` and on a near-square screen whose long side is 1920px or less (the steps where the card shrinks). It runs once per render.
 - **Visual-only for now.** `onSubmit={(event) => event.preventDefault()}` is the one live handler, because a `<ButtonDefault>` inside a `<form>` submits it. The old submit handler sits under the component in a `/* … */` block, with `passwordHash` renamed to `password` (see [SERVER.md, Section 3](../back-end/SERVER.md#2-how-a-form-reaches-the-server-today)). The old helpers (`viewText`, `viewPass`, `axiosError`, `retrieveEndpoint`), each Form's own helpers and the old server route from its `Form_*.js` are commented out at the bottom of its `Form_*.ts`.
@@ -285,7 +285,7 @@ A `Warning:` can stand alone; `Helper:` and `Guidance:` only follow one.
 - **An event is typed with every element the cases render.** `<LabelSelection>` renders a `<select>` or an `<input>`, so its handler is `React.ChangeEvent<HTMLInputElement | HTMLSelectElement>`. The limit: the handler gets the union, so a caller that needs something only one element has (`.selectedIndex`) checks `event.target` first. One handler per element would avoid that, but it would also undo the merge.
 - **A `<Label>` inherits from its parent through `data-` attributes, never its class.** `previewParent()` reads the nearest `<fieldset>` or `<form>` after the first render and returns its "genes": `data-group` (the name every `{option}` radio in it shares) and `data-input` (`'{password}'`, `'{email}'` … for an `{input}`, `'{text}'` when missing). A class changes as styles change; a `data-` attribute doesn't, so `.split('_')` never touches it. **The one exception:** the first `{option}` in a `<fieldset>` or `<form>` without a `data-group` writes one, the only place a component writes to an element it doesn't own. It's limited to those two tags. It lives in `Label_switching.ts` and `Label_textarea.ts`, the two that use it, written out in both. It moves to `layouts/tools/` once something outside the `<Label>`s needs it.
 
-Smaller components keep everything in one `.scss` file and split it with placeholders instead: `%desk-flex`, `%desk-grid`, `%desk-tint` and their `mobi-` and `tabl-` versions (see [Scaling Pattern](#6-scaling-pattern)).
+Smaller components keep everything in one `.scss` file, with the three mixins written directly (see [Scaling Pattern](#6-scaling-pattern)).
 
 ### Component Rules
 
@@ -668,45 +668,33 @@ aside[class*='characters-default'] {
 }
 ```
 
-Inside each mixin, styles are grouped into `flex`, `grid` and `tint` placeholders. Each tablet placeholder splits into a Desktop and a Mobile branch:
+Inside each mixin, the rules sit directly in the mixin, nested as usual. The include already sits inside the root selector, so no placeholder, `@at-root` or `@extend` is needed. The tablet mixin splits into a Desktop and a Mobile branch, each under its own flag:
 
 ```scss
 @mixin tablet-squaring {
-  //--|🠋 Tablet (Characters) 🠋|--\\
-  %tabl-flex {
-    @at-root aside[class*='characters-default'] {
-      @media screen and (orientation: landscape) {
-        //--|🠊 Desktop 🠈|--\\
-        @media screen and (max-width: 1920px) {
-        }
-        @media screen and (max-width: 1366px) {
-        }
-        @media screen and (max-width: 854px) {
-        }
-      }
-      @media screen and (orientation: portrait) {
-        //--|🠊 Mobile 🠈|--\\
-        @media screen and (max-height: 1920px) {
-        }
-        @media screen and (max-height: 1366px) {
-        }
-        @media screen and (max-height: 854px) {
-        }
-      }
+  //--|🠋 Tablet (Navigation) 🠋|--\\
+  @media screen and (orientation: landscape) {
+    //--|🠊 Desktop 🠈|--\\
+    @media screen and (max-width: 1920px) {
+    }
+    @media screen and (max-width: 1366px) {
+    }
+    @media screen and (max-width: 854px) {
     }
   }
-  %tabl-grid {
-    /* same shape */
+  @media screen and (orientation: portrait) {
+    //--|🠊 Mobile 🠈|--\\
+    @media screen and (max-height: 1920px) {
+    }
+    @media screen and (max-height: 1366px) {
+    }
+    @media screen and (max-height: 854px) {
+    }
   }
-  %tabl-tint {
-    /* same shape */
-  }
-  //--|===|--\\
-  @extend %tabl-flex;
-  @extend %tabl-grid;
-  @extend %tabl-tint;
 }
 ```
+
+**No `flex`, `grid` and `tint` placeholders.** The older form wrapped each mixin's rules in `%desk-flex { @at-root aside[…] { … } }` and closed with `@extend %desk-flex;`. The `@at-root` lifted the rules straight back out to the root selector, so the placeholder stayed empty and the `@extend` copied nothing: the compiled CSS is identical without them (tested on `Navigation.default.scss`). The Form, `<AsideCharacters>`, `<TimeClock>` and `<TableTracking>` files still use it and move over one at a time (see [Parked for Later](#10-parked-for-later)).
 
 Components with a `pipeline/` folder follow the same rule per file: `Button_size.scss` exports `desktop-size`, `mobile-size` and `tablet-size`, and `Button.profile.scss` includes them in the same three blocks.
 
@@ -944,6 +932,7 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | `_division-${variant}` classes            | `<DivisionColourize>`, `<DivisionTesting>` and `<DivisionPlaceholder>` move to `_${variant}-default` ([Component Classes](#component-classes)), one at a time, with their harness SCSS                                 |
 | `blockViews()` parameter order            | `blockViews()` and its 32 handlers move to names-first ([Declaration Order](#declaration-order)): about 62 calls in 14 files, in one reorder-only commit right after a clean one                                       |
 | Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                                                   |
+| `flex` / `grid` / `tint` placeholders     | The five Forms, `Aside.characters.scss`, `Time.clock-count.scss` and `Table.tracking.scss` drop their `%desk-` / `%mobi-` / `%tabl-` wrappers, `@at-root` and `@extend` ([Scaling Pattern](#6-scaling-pattern)), one file at a time, checking the compiled CSS stays identical |
 | Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                                                           |
 | Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([DATA.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow))                                                    |
 | Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](../GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                                                      |

@@ -159,9 +159,7 @@ function DefaultNavigation({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${blockName}-midground`}>
-            <canvas></canvas>
-          </figure>
+          <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>
         </aside>
       );
@@ -292,9 +290,7 @@ function DefaultNavigation({ info }: InfoProps) {
               }}
             />
           </section>
-          <figure className={`${blockName}-midground`}>
-            <canvas></canvas>
-          </figure>
+          <figure className={`${blockName}-midground`}></figure>
           <div className={`${blockName}-background`}></div>
         </aside>
       );

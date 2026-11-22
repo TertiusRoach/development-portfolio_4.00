@@ -147,16 +147,17 @@ const VerticalButtons = (
   switch (true) {
     case cases.buttons !== undefined:
       return cases.buttons.map((path, index) => (
+        //--|🠊 Multiple <Button> 🠈|--\\
         <li className={path} key={index}>
           <ButtonRouting
             style={{
-              size: '<h1>',
               clarity: '⟨lucid⟩',
               //--|===|--\\
               color: style.color,
               shade: style.shade,
               image: cases.image?.[index] as string,
               view: path as 'top-lef' | 'top-rig' | 'bot-rig' | 'bot-lef',
+              size: path === 'top-rig' || path === 'bot-lef' ? '<p>' : '<h1>',
             }}
             info={{
               pageName: info.pageName,
@@ -172,17 +173,19 @@ const VerticalButtons = (
         </li>
       ));
     case style.view !== undefined:
+      //--|🠊 Single <Button> 🠈|--\\
+      let styleSize: string = style.view === 'top-rig' || style.view === 'bot-lef' ? '<p>' : '<h1>';
       return (
         <li className={style.view}>
           <ButtonRouting
             style={{
-              size: '<h1>',
               clarity: '⟨lucid⟩',
               //--|===|--\\
               view: style.view,
               color: style.color,
               shade: style.shade,
               image: style.image as string,
+              size: styleSize as '<p>' | '<h1>',
             }}
             info={{
               pageName: info.pageName,
@@ -201,6 +204,8 @@ const VerticalButtons = (
       return null;
   }
 };
+
+export default NavigationDefault;
 
 /*
 let NavigationMain = (info: TheseProps['info'], style: TheseProps['style'], cases: TheseProps['cases']) => {
@@ -252,4 +257,3 @@ let NavigationRightbar = (info: TheseProps['info'], style: TheseProps['style'], 
   return <></>;
 };
 */
-export default NavigationDefault;
