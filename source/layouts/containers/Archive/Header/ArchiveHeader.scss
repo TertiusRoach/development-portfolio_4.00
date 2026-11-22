@@ -72,21 +72,7 @@
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
 
   section[class*='header-fore'] {
-    > menu[class*='select'] {
-      //--|🠊 AI Code: Review Please 2026-11-22 · > keeps this off the <menu> inside the <nav>, the nav places that one itself 🠈|--\\
-      grid-area: 1 / 1 / 3 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
-
-      margin-left: $high-mobi;
-      @media screen and (max-width: 768px) {
-        margin-left: $test-mobi;
-      }
-      @media screen and (max-width: 480px) {
-        margin-left: $misc-mobi;
-      }
-      @media screen and (max-width: 360px) {
-        margin-left: $tiny-mobi;
-      }
-    }
+    //--|🠊 AI Code: Review Please 2026-11-22 · The <MenuSelect> moved inside <NavigationDefault>, which places it; its old placement rule matched nothing, so it went 🠈|--\\
   }
   figure[class*='header-mid'] {
     display: inherit; //--|🠈 display: grid; 🠈|--\\

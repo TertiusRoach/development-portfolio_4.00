@@ -91,20 +91,6 @@ function ArchiveHeader({ info }: InfoProps) {
                 },
               }}
             />
-            {/*
-            <DivisionConveyor
-              //--|🠊 <div class="elements-header_conveyor-default"/> 🠈|--\\
-              cases={{
-                axis: '[y]',
-                call: MenuSwipes as React.ComponentType<InfoProps>,
-              }}
-              info={{
-                labelName: 'elements',
-                blockName: blockName as 'header',
-                pageName: pageName as 'components',
-              }}
-            />
-            */}
           </section>
           <figure className={`${blockName}-midground`}>
             <div className="top"></div>
@@ -183,34 +169,6 @@ function ArchiveHeader({ info }: InfoProps) {
                 },
               }}
             />
-            {/*
-            <MenuSelect
-              info={{
-                blockName: blockName as 'main',
-                pageName: pageName as 'components',
-                labelName: `${pageName}-applications` as string,
-              }}
-              style={{
-                align: '-mid-',
-                view: 'top-cen',
-                shade: '~light~',
-                color: ['(green)', '(blue)', '(red)'],
-
-                image: [
-                  loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'),
-                  loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),
-                  loadAsset('-svg-', '/tralogfin-application/find-a-link/primary-medium'),
-                ] as Array<string>,
-                size: '<h4>',
-              }}
-              cases={{
-                pages: 3,
-                axis: '[x]',
-                link: undefined,
-                task: [() => loadPages('overtime'), () => loadPages('ticketing'), () => loadPages('hyperlink')],
-              }}
-            />
-            */}
           </section>
           <figure className={`${blockName}-midground`}>
             <div className="top"></div>
