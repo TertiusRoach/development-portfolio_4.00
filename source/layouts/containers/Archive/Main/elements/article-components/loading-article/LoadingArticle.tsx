@@ -3,13 +3,13 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import MenuSwipe from '../../../../../../components/Menu/swipe/Menu.swipe';
 import ArticleLoading from '../../../../../../components/Article/loading/Article.loading';
-import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
-import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import DivisionColourize from '../../../../../../components/Division/colourize/Division.colourize';
+import DivisionFullscreen from '../../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Functions 🠋|--\\
-import toggleColors from './LoadingFunctions'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import toggleColors, { downplayColourize } from './LoadingFunctions';
 import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
@@ -19,20 +19,13 @@ interface InfoProps {
     labelName: string;
   };
 }
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from <UpdatesArticle>: the swipe flips between a ~dark~ and a ~light~ slide 🠈|--\\
 function LoadingArticle({ info }: InfoProps) {
   const blockName = info.blockName as 'main';
   const labelName = info.labelName as 'default';
   const pageName = info.pageName as 'components';
 
-  //--|🠊 AI Code: Review Please 2026-11-10 · The colour toggles step back until they're hovered, like every [archive] page 🠈|--\\
   useEffect(() => {
-    const colourizeDivisions = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="loading-article"] div[class*="_division-colourize"]`,
-    ) as NodeListOf<HTMLDivElement>;
-    for (let i = 0; i < colourizeDivisions.length; i++) {
-      colourizeDivisions[i].classList.add('downplay');
-    }
+    downplayColourize(pageName, blockName);
   }, [pageName, blockName, labelName]);
 
   let viewShade = 1 as number;

@@ -218,21 +218,18 @@
         & {
           grid-gap: calc(64px / 4) 0; //--|🠋 Width: 1920px 🠋|--\\
           grid-template-columns: 1fr $high-mobi; //--|🠈 columns 🠈|--\\
-          grid-template-rows: repeat(4, $high-mobi); //--|🠈 rows 🠈|--//
+          grid-template-rows: repeat(4, auto); //--|🠈 AI Code: Review Please 2026-11-22 · Each row is as tall as its <MenuScroll>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--//
           @media screen and (max-width: 768px) {
             grid-gap: calc(48px / 4) 0; //--|🠋 Width: 1366px 🠋|--\\
             grid-template-columns: 1fr $test-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $test-mobi); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-width: 480px) {
             grid-gap: calc(32px / 4) 0; //--|🠋 Width: 854px 🠋|--\\
             grid-template-columns: 1fr $misc-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $misc-mobi); //--|🠈 rows 🠈|--//
           }
           @media screen and (max-width: 360px) {
             grid-gap: calc(24px / 4) 0; //--|🠋 Width: 640px 🠋|--\\
             grid-template-columns: 1fr $tiny-mobi; //--|🠈 columns 🠈|--\\
-            grid-template-rows: repeat(4, $tiny-mobi); //--|🠈 rows 🠈|--//
           }
         }
 
@@ -276,24 +273,16 @@
         }
 
         & {
-          $high-mobi-vert-cols: $high-mobi 1fr $high-mobi 1fr $high-mobi 1fr $high-mobi;
-          $test-mobi-vert-cols: $test-mobi 1fr $test-mobi 1fr $test-mobi 1fr $test-mobi;
-          $misc-mobi-vert-cols: $misc-mobi 1fr $misc-mobi 1fr $misc-mobi 1fr $misc-mobi;
-          $tiny-mobi-vert-cols: $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi 1fr $tiny-mobi;
-
           grid-template-rows: 1fr $high-mobi; //--|🠈 rows 🠈|--//
-          grid-template-columns: $high-mobi-vert-cols; //--|🠈 columns 🠈|--\\
+          grid-template-columns: auto 1fr auto 1fr auto 1fr auto; //--|🠈 AI Code: Review Please 2026-11-22 · Each column is as wide as its <MenuScroll>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--\\
           @media screen and (max-width: 768px) {
             grid-template-rows: 1fr $test-mobi; //--|🠈 rows 🠈|--//
-            grid-template-columns: $test-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 480px) {
             grid-template-rows: 1fr $misc-mobi; //--|🠈 rows 🠈|--//
-            grid-template-columns: $misc-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
           @media screen and (max-width: 360px) {
             grid-template-rows: 1fr $tiny-mobi; //--|🠈 rows 🠈|--//
-            grid-template-columns: $tiny-mobi-vert-cols; //--|🠈 columns 🠈|--\\
           }
         }
 

@@ -46,8 +46,31 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
+    display: grid; //--|🠈 AI Code: Review Please 2026-11-22 · Without it both cards stack in a column and the second one spills into the next page 🠈|--\\
     section[class*='demonstration'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
+    }
+    //--|🠋 64px (Left & Right) for Design 🠋|--\\
+    grid-template: //--|🠋 Height: 1920px 🠋|--\\
+      repeat(2, 6rem) 1fr repeat(2, 6rem) //--|🠈 rows 🠈|--//
+      / 64px 1fr 64px; //--|🠈 columns 🠈|--\\
+    @media screen and (max-width: 768px) {
+      //--|🠋 48px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Height: 1366px 🠋|--\\
+        repeat(2, 5rem) 1fr repeat(2, 5rem) //--|🠈 rows 🠈|--//
+        / 48px 1fr 48px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 480px) {
+      //--|🠋 32px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Height: 854px 🠋|--\\
+        repeat(2, 3rem) 1fr repeat(2, 3rem) //--|🠈 rows 🠈|--//
+        / 32px 1fr 32px; //--|🠈 columns 🠈|--\\
+    }
+    @media screen and (max-width: 360px) {
+      //--|🠋 24px (Left & Right) for Design 🠋|--\\
+      grid-template: //--|🠋 Height: 640px 🠋|--\\
+        repeat(2, 2rem) 1fr repeat(2, 2rem) //--|🠈 rows 🠈|--//
+        / 24px 1fr 24px; //--|🠈 columns 🠈|--\\
     }
   }
 }

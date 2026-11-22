@@ -14,4 +14,13 @@ function toggleColors(tint: string): void {
   articleDark.classList.replace(prevDarkClass, nextDarkClass);
   articleLight.classList.replace(prevLightClass, nextLightClass);
 }
+//--|🠋 Colourize Downplay 🠋|--\\
+export const downplayColourize = (pageName: string, blockName: string): void => {
+  const colourizeDivisions = document.querySelectorAll(
+    `#${pageName}-${blockName} aside[class="loading-article"] div[class*="_division-colourize"]`,
+  ) as NodeListOf<HTMLDivElement>;
+  for (let i = 0; i < colourizeDivisions.length; i++) {
+    colourizeDivisions[i].classList.add('downplay');
+  }
+};
 export default toggleColors;
