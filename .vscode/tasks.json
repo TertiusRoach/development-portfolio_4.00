@@ -2,9 +2,45 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "npm run pull",
+      "detail": "Pulls both repositories, fast-forward only, and shows where each stands. Never commits or pushes. A failed pull (offline, or a change in the way) only warns, so the app still starts.",
+      "type": "shell",
+      "command": "npm run pull",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "linux": {
+        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run pull; true",
+        "options": {
+          "shell": {
+            "executable": "/bin/bash",
+            "args": ["-c"]
+          }
+        }
+      },
+      "windows": {
+        "command": "npm run pull & exit /b 0",
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/d", "/c"]
+          }
+        }
+      },
+      "osx": {
+        "command": "npm run pull; true"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "npm run app",
       "type": "shell",
       "command": "npm run app",
+      "dependsOn": "npm run pull",
       "options": {
         "cwd": "${workspaceFolder}"
       },
