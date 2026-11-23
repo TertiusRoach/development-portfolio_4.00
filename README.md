@@ -86,7 +86,7 @@ Designed in Figma first, then built by hand.
 
 ### Prerequisites
 
-[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/documents/GITHUB.md#7-set-up-a-new-computer)**.
+[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md#7-set-up-a-new-computer)**.
 
 Check that Node is ready:
 
@@ -195,7 +195,7 @@ npm run deploy
 npm run stop
 ```
 
-> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs it automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/EDITOR.md)**.
+> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs it automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)**.
 
 ### Application Flow
 
@@ -469,6 +469,7 @@ Application logic and infrastructure that supports the UI. Setup is in [MODULES.
 | `server/MongoDB/testing/` | Typed dataset modules seeded from `TraLogFin.json` for front-end testing         |
 | `routes/`                 | Front-end route stubs for each application (empty for now)                       |
 | `context/`                | React context for email and password state                                       |
+| `guards/`                 | Leak guards: Git hooks and sync checks, controlled by the back end               |
 
 #### `source/utilities/`
 
@@ -476,14 +477,14 @@ Reusable utilities, references and internal documentation.
 
 | Utility        | Purpose                                                         |
 | -------------- | --------------------------------------------------------------- |
-| `document/`    | All project documentation (see [Documentation](#documentation)) |
+| `documents/`   | All project documentation (see [Documentation](#documentation)) |
 | `vendors/`     | Third-party vendor code kept separate from authored logic       |
 | `~flex-setup/` | Flexbox reference and layout patterns                           |
 | `~grid-setup/` | Grid reference and layout patterns                              |
 
 #### `.vscode/`
 
-Editor configuration for consistent debugging and project workflows. What each file does is in [EDITOR.md](source/utilities/documents/EDITOR.md#what-vscode-does).
+Editor configuration for consistent debugging and project workflows. What each file does is in [EDITOR.md](source/utilities/documents/back-end/EDITOR.md#what-vscode-does).
 
 </details>
 
@@ -501,8 +502,8 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
 | **[GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
 | **[CHARACTERS.md](source/utilities/documents/CHARACTERS.md)** | The 18 test characters, their psychology and the rules they test                                |
-| **[GITHUB.md](source/utilities/documents/GITHUB.md)**         | Machine setup, releases, tags, syncing machines, fixing Git trouble                             |
-| **[EDITOR.md](source/utilities/documents/EDITOR.md)**         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                                    |
+| **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)**         | Machine setup, releases, tags, syncing machines, fixing Git trouble                             |
+| **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)**         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                                    |
 
 #### Front End
 
@@ -541,7 +542,7 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 - [ ] A data layer that can switch from MongoDB to MySQL
 - [ ] Unpaid-solutions record for freelancers
 
-The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/GITHUB.md#10-status-log).
+The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/back-end/GITHUB.md#10-status-log).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -553,7 +554,7 @@ Contributions are welcome, as long as they keep the project readable. Before you
 
 1. **Read the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
-3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/GITHUB.md#4-finish-a-version-and-start-the-next).
+3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -570,7 +571,7 @@ Distributed under the ISC License, as declared in `package.json`.
 
 ## Contact
 
-**Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach)
+**Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach) · [tertius.roach@gmail.com](mailto:tertius.roach@gmail.com)
 
 Project link: [github.com/TertiusRoach/development-portfolio_4.00](https://github.com/TertiusRoach/development-portfolio_4.00)
 

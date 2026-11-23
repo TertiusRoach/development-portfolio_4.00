@@ -1,6 +1,6 @@
 # Server
 
-The structure both sides share is in [AGREEMENT.md](../AGREEMENT.md). This page covers how the back end in `source/modules/` is organised, how the front end shares what a user types, and where the server code is headed. Setting it up on your machine is in [MODULES.md](MODULES.md); how the records are shaped is in [TABLE.md](../front-end/TABLE.md).
+The structure both sides share is in [COMPONENTS.md](../front-end/COMPONENTS.md). This page covers how the back end in `source/modules/` is organised, how the front end shares what a user types, and where the server code is headed. Setting it up on your machine is in [MODULES.md](MODULES.md); how the records are shaped is in [TABLE.md](../front-end/TABLE.md).
 
 ---
 
@@ -19,6 +19,7 @@ The structure both sides share is in [AGREEMENT.md](../AGREEMENT.md). This page 
 | Folder                           | Holds                                                                                                  | State                  |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------- |
 | `modules/context/`               | `EmailContext.tsx`, `PasswordContext.tsx`: what the `<Form>`s share while a user types                 | Working                |
+| `modules/guards/`                | The leak guards: Git hooks and sync checks that keep back-end files, secrets and drifting shared files out of the public repository. Controlled by the back end | Empty, planned |
 | `modules/routes/`                | One file per application: `trackDay.ts`, `logTicket.ts`, `findLink.ts`                                 | Empty, reserved        |
 | `modules/scripts/`               | Where the front end meets the back end. One file per block: `Header.ts`, `Main.ts`, `Footer.ts`, `Leftbar.ts`, `Overlay.ts`, `Rightbar.ts`. Plus `Apps.ts` (encryption) and `Demo.ts` (testing) | Empty, reserved        |
 | `modules/server/MongoDB/testing/` | The data layer against a local baseline, `TraLogFin.json`: `TrackTime.ts` works, the others are stubs | Partly working         |
@@ -75,7 +76,7 @@ The front end and the back end meet in `modules/scripts/`, and nowhere else.
 <Component>.tsx  →  scripts/Header.ts  →  TrackTime.createEntry()  →  online/ or offline/  →  Server
 ```
 
-**The clones.** [AGREEMENT.md](../AGREEMENT.md) sets the rule: every `.tsx` gets a `.jsx` twin in `source/modules/`, at the same path. Until that move is made, this is how it stands: each block-level container has a `*.jsx` clone controlled by the back end, in the same folder as its `*.tsx`: the page root (`Overtime/Overtime.jsx`) and its six blocks (`Overtime/Header/OvertimeHeader.jsx`), 35 in all. Nothing in `elements/` or `components/` is cloned. This repository may not have access to them, so Git ignores them (`source/layouts/containers/**/*.jsx` in `.gitignore`). They never reach the app: Webpack resolves only `.tsx`, `.ts` and `.js`, and TypeScript skips a `.jsx` when a `.tsx` of the same name sits beside it.
+**The clones.** [COMPONENTS.md](../front-end/COMPONENTS.md) sets the rule: every `.tsx` gets a `.jsx` twin in `source/modules/`, at the same path. Until that move is made, this is how it stands: each block-level container has a `*.jsx` clone controlled by the back end, in the same folder as its `*.tsx`: the page root (`Overtime/Overtime.jsx`) and its six blocks (`Overtime/Header/OvertimeHeader.jsx`), 35 in all. Nothing in `elements/` or `components/` is cloned. This repository may not have access to them, so Git ignores them (`source/layouts/containers/**/*.jsx` in `.gitignore`). They never reach the app: Webpack resolves only `.tsx`, `.ts` and `.js`, and TypeScript skips a `.jsx` when a `.tsx` of the same name sits beside it.
 
 **Proving a clone is at fault.** Each block file logs what it sends and what comes back, in the console format from [FRONT-END.md, Console Messages](../front-end/FRONT-END.md#console-messages):
 

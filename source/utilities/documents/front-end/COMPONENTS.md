@@ -82,11 +82,12 @@ source/
 │   ├── containers/   .tsx + .ts                  │   ├── containers/   .jsx + .js    twins of every container; routes live here, per app and per block
 │   ├── scripts/      .ts                         │   ├── scripts/      .js           same file names: Head_Foot, Left_Right, Main_Over
 │   ├── tools/        .ts                         │   ├── tools/        .js           helpers the back end uses a lot
-│   └── styles/       front end only              │   └── server/       back end only MongoDB, MySQL, IndexedDB and the testing characters
+│   └── styles/       front end only              │   ├── server/       back end only MongoDB, MySQL, IndexedDB and the testing characters
+│                                                 │   └── guards/       back end only the leak guards: Git hooks and sync checks
 ```
 
 - **Same names everywhere.** Each application uses its container name on both sides: `Archive`, `Landing`, `Overtime`, `Ticketing`, `Hyperlink`.
-- **One folder each that the other side doesn't have.** `styles/` belongs to the front end; `server/` belongs to the back end.
+- **Folders the other side doesn't have.** `styles/` belongs to the front end; `server/` and `guards/` belong to the back end.
 - **The back end uses the front end's categories.** If a piece of back-end work belongs to a component or a container, it lives in that component's or container's twin folder, never in a new folder of its own.
 
 ---
@@ -106,7 +107,7 @@ The rules are checked, not only written down. A gulp `guard` task (planned, not 
 
 - a `.jsx` has no `.tsx` twin, or a `.tsx` has no `.jsx` twin;
 - any file imports from the other language;
-- a folder exists on one side and not the other (except `styles/` and `server/`).
+- a folder exists on one side and not the other (except `styles/`, `server/` and `guards/`).
 
 It runs before every push and can't change or delete anything.
 
@@ -118,7 +119,7 @@ Where `source/` still differs from this page, oldest first. Each one is fixed in
 
 | What                                    | Today                                                                                       | Agreed target                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| The `.jsx` clones                       | 35 container clones next to their `.tsx` in `layouts/containers/`, ignored by Git ([SERVER.md, Section 4](back-end/SERVER.md#4-entry-point-communication)) | 113 twins in `modules/components/` and `modules/containers/` |
+| The `.jsx` clones                       | 35 container clones next to their `.tsx` in `layouts/containers/`, ignored by Git ([SERVER.md, Section 4](../back-end/SERVER.md#4-entry-point-communication)) | 113 twins in `modules/components/` and `modules/containers/` |
 | `modules/routes/`                       | `trackDay.ts`, `logTicket.ts`, `findLink.ts`                                                | Routes inside `modules/containers/<App>/`, named by container |
 | `modules/scripts/`                      | `.ts`, one per block, plus `Apps.ts` and `Demo.ts`                                          | `.js` pairs matching `layouts/scripts/`                       |
 | `modules/context/`                      | `EmailContext.tsx`, `PasswordContext.tsx`: TypeScript inside the JavaScript side            | **Open:** to be decided with the owner                        |

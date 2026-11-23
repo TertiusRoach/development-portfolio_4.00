@@ -46,7 +46,7 @@ Every document lives in `source/utilities/documents/`. If you're unsure about an
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | **FRONT-END.md** (this page)             | How code is written: naming, files, scaling, colours, comments                                      |
 | [GUIDELINES.md](../GUIDELINES.md)        | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
-| [AGREEMENT.md](../AGREEMENT.md)          | The folder structure and file types the front end and back end share: twins, imports, crossings    |
+| [COMPONENTS.md](COMPONENTS.md)           | The folder structure and file types the front end and back end share: twins, imports, crossings    |
 | [TOGGLES.md](TOGGLES.md)                 | Which page each toggle opens (Vocation, Position, Occupation)                                       |
 | [CONTAINERS.md](CONTAINERS.md)           | The six containers every page is built from, how they pair and flip, and what each one does per app |
 | [CONTEXTS.md](CONTEXTS.md)               | How the `<Form>`s on a page share what a user types                                                 |
@@ -56,11 +56,11 @@ Every document lives in `source/utilities/documents/`. If you're unsure about an
 | [DATA.md](../back-end/DATA.md)           | How data travels, MongoDB-to-MySQL rules, offline storage                                           |
 | [MODULES.md](../back-end/MODULES.md)     | Setting up the database, secrets, test emails and the server on any OS                              |
 | [SERVER.md](../back-end/SERVER.md)       | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
-| [GITHUB.md](../GITHUB.md)                | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
-| [EDITOR.md](../EDITOR.md)                | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
+| [GITHUB.md](../back-end/GITHUB.md)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
+| [EDITOR.md](../back-end/EDITOR.md)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
 | [REFERENCE.md](../back-end/REFERENCE.md) | The template the main `README.md` follows                                                           |
 
-**When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, AGREEMENT.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
+**When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, COMPONENTS.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
 ---
 
@@ -183,7 +183,7 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|ðŸ
 
 ### Git
 
-Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](../GITHUB.md#9-names-and-numbers).
+Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers).
 
 ---
 

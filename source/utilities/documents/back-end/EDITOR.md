@@ -63,7 +63,9 @@ I use the [Folder Tags](https://marketplace.visualstudio.com/search?term=Folder%
 
 VS Code can hide folders you don't want to see right now. It only changes the Explorer: nothing is deleted, and search still finds the files.
 
-> **Rule:** nothing is hidden by default, because nothing is ever finished. Every component is still being refactored. Hiding is a personal tool for focusing, never a project setting.
+> **Rule:** no project folder is hidden by default, because nothing is ever finished. Every component is still being refactored. Hiding a project folder is a personal tool for focusing, never a project setting.
+>
+> **The one exception is tool clutter.** Folders and files that tools create and Git ignores (`.claude`, `.claude-notes`, the empty dotfiles the Claude Code sandbox leaves in the root, and the `.frontend.git` and `.backend.git` histories) are hidden for everyone in `.vscode/settings.json`, under `files.exclude`. When a line is added to the ignore list for tool clutter, the same pattern is added there in the same step.
 
 To hide something for yourself:
 
@@ -71,6 +73,6 @@ To hide something for yourself:
 2. Search for `files.exclude`.
 3. Click **Add Pattern** and type the folder path, for example `source/layouts/components/Figure`.
 
-Use the **User** tab so the change stays on your machine. The **Workspace** tab writes into `.vscode/settings.json`, which is committed and would hide the folder for everyone.
+Use the **User** tab so the change stays on your machine. The **Workspace** tab writes into `.vscode/settings.json`, which is committed and would hide the folder for everyone: keep that for tool clutter only.
 
 To bring it back, delete the pattern from the same list.

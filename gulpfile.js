@@ -1,7 +1,7 @@
 //--|🠊 gulpfile.js 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-13 · The Guard 🠈|--\\
 /*--|🠋
-  The guard from AGREEMENT.md, Section 7. It reads the files Git tracks in source/
+  The guard from COMPONENTS.md, Section 7. It reads the files Git tracks in source/
   and stops with an error when the front end and the back end fall out of line:
   a twin is missing, a file imports from the other language, or a folder exists on
   one side only. It only reads: it never changes or deletes anything.
@@ -47,7 +47,7 @@ gulp.task('guard', (callback) => {
     callback();
   } else {
     console.log(`|--🠊 Warning: ${total} problems: ${problems.twins.length} twins, ${problems.imports.length} imports, ${problems.folders.length} folders, gulpfile.js 🠈--|`);
-    console.log(`|--🠊 Helper: AGREEMENT.md, Section 8 lists what is not yet in line and the agreed target 🠈--|`);
+    console.log(`|--🠊 Helper: COMPONENTS.md, Section 8 lists what is not yet in line and the agreed target 🠈--|`);
     callback(new Error('The Agreement does not hold.'));
   }
 });

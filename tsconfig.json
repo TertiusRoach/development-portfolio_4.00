@@ -19,8 +19,6 @@
   "include": ["source/", "source/layouts/pages/*", "source/layouts/styles/*"],
   "exclude": [
     "node_modules/",
-    "source/**/REVIEW/",
-    "source/utilities/vendors/archive/repositories/log-a-ticket",
-    "source/utilities/vendors/archive/repositories/university-tracker"
+    "source/**/REVIEW/"
   ]
 }

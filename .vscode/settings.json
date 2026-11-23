@@ -14,5 +14,21 @@
     "tabl",
     "Voidspire"
   ],
-  "js/ts.tsdk.path": "node_modules/typescript/lib"
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.claude": true,
+    "**/.claude-notes": true,
+    ".frontend.git": true,
+    ".backend.git": true,
+    ".idea": true,
+    ".zshrc": true,
+    ".bashrc": true,
+    ".profile": true,
+    ".mcp.json": true,
+    ".zprofile": true,
+    ".gitconfig": true,
+    ".ripgreprc": true,
+    ".gitmodules": true,
+    ".bash_profile": true
+  }
 }
