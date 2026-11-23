@@ -2,7 +2,7 @@
 
 # TraLogFin
 
-Three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
+Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
 
 **[Open the Apps](https://tertiusroach.github.io/development-portfolio_4.00/index.html)** | [View Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) | [Source Code](https://github.com/TertiusRoach/development-portfolio_4.00)
 
@@ -105,11 +105,11 @@ One script downloads both repositories into one folder and sets them up.
 
 5. Set up the back end. The secrets and the databases never come with a download, so they're set up by hand, once per computer. Each step is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private):
 
-   | Step                                   | Where                                                                                     |
-   | -------------------------------------- | ----------------------------------------------------------------------------------------- |
-   | Install MongoDB (and MySQL, if needed) | [§ 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private) and [§ 3](source/utilities/documents/back-end/MODULES.md#3-install-mysql) (private) |
-   | Unlock `.env` from `.env.age` with your age key | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env` |
-   | Build the four collections             | [§ 5](source/utilities/documents/back-end/MODULES.md#5-install-the-schemas) (private)     |
+   | Step                                            | Where                                                                                                                                                                 |
+   | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Install MongoDB (and MySQL, if needed)          | [§ 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private) and [§ 3](source/utilities/documents/back-end/MODULES.md#3-install-mysql) (private) |
+   | Unlock `.env` from `.env.age` with your age key | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env`                                                               |
+   | Build the four collections                      | [§ 5](source/utilities/documents/back-end/MODULES.md#5-install-the-schemas) (private)                                                                                 |
 
 6. Start the server in a second terminal, next to the app:
 
