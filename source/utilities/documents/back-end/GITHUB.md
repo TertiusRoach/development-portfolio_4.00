@@ -4,15 +4,15 @@ Copy one line, paste it in the terminal, press `Enter`, check the result, then g
 
 ## Change the Numbers First
 
-Every command uses **`4.8`** as the example. Before you paste, change the numbers to the version you're on:
+Every command uses **`4.8`** as the example. Before you paste, change the numbers to the version you're on. From `4.09` on, branches have two digits after the dot ([Names and Numbers](#9-names-and-numbers)):
 
-| In the commands | What it means                                    | When you're on `4.9`, it becomes |
+| In the commands | What it means                                    | When you're on `4.09`, it becomes |
 | --------------- | ------------------------------------------------ | -------------------------------- |
-| `4.8`           | Your branch, the one you work on                 | `4.9`                            |
-| `v4.08.2`       | This publish (count up: `.1`, `.2`, `.3` …)       | `v4.09.1`                        |
-| `v4.08`         | The finished version's tag                       | `v4.09`                          |
-| `4.9`           | The next branch, only when `4.8` is finished     | `5.0` (each `#` is one digit)    |
-| `4.7`           | The branch before `4.8`                          | `4.8`                            |
+| `4.8`           | Your branch, the one you work on                 | `4.09`                            |
+| `v4.08.2`       | This publish (count up: `.1`, `.2`, `.3` …)       | `v4.09.1`                         |
+| `v4.08`         | The finished version's tag                       | `v4.09`                           |
+| `4.09`          | The next branch, only when `4.8` is finished     | `4.10`                            |
+| `4.7`           | The branch before `4.8`                          | `4.8`                             |
 
 The last patch in the [Status Log](#10-status-log) tells you the next number: `v4.08.1` is there, so this publish is `v4.08.2`.
 
@@ -251,18 +251,18 @@ You should see: `* [new tag] v4.08 -> v4.08`.
 **Step 5: Make the next branch.**
 
 ```bash
-git checkout -b 4.9
+git checkout -b 4.09
 ```
 
-You should see: `Switched to a new branch '4.9'`.
+You should see: `Switched to a new branch '4.09'`.
 
 **Step 6: Upload it.**
 
 ```bash
-git push -u origin 4.9
+git push -u origin 4.09
 ```
 
-You should see: `4.9 -> 4.9` and `branch '4.9' set up to track 'origin/4.9'`.
+You should see: `4.09 -> 4.09` and `branch '4.09' set up to track 'origin/4.09'`.
 
 **Step 7: Delete the old branch on this computer.**
 
@@ -280,7 +280,7 @@ git push origin --delete 4.8
 
 You should see: `- [deleted] 4.8`.
 
-**Done.** Change the active row in the [Status Log](#10-status-log) to ✅ Archived and add a 🚧 Active row for `4.9`.
+**Done.** Change the active row in the [Status Log](#10-status-log) to ✅ Archived and add a 🚧 Active row for `4.09`.
 
 ---
 
@@ -700,12 +700,12 @@ Then do [Another Computer Is Behind](#5-another-computer-is-behind) on the other
 
 | Thing         | Format     | Example    | Meaning                                                   |
 | ------------- | ---------- | ---------- | --------------------------------------------------------- |
-| Branch        | `#.#`      | `4.8`      | The version you're working on                             |
+| Branch        | `#.##`     | `4.09`     | The version you're working on                             |
 | Version tag   | `v#.##`    | `v4.08`    | The finished version, frozen for good                     |
 | Patch tag     | `v#.##.#`  | `v4.08.2`  | A publish to `main` while the branch stays open           |
 | `main`        | `main`     | `main`     | The live site, always equal to the last tag               |
 
-Each `#` is one digit. Tags are zero-padded: `4.8` becomes `v4.08`, never `v4.8`. Patch tags count up from `1` inside a branch.
+Each `#` is one digit. **From `4.09` on, a branch has the same two digits as its tag** (`4.09` → `v4.09`), so the two always read alike and sort in order; after `4.09` comes `4.10`. Branches up to `4.8` kept the old one-digit names, and their tags were zero-padded (`4.8` → `v4.08`). Patch tags count up from `1` inside a branch. backend-architecture_2.00 follows the same rules with its own numbers: branch `2.01`, tags `v2.01`, `v2.01.1`.
 
 **Tags are the archive.** GitHub turns every tag into a `.zip` on the repository's **Tags** page. That's why finished branches get deleted: the tag holds everything.
 

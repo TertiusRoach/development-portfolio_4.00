@@ -42,23 +42,35 @@ How code is written in this repository. Every rule here exists because breaking 
 
 Every document lives in `source/utilities/documents/`. If you're unsure about anything, look here first.
 
-| Document                                 | What it answers                                                                                     |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| **FRONT-END.md** (this page)             | How code is written: naming, files, scaling, colours, comments                                      |
-| [GUIDELINES.md](../GUIDELINES.md)        | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
-| [COMPONENTS.md](COMPONENTS.md)           | The folder structure and file types the front end and back end share: twins, imports, crossings    |
-| [TOGGLES.md](TOGGLES.md)                 | Which page each toggle opens (Vocation, Position, Occupation)                                       |
-| [CONTAINERS.md](CONTAINERS.md)           | The six containers every page is built from, how they pair and flip, and what each one does per app |
-| [CONTEXTS.md](CONTEXTS.md)               | How the `<Form>`s on a page share what a user types                                                 |
-| [CHARACTERS.md](../CHARACTERS.md)        | The 18 test characters, their facts, their psychology and the rules they test                       |
-| [TABLE.md](TABLE.md)                     | When to use `<table>`, the `<Table>` component, ISO weeks                                           |
-| [BACK-END.md](../back-end/BACK-END.md)   | How the server treats the people using it                                                           |
-| [DATA.md](../back-end/DATA.md)           | How data travels, MongoDB-to-MySQL rules, offline storage                                           |
-| [MODULES.md](../back-end/MODULES.md)     | Setting up the database, secrets, test emails and the server on any OS                              |
-| [SERVER.md](../back-end/SERVER.md)       | How `source/modules` is organised, the shared contexts, and where the server code is headed         |
-| [GITHUB.md](../back-end/GITHUB.md)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble                        |
-| [EDITOR.md](../back-end/EDITOR.md)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                              |
-| [REFERENCE.md](../back-end/REFERENCE.md) | The template the main `README.md` follows                                                           |
+**Front end**, in `documents/front-end/`. Public, in development-portfolio_4.00:
+
+| Document                          | What it answers                                                                                     |
+| --------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **FRONT-END.md** (this page)      | How code is written: naming, files, scaling, colours, comments                                      |
+| [COMPONENTS.md](COMPONENTS.md)    | The folder structure and file types the front end and back end share: twins, imports, crossings    |
+| [TOGGLES.md](TOGGLES.md)          | Which page each toggle opens (Vocation, Position, Occupation)                                       |
+| [CONTAINERS.md](CONTAINERS.md)    | The six containers every page is built from, how they pair and flip, and what each one does per app |
+| [CONTEXTS.md](CONTEXTS.md)        | How the `<Form>`s on a page share what a user types                                                 |
+| [TABLE.md](TABLE.md)              | When to use `<table>`, the `<Table>` component, ISO weeks                                           |
+
+**Shared**, in `documents/`. Tracked by both repositories, so both always hold the newest copy (so is the root `README.md`):
+
+| Document                          | What it answers                                                                                     |
+| --------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [GUIDELINES.md](../GUIDELINES.md) | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
+| [CHARACTERS.md](../CHARACTERS.md) | The 18 test characters, their facts, their psychology and the rules they test                       |
+
+**Back end**, in `documents/back-end/`. Private, in backend-architecture_2.00. These links only open where both repositories are merged into one folder:
+
+| Document                                 | What it answers                                                                         |
+| ---------------------------------------- | --------------------------------------------------------------------------------------- |
+| [BACK-END.md](../back-end/BACK-END.md)   | How the server treats the people using it                                               |
+| [DATA.md](../back-end/DATA.md)           | How data travels, MongoDB-to-MySQL rules, offline storage                               |
+| [MODULES.md](../back-end/MODULES.md)     | Setting up the database, secrets, test emails and the server on any OS                  |
+| [SERVER.md](../back-end/SERVER.md)       | How `source/modules` is organised, the shared contexts, and where the server code is headed |
+| [GITHUB.md](../back-end/GITHUB.md)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble            |
+| [EDITOR.md](../back-end/EDITOR.md)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                  |
+| [REFERENCE.md](../back-end/REFERENCE.md) | The template the main `README.md` follows                                               |
 
 **When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, COMPONENTS.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
@@ -177,13 +189,41 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|�
 
 **Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owner. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
 
-**`md-files/` holds drafts, not images.** The synchronization thesis and one file per application (`track-a-day.md`, `log-a-ticket.md`, `find-a-link.md`) live there until their edge cases are worked out, then move to `source/utilities/documents/`. Nothing loads them.
+### Which Repository Holds What
+
+Each document goes where its subject lives. One question settles it: **what does the page explain?**
+
+- **How `source/layouts/` is written, looks or behaves → front end.** Anyone who likes the designs may read it, so it names nothing private.
+- **How data moves, is stored or is kept safe, or how the owner's own machines and tools work → back end.** That repository is private on purpose: it's the study library where the secrets can be explained in full.
+- **A rule both sides obey or test against → shared.** Both repositories track it, so neither can fall behind.
+
+**When a page could go either way,** follow the reader, not the code. CONTEXTS.md stays in the front end although the contexts live in `source/modules/context/`, because it explains how the `<Form>`s use them. DATA.md is in the back end although `<Table>` shows its data, because it explains how the data travels; TABLE.md, how the table shows it, stays here.
+
+| Document      | Side      | Why                                                                                                   |
+| ------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| FRONT-END.md  | Front end | How the code in `layouts/` is written                                                                 |
+| COMPONENTS.md | Front end | The front-end skeleton sets the structure; the back end mirrors it. Its back-end twin covers each component's endpoints |
+| TOGGLES.md    | Front end | What each toggle opens on the page                                                                    |
+| CONTAINERS.md | Front end | How the blocks of a page pair and flip. Its back-end twin covers what each block asks of the server |
+| CONTEXTS.md   | Front end | How the `<Form>`s share what a user types. The code is the back end's; the behaviour is the page's |
+| TABLE.md      | Front end | How a `<table>` shows data. How the data arrives is DATA.md                                           |
+| GUIDELINES.md | Shared    | The app's rules: the front end shows them, the back end enforces them                                 |
+| CHARACTERS.md | Shared    | The test characters both sides test against                                                           |
+| BACK-END.md   | Back end  | How the server treats people                                                                          |
+| DATA.md       | Back end  | How data travels and is stored                                                                        |
+| MODULES.md    | Back end  | Setting up databases and secrets                                                                      |
+| SERVER.md     | Back end  | How `source/modules/` is organised                                                                    |
+| GITHUB.md     | Back end  | The owner's machines, keys and release cycle across both repositories                                 |
+| EDITOR.md     | Back end  | The owner's editor setup                                                                              |
+| REFERENCE.md  | Back end  | The owner's template for `README.md`                                                                  |
+
+**`md-files/` holds drafts, not images.** The synchronization thesis and one file per application (`track-a-day.md`, `log-a-ticket.md`, `find-a-link.md`) live there until their edge cases are worked out, then move to `source/utilities/documents/back-end/`. Like every document-type asset (`.md`, `.txt`, `.zip`, `.pdf`, `.ods`, `.odt`), they belong to the back end. Images, fonts, audio, video, `.xcf` and `.psd` belong to the front end. Nothing loads them.
 
 **When a folder moves,** change every `loadAsset()` path in the same step: search `source/` (not `source/assets/`) for the old path, fix each hit, and update the table above. The folders were last reorganised on 2026-11-07, when `archive-images/character-testing` became `character-testing`, `archive-images/trinity-apps` became `tralogfin-application`, and `project-pages/components-page` became `tralogfin-pages/archive`.
 
 ### Git
 
-Branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.08.1`). The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers).
+Branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.09.1`). Branches up to `4.8` kept the old `#.#` names. The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers).
 
 ---
 

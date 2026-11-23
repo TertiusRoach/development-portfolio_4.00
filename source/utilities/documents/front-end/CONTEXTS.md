@@ -1,6 +1,6 @@
 # Contexts
 
-How the front end shares what a user types between the `<Form>`s on a page. The contexts live in `source/modules/context/`; where the typed values go next is in [SERVER.md](../back-end/SERVER.md).
+How the front end shares what a user types between the `<Form>`s on a page. The contexts live in `source/modules/context/`, which the back end controls; this page explains how the page uses them. Where the typed values go next is in [SERVER.md](../back-end/SERVER.md).
 
 ---
 

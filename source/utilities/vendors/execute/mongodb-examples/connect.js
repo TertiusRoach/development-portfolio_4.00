@@ -52,7 +52,7 @@ async function main() {
 
     /*
     await findListingsWithMinimumBedroomsBathroomsAndMostRecentReviews(client, {
-      minimunNumberOfBedrooms: 4,
+      minimumNumberOfBedrooms: 4,
       minimumNumberOfBathrooms: 2,
       minimumNumberOfResults: 5,
     });

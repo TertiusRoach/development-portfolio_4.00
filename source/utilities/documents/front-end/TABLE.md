@@ -1,6 +1,6 @@
 # Tables & Data
 
-How `<table>` is used, how the `<Table>` components get their data from the database, how that database is written so it can move from MongoDB to MySQL, and how data survives offline. The rules for *who* may see or change data live in [GUIDELINES.md](../GUIDELINES.md); this page covers *how* the data travels.
+How `<table>` is used, how the `<Table>` components show data, spreadsheet-ready class names and ISO weeks. The rules for *who* may see or change data live in [GUIDELINES.md](../GUIDELINES.md); how the data travels from the database to the table, and survives offline, is the back end's [DATA.md](../back-end/DATA.md).
 
 ---
 

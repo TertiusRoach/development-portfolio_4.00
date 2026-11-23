@@ -554,7 +554,7 @@ Contributions are welcome, as long as they keep the project readable. Before you
 
 1. **Read the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
-3. **Follow the Git naming:** branches are `#.#` (`4.7`), tags are `v#.##` (`v4.07`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next).
+3. **Follow the Git naming:** branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
