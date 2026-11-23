@@ -5,7 +5,7 @@
     1. clones both repositories, bare, into an empty folder: .frontend.git and .backend.git;
     2. turns each into a working repository on its branch (the Branches table below);
     3. gives each its list of files to leave alone (frontend.gitignore, backend.gitignore → info/exclude);
-    4. writes the .git file, so plain git and VS Code see the front end;
+    4. writes the .git file, so plain git and VS Code see the front end, and installs the guards;
     5. runs npm install.
   It never deletes anything, and it refuses a folder that isn't empty.
   Without access to the private back end, it carries on with the front end only.
@@ -64,6 +64,13 @@ function setupFolder() {
 
   //--|🠊 4: plain git and VS Code see the front end 🠈|--\\
   fs.writeFileSync(path.join(target, '.git'), 'gitdir: .frontend.git\n');
+
+  //--|🠊 The guards: hooks are never cloned, so they're written here (PIPELINE.md, The Guards) 🠈|--\\
+  if (fs.existsSync(path.join(target, 'source', 'modules', 'guards', 'install.js'))) {
+    run(target, 'node', ['source/modules/guards/install.js']);
+  } else {
+    warn('No guards without the back end: commits and pushes from this folder are not checked');
+  }
 
   //--|🠊 5: one node_modules for both sides 🠈|--\\
   say('Installing the packages (npm install)');
