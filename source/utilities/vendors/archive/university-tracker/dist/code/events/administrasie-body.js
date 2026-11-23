@@ -1,1 +1,0 @@
-define(["require","exports"],function(e,i){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.AdministrasieBody=void 0,(i.AdministrasieBody||(i.AdministrasieBody={})).eventsFor=function(e){e}});
