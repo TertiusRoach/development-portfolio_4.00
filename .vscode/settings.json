@@ -31,5 +31,6 @@
     ".ripgreprc": true,
     ".gitmodules": true,
     ".bash_profile": true
-  }
+  },
+  "git.ignoreLimitWarning": true
 }

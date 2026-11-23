@@ -146,7 +146,7 @@ The tables below list each app's own containers. `<main>` has no state toggles; 
 
 ## Track a Day
 
-_Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../../assets/pdf-files/archive-documents/logical-structure/track-a-day.pdf)_
+_Toggle: **Vocation**. Original planning: [track-a-day.pdf](../../../assets/pdf-files/archive-documents/logical-structure/track-a-day.pdf) (private)_
 
 ### Established
 
@@ -191,7 +191,7 @@ These rules come from the original planning and keep the record fair without mak
 
 ## Log a Ticket
 
-_Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../../assets/pdf-files/archive-documents/logical-structure/log-a-ticket.pdf)_
+_Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../../assets/pdf-files/archive-documents/logical-structure/log-a-ticket.pdf) (private)_
 
 > **Note:** these descriptions are placeholders. Log a Ticket will be rebuilt from my original jQuery ticketing system, which already has a complete claim-to-score loop. Its descriptions will be rewritten from that code. Until then, the rules below stand.
 
@@ -251,7 +251,7 @@ _Toggle: **Position**. Original planning: [log-a-ticket.pdf](../../../assets/pdf
 
 ## Find a Link
 
-_Toggle: **Occupation**. Original planning: [find-a-link.pdf](../../../assets/pdf-files/archive-documents/logical-structure/find-a-link.pdf)_
+_Toggle: **Occupation**. Original planning: [find-a-link.pdf](../../../assets/pdf-files/archive-documents/logical-structure/find-a-link.pdf) (private)_
 
 Specialists and Technicians get the same page with the same containers. Occupation only decides where it opens: Technicians start on the company's links, Specialists on their own bookmarks.
 

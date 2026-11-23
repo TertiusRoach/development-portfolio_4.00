@@ -13,7 +13,7 @@
   Each reading is its own const below, and the names they need are worked out by the lets under them.
   Server only: userIP, country, lastLogin and offlineSince stay null here on purpose.
   The browser can't see its public IP. The server reads it from the request (getIP() in
-  modules/server/MongoDB/REVIEW/landing.js), looks up its country, and compares that country with
+  modules/server/MongoDB/landing.js), looks up its country, and compares that country with
   timeZone and languageRegion: a mismatch is the "is this IP trustworthy?" signal (VPN or proxy).
   Never collected: canvas, audio or font fingerprints, location, battery or hardware details.
   They identify a person without asking, and offlineDeviceId already tells devices apart openly.

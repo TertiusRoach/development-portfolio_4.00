@@ -46,10 +46,11 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **The three toggles** come first, coloured the same way as the brand: **Vocation** for Track a Day, **Position** for Log a Ticket, **Occupation** for Find a Link (see [TOGGLES.md](front-end/TOGGLES.md)).
 
-**The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
+**The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf) (private), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
 
 - **Bureau** is a job title the person chose. It gives no permissions.
 - **Status** (Enabled, Pending, Blocked, Deleted) is only there to test the login screen. It has nothing to do with the three apps.
+- **Email** is made up: the first name, a dot, the rest of the name, then `@tralogfin` and the ending companies use in that person's country (`.co.za`, `.ae`, `.com` for the United States). Some of those domains may belong to real people, so test emails only ever go to Mailtrap, never to a real inbox.
 
 **Tests** lists the rules each character exists to poke, with the section numbers from [GUIDELINES.md](GUIDELINES.md).
 
@@ -71,6 +72,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Manager · Specialist**
 
+**Email:** `jane.lester@tralogfin.com`
+
 | Organization      | Bureau               | Paid | HoD | Country       | Status  |
 | ----------------- | -------------------- | ---- | --- | ------------- | ------- |
 | Voidspire Systems | Executive Governance | Yes  | Yes | United States | Enabled |
@@ -91,6 +94,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Manager · Specialist**
 
+**Email:** `malik.tremaine-carter@tralogfin.ca`
+
 | Organization      | Bureau                                    | Paid | HoD | Country | Status  |
 | ----------------- | ----------------------------------------- | ---- | --- | ------- | ------- |
 | Voidspire Systems | Service Coordination & Technical Delivery | No   | Yes | Canada  | Enabled |
@@ -109,6 +114,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![dimitri-lewis](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/dimitri-lewis.png)
 
 **Freelancing · Employee · Specialist**
+
+**Email:** `dimitri.lewis@tralogfin.gr`
 
 | Organization | Bureau                         | Paid | HoD | Country | Status  |
 | ------------ | ------------------------------ | ---- | --- | ------- | ------- |
@@ -129,6 +136,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Employee · Technician**
 
+**Email:** `dale.sutton@tralogfin.de`
+
 | Organization      | Bureau                 | Paid | HoD | Country | Status  |
 | ----------------- | ---------------------- | ---- | --- | ------- | ------- |
 | Voidspire Systems | Network Infrastructure | No   | No  | Germany | Enabled |
@@ -147,6 +156,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![alaric-voss](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/alaric-voss.png)
 
 **Established · Employee · Specialist**
+
+**Email:** `alaric.voss@tralogfin.co.za`
 
 | Organization      | Bureau                     | Paid | HoD | Country      | Status  |
 | ----------------- | -------------------------- | ---- | --- | ------------ | ------- |
@@ -167,6 +178,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Manager · Specialist**
 
+**Email:** `conrad.guy@tralogfin.co.uk`
+
 | Organization      | Bureau                        | Paid | HoD | Country        | Status  |
 | ----------------- | ----------------------------- | ---- | --- | -------------- | ------- |
 | Voidspire Systems | Systems Operations Management | No   | No  | United Kingdom | Enabled |
@@ -185,6 +198,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![daniel-meyers](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/daniel-meyers.png)
 
 **Freelancing · Employee · Technician**
+
+**Email:** `daniel.meyers@tralogfin.ie`
 
 | Organization | Bureau                                       | Paid | HoD | Country | Status  |
 | ------------ | -------------------------------------------- | ---- | --- | ------- | ------- |
@@ -205,6 +220,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Employee · Specialist**
 
+**Email:** `kady.deacon@tralogfin.com.au`
+
 | Organization      | Bureau                     | Paid | HoD | Country   | Status  |
 | ----------------- | -------------------------- | ---- | --- | --------- | ------- |
 | Voidspire Systems | Software Quality Assurance | No   | No  | Australia | Blocked |
@@ -224,6 +241,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![seamus-odonnell](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/seamus-odonnell.png)
 
 **Established · Employee · Technician**
+
+**Email:** `seamus.odonnell@tralogfin.co.jp`
 
 | Organization      | Bureau                             | Paid | HoD | Country | Status  |
 | ----------------- | ---------------------------------- | ---- | --- | ------- | ------- |
@@ -248,6 +267,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Manager · Technician**
 
+**Email:** `hammad.dean@tralogfin.ae`
+
 | Organization         | Bureau                     | Paid | HoD | Country              | Status  |
 | -------------------- | -------------------------- | ---- | --- | -------------------- | ------- |
 | Silverveil Logistics | Logistics Executive Office | Yes  | Yes | United Arab Emirates | Enabled |
@@ -266,6 +287,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![tasneem-kemp](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/tasneem-kemp.png)
 
 **Established · Manager · Technician**
+
+**Email:** `tasneem.kemp@tralogfin.in`
 
 | Organization         | Bureau                         | Paid | HoD | Country | Status  |
 | -------------------- | ------------------------------ | ---- | --- | ------- | ------- |
@@ -289,6 +312,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Manager · Specialist**
 
+**Email:** `elliot.crane@tralogfin.com.sg`
+
 | Organization         | Bureau                         | Paid | HoD | Country   | Status  |
 | -------------------- | ------------------------------ | ---- | --- | --------- | ------- |
 | Silverveil Logistics | Operational Systems Management | No   | No  | Singapore | Enabled |
@@ -307,6 +332,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![sipho-dlamini](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/sipho-dlamini.png)
 
 **Freelancing · Employee · Technician**
+
+**Email:** `sipho.dlamini@tralogfin.co.ke`
 
 | Organization | Bureau                               | Paid | HoD | Country | Status  |
 | ------------ | ------------------------------------ | ---- | --- | ------- | ------- |
@@ -328,6 +355,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Employee · Technician**
 
+**Email:** `zuberi.thorne@tralogfin.com.br`
+
 | Organization         | Bureau                          | Paid | HoD | Country | Status  |
 | -------------------- | ------------------------------- | ---- | --- | ------- | ------- |
 | Silverveil Logistics | Data Integration & API Services | No   | No  | Brazil  | Enabled |
@@ -346,6 +375,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![nyra-solari](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/nyra-solari.png)
 
 **Established · Employee · Specialist**
+
+**Email:** `nyra.solari@tralogfin.cn`
 
 | Organization         | Bureau                   | Paid | HoD | Country | Status  |
 | -------------------- | ------------------------ | ---- | --- | ------- | ------- |
@@ -366,6 +397,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Employee · Technician**
 
+**Email:** `victor.langston@tralogfin.nl`
+
 | Organization         | Bureau            | Paid | HoD | Country     | Status  |
 | -------------------- | ----------------- | ---- | --- | ----------- | ------- |
 | Silverveil Logistics | Endpoint Services | No   | No  | Netherlands | Pending |
@@ -385,6 +418,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **Established · Employee · Specialist**
 
+**Email:** `danish.copeland@tralogfin.se`
+
 | Organization         | Bureau                  | Paid | HoD | Country | Status  |
 | -------------------- | ----------------------- | ---- | --- | ------- | ------- |
 | Silverveil Logistics | Human Resources Systems | No   | No  | Sweden  | Blocked |
@@ -403,6 +438,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 ![aelin-darrow](https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets/png-files/character-testing/original/aelin-darrow.png)
 
 **Established · Employee · Specialist**
+
+**Email:** `aelin.darrow@tralogfin.co.nz`
 
 | Organization         | Bureau              | Paid | HoD | Country     | Status  |
 | -------------------- | ------------------- | ---- | --- | ----------- | ------- |
