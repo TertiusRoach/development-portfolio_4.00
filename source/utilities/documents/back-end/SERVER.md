@@ -110,6 +110,7 @@ Four machines, each with one job. Addresses, logins and share settings stay out 
 
 - **Plex Media Server and a Samba media share** for the household. Neither touches the application, but both use the same disk and upload, and the router gives MIERNES first place in its streaming queue.
 - **Timeshift** takes a local system snapshot every hour.
+- **Its network name is announced on the wired network only.** On 2026-11-18 MIERNES started answering under a second name (`-2` added) after clashing with its own announcement at boot, which broke links to its share. The fix, run on MIERNES, keeps it to one name.
 - **A backup timer** (05:00, 11:00 and two minutes after startup) copies MIERNES's own documents to TERTIUS. Copy only: it never deletes, moves or replaces a newer file, and logs `SKIPPED` when TERTIUS can't be reached.
 
 Still open before MIERNES hosts anything:
