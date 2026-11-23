@@ -2,7 +2,7 @@
 
 # TraLogFin
 
-Three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
+Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
 
 **[Open the Apps](https://tertiusroach.github.io/development-portfolio_4.00/index.html)** | [View Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) | [Source Code](https://github.com/TertiusRoach/development-portfolio_4.00)
 
@@ -44,9 +44,9 @@ Three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**
 
 TraLogFin lives in one folder, `tralogfin_1.00`, tracked by two repositories at once:
 
-| Repository                     | Visibility | Holds                                                                                   |
-| ------------------------------ | ---------- | --------------------------------------------------------------------------------------- |
-| **development-portfolio_4.00** | Public     | The front end: `source/layouts/`, the front-end documents, images, fonts and media, `public/` |
+| Repository                     | Visibility | Holds                                                                                                         |
+| ------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------- |
+| **development-portfolio_4.00** | Public     | The front end: `source/layouts/`, the front-end documents, images, fonts and media, `public/`                 |
 | **backend-architecture_2.00**  | Private    | The back end: `source/modules/` (the server, the data, the guards), the back-end documents, the study library |
 
 Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.json`, `setup.js`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
@@ -98,11 +98,11 @@ npm install --no-save
 
 **Git** keeps the history of every file. **Node.js** runs the tools and the server. The **GitHub CLI** (`gh`) signs you in to GitHub from the terminal.
 
-| System                     | Git                              | GitHub CLI                       |
-| -------------------------- | -------------------------------- | -------------------------------- |
-| Linux (Ubuntu, Linux Mint) | `sudo apt install git`           | `sudo apt install gh`            |
+| System                     | Git                              | GitHub CLI                                      |
+| -------------------------- | -------------------------------- | ----------------------------------------------- |
+| Linux (Ubuntu, Linux Mint) | `sudo apt install git`           | `sudo apt install gh`                           |
 | macOS                      | `xcode-select --install`         | `brew install gh` ([Homebrew](https://brew.sh)) |
-| Windows (PowerShell)       | `winget install --id Git.Git -e` | `winget install --id GitHub.cli` |
+| Windows (PowerShell)       | `winget install --id Git.Git -e` | `winget install --id GitHub.cli`                |
 
 **Node.js**, through nvm, which lets you switch versions later. On Linux and macOS:
 
@@ -166,13 +166,14 @@ You should see: `Hi <your name>! You've successfully authenticated…`. If SSH i
 
 **Opening the folder in VS Code** pulls both repositories, but only when nothing here would be overwritten (fast-forward only). It then shows where each one stands and starts the app. It never commits or pushes: that's always your decision.
 
-| Command                               | What it does                                                                          |
-| ------------------------------------- | ------------------------------------------------------------------------------------- |
-| `npm run status`                      | Each repository's branch, how far ahead or behind GitHub, and what changed. Changes nothing |
-| `npm run pull`                        | Pulls both, fast-forward only, then the status                                        |
-| `npm run sync -- "Describe the change"` | The whole round: pull both, check, commit both with one message, push both            |
+| Command                                 | What it does                                                                                |
+| --------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `npm run status`                        | Each repository's branch, how far ahead or behind GitHub, and what changed. Changes nothing |
+| `npm run pull`                          | Pulls both, fast-forward only, then the status                                              |
+| `npm run sync -- "Describe the change"` | The whole round: pull both, check, commit both with one message, push both                  |
 
 **What `npm run sync` checks before it commits:**
+
 - the two repositories are on a matching pair of branches;
 - every new file belongs to one side, so nothing is left unowned.
 
@@ -399,34 +400,34 @@ Compiled output and static entry points. This is the browser-facing product, gen
 
 All authored code and assets. This is the only place you should be editing during development.
 
-| File         | Purpose                                                                     |
-| ------------ | --------------------------------------------------------------------------- |
-| `index.html` | HTML shell with one `<div id="${pageName}-body">` per page                  |
-| `index.tsx`  | Entry point: renders every page and activates one with `viewBody()`         |
-| `index.scss` | Root stylesheet                                                             |
-| `types.d.ts` | Global type declarations                                                    |
+| File         | Purpose                                                             |
+| ------------ | ------------------------------------------------------------------- |
+| `index.html` | HTML shell with one `<div id="${pageName}-body">` per page          |
+| `index.tsx`  | Entry point: renders every page and activates one with `viewBody()` |
+| `index.scss` | Root stylesheet                                                     |
+| `types.d.ts` | Global type declarations                                            |
 
 #### `source/assets/`
 
 Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse. Images, fonts and media belong to this repository; the documents (`md`, `txt`, `zip`, `pdf`, `ods`, `odt`) are the owner's study library and belong to the private back end.
 
-| Directory    | Purpose                                                 |
-| ------------ | ------------------------------------------------------- |
-| `gif-files/` | Animated media used for UI accents or demos             |
-| `ico-files/` | Icon formats for browser and OS surfaces                |
-| `jpg-files/` | Photos and compressed imagery                           |
-| `mp3-files/` | Audio assets                                            |
-| `mp4-files/` | Video assets                                            |
-| `ods-files/` | Spreadsheets that plan each application's dataset (private) |
-| `odt-files/` | Written planning documents and character descriptions (private) |
+| Directory    | Purpose                                                           |
+| ------------ | ----------------------------------------------------------------- |
+| `gif-files/` | Animated media used for UI accents or demos                       |
+| `ico-files/` | Icon formats for browser and OS surfaces                          |
+| `jpg-files/` | Photos and compressed imagery                                     |
+| `mp3-files/` | Audio assets                                                      |
+| `mp4-files/` | Video assets                                                      |
+| `ods-files/` | Spreadsheets that plan each application's dataset (private)       |
+| `odt-files/` | Written planning documents and character descriptions (private)   |
 | `pdf-files/` | Portable documents: character sheets, original planning (private) |
-| `png-files/` | Lossless graphics and UI images                         |
-| `psd-files/` | Photoshop source files kept for design iteration        |
-| `svg-files/` | Vector assets, icons, logos, themeable graphics         |
-| `ttf-files/` | Fonts                                                   |
-| `txt-files/` | Plain text notes and content (private) |
-| `xcf-files/` | GIMP source files                                       |
-| `zip-files/` | Archived bundles and imports (private) |
+| `png-files/` | Lossless graphics and UI images                                   |
+| `psd-files/` | Photoshop source files kept for design iteration                  |
+| `svg-files/` | Vector assets, icons, logos, themeable graphics                   |
+| `ttf-files/` | Fonts                                                             |
+| `txt-files/` | Plain text notes and content (private)                            |
+| `xcf-files/` | GIMP source files                                                 |
+| `zip-files/` | Archived bundles and imports (private)                            |
 
 #### `source/layouts/`
 
@@ -465,34 +466,34 @@ The UI system. This is where the application becomes readable. The split between
 
 **Other layout directories:**
 
-| Directory  | Purpose                                                                                   |
-| ---------- | ----------------------------------------------------------------------------------------- |
-| `scripts/` | One script per block pair: `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                |
-| `styles/`  | Shared styling system: `Palettes`, `Mixins`, `Global`, `Skeleton`, `Transition`, `Barrel` |
+| Directory  | Purpose                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| `scripts/` | One script per block pair: `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                                          |
+| `styles/`  | Shared styling system: `Palettes`, `Mixins`, `Global`, `Skeleton`, `Transition`, `Barrel`                           |
 | `tools/`   | Layout helpers: `conversions.ts`, `frameworks.ts`, `information.ts`, `navigation.ts`, `synching.ts`, `utilities.ts` |
 
 #### `source/modules/`
 
 The back end, in the private repository. Setup is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private), and how data travels is in [DATA.md](source/utilities/documents/back-end/DATA.md) (private).
 
-| Folder        | Purpose                                                                       |
-| ------------- | ----------------------------------------------------------------------------- |
-| `components/` | The `.jsx` twins of `layouts/components/`                                     |
-| `containers/` | One route file per page, one file per block, and the `.jsx` twins             |
-| `context/`    | React context for email and password state                                    |
-| `guards/`     | The structure guard, and the leak guards that keep the private half private   |
-| `routes/`     | One file per application (reserved)                                           |
-| `scripts/`    | The back half of each block pair                                              |
-| `server/`     | The Express servers, MongoDB, MySQL, IndexedDB and their testing data         |
-| `tools/`      | Shared server helpers, the backup copier and the data converter               |
+| Folder        | Purpose                                                                     |
+| ------------- | --------------------------------------------------------------------------- |
+| `components/` | The `.jsx` twins of `layouts/components/`                                   |
+| `containers/` | One route file per page, one file per block, and the `.jsx` twins           |
+| `context/`    | React context for email and password state                                  |
+| `guards/`     | The structure guard, and the leak guards that keep the private half private |
+| `routes/`     | One file per application (reserved)                                         |
+| `scripts/`    | The back half of each block pair                                            |
+| `server/`     | The Express servers, MongoDB, MySQL, IndexedDB and their testing data       |
+| `tools/`      | Shared server helpers, the backup copier and the data converter             |
 
 #### `source/utilities/`
 
 Reusable utilities, references and internal documentation.
 
-| Utility      | Purpose                                                                       |
-| ------------ | ----------------------------------------------------------------------------- |
-| `documents/` | All project documentation (see [Documentation](#documentation))               |
+| Utility      | Purpose                                                                                                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `documents/` | All project documentation (see [Documentation](#documentation))                                                                                                 |
 | `vendors/`   | Third-party code kept separate from authored logic: Bootstrap, Font Awesome, jQuery, effects and guidance (the back end keeps its own `execute/` and RequireJS) |
 
 #### `.vscode/`
@@ -529,17 +530,17 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 
 #### Back End (Private)
 
-| Document                                                                     | What it answers                                                        |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| **[BACK-END.md](source/utilities/documents/back-end/BACK-END.md)** (private)     | The back end's front page, and how the server treats people            |
-| **[SERVER.md](source/utilities/documents/back-end/SERVER.md)** (private)         | How `source/modules/` is organised, its endpoints and build order      |
-| **[CONTAINERS.md](source/utilities/documents/back-end/CONTAINERS.md)** (private) | What each page and block asks of the server                            |
-| **[DATA.md](source/utilities/documents/back-end/DATA.md)** (private)             | How data travels, MongoDB-to-MySQL rules, offline storage              |
-| **[MODULES.md](source/utilities/documents/back-end/MODULES.md)** (private)       | Database, secrets, test emails and server setup on any OS              |
-| **[OPERATIONS.md](source/utilities/documents/back-end/OPERATIONS.md)** (private) | The machines: shares, the host server, backups, the phone              |
+| Document                                                                         | What it answers                                                         |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| **[BACK-END.md](source/utilities/documents/back-end/BACK-END.md)** (private)     | The back end's front page, and how the server treats people             |
+| **[SERVER.md](source/utilities/documents/back-end/SERVER.md)** (private)         | How `source/modules/` is organised, its endpoints and build order       |
+| **[CONTAINERS.md](source/utilities/documents/back-end/CONTAINERS.md)** (private) | What each page and block asks of the server                             |
+| **[DATA.md](source/utilities/documents/back-end/DATA.md)** (private)             | How data travels, MongoDB-to-MySQL rules, offline storage               |
+| **[MODULES.md](source/utilities/documents/back-end/MODULES.md)** (private)       | Database, secrets, test emails and server setup on any OS               |
+| **[OPERATIONS.md](source/utilities/documents/back-end/OPERATIONS.md)** (private) | The machines: shares, the host server, backups, the phone               |
 | **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)** (private)         | Machine setup, releases, tags, the two repositories, fixing Git trouble |
-| **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)** (private)         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable           |
-| **[REFERENCE.md](source/utilities/documents/back-end/REFERENCE.md)** (private)   | The template this README follows                                       |
+| **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)** (private)         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable            |
+| **[REFERENCE.md](source/utilities/documents/back-end/REFERENCE.md)** (private)   | The template this README follows                                        |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
