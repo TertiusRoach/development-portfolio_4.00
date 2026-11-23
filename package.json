@@ -15,7 +15,10 @@
     "guard": "gulp guard",
     "server": "node source/modules/server/index.js",
     "export": "node source/modules/server/export.js",
-    "setup": "node setup.js"
+    "setup": "node setup.js",
+    "status": "node source/modules/guards/sync.js status",
+    "pull": "node source/modules/guards/sync.js pull",
+    "sync": "node source/modules/guards/sync.js sync"
   },
   "author": "Tertius Roach",
   "license": "ISC"
