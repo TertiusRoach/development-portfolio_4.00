@@ -119,7 +119,7 @@ Where `source/` still differs from this page, oldest first. Each one is fixed in
 
 | What                                    | Today                                                                                       | Agreed target                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| The `.jsx` clones                       | 35 container clones next to their `.tsx` in `layouts/containers/`, ignored by Git ([SERVER.md, Section 4](../back-end/SERVER.md#4-entry-point-communication)) | 113 twins in `modules/components/` and `modules/containers/` |
+| The `.jsx` clones                       | 35 container clones next to their `.tsx` in `layouts/containers/`, ignored by Git ([SERVER.md, Section 5](../back-end/SERVER.md#5-entry-point-communication) (private)) | 113 twins in `modules/components/` and `modules/containers/` |
 | `modules/routes/`                       | `trackDay.ts`, `logTicket.ts`, `findLink.ts`                                                | Routes inside `modules/containers/<App>/`, named by container |
 | `modules/scripts/`                      | `.ts`, one per block, plus `Apps.ts` and `Demo.ts`                                          | `.js` pairs matching `layouts/scripts/`                       |
 | `modules/context/`                      | `EmailContext.tsx`, `PasswordContext.tsx`: TypeScript inside the JavaScript side            | **Decided 2026-11-23:** stays in `modules/context/`, controlled by the back end. The `<Form>`s import it until the owner connects the `.tsx` to its `.jsx` twins |

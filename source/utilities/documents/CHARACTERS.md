@@ -46,7 +46,7 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **The three toggles** come first, coloured the same way as the brand: **Vocation** for Track a Day, **Position** for Log a Ticket, **Occupation** for Find a Link (see [TOGGLES.md](front-end/TOGGLES.md)).
 
-**The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
+**The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf) (private), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
 
 - **Bureau** is a job title the person chose. It gives no permissions.
 - **Status** (Enabled, Pending, Blocked, Deleted) is only there to test the login screen. It has nothing to do with the three apps.

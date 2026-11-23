@@ -64,13 +64,13 @@ Every document lives in `source/utilities/documents/`. If you're unsure about an
 
 | Document                                 | What it answers                                                                         |
 | ---------------------------------------- | --------------------------------------------------------------------------------------- |
-| [BACK-END.md](../back-end/BACK-END.md)   | How the server treats the people using it                                               |
-| [DATA.md](../back-end/DATA.md)           | How data travels, MongoDB-to-MySQL rules, offline storage                               |
-| [MODULES.md](../back-end/MODULES.md)     | Setting up the database, secrets, test emails and the server on any OS                  |
-| [SERVER.md](../back-end/SERVER.md)       | How `source/modules` is organised, the shared contexts, and where the server code is headed |
-| [GITHUB.md](../back-end/GITHUB.md)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble            |
-| [EDITOR.md](../back-end/EDITOR.md)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                  |
-| [REFERENCE.md](../back-end/REFERENCE.md) | The template the main `README.md` follows                                               |
+| [BACK-END.md](../back-end/BACK-END.md) (private)   | How the server treats the people using it                                               |
+| [DATA.md](../back-end/DATA.md) (private)           | How data travels, MongoDB-to-MySQL rules, offline storage                               |
+| [MODULES.md](../back-end/MODULES.md) (private)     | Setting up the database, secrets, test emails and the server on any OS                  |
+| [SERVER.md](../back-end/SERVER.md) (private)       | How `source/modules` is organised, the shared contexts, and where the server code is headed |
+| [GITHUB.md](../back-end/GITHUB.md) (private)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble            |
+| [EDITOR.md](../back-end/EDITOR.md) (private)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                  |
+| [REFERENCE.md](../back-end/REFERENCE.md) (private) | The template the main `README.md` follows                                               |
 
 **When two documents seem to disagree:** GUIDELINES.md wins on what the app allows, COMPONENTS.md wins on folder structure and file types, this page wins on how the code is written, and the PDFs in `source/assets/pdf-files/` win on character facts.
 
@@ -223,7 +223,7 @@ Each document goes where its subject lives. One question settles it: **what does
 
 ### Git
 
-Branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.09.1`). Branches up to `4.8` kept the old `#.#` names. The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers).
+Branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.09.1`). Branches up to `4.8` kept the old `#.#` names. The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers) (private).
 
 ---
 
@@ -257,7 +257,7 @@ The five `<Form>`s (`<FormRegister>`, `<FormVerify>`, `<FormLogin>`, `<FormPassw
 - **One `.scss` per Form,** with all three mixins. Inner parts are selected from the `<form>` with `>` (`> div[class='header'] > div[class='text']`), because `<ButtonDefault>` has its own `div.text` and `div.icon`.
 - **The card** takes `<SectionDemonstration>`'s sizes: 448×672, 285×416, 214×312, 165×240. The old ratios are on record in git: `git show d3b4ec09:source/layouts/components/Form/login/Form.login.scss`. On the two small cards, the header hides and the bottom row shrinks to fit, which is the old Desktop 480px rule carried over to every orientation.
 - **`defineButton()`** in `Form_*.ts` keeps the old size swap for the secondary buttons: `<h6>` with text, or a `<p>` icon at `<= 768px` and on a near-square screen whose long side is 1920px or less (the steps where the card shrinks). It runs once per render.
-- **Visual-only for now.** `onSubmit={(event) => event.preventDefault()}` is the one live handler, because a `<ButtonDefault>` inside a `<form>` submits it. The old submit handler sits under the component in a `/* … */` block, with `passwordHash` renamed to `password` (see [SERVER.md, Section 3](../back-end/SERVER.md#2-how-a-form-reaches-the-server-today)). The old helpers (`viewText`, `viewPass`, `axiosError`, `retrieveEndpoint`), each Form's own helpers and the old server route from its `Form_*.js` are commented out at the bottom of its `Form_*.ts`.
+- **Visual-only for now.** `onSubmit={(event) => event.preventDefault()}` is the one live handler, because a `<ButtonDefault>` inside a `<form>` submits it. The old submit handler sits under the component in a `/* … */` block, with `passwordHash` renamed to `password` (see [SERVER.md, Section 2](../back-end/SERVER.md#2-how-a-form-reaches-the-server-today) (private)). The old helpers (`viewText`, `viewPass`, `axiosError`, `retrieveEndpoint`), each Form's own helpers and the old server route from its `Form_*.js` are commented out at the bottom of its `Form_*.ts`.
 - **Only the Archive renders them.** `LandingMain.tsx` still imports `<FormLogin>`, `<FormRegister>` and `<FormPassword>` without rendering them, from before the rewrite. A container that renders a Form passes `info.labelName` and `style.color`, the way the `form-components/` harness pages do.
 
 ### Pipeline Files
@@ -330,7 +330,7 @@ Smaller components keep everything in one `.scss` file, with the three mixins wr
 ### Component Rules
 
 - **`<table>` is only for database records.** Never for layout. See [TABLE.md](TABLE.md#1-when-to-use-table).
-- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [DATA.md](../back-end/DATA.md#1-how-data-reaches-a-table).
+- **Components never talk to the database.** Data comes in through props, events go out through callbacks. See [DATA.md](../back-end/DATA.md#1-how-data-reaches-a-table) (private).
 - **Components survive the flip.** Turning the screen unmounts one orientation's markup and mounts the other's, so a listener or timer a component starts is returned from its `useEffect`, and anything added to one orientation gets its mirror in the other. See [CONTAINERS.md, Pairs and the Flip](CONTAINERS.md#pairs-and-the-flip).
 
 ### Canvas Effects
@@ -371,7 +371,7 @@ The old `<Figure>` components are retired: `<FigureRotation>` became `<CanvasRot
 
 ### Accessibility
 
-Every component has to work for someone who can't see the screen or can't use a mouse. It's a feature like any other: built and settled on `<ButtonDefault>` and its Archive page first, then copied to the other components in the same syntax (see [The Philosophy](#1-the-philosophy), point 9). What the server owes the same people is in [BACK-END.md, Accessibility](../back-end/BACK-END.md#1-accessibility).
+Every component has to work for someone who can't see the screen or can't use a mouse. It's a feature like any other: built and settled on `<ButtonDefault>` and its Archive page first, then copied to the other components in the same syntax (see [The Philosophy](#1-the-philosophy), point 9). What the server owes the same people is in [BACK-END.md, Accessibility](../back-end/BACK-END.md#5-accessibility) (private).
 
 - **Every control has a name.** A `<button>` with visible text is named by it. One without (an `-icon-` button, the corner buttons, the Leftbar and Rightbar icons) gets `info.ariaName`, which becomes its `aria-label` (see [Props and Events](#props-and-events), and below for why it's its own key). The `<Form>`s already do this (`ariaName: 'Show password'`); the rest move over as their files are refactored:
 
@@ -1018,5 +1018,5 @@ Decided, but not built yet. Don't start any of these without a conversation firs
 | Bracketed `labelName`s                    | About 60 callers pass `'(default)'`; they move to the bare `'default'` as their files are refactored                                                                                                                   |
 | `flex` / `grid` / `tint` placeholders     | The five Forms, `Aside.characters.scss`, `Time.clock-count.scss` and `Table.tracking.scss` drop their `%desk-` / `%mobi-` / `%tabl-` wrappers, `@at-root` and `@extend` ([Scaling Pattern](#6-scaling-pattern)), one file at a time, checking the compiled CSS stays identical |
 | Log a Ticket                              | Rebuilt from my original jQuery ticketing system and its claim-to-score loop                                                                                                                                           |
-| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([DATA.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow))                                                    |
+| Login status                              | Accounts move between `pending`, `enabled` and `blocked` collections; status should become a field ([DATA.md](../back-end/DATA.md#2-mongodb-today-mysql-tomorrow) (private))                                                    |
 | Unpaid solutions, country-specific expiry | [GUIDELINES.md, Section 15](../GUIDELINES.md#15-explicitly-outside-this-baseline)                                                                                                                                      |
