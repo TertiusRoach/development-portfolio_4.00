@@ -8,6 +8,8 @@
     "source/modules"
   ],
   "scripts": {
+    "//": "AI Code: Review Please 2026-11-23 · preapp runs before every npm run app: it writes the .git file (gitdir: .frontend.git) when it's missing, so VS Code's Source Control finds the front end again. A plain clone's .git folder is left alone",
+    "preapp": "node -e \"const fs=require('fs');if(!fs.existsSync('.git')&&fs.existsSync('.frontend.git')){fs.writeFileSync('.git','gitdir: .frontend.git\\n');console.log('|--🠊 Guidance: .git was missing, written again so VS Code sees the front end, preapp 🠈--|')}\"",
     "app": "npm run launch",
     "launch": "webpack-dev-server --mode development",
     "deploy": "webpack --mode production",

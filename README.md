@@ -2,7 +2,7 @@
 
 # TraLogFin
 
-Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
+Three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
 
 **[Open the Apps](https://tertiusroach.github.io/development-portfolio_4.00/index.html)** | [View Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) | [Source Code](https://github.com/TertiusRoach/development-portfolio_4.00)
 
