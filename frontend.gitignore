@@ -1,0 +1,28 @@
+# AI Code: Review Please 2026-11-23
+# FRONT END (.frontend.git, public) ignores everything the BACK END owns.
+# Copied into .frontend.git/info/exclude by setup.js and npm run sync.
+# The map behind it: README.md, "Which Repository Holds What".
+
+# Back-end code and tools
+/source/modules/
+/source/utilities/back-end/
+
+# Back-end documents
+/source/utilities/documents/back-end/
+
+# Back-end vendors
+/source/utilities/vendors/execute/
+/source/utilities/vendors/frameworks/requirejs/
+
+# The owner's study library (assets by type)
+/source/assets/**/*.md
+/source/assets/**/*.txt
+/source/assets/**/*.zip
+/source/assets/**/*.pdf
+/source/assets/**/*.ods
+/source/assets/**/*.odt
+
+# Back-end settings and its own list
+/.env.example
+/.env.age
+/backend.gitignore

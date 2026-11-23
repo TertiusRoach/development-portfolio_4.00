@@ -1,32 +1,41 @@
-bin
-.~*
+# AI Code: Review Please 2026-11-23
+# SHARED by .frontend.git and .backend.git: only what NEITHER repository tracks.
+# Each repository's own list is in frontend.gitignore / backend.gitignore,
+# copied into .frontend.git/info/exclude and .backend.git/info/exclude.
+
+# The two Git folders
+.frontend.git/
+.backend.git/
+
+# Installs, builds and secrets
+node_modules/
+build/
 .env
-.wsuo
-6.5.1
-7.3.1
-build
-*.txt
-5.13.0
-.hidden
 secret.*
 *secret.*
-.directory
-node_modules
-package.json
-settings.json
-package-*.json
-source/server/
-build/desktop.ini
-public/desktop.ini
-source/desktop.ini
-DocumentLayout.json
-VSWorkspaceState.json
+__pycache__/
+
+# Written by webpack next to the bundle
+public/*.LICENSE.txt
+
+# Compiled twins nobody tracks
 source/layouts/containers/**/*.jsx
 
+# Editors and operating systems
+bin
+.~*
+.wsuo
 .idea
+*.ini
+.hidden
+.directory
+DocumentLayout.json
+VSWorkspaceState.json
+
+# Claude Code and its sandbox
 .zshrc
-.bashrc
 .claude
+.bashrc
 .profile
 .mcp.json
 .zprofile
