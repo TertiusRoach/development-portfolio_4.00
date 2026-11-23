@@ -14,7 +14,8 @@
     "stop": "npx kill-port 8080",
     "guard": "gulp guard",
     "server": "node source/modules/server/index.js",
-    "export": "node source/modules/server/export.js"
+    "export": "node source/modules/server/export.js",
+    "setup": "node setup.js"
   },
   "author": "Tertius Roach",
   "license": "ISC"
