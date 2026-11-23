@@ -12,7 +12,7 @@ Three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**
   <summary><strong>Table of Contents</strong></summary>
 
 1. [Install and Sync](#install-and-sync)
-   - [1. Merge the Folders and Install](#1-merge-the-folders-and-install)
+   - [1. Install the Front End and Back End](#1-install-the-front-end-and-back-end)
    - [2. Install Git, Node.js and the GitHub CLI](#2-install-git-nodejs-and-the-github-cli)
    - [3. Create a GitHub Account with Two-Factor Sign-In](#3-create-a-github-account-with-two-factor-sign-in)
    - [4. Sign In from the Terminal](#4-sign-in-from-the-terminal)
@@ -55,7 +55,24 @@ Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.js
 
 On a new computer, do steps 2 to 4 first, then step 1.
 
-### 1. Merge the Folders and Install
+### 1. Install the Front End and Back End
+
+Pick the setup that matches your access. Both need the tools from steps 2 to 4.
+
+#### Front End Only (anyone)
+
+The public repository on its own: every page, design and component, running on the development server. Logging in and saving data need the back end, so those parts won't answer.
+
+```bash
+git clone https://github.com/TertiusRoach/development-portfolio_4.00.git
+cd development-portfolio_4.00
+npm install --no-save
+npm run app
+```
+
+`--no-save` keeps `package-lock.json` as it is. The app opens on `http://localhost:8080`.
+
+#### Front End and Back End (the owner and invited collaborators)
 
 One script downloads both repositories into one folder and sets them up.
 
@@ -73,26 +90,34 @@ One script downloads both repositories into one folder and sets them up.
    - it puts each one on its current branch;
    - it gives each one its list of files to leave alone;
    - it installs the guards that stop private files and secrets from reaching the public repository;
-   - it runs `npm install`.
+   - it runs `npm install`, once, for both sides.
 
    It only ever builds into an empty folder, so it can't overwrite anything. Without access to the private repository, it says so and sets up the front end alone.
 
-4. Start the app, then delete the unpacked zip:
+4. Start the front end, then delete the unpacked zip:
 
    ```bash
    cd ~/Documents/Develop/tralogfin_1.00
    npm run app
    ```
 
-   The app opens on `http://localhost:8080`.
+   The app opens on `http://localhost:8080`. From now on, opening the folder in VS Code does this for you (step 5).
 
-**Only want to look at the front end?** A plain clone works too. `--no-save` keeps `package-lock.json` as it is:
+5. Set up the back end. The secrets and the databases never come with a download, so they're set up by hand, once per computer. Each step is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private):
 
-```bash
-git clone https://github.com/TertiusRoach/development-portfolio_4.00.git
-cd development-portfolio_4.00
-npm install --no-save
-```
+   | Step                                   | Where                                                                                     |
+   | -------------------------------------- | ----------------------------------------------------------------------------------------- |
+   | Install MongoDB (and MySQL, if needed) | [§ 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private) and [§ 3](source/utilities/documents/back-end/MODULES.md#3-install-mysql) (private) |
+   | Unlock `.env` from `.env.age` with your age key | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env` |
+   | Build the four collections             | [§ 5](source/utilities/documents/back-end/MODULES.md#5-install-the-schemas) (private)     |
+
+6. Start the server in a second terminal, next to the app:
+
+   ```bash
+   npm run server
+   ```
+
+   It answers on `http://localhost:3000/api`. If it can't reach the database, it says so ([MODULES.md § 7](source/utilities/documents/back-end/MODULES.md#7-run-the-server) (private)).
 
 ### 2. Install Git, Node.js and the GitHub CLI
 
