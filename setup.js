@@ -32,7 +32,8 @@ function setupFolder() {
   const { target, source } = readArguments();
   if (source.kind === 'folder' && !source.folder) return stop('Name the folder to copy from: node setup.js <empty folder> --from <folder>');
   if (!target) return stop('Name an empty folder: node setup.js <empty folder>');
-  if (fs.existsSync(target) && fs.readdirSync(target).length > 0) return stop(`${target} isn't empty. setup.js only builds into an empty folder, so it can never overwrite work`);
+  if (fs.existsSync(target) && fs.readdirSync(target).length > 0)
+    return stop(`${target} isn't empty. setup.js only builds into an empty folder, so it can never overwrite work`);
   fs.mkdirSync(target, { recursive: true });
 
   //--|🠊 1 and 2: clone each repository and give it its files 🠈|--\\
@@ -48,7 +49,8 @@ function setupFolder() {
         return stop(`${repository.name} couldn't be cloned. Check the internet connection and the sign-in (GITHUB.md § 7, Step 3)`);
       }
     }
-    if (makeWorking(target, repository) === false) return stop(`${repository.name} couldn't check out ${repository.branch}. Is that branch on GitHub?`);
+    if (makeWorking(target, repository) === false)
+      return stop(`${repository.name} couldn't check out ${repository.branch}. Is that branch on GitHub?`);
     ready.push(repository);
   }
 
@@ -87,7 +89,10 @@ function setupFolder() {
   for (const repository of ready) {
     say(`${repository.name}: on ${repository.branch}, following origin/${repository.branch}`);
   }
-  if (source.kind === 'folder') warn(`origin is the folder it was copied from, not GitHub. To fetch from GitHub instead, run inside it: git remote set-url origin <the GitHub address>, then the same with --git-dir=.backend.git`);
+  if (source.kind === 'folder')
+    warn(
+      `origin is the folder it was copied from, not GitHub. To fetch from GitHub instead, run inside it: git remote set-url origin <the GitHub address>, then the same with --git-dir=.backend.git`,
+    );
   say(`Done. Open ${target} in VS Code, or run: cd ${target} && npm run app`);
 }
 
