@@ -86,7 +86,7 @@ Designed in Figma first, then built by hand.
 
 ### Prerequisites
 
-[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md#7-set-up-a-new-computer)**.
+[Visual Studio Code](https://code.visualstudio.com/), [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en). Step-by-step setup for Windows, macOS and Linux is in **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md#7-set-up-a-new-computer) (private)**.
 
 Check that Node is ready:
 
@@ -168,7 +168,16 @@ npm install --save-dev @babel/core @babel/preset-env
 
 ### Back End
 
-The front end runs on its own. To work on the server, you also need MongoDB, a secrets file (`build/.env`) and a Mailtrap test inbox. Everything, for every operating system, is in **[MODULES.md](source/utilities/documents/back-end/MODULES.md)**.
+TraLogFin lives in one folder, `tralogfin_1.00`, tracked by two repositories:
+
+| Repository                     | Visibility | Holds                                                                                   |
+| ------------------------------ | ---------- | --------------------------------------------------------------------------------------- |
+| **development-portfolio_4.00** | Public     | The front end: `source/layouts/`, the front-end documents, images, fonts and media, `public/` |
+| **backend-architecture_2.00**  | Private    | The back end: `source/modules/` (the server, the data, the guards), the back-end documents, the study library |
+
+Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.json`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
+
+**Without access to the private repository, you get the front end only.** It shows every design and every line of page code, but it won't build without `source/modules/`. The full setup is for the owner and the collaborators the owner invites. Links in these documents that lead into the private half are marked **(private)**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,8 +193,8 @@ Open VS Code and press **Ctrl + `** to open the terminal. Then:
 # Launch the front end (webpack-dev-server on http://localhost:8080)
 npm run app
 
-# Launch the back end (http://localhost:3000)
-cd source/modules/server/MongoDB/REVIEW
+# Launch the back end (http://localhost:3000, needs the private half)
+cd source/modules/server/MongoDB
 npx nodemon landing
 
 # Compile the project into public/
@@ -195,7 +204,7 @@ npm run deploy
 npm run stop
 ```
 
-> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs it automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)**.
+> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs it automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md) (private)**.
 
 ### Application Flow
 
@@ -281,92 +290,40 @@ All of it, with examples, is in the **[FRONT-END rulebook](source/utilities/docu
 > This layout is modular on purpose. It is optimized for forward momentum and predictable scaling, not for matching a single framework template. The naming is descriptive, the separation is strict, and the intent is obvious when you scan the tree.
 
 ```
-root/
+tralogfin_1.00/
+├── .frontend.git/                   # This repository (public)
+├── .backend.git/                    # backend-architecture_2.00 (private)
 ├── .vscode/
 │   ├── launch.json                  # Run Application (Webpack + Chrome)
 │   ├── settings.json
 │   └── tasks.json                   # Runs `npm run app` on folder open
-├── build/                           # Local only, holds .env (ignored by Git)
+├── build/                           # Local only, holds .env (ignored by both)
 ├── public/                          # Final product for users (compiled)
-│   ├── index.css
-│   ├── index.js
-│   └── index.html
 ├── source/
-│   ├── assets/
-│   │   ├── gif-files/
-│   │   ├── ico-files/
-│   │   ├── jpg-files/
-│   │   ├── mp3-files/
-│   │   ├── mp4-files/
-│   │   ├── ods-files/
-│   │   ├── odt-files/
-│   │   ├── pdf-files/
-│   │   ├── png-files/
-│   │   ├── psd-files/
-│   │   ├── svg-files/
-│   │   ├── ttf-files/
-│   │   ├── txt-files/
-│   │   ├── xcf-files/
-│   │   └── zip-files/
-│   ├── layouts/
+│   ├── assets/                      # One folder per file type
+│   ├── layouts/                     # The front end
 │   │   ├── components/
-│   │   │   ├── Article/
-│   │   │   ├── Aside/
-│   │   │   ├── Button/
-│   │   │   ├── Division/
-│   │   │   ├── Figure/
-│   │   │   ├── Form/
-│   │   │   ├── Label/
-│   │   │   ├── List/
-│   │   │   ├── Menu/
-│   │   │   ├── Navigation/
-│   │   │   ├── Section/
-│   │   │   ├── Span/
-│   │   │   ├── Table/
-│   │   │   ├── Time/
-│   │   │   └── components.ts
 │   │   ├── containers/
-│   │   │   ├── Archive/
-│   │   │   ├── Hyperlink/
-│   │   │   ├── Landing/
-│   │   │   ├── Overtime/
-│   │   │   ├── Ticketing/
-│   │   │   └── containers.ts
 │   │   ├── scripts/
 │   │   ├── styles/
-│   │   └── tools/
-│   ├── modules/
-│   │   ├── context/
-│   │   ├── routes/
-│   │   └── server/
+│   │   ├── tools/
+│   │   └── CLAUDE.md                # Front-end rules for AI assistants
+│   ├── modules/                     # The back end (private)
 │   ├── utilities/
-│   │   ├── document/                # All project documentation
-│   │   │   ├── back-end/            # Server, data and setup (mirrored by the back-end repo)
-│   │   │   │   ├── BACK-END.md      # Back-end rulebook
-│   │   │   │   ├── DATA.md
-│   │   │   │   ├── MODULES.md
-│   │   │   │   ├── REFERENCE.md
-│   │   │   │   └── SERVER.md
-│   │   │   ├── front-end/           # Pages, containers and components
-│   │   │   │   ├── CONTAINERS.md
-│   │   │   │   ├── CONTEXTS.md
-│   │   │   │   ├── FRONT-END.md     # Front-end rulebook
-│   │   │   │   ├── TABLE.md
-│   │   │   │   └── TOGGLES.md
+│   │   ├── documents/
+│   │   │   ├── back-end/            # Private
+│   │   │   ├── front-end/
 │   │   │   ├── CHARACTERS.md        # Shared by both sides
-│   │   │   ├── EDITOR.md
-│   │   │   ├── GITHUB.md
-│   │   │   └── GUIDELINES.md
-│   │   ├── vendors/
-│   │   ├── ~flex-setup/
-│   │   └── ~grid-setup/
+│   │   │   └── GUIDELINES.md        # Shared by both sides
+│   │   └── vendors/
 │   ├── index.html
 │   ├── index.scss
 │   ├── index.tsx
-│   ├── scripts.ts
 │   └── types.d.ts
-├── .gitignore
-├── CLAUDE.md                        # Working rules for AI assistants
+├── .gitignore                       # Shared: what neither repository tracks
+├── frontend.gitignore               # What this repository leaves to the back end
+├── backend.gitignore                # What the back end leaves to this repository
+├── CLAUDE.md                        # Shared working rules for AI assistants
 ├── README.md
 ├── package.json
 ├── tsconfig.json
@@ -389,12 +346,11 @@ All authored code and assets. This is the only place you should be editing durin
 | `index.html` | HTML shell with one `<div id="${pageName}-body">` per page                  |
 | `index.tsx`  | Entry point: renders every page and activates one with `viewBody()`         |
 | `index.scss` | Root stylesheet                                                             |
-| `scripts.ts` | Shared helpers such as `stripBrackets()`, `checkScreen()` and `loadAsset()` |
 | `types.d.ts` | Global type declarations                                                    |
 
 #### `source/assets/`
 
-Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse.
+Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse. Images, fonts and media belong to this repository; the documents (`md`, `txt`, `zip`, `pdf`, `ods`, `odt`) are the owner's study library and belong to the private back end.
 
 | Directory    | Purpose                                                 |
 | ------------ | ------------------------------------------------------- |
@@ -403,16 +359,16 @@ Typed asset storage. Keeping formats separated avoids build edge cases and reduc
 | `jpg-files/` | Photos and compressed imagery                           |
 | `mp3-files/` | Audio assets                                            |
 | `mp4-files/` | Video assets                                            |
-| `ods-files/` | Spreadsheets that plan each application's dataset       |
-| `odt-files/` | Written planning documents and character descriptions   |
-| `pdf-files/` | Portable documents: character sheets, original planning |
+| `ods-files/` | Spreadsheets that plan each application's dataset (private) |
+| `odt-files/` | Written planning documents and character descriptions (private) |
+| `pdf-files/` | Portable documents: character sheets, original planning (private) |
 | `png-files/` | Lossless graphics and UI images                         |
 | `psd-files/` | Photoshop source files kept for design iteration        |
 | `svg-files/` | Vector assets, icons, logos, themeable graphics         |
 | `ttf-files/` | Fonts                                                   |
-| `txt-files/` | Plain text notes and content                            |
+| `txt-files/` | Plain text notes and content (private) |
 | `xcf-files/` | GIMP source files                                       |
-| `zip-files/` | Archived bundles and imports                            |
+| `zip-files/` | Archived bundles and imports (private) |
 
 #### `source/layouts/`
 
@@ -455,36 +411,35 @@ The UI system. This is where the application becomes readable. The split between
 | ---------- | ----------------------------------------------------------------------------------------- |
 | `scripts/` | One script per block pair: `Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`                |
 | `styles/`  | Shared styling system: `Palettes`, `Mixins`, `Global`, `Skeleton`, `Transition`, `Barrel` |
-| `tools/`   | Layout helpers: `conversions.ts`, `navigation.ts`, `utilities.ts`                         |
+| `tools/`   | Layout helpers: `conversions.ts`, `frameworks.ts`, `information.ts`, `navigation.ts`, `synching.ts`, `utilities.ts` |
 
 #### `source/modules/`
 
-Application logic and infrastructure that supports the UI. Setup is in [MODULES.md](source/utilities/documents/back-end/MODULES.md), and how data travels is in [DATA.md](source/utilities/documents/back-end/DATA.md).
+The back end, in the private repository. Setup is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private), and how data travels is in [DATA.md](source/utilities/documents/back-end/DATA.md) (private).
 
-| Folder                    | Purpose                                                                          |
-| ------------------------- | -------------------------------------------------------------------------------- |
-| `server/MongoDB/REVIEW/`  | Express server (`landing.js`, port 3000) and per-application routes under review |
-| `server/MongoDB/online/`  | Dataset modules for the hosted database                                          |
-| `server/MongoDB/offline/` | Dataset modules for a local database                                             |
-| `server/MongoDB/testing/` | Typed dataset modules seeded from `TraLogFin.json` for front-end testing         |
-| `routes/`                 | Front-end route stubs for each application (empty for now)                       |
-| `context/`                | React context for email and password state                                       |
-| `guards/`                 | Leak guards: Git hooks and sync checks, controlled by the back end               |
+| Folder        | Purpose                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| `components/` | The `.jsx` twins of `layouts/components/`                                     |
+| `containers/` | One route file per page, one file per block, and the `.jsx` twins             |
+| `context/`    | React context for email and password state                                    |
+| `guards/`     | The structure guard, and the leak guards that keep the private half private   |
+| `routes/`     | One file per application (reserved)                                           |
+| `scripts/`    | The back half of each block pair                                              |
+| `server/`     | The Express servers, MongoDB, MySQL, IndexedDB and their testing data         |
+| `tools/`      | Shared server helpers, the backup copier and the data converter               |
 
 #### `source/utilities/`
 
 Reusable utilities, references and internal documentation.
 
-| Utility        | Purpose                                                         |
-| -------------- | --------------------------------------------------------------- |
-| `documents/`   | All project documentation (see [Documentation](#documentation)) |
-| `vendors/`     | Third-party vendor code kept separate from authored logic       |
-| `~flex-setup/` | Flexbox reference and layout patterns                           |
-| `~grid-setup/` | Grid reference and layout patterns                              |
+| Utility      | Purpose                                                                       |
+| ------------ | ----------------------------------------------------------------------------- |
+| `documents/` | All project documentation (see [Documentation](#documentation))               |
+| `vendors/`   | Third-party code kept separate from authored logic: Bootstrap, Font Awesome, jQuery, effects and guidance (the back end keeps its own `execute/` and RequireJS) |
 
 #### `.vscode/`
 
-Editor configuration for consistent debugging and project workflows. What each file does is in [EDITOR.md](source/utilities/documents/back-end/EDITOR.md#what-vscode-does).
+Editor configuration for consistent debugging and project workflows. What each file does is in [EDITOR.md](source/utilities/documents/back-end/EDITOR.md#what-vscode-does) (private).
 
 </details>
 
@@ -494,36 +449,39 @@ Editor configuration for consistent debugging and project workflows. What each f
 
 ## Documentation
 
-Everything lives in **`source/utilities/documents/`**, split three ways: shared documents at the top, then **`front-end/`** and **`back-end/`**. The back-end repository mirrors the `back-end/` folder. If you're unsure about anything, start with the rulebook for your side.
+Everything lives in **`source/utilities/documents/`**, split three ways: shared documents at the top, then **`front-end/`** (public) and **`back-end/`** (private). If you're unsure about anything, start with the rulebook for your side.
 
 #### Shared
 
-| Document                                                     | What it answers                                                                                 |
-| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| Document                                                      | What it answers                                                                                 |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | **[GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode |
 | **[CHARACTERS.md](source/utilities/documents/CHARACTERS.md)** | The 18 test characters, their psychology and the rules they test                                |
-| **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)**         | Machine setup, releases, tags, syncing machines, fixing Git trouble                             |
-| **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)**         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable                                    |
 
 #### Front End
 
-| Document                                                                 | What it answers                                                                 |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| **[FRONT-END.md](source/utilities/documents/front-end/FRONT-END.md)**     | How code is written: philosophy, naming, components, scaling, colours, comments |
-| **[TOGGLES.md](source/utilities/documents/front-end/TOGGLES.md)**         | Which page each toggle opens                                                    |
-| **[CONTAINERS.md](source/utilities/documents/front-end/CONTAINERS.md)**   | The six containers and what they do in each application                         |
-| **[CONTEXTS.md](source/utilities/documents/front-end/CONTEXTS.md)**       | How the `<Form>`s on a page share what a user types                             |
-| **[TABLE.md](source/utilities/documents/front-end/TABLE.md)**             | When to use `<table>`, the `<Table>` component, ISO weeks                       |
+| Document                                                                | What it answers                                                                 |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **[FRONT-END.md](source/utilities/documents/front-end/FRONT-END.md)**   | How code is written: philosophy, naming, components, scaling, colours, comments |
+| **[COMPONENTS.md](source/utilities/documents/front-end/COMPONENTS.md)** | The folder structure both halves share, and the `.tsx`/`.jsx` twins             |
+| **[TOGGLES.md](source/utilities/documents/front-end/TOGGLES.md)**       | Which page each toggle opens                                                    |
+| **[CONTAINERS.md](source/utilities/documents/front-end/CONTAINERS.md)** | The six containers and what they do in each application                         |
+| **[CONTEXTS.md](source/utilities/documents/front-end/CONTEXTS.md)**     | How the `<Form>`s on a page share what a user types                             |
+| **[TABLE.md](source/utilities/documents/front-end/TABLE.md)**           | When to use `<table>`, the `<Table>` component, ISO weeks                       |
 
-#### Back End
+#### Back End (Private)
 
-| Document                                                             | What it answers                                                       |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| **[BACK-END.md](source/utilities/documents/back-end/BACK-END.md)**    | How back-end code is written (being written)                          |
-| **[SERVER.md](source/utilities/documents/back-end/SERVER.md)**        | How `source/modules/` is organised and where the server code is headed |
-| **[DATA.md](source/utilities/documents/back-end/DATA.md)**            | How data travels, MongoDB-to-MySQL rules, offline storage             |
-| **[MODULES.md](source/utilities/documents/back-end/MODULES.md)**      | Database, secrets, test emails and server setup on any OS             |
-| **[REFERENCE.md](source/utilities/documents/back-end/REFERENCE.md)**  | The template this README follows                                      |
+| Document                                                                     | What it answers                                                        |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **[BACK-END.md](source/utilities/documents/back-end/BACK-END.md)** (private)     | The back end's front page, and how the server treats people            |
+| **[SERVER.md](source/utilities/documents/back-end/SERVER.md)** (private)         | How `source/modules/` is organised, its endpoints and build order      |
+| **[CONTAINERS.md](source/utilities/documents/back-end/CONTAINERS.md)** (private) | What each page and block asks of the server                            |
+| **[DATA.md](source/utilities/documents/back-end/DATA.md)** (private)             | How data travels, MongoDB-to-MySQL rules, offline storage              |
+| **[MODULES.md](source/utilities/documents/back-end/MODULES.md)** (private)       | Database, secrets, test emails and server setup on any OS              |
+| **[OPERATIONS.md](source/utilities/documents/back-end/OPERATIONS.md)** (private) | The machines: shares, the host server, backups, the phone              |
+| **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)** (private)         | Machine setup, releases, tags, the two repositories, fixing Git trouble |
+| **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)** (private)         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable           |
+| **[REFERENCE.md](source/utilities/documents/back-end/REFERENCE.md)** (private)   | The template this README follows                                       |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -542,7 +500,7 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 - [ ] A data layer that can switch from MongoDB to MySQL
 - [ ] Unpaid-solutions record for freelancers
 
-The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/back-end/GITHUB.md#10-status-log).
+The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/back-end/GITHUB.md#10-status-log) (private).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -554,7 +512,7 @@ Contributions are welcome, as long as they keep the project readable. Before you
 
 1. **Read the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
-3. **Follow the Git naming:** branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next).
+3. **Follow the Git naming:** branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next) (private).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
