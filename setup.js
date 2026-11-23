@@ -100,7 +100,7 @@ let makeWorking = (target, repository) => {
     ['config', 'remote.origin.fetch', '+refs/heads/*:refs/remotes/origin/*'], //--|🠈 So it can see GitHub's branches 🠈|--\\
     ['fetch', 'origin'],
     ['symbolic-ref', 'HEAD', `refs/heads/${repository.branch}`], //--|🠈 Pick the branch 🠈|--\\
-    ['reset'], //--|🠈 Load it without touching any file 🠈|--\\
+    ['reset', '--quiet'], //--|🠈 Load it without touching any file; --quiet, or it lists every file as deleted for a moment 🠈|--\\
     ['checkout', '--', '.'], //--|🠈 Write the files; a plain checkout refuses once the shared files exist 🠈|--\\
     ['branch', '-u', `origin/${repository.branch}`], //--|🠈 Link the branch to GitHub's 🠈|--\\
   ];
