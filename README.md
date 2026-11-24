@@ -683,6 +683,8 @@ Proprietary. Copyright © 2026 Tertius Roach and Johann Schoeman, all rights res
 
 **Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach) · [tertius.roach@outlook.com](mailto:tertius.roach@outlook.com)
 
+**Johann Schoeman**: [GitHub](https://github.com/JohannSchoeman)
+
 Project link: [github.com/TraLogFin](https://github.com/TraLogFin)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
