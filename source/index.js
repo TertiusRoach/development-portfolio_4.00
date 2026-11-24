@@ -69,10 +69,10 @@ function setupFolder() {
   fs.writeFileSync(path.join(target, '.git'), 'gitdir: .frontend.git\n');
 
   //--|🠊 The guards: hooks are never cloned, so they're written here (PIPELINE.md, The Guards) 🠈|--\\
-  if (fs.existsSync(path.join(target, 'source', 'modules', 'guards', 'install.js'))) {
-    run(target, 'node', ['source/modules/guards/install.js']);
+  if (fs.existsSync(path.join(target, 'source', 'guards', 'install.js'))) {
+    run(target, 'node', ['source/guards/install.js']); //--|🠈 source/guards/ is shared, so a front-end-only folder gets its guards too 🠈|--\\
   } else {
-    warn('No guards without the back end: commits and pushes from this folder are not checked');
+    warn('source/guards/ is missing: commits and pushes from this folder are not checked');
   }
 
   //--|🠊 5: one node_modules for both sides 🠈|--\\

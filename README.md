@@ -108,13 +108,13 @@ One script downloads both repositories into one folder and sets them up.
    | Step                                            | Where                                                                                                                                                                 |
    | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | Install MongoDB (and MySQL, if needed)          | [§ 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private) and [§ 3](source/utilities/documents/back-end/MODULES.md#3-install-mysql) (private) |
-   | Unlock `build/.env` with `npm run guard:secret` | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env`                                                               |
+   | Unlock `build/.env` with `npm run guard:secret -w source/modules` | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env`                                                               |
    | Build the four collections                      | [§ 5](source/utilities/documents/back-end/MODULES.md#5-install-the-schemas) (private)                                                                                 |
 
 6. Start an app's server in a second terminal, next to the front end:
 
    ```bash
-   npm run server:picking
+   npm run server:picking -w source/modules
    ```
 
    Landing's server answers on `http://localhost:4000`; Overtime, Ticketing and Hyperlink have their own on 4001 to 4003. If it can't reach the database, it says so ([MODULES.md § 7](source/utilities/documents/back-end/MODULES.md#7-run-the-server) (private)).
@@ -191,20 +191,26 @@ You should see: `Hi <your name>! You've successfully authenticated…`. If SSH i
 
 **Opening the folder in VS Code** pulls both repositories, but only when nothing here would be overwritten (fast-forward only). It then shows where each one stands and starts the app. It never commits or pushes: that's always your decision.
 
+Each side syncs its own repository, and only pulls the other:
+
 ```bash
-npm run sync -- "Describe the change"
+npm run sync:frontend -w source/layouts -- "Describe the change"
 ```
 
-The whole round: pull both, check, commit both with one message, push both. Leave out the message and it asks for one.
+```bash
+npm run sync:backend -w source/modules -- "Describe the change"
+```
 
-**What `npm run sync` checks before it commits:**
+The round: pull the other side, check, commit your side, put it on top of anything new on GitHub, push it. When both of you changed the same lines it stops and explains, and never overwrites. Leave out the message and it asks for one. A change on both sides takes both commands.
 
-- the two repositories are on a matching pair of branches;
+**What each sync checks before it commits:**
+
+- the repositories are on a matching pair of branches;
 - every new file belongs to one side, so nothing is left unowned.
 
-**When it commits and pushes:** each commit names the other repository's commit, so the pair can always be found again. The guards run on every commit and push. A file from the wrong side, a `.env` file, or anything shaped like a password, key or token stops it, with a plain sentence saying why.
+**When it commits and pushes:** the guards run on every commit and push. A file from the wrong side, a `.env` file, or anything shaped like a password, key or token stops it, with a plain sentence saying why. Afterwards it warns when a shared file (this README, for one) now differs from the other repository, so you sync that side too.
 
-VS Code's **Source Control** panel shows the public front end only. Use `npm run sync` to commit both sides together.
+VS Code's **Source Control** panel shows the front end only. The back end is reached with `sync:backend`, or `git --git-dir=.backend.git …`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -269,18 +275,19 @@ npm run launch
 # Compile the project into public/
 npm run deploy
 
-# Pull, check, commit and push both repositories (Install and Sync, step 5)
-npm run sync -- "Describe what changed"
+# Pull both, then commit and push your side (Install and Sync, step 5)
+npm run sync:frontend -w source/layouts -- "Describe what changed"
+npm run sync:backend -w source/modules -- "Describe what changed"
 
 # The back end (needs the private half): one server per app
-npm run server:picking      # Landing,   http://localhost:4000
-npm run server:tracking     # Overtime,  http://localhost:4001
-npm run server:logging      # Ticketing, http://localhost:4002
-npm run server:hyperlink    # Hyperlink, http://localhost:4003
+npm run server:picking -w source/modules      # Landing,   http://localhost:4000
+npm run server:tracking -w source/modules     # Overtime,  http://localhost:4001
+npm run server:logging -w source/modules      # Ticketing, http://localhost:4002
+npm run server:hyperlink -w source/modules    # Hyperlink, http://localhost:4003
 
 # The guards (need the private half)
-npm run guard:secret        # lock a copy of the secrets file
-npm run guard:verify        # check the front end and the back end still line up
+npm run guard:secret -w source/modules        # lock a copy of the secrets file
+npm run guard:verify -w source/modules        # check the front end and the back end still line up
 
 # The brakes: stop everything on 8080 and 4000 to 4003
 npm run abort
@@ -378,7 +385,7 @@ tralogfin_1.00/
 ├── .vscode/
 │   ├── launch.json                  # Run Application (Webpack + Chrome)
 │   ├── settings.json
-│   └── tasks.json                   # Pulls both repositories, then runs `npm run launch`, on folder open
+│   └── tasks.json                   # Pulls the repositories, then runs `npm run launch`, on folder open
 ├── build/                           # Local only, holds .env (ignored by both)
 ├── public/                          # Final product for users (compiled)
 ├── source/

@@ -5,6 +5,10 @@
   "private": true,
   "author": "Tertius Roach",
   "license": "ISC",
+  "//": "The front end's own scripts. npm runs them inside source/layouts/, so from the TraLogFin folder add -w source/layouts: npm run sync:frontend -w source/layouts (EDITOR.md, The Scripts)",
+  "scripts": {
+    "sync:frontend": "node ../guards/sync.js frontend"
+  },
   "keywords": [
     "sass",
     "react",

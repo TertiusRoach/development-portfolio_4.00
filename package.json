@@ -7,18 +7,11 @@
     "source/layouts",
     "source/modules"
   ],
-  "//": "Six jobs, nothing else (EDITOR.md, The Scripts). prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again. Servers: 400# because development-portfolio_4.00, the last digit is the app (SERVER.md, Ports)",
+  "//": "Shared by both repositories: launch, deploy and abort only. Each side's own scripts live in its package.json: sync:frontend in source/layouts/, sync:backend, server:* and guard:* in source/modules/ (EDITOR.md, The Scripts). prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again",
   "scripts": {
     "prelaunch": "node -e \"const fs=require('fs');if(!fs.existsSync('.git')&&fs.existsSync('.frontend.git')){fs.writeFileSync('.git','gitdir: .frontend.git\\n');console.log('|--🠊 Guidance: .git was missing, written again so VS Code sees the front end, prelaunch 🠈--|')}\"",
     "launch": "webpack-dev-server --mode development",
     "deploy": "webpack --mode production",
-    "sync": "node source/modules/guards/sync.js sync",
-    "server:picking": "node --watch source/modules/server/MongoDB/landing.js",
-    "server:tracking": "node --watch source/modules/server/MongoDB/overtime.js",
-    "server:logging": "node --watch source/modules/server/MongoDB/ticketing.js",
-    "server:hyperlink": "node --watch source/modules/server/MongoDB/hyperlink.js",
-    "guard:secret": "node source/modules/guards/safe.js",
-    "guard:verify": "node source/modules/guards/guard.js",
     "abort": "npx kill-port 8080 4000 4001 4002 4003"
   },
   "author": "Tertius Roach",

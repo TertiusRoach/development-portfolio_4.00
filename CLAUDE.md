@@ -13,7 +13,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 | `.frontend.git` | development-portfolio_4.00 | Public     | `source/layouts/`, `documents/front-end/`, images, fonts and media, `public/`, `.vscode/`, the build files |
 | `.backend.git`  | backend-architecture_2.00  | Private    | `source/modules/`, `documents/back-end/`, the study library (`md txt zip pdf ods odt`) |
 
-**Both track** `README.md`, this file, `.gitignore`, `package.json`, `GUIDELINES.md` and `CHARACTERS.md`. The exact lists are `frontend.gitignore` (what the front end leaves to the back end) and `backend.gitignore` (the other way round). **A file that fits neither: stop and ask the owner.** Don't guess a side.
+**Both track** `README.md`, this file, `.gitignore`, `package.json`, `GUIDELINES.md`, `CHARACTERS.md`, `source/index.js` and `source/guards/` (the shared guards and sync). The exact lists are `frontend.gitignore` (what the front end leaves to the back end) and `backend.gitignore` (the other way round). **A file that fits neither: stop and ask the owner.** Don't guess a side.
 
 Plain `git` and VS Code's Source Control see the front end (the `.git` file points at `.frontend.git`). The back end is reached with `git --git-dir=.backend.git …`.
 
