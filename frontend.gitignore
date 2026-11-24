@@ -23,5 +23,4 @@
 /source/assets/**/*.odt
 
 # Back-end settings and its own list
-/.env.example
 /backend.gitignore

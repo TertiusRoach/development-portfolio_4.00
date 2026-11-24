@@ -11,7 +11,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 | Git folder      | Repository                 | Visibility | Owns                                                                                       |
 | --------------- | -------------------------- | ---------- | ------------------------------------------------------------------------------------------ |
 | `.frontend.git` | development-portfolio_4.00 | Public     | `source/layouts/`, `documents/front-end/`, images, fonts and media, `public/`, `.vscode/`, the build files |
-| `.backend.git`  | backend-architecture_2.00  | Private    | `source/modules/`, `documents/back-end/`, the study library (`md txt zip pdf ods odt`), `.env.example` |
+| `.backend.git`  | backend-architecture_2.00  | Private    | `source/modules/`, `documents/back-end/`, the study library (`md txt zip pdf ods odt`) |
 
 **Both track** `README.md`, this file, `.gitignore`, `package.json`, `GUIDELINES.md` and `CHARACTERS.md`. The exact lists are `frontend.gitignore` (what the front end leaves to the back end) and `backend.gitignore` (the other way round). **A file that fits neither: stop and ask the owner.** Don't guess a side.
 
@@ -31,7 +31,7 @@ Safety comes before speed, before tidiness and before finishing the task. When a
 
 1. **One Claude per folder.** Before editing, check whether another session is working in the same folder. If one is, don't edit there: say so, and wait until the owner hands it over.
 2. **Never throw away work you didn't make.** Uncommitted changes you don't recognize belong to the owner or another session. No `git checkout .`, `git restore`, `git reset --hard`, `git stash` or `git clean` on them without asking first.
-3. **Secrets are never read, printed, copied or committed.** Don't open `.env` or print its values; help with variable _names_ only. Only `.env.example` and the encrypted `source/modules/secret/.env.age` are committed, to the back end. Never ask for, type or store the age key's passphrase. The owner's password store is never opened, listed or copied by an assistant: moving passwords is the owner's job alone.
+3. **Secrets are never read, printed, copied or committed.** Don't open `.env` or print its values; help with variable _names_ only. Only `.env.example` and the encrypted `.env.age`, both in `source/modules/secret/`, are committed, to the back end. Never ask for, type or store the age key's passphrase. The owner's password store is never opened, listed or copied by an assistant: moving passwords is the owner's job alone.
 4. **`build/` is the owner's.** Don't read, write or run anything that writes into it (including `npm run deploy`), except when the owner asks for help with `.env`. Test scripts against a scratch folder instead.
 5. **Private stays private.** Nothing the back end owns (accounts, devices, addresses, secrets, its documents) goes into the front end's files, its Issues or its commits. The front end is public.
 6. **Anything that leaves the computer waits for a yes.** Commit, push, tag, branch deletion, Issues and comments, emails, installs and deletions each need the owner's go-ahead for that action, in this conversation. No history rewrites and no `--force`.
