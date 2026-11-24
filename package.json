@@ -1,19 +1,23 @@
 {
   "name": "tralogfin",
   "version": "1.0.0",
-  "description": "TraLogFin: Track a Day, Log a Ticket and Find a Link. One folder, two repositories: development-portfolio_4.00 (public) and backend-architecture_2.00 (private).",
+  "description": "TraLogFin: Track a Day, Log a Ticket and Find a Link. One folder, two repositories in the TraLogFin organization: front-end and back-end (both private).",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "workspaces": [
     "source/layouts",
     "source/modules"
   ],
-  "//": "Shared by both repositories: launch, deploy and abort only. Each side's own scripts live in its package.json: sync:frontend in source/layouts/, sync:backend, server:* and guard:* in source/modules/ (EDITOR.md, The Scripts). prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again",
+  "//": "Shared by both repositories: launch, deploy and abort only. Each side's own scripts live in its package.json: sync:frontend in source/layouts/, sync:backend, server:* and guard:* in source/modules/ (EDITOR.md, The Scripts). prepare runs on its own after every npm install: it installs the guards as Git hooks, so no computer can commit without them. prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again",
   "scripts": {
+    "prepare": "node source/guards/install.js",
     "prelaunch": "node -e \"const fs=require('fs');if(!fs.existsSync('.git')&&fs.existsSync('.frontend.git')){fs.writeFileSync('.git','gitdir: .frontend.git\\n');console.log('|--🠊 Guidance: .git was missing, written again so VS Code sees the front end, prelaunch 🠈--|')}\"",
     "launch": "webpack-dev-server --mode development",
     "deploy": "webpack --mode production",
     "abort": "npx kill-port 8080 4000 4001 4002 4003"
   },
-  "author": "Tertius Roach",
-  "license": "ISC"
+  "author": "Tertius Roach and Johann Schoeman",
+  "license": "UNLICENSED"
 }

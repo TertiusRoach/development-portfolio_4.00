@@ -1,0 +1,21 @@
+TraLogFin
+
+Copyright (c) 2026 Tertius Roach and Johann Schoeman. All rights reserved.
+
+This repository and everything in it (source code, designs, images, documents and
+data) is the property of the copyright holders named above. No permission is granted
+to copy, modify, merge, publish, distribute, sublicense, sell or otherwise use it, in
+whole or in part, without the prior written permission of both copyright holders.
+
+The live site at https://tralogfin.github.io may be viewed in a web browser. Viewing
+it grants no other right.
+
+Third-party material (the packages npm installs, and everything under
+source/utilities/vendors/) keeps its own license.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.

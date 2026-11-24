@@ -1,0 +1,4 @@
+# SHARED by .frontend.git and .backend.git: how Git stores line endings (EDITOR.md, Line Endings).
+# Every text file is stored and checked out with LF (Linux) endings, on Windows too, so a commit
+# from one computer never rewrites every line for the other. Git tells text from binary by itself.
+* text=auto eol=lf

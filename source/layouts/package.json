@@ -1,10 +1,10 @@
 {
-  "name": "development-portfolio_4.00",
-  "version": "4.0.0",
+  "name": "front-end",
+  "version": "1.0.0",
   "description": "The front end of TraLogFin: every page, container and component, styled per element and built with Webpack.",
   "private": true,
-  "author": "Tertius Roach",
-  "license": "ISC",
+  "author": "Tertius Roach and Johann Schoeman",
+  "license": "UNLICENSED",
   "//": "The front end's own scripts. npm runs them inside source/layouts/, so from the TraLogFin folder add -w source/layouts: npm run sync:frontend -w source/layouts (EDITOR.md, The Scripts)",
   "scripts": {
     "sync:frontend": "node ../guards/sync.js frontend"
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TertiusRoach/development-portfolio_4.00.git"
+    "url": "git+https://github.com/TraLogFin/front-end.git"
   },
-  "homepage": "https://github.com/TertiusRoach/development-portfolio_4.00#readme"
+  "homepage": "https://tralogfin.github.io"
 }

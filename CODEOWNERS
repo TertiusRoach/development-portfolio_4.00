@@ -1,0 +1,4 @@
+# SHARED by front-end and back-end: who reviews what (CONTRIBUTING.md, Pull Requests).
+# Every file belongs to both owners. GitHub asks both for a review, and nobody can
+# approve their own pull request, so the other owner is always the one who decides.
+*  @TertiusRoach @JohannSchoeman
