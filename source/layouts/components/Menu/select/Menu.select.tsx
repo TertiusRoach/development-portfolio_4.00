@@ -44,7 +44,7 @@ export function MenuSelect({ info, style, cases }: TheseProps) {
 
     🠉|--*/
     modifyControl(pageName, blockName, labelName, cases.axis);
-    //--|🠊 AI Code: Review Please 2026-11-08 · Returned like <MenuSwipe>, so the resize listener stops when this menu unmounts 🠈|--\\
+    //--|🠊 Returned like <MenuSwipe>, so the resize listener stops when this menu unmounts 🠈|--\\
     return reloadElements(pageName, blockName, labelName);
   }, [pageName, blockName, labelName]);
 

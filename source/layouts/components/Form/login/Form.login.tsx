@@ -1,5 +1,5 @@
 //--|🠊 Form.login.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/login/ 🠈|--\\
+//--|🠊 Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/login/ 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React from 'react';
 /* import axios from 'axios'; */
@@ -65,7 +65,7 @@ export function FormLogin({ info, style }: TheseProps) {
             info={{ pageName: info.pageName, blockName: info.blockName, ariaName: 'Show password', labelName: 'login-observe' }}
             style={{
               shade: '~light~',
-              clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-01 · No box, only the icon: it lies over the end of the password, like the old one 🠈|--\\
+              clarity: '⟨opaque⟩', //--|🠈 No box, only the icon: it lies over the end of the password, like the old one 🠈|--\\
               size: '<p>',
               view: '-icon-',
               color: style.color,
@@ -130,7 +130,7 @@ const handleLogin = async (event: React.FormEvent) => {
   event.preventDefault();
   setSubmit(true);
   try {
-    const endpoint = retrieveEndpoint('login', 'http://localhost:4000'); //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
+    const endpoint = retrieveEndpoint('login', 'http://localhost:4000'); //--|🠈 Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
     const response = await axios.post(endpoint, {
       email,
       password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\

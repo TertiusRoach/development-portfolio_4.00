@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../tools/conversions'; //--|🠈 AI Code: Review Please 2026-11-08 · Was the default import of ../../components, which is eventListen() 🠈|--\\
+import { stripBrackets } from '../../../tools/conversions'; //--|🠈 Was the default import of ../../components, which is eventListen() 🠈|--\\
 
 interface TheseProps {
   info: {
@@ -16,7 +16,7 @@ interface TheseProps {
     shade: '~dark~' | '~light~';
   };
 }
-//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const: the main function of the file 🠈|--\\
+//--|🠊 A function, not a const: the main function of the file 🠈|--\\
 export function DateString({ info, style }: TheseProps) {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';

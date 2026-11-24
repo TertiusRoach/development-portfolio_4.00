@@ -1,5 +1,5 @@
 //--|🠊 Form.password.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/password/ 🠈|--\\
+//--|🠊 Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/password/ 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React from 'react';
 /* import axios from 'axios'; */
@@ -109,7 +109,7 @@ const handlePassword = async (event: React.FormEvent) => {
   event.preventDefault(); //--|🠈 Prevents Refresh 🠈|--\\
   setSubmit(true);
   try {
-    const endpoint = retrieveEndpoint('password', 'http://localhost:4000'); //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
+    const endpoint = retrieveEndpoint('password', 'http://localhost:4000'); //--|🠈 Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
     const response = await axios.post(endpoint, {
       email: email,
       password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\

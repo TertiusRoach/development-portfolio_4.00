@@ -34,7 +34,7 @@ function SelectionLabel({ info }: InfoProps) {
   let pickerColor = '(orange)' as '(orange)';
   useEffect(() => {
     switchColors(pickerColor, 'selection'); //--|🠈 Re-runs on every flip, the new orientation's previews start (mono) 🠈|--\\
-    //--|🠊 AI Code: Review Please 2026-11-10 · The colour picker steps back until it's hovered 🠈|--\\
+    //--|🠊 The colour picker steps back until it's hovered 🠈|--\\
     const colourPickers = document.querySelectorAll(
       `#${pageName}-${blockName} aside[class="selection-label"] label[class*="colours"]`,
     ) as NodeListOf<HTMLLabelElement>;

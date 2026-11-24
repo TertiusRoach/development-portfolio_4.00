@@ -8,7 +8,7 @@ import React, { useEffect } from 'react';
 import returnProfile, { createClass } from './Section_characters';
 import type { CharacterSelection } from './Section_characters';
 
-//--|🠊 AI Code: Review Please 2026-11-08 · Exported so Section_characters.ts reads the types instead of repeating them 🠈|--\\
+//--|🠊 Exported so Section_characters.ts reads the types instead of repeating them 🠈|--\\
 export interface TheseProps {
   info: {
     pageName: string;

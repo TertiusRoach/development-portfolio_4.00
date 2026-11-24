@@ -1,6 +1,6 @@
 //--|🠊 Canvas_particles.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Canvas.propel.ts from 3.00: REPEL_SPEED 5, REPEL_RADIUS 50, RETURN_SPEED 0.1, PARTICLE_DIAMETER 6, measured at the 6px desktop dot 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Three kinds of picture: an .svg (Path2D, as before), a .gif (ImageDecoder, written live frame by frame) and any other image (.png, .jpg) 🠈|--\\
+//--|🠊 Canvas.propel.ts from 3.00: REPEL_SPEED 5, REPEL_RADIUS 50, RETURN_SPEED 0.1, PARTICLE_DIAMETER 6, measured at the 6px desktop dot 🠈|--\\
+//--|🠊 Three kinds of picture: an .svg (Path2D, as before), a .gif (ImageDecoder, written live frame by frame) and any other image (.png, .jpg) 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { TheseProps } from './Canvas.particles';
 import { abbrShade, abbrColor } from '../../components';
@@ -43,7 +43,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
   const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches as boolean;
 
   let stopped = false as boolean;
-  let awake = false as boolean; //--|🠈 AI Code: Review Please 2026-11-22 · Asleep and hidden (.downplay) until the mouse is over it: nothing loads, nothing moves 🠈|--\\
+  let awake = false as boolean; //--|🠈 Asleep and hidden (.downplay) until the mouse is over it: nothing loads, nothing moves 🠈|--\\
   let loading = false as boolean;
   let buildCount = 0 as number; //--|🠈 Every resize starts a new build; an older one that finishes late is thrown away 🠈|--\\
   let picture = null as Picture | null;
@@ -54,13 +54,13 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
   let pointerX = Infinity as number;
   let pointerY = Infinity as number;
   let frameId = 0 as number;
-  //--|🠊 AI Code: Review Please 2026-11-22 · The loading .gif: played while the dots are being made, then faded out as they come in 🠈|--\\
+  //--|🠊 The loading .gif: played while the dots are being made, then faded out as they come in 🠈|--\\
   const sketch = document.createElement('canvas') as HTMLCanvasElement; //--|🠈 Where the .gif is tinted before it's drawn 🠈|--\\
   let placeholder = null as VideoFrame | null; //--|🠈 The .gif frame showing now 🠈|--\\
   let placeholderOn = false as boolean;
   let placeholderCount = 0 as number; //--|🠈 Each play gets a number, so an older one stops itself 🠈|--\\
   let fadeStart = -1 as number; //--|🠈 -1: not fading yet, the dots aren't ready 🠈|--\\
-  let presence = 0 as number; //--|🠈 AI Code: Review Please 2026-11-22 · 0 to 1: the dots fade in and out inside the frame, which always shows 🠈|--\\
+  let presence = 0 as number; //--|🠈 0 to 1: the dots fade in and out inside the frame, which always shows 🠈|--\\
   let lastTime = -1 as number;
   let looping = false as boolean; //--|🠈 Still drawing: awake, or fading out 🠈|--\\
 
@@ -279,7 +279,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
   });
 
   resizeObserver.observe(canvas);
-  document.addEventListener('pointermove', watchPointer); //--|🠈 AI Code: Review Please 2026-11-22 · Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
+  document.addEventListener('pointermove', watchPointer); //--|🠈 Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
   document.addEventListener('pointerdown', watchPointer); //--|🠈 A tap on the canvas wakes it, a tap elsewhere puts it to sleep 🠈|--\\
   document.documentElement.addEventListener('mouseleave', losePage);
   return () => {
@@ -565,7 +565,7 @@ let moveParticles = (canvas: HTMLCanvasElement, particles: Array<Particle>, play
 
 //--|🠋 Draw the Loading .gif 🠋|--\\
 let drawPlaceholder = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, sketch: HTMLCanvasElement, frame: VideoFrame, alpha: number): void => {
-  //--|🠊 AI Code: Review Please 2026-11-22 · The .gif's own shape filled with the dots' gradient, edge to edge like the sampled frames, so it shows on either shade and the dots land on it 🠈|--\\
+  //--|🠊 The .gif's own shape filled with the dots' gradient, edge to edge like the sampled frames, so it shows on either shade and the dots land on it 🠈|--\\
   const width = canvas.clientWidth as number;
   const height = canvas.clientHeight as number;
   const computed = getComputedStyle(canvas) as CSSStyleDeclaration;

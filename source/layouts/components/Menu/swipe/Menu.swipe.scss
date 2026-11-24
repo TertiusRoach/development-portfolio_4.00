@@ -1584,7 +1584,7 @@
         }
       }
       @media screen and (max-width: 1920px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(96px * 2);
         }
@@ -1596,7 +1596,7 @@
         }
       }
       @media screen and (max-width: 1366px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(64px * 2);
         }
@@ -1608,7 +1608,7 @@
         }
       }
       @media screen and (max-width: 854px) {
-        height: 48px; //--|🠈 48px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 48px; //--|🠈 48px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(48px * 2);
         }
@@ -1734,7 +1734,7 @@
       li[class*='preview'] {
         @extend %buttons-y-tablet-desktop;
       }
-      %showing-y-tablet-desktop { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+      %showing-y-tablet-desktop { //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='horizontal_I'] {
           @media screen and (max-width: 1920px) {
             transform: translateX(calc(-96px * 0));
@@ -1959,7 +1959,7 @@
       li[class*='showing'] {
         @extend %showing-y-tablet-desktop;
       }
-      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+      li[class*='showing'] aside { //--|🠊 Rows scale on tablet too 🠈|--\\
         @media screen and (max-width: 1920px) {
           width: 96px; //--|🠈 96px for Squares 🠈|--\\
         }
@@ -2152,7 +2152,7 @@
         }
       }
       @media screen and (max-height: 1920px) {
-        height: 160px; //--|🠈 160px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 160px; //--|🠈 160px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(160px * 2);
         }
@@ -2164,7 +2164,7 @@
         }
       }
       @media screen and (max-height: 1366px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(96px * 2);
         }
@@ -2176,7 +2176,7 @@
         }
       }
       @media screen and (max-height: 854px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='lef_'] li[class*='showing'] aside {
           padding-left: calc(64px * 2);
         }
@@ -2302,7 +2302,7 @@
       li[class*='preview'] {
         @extend %buttons-y-tablet-mobile;
       }
-      %showing-y-tablet-mobile { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+      %showing-y-tablet-mobile { //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='horizontal_I'] {
           @media screen and (max-height: 1920px) {
             transform: translateX(calc(-160px * 0));
@@ -2527,7 +2527,7 @@
       li[class*='showing'] {
         @extend %showing-y-tablet-mobile;
       }
-      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:21 · Rows scale on tablet too 🠈|--\\
+      li[class*='showing'] aside { //--|🠊 Rows scale on tablet too 🠈|--\\
         @media screen and (max-height: 1920px) {
           width: 160px; //--|🠈 160px for Squares 🠈|--\\
         }
@@ -2659,7 +2659,7 @@ menu[class*='swipe'] {
     *[class*='_mon'] {
       &[class*='lig_'] h3[class*='display'] {
         color: Palettes.$indexLand-light;
-        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        //--|🠊 Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
         text-shadow:
           0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
           -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
@@ -2672,7 +2672,7 @@ menu[class*='swipe'] {
       }
       &[class*='dar_'] h3[class*='display'] {
         color: Palettes.$indexLand-dark;
-        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        //--|🠊 Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
         text-shadow:
           0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
           -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),

@@ -1,5 +1,5 @@
 //--|🠊 Canvas_meteorites.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · rainEffect() from University Tracker's index-main.ts: same counts, widths, speeds and three tones, drawn every frame 🠈|--\\
+//--|🠊 rainEffect() from University Tracker's index-main.ts: same counts, widths, speeds and three tones, drawn every frame 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { TheseProps } from './Canvas.meteorites';
 import { abbrShade, abbrColor } from '../../components';
@@ -25,7 +25,7 @@ export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
   const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches as boolean;
 
   let meteorites = [] as Array<Meteorite>;
-  let awake = false as boolean; //--|🠈 AI Code: Review Please 2026-11-22 · Asleep and hidden (.downplay) until the mouse is over it 🠈|--\\
+  let awake = false as boolean; //--|🠈 Asleep and hidden (.downplay) until the mouse is over it 🠈|--\\
   let startTime = 0 as number;
   let frameId = 0 as number;
   let drawFrame = (time: number): void => {
@@ -35,7 +35,7 @@ export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
       default:
         break;
     }
-    drawMeteorites(canvas, context, meteorites, stillMotion ? 0 : Math.max(0, time - startTime)); //--|🠈 AI Code: Review Please 2026-11-22 · Reduced motion freezes the clock, but still repaints a colour change 🠈|--\\
+    drawMeteorites(canvas, context, meteorites, stillMotion ? 0 : Math.max(0, time - startTime)); //--|🠈 Reduced motion freezes the clock, but still repaints a colour change 🠈|--\\
     frameId = requestAnimationFrame(drawFrame);
   };
   let wakeCanvas = (): void => {
@@ -79,7 +79,7 @@ export const fallMeteorites = (canvas: HTMLCanvasElement): (() => void) => {
   });
 
   resizeObserver.observe(canvas);
-  document.addEventListener('pointermove', watchPointer); //--|🠈 AI Code: Review Please 2026-11-22 · Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
+  document.addEventListener('pointermove', watchPointer); //--|🠈 Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
   document.addEventListener('pointerdown', watchPointer); //--|🠈 A tap on the canvas wakes it, a tap elsewhere puts it to sleep 🠈|--\\
   document.documentElement.addEventListener('mouseleave', losePage);
   return () => {

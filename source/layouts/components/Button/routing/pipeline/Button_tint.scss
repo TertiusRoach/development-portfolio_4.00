@@ -6,7 +6,7 @@
 @mixin routing-colors {
   //--|🠋 Global (Tint) 🠋|--\\
   $tint-fade: cubic-bezier(0.2, 0.8, 0.2, 1);
-  background: none; //--|🠈 AI Code: Review Please 2026-10-31 · Like <ButtonDefault> & <ButtonProfile>: ⟨opaque⟩'s clear back showed the browser's grey <button> 🠈|--\\
+  background: none; //--|🠈 Like <ButtonDefault> & <ButtonProfile>: ⟨opaque⟩'s clear back showed the browser's grey <button> 🠈|--\\
   @include mon-tint();
   @include red-tint();
   @include gre-tint();
@@ -18,12 +18,11 @@
   @include bro-tint();
   @include tur-tint();
   //--|🠋 Clarity 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-10-31 🠈|--\\
   &[class*='_luc_'] {
-    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
+    opacity: 1; //--|🠈 ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: only the frame & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: only the frame & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
     div[class='back'] {
       opacity: 0; //--|🠈 Completely clear: no layers to hide, so the box itself fades (a gradient can't fade, it snaps) 🠈|--\\
     }
@@ -31,7 +30,7 @@
       div[class='icon'] {
         span {
           img[src] {
-            opacity: 0.5; //--|🠈 AI Code: Review Please 2026-10-31 · Real pictures dim at rest 🠈|--\\
+            opacity: 0.5; //--|🠈 Real pictures dim at rest 🠈|--\\
           }
         }
       }
@@ -41,7 +40,7 @@
     span {
       transition: background 250ms $tint-fade;
       img {
-        transition: opacity 250ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨opaque⟩'s dimmed pictures fade with the icon 🠈|--\\
+        transition: opacity 250ms $tint-fade; //--|🠈 ⟨opaque⟩'s dimmed pictures fade with the icon 🠈|--\\
       }
     }
   }
@@ -51,7 +50,7 @@
   div[class='back'] {
     transition:
       background 750ms $tint-fade,
-      opacity 750ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨opaque⟩ fades the box itself 🠈|--\\
+      opacity 750ms $tint-fade; //--|🠈 ⟨opaque⟩ fades the box itself 🠈|--\\
   }
   //--|🠊 _alt: .png & .jpg show the picture itself (or nothing without an image), .svg stays a tinted silhouette 🠈|--\\
   &[class*='_alt'] {
@@ -83,7 +82,7 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and real pictures light up 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the box fades in and real pictures light up 🠈|--\\
       div[class='back'] {
         opacity: 1;
       }
@@ -123,10 +122,10 @@
 }
 //--|===|--\\
 @mixin mon-tint {
-  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$gray-light, Palettes.$gray-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$gray-neon, Palettes.$gray-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_mon']:where(:not(.highlight)),
@@ -177,13 +176,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_mon']:where(:not(.highlight)),
     &[class*='lig_mon']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -192,7 +191,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$gray-neon, 0.06) 0%, rgba(Palettes.$gray-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -207,7 +206,7 @@
     &[class*='dar_mon']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -216,7 +215,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -260,17 +259,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_mon']:where(:not(.highlight)),
     &[class*='lig_mon']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$gray-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$gray-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -278,21 +277,21 @@
     &[class*='dar_mon']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$gray-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$gray-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$gray-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin red-tint {
-  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$red-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$red-dark, Palettes.$red-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$red-light, Palettes.$red-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$red-neon, Palettes.$red-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_red']:where(:not(.highlight)),
@@ -343,13 +342,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_red']:where(:not(.highlight)),
     &[class*='lig_red']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -358,7 +357,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$red-neon, 0.06) 0%, rgba(Palettes.$red-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -373,7 +372,7 @@
     &[class*='dar_red']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -382,7 +381,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -426,17 +425,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_red']:where(:not(.highlight)),
     &[class*='lig_red']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$red-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$red-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -444,21 +443,21 @@
     &[class*='dar_red']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$red-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$red-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$red-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin gre-tint {
-  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$green-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$green-dark, Palettes.$green-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$green-light, Palettes.$green-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$green-neon, Palettes.$green-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_gre']:where(:not(.highlight)),
@@ -509,13 +508,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_gre']:where(:not(.highlight)),
     &[class*='lig_gre']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -524,7 +523,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$green-neon, 0.06) 0%, rgba(Palettes.$green-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -539,7 +538,7 @@
     &[class*='dar_gre']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -548,7 +547,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -592,17 +591,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_gre']:where(:not(.highlight)),
     &[class*='lig_gre']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$green-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$green-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -610,21 +609,21 @@
     &[class*='dar_gre']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$green-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$green-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$green-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin blu-tint {
-  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$blue-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$blue-dark, Palettes.$blue-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$blue-light, Palettes.$blue-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$blue-neon, Palettes.$blue-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_blu']:where(:not(.highlight)),
@@ -675,13 +674,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_blu']:where(:not(.highlight)),
     &[class*='lig_blu']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -690,7 +689,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$blue-neon, 0.06) 0%, rgba(Palettes.$blue-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -705,7 +704,7 @@
     &[class*='dar_blu']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -714,7 +713,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -758,17 +757,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_blu']:where(:not(.highlight)),
     &[class*='lig_blu']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$blue-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$blue-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -776,21 +775,21 @@
     &[class*='dar_blu']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$blue-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$blue-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$blue-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin pur-tint {
-  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$purple-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$purple-dark, Palettes.$purple-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$purple-light, Palettes.$purple-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$purple-neon, Palettes.$purple-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_pur']:where(:not(.highlight)),
@@ -841,13 +840,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pur']:where(:not(.highlight)),
     &[class*='lig_pur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -856,7 +855,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$purple-neon, 0.06) 0%, rgba(Palettes.$purple-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -871,7 +870,7 @@
     &[class*='dar_pur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -880,7 +879,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -924,17 +923,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pur']:where(:not(.highlight)),
     &[class*='lig_pur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$purple-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$purple-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -942,21 +941,21 @@
     &[class*='dar_pur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$purple-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$purple-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$purple-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin ora-tint {
-  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$orange-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$orange-dark, Palettes.$orange-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$orange-light, Palettes.$orange-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$orange-neon, Palettes.$orange-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_ora']:where(:not(.highlight)),
@@ -1007,13 +1006,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_ora']:where(:not(.highlight)),
     &[class*='lig_ora']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1022,7 +1021,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$orange-neon, 0.06) 0%, rgba(Palettes.$orange-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -1037,7 +1036,7 @@
     &[class*='dar_ora']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1046,7 +1045,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -1090,17 +1089,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_ora']:where(:not(.highlight)),
     &[class*='lig_ora']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$orange-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$orange-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -1108,21 +1107,21 @@
     &[class*='dar_ora']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$orange-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$orange-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$orange-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin pin-tint {
-  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$pink-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$pink-dark, Palettes.$pink-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$pink-light, Palettes.$pink-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$pink-neon, Palettes.$pink-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_pin']:where(:not(.highlight)),
@@ -1173,13 +1172,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pin']:where(:not(.highlight)),
     &[class*='lig_pin']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1188,7 +1187,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$pink-neon, 0.06) 0%, rgba(Palettes.$pink-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -1203,7 +1202,7 @@
     &[class*='dar_pin']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1212,7 +1211,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -1256,17 +1255,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pin']:where(:not(.highlight)),
     &[class*='lig_pin']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$pink-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$pink-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -1274,21 +1273,21 @@
     &[class*='dar_pin']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$pink-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$pink-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$pink-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin yel-tint {
-  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$yellow-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$yellow-dark, Palettes.$yellow-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$yellow-light, Palettes.$yellow-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$yellow-neon, Palettes.$yellow-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_yel']:where(:not(.highlight)),
@@ -1339,13 +1338,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_yel']:where(:not(.highlight)),
     &[class*='lig_yel']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1354,7 +1353,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$yellow-neon, 0.06) 0%, rgba(Palettes.$yellow-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -1369,7 +1368,7 @@
     &[class*='dar_yel']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1378,7 +1377,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -1422,17 +1421,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_yel']:where(:not(.highlight)),
     &[class*='lig_yel']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$yellow-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$yellow-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -1440,21 +1439,21 @@
     &[class*='dar_yel']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$yellow-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$yellow-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$yellow-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin bro-tint {
-  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$brown-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$brown-dark, Palettes.$brown-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$brown-light, Palettes.$brown-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$brown-neon, Palettes.$brown-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_bro']:where(:not(.highlight)),
@@ -1505,13 +1504,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_bro']:where(:not(.highlight)),
     &[class*='lig_bro']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1520,7 +1519,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$brown-neon, 0.06) 0%, rgba(Palettes.$brown-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -1535,7 +1534,7 @@
     &[class*='dar_bro']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1544,7 +1543,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -1588,17 +1587,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_bro']:where(:not(.highlight)),
     &[class*='lig_bro']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$brown-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$brown-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -1606,21 +1605,21 @@
     &[class*='dar_bro']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$brown-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$brown-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$brown-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }
 }
 
 @mixin tur-tint {
-  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $blaDar: color.mix(#000000, Palettes.$turquoise-dark, $weight: 60%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
   $darMed: color.mix(Palettes.$turquoise-dark, Palettes.$turquoise-medium, $weight: 55%);
   $ligMed: color.mix(Palettes.$turquoise-light, Palettes.$turquoise-medium, $weight: 55%);
-  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%); //--|🠈 AI Code: Review Please 2026-10-31 · Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
+  $neoLig: color.mix(Palettes.$turquoise-neon, Palettes.$turquoise-light, $weight: 70%); //--|🠈 Same as <ButtonDefault>, for ⟨opaque⟩ 🠈|--\\
 
   &[class*='_luc_'] {
     &[class*='dar_tur']:where(:not(.highlight)),
@@ -1672,13 +1671,13 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the back stays clear (See Clarity) and holds the shade's own resting ⟨lucid⟩ box, the frame stays 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_tur']:where(:not(.highlight)),
     &[class*='lig_tur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $blaDar; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1687,7 +1686,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $blaDar; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(Palettes.$turquoise-neon, 0.06) 0%, rgba(Palettes.$turquoise-neon, 0) 45%, rgba(#000, 0.3) 100%), $darMed;
@@ -1702,7 +1701,7 @@
     &[class*='dar_tur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
+          background: $neoLig; //--|🠈 The shade's own colour, like <ButtonDefault>'s text 🠈|--\\
           img {
             opacity: 0;
             pointer-events: none;
@@ -1711,7 +1710,7 @@
         }
       }
       div[class='fore'] {
-        border-color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The frame stays, in the shade's own colour 🠈|--\\
+        border-color: $neoLig; //--|🠈 The frame stays, in the shade's own colour 🠈|--\\
       }
       div[class='back'] {
         background: linear-gradient(180deg, rgba(#fff, 0.18) 0%, rgba(#fff, 0) 42%, rgba(#000, 0.2) 100%), $ligMed;
@@ -1756,17 +1755,17 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the frame & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_tur']:where(:not(.highlight)),
     &[class*='lig_tur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$turquoise-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: Palettes.$turquoise-light; //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
     //--|🠊 Light Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
@@ -1774,11 +1773,11 @@
     &[class*='dar_tur']:where(.highlight) {
       div[class='icon'] {
         span {
-          background: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$turquoise-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
       div[class='fore'] {
-        border-color: rgba(Palettes.$turquoise-dark, 0.75); //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ frame 🠈|--\\
+        border-color: rgba(Palettes.$turquoise-dark, 0.75); //--|🠈 The resting ⟨lucid⟩ frame 🠈|--\\
       }
     }
   }

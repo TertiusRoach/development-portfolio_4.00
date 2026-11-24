@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 //--|🠋 Components 🠋|--\\
 
 //--|🠋 Functions 🠋|--\\
-import { stripBrackets } from '../../../tools/conversions'; //--|🠈 AI Code: Review Please 2026-11-08 · scripts/landing no longer exists; viewBlock, viewText and axiosError were never used here 🠈|--\\
+import { stripBrackets } from '../../../tools/conversions'; //--|🠈 scripts/landing no longer exists; viewBlock, viewText and axiosError were never used here 🠈|--\\
 import { scaleText, createSquare } from './List_countdown';
 
 interface InfoProps {
@@ -24,7 +24,7 @@ type Counters = {
   minutes: number;
   seconds: number;
 };
-//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const: the main function of the file 🠈|--\\
+//--|🠊 A function, not a const: the main function of the file 🠈|--\\
 export function ListCountdown({ info }: InfoProps) {
   const pageName = stripBrackets(info.pageName, '[]') as 'landing';
   const blockName = stripBrackets(info.blockName, '<>') as 'footer';
@@ -105,14 +105,14 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
           const emailInput = document.querySelector<HTMLInputElement>('div[class*="inputs"] #email');
 
           if (!emailInput) {
-            console.log(`|--🠊 Warning: #email never showed up inside div[class*="inputs"], List/countdown/List.countdown.tsx 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 🠈|--\\
+            console.log(`|--🠊 Warning: #email never showed up inside div[class*="inputs"], List/countdown/List.countdown.tsx 🠈--|`);
             return; //--|🠈 Stop execution if the email input field is missing 🠈|--\\
           }
 
           /*--|🠋 Countdown request: commented out so the <List> is visual-only, it comes back through scripts/Footer.ts and PickPage (SERVER.md §5) 🠉|--*/
           /*
           let route = 'blocked';
-          let link = 'http://localhost:4000'; //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
+          let link = 'http://localhost:4000'; //--|🠈 Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
           axios
             .post(`${link}/users/${route}`, { email: emailInput.value })
             .then((response) => {

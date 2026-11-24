@@ -8,7 +8,7 @@ $indexLand-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
 $indexLand-light: #cecebe; //--|🠈 rgba() 🠈|--\\
 $indexLand-medium: #737373; //--|🠈 rgba() 🠈|--\\
 
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $indexLand-darkMode: light on top, $indexLand-medium at the bottom instead of black, base mixed with $indexLand-medium 🠈|--\\
+//--|🠊 Mirrors $indexLand-darkMode: light on top, $indexLand-medium at the bottom instead of black, base mixed with $indexLand-medium 🠈|--\\
 $indexLand-lightMode:
   linear-gradient(180deg, rgba($indexLand-light, 0.7) 0%, rgba($indexLand-light, 0) 52%, rgba($indexLand-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($indexLand-neon, 0.08) 0%, rgba($indexLand-light, 0) 45%, rgba($indexLand-light, 0.38) 100%),
@@ -45,7 +45,7 @@ $tra-pending: $orange-medium;
 $trackDay-automatic: $grey-medium;
 */
 
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $trackDay-darkMode: light on top, $trackDay-medium at the bottom instead of black, base mixed with $trackDay-medium 🠈|--\\
+//--|🠊 Mirrors $trackDay-darkMode: light on top, $trackDay-medium at the bottom instead of black, base mixed with $trackDay-medium 🠈|--\\
 $trackDay-lightMode:
   linear-gradient(180deg, rgba($trackDay-light, 0.7) 0%, rgba($trackDay-light, 0) 52%, rgba($trackDay-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($trackDay-neon, 0.08) 0%, rgba($trackDay-light, 0) 45%, rgba($trackDay-light, 0.38) 100%),
@@ -82,7 +82,7 @@ $log-pending: $orange-neon;
 $log-resolved: $green-neon;
 */
 
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $logTicket-darkMode: light on top, $logTicket-medium at the bottom instead of black, base mixed with $logTicket-medium 🠈|--\\
+//--|🠊 Mirrors $logTicket-darkMode: light on top, $logTicket-medium at the bottom instead of black, base mixed with $logTicket-medium 🠈|--\\
 $logTicket-lightMode:
   linear-gradient(180deg, rgba($logTicket-light, 0.7) 0%, rgba($logTicket-light, 0) 52%, rgba($logTicket-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($logTicket-neon, 0.08) 0%, rgba($logTicket-light, 0) 45%, rgba($logTicket-light, 0.38) 100%),
@@ -112,7 +112,7 @@ $findLink-dark: #330a11; //--|🠈 rgba() 🠈|--\\
 $findLink-light: #f3c3d7; //--|🠈 rgba() 🠈|--\\
 $findLink-medium: #7a1f39; //--|🠈 rgba() 🠈|--\\
 
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $findLink-darkMode: light on top, $findLink-medium at the bottom instead of black, base mixed with $findLink-medium 🠈|--\\
+//--|🠊 Mirrors $findLink-darkMode: light on top, $findLink-medium at the bottom instead of black, base mixed with $findLink-medium 🠈|--\\
 $findLink-lightMode:
   linear-gradient(180deg, rgba($findLink-light, 0.7) 0%, rgba($findLink-light, 0) 52%, rgba($findLink-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($findLink-neon, 0.08) 0%, rgba($findLink-light, 0) 45%, rgba($findLink-light, 0.38) 100%),
@@ -137,11 +137,11 @@ $findLink-darkMode:
   );
 
 //--|🠊 background: Palettes.$red-neon; 🠈|--\\
-$gray-neon: #ffffff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #fffffc 🠈|--\\
+$gray-neon: #ffffff; //--|🠈 rgba() · flamboyant neon: full saturation, was #fffffc 🠈|--\\
 $gray-dark: #0e0e0b; //--|🠈 rgba() 🠈|--\\
-$gray-light: #edede8; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cecebe 🠈|--\\
-$gray-medium: #77767b; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #737373 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $gray-darkMode: light on top, $gray-medium at the bottom instead of black, base mixed with $gray-medium 🠈|--\\
+$gray-light: #edede8; //--|🠈 rgba() · palest light the colour still shows in, was #cecebe 🠈|--\\
+$gray-medium: #77767b; //--|🠈 rgba() · Thunderbird medium, was #737373 🠈|--\\
+//--|🠊 Mirrors $gray-darkMode: light on top, $gray-medium at the bottom instead of black, base mixed with $gray-medium 🠈|--\\
 $gray-lightMode:
   linear-gradient(180deg, rgba($gray-light, 0.7) 0%, rgba($gray-light, 0) 52%, rgba($gray-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($gray-neon, 0.08) 0%, rgba($gray-light, 0) 45%, rgba($gray-light, 0.38) 100%),
@@ -165,11 +165,11 @@ $gray-darkMode:
     color.mix($gray-dark, $gray-medium, 82%) 100%
   );
 
-$red-neon: #ff424b; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff9090 🠈|--\\
+$red-neon: #ff424b; //--|🠈 rgba() · flamboyant neon: full saturation, was #ff9090 🠈|--\\
 $red-dark: #290a0a; //--|🠈 rgba() 🠈|--\\
-$red-light: #ffdbdd; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffd1d1 🠈|--\\
-$red-medium: #e01b24; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #ab2424 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $red-darkMode: light on top, $red-medium at the bottom instead of black, base mixed with $red-medium 🠈|--\\
+$red-light: #ffdbdd; //--|🠈 rgba() · palest light the colour still shows in, was #ffd1d1 🠈|--\\
+$red-medium: #e01b24; //--|🠈 rgba() · Thunderbird medium, was #ab2424 🠈|--\\
+//--|🠊 Mirrors $red-darkMode: light on top, $red-medium at the bottom instead of black, base mixed with $red-medium 🠈|--\\
 $red-lightMode:
   linear-gradient(180deg, rgba($red-light, 0.7) 0%, rgba($red-light, 0) 52%, rgba($red-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($red-neon, 0.08) 0%, rgba($red-light, 0) 45%, rgba($red-light, 0.38) 100%),
@@ -183,11 +183,11 @@ $red-darkMode:
   radial-gradient(110% 120% at 50% 50%, rgba(#000, 0) 58%, rgba(#000, 0.34) 100%),
   linear-gradient(135deg, color.mix($red-dark, #000, 84%) 0%, color.mix($red-dark, $red-medium, 70%) 55%, color.mix($red-dark, $red-medium, 82%) 100%);
 
-$green-neon: #1fff83; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #63ff9c 🠈|--\\
+$green-neon: #1fff83; //--|🠈 rgba() · flamboyant neon: full saturation, was #63ff9c 🠈|--\\
 $green-dark: #062112; //--|🠈 rgba() 🠈|--\\
-$green-light: #dbffeb; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cffae0 🠈|--\\
-$green-medium: #33d17a; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #079707 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $green-darkMode: light green on top, $green-medium at the bottom instead of black, base mixed with $green-medium 🠈|--\\
+$green-light: #dbffeb; //--|🠈 rgba() · palest light the colour still shows in, was #cffae0 🠈|--\\
+$green-medium: #33d17a; //--|🠈 rgba() · Thunderbird medium, was #079707 🠈|--\\
+//--|🠊 Mirrors $green-darkMode: light green on top, $green-medium at the bottom instead of black, base mixed with $green-medium 🠈|--\\
 $green-lightMode:
   linear-gradient(180deg, rgba($green-light, 0.7) 0%, rgba($green-light, 0) 52%, rgba($green-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($green-neon, 0.08) 0%, rgba($green-light, 0) 45%, rgba($green-light, 0.38) 100%),
@@ -211,11 +211,11 @@ $green-darkMode:
     color.mix($green-dark, $green-medium, 82%) 100%
   );
 
-$blue-neon: #52a0ff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #7dc0ff 🠈|--\\
+$blue-neon: #52a0ff; //--|🠈 rgba() · flamboyant neon: full saturation, was #7dc0ff 🠈|--\\
 $blue-dark: #07122d; //--|🠈 rgba() 🠈|--\\
-$blue-light: #dbebff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #d6e6ff 🠈|--\\
-$blue-medium: #3584e4; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #0d56a6 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $blue-darkMode: light on top, $blue-medium at the bottom instead of black, base mixed with $blue-medium 🠈|--\\
+$blue-light: #dbebff; //--|🠈 rgba() · palest light the colour still shows in, was #d6e6ff 🠈|--\\
+$blue-medium: #3584e4; //--|🠈 rgba() · Thunderbird medium, was #0d56a6 🠈|--\\
+//--|🠊 Mirrors $blue-darkMode: light on top, $blue-medium at the bottom instead of black, base mixed with $blue-medium 🠈|--\\
 $blue-lightMode:
   linear-gradient(180deg, rgba($blue-light, 0.7) 0%, rgba($blue-light, 0) 52%, rgba($blue-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($blue-neon, 0.08) 0%, rgba($blue-light, 0) 45%, rgba($blue-light, 0.38) 100%),
@@ -239,11 +239,11 @@ $blue-darkMode:
     color.mix($blue-dark, $blue-medium, 82%) 100%
   );
 
-$purple-neon: #d65cff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #c98fff 🠈|--\\
+$purple-neon: #d65cff; //--|🠈 rgba() · flamboyant neon: full saturation, was #c98fff 🠈|--\\
 $purple-dark: #140a2a; //--|🠈 rgba() 🠈|--\\
-$purple-light: #f6dbff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #eadcff 🠈|--\\
-$purple-medium: #9141ac; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #68179d 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $purple-darkMode: light on top, $purple-medium at the bottom instead of black, base mixed with $purple-medium 🠈|--\\
+$purple-light: #f6dbff; //--|🠈 rgba() · palest light the colour still shows in, was #eadcff 🠈|--\\
+$purple-medium: #9141ac; //--|🠈 rgba() · Thunderbird medium, was #68179d 🠈|--\\
+//--|🠊 Mirrors $purple-darkMode: light on top, $purple-medium at the bottom instead of black, base mixed with $purple-medium 🠈|--\\
 $purple-lightMode:
   linear-gradient(180deg, rgba($purple-light, 0.7) 0%, rgba($purple-light, 0) 52%, rgba($purple-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($purple-neon, 0.08) 0%, rgba($purple-light, 0) 45%, rgba($purple-light, 0.38) 100%),
@@ -267,11 +267,11 @@ $purple-darkMode:
     color.mix($purple-dark, $purple-medium, 82%) 100%
   );
 
-$orange-neon: #ff9333; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff9900 🠈|--\\
+$orange-neon: #ff9333; //--|🠈 rgba() · flamboyant neon: full saturation, was #ff9900 🠈|--\\
 $orange-dark: #421500; //--|🠈 rgba() 🠈|--\\
-$orange-light: #ffe7d1; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffe2c2 🠈|--\\
-$orange-medium: #ff7800; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #d97e00 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $orange-darkMode: light on top, $orange-medium at the bottom instead of black, base mixed with $orange-medium 🠈|--\\
+$orange-light: #ffe7d1; //--|🠈 rgba() · palest light the colour still shows in, was #ffe2c2 🠈|--\\
+$orange-medium: #ff7800; //--|🠈 rgba() · Thunderbird medium, was #d97e00 🠈|--\\
+//--|🠊 Mirrors $orange-darkMode: light on top, $orange-medium at the bottom instead of black, base mixed with $orange-medium 🠈|--\\
 $orange-lightMode:
   linear-gradient(180deg, rgba($orange-light, 0.7) 0%, rgba($orange-light, 0) 52%, rgba($orange-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($orange-neon, 0.08) 0%, rgba($orange-light, 0) 45%, rgba($orange-light, 0.38) 100%),
@@ -295,11 +295,11 @@ $orange-darkMode:
     color.mix($orange-dark, $orange-medium, 82%) 100%
   );
 
-$pink-neon: #ff3d8f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ff00c8 🠈|--\\
+$pink-neon: #ff3d8f; //--|🠈 rgba() · flamboyant neon: full saturation, was #ff00c8 🠈|--\\
 $pink-dark: #2a071a; //--|🠈 rgba() 🠈|--\\
-$pink-light: #ffdbea; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #ffd1e6 🠈|--\\
-$pink-medium: #b82e68; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #b4236a 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $pink-darkMode: light on top, $pink-medium at the bottom instead of black, base mixed with $pink-medium 🠈|--\\
+$pink-light: #ffdbea; //--|🠈 rgba() · palest light the colour still shows in, was #ffd1e6 🠈|--\\
+$pink-medium: #b82e68; //--|🠈 rgba() · Thunderbird medium, was #b4236a 🠈|--\\
+//--|🠊 Mirrors $pink-darkMode: light on top, $pink-medium at the bottom instead of black, base mixed with $pink-medium 🠈|--\\
 $pink-lightMode:
   linear-gradient(180deg, rgba($pink-light, 0.7) 0%, rgba($pink-light, 0) 52%, rgba($pink-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($pink-neon, 0.08) 0%, rgba($pink-light, 0) 45%, rgba($pink-light, 0.38) 100%),
@@ -323,11 +323,11 @@ $pink-darkMode:
     color.mix($pink-dark, $pink-medium, 82%) 100%
   );
 
-$yellow-neon: #ffec1f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #ffdd55 🠈|--\\
+$yellow-neon: #ffec1f; //--|🠈 rgba() · flamboyant neon: full saturation, was #ffdd55 🠈|--\\
 $yellow-dark: #705010; //--|🠈 rgba() 🠈|--\\
-$yellow-light: #fff4c2; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #f5e7ad 🠈|--\\
-$yellow-medium: #f6d32d; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #caa42a 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $yellow-darkMode: light on top, $yellow-medium at the bottom instead of black, base mixed with $yellow-medium 🠈|--\\
+$yellow-light: #fff4c2; //--|🠈 rgba() · palest light the colour still shows in, was #f5e7ad 🠈|--\\
+$yellow-medium: #f6d32d; //--|🠈 rgba() · Thunderbird medium, was #caa42a 🠈|--\\
+//--|🠊 Mirrors $yellow-darkMode: light on top, $yellow-medium at the bottom instead of black, base mixed with $yellow-medium 🠈|--\\
 $yellow-lightMode:
   linear-gradient(180deg, rgba($yellow-light, 0.7) 0%, rgba($yellow-light, 0) 52%, rgba($yellow-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($yellow-neon, 0.08) 0%, rgba($yellow-light, 0) 45%, rgba($yellow-light, 0.38) 100%),
@@ -351,11 +351,11 @@ $yellow-darkMode:
     color.mix($yellow-dark, $yellow-medium, 82%) 100%
   );
 
-$brown-neon: #f2a15f; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #d9a066 🠈|--\\
+$brown-neon: #f2a15f; //--|🠈 rgba() · flamboyant neon: full saturation, was #d9a066 🠈|--\\
 $brown-dark: #1e110a; //--|🠈 rgba() 🠈|--\\
-$brown-light: #ffe6d1; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #f0dcc8 🠈|--\\
-$brown-medium: #986a44; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #7b4a2e 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $brown-darkMode: light on top, $brown-medium at the bottom instead of black, base mixed with $brown-medium 🠈|--\\
+$brown-light: #ffe6d1; //--|🠈 rgba() · palest light the colour still shows in, was #f0dcc8 🠈|--\\
+$brown-medium: #986a44; //--|🠈 rgba() · Thunderbird medium, was #7b4a2e 🠈|--\\
+//--|🠊 Mirrors $brown-darkMode: light on top, $brown-medium at the bottom instead of black, base mixed with $brown-medium 🠈|--\\
 $brown-lightMode:
   linear-gradient(180deg, rgba($brown-light, 0.7) 0%, rgba($brown-light, 0) 52%, rgba($brown-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($brown-neon, 0.08) 0%, rgba($brown-light, 0) 45%, rgba($brown-light, 0.38) 100%),
@@ -379,11 +379,11 @@ $brown-darkMode:
     color.mix($brown-dark, $brown-medium, 82%) 100%
   );
 
-$turquoise-neon: #1af6ff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · flamboyant neon: full saturation, was #2de2e6 🠈|--\\
+$turquoise-neon: #1af6ff; //--|🠈 rgba() · flamboyant neon: full saturation, was #2de2e6 🠈|--\\
 $turquoise-dark: #052125; //--|🠈 rgba() 🠈|--\\
-$turquoise-light: #dbfeff; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · palest light the colour still shows in, was #cffafe 🠈|--\\
-$turquoise-medium: #34aaaf; //--|🠈 rgba() · AI Code: Review Please 2026-11-10 · Thunderbird medium, was #0e7490 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 · Mirrors $turquoise-darkMode: light on top, $turquoise-medium at the bottom instead of black, base mixed with $turquoise-medium 🠈|--\\
+$turquoise-light: #dbfeff; //--|🠈 rgba() · palest light the colour still shows in, was #cffafe 🠈|--\\
+$turquoise-medium: #34aaaf; //--|🠈 rgba() · Thunderbird medium, was #0e7490 🠈|--\\
+//--|🠊 Mirrors $turquoise-darkMode: light on top, $turquoise-medium at the bottom instead of black, base mixed with $turquoise-medium 🠈|--\\
 $turquoise-lightMode:
   linear-gradient(180deg, rgba($turquoise-light, 0.7) 0%, rgba($turquoise-light, 0) 52%, rgba($turquoise-medium, 0.3) 100%),
   linear-gradient(135deg, rgba($turquoise-neon, 0.08) 0%, rgba($turquoise-light, 0) 45%, rgba($turquoise-light, 0.38) 100%),

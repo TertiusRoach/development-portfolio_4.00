@@ -1,5 +1,5 @@
 //--|🠊 spotlight-figure/SpotlightFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
+//--|🠊 Copied from MeteoritesFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
 //--|🠋 Colour Switching 🠋|--\\
 export const switchColors = (choice: string, labelName: 'spotlight'): void => {
   const colorMap: Record<string, string> = {

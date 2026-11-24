@@ -1,6 +1,6 @@
 //--|🠊 SpotlightFigure.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Moved from canvas-components/spotlight-canvas/: <CanvasSpotlight> is now <FigureSpotlight>, the first page of the [archive] <Figure> group 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
+//--|🠊 Moved from canvas-components/spotlight-canvas/: <CanvasSpotlight> is now <FigureSpotlight>, the first page of the [archive] <Figure> group 🠈|--\\
+//--|🠊 Copied from MeteoritesCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -28,9 +28,9 @@ function SpotlightFigure({ info }: InfoProps) {
   let pickerShade = '~dark~' as '~dark~';
   useEffect(() => {
     switchColors(pickerColor, 'spotlight');
-    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same as the canvas pages 🠈|--\\
+    //--|🠊 The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same as the canvas pages 🠈|--\\
     const spotlightPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+      `#${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="spotlight-figure"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < spotlightPickers.length; i++) {
       spotlightPickers[i].classList.add('downplay');

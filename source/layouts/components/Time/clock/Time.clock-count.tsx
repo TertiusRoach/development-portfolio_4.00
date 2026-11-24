@@ -12,7 +12,7 @@ interface TheseProps {
     blockName: string;
   };
 }
-//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the unused stripBrackets import (from the wrong file) is gone 🠈|--\\
+//--|🠊 A function, not a const; the unused stripBrackets import (from the wrong file) is gone 🠈|--\\
 export function ClockCount({ info }: TheseProps) {
   const blockName: string = info.blockName as 'main';
   const pageName: string = info.pageName as 'overtime';

@@ -130,7 +130,7 @@
   }
   //--|🠋 Global (View) 🠋|--\\
   /*--|🠋
-    AI Code: Review Please 2026-10-30 · style.view places the <label> inside its parent with auto margins, the same nine positions as <ButtonRouting>.
+    style.view places the <label> inside its parent with auto margins, the same nine positions as <ButtonRouting>.
     The top & bottom margins only work when the parent is a flex or grid box. Missing = mid-cen.
   🠉|--*/
   &[class*='_tl_'] {

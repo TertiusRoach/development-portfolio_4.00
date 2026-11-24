@@ -16,12 +16,11 @@
   @include bro-tint();
   @include tur-tint();
   //--|🠋 Clarity 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
   &[class*='_luc_'] {
-    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-30 · ⟨lucid⟩: solid, like <LabelSelection> 🠈|--\\
+    opacity: 1; //--|🠈 ⟨lucid⟩: solid, like <LabelSelection> 🠈|--\\
   }
   &[class*='_opa_'] {
-    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: see-through with a frame, set below and in *-tint 🠈|--\\
+    opacity: 1; //--|🠈 ⟨opaque⟩: see-through with a frame, set below and in *-tint 🠈|--\\
   }
   //--|🠋 Crossfade Layers 🠋|--\\
   /*--|🠋
@@ -70,7 +69,7 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩ like {select}: the layers drop to a quarter and lose the bevel, the frame is set in *-tint 🠈|--\\
+    //--|🠊 ⟨opaque⟩ like {select}: the layers drop to a quarter and lose the bevel, the frame is set in *-tint 🠈|--\\
     &::before {
       opacity: 0.25; //--|🠈 See-through, the page shows behind the text 🠈|--\\
       box-shadow: none;
@@ -89,7 +88,7 @@
     }
   }
 }
-//--|🠊 AI Code: Review Please 2026-10-29 17:04 · {select} fades + the <Form> frame: resting reads like an unchecked toggle, hovered or typing like a checked one 🠈|--\\
+//--|🠊 {select} fades + the <Form> frame: resting reads like an unchecked toggle, hovered or typing like a checked one 🠈|--\\
 @mixin mon-tint {
   $blaDar: color.mix(#000000, Palettes.$gray-dark, $weight: 60%);
   $darMed: color.mix(Palettes.$gray-dark, Palettes.$gray-medium, $weight: 55%);
@@ -136,12 +135,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -149,10 +148,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$gray-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -200,12 +199,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$gray-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -216,7 +215,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -271,12 +270,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -284,10 +283,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$red-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -335,12 +334,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$red-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -351,7 +350,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -406,12 +405,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -419,10 +418,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$green-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -470,12 +469,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$green-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -486,7 +485,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -541,12 +540,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -554,10 +553,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$blue-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -605,12 +604,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$blue-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -621,7 +620,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -676,12 +675,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -689,10 +688,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$purple-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -740,12 +739,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$purple-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -756,7 +755,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -811,12 +810,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -824,10 +823,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$orange-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -875,12 +874,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$orange-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -891,7 +890,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -946,12 +945,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -959,10 +958,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$pink-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -1010,12 +1009,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$pink-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -1026,7 +1025,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -1081,12 +1080,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -1094,10 +1093,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$yellow-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -1145,12 +1144,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$yellow-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -1161,7 +1160,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -1216,12 +1215,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -1229,10 +1228,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$brown-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -1280,12 +1279,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$brown-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -1296,7 +1295,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);
@@ -1351,12 +1350,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
         box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
           inset 0 0 0 2px $blaDar,
           inset 0 0.125em 0.25em $blaDar;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
           0 0 0.06em $blaDar,
           0 0 0.12em $blaDar,
           0 0 0.3em rgba($blaDar, 0.8);
@@ -1364,10 +1363,10 @@
       &:hover,
       &:has(:focus-visible) {
         [class='event'] {
-          box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+          box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
             inset 0 0 0 2px $neoLig,
             inset 0 0 0.5em Palettes.$turquoise-medium;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
             0 0 0.06em $neoLig,
             0 0 0.12em $neoLig,
             0 0 0.3em rgba($neoLig, 0.8);
@@ -1415,12 +1414,12 @@
       }
     }
     &[class*='_opa_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · ⟨opaque⟩: the {select} frame 🠈|--\\
+      //--|🠊 ⟨opaque⟩: the {select} frame 🠈|--\\
       [class='event'] {
-        box-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
+        box-shadow: //--|🠈 A light outline over a medium inset glow, like <LabelSwitching> 🠈|--\\
           inset 0 0 0 2px $neoLig,
           inset 0 0 0.5em Palettes.$turquoise-medium;
-        text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier light halo, so the dark text reads on any background 🠈|--\\
+        text-shadow: //--|🠈 A heavier light halo, so the dark text reads on any background 🠈|--\\
           0 0 0.06em $neoLig,
           0 0 0.12em $neoLig,
           0 0 0.3em rgba($neoLig, 0.8);
@@ -1431,7 +1430,7 @@
           box-shadow: //--|🠈 A dark outline + an inset drop shadow, so the light text stands out 🠈|--\\
             inset 0 0 0 2px $blaDar,
             inset 0 0.125em 0.25em $blaDar;
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-30 · A heavier dark halo, so the light text reads on any background 🠈|--\\
+          text-shadow: //--|🠈 A heavier dark halo, so the light text reads on any background 🠈|--\\
             0 0 0.06em $blaDar,
             0 0 0.12em $blaDar,
             0 0 0.3em rgba($blaDar, 0.8);

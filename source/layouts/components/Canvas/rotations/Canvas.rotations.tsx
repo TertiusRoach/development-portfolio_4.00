@@ -1,5 +1,5 @@
 //--|🠊 Canvas.rotations.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · <FigureRotation>'s four cross-fading corners, redrawn as one gradient that keeps turning 🠈|--\\
+//--|🠊 <FigureRotation>'s four cross-fading corners, redrawn as one gradient that keeps turning 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useRef } from 'react';
 
@@ -16,7 +16,7 @@ export interface TheseProps {
   };
   style: {
     shade: '~dark~' | '~light~';
-    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-11-22 · ⟨opaque⟩ is see-through: only the turning light is left 🠈|--\\
+    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 ⟨opaque⟩ is see-through: only the turning light is left 🠈|--\\
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases: {

@@ -18,7 +18,7 @@ export interface TheseProps {
     clarity: '⟨lucid⟩' | '⟨opaque⟩';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
     //--|===|--\\
-    image?: string | null; //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
+    image?: string | null;
   };
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -52,7 +52,7 @@ export function ButtonProfile({ info, style, onClick, onMouseEnter, onMouseLeave
       onMouseLeave={onMouseLeave}
       onDoubleClick={onDoubleClick}
       //--|===|--\\
-      aria-label={info.ariaName} //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
+      aria-label={info.ariaName}
     >
       <div className="fore">
         <span></span>

@@ -1,8 +1,8 @@
 //--|🠊 Section_demonstration.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { abbrShade, abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+import { abbrShade, abbrColor } from '../../components';
 import { loadAsset } from '../../../tools/utilities';
-import type { TheseProps } from './Section.demonstration'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Section.demonstration'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 //--|🠋 Demonstration Information 🠋|--\\
 export interface DemonstrationSelection {
   appName: 'track-a-day' | 'log-a-ticket' | 'find-a-link' | 'tralogfin';
@@ -45,7 +45,7 @@ function returnInfo(selectInfo: 'track-a-day' | 'log-a-ticket' | 'find-a-link' |
 }
 export const createClass = (style: TheseProps['style']): string => {
   //--|🠊 Class Build for <SectionDemonstration> 🠈|--\\
-  //--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
+  //--|🠊 The maps live in components.ts, shared by every component 🠈|--\\
   const classShade = abbrShade(style.shade);
   const classColor = abbrColor(style.color);
   return `${classShade}_${classColor}`;

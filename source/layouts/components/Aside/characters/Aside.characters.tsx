@@ -18,7 +18,7 @@ export interface TheseProps {
   style: {
     view: '-left-' | '-right-';
     shade: '~dark~' | '~light~';
-    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 12:20 🠈|--\\
+    clarity: '⟨lucid⟩' | '⟨opaque⟩';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
   };
   cases?: {

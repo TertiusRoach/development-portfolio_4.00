@@ -1,6 +1,5 @@
 //--|🠊 layouts/tools/information.ts 🠈|--\\
 /*--|🠋
-  AI Code: Review Please 2026-11-11
   What: Everything the browser can honestly tell about the visitor's device, in one flat report.
   The first six fields are named exactly like PickPage in tralogfin-database.md, the rest are a
   proposal (not in the schema yet), so nothing here changes the confirmed shape on its own.
@@ -36,8 +35,8 @@ export interface InformationReport {
   offlineDeviceId: string | null; //--|🠈 A random ID this browser keeps, never a fingerprint 🠈|--\\
 
   //--|🠋 Proposed: Lookup (api.ipify.org) 🠋|--\\
-  lookupIP: string | null; //--|🠈 AI Code: Review Please 2026-11-11 · What ipify saw; for display, never trusted like userIP 🠈|--\\
-  countryIP: string | null; //--|🠈 AI Code: Review Please 2026-11-11 · The IP's country from api.country.is, like ZA; never trusted like country 🠈|--\\
+  lookupIP: string | null; //--|🠈 What ipify saw; for display, never trusted like userIP 🠈|--\\
+  countryIP: string | null; //--|🠈 The IP's country from api.country.is, like ZA; never trusted like country 🠈|--\\
 
   //--|🠋 Proposed: Clock (R29) 🠋|--\\
   deviceTime: string; //--|🠈 The device's own clock, UTC, never trusted on its own 🠈|--\\
@@ -111,8 +110,8 @@ export async function collectInformation(
   const [clockReading, storageReading, lookupIP, countryIP] = await Promise.all([
     readClock(pageName),
     readStorage(pageName),
-    readLookup(pageName), //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
-    readCountry(pageName), //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
+    readLookup(pageName),
+    readCountry(pageName),
   ]);
   const networkReading = readNetwork(pageName);
   const screenReading = readScreen(pageName);
@@ -130,8 +129,8 @@ export async function collectInformation(
     offlineDeviceId: readDeviceId(pageName),
 
     //--|🠋 Lookup 🠋|--\\
-    lookupIP: lookupIP, //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
-    countryIP: countryIP, //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
+    lookupIP: lookupIP,
+    countryIP: countryIP,
 
     //--|🠋 Clock 🠋|--\\
     deviceTime: clockReading.deviceTime,
@@ -208,7 +207,7 @@ const readDeviceId = (pageName: string): string | null => {
   }
   return deviceId;
 };
-//--|🠊 AI Code: Review Please 2026-11-11 · lookupIP: the browser asks api.ipify.org which address it came from 🠈|--\\
+//--|🠊 lookupIP: the browser asks api.ipify.org which address it came from 🠈|--\\
 /*--|🠋
   Why: GitHub Pages has no server of ours, so nothing else can see the visitor's IP yet.
   Safe enough: HTTPS only, no key, no cookies, open source, and ipify says it keeps no logs.
@@ -246,7 +245,7 @@ const readLookup = async (pageName: string): Promise<string | null> => {
   }
   return lookupIP;
 };
-//--|🠊 AI Code: Review Please 2026-11-11 · countryIP: the browser asks api.country.is which country its IP belongs to 🠈|--\\
+//--|🠊 countryIP: the browser asks api.country.is which country its IP belongs to 🠈|--\\
 /*--|🠋
   Why: ipify only answers with the IP, its country lookup needs a paid key.
   Safe enough: HTTPS only, no key, no cookies, open source (github.com/hakanensari/country).

@@ -47,7 +47,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
   const labelRef = useRef<HTMLLabelElement>(null);
   const [group, setGroup] = useState<string>('');
   useEffect(() => {
-    //--|🠊 AI Code: Review Please 2026-10-31 · Runs once the {option} is on the page: the first one names its <fieldset> or <form>, the others read it 🠈|--\\
+    //--|🠊 Runs once the {option} is on the page: the first one names its <fieldset> or <form>, the others read it 🠈|--\\
     //--|🠊 Kept in state so React renders the name itself, otherwise it doesn't know the radios are a group and skips the switch back 🠈|--\\
     let parentElement = labelRef.current?.closest('fieldset, form') as HTMLElement | null;
     if (parentElement) {
@@ -120,7 +120,7 @@ function LabelSwitching({ info, style, cases, onChange }: TheseProps) {
         <label className={labelClass} ref={labelRef}>
           <input
             type="radio"
-            name={group} //--|🠈 AI Code: Review Please 2026-10-31 · Radios only exclude each other with the same name 🠈|--\\
+            name={group} //--|🠈 Radios only exclude each other with the same name 🠈|--\\
             defaultChecked={cases.mark} //--|🠈 Only the first state, the browser keeps it from there 🠈|--\\
             value={style.text}
             className="event"

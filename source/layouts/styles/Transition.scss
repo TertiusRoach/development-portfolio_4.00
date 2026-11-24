@@ -219,7 +219,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
       }
       &[class*='squaring'] {
-        //--|🠊 AI Code: Review Please 🠈|--\\
         section[class='header-foreground'] {
           pointer-events: none; //--|🠈 First tap unfolds the header, the second tap reaches its buttons 🠈|--\\
         }
@@ -333,7 +332,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
       }
       &[class*='squaring'] {
-        //--|🠊 AI Code: Review Please 🠈|--\\
         section[class='footer-foreground'] {
           pointer-events: none; //--|🠈 First tap unfolds the footer, the second tap reaches its buttons 🠈|--\\
         }
@@ -393,7 +391,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     @extend %leftbar-clipping;
   }
   %leftbar-effects {
-    //--|🠊 AI Code: Review Please 🠈|--\\
     div[class*='background'] {
       opacity: 0;
       transition: opacity 250ms ease-in-out;
@@ -483,7 +480,6 @@ $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
     @extend %rightbar-clipping;
   }
   %rightbar-effects {
-    //--|🠊 AI Code: Review Please 🠈|--\\
     div[class*='background'] {
       opacity: 0;
       transition: opacity 250ms ease-in-out;

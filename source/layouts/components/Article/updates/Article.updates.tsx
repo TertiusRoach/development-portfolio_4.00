@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //--|🠋 Functions 🠋|--\\
 import createClass, { createLayout } from './Article_updates';
 
-//--|🠊 AI Code: Review Please 2026-11-08 · Exported so Article_updates.ts reads the types instead of repeating them 🠈|--\\
+//--|🠊 Exported so Article_updates.ts reads the types instead of repeating them 🠈|--\\
 export interface TheseProps {
   info: {
     pageName: string;
@@ -29,7 +29,7 @@ export interface TheseProps {
   };
 }
 
-//--|🠊 AI Code: Review Please 2026-11-08 · A function, not a const; the size and view maps moved to createLayout() in Article_updates.ts 🠈|--\\
+//--|🠊 A function, not a const; the size and view maps moved to createLayout() in Article_updates.ts 🠈|--\\
 export function ArticleUpdates({ info, style, cases }: TheseProps) {
   const pageName = info.pageName as string;
   const blockName = info.blockName as string;

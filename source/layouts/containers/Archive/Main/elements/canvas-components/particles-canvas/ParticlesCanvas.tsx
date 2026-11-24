@@ -1,5 +1,5 @@
 //--|🠊 ParticlesCanvas.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from SpotlightCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
+//--|🠊 Copied from SpotlightCanvas.tsx; the <canvas> sits centred in the midground <figure>, the pickers in the foreground, the dropdowns hidden until hovered 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -27,9 +27,9 @@ function ParticlesCanvas({ info }: InfoProps) {
   let pickerShade = '~dark~' as '~dark~';
   useEffect(() => {
     switchColors(pickerColor, 'particles');
-    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
+    //--|🠊 The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
     const particlesPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="particles-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="particles-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+      `#${pageName}-${blockName} aside[class="particles-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="particles-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < particlesPickers.length; i++) {
       particlesPickers[i].classList.add('downplay');

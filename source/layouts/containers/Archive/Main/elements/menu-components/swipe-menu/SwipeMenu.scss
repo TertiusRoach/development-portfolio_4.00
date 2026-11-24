@@ -219,7 +219,7 @@
         & {
           grid-gap: calc(64px / 4) 0; //--|🠋 Width: 1920px 🠋|--\\
           grid-template-columns: 1fr $high-mobi; //--|🠈 columns 🠈|--\\
-          grid-template-rows: repeat(4, auto); //--|🠈 AI Code: Review Please 2026-11-22 · Each row is as tall as its <MenuSwipe>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--//
+          grid-template-rows: repeat(4, auto); //--|🠈 Each row is as tall as its <MenuSwipe>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--//
           @media screen and (max-width: 768px) {
             grid-gap: calc(48px / 4) 0; //--|🠋 Width: 1366px 🠋|--\\
             grid-template-columns: 1fr $test-mobi; //--|🠈 columns 🠈|--\\
@@ -275,7 +275,7 @@
 
         & {
           grid-template-rows: 1fr $high-mobi; //--|🠈 rows 🠈|--//
-          grid-template-columns: auto 1fr auto 1fr auto 1fr auto; //--|🠈 AI Code: Review Please 2026-11-22 · Each column is as wide as its <MenuSwipe>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--\\
+          grid-template-columns: auto 1fr auto 1fr auto 1fr auto; //--|🠈 Each column is as wide as its <MenuSwipe>, which steps down on tablet; fixed squares overflowed near-square screens 🠈|--\\
           @media screen and (max-width: 768px) {
             grid-template-rows: 1fr $test-mobi; //--|🠈 rows 🠈|--//
           }

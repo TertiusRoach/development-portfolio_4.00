@@ -16,9 +16,9 @@ export function freezeContainer(pageName: 'landing' | 'overtime' | 'ticketing' |
         break;
     }
   }
-  obnubilateMain(pageName); //--|🠈 AI Code: Review Please 2026-11-08 · A freeze can end an expanded state, so <main> checks again 🠈|--\\
+  obnubilateMain(pageName); //--|🠈 A freeze can end an expanded state, so <main> checks again 🠈|--\\
 }
-//--|🠊 AI Code: Review Please 2026-11-08 · The one place <main>'s blur is decided, run after every container change 🠈|--\\
+//--|🠊 The one place <main>'s blur is decided, run after every container change 🠈|--\\
 export function obnubilateMain(pageName: string): void {
   let mainElement = document.querySelector(`#${pageName}-main`) as HTMLElement | null;
   let overlayElement = document.querySelector(`#${pageName}-overlay`) as HTMLElement | null;

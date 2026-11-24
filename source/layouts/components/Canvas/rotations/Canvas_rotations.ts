@@ -1,5 +1,5 @@
 //--|🠊 Canvas_rotations.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Figure.rotation.scss: the 45° → 135° → 225° → 315° corners and the left & right edge fades, drawn every frame 🠈|--\\
+//--|🠊 Figure.rotation.scss: the 45° → 135° → 225° → 315° corners and the left & right edge fades, drawn every frame 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { TheseProps } from './Canvas.rotations';
 import { abbrShade, abbrColor, abbrClarity } from '../../components';
@@ -17,7 +17,7 @@ export const turnRotations = (canvas: HTMLCanvasElement, turn: number): (() => v
   const context = canvas.getContext('2d') as CanvasRenderingContext2D;
   const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches as boolean;
 
-  let awake = false as boolean; //--|🠈 AI Code: Review Please 2026-11-22 · Asleep and hidden (.downplay) until the mouse is over it 🠈|--\\
+  let awake = false as boolean; //--|🠈 Asleep and hidden (.downplay) until the mouse is over it 🠈|--\\
   let startTime = 0 as number;
   let frameId = 0 as number;
   let drawFrame = (time: number): void => {
@@ -70,7 +70,7 @@ export const turnRotations = (canvas: HTMLCanvasElement, turn: number): (() => v
   });
 
   resizeObserver.observe(canvas);
-  document.addEventListener('pointermove', watchPointer); //--|🠈 AI Code: Review Please 2026-11-22 · Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
+  document.addEventListener('pointermove', watchPointer); //--|🠈 Pointer events: a mouse, a pen or a finger; the browser decides how a touch hovers 🠈|--\\
   document.addEventListener('pointerdown', watchPointer); //--|🠈 A tap on the canvas wakes it, a tap elsewhere puts it to sleep 🠈|--\\
   document.documentElement.addEventListener('mouseleave', losePage);
   return () => {
@@ -92,7 +92,7 @@ let sizeCanvas = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D):
 };
 
 //--|🠋 Draw One Frame 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Three soft layers, back to front: the ground, the light turning past the corners, the wide calm centre on top; the old side fades are a quiet vignette 🠈|--\\
+//--|🠊 Three soft layers, back to front: the ground, the light turning past the corners, the wide calm centre on top; the old side fades are a quiet vignette 🠈|--\\
 let drawRotations = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, turn: number, time: number): void => {
   const width = canvas.clientWidth as number;
   const height = canvas.clientHeight as number;
@@ -102,7 +102,7 @@ let drawRotations = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2
   const corner = computed.getPropertyValue('--rotation-three') as string; //--|🠈 The light that turns 🠈|--\\
   const gutter = parseFloat(computed.getPropertyValue('--rotation-gutter')) as number; //--|🠈 The old grid's outer column, set per screen step 🠈|--\\
   const edge = (gutter + (width - gutter * 2) / 3) as number; //--|🠈 The old fades covered the gutter and one of the three middle columns 🠈|--\\
-  const groundClarity = parseFloat(computed.getPropertyValue('--rotation-ground')) as number; //--|🠈 AI Code: Review Please 2026-11-22 · ⟨lucid⟩ 1, ⟨opaque⟩ 0: the ground and its vignette 🠈|--\\
+  const groundClarity = parseFloat(computed.getPropertyValue('--rotation-ground')) as number; //--|🠈 ⟨lucid⟩ 1, ⟨opaque⟩ 0: the ground and its vignette 🠈|--\\
   const lightClarity = parseFloat(computed.getPropertyValue('--rotation-light')) as number; //--|🠈 ⟨lucid⟩ 1, ⟨opaque⟩ 0.6: the turning light 🠈|--\\
   const centreClarity = parseFloat(computed.getPropertyValue('--rotation-centre')) as number; //--|🠈 ⟨lucid⟩ 1, ⟨opaque⟩ 0: the calm centre 🠈|--\\
   const spread = 1.25 as number; //--|🠈 The centre reaches a quarter past the edges, so only its soft tail is ever seen 🠈|--\\

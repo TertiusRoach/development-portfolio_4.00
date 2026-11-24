@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import ParticlesCanvas from './particles-canvas/ParticlesCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
-import RotationsCanvas from './rotations-canvas/RotationsCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
-import MeteoritesCanvas from './meteorites-canvas/MeteoritesCanvas'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
+import ParticlesCanvas from './particles-canvas/ParticlesCanvas';
+import RotationsCanvas from './rotations-canvas/RotationsCanvas';
+import MeteoritesCanvas from './meteorites-canvas/MeteoritesCanvas';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../tools/conversions';

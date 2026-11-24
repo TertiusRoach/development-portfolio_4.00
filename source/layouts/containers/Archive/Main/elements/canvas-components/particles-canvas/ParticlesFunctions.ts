@@ -1,5 +1,5 @@
 //--|🠊 particles-canvas/ParticlesFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from SpotlightFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
+//--|🠊 Copied from SpotlightFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
 //--|🠋 Colour Switching 🠋|--\\
 export const switchColors = (choice: string, labelName: 'particles'): void => {
   const colorMap: Record<string, string> = {

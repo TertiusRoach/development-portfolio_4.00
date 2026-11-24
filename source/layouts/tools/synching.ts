@@ -42,7 +42,6 @@ export async function synchDemo(
       break;
     }
     case 'pick': {
-      //--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
       demoState = 'awaiting';
       blockViews(thisItem, 'overtime', blockName, 'expanded');
       blockViews(thisItem, 'ticketing', blockName, 'expanded');

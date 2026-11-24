@@ -3,7 +3,7 @@
 //--|🠋 Functions 🠋|--\\
 import { abbrShade } from '../../components';
 import { stripBrackets, arabicToRoman, romanToArabic } from '../../../tools/conversions';
-import type { TheseProps } from './Menu.select'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Menu.select'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 //--|🠋 Default Starting Point 🠋|--\\
 /*--|🠋
 

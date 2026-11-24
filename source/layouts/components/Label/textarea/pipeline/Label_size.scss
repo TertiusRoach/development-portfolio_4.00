@@ -2,7 +2,7 @@
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:04 · Fills its parent (width & height 100%), so the layout grid decides its size. The font and line-height
+    Fills its parent (width & height 100%), so the layout grid decides its size. The font and line-height
     still step with the height (h) of one line, so a single line matches {input}. Corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
   🠉|--*/
   &[class*='textarea-text'] {
@@ -38,7 +38,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on both sides, corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
+    Every size comes from the height (h): padding = h / 2 on both sides, corners follow <ButtonDefault>: 8 / 6 / 4 / 2px.
     Heights and fonts match {select} so the two line up in a form row.
   🠉|--*/
   &[class*='textarea-input'] {
@@ -82,7 +82,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
     '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
     The gap between the boxes belongs to the parent <fieldset> or <form>.
   🠉|--*/
@@ -237,7 +237,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
     '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
     The gap between the boxes belongs to the parent <fieldset> or <form>.
   🠉|--*/
@@ -472,7 +472,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-30 · Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
+    Every size comes from the height (h): one square box, h × h, with <ButtonDefault> corners.
     '<p>' & nul are the old <FieldsetOtp> boxes, '<h1>' is twice as high for the old <FieldsetCode> with <h1> <ButtonDefault> fonts.
     The gap between the boxes belongs to the parent <fieldset> or <form>.
   🠉|--*/

@@ -4,7 +4,7 @@ import { arabicToRoman, romanToArabic } from '../../../../../../tools/conversion
 
 //--|🠋 Article Colors Toggle 🠋|--\\
 function toggleColors(tint: string): void {
-  //--|🠊 AI Code: Review Please 2026-11-10 · One article per slide now, so each shade is found and swapped on its own 🠈|--\\
+  //--|🠊 One article per slide now, so each shade is found and swapped on its own 🠈|--\\
   const articleDark = document.querySelector('#components-main .updates-main_shade-dark article[class*="updates-default"]') as HTMLElement;
   const articleLight = document.querySelector('#components-main .updates-main_shade-light article[class*="updates-default"]') as HTMLElement;
 

@@ -1,5 +1,5 @@
 //--|🠊 rotations-canvas/RotationsFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesFunctions.ts; the class is shade_color_clarity, so the slots are [0], [1] and [2] 🠈|--\\
+//--|🠊 Copied from MeteoritesFunctions.ts; the class is shade_color_clarity, so the slots are [0], [1] and [2] 🠈|--\\
 //--|🠋 Colour Switching 🠋|--\\
 export const switchColors = (choice: string, labelName: 'rotations'): void => {
   const colorMap: Record<string, string> = {
@@ -27,7 +27,7 @@ export const switchShades = (choice: string, labelName: 'rotations'): void => {
   updateCanvases(shadeMap[choice], 0, labelName); //--|🠈 The {select} picks the shade, this swaps it into every <CanvasRotations> on that page 🠈|--\\
 };
 //--|🠋 Clarity Toggle 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from DefaultFunctions.ts toggleClarity(), for the third slot 🠈|--\\
+//--|🠊 Copied from DefaultFunctions.ts toggleClarity(), for the third slot 🠈|--\\
 export const toggleClarity = (element: HTMLFieldSetElement, labelName: 'rotations'): void => {
   //--|🠊 The checked radio's value picks the clarity 🠈|--\\
   const checkedInput = element.querySelector('input:checked') as HTMLInputElement;

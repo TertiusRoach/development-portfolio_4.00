@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import createClass, { previewParent } from './Label_textarea';
 import { stripBrackets } from '../../../tools/conversions';
 
-//--|🠊 AI Code: Review Please 2026-10-30 · <LabelTextarea> + <LabelInput> + one <FieldsetOtp> box, picked by cases.type 🠈|--\\
+//--|🠊 <LabelTextarea> + <LabelInput> + one <FieldsetOtp> box, picked by cases.type 🠈|--\\
 export interface TheseProps {
   info: {
     pageName: string;
@@ -84,7 +84,7 @@ export function LabelTextarea({ info, style, cases, onChange }: TheseProps) {
             maxLength={1}
             inputMode="text"
             className="event"
-            pattern="[A-Z0-9]" //--|🠈 AI Code: Review Please 2026-10-30 · One UPPERCASE letter or number; nextBlock() & pasteBlocks() turn lowercase into uppercase 🠈|--\\
+            pattern="[A-Z0-9]" //--|🠈 One UPPERCASE letter or number; nextBlock() & pasteBlocks() turn lowercase into uppercase 🠈|--\\
             placeholder={style.text}
             autoComplete="one-time-code"
             //--|===|--\\
@@ -111,7 +111,7 @@ const listBlocks = (input: HTMLInputElement): Array<HTMLInputElement> => {
 };
 const nextBlock = (event: React.FormEvent<HTMLInputElement>): void => {
   //--|🠊 A typed character jumps to the next box 🠈|--\\
-  event.currentTarget.value = event.currentTarget.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase(); //--|🠈 AI Code: Review Please 2026-10-30 · Letters & numbers only, and a typed 'a' becomes 'A', like pasteBlocks() 🠈|--\\
+  event.currentTarget.value = event.currentTarget.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase(); //--|🠈 Letters & numbers only, and a typed 'a' becomes 'A', like pasteBlocks() 🠈|--\\
   let blockList: Array<HTMLInputElement> = listBlocks(event.currentTarget);
   let blockIndex: number = blockList.indexOf(event.currentTarget);
   if (event.currentTarget.value && blockIndex < blockList.length - 1) {
@@ -134,7 +134,7 @@ const pasteBlocks = (event: React.ClipboardEvent<HTMLInputElement>): void => {
   let pastedText: string = event.clipboardData
     .getData('text')
     .replace(/[^A-Za-z0-9]/g, '')
-    .toUpperCase(); //--|🠈 AI Code: Review Please 2026-10-30 · Pasted codes are UPPERCASE too 🠈|--\\
+    .toUpperCase(); //--|🠈 Pasted codes are UPPERCASE too 🠈|--\\
   for (let i = 0; i < pastedText.length && blockIndex + i < blockList.length; i++) {
     blockList[blockIndex + i].value = pastedText[i];
   }

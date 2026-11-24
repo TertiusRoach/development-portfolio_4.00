@@ -42,7 +42,7 @@ function eventListen(selector: string, execution: () => void) {
 }
 
 //--|🠋 Abbreviations 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-08 · Written out and checked like abbrShade, abbrColor and abbrClarity 🠈|--\\
+//--|🠊 Written out and checked like abbrShade, abbrColor and abbrClarity 🠈|--\\
 export const abbrAxis = (axis: '[x]' | '[y]'): string => {
   const axisMap: Record<'[x]' | '[y]', string> = {
     //--|🠊 Map axis options to class abbreviations 🠈|--\\
@@ -80,7 +80,7 @@ export const abbrView = (view: '-top-' | '-rig-' | '-bot-' | '-lef-' | '-cen-' |
 
   return classView;
 };
-//--|🠊 AI Code: Review Please 2026-11-08 · Shared by every component: shade, colour and clarity mean the same everywhere 🠈|--\\
+//--|🠊 Shared by every component: shade, colour and clarity mean the same everywhere 🠈|--\\
 export const abbrShade = (shade: '~dark~' | '~light~'): string => {
   const shadeMap: Record<'~dark~' | '~light~', string> = {
     //--|🠊 Map shade options to class abbreviations 🠈|--\\

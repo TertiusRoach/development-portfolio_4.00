@@ -3,10 +3,10 @@
 import React, { useEffect } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder'; //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
+import DivisionPlaceholder from '../../../../../../components/Division/placeholder/Division.placeholder';
 
 //--|🠋 Functions 🠋|--\\
-import { loadAsset } from '../../../../../../tools/utilities'; //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
+import { loadAsset } from '../../../../../../tools/utilities';
 import { stripBrackets } from '../../../../../../tools/conversions';
 
 interface InfoProps {
@@ -24,7 +24,7 @@ function DefaultTime({ info }: InfoProps) {
     <aside className="default-time">
       <section className={`${blockName}-foreground`}>
         <DivisionPlaceholder
-          //--|🠊 AI Code: Review Please 2026-11-11 · Stands in until <Time> is built, with <MenuSelect>'s icon 🠈|--\\
+          //--|🠊 Stands in until <Time> is built, with <MenuSelect>'s icon 🠈|--\\
           info={{
             pageName: info.pageName,
             blockName: blockName,

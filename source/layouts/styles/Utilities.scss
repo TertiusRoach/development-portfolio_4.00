@@ -175,7 +175,6 @@ $emphasize-fade: 250ms;
 
 //--|===|--\\
 //--|🠋 Sparkling Sheen 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 🠈|--\\
 /*--|🠋
   Why: A glint of light that crosses a card now and then, like a polished surface catching the light.
   How: Include it on an element that can hold an ::after (a card, a <div>, an <article>), never an <img>.
@@ -207,7 +206,7 @@ $sheen-cycle: 8s;
     height: 100%;
     transform: translateX(-150%) skewX(-20deg);
     animation: sparkling-sheen $sheen-cycle ease-in-out infinite;
-    opacity: 0.666; //--|🠈 AI Code: Review Please 2026-11-10 · Two thirds 🠈|--\\
+    opacity: 0.666; //--|🠈 Two thirds 🠈|--\\
     pointer-events: none; //--|🠈 Clicks still reach what's underneath 🠈|--\\
   }
   //--|🠊 Dark Shade 🠈|--\\

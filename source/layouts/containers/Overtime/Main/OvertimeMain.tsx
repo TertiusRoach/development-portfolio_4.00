@@ -6,12 +6,12 @@ import React, { useState, useEffect } from 'react';
 import DivisionFullscreen from '../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import VocationElements from './elements/vocation-components/VocationElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
-import EstablishedElements from './elements/established-components/EstablishedElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
-import FreelancingElements from './elements/freelancing-components/FreelancingElements'; //--|🠊 AI Code: Review Please 2026-11-09 13:07 🠈|--\\
+import VocationElements from './elements/vocation-components/VocationElements';
+import EstablishedElements from './elements/established-components/EstablishedElements';
+import FreelancingElements from './elements/freelancing-components/FreelancingElements';
 
 //--|🠋 Functions 🠋|--\\
-import startingPreview from './OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+import startingPreview from './OvertimeFunctions';
 import { revertContainers } from '../../../scripts/Main_Over';
 import { stripBrackets } from '../../../tools/conversions';
 import { checkScreen } from '../../../tools/synching';
@@ -32,12 +32,12 @@ function OvertimeMain({ info }: InfoProps) {
   const labelName = stripBrackets(info.labelName, '()') as 'default';
 
   useEffect(() => {
-    startingPreview('(vocation)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:38 · 1 = the sweeping shows its placeholder 🠈|--\\
+    startingPreview('(vocation)', 1); //--|🠊 1 = the sweeping shows its placeholder 🠈|--\\
     //--|🟩|--\\
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let viewName = 2 as number; //--|🠊 AI Code: Review Please 2026-11-09 13:07 · II is (vocation), the demo toggle picks I or III 🠈|--\\
+  let viewName = 2 as number; //--|🠊 II is (vocation), the demo toggle picks I or III 🠈|--\\
   let blurName: string = 'obnubilate';
   return (
     <main
@@ -51,7 +51,7 @@ function OvertimeMain({ info }: InfoProps) {
       }}
     >
       <section className={`${blockName}-foreground`}>
-        {/*--|🠊 AI Code: Review Please 2026-11-09 13:07 · slides → elements, outer [x] like Archive's elements 🠈|--*/}
+        {/*--|🠊 slides → elements, outer [x] like Archive's elements 🠈|--*/}
         <DivisionFullscreen
           //--|🠊 <div class="elements-main_fullscreen-default"/> 🠈|--\\
           cases={{
@@ -71,7 +71,7 @@ function OvertimeMain({ info }: InfoProps) {
     </main>
   );
 }
-//--|🠊 AI Code: Review Please 2026-11-09 13:07 · Page order, not alphabetical: I (established), II (vocation), III (freelancing) 🠈|--\\
+//--|🠊 Page order, not alphabetical: I (established), II (vocation), III (freelancing) 🠈|--\\
 const OvertimeElements: React.FC<InfoProps> = ({ info }) => {
   const blockName = info.blockName as 'main';
   const pageName = info.pageName as 'overtime';

@@ -49,8 +49,8 @@ function LandingOverlay({ info }: InfoProps) {
               }}
               style={{
                 shade: '~light~',
-                color: '(mono)', //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
-                clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-10 · The look it always had 🠈|--\\
+                color: '(mono)',
+                clarity: '⟨opaque⟩', //--|🠈 The look it always had 🠈|--\\
               }}
               cases={{
                 apps: '{tralogfin}',
@@ -93,8 +93,8 @@ function LandingOverlay({ info }: InfoProps) {
               }}
               style={{
                 shade: '~light~',
-                color: '(mono)', //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
-                clarity: '⟨opaque⟩', //--|🠈 AI Code: Review Please 2026-11-10 · The look it always had 🠈|--\\
+                color: '(mono)',
+                clarity: '⟨opaque⟩', //--|🠈 The look it always had 🠈|--\\
               }}
               cases={{
                 apps: '{tralogfin}',

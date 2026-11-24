@@ -7,7 +7,7 @@ import DivisionFullscreen from '../../../components/Division/fullscreen/Division
 
 //--|🠋 Elements 🠋|--\\
 import FormElements from './elements/form-components/FormElements';
-import FigureElements from './elements/figure-components/FigureElements'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
+import FigureElements from './elements/figure-components/FigureElements';
 import MenuElements from './elements/menu-components/MenuElements';
 import TimeElements from './elements/time-components/TimeElements';
 import TableElements from './elements/table-components/TableElements';

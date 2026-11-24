@@ -54,7 +54,7 @@ function LandingMain({ info }: InfoProps) {
           }}
           style={{
             shade: '~dark~',
-            color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 13:50 · Orange is the company colour 🠈|--\\
+            color: '(orange)', //--|🠊 Orange is the company colour 🠈|--\\
           }}
         />
       </section>

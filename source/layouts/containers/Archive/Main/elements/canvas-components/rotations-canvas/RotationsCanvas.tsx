@@ -1,5 +1,5 @@
 //--|🠊 RotationsCanvas.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from MeteoritesCanvas.tsx; the <canvas> sits in the midground <figure>, the pickers in the foreground 🠈|--\\
+//--|🠊 Copied from MeteoritesCanvas.tsx; the <canvas> sits in the midground <figure>, the pickers in the foreground 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -27,9 +27,9 @@ function RotationsCanvas({ info }: InfoProps) {
   let pickerShade = '~light~' as '~light~'; //--|🠈 Opens on <FigureRotation>'s own recipe, white into -light into -dark 🠈|--\\
   useEffect(() => {
     switchColors(pickerColor, 'rotations');
-    //--|🠊 AI Code: Review Please 2026-11-22 · The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
+    //--|🠊 The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
     const rotationsPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+      `#${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="rotations-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < rotationsPickers.length; i++) {
       rotationsPickers[i].classList.add('downplay');
@@ -78,7 +78,7 @@ function RotationsCanvas({ info }: InfoProps) {
           onChange={(event) => switchShades(event.target.value, 'rotations')} //--|🠈 Swaps the tones to the other shade 🠈|--\\
         />
         <fieldset
-          //--|🠊 AI Code: Review Please 2026-11-22 · Copied from DefaultButton.tsx's clarify-darkside toggle 🠈|--\\
+          //--|🠊 Copied from DefaultButton.tsx's clarify-darkside toggle 🠈|--\\
           className="clarify-rotations"
           onChange={(event: React.FormEvent<HTMLFieldSetElement>): void => {
             //--|🠊 The radio's change bubbles up to the <fieldset>, which hands itself to toggleClarity() 🠈|--\\

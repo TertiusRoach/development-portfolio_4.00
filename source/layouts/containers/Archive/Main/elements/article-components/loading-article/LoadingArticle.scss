@@ -1,7 +1,7 @@
 //--|🠊 LoadingArticle.scss 🠈|--\\
 @use '../../../../../../styles/Utilities.scss' as Utilities;
 
-//--|🠊 AI Code: Review Please 2026-11-10 · The <UpdatesArticle> grid, flipped: <DivisionColourize> on the right; the centre column is the GIF's width (1008 / 672 / 384 / 288px, Article.loading.scss) 🠈|--\\
+//--|🠊 The <UpdatesArticle> grid, flipped: <DivisionColourize> on the right; the centre column is the GIF's width (1008 / 672 / 384 / 288px, Article.loading.scss) 🠈|--\\
 @mixin desktop-landscape {
   //--|🠊 <aside className="loading-article"> 🠈|--\\
   $high-desk: 128px; //--|🠈 128px for Squares 🠈|--\\
@@ -48,7 +48,7 @@
             / 16px 1fr $tiny-desk 288px $tiny-desk 1fr calc($tiny-desk * 2) 16px; //--|🠈 columns 🠈|--\\
         }
         article {
-          grid-area: 2 / 4 / 7 / 5; //--|🠈 AI Code: Review Please 2026-11-10 · The centre column, as wide as the GIF, so the swipe's arrows sit flush 🠈|--\\
+          grid-area: 2 / 4 / 7 / 5; //--|🠈 The centre column, as wide as the GIF, so the swipe's arrows sit flush 🠈|--\\
         }
       }
     }
@@ -96,7 +96,7 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · Owner's rows: square · 1fr · GIF (Article.loading.scss) · auto (shade <Menu>) · 1fr · square; columns: gutter · 1fr · GIF (Article.loading.scss) · 1fr · gutter 🠈|--\\
+    //--|🠊 Owner's rows: square · 1fr · GIF (Article.loading.scss) · auto (shade <Menu>) · 1fr · square; columns: gutter · 1fr · GIF (Article.loading.scss) · 1fr · gutter 🠈|--\\
     //--|🠊 display: grid; 🠈|--\\
 
     menu[class*='shade'] {

@@ -40,7 +40,6 @@ export function MenuSwipe({ info, style, cases }: TheseProps) {
 
     🠉|--*/
     modifyingController(pageName, blockName, labelName);
-    //--|🠊 AI Code: Review Please 🠈|--\\
     return reloadElements(pageName, blockName, labelName); //--|🠈 Removes the resize listener when this menu unmounts 🠈|--\\
   }, [pageName, blockName, labelName]);
 

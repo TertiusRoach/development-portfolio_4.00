@@ -1,6 +1,6 @@
 //--|🠊 Figure.spotlight.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Was <CanvasSpotlight>: a <Figure> is a picture a script draws that's always on show, so it skips the <Canvas> hover-sleep rule; it still draws on a <canvas> 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · development-portfolio_2.00's résumé profile: two rings turning opposite ways, the photo floating over them 🠈|--\\
+//--|🠊 Was <CanvasSpotlight>: a <Figure> is a picture a script draws that's always on show, so it skips the <Canvas> hover-sleep rule; it still draws on a <canvas> 🠈|--\\
+//--|🠊 development-portfolio_2.00's résumé profile: two rings turning opposite ways, the photo floating over them 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useRef } from 'react';
 

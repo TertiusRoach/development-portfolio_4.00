@@ -1,6 +1,6 @@
 //--|🠊 Button_stretch.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 11:32 · Copied from <ButtonDefault>, only the names changed 🠈|--\\
-import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+//--|🠊 Copied from <ButtonDefault>, only the names changed 🠈|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components';
 import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Button.stretch'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
@@ -9,7 +9,7 @@ function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <ButtonStretch> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, style.view);
-  const classClarity = abbrClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+  const classClarity = abbrClarity(style.clarity);
 
   if (style.image == null) {
     return `${classLayout}_${classColor}_${classClarity}_alt`;
@@ -52,7 +52,7 @@ const createLayout = (size: TheseProps['style']['size'], view: TheseProps['style
 
   return `${classSize}_${classView}`;
 };
-//--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
+//--|🠊 The maps live in components.ts, shared by every component 🠈|--\\
 const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
   const classShade = abbrShade(shade);
   const classColor = abbrColor(color);

@@ -22,7 +22,7 @@
       grid-area: 2 / 2 / 7 / 3; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
     }
     div[class*='fullscreen'] {
-      overflow: hidden; //--|🠈 AI Code: Review Please 2026-11-10 · Clips the off-screen shade slide, so it can't spill onto the next page 🠈|--\\
+      overflow: hidden; //--|🠈 Clips the off-screen shade slide, so it can't spill onto the next page 🠈|--\\
       z-index: 0;
       //--|🠊 display: flex; 🠈|--\\
       grid-area: 1 / 1 / 8 / 9; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
@@ -96,7 +96,7 @@
   $misc-mobi: 96px; //--|🠈 96px for Squares 🠈|--\\
   $tiny-mobi: 64px; //--|🠈 64px for Squares 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-22 · Owner's rows: square · 1fr · card (Article.updates.scss) · auto (shade <Menu>) · 1fr · square; columns: gutter · 1fr · card (Article.updates.scss) · 1fr · gutter 🠈|--\\
+    //--|🠊 Owner's rows: square · 1fr · card (Article.updates.scss) · auto (shade <Menu>) · 1fr · square; columns: gutter · 1fr · card (Article.updates.scss) · 1fr · gutter 🠈|--\\
     //--|🠊 display: grid; 🠈|--\\
 
     menu[class*='shade'] {

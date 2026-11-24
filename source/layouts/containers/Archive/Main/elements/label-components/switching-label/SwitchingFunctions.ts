@@ -2,7 +2,7 @@
 //--|🠋 Colour Switching 🠋|--\\
 //--|🠊 AI Code: Review Please 2026-11-03 · One copy per <Label> page, written line for line alike: no .ts file in label-components/ yet (RULEBOOK § Functions Files) 🠈|--\\
 export const switchColors = (choice: string, labelName: 'switching' | 'textarea' | 'selection'): void => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · The colour {select} gives '(red)', the classes need 'red' 🠈|--\\
+  //--|🠊 The colour {select} gives '(red)', the classes need 'red' 🠈|--\\
   const colorMap: Record<string, string> = {
     '(mono)': 'mon',
     '(red)': 'red',
@@ -19,7 +19,7 @@ export const switchColors = (choice: string, labelName: 'switching' | 'textarea'
   updateLabels(colorMap[choice], labelName); //--|🠈 The {select} picks the colour, this swaps it into every <Label> on that page 🠈|--\\
 };
 let updateLabels = (color: string, labelName: 'switching' | 'textarea' | 'selection') => {
-  //--|🠊 AI Code: Review Please 2026-10-30 · Only the colour changes: size_type_view_shade_[color]_clarity_def, so [4] is swapped; the colour {select} itself stays (mono) 🠈|--\\
+  //--|🠊 Only the colour changes: size_type_view_shade_[color]_clarity_def, so [4] is swapped; the colour {select} itself stays (mono) 🠈|--\\
   const archiveLabels = document.querySelectorAll(
     `#components-main .${labelName}-label label[class*="_${labelName}-"]:not([class*="colours"])`,
   ) as NodeListOf<HTMLLabelElement>;

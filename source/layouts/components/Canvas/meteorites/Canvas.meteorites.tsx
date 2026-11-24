@@ -1,5 +1,5 @@
 //--|🠊 Canvas.meteorites.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · The University Tracker rain (rain-main), redrawn on a <canvas> instead of 75 <i> tags 🠈|--\\
+//--|🠊 The University Tracker rain (rain-main), redrawn on a <canvas> instead of 75 <i> tags 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useRef } from 'react';
 

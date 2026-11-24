@@ -1,21 +1,20 @@
 //--|🠊 layouts/scripts/Main_Over.ts 🠈|--\\
 //--|🠊 Front-end Functions 🠈|--\\
 import blockViews from '../containers/containers';
-import { obnubilateMain } from './Head_Foot'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+import { obnubilateMain } from './Head_Foot';
 import { asynchObserve } from '../tools/synching';
 
 //--|🠋 Class Changes 🠋|--\\
 async function obnubilateContainer(pageName: string, blockName: string) {
   const bodyContainer = document.querySelector(`#${pageName}-body.active`) as HTMLDivElement;
   /*--|🠋
-    AI Code: Review Please 2026-11-11
     Why: This function runs while <Overlay> renders, before its <section> is on the page.
     A querySelector here found nothing on a slow first load, so the overlay is now
     found below, with the other containers, once it exists.
     How long: 30 seconds covers a phone on Regular 3G (750 Kbps), the slow end of
     South Africa's mobile networks. The old 6 second limit gave up on a cold cache.
   🠉|--*/
-  let waitingTime = 30000 as number; //--|🠈 AI Code: Review Please 2026-11-11 · 30 seconds to download every container 🠈|--\\
+  let waitingTime = 30000 as number; //--|🠈 30 seconds to download every container 🠈|--\\
   switch (!transitioning.has(pageName)) {
     case true:
       try {
@@ -24,7 +23,7 @@ async function obnubilateContainer(pageName: string, blockName: string) {
         if (bodyContainer) {
           //--|🠋 Wait until <Overlay> and all five containers exist on the page 🠋|--\\
           let [overlayBlock, mainBlock, headBlock, footBlock, leftBlock, rightBlock] = await Promise.all([
-            asynchObserve(`#${pageName}-${blockName}`, waitingTime), //--|🠈 AI Code: Review Please 2026-11-11 · <Overlay> itself, found after it renders 🠈|--\\
+            asynchObserve(`#${pageName}-${blockName}`, waitingTime), //--|🠈 <Overlay> itself, found after it renders 🠈|--\\
             asynchObserve(`#${pageName}-main`, waitingTime),
             asynchObserve(`#${pageName}-header`, waitingTime),
             asynchObserve(`#${pageName}-footer`, waitingTime),
@@ -32,20 +31,20 @@ async function obnubilateContainer(pageName: string, blockName: string) {
             asynchObserve(`#${pageName}-rightbar`, waitingTime),
           ]);
           setTimeout(() => {
-            clearBlur(pageName, headBlock, footBlock, leftBlock, rightBlock); //--|🠈 AI Code: Review Please 2026-11-08 · <main> is left to obnubilateMain() 🠈|--\\
+            clearBlur(pageName, headBlock, footBlock, leftBlock, rightBlock); //--|🠈 <main> is left to obnubilateMain() 🠈|--\\
           }, 250);
 
           setTimeout(() => {
             shrinkBlocks(headBlock, footBlock, leftBlock, rightBlock);
-            blockViews(overlayBlock, pageName, 'overlay', 'collapsed'); //--|🠈 AI Code: Review Please 2026-11-08 · Hidden through hidingOverlay(), then <main> checks again 🠈|--\\
-            forgetReload(pageName); //--|🠈 AI Code: Review Please 2026-11-11 · Loaded fine: the next visit may reload once again 🠈|--\\
+            blockViews(overlayBlock, pageName, 'overlay', 'collapsed'); //--|🠈 Hidden through hidingOverlay(), then <main> checks again 🠈|--\\
+            forgetReload(pageName); //--|🠈 Loaded fine: the next visit may reload once again 🠈|--\\
           }, 2750);
         }
       } catch (error) {
-        //--|🠊 AI Code: Review Please 2026-11-11 · A container still missing after waitingTime: the download stalled 🠈|--\\
-        console.log(`|--🠊 Warning: a container never showed up inside #${pageName}-body, scripts/Main_Over.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error(error) 🠈|--\\
-        console.log(`|--🠊 Guidance: The page reloads once to finish downloading. 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 🠈|--\\
-        reloadOnce(pageName); //--|🠈 AI Code: Review Please 2026-11-11 · Reload once, what's already downloaded comes from the cache 🠈|--\\
+        //--|🠊 A container still missing after waitingTime: the download stalled 🠈|--\\
+        console.log(`|--🠊 Warning: a container never showed up inside #${pageName}-body, scripts/Main_Over.ts 🠈--|`); //--|🠈 Was console.error(error) 🠈|--\\
+        console.log(`|--🠊 Guidance: The page reloads once to finish downloading. 🠈--|`);
+        reloadOnce(pageName); //--|🠈 Reload once, what's already downloaded comes from the cache 🠈|--\\
       } finally {
         transitioning.delete(pageName);
       }
@@ -83,7 +82,7 @@ const observeOverlay = (blockName: 'overlay') => {
 };
 
 //--|🠋 Effect Toggles 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-08 · <main> follows obnubilateMain(): blurred while the overlay is .loading/.update or any container is .expanded 🠈|--\\
+//--|🠊 <main> follows obnubilateMain(): blurred while the overlay is .loading/.update or any container is .expanded 🠈|--\\
 let clearBlur = async (
   pageName: string,
   headerContainer: HTMLElement,
@@ -110,7 +109,7 @@ let shrinkBlocks = (headerContainer: HTMLElement, footerContainer: HTMLElement, 
     }
   });
 };
-//--|🠊 AI Code: Review Please 2026-11-11 · Stalled Downloads 🠈|--\\
+//--|🠊 Stalled Downloads 🠈|--\\
 /*--|🠋
   Why: A stalled first load left the loading screen up until the visitor reloaded by hand.
   How: reloadOnce() writes a note in sessionStorage, then reloads the page.

@@ -144,8 +144,8 @@
           min-width: 0; //--|🠈 Lets a long title clip instead of pushing 🠈|--\\
           span {
             display: block;
-            overflow-x: hidden; //--|🠈 AI Code: Review Please 2026-11-21 · Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
-            white-space: nowrap; //--|🠈 AI Code: Review Please 2026-11-21 · Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
+            overflow-x: hidden; //--|🠈 Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
+            white-space: nowrap; //--|🠈 Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
             font-weight: $default-weight;
             //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
             mask-image: linear-gradient(to right, transparent 0rem, black $high-desk, black calc(100% - $high-desk), transparent 100%);
@@ -841,8 +841,8 @@
         }
         h3 span {
           display: block;
-          overflow-x: hidden; //--|🠈 AI Code: Review Please 2026-11-21 · Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
-          white-space: nowrap; //--|🠈 AI Code: Review Please 2026-11-21 · Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
+          overflow-x: hidden; //--|🠈 Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
+          white-space: nowrap; //--|🠈 Like <MenuSwipe>, one line that fades instead of wrapping 🠈|--\\
           font-weight: $default-weight;
           //--|🠊 Text fade, one skeleton square: -def- fades left & right, top & bottom stay sharp 🠈|--\\
           mask-image: linear-gradient(to right, transparent 0rem, black $high-mobi, black calc(100% - $high-mobi), transparent 100%);
@@ -1561,7 +1561,7 @@
       li[class*='preview'] {
         @extend %buttons-x-tablet-desktop;
       }
-      %showing-x-tablet-desktop { //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+      %showing-x-tablet-desktop { //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='vertical_I'] {
           @media screen and (max-width: 1920px) {
             transform: translateY(calc(-96px * 0));
@@ -1798,9 +1798,9 @@
         }
       }
       @media screen and (max-width: 1920px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 96px; //--|🠈 96px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -1816,9 +1816,9 @@
         }
       }
       @media screen and (max-width: 1366px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -1834,9 +1834,9 @@
         }
       }
       @media screen and (max-width: 854px) {
-        height: 48px; //--|🠈 48px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 48px; //--|🠈 48px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 48px; //--|🠈 48px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -1966,7 +1966,7 @@
       li[class*='preview'] {
         @extend %buttons-y-tablet-desktop;
       }
-      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+      li[class*='showing'] aside { //--|🠊 Rows scale on tablet too 🠈|--\\
         @media screen and (max-width: 1920px) {
           width: 96px; //--|🠈 96px for Squares 🠈|--\\
         }
@@ -2143,7 +2143,7 @@
       li[class*='preview'] {
         @extend %buttons-x-tablet-mobile;
       }
-      %showing-x-tablet-mobile { //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+      %showing-x-tablet-mobile { //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='vertical_I'] {
           @media screen and (max-height: 1920px) {
             transform: translateY(calc(-160px * 0));
@@ -2380,9 +2380,9 @@
         }
       }
       @media screen and (max-height: 1920px) {
-        height: 160px; //--|🠈 160px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 160px; //--|🠈 160px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 160px; //--|🠈 160px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -2398,9 +2398,9 @@
         }
       }
       @media screen and (max-height: 1366px) {
-        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 96px; //--|🠈 96px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 96px; //--|🠈 96px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -2416,9 +2416,9 @@
         }
       }
       @media screen and (max-height: 854px) {
-        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+        height: 64px; //--|🠈 64px for Squares 🠈|--\\ //--|🠊 Rows scale on tablet too 🠈|--\\
         &[class*='-X-'] li[class*='showing'] aside {
-          //--|🠊 AI Code: Review Please 2026-11-22 · Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
+          //--|🠊 Same [class*='-X-'] weight as the mobile & desktop rule, or theirs wins and the title box stays a size too tall 🠈|--\\
           height: 64px; //--|🠈 64px for Squares 🠈|--\\
         }
         &[class*='-X-'] {
@@ -2548,7 +2548,7 @@
       li[class*='preview'] {
         @extend %buttons-y-tablet-mobile;
       }
-      li[class*='showing'] aside { //--|🠊 AI Code: Review Please 2026-11-21 14:13 · Rows scale on tablet too 🠈|--\\
+      li[class*='showing'] aside { //--|🠊 Rows scale on tablet too 🠈|--\\
         @media screen and (max-height: 1920px) {
           width: 160px; //--|🠈 160px for Squares 🠈|--\\
         }
@@ -2680,7 +2680,7 @@ menu[class*='scroll'] {
     *[class*='_mon'] {
       &[class*='lig_'] h3[class*='display'] {
         color: Palettes.$indexLand-light;
-        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        //--|🠊 Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
         text-shadow:
           0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
           -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
@@ -2693,7 +2693,7 @@ menu[class*='scroll'] {
       }
       &[class*='dar_'] h3[class*='display'] {
         color: Palettes.$indexLand-dark;
-        //--|🠊 AI Code: Review Please 2026-11-02 · Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
+        //--|🠊 Crisp outline, em scales with the <h3> in every orientation 🠈|--\\
         text-shadow:
           0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),
           -0.04em 0 0 rgba(Palettes.$indexLand-medium, 0.75),

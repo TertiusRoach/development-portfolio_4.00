@@ -5,17 +5,17 @@
   //--|🠋 Desktop: Overtime Main 🠋|--\\
   //--|🠊 <main id="overtime-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-09 13:07 · slides → elements; each page is picked through its own exact <section> 🠈|--\\
+    //--|🠊 slides → elements; each page is picked through its own exact <section> 🠈|--\\
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       div.elements-main_container {
-        display: grid; //--|🠊 AI Code: Review Please 2026-11-09 13:28 · Restored: grid-auto-columns: 100% makes each page one screen wide; flex would shrink an empty page to nothing 🠈|--\\
+        display: grid; //--|🠊 Restored: grid-auto-columns: 100% makes each page one screen wide; flex would shrink an empty page to nothing 🠈|--\\
       }
       section[class='vocation-main'] div[class*='vocation-main_container'] {
-        position: relative; //--|🠊 AI Code: Review Please 2026-11-09 13:22 · The sweeping's children are absolute; keep them inside this page, not the whole outer <li> 🠈|--\\
+        position: relative; //--|🠊 The sweeping's children are absolute; keep them inside this page, not the whole outer <li> 🠈|--\\
         > div[class*='placeholder'] {
-          width: 100%; //--|🠊 AI Code: Review Please 2026-11-09 13:22 · An absolute placeholder has no size of its own 🠈|--\\
-          height: 100%; //--|🠊 AI Code: Review Please 2026-11-09 13:22 🠈|--\\
+          width: 100%; //--|🠊 An absolute placeholder has no size of its own 🠈|--\\
+          height: 100%;
         }
       }
     }
@@ -25,17 +25,17 @@
   //--|🠋 Mobile: Overtime Main 🠋|--\\
   //--|🠊 <main id="overtime-main" class="default-main"> 🠈|--\\
   section[class*='main-fore'] {
-    //--|🠊 AI Code: Review Please 2026-11-09 13:07 · slides → elements; each page is picked through its own exact <section> 🠈|--\\
+    //--|🠊 slides → elements; each page is picked through its own exact <section> 🠈|--\\
     div[class*='elements-main'] {
       grid-area: 1 / 1 / 6 / 4; //--|🠈 row-start / col-start / row-end / col-end 🠈|--\\
       div.elements-main_container {
-        display: grid; //--|🠊 AI Code: Review Please 2026-11-09 13:28 · Restored: grid-auto-columns: 100% makes each page one screen wide; flex would shrink an empty page to nothing 🠈|--\\
+        display: grid; //--|🠊 Restored: grid-auto-columns: 100% makes each page one screen wide; flex would shrink an empty page to nothing 🠈|--\\
       }
       section[class='vocation-main'] div[class*='vocation-main_container'] {
-        position: relative; //--|🠊 AI Code: Review Please 2026-11-09 13:22 · The sweeping's children are absolute; keep them inside this page, not the whole outer <li> 🠈|--\\
+        position: relative; //--|🠊 The sweeping's children are absolute; keep them inside this page, not the whole outer <li> 🠈|--\\
         > div[class*='placeholder'] {
-          width: 100%; //--|🠊 AI Code: Review Please 2026-11-09 13:22 · An absolute placeholder has no size of its own 🠈|--\\
-          height: 100%; //--|🠊 AI Code: Review Please 2026-11-09 13:22 🠈|--\\
+          width: 100%; //--|🠊 An absolute placeholder has no size of its own 🠈|--\\
+          height: 100%;
         }
       }
     }

@@ -1,10 +1,10 @@
 //--|🠊 Article_loading.ts 🠈|--\\
-import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-10 🠈|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components';
 import { loadAsset } from '../../../tools/utilities';
-import type { TheseProps } from './Article.loading'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Article.loading'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · shade_color_clarity, e.g. lig_mon_opa; clarity is the last slot, like <AsideCharacters> 🠈|--\\
+//--|🠊 shade_color_clarity, e.g. lig_mon_opa; clarity is the last slot, like <AsideCharacters> 🠈|--\\
 function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <ArticleLoading> 🠈|--\\
   const classShade = abbrShade(style.shade);

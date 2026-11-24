@@ -1,5 +1,5 @@
 //--|🠊 loading-article/LoadingFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-10 · Copied from UpdatesFunctions.ts: one article per slide, each shade found and swapped on its own 🠈|--\\
+//--|🠊 Copied from UpdatesFunctions.ts: one article per slide, each shade found and swapped on its own 🠈|--\\
 //--|🠋 Article Colors Toggle 🠋|--\\
 function toggleColors(tint: string): void {
   const articleDark = document.querySelector('#components-main .loading-main_shade-dark article[class*="_loading-default"]') as HTMLElement;

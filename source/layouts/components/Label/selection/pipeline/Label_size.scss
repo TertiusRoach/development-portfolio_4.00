@@ -2,7 +2,7 @@
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on the text side and h on the caret side.
+    Every size comes from the height (h): padding = h / 2 on the text side and h on the caret side.
     style.view sets the side: the caret end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px). Heights match <LabelToggle> so the two line up in a form row.
   🠉|--*/
   &[class*='selection-select'] {
@@ -137,7 +137,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       select[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -180,7 +180,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       select[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -224,7 +224,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:04 · Half {input}, half {select}: every size comes from the height (h), padding = h / 2 on the text side and h on the
+    Half {input}, half {select}: every size comes from the height (h), padding = h / 2 on the text side and h on the
     caret side. style.view sets the side: the caret end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px).
   🠉|--*/
   &[class*='selection-combo'] {
@@ -359,7 +359,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -401,7 +401,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -444,7 +444,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:04 · Every size comes from the height (h): padding = h / 2 on the text side and h on the carets side, each caret h / 2 high.
+    Every size comes from the height (h): padding = h / 2 on the text side and h on the carets side, each caret h / 2 high.
     style.view sets the side: the carets end is round (h / 2), the text end takes the <ButtonDefault> corners (8 / 6 / 4 / 2px).
   🠉|--*/
   &[class*='selection-number'] {
@@ -591,7 +591,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -637,7 +637,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -818,7 +818,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       select[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -861,7 +861,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       select[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1036,7 +1036,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1078,7 +1078,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1264,7 +1264,7 @@
       }
     }
     &[class*='_mc_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+      //--|🠊 mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
       border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1310,7 +1310,7 @@
       }
     }
     &[class*='_cm_'] {
-      //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+      //--|🠊 cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
       border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
       input[class='event'] {
         text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1493,7 +1493,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         select[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1536,7 +1536,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         select[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1712,7 +1712,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         select[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1755,7 +1755,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         select[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1933,7 +1933,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -1975,7 +1975,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2150,7 +2150,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the caret on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2192,7 +2192,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the caret on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2381,7 +2381,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2427,7 +2427,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2618,7 +2618,7 @@
         }
       }
       &[class*='_mc_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
+        //--|🠊 mid-cen: both ends sharp, the text centred and the carets on the right 🠈|--\\
         border-radius: 8px; //--|🠈 Sharp at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\
@@ -2664,7 +2664,7 @@
         }
       }
       &[class*='_cm_'] {
-        //--|🠊 AI Code: Review Please 2026-10-30 · cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
+        //--|🠊 cen-mid: both ends round, the text centred and the carets on the left 🠈|--\\
         border-radius: 22px; //--|🠈 Round at both ends 🠈|--\\
         input[class='event'] {
           text-align: center; //--|🠈 The text sits in the middle 🠈|--\\

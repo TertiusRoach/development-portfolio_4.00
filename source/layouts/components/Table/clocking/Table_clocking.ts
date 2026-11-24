@@ -1,5 +1,5 @@
 //--|🠊 Table_clocking.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-08 · Comments moved into the project's flags; the code is unchanged 🠈|--\\
+//--|🠊 Comments moved into the project's flags; the code is unchanged 🠈|--\\
 export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   //--|🠊 (1) Query safely: allow null 🠈|--\\
   const tableWeek = document.querySelector('#overtime-leftbar table.clocking-leftbar') as HTMLTableElement | null;

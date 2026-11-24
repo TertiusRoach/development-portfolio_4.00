@@ -3,7 +3,7 @@
 import { abbrView, abbrShade, abbrColor } from '../../components';
 import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
 import { showingBootstrap } from '../../../tools/frameworks';
-import type { TheseProps } from './Menu.scroll'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Menu.scroll'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {
@@ -18,7 +18,7 @@ export const modifyingController = (pageName: string, blockName: string, labelNa
 let revealTitles = (pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
-  if (control === null) return; //--|🠈 AI Code: Review Please 2026-11-08 · A flip can unmount the menu before the 1500ms timer runs, like Menu_select's guard 🠈|--\\
+  if (control === null) return; //--|🠈 A flip can unmount the menu before the 1500ms timer runs, like Menu_select's guard 🠈|--\\
 
   //--|🠋 Step 1: Swipe Visible Window 🠋|--\\
   const revealActiveTitle = (
@@ -106,7 +106,7 @@ let revealTitles = (pageName: string, blockName: string, labelName: string, menu
 let revealButtons = (pageName: string, blockName: string, labelName: string, menuAxis: 'vertical'): void => {
   const control = findTags(pageName, blockName, labelName).controller as HTMLMenuElement;
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLDivElement | null;
-  if (control === null) return; //--|🠈 AI Code: Review Please 2026-11-08 · A flip can unmount the menu before the 1500ms timer runs 🠈|--\\
+  if (control === null) return; //--|🠈 A flip can unmount the menu before the 1500ms timer runs 🠈|--\\
 
   //--|🠋 Step 1: Find Position 🠋|--\\
   const retrievePositions = (

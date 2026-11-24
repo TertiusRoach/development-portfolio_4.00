@@ -18,7 +18,7 @@ import { loadPages } from '../../../tools/navigation';
 import { checkScreen, synchDemo } from '../../../tools/synching';
 import { loadAsset } from '../../../tools/utilities';
 import previewProfile, { unfoldHeaders, expandHeaders, squareHeaders, freezeHeaders } from './OvertimeFunctions';
-import startingPreview from '../Main/OvertimeFunctions'; //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+import startingPreview from '../Main/OvertimeFunctions';
 
 //--|🠋 Database 🠋|--\\
 import TrackTime from '../../../../modules/server/MongoDB/testing/TrackTime';
@@ -82,7 +82,7 @@ function OvertimeHeader({ info }: InfoProps) {
                   onClick: (view, container) => {
                     expandHeaders(container);
                     synchDemo(pageName, blockName, 'pick');
-                    startingPreview('(vocation)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:38 · 1 = the sweeping shows its placeholder 🠈|--\\
+                    startingPreview('(vocation)', 1); //--|🠊 1 = the sweeping shows its placeholder 🠈|--\\
                   },
                 },
               }}
@@ -154,14 +154,14 @@ function OvertimeHeader({ info }: InfoProps) {
                   {
                     click: () => {
                       synchDemo(pageName, blockName, 'click');
-                      startingPreview('(established)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+                      startingPreview('(established)', 1);
                     },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-left'),
                   },
                   {
                     click: () => {
                       synchDemo(pageName, blockName, 'click');
-                      startingPreview('(freelancing)', 1); //--|🠊 AI Code: Review Please 2026-11-09 13:08 🠈|--\\
+                      startingPreview('(freelancing)', 1);
                     },
                     enter: (event) => previewProfile('enter', event.currentTarget as HTMLButtonElement, pageName, blockName, 'demo-right'),
                   },
@@ -230,7 +230,7 @@ function OvertimeHeader({ info }: InfoProps) {
           id={`${pageName}-${blockName}`}
           className={`${blurName} ${labelName}-${blockName} ${stateName}`}
           onClick={(event) => {
-            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, the same as [Archive] 🠈|--\\ //--|🠈 AI Code: Review Please 2026-11-05 🠈|--\\
+            unfoldHeaders(event.currentTarget as HTMLElement); //--|🠈 Mobile taps to unfold, the same as [Archive] 🠈|--\\
           }}
           onMouseLeave={(event) => {
             squareHeaders(event.currentTarget as HTMLElement); //--|🠈 The expanded footer covers <main>, so tapping it folds the header back 🠈|--\\
@@ -274,7 +274,7 @@ function OvertimeHeader({ info }: InfoProps) {
                 align: '-mid-',
                 view: 'top-cen',
                 shade: '~light~',
-                color: ['(orange)', '(blue)', '(red)'], //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
+                color: ['(orange)', '(blue)', '(red)'], //--|🠊 TraLogFin logo in the company colour 🠈|--\\
                 image: [
                   loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps'),
                   loadAsset('-svg-', '/tralogfin-application/log-a-ticket/primary-medium'),

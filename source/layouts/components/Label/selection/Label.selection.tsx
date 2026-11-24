@@ -6,7 +6,7 @@ import createClass from './Label_selection';
 import { stripBrackets } from '../../../tools/conversions';
 import { loadAsset } from '../../../tools/utilities';
 
-//--|🠊 AI Code: Review Please 2026-10-30 · <LabelSelect> + <LabelCombobox> + <LabelNumber>, picked by cases.type 🠈|--\\
+//--|🠊 <LabelSelect> + <LabelCombobox> + <LabelNumber>, picked by cases.type 🠈|--\\
 export interface TheseProps {
   info: {
     pageName: string;
@@ -110,9 +110,9 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
             defaultValue={1} //--|🠈 Only the first value, the browser keeps it from there 🠈|--\\
             placeholder={style.text}
             //--|===|--\\
-            onPaste={(event) => pasteNumber(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
-            onChange={(event) => limitNumber(event, onChange)} //--|🠈 AI Code: Review Please 2026-10-31 🠈|--\\
-            onKeyDown={(event) => blockCharacters(event)} //--|🠈 AI Code: Review Please 2026-10-30 🠈|--\\
+            onPaste={(event) => pasteNumber(event)}
+            onChange={(event) => limitNumber(event, onChange)}
+            onKeyDown={(event) => blockCharacters(event)}
           />
           {/*--|🠊 Inline mask like <ButtonDefault>: the URL only exists at runtime 🠈|--*/}
           <span
@@ -158,19 +158,19 @@ const stepNumber = (input: HTMLInputElement | null, direction: 'up' | 'down'): v
   input.dispatchEvent(new Event('input', { bubbles: true })); //--|🠈 Stepping fires no event on its own, this lets onChange hear it 🠈|--\\
 };
 const blockCharacters = (event: React.KeyboardEvent<HTMLInputElement>): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 · Only the digits 0 to 9: no letters (Chrome lets 'e' & 'E' through for exponents), no + - . and no other special characters 🠈|--\\
+  //--|🠊 Only the digits 0 to 9: no letters (Chrome lets 'e' & 'E' through for exponents), no + - . and no other special characters 🠈|--\\
   if (event.key.length === 1 && /[^0-9]/.test(event.key) && !event.ctrlKey && !event.metaKey) {
     event.preventDefault(); //--|🠈 Ctrl/⌘ shortcuts (copy, paste, select all) still work; Backspace, arrows & Tab are longer than one character 🠈|--\\
   }
 };
 const pasteNumber = (event: React.ClipboardEvent<HTMLInputElement>): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 · A pasted value with anything but the digits 0 to 9 in it is refused 🠈|--\\
+  //--|🠊 A pasted value with anything but the digits 0 to 9 in it is refused 🠈|--\\
   if (/[^0-9]/.test(event.clipboardData.getData('text').trim())) {
     event.preventDefault();
   }
 };
 const limitNumber = (event: React.ChangeEvent<HTMLInputElement>, onChange: TheseProps['onChange']): void => {
-  //--|🠊 AI Code: Review Please 2026-10-31 · max only stops the carets, so a typed or pasted count is trimmed to 1 – 9999 here: no leading 0, no fifth digit 🠈|--\\
+  //--|🠊 max only stops the carets, so a typed or pasted count is trimmed to 1 – 9999 here: no leading 0, no fifth digit 🠈|--\\
   let trimmed: string = event.target.value.replace(/^0+/, '').slice(0, 4);
   if (trimmed !== event.target.value) {
     event.target.value = trimmed;

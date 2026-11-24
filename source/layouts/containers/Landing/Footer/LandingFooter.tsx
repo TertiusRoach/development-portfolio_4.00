@@ -127,7 +127,7 @@ function LandingFooter({ info }: InfoProps) {
                 labelName: labelName,
               }}
               style={{
-                color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
+                color: '(orange)', //--|🠊 TraLogFin logo in the company colour 🠈|--\\
                 view: 'bot-rig',
                 shade: '~dark~',
                 image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,

@@ -12,7 +12,7 @@ function findSpot(fullscreen: HTMLLIElement, conveyor: HTMLLIElement): void {
 }
 
 //--|🠋 Functions & Elements 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-08 · Returns a cleanup, so the observer stops when the conveyor unmounts on the flip 🠈|--\\
+//--|🠊 Returns a cleanup, so the observer stops when the conveyor unmounts on the flip 🠈|--\\
 function listenEvent(pageName: string, blockName: string, labelName: string): (() => void) | undefined {
   const fullscreen = findTags(pageName, blockName, labelName).fullscreen as HTMLLIElement;
   const conveyor = findTags(pageName, blockName, labelName).conveyor as HTMLLIElement;

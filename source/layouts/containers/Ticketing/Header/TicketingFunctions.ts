@@ -62,7 +62,6 @@ export function unfoldHeaders(thisItem: HTMLElement) {
     blockViews(thisItem, 'ticketing', 'leftbar', 'unfolded');
   }
 }
-//--|🠊 AI Code: Review Please 2026-11-05 🠈|--\\
 export function expandHeaders(thisItem: HTMLElement) {
   let leftbarElement = document.querySelector('#ticketing-leftbar') as HTMLElement;
   thisItem.classList.remove('locked-header'); //--|🠈 A deliberate click wins over the hover's lock 🠈|--\\
@@ -70,7 +69,6 @@ export function expandHeaders(thisItem: HTMLElement) {
   blockViews(thisItem, 'ticketing', 'header', 'expanded');
   blockViews(thisItem, 'ticketing', 'leftbar', 'unfolded'); //--|🠈 The pair matches the page's load state 🠈|--\\
 }
-//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 export function squareHeaders(thisItem: HTMLElement) {
   let leftbarElement = document.querySelector('#ticketing-leftbar') as HTMLElement;
   switch (Array.from(thisItem.classList).pop()) {

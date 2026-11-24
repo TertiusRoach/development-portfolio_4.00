@@ -86,11 +86,10 @@ const blockHandlers: Partial<Record<blockName, Partial<Record<alterAction, Handl
     squaring: (pageName) => squaringRightbar(pageName, 'rightbar'),
   },
 };
-//--|🠊 AI Code: Review Please 2026-11-08 🠈|--\\
 const errorHandlers = (pageName: string, blockName: blockName, alterAction: alterAction) => {
   try {
     blockHandlers[blockName]?.[alterAction]?.(pageName);
-    return obnubilateMain(pageName); //--|🠈 AI Code: Review Please 2026-11-08 · After every change, <main> follows the one rule 🠈|--\\
+    return obnubilateMain(pageName); //--|🠈 After every change, <main> follows the one rule 🠈|--\\
   } catch (error) {
     if (error instanceof ReferenceError) {
       //--|🠋 Main_Over.ts and containers.ts import each other: a handler ran before both finished loading 🠋|--\\

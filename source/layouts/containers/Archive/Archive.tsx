@@ -3,7 +3,7 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 
 //--|🠋 Functions 🠋|--\\
-import { logInformation } from '../../tools/information'; //--|🠈 AI Code: Review Please 2026-11-11 🠈|--\\
+import { logInformation } from '../../tools/information';
 
 //--|🠋 Containers (*.tsx) 🠋|--\\
 const ArchiveMain = lazy(() => import('./Main/ArchiveMain'));
@@ -37,13 +37,12 @@ function Archive() {
 
     const entryTimer = setTimeout(() => {
       /*--|🠋
-        AI Code: Review Please 2026-11-11
         After 15 seconds the page has settled, so the speed and loading readings are complete.
         [Archive] only: the apps send this to the server later, never to the console.
       🠉|--*/
       console.log('|🠊 Entry Point: <div id="components-body"> 🠈|');
       logInformation('components');
-    }, 15000); //--|🠈 AI Code: Review Please 2026-11-11 · Was 60000 🠈|--\\
+    }, 15000); //--|🠈 Was 60000 🠈|--\\
 
     return () => {
       clearTimeout(headerTimer);
@@ -53,7 +52,7 @@ function Archive() {
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
-      clearTimeout(entryTimer); //--|🠈 AI Code: Review Please 2026-11-08 · The 60s entry-point log was the one timer never cleared 🠈|--\\
+      clearTimeout(entryTimer); //--|🠈 The 60s entry-point log was the one timer never cleared 🠈|--\\
     };
   }, []);
 

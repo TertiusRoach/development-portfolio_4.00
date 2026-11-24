@@ -52,7 +52,7 @@ export function NavigationDefault({ info, style, cases, onClick, onMouseEnter, o
       console.log('Align:', stripBrackets(`${cases.menus?.[0].align}`, '--'));
       const menuElement = document.querySelectorAll(
         `#${pageName}-${blockName} nav[class*="${blockName}_navigation-default"] menu`,
-      ) as NodeListOf<HTMLMenuElement>; //--|🠈 AI Code: Review Please 2026-11-21 · Uncommented: every <menu>, scroll, select, swipe or toggle 🠈|--\\
+      ) as NodeListOf<HTMLMenuElement>; //--|🠈 Uncommented: every <menu>, scroll, select, swipe or toggle 🠈|--\\
       console.log(menuElement[0].childNodes);
       console.log(menuElement[1].childNodes);
       */

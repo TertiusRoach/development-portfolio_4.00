@@ -8,18 +8,17 @@ export interface TheseProps {
   info: {
     pageName: string;
     blockName: string;
-    //--|🠊 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
     ariaName?: string; //--|🠈 Read aloud when the button has no visible text 🠈|--\\
     labelName?: string;
   };
   style: {
     shade: '~dark~' | '~light~';
-    clarity: '⟨lucid⟩' | '⟨opaque⟩'; //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
+    clarity: '⟨lucid⟩' | '⟨opaque⟩';
     size: '<h1>' | '<h4>' | '<p>';
     view: 'top-lef' | 'top-cen' | 'top-rig' | 'mid-lef' | 'mid-cen' | 'mid-rig' | 'bot-lef' | 'bot-cen' | 'bot-rig';
     color: '(mono)' | '(red)' | '(green)' | '(blue)' | '(purple)' | '(orange)' | '(pink)' | '(yellow)' | '(brown)' | '(turquoise)';
     //--|===|--\\
-    image?: string | null; //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
+    image?: string | null;
   };
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -53,7 +52,7 @@ export function ButtonRouting({ info, style, onClick, onMouseEnter, onMouseLeave
       onMouseLeave={onMouseLeave}
       onDoubleClick={onDoubleClick}
       //--|===|--\\
-      aria-label={info.ariaName} //--|🠈 AI Code: Review Please 2026-10-31 11:21 🠈|--\\
+      aria-label={info.ariaName}
     >
       <div className="fore"></div>
       <div className="icon">

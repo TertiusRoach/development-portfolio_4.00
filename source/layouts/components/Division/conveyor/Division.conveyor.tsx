@@ -36,7 +36,7 @@ export function DivisionConveyor({ info, cases }: TheseProps) {
   const labelName = info.labelName as string;
 
   useEffect(() => {
-    return listenEvent(pageName, blockName, labelName); //--|🠈 AI Code: Review Please 2026-11-08 · Returned, so React stops the observer on unmount 🠈|--\\
+    return listenEvent(pageName, blockName, labelName); //--|🠈 Returned, so React stops the observer on unmount 🠈|--\\
   }, [pageName, blockName, labelName]);
 
   return (

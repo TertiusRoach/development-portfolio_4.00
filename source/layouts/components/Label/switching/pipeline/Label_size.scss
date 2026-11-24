@@ -2,7 +2,7 @@
 @mixin desktop-size {
   //--|🠋 Desktop (Size) 🠋|--\\
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:22 · Every size comes from the height (h): each chip is an h-high pill like {select}, padding h / 2 left and h right
+    Every size comes from the height (h): each chip is an h-high pill like {select}, padding h / 2 left and h right
     for the icon. Chips wrap, so it grows one h per row with h / 4 between rows: 44, 99, 154px … at the largest size.
   🠉|--*/
   &[class*='switching-chip'] {
@@ -66,7 +66,7 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-29 15:45 · Every size comes from the height (h): width = h, radius = h / 4 (on the <label>), so it reads as a box and
+    Every size comes from the height (h): width = h, radius = h / 4 (on the <label>), so it reads as a box and
     never as a {option} dot. The tick uses the {select} caret sizes. Heights match {toggle} so they line up in a form row.
   🠉|--*/
   &[class*='switching-check'] {
@@ -124,7 +124,7 @@
       &::after {
         top: 4px;
         left: 4px;
-        width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+        width: 36px; //--|🠈 36px leaves an even 4px gap all round 🠈|--\\
         height: 36px;
       }
     }
@@ -167,7 +167,7 @@
     @media screen and (max-height: 360px) {
       input[class='event'] {
         &:checked + span[class='switch']::after {
-          transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+          transform: translateX(16px); //--|🠈 ends 1px from the right, like the left 🠈|--\\
         }
       }
       span[class='switch'] {
@@ -184,11 +184,11 @@
     }
   }
   /*--|🠋
-    AI Code: Review Please 2026-10-29 15:56 · Every size comes from the height (h): radius = h / 2 (on the <label>), and the knob and the gap around it are the
+    Every size comes from the height (h): radius = h / 2 (on the <label>), and the knob and the gap around it are the
     {toggle} knob: 36px & 4px, 34px & 3px, 20px & 2px, 14px & 1px.
   🠉|--*/
   /*--|🠋
-    AI Code: Review Please 2026-10-29 17:16 · Every size comes from the height (h): each option is an h × h circle like {check}, the dot is h / 2,
+    Every size comes from the height (h): each option is an h × h circle like {check}, the dot is h / 2,
     and the gap between options is h / 4. Heights match {toggle} so they line up in a form row.
   🠉|--*/
   &[class*='switching-option'] {
@@ -227,7 +227,7 @@
 @mixin mobile-size {
   //--|🠋 Mobile (Size) 🠋|--\\
   &[class*='switching-chip'] {
-    //--|🠊 AI Code: Review Please 2026-10-29 17:32 · Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
+    //--|🠊 Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
     height: 44px;
     border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
     span[class='text'] {
@@ -336,7 +336,7 @@
       &::after {
         top: 4px;
         left: 4px;
-        width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+        width: 36px; //--|🠈 36px leaves an even 4px gap all round 🠈|--\\
         height: 36px;
       }
     }
@@ -379,7 +379,7 @@
     @media screen and (max-width: 360px) {
       input[class='event'] {
         &:checked + span[class='switch']::after {
-          transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+          transform: translateX(16px); //--|🠈 ends 1px from the right, like the left 🠈|--\\
         }
       }
       span[class='switch'] {
@@ -494,7 +494,7 @@
     }
     @media screen and (orientation: portrait) {
       //--|🠊 Mobile 🠈|--\\
-      //--|🠊 AI Code: Review Please 2026-10-29 17:32 · Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
+      //--|🠊 Phones keep the chips on one row and scroll sideways, so it never grows into its neighbours 🠈|--\\
       height: 44px;
       border-radius: 22px; //--|🠈 A pill, the fade layers inherit it 🠈|--\\
       span[class='text'] {
@@ -646,7 +646,7 @@
         &::after {
           top: 4px;
           left: 4px;
-          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          width: 36px; //--|🠈 36px leaves an even 4px gap all round 🠈|--\\
           height: 36px;
         }
       }
@@ -689,7 +689,7 @@
       @media screen and (max-width: 854px) {
         input[class='event'] {
           &:checked + span[class='switch']::after {
-            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+            transform: translateX(16px); //--|🠈 ends 1px from the right, like the left 🠈|--\\
           }
         }
         span[class='switch'] {
@@ -719,7 +719,7 @@
         &::after {
           top: 4px;
           left: 4px;
-          width: 36px; //--|🠈 AI Code: Review Please 2026-10-29 14:40 · 36px leaves an even 4px gap all round 🠈|--\\
+          width: 36px; //--|🠈 36px leaves an even 4px gap all round 🠈|--\\
           height: 36px;
         }
       }
@@ -762,7 +762,7 @@
       @media screen and (max-height: 854px) {
         input[class='event'] {
           &:checked + span[class='switch']::after {
-            transform: translateX(16px); //--|🠈 AI Code: Review Please 2026-10-29 14:40 · ends 1px from the right, like the left 🠈|--\\
+            transform: translateX(16px); //--|🠈 ends 1px from the right, like the left 🠈|--\\
           }
         }
         span[class='switch'] {

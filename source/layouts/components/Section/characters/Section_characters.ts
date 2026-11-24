@@ -1,8 +1,8 @@
 //--|🠊 Section_characters.ts 🠈|--\\
 //--|🠋 Functions 🠋|--\\
-import { abbrShade, abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+import { abbrShade, abbrColor } from '../../components';
 import { loadAsset } from '../../../tools/utilities';
-import type { TheseProps } from './Section.characters'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Section.characters'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 function returnProfile(
   selectProfile:
     | string
@@ -294,7 +294,7 @@ let cardInfo: Array<CharacterSelection> = [
 //--|🠋 Configure Container 🠋|--\\
 export function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <SectionCharacters> 🠈|--\\
-  //--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
+  //--|🠊 The maps live in components.ts, shared by every component 🠈|--\\
   const classShade = abbrShade(style.shade);
   const classColor = abbrColor(style.color);
   return `${classShade}_${classColor}`;

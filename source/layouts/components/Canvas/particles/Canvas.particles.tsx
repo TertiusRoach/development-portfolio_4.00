@@ -1,5 +1,5 @@
 //--|🠊 Canvas.particles.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · development-portfolio_3.00's Canvas.propel: a picture broken into dots that fly home and dodge the pointer 🠈|--\\
+//--|🠊 development-portfolio_3.00's Canvas.propel: a picture broken into dots that fly home and dodge the pointer 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useRef } from 'react';
 

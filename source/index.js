@@ -1,6 +1,6 @@
 //--|🠊 index.js 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-24 · Was setup.js in the root; moved here by the owner to reduce clutter 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-23 · Builds the TraLogFin folder on a new machine (GITHUB.md, Set Up a New Computer, Step 5) 🠈|--\\
+//--|🠊 Was setup.js in the root; moved here by the owner to reduce clutter 🠈|--\\
+//--|🠊 Builds the TraLogFin folder on a new machine (GITHUB.md, Set Up a New Computer, Step 5) 🠈|--\\
 /*--|🠋
   One folder, two repositories. This does in one command what GITHUB.md § 7 Step 5 does by hand:
     1. clones both repositories, bare, into an empty folder: .frontend.git and .backend.git;
@@ -94,7 +94,7 @@ function setupFolder() {
     warn(
       `origin is the folder it was copied from, not GitHub. To fetch from GitHub instead, run inside it: git remote set-url origin <the GitHub address>, then the same with --git-dir=.backend.git`,
     );
-  say(`Done. Open ${target} in VS Code, or run: cd ${target} && npm run launch`); //--|🠈 AI Code: Review Please 2026-11-24 · npm run app is now npm run launch 🠈|--\\
+  say(`Done. Open ${target} in VS Code, or run: cd ${target} && npm run launch`); //--|🠈 npm run app is now npm run launch 🠈|--\\
 }
 
 //--|🠋 Working Repository 🠋|--\\

@@ -1,10 +1,10 @@
 //--|🠊 VocationElements.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-09 13:04 · Whole file is new, copied from Archive's MenuElements.tsx 🠈|--\\
+//--|🠊 Whole file is new, copied from Archive's MenuElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
 //--|🠋 Components 🠋|--\\
-import DivisionSweeping from '../../../../../components/Division/sweeping/Division.sweeping'; //--|🠊 AI Code: Review Please 2026-11-09 13:22 🠈|--\\
+import DivisionSweeping from '../../../../../components/Division/sweeping/Division.sweeping';
 import DivisionPlaceholder from '../../../../../components/Division/placeholder/Division.placeholder';
 
 //--|🠋 Functions 🠋|--\\
@@ -32,10 +32,10 @@ function VocationElements({ info }: InfoProps) {
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
-  let viewName = 1 as number; //--|🠊 AI Code: Review Please 2026-11-09 13:38 · The sweeping starts on I, its placeholder 🠈|--\\
+  let viewName = 1 as number; //--|🠊 The sweeping starts on I, its placeholder 🠈|--\\
   return (
     <section className={`${labelName}-${blockName}`}>
-      {/*--|🠊 AI Code: Review Please 2026-11-09 13:22 · The centre page sweeps instead of sliding 🠈|--*/}
+      {/*--|🠊 The centre page sweeps instead of sliding 🠈|--*/}
       <DivisionSweeping
         cases={{
           axis: '[y]',

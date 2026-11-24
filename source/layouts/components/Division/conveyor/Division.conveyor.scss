@@ -4,7 +4,7 @@
 @mixin desktop-landscape {
   //--|🠋 Desktop (Conveyor) 🠋|--\\
   div[class*='_container'] > menu {
-    //--|🠊 AI Code: Review Please 2026-11-22 · Each row is one slot, two global grid rows tall; a smaller tablet menu sits in its middle 🠈|--\\
+    //--|🠊 Each row is one slot, two global grid rows tall; a smaller tablet menu sits in its middle 🠈|--\\
     display: grid;
     align-content: center;
     height: 128px; //--|🠈 128px for Squares 🠈|--\\
@@ -306,7 +306,7 @@
 @mixin mobile-portrait {
   //--|🠋 Mobile (Conveyor) 🠋|--\\
   div[class*='_container'] > menu {
-    //--|🠊 AI Code: Review Please 2026-11-22 · Each row is one slot, two global grid rows tall; a smaller tablet menu sits in its middle 🠈|--\\
+    //--|🠊 Each row is one slot, two global grid rows tall; a smaller tablet menu sits in its middle 🠈|--\\
     display: grid;
     align-content: center;
     height: 192px; //--|🠈 192px for Squares 🠈|--\\
@@ -573,7 +573,7 @@
 }
 @mixin tablet-squaring {
   //--|🠋 Tablet (Conveyor) 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-11-22 · Empty on purpose: the window is two global grid rows, and the global grid ignores tablet, so the slots and steps stay on desktop & mobile 🠈|--\\
+  //--|🠊 Empty on purpose: the window is two global grid rows, and the global grid ignores tablet, so the slots and steps stay on desktop & mobile 🠈|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
   }

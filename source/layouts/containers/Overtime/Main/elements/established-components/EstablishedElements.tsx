@@ -1,5 +1,5 @@
 //--|🠊 EstablishedElements.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-09 13:04 · Whole file is new, copied from Archive's MenuElements.tsx 🠈|--\\
+//--|🠊 Whole file is new, copied from Archive's MenuElements.tsx 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -56,7 +56,7 @@ const EstablishedComponents: React.FC<InfoProps> = ({ info }) => {
 
   return (
     <>
-      {/*--|🠊 AI Code: Review Please 2026-11-09 13:28 · Empty for now; the [y] fullscreen stays so startingPreview can still find this page 🠈|--*/}
+      {/*--|🠊 Empty for now; the [y] fullscreen stays so startingPreview can still find this page 🠈|--*/}
     </>
   );
 };

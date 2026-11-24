@@ -199,7 +199,7 @@
           }
         }
         &[class*='description'] {
-          border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+          border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners 🠈|--\\
           border-bottom-right-radius: 24px;
           grid-template: 32px 1fr / 16px 1fr 16px;
           div[class*='bio'] {
@@ -253,7 +253,7 @@
           }
         }
         &[class*='description'] {
-          border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+          border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners 🠈|--\\
           border-bottom-right-radius: 16px;
           grid-template: 24px 1fr / 8px 1fr 8px;
           div[class*='bio'] {
@@ -525,7 +525,7 @@
           }
         }
         &[class*='description'] {
-          border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+          border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners 🠈|--\\
           border-bottom-right-radius: 24px;
           grid-template: 32px 1fr / 16px 1fr 16px;
           div[class*='bio'] {
@@ -579,7 +579,7 @@
           }
         }
         &[class*='description'] {
-          border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+          border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners 🠈|--\\
           border-bottom-right-radius: 16px;
           grid-template: 24px 1fr / 8px 1fr 8px;
           div[class*='bio'] {
@@ -745,7 +745,7 @@
             }
           }
           &[class*='description'] {
-            border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+            border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners 🠈|--\\
             border-bottom-right-radius: 24px;
             grid-template: 32px 1fr / 16px 1fr 16px;
             div[class*='bio'] {
@@ -799,7 +799,7 @@
             }
           }
           &[class*='description'] {
-            border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+            border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners 🠈|--\\
             border-bottom-right-radius: 16px;
             grid-template: 24px 1fr / 8px 1fr 8px;
             div[class*='bio'] {
@@ -963,7 +963,7 @@
             }
           }
           &[class*='description'] {
-            border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+            border-bottom-left-radius: 24px; //--|🠈 Same as the card's corners 🠈|--\\
             border-bottom-right-radius: 24px;
             grid-template: 32px 1fr / 16px 1fr 16px;
             div[class*='bio'] {
@@ -1017,7 +1017,7 @@
             }
           }
           &[class*='description'] {
-            border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners: AI Code: Review Please 2026-11-07 🠈|--\\
+            border-bottom-left-radius: 16px; //--|🠈 Same as the card's corners 🠈|--\\
             border-bottom-right-radius: 16px;
             grid-template: 24px 1fr / 8px 1fr 8px;
             div[class*='bio'] {
@@ -1126,7 +1126,6 @@
       border-radius: inherit; //--|🠈 Follows the card's corners 🠈|--\\
     }
     /*--|🠋
-      AI Code: Review Please 2026-11-07
       Why: The information, permissions and description panels paint their own
       backgrounds over ::before, so an inner glow there only shows round the header.
       How: ::after sits above the panels and only carries the inner glow (Set in *-tint).
@@ -1159,7 +1158,7 @@
           inset 0 0 0 1px rgba(Palettes.$gray-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$gray-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1211,7 +1210,7 @@
   &[class*='lig_mon'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$gray-lightMode;
         box-shadow:
@@ -1220,7 +1219,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$gray-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$gray-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1285,7 +1284,7 @@
           inset 0 0 0 1px rgba(Palettes.$red-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$red-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1337,7 +1336,7 @@
   &[class*='lig_red'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$red-lightMode;
         box-shadow:
@@ -1346,7 +1345,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$red-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$red-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1411,7 +1410,7 @@
           inset 0 0 0 1px rgba(Palettes.$green-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$green-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1463,7 +1462,7 @@
   &[class*='lig_gre'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$green-lightMode;
         box-shadow:
@@ -1472,7 +1471,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$green-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$green-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1537,7 +1536,7 @@
           inset 0 0 0 1px rgba(Palettes.$blue-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$blue-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1589,7 +1588,7 @@
   &[class*='lig_blu'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$blue-lightMode;
         box-shadow:
@@ -1598,7 +1597,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$blue-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$blue-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1663,7 +1662,7 @@
           inset 0 0 0 1px rgba(Palettes.$yellow-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1715,7 +1714,7 @@
   &[class*='lig_yel'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$yellow-lightMode;
         box-shadow:
@@ -1724,7 +1723,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$yellow-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1789,7 +1788,7 @@
           inset 0 0 0 1px rgba(Palettes.$purple-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$purple-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1841,7 +1840,7 @@
   &[class*='lig_pur'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$purple-lightMode;
         box-shadow:
@@ -1850,7 +1849,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$purple-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$purple-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1915,7 +1914,7 @@
           inset 0 0 0 1px rgba(Palettes.$orange-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$orange-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -1967,7 +1966,7 @@
   &[class*='lig_ora'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$orange-lightMode;
         box-shadow:
@@ -1976,7 +1975,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$orange-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$orange-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2041,7 +2040,7 @@
           inset 0 0 0 1px rgba(Palettes.$pink-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$pink-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2093,7 +2092,7 @@
   &[class*='lig_pin'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$pink-lightMode;
         box-shadow:
@@ -2102,7 +2101,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$pink-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$pink-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2167,7 +2166,7 @@
           inset 0 0 0 1px rgba(Palettes.$brown-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$brown-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2219,7 +2218,7 @@
   &[class*='lig_bro'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$brown-lightMode;
         box-shadow:
@@ -2228,7 +2227,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$brown-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$brown-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2293,7 +2292,7 @@
           inset 0 0 0 1px rgba(Palettes.$turquoise-medium, 0.18);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 1); //--|🠈 Light inner glow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-light, 1); //--|🠈 Light inner glow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {
@@ -2345,7 +2344,7 @@
   &[class*='lig_tur'] {
     div[class='wrap-card'] {
       background: none;
-      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only: AI Code: Review Please 2026-11-07 🠈|--\\
+      box-shadow: 0 8px 16px rgba(#000, 0.35); //--|🠈 Drop shadow, light only 🠈|--\\
       &::before {
         background: Palettes.$turquoise-lightMode;
         box-shadow:
@@ -2354,7 +2353,7 @@
           inset 0 0 0 1px rgba(#000, 0.1);
       }
       &::after {
-        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-dark, 1); //--|🠈 Dark inner shadow like <FormLogin>: AI Code: Review Please 2026-11-07 🠈|--\\
+        box-shadow: inset 0 0 8px rgba(Palettes.$turquoise-dark, 1); //--|🠈 Dark inner shadow like <FormLogin> 🠈|--\\
       }
       *[class*='card'] {
         &[class*='information'] {

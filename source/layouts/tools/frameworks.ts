@@ -4,7 +4,6 @@ export function showingBootstrap(): string {
   let displayText: string = 'display-0';
   const desktop: boolean = window.matchMedia('(orientation: landscape)').matches;
   const mobile: boolean = window.matchMedia('(orientation: portrait)').matches;
-  //--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
   const tablet: boolean = window.matchMedia('(max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99)').matches;
   if (tablet === true) {
     //--|🠋 Same query as tablet-squaring: measures the long side and wins over both orientations 🠋|--\\

@@ -1,5 +1,5 @@
 //--|🠊 Canvas.meteorites.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · rain-main from University Tracker's index-main.scss; the <canvas> reads these values every frame 🠈|--\\
+//--|🠊 rain-main from University Tracker's index-main.scss; the <canvas> reads these values every frame 🠈|--\\
 @use '../../../styles/Palettes.scss' as Palettes;
 
 //--|🠋 Registered Properties 🠋|--\\
@@ -247,7 +247,7 @@ canvas[class*='meteorites'] {
   display: block;
   pointer-events: none; //--|🠈 Scenery: clicks fall through to what's behind it 🠈|--\\
   @include meteorites-colors();
-  //--|🠊 AI Code: Review Please 2026-11-22 · Effects are heavy: .downplay hides it and its script stops, .highlight shows it while the mouse is over it 🠈|--\\
+  //--|🠊 Effects are heavy: .downplay hides it and its script stops, .highlight shows it while the mouse is over it 🠈|--\\
   &.downplay {
     opacity: 0;
   }

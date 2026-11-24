@@ -1,5 +1,5 @@
 //--|🠊 stretch/pipeline/Button_tint.scss 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-10-31 11:52 · Copied from <ButtonDefault>, except div[class='text'] has no box (Stretch) 🠈|--\\
+//--|🠊 Copied from <ButtonDefault>, except div[class='text'] has no box (Stretch) 🠈|--\\
 //--|🠊 Visuals: Colors, shadows, gradients & fades 🠈|--\\
 @use 'sass:color' as color;
 @use '../../../../styles/Palettes.scss' as Palettes;
@@ -19,14 +19,13 @@
   @include bro-tint();
   @include tur-tint();
   //--|🠋 Clarity 🠋|--\\
-  //--|🠊 AI Code: Review Please 2026-10-31 🠈|--\\
   &[class*='_luc_'] {
-    opacity: 1; //--|🠈 AI Code: Review Please 2026-10-31 · ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
+    opacity: 1; //--|🠈 ⟨lucid⟩: solid, the box shows at rest 🠈|--\\
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: only the text & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: only the text & icon at rest, hover fades in the shade's resting ⟨lucid⟩ box 🠈|--\\
     div[class='icon'],
-    div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    div[class='back'] { //--|🠈 No text box, the stretched back is the box 🠈|--\\
       &::before {
         opacity: 0; //--|🠈 Completely clear, ::after holds the box (Set in *-tint) 🠈|--\\
       }
@@ -34,7 +33,7 @@
   }
   //--|🠋 Crossfade Layers 🠋|--\\
   div[class='icon'],
-  div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+  div[class='back'] { //--|🠈 No text box, the stretched back is the box 🠈|--\\
     /*--|🠋
       Why: A browser can't fade one gradient into another, it snaps.
       It can fade opacity. How: ::before holds the resting gradient,
@@ -58,14 +57,14 @@
       opacity: 0;
     }
   }
-  //--|🠊 AI Code: Review Please 2026-11-10 · From <ButtonDefault>: the icon halo only shows on hover, the crossfade fades ::after in (no text box here) 🠈|--\\
+  //--|🠊 From <ButtonDefault>: the icon halo only shows on hover, the crossfade fades ::after in (no text box here) 🠈|--\\
   div[class='icon'] {
     &::before {
       opacity: 0; //--|🠈 No shadow at rest 🠈|--\\
     }
   }
   div[class='text'] {
-    transition: color 500ms $tint-fade; //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    transition: color 500ms $tint-fade; //--|🠈 No text box, the stretched back is the box 🠈|--\\
     * {
       transition:
         color 500ms $tint-fade,
@@ -97,7 +96,7 @@
   }
 
   //--|🠊 Edge Cases 🠈|--\\
-  &[class*='_str'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+  &[class*='_str'] { //--|🠈 No text box, the stretched back is the box 🠈|--\\
     div[class='icon'] {
       //--|🠊 Hides the alt text: <img> has no src (only a mask), so it would print 'icon' inside the mask 🠈|--\\
       color: rgba(gray, 0);
@@ -118,7 +117,7 @@
     will-change: transform, filter;
     🠉|-- */
     div[class='icon'],
-    div[class='back'] { //--|🠈 AI Code: Review Please 2026-10-31 11:52 · No text box, the stretched back is the box 🠈|--\\
+    div[class='back'] { //--|🠈 No text box, the stretched back is the box 🠈|--\\
       &::before {
         opacity: 0;
       }
@@ -268,14 +267,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_mon']:where(:not(.highlight)),
     &[class*='lig_mon']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -292,7 +291,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -309,9 +308,9 @@
     &[class*='lig_mon']:where(:not(.highlight)),
     &[class*='dar_mon']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -328,7 +327,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -398,12 +397,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_mon']:where(:not(.highlight)),
     &[class*='lig_mon']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -412,7 +411,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -420,7 +419,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$gray-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$gray-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -428,7 +427,7 @@
     &[class*='lig_mon']:where(:not(.highlight)),
     &[class*='dar_mon']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -437,7 +436,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -445,7 +444,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$gray-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$gray-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -537,14 +536,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_red']:where(:not(.highlight)),
     &[class*='lig_red']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -561,7 +560,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -578,9 +577,9 @@
     &[class*='lig_red']:where(:not(.highlight)),
     &[class*='dar_red']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -597,7 +596,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -667,12 +666,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_red']:where(:not(.highlight)),
     &[class*='lig_red']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -681,7 +680,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -689,7 +688,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$red-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$red-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -697,7 +696,7 @@
     &[class*='lig_red']:where(:not(.highlight)),
     &[class*='dar_red']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -706,7 +705,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -714,7 +713,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$red-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$red-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -826,14 +825,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_gre']:where(:not(.highlight)),
     &[class*='lig_gre']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -850,7 +849,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -867,9 +866,9 @@
     &[class*='lig_gre']:where(:not(.highlight)),
     &[class*='dar_gre']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -886,7 +885,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -956,12 +955,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_gre']:where(:not(.highlight)),
     &[class*='lig_gre']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -970,7 +969,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -978,7 +977,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$green-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$green-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -986,7 +985,7 @@
     &[class*='lig_gre']:where(:not(.highlight)),
     &[class*='dar_gre']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -995,7 +994,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -1003,7 +1002,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$green-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$green-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1115,14 +1114,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_blu']:where(:not(.highlight)),
     &[class*='lig_blu']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -1139,7 +1138,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1156,9 +1155,9 @@
     &[class*='lig_blu']:where(:not(.highlight)),
     &[class*='dar_blu']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -1175,7 +1174,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1245,12 +1244,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_blu']:where(:not(.highlight)),
     &[class*='lig_blu']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -1259,7 +1258,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -1267,7 +1266,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$blue-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$blue-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1275,7 +1274,7 @@
     &[class*='lig_blu']:where(:not(.highlight)),
     &[class*='dar_blu']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -1284,7 +1283,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -1292,7 +1291,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$blue-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$blue-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1406,14 +1405,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pur']:where(:not(.highlight)),
     &[class*='lig_pur']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -1430,7 +1429,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1447,9 +1446,9 @@
     &[class*='lig_pur']:where(:not(.highlight)),
     &[class*='dar_pur']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -1466,7 +1465,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1536,12 +1535,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pur']:where(:not(.highlight)),
     &[class*='lig_pur']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -1550,7 +1549,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -1558,7 +1557,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$purple-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$purple-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1566,7 +1565,7 @@
     &[class*='lig_pur']:where(:not(.highlight)),
     &[class*='dar_pur']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -1575,7 +1574,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -1583,7 +1582,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$purple-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$purple-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1697,14 +1696,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_ora']:where(:not(.highlight)),
     &[class*='lig_ora']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -1721,7 +1720,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1738,9 +1737,9 @@
     &[class*='lig_ora']:where(:not(.highlight)),
     &[class*='dar_ora']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -1757,7 +1756,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -1827,12 +1826,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_ora']:where(:not(.highlight)),
     &[class*='lig_ora']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -1841,7 +1840,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -1849,7 +1848,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$orange-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$orange-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1857,7 +1856,7 @@
     &[class*='lig_ora']:where(:not(.highlight)),
     &[class*='dar_ora']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -1866,7 +1865,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -1874,7 +1873,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$orange-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$orange-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -1986,14 +1985,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pin']:where(:not(.highlight)),
     &[class*='lig_pin']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -2010,7 +2009,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2027,9 +2026,9 @@
     &[class*='lig_pin']:where(:not(.highlight)),
     &[class*='dar_pin']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -2046,7 +2045,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2116,12 +2115,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_pin']:where(:not(.highlight)),
     &[class*='lig_pin']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -2130,7 +2129,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -2138,7 +2137,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$pink-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$pink-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2146,7 +2145,7 @@
     &[class*='lig_pin']:where(:not(.highlight)),
     &[class*='dar_pin']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -2155,7 +2154,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -2163,7 +2162,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$pink-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$pink-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2277,14 +2276,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_yel']:where(:not(.highlight)),
     &[class*='lig_yel']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -2301,7 +2300,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2318,9 +2317,9 @@
     &[class*='lig_yel']:where(:not(.highlight)),
     &[class*='dar_yel']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -2337,7 +2336,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2407,12 +2406,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_yel']:where(:not(.highlight)),
     &[class*='lig_yel']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -2421,7 +2420,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -2429,7 +2428,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$yellow-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$yellow-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2437,7 +2436,7 @@
     &[class*='lig_yel']:where(:not(.highlight)),
     &[class*='dar_yel']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -2446,7 +2445,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -2454,7 +2453,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$yellow-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$yellow-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2566,14 +2565,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_bro']:where(:not(.highlight)),
     &[class*='lig_bro']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -2590,7 +2589,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2607,9 +2606,9 @@
     &[class*='lig_bro']:where(:not(.highlight)),
     &[class*='dar_bro']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -2626,7 +2625,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2696,12 +2695,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_bro']:where(:not(.highlight)),
     &[class*='lig_bro']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -2710,7 +2709,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -2718,7 +2717,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$brown-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$brown-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2726,7 +2725,7 @@
     &[class*='lig_bro']:where(:not(.highlight)),
     &[class*='dar_bro']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -2735,7 +2734,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -2743,7 +2742,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$brown-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$brown-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -2857,14 +2856,14 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
+    //--|🠊 ⟨opaque⟩: ::before stays clear (See Clarity), ::after holds the shade's own resting ⟨lucid⟩ box 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_tur']:where(:not(.highlight)),
     &[class*='lig_tur']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Dark text with no box behind it 🠈|--\\
+        color: $blaDar; //--|🠈 Dark text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A light em outline, so it reads on the dark side's page 🠈|--\\
+          text-shadow: //--|🠈 A light em outline, so it reads on the dark side's page 🠈|--\\
             0 0 0.04em $neoLig,
             0 0 0.25em rgba($neoLig, 0.6);
         }
@@ -2881,7 +2880,7 @@
             );
         }
         img {
-          background: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $blaDar; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2898,9 +2897,9 @@
     &[class*='lig_tur']:where(:not(.highlight)),
     &[class*='dar_tur']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Light text with no box behind it 🠈|--\\
+        color: $neoLig; //--|🠈 Light text with no box behind it 🠈|--\\
         span {
-          text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · A dark em outline, so it reads on the light side's page 🠈|--\\
+          text-shadow: //--|🠈 A dark em outline, so it reads on the light side's page 🠈|--\\
             0 0 0.04em $blaDar,
             0 0 0.25em rgba($blaDar, 0.6);
         }
@@ -2917,7 +2916,7 @@
             );
         }
         img {
-          background: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · Like the text 🠈|--\\
+          background: $neoLig; //--|🠈 Like the text 🠈|--\\
         }
       }
       div[class='back'] {
@@ -2987,12 +2986,12 @@
     }
   }
   &[class*='_opa_'] {
-    //--|🠊 AI Code: Review Please 2026-10-31 · ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
+    //--|🠊 ⟨opaque⟩: the box fades in and the text & icon take the resting ⟨lucid⟩ colours 🠈|--\\
     //--|🠊 Dark Shade: Fades into its own resting ⟨lucid⟩ box 🠈|--\\
     &[class*='dar_tur']:where(:not(.highlight)),
     &[class*='lig_tur']:where(.highlight) {
       div[class='text'] {
-        color: $neoLig; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $neoLig; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $blaDar,
@@ -3001,7 +3000,7 @@
         *:hover {
           color: $blaDar;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the light outline, the box stays dark so the text would vanish without it 🠈|--\\
               0 0 0.04em $neoLig,
               0 0 0.25em rgba($neoLig, 0.6);
           }
@@ -3009,7 +3008,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$turquoise-light; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$turquoise-light; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }
@@ -3017,7 +3016,7 @@
     &[class*='lig_tur']:where(:not(.highlight)),
     &[class*='dar_tur']:where(.highlight) {
       div[class='text'] {
-        color: $blaDar; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ text 🠈|--\\
+        color: $blaDar; //--|🠈 The resting ⟨lucid⟩ text 🠈|--\\
         span {
           text-shadow:
             0 0 0.04em $neoLig,
@@ -3026,7 +3025,7 @@
         *:hover {
           color: $neoLig;
           span {
-            text-shadow: //--|🠈 AI Code: Review Please 2026-10-31 · Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
+            text-shadow: //--|🠈 Keeps the dark outline, the box stays light so the text would vanish without it 🠈|--\\
               0 0 0.04em $blaDar,
               0 0 0.25em rgba($blaDar, 0.6);
           }
@@ -3034,7 +3033,7 @@
       }
       div[class='icon'] {
         img {
-          background: Palettes.$turquoise-dark; //--|🠈 AI Code: Review Please 2026-10-31 · The resting ⟨lucid⟩ icon 🠈|--\\
+          background: Palettes.$turquoise-dark; //--|🠈 The resting ⟨lucid⟩ icon 🠈|--\\
         }
       }
     }

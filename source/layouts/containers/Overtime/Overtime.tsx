@@ -47,7 +47,7 @@ function Overtime() {
       clearTimeout(overlayTimer);
       clearTimeout(leftbarTimer);
       clearTimeout(rightbarTimer);
-      clearTimeout(entryTimer); //--|🠈 AI Code: Review Please 2026-11-08 · The 60s entry-point log was the one timer never cleared 🠈|--\\
+      clearTimeout(entryTimer); //--|🠈 The 60s entry-point log was the one timer never cleared 🠈|--\\
     };
   }, ['[overtime]', '<body>', '(default)']);
 

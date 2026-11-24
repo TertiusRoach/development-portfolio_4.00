@@ -58,7 +58,7 @@ function LandingHeader({ info }: InfoProps) {
               style={{
                 view: 'top-lef',
                 shade: '~light~',
-                color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
+                color: '(orange)', //--|🠊 TraLogFin logo in the company colour 🠈|--\\
                 image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,
               }}
               cases={{

@@ -1,5 +1,5 @@
 //--|🠊 meteorites-canvas/MeteoritesFunctions.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from PlaceholderFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
+//--|🠊 Copied from PlaceholderFunctions.ts; the class is shade_color, so the slots are [0] and [1] 🠈|--\\
 //--|🠋 Colour Switching 🠋|--\\
 export const switchColors = (choice: string, labelName: 'meteorites'): void => {
   const colorMap: Record<string, string> = {

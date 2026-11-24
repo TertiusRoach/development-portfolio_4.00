@@ -33,7 +33,7 @@ function UpdatesArticle({ info }: InfoProps) {
     }
   }, [pageName, blockName, labelName]);
 
-  let viewShade = 2 as number; //--|🠈 AI Code: Review Please 2026-11-10 · Opens on the second slide, the ~light~ card 🠈|--\\
+  let viewShade = 2 as number; //--|🠈 Opens on the second slide, the ~light~ card 🠈|--\\
   return (
     <aside className="updates-article">
       <section className={`${blockName}-foreground`}>

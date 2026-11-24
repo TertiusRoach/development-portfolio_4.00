@@ -165,7 +165,6 @@ const viewRight = (wrapper: HTMLElement) => {
   }
 };
 
-//--|🠊 AI Code: Review Please 2026-11-01 🠈|--\\
 let emphasizeBackground = (element: HTMLDivElement, color: '(green)' | '(red)' | '(blue)' | '(orange)' | '(purple)' | '(yellow)') => {
   //--|🠋 Styled in Division.testing.scss: .emphasize dims the background, .emphasize-* paints it 🠋|--\\
   const paintClass: string = `emphasize-${stripBrackets(color, '()')}`;

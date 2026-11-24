@@ -3,7 +3,7 @@
 import { abbrView, abbrShade, abbrColor } from '../../components';
 import { arabicToRoman, romanToArabic } from '../../../tools/conversions';
 import { showingBootstrap } from '../../../tools/frameworks';
-import type { TheseProps } from './Menu.swipe'; //--|🠈 AI Code: Review Please 2026-11-08 · The props are written in the .tsx, this only reads them 🠈|--\\
+import type { TheseProps } from './Menu.swipe'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Default Starting Point 🠋|--\\
 export const modifyingController = (pageName: string, blockName: string, labelName: string): void => {

@@ -1,15 +1,15 @@
 //--|🠊 Label_textarea.ts 🠈|--\\
-import { abbrShade, abbrColor, abbrClarity } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+import { abbrShade, abbrColor, abbrClarity } from '../../components';
 import { stripBrackets } from '../../../tools/conversions';
 import type { TheseProps } from './Label.textarea'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-10-30 · size_type_view_shade_color_clarity_def, e.g. nul_inp_mc_dar_mon_opa_def 🠈|--\\
+//--|🠊 size_type_view_shade_color_clarity_def, e.g. nul_inp_mc_dar_mon_opa_def 🠈|--\\
 function createClass(style: TheseProps['style'], cases: TheseProps['cases']): string {
   //--|🠊 Class Build for <LabelTextarea> 🠈|--\\
   const classColor = createColor(style.shade, style.color);
   const classLayout = createLayout(style.size, cases.type, style.view);
-  const classClarity = abbrClarity(style.clarity); //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+  const classClarity = abbrClarity(style.clarity);
 
   return `${classLayout}_${classColor}_${classClarity}_def`; //--|🠈 _def is a placeholder for now 🠈|--\\
 }
@@ -53,14 +53,13 @@ const createLayout = (size: TheseProps['style']['size'], type: TheseProps['cases
 
   return `${classSize}_${classType}_${classView}`;
 };
-//--|🠊 AI Code: Review Please 2026-11-08 · The maps live in components.ts, shared by every component 🠈|--\\
+//--|🠊 The maps live in components.ts, shared by every component 🠈|--\\
 const createColor = (shade: TheseProps['style']['shade'], color: TheseProps['style']['color']): string => {
   const classShade = abbrShade(shade);
   const classColor = abbrColor(color);
 
   return `${classShade}_${classColor}`;
 };
-//--|🠊 AI Code: Review Please 2026-10-30 🠈|--\\
 export const previewParent = (thisLabel: HTMLElement | null, thisGroup?: string): { group: string; input: string } => {
   //--|🠊 Reads the "genes" a <Label> inherits: the data- attributes of the <fieldset> or <form> around it 🠈|--\\
   let parentElement = thisLabel?.closest('fieldset, form') as HTMLElement | null;

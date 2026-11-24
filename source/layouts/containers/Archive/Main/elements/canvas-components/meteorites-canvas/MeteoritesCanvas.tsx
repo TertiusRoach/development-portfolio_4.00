@@ -1,5 +1,5 @@
 //--|🠊 MeteoritesCanvas.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from PlaceholderDivision.tsx; the <canvas> sits in the midground <figure>, the pickers in the foreground 🠈|--\\
+//--|🠊 Copied from PlaceholderDivision.tsx; the <canvas> sits in the midground <figure>, the pickers in the foreground 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect } from 'react';
 
@@ -28,7 +28,7 @@ function MeteoritesCanvas({ info }: InfoProps) {
     switchColors(pickerColor, 'meteorites');
     //--|🠊 The (colour) and (shade) dropdowns step back until they're hovered, the toggles stay visible, the same on all four canvas pages 🠈|--\\
     const meteoritesPickers = document.querySelectorAll(
-      `#${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 AI Code: Review Please 2026-11-22 · The two dropdowns; the toggles stay visible 🠈|--\\
+      `#${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="colours"], #${pageName}-${blockName} aside[class="meteorites-canvas"] section[class*="foreground"] label[class*="shades"]`, //--|🠈 The two dropdowns; the toggles stay visible 🠈|--\\
     ) as NodeListOf<HTMLLabelElement>;
     for (let i = 0; i < meteoritesPickers.length; i++) {
       meteoritesPickers[i].classList.add('downplay');

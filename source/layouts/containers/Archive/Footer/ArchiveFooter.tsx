@@ -60,7 +60,7 @@ function ArchiveFooter({ info }: InfoProps) {
               style={{
                 view: 'bot-rig',
                 shade: '~dark~',
-                color: '(orange)', //--|🠊 AI Code: Review Please 2026-11-09 14:01 · TraLogFin logo in the company colour 🠈|--\\
+                color: '(orange)', //--|🠊 TraLogFin logo in the company colour 🠈|--\\
                 image: loadAsset('-svg-', '/tralogfin-application/pick-a-page/trinity-apps') as string,
               }}
               cases={{
@@ -178,7 +178,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
 
   let styleShade = '~dark~' as '~dark~' | '~light~';
   let styleColor = '(mono)' as '(red)' | '(green)' | '(blue)' | '(mono)';
-  let styleView = '-def-' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-'; //--|🠈 AI Code: Review Please 2026-11-08 · Was 'def': the cast hid it until abbrView() stopped stripping dashes 🠈|--\\
+  let styleView = '-def-' as '-def-' | '-lef-' | '-rig-' | '-cen-' | '-top-' | '-bot-' | '-mid-'; //--|🠈 Was 'def': the cast hid it until abbrView() stopped stripping dashes 🠈|--\\
   return (
     <>
       {/*--|🠊 <Article> 🠈|--*/}
@@ -236,7 +236,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Canvas_Meteorites>', '<Canvas_Rotations>', '<Canvas_Particles>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <Canvas_Spotlight> moved to <Figure> 🠈|--\\
+          titles: ['<Canvas_Meteorites>', '<Canvas_Rotations>', '<Canvas_Particles>'] as Array<string>, //--|🠈 <Canvas_Spotlight> moved to <Figure> 🠈|--\\
         }}
         info={{
           labelName: 'canvas',
@@ -270,7 +270,7 @@ const MenuSwipes: React.FC<InfoProps> = ({ info }) => {
       <MenuSwipe
         cases={{
           axis: '[x]',
-          titles: ['<Figure_Spotlight>'] as Array<string>, //--|🠈 AI Code: Review Please 2026-11-22 · <CanvasSpotlight> became <FigureSpotlight> 🠈|--\\
+          titles: ['<Figure_Spotlight>'] as Array<string>, //--|🠈 <CanvasSpotlight> became <FigureSpotlight> 🠈|--\\
         }}
         info={{
           labelName: 'figure',

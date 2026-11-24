@@ -1,5 +1,5 @@
 //--|🠊 Figure_spotlight.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · The 2.00 résumé's .home-profile (default-main.scss), measured at 1080px high: the outer ring is 861px, so every size below is a share of 861 🠈|--\\
+//--|🠊 The 2.00 résumé's .home-profile (default-main.scss), measured at 1080px high: the outer ring is 861px, so every size below is a share of 861 🠈|--\\
 //--|🠋 Functions 🠋|--\\
 import { TheseProps } from './Figure.spotlight';
 import { abbrShade, abbrColor } from '../../components';

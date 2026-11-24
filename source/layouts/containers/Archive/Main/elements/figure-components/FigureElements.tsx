@@ -1,5 +1,5 @@
 //--|🠊 FigureElements.tsx 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-22 · Copied from CanvasElements.tsx: the [archive] <Figure> group, pictures a script draws that are always on show 🠈|--\\
+//--|🠊 Copied from CanvasElements.tsx: the [archive] <Figure> group, pictures a script draws that are always on show 🠈|--\\
 //--|🠋 Dependencies 🠋|--\\
 import React, { useEffect, useState } from 'react';
 
@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import DivisionFullscreen from '../../../../../components/Division/fullscreen/Division.fullscreen';
 
 //--|🠋 Elements 🠋|--\\
-import SpotlightFigure from './spotlight-figure/SpotlightFigure'; //--|🠈 AI Code: Review Please 2026-11-22 🠈|--\\
+import SpotlightFigure from './spotlight-figure/SpotlightFigure';
 
 //--|🠋 Functions 🠋|--\\
 import { stripBrackets } from '../../../../../tools/conversions';

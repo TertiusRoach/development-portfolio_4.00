@@ -1,13 +1,13 @@
 //--|🠊 Form_verify.ts 🠈|--\\
-//--|🠊 AI Code: Review Please 2026-11-01 · Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/verify/ 🠈|--\\
-import { abbrColor } from '../../components'; //--|🠈 AI Code: Review Please 2026-11-08 🠈|--\\
+//--|🠊 Rewritten in the current syntax, the untouched original is in git: git show d3b4ec09:source/layouts/components/Form/verify/ 🠈|--\\
+import { abbrColor } from '../../components';
 import type { TheseProps } from './Form.verify'; //--|🠈 The props are written in the .tsx, this only reads them 🠈|--\\
 
 //--|🠋 Functions 🠋|--\\
 //--|🠊 color_def, e.g. mon_def 🠈|--\\
 function createClass(style: TheseProps['style']): string {
   //--|🠊 Class Build for <FormVerify> 🠈|--\\
-  const classColor = abbrColor(style.color); //--|🠈 AI Code: Review Please 2026-11-08 · The map lives in components.ts, shared by every component 🠈|--\\
+  const classColor = abbrColor(style.color); //--|🠈 The map lives in components.ts, shared by every component 🠈|--\\
 
   return `${classColor}_def`; //--|🠈 _def is a placeholder for now 🠈|--\\
 }
@@ -45,19 +45,19 @@ export function axiosError(error: unknown) {
     }
 
     //--|🠋 We log the error details in the console so developers can debug the issue. 🠋|--\\
-    console.log(`|--🠊 Warning: ${error.config?.method?.toUpperCase()} ${error.config?.url} answered ${status}, ${message}, Form/verify/Form_verify.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error('Axios Error Details:', {…}) 🠈|--\\
+    console.log(`|--🠊 Warning: ${error.config?.method?.toUpperCase()} ${error.config?.url} answered ${status}, ${message}, Form/verify/Form_verify.ts 🠈--|`); //--|🠈 Was console.error('Axios Error Details:', {…}) 🠈|--\\
   } else {
     //--|🠋 If the error was not caused by Axios, it could be some other problem (like a coding mistake). 🠋|--\\
-    return console.log(`|--🠊 Warning: ${error} did not come from axios, Form/verify/Form_verify.ts 🠈--|`); //--|🠈 AI Code: Review Please 2026-11-12 · Was console.error('Unexpected Error:', error) 🠈|--\\
+    return console.log(`|--🠊 Warning: ${error} did not come from axios, Form/verify/Form_verify.ts 🠈--|`); //--|🠈 Was console.error('Unexpected Error:', error) 🠈|--\\
   }
 }
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
-  address: 'http://localhost:4000' | string, //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
+  address: 'http://localhost:4000' | string, //--|🠈 Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
 ) {
   //--|🠊 URL: Uniform Resource Locator 🠈|--\\
   //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--\\
-  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) · Replace 'http://localhost:4000' with your server's domain: 'https://api.myapp.com' 🠈|--\\
+  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Landing's server moved to 4000 (SERVER.md, Ports) · Replace 'http://localhost:4000' with your server's domain: 'https://api.myapp.com' 🠈|--\\
   return `${BASE_URL}/users/${route}`;
 }
 */
@@ -83,7 +83,7 @@ export function getCode(formName: 'verify' | 'reset') {
 /*
 //--|🠋 POST: Form.verify.js (2025-03-07) 🠋|--\\
 server.post(`/${root}/verify`, async (req, res) => {
-  const { email, passwordHash, activation } = req.body; //--|🠈 AI Code: Review Please 2026-11-01 · The <Form> now sends this as password (see handleVerify in Form.verify.tsx), rename it here when the server is rewritten 🠈|--\\
+  const { email, passwordHash, activation } = req.body; //--|🠈 The <Form> now sends this as password (see handleVerify in Form.verify.tsx), rename it here when the server is rewritten 🠈|--\\
   const user =
     (await database.collection('enabled').findOne({ email })) ||
     (await database.collection('pending').findOne({ email })) ||

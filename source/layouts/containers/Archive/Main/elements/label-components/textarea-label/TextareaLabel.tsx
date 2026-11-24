@@ -34,7 +34,7 @@ function TextareaLabel({ info }: InfoProps) {
   let pickerColor = '(orange)' as '(orange)';
   useEffect(() => {
     switchColors(pickerColor, 'textarea'); //--|🠈 Re-runs on every flip, the new orientation's previews start (mono) 🠈|--\\
-    //--|🠊 AI Code: Review Please 2026-11-10 · The colour picker steps back until it's hovered 🠈|--\\
+    //--|🠊 The colour picker steps back until it's hovered 🠈|--\\
     const colourPickers = document.querySelectorAll(
       `#${pageName}-${blockName} aside[class="textarea-label"] label[class*="colours"]`,
     ) as NodeListOf<HTMLLabelElement>;

@@ -137,7 +137,7 @@
 }
 
 @mixin tablet-squaring {
-  //--|🠋 Tablet (Default) 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+  //--|🠋 Tablet (Default) 🠋|--\\
   @media screen and (orientation: landscape) {
     //--|🠊 Desktop 🠈|--\\
     //--|🠊 96px (Left & Right) for Design 🠈|--\\
@@ -235,7 +235,7 @@ div[class*='testing'] {
   @media screen and (max-aspect-ratio: 15.99/9) and (min-aspect-ratio: 9/15.99) {
     @include tablet-squaring();
   }
-  //--|🠋 Every Orientation 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+  //--|🠋 Every Orientation 🠋|--\\
   //--|🠊 Marching ants: the dashed outline takes the colour of style.color (_gre_, _blu_, …) 🠈|--\\
   button[id*='block'] {
     border-width: 2px;
@@ -273,7 +273,7 @@ div[class*='testing'] {
   }
 }
 
-//--|🠋 emphasizeBackground() 🠋|--\\ //--|🠈 AI Code: Review Please 2026-11-01 🠈|--\\
+//--|🠋 emphasizeBackground() 🠋|--\\
 //--|🠊 Testing only: !important stands in for the inline styles it replaced 🠈|--\\
 div[class*='background'] {
   &[class*='emphasize'] {

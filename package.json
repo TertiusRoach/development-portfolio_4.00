@@ -7,7 +7,7 @@
     "source/layouts",
     "source/modules"
   ],
-  "//": "AI Code: Review Please 2026-11-24 · Six jobs, nothing else (EDITOR.md, The Scripts). prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again. Servers: 400# because development-portfolio_4.00, the last digit is the app (SERVER.md, Ports)",
+  "//": "Six jobs, nothing else (EDITOR.md, The Scripts). prelaunch runs on its own before launch: it writes the .git file (gitdir: .frontend.git) when it is missing, so Source Control finds the front end again. Servers: 400# because development-portfolio_4.00, the last digit is the app (SERVER.md, Ports)",
   "scripts": {
     "prelaunch": "node -e \"const fs=require('fs');if(!fs.existsSync('.git')&&fs.existsSync('.frontend.git')){fs.writeFileSync('.git','gitdir: .frontend.git\\n');console.log('|--🠊 Guidance: .git was missing, written again so VS Code sees the front end, prelaunch 🠈--|')}\"",
     "launch": "webpack-dev-server --mode development",

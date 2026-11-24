@@ -20,6 +20,6 @@
   "exclude": [
     "node_modules/",
     "source/**/REVIEW/",
-    "source/modules/" //--|🠈 AI Code: Review Please 2026-11-23 · The back end's .jsx twins are JavaScript copies; files the front end imports from here are still checked 🠈|--\\
+    "source/modules/" //--|🠈 The back end's .jsx twins are JavaScript copies; files the front end imports from here are still checked 🠈|--\\
   ]
 }
