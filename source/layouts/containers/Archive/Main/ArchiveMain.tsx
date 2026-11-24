@@ -43,7 +43,7 @@ function ArchiveMain({ info }: InfoProps) {
 
   useEffect(() => {
     //--|🟨|--\\
-    startingPreview('(figure)', 1);
+    startingPreview('(canvas)', 3);
     return checkScreen(setOrientation);
   }, [pageName, blockName, labelName]);
 
