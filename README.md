@@ -681,7 +681,7 @@ Proprietary. Copyright © 2026 Tertius Roach and Johann Schoeman, all rights res
 
 ## Contact
 
-**Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach) · [tertius.roach@outlook.com](mailto:tertius.roach@outlook.com)
+**Tertius Roach**: [Portfolio](https://tralogfin.github.io/index.html) · [GitHub](https://github.com/TertiusRoach) · [tertius.roach@outlook.com](mailto:tertius.roach@outlook.com)
 
 **Johann Schoeman**: [GitHub](https://github.com/JohannSchoeman)
 
@@ -705,7 +705,7 @@ Project link: [github.com/TraLogFin](https://github.com/TraLogFin)
 
 <div align="center">
 
-**Built with ❤️ by [Tertius Roach](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html)**
+**Built with ❤️ by [Tertius Roach](https://github.com/TertiusRoach) and [Johann Schoeman](https://github.com/JohannSchoeman)**
 
 _Good software should protect users from the worst day they are having, not amplify it._
 
