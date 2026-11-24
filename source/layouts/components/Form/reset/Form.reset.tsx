@@ -11,7 +11,7 @@ import LabelTextarea from '../../Label/textarea/Label.textarea';
 //--|🠋 Functions 🠋|--\\
 import createClass from './Form_reset';
 import { loadAsset } from '../../../tools/utilities';
-import { usePassword } from '../../../../modules/context/PasswordContext';
+import { usePassword } from '../context/PasswordContext';
 
 export interface TheseProps {
   info: {

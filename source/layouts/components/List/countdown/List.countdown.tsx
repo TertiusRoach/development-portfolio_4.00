@@ -65,7 +65,7 @@ export function ListCountdown({ info }: InfoProps) {
 const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
   //--|🠋 Select the footer element with an ID containing "footer" 🠋|--\\
   let footer = document.querySelector('footer[id*="footer"]');
-  let interval: NodeJS.Timeout | null = null; //--|🠈 Store reference to setInterval, so we can clear it later 🠈|--\\
+  let interval: ReturnType<typeof setInterval> | null = null; //--|🠈 Store reference to setInterval, so we can clear it later; ReturnType works with or without Node's types 🠈|--\\
 
   let updateCountdown = (targetDate: Date) => {
     /**

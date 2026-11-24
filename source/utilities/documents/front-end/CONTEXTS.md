@@ -1,6 +1,6 @@
 # Contexts
 
-How the front end shares what a user types between the `<Form>`s on a page. The contexts live in `source/modules/context/`, which the back end controls; this page explains how the page uses them. Where the typed values go next is in [SERVER.md](../back-end/SERVER.md) (private).
+How the front end shares what a user types between the `<Form>`s on a page. The contexts live in `source/layouts/components/Form/context/`, next to the `<Form>`s that use them, so the front end builds without the back end (moved from `source/modules/context/` on 2026-11-24). Their `.jsx` twins sit at the same path under `source/modules/`, like every other `.tsx`. Where the typed values go next is in [SERVER.md](../back-end/SERVER.md) (private).
 
 ---
 

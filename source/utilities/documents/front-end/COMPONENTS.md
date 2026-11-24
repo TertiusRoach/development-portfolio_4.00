@@ -96,7 +96,7 @@ source/
 
 - **The front-end skeleton is not expected to change.**
 - **A structure change is made on both sides in the same step.** If a folder is added, renamed or removed in `layouts/`, its twin changes in `modules/` at the same time, and the other way round.
-- **Both sides agree first.** The front end and the back end each have a say, and the change starts with a conversation with the owner.
+- **Both sides agree first.** The front end and the back end each have a say, and the change starts with a conversation between both owners.
 - **This document changes in the same step.** If the code and this page disagree, the code is wrong until this page is updated.
 
 ---
@@ -115,14 +115,13 @@ It runs before every push and can't change or delete anything.
 
 ## 8. Not Yet in Line
 
-Where `source/` still differs from this page, oldest first. Each one is fixed in its own step, with the owner's go:
+Where `source/` still differs from this page, oldest first. Each one is fixed in its own step, with both owners' go (a pull request the other owner approves):
 
 | What                                    | Today                                                                                       | Agreed target                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | The `.jsx` clones                       | 35 container clones next to their `.tsx` in `layouts/containers/`, ignored by Git ([SERVER.md, Section 5](../back-end/SERVER.md#5-entry-point-communication) (private)) | 113 twins in `modules/components/` and `modules/containers/` |
 | `modules/routes/`                       | `trackDay.ts`, `logTicket.ts`, `findLink.ts`                                                | Routes inside `modules/containers/<App>/`, named by container |
 | `modules/scripts/`                      | `.ts`, one per block, plus `Apps.ts` and `Demo.ts`                                          | `.js` pairs matching `layouts/scripts/`                       |
-| `modules/context/`                      | `EmailContext.tsx`, `PasswordContext.tsx`: TypeScript inside the JavaScript side            | **Decided 2026-11-23:** stays in `modules/context/`, controlled by the back end. The `<Form>`s import it until the owner connects the `.tsx` to its `.jsx` twins |
 | `modules/server/`                       | `.ts` data-layer modules and `.js` servers mixed                                            | `.js` only                                                    |
 | The data-layer names                    | `PickPage`, `TrackTime`, `DefineDuties`, `ArchiveAnchors`                                   | The container names                                           |
 | The `guard` task                        | Not built                                                                                   | Section 7                                                     |

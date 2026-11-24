@@ -11,8 +11,8 @@ import LabelTextarea from '../../Label/textarea/Label.textarea';
 //--|🠋 Functions 🠋|--\\
 import createClass, { defineButton } from './Form_login';
 import { loadAsset } from '../../../tools/utilities';
-import { useEmail } from '../../../../modules/context/EmailContext';
-import { usePassword } from '../../../../modules/context/PasswordContext';
+import { useEmail } from '../context/EmailContext';
+import { usePassword } from '../context/PasswordContext';
 
 export interface TheseProps {
   info: {

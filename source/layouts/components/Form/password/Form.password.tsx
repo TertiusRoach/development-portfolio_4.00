@@ -11,7 +11,7 @@ import LabelTextarea from '../../Label/textarea/Label.textarea';
 //--|🠋 Functions 🠋|--\\
 import createClass, { defineButton } from './Form_password';
 import { loadAsset } from '../../../tools/utilities';
-import { useEmail } from '../../../../modules/context/EmailContext';
+import { useEmail } from '../context/EmailContext';
 
 export interface TheseProps {
   info: {
@@ -113,7 +113,6 @@ const handlePassword = async (event: React.FormEvent) => {
     const response = await axios.post(endpoint, {
       email: email,
       password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\
-      password: password, //--|🠈 AI Code: Review Please 2026-11-01 · The old body sent this line twice, kept as it was 🠈|--\\
     });
     const { view, data } = response.data;
 

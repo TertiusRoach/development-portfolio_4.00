@@ -20,8 +20,8 @@ import Ticketing from './layouts/containers/Ticketing/Ticketing';
 import Hyperlink from './layouts/containers/Hyperlink/Hyperlink';
 
 //--|🠋 Context 🠋|--\\
-import { EmailProvider } from './modules/context/EmailContext';
-import { PasswordProvider } from './modules/context/PasswordContext';
+import { EmailProvider } from './layouts/components/Form/context/EmailContext';
+import { PasswordProvider } from './layouts/components/Form/context/PasswordContext';
 
 //--|🠋 Functions 🠋|--\\
 const themeScheme = (colorScheme: 'light' | 'dark'): void => {
@@ -40,7 +40,7 @@ const loadPage = (identification: string, container: React.ReactElement) => {
   const element = document.getElementById(identification) as HTMLDivElement;
 
   if (!element) {
-    console.error(`Can't find #${identification}`);
+    console.error(`|--🠊 Warning: #${identification} isn't on the page, so nothing was drawn there, index.tsx 🠈--|`);
     return;
   }
 
@@ -57,7 +57,7 @@ const loadPage = (identification: string, container: React.ReactElement) => {
       </React.StrictMode>,
     );
   } else {
-    console.warn(`Element #${identification} is not empty. Skipping render to avoid overwrite.`);
+    console.warn(`|--🠊 Warning: #${identification} already has content, so it was left as it is, index.tsx 🠈--|`);
   }
 };
 const viewBody = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' | 'components' | 'archive') => {
