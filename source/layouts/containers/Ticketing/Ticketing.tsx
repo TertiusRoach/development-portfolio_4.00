@@ -36,7 +36,7 @@ function Ticketing() {
       /*--|🠋
       
       🠉|--*/
-      console.log('|🠊 Entry Point: <div id="ticketing-body"> 🠈|');
+      //--|🠊 console.log('|🠊 Entry Point: <div id="ticketing-body"> 🠈|'); 🠈|--\\ //--|🠈 Off: a trace, not a Warning (FRONT-END.md, Console Messages) 🠈|--\\
     }, 60000);
 
     return () => {

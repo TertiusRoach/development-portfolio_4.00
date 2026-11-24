@@ -36,7 +36,7 @@ function Hyperlink() {
       /*--|🠋
       
       🠉|--*/
-      console.log('|🠊 Entry Point: <div id="hyperlink-body"> 🠈|');
+      //--|🠊 console.log('|🠊 Entry Point: <div id="hyperlink-body"> 🠈|'); 🠈|--\\ //--|🠈 Off: a trace, not a Warning (FRONT-END.md, Console Messages) 🠈|--\\
     }, 60000);
 
     return () => {

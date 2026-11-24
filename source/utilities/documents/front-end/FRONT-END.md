@@ -321,6 +321,8 @@ console.log(`|--🠊 Guidance: Forgot your password? We have a page for that. Au
 
 A `Warning:` can stand alone; `Helper:` and `Guidance:` only follow one.
 
+**A trace stays switched off.** A line that only says what happened (`Expand: #overtime-leftbar`, `Entry Point: …`, `Successfully copied: …`) is none of the three kinds, so it stays in the code as a comment, `/* console.log(…); */`, ready to switch on while you debug, and off again before a commit. The one exception is [archive]'s `Entry Point` and `Information` pair, the report the apps will later send to the server instead.
+
 **Log from the `useEffect`, not from the function body.** The body runs on every render, so a `console.log` there repeats each time state changes, and it runs before the markup is on the page. The `useEffect` runs after the page is drawn, only when its dependencies change, so it's also the place to look up a real element with `querySelector`. In development `<React.StrictMode>` (`source/index.tsx`) runs every effect twice on purpose, so each log shows twice; `npm run deploy` runs it once.
 
 ### Props and Events

@@ -74,7 +74,7 @@ const viewBody = (pageName: 'overtime' | 'ticketing' | 'hyperlink' | 'landing' |
   }
   enable.classList.add('active');
   enable.classList.remove('asleep');
-  console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`);
+  /* console.log(`|🠊 View: <div id="${pageName}-body"> 🠈|`); */
 };
 const pages: { [key: string]: React.ElementType } = {
   'hyperlink-body': Hyperlink,

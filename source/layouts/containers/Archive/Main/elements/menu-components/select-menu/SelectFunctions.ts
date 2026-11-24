@@ -8,7 +8,7 @@ import { arabicToRoman, romanToArabic } from '../../../../../../components/funct
 
 async function copyCode(button: HTMLButtonElement): Promise<string> {
   const copyOne = (button: HTMLButtonElement, shade: '~dark~' | '~light~') => {
-    console.log('Successfully copied:', button.classList[1]);
+    //--|🠊 console.log('Successfully copied:', button.classList[1]); 🠈|--\\ //--|🠈 Off: a trace, not a Warning (FRONT-END.md, Console Messages) 🠈|--\\
 
     if (shade === '~dark~') {
       switch (true) {

@@ -3,10 +3,10 @@
 
 //--|🠊 1. Expanded Functions 🠈|--\\
 export let expandLeftbar = (pageName: string, blockName: 'leftbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
+  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 export let expandRightbar = (pageName: string, blockName: 'rightbar') => {
-  console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`);
+  /* console.log(`//--|🠊 Expand: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
 //--|🠊 2. Collapsed Functions 🠈|--\\

@@ -43,8 +43,7 @@ async function obnubilateContainer(pageName: string, blockName: string) {
       } catch (error) {
         //--|🠊 A container still missing after waitingTime: the download stalled 🠈|--\\
         console.log(`|--🠊 Warning: a container never showed up inside #${pageName}-body, scripts/Main_Over.ts 🠈--|`); //--|🠈 Was console.error(error) 🠈|--\\
-        console.log(`|--🠊 Guidance: The page reloads once to finish downloading. 🠈--|`);
-        reloadOnce(pageName); //--|🠈 Reload once, what's already downloaded comes from the cache 🠈|--\\
+        reloadOnce(pageName); //--|🠈 Reload once, what's already downloaded comes from the cache; it also says which Guidance follows 🠈|--\\
       } finally {
         transitioning.delete(pageName);
       }
@@ -127,11 +126,12 @@ let reloadOnce = (pageName: string) => {
   }
   switch (reloadNote === null) {
     case true:
+      console.log(`|--🠊 Guidance: The page reloads once to finish downloading. 🠈--|`);
       sessionStorage.setItem('reloaded', pageName);
       window.location.reload();
       break;
     case false:
-      console.warn(`//--|🠊 #${pageName}-body already reloaded once, waiting on a manual reload 🠈|--\\\\`);
+      console.log(`|--🠊 Guidance: It already reloaded once, so reload the page to try again. 🠈--|`); //--|🠈 Was console.warn(…) 🠈|--\\
       break;
   }
 };
@@ -145,7 +145,7 @@ let forgetReload = (pageName: string) => {
 
 //--|🠊 1. Expanded Functions 🠈|--\\
 export let expandOverlay = (pageName: string, blockName: 'overlay') => {
-  console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`);
+  /* console.log(`//--|🠊 Visible: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
 //--|🠊 Update & Loading Overlay 🠈|--\\

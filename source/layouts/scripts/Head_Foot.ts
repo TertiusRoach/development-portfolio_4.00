@@ -64,10 +64,10 @@ export let expandFooter = (pageName: string, blockName: 'footer') => {
 
 //--|🠊 2. Collapsed Functions 🠈|--\\
 export let collapseHeader = (pageName: string, blockName: 'header') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
+  /* console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 export let collapseFooter = (pageName: string, blockName: 'footer') => {
-  console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`);
+  /* console.log(`//--|🠊 Collapse: #${pageName}-${blockName} 🠈|--\\\\`); */
 };
 
 //--|🠊 3. Unfolded Functions 🠈|--\\
