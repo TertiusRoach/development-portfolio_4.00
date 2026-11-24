@@ -1,4 +1,5 @@
-//--|🠊 setup.js 🠈|--\\
+//--|🠊 index.js 🠈|--\\
+//--|🠊 AI Code: Review Please 2026-11-24 · Was setup.js in the root; moved here by the owner to reduce clutter 🠈|--\\
 //--|🠊 AI Code: Review Please 2026-11-23 · Builds the TraLogFin folder on a new machine (GITHUB.md, Set Up a New Computer, Step 5) 🠈|--\\
 /*--|🠋
   One folder, two repositories. This does in one command what GITHUB.md § 7 Step 5 does by hand:
@@ -11,9 +12,9 @@
   Without access to the private back end, it carries on with the front end only.
 
   Run it with:
-    node setup.js <empty folder>                  over SSH (GITHUB.md § 7, Step 3)
-    node setup.js <empty folder> --https          over HTTPS, signed in with gh auth login
-    node setup.js <empty folder> --from <folder>  copies an existing tralogfin_1.00 on this computer
+    node source/index.js <empty folder>                  over SSH (GITHUB.md § 7, Step 3)
+    node source/index.js <empty folder> --https          over HTTPS, signed in with gh auth login
+    node source/index.js <empty folder> --from <folder>  copies an existing tralogfin_1.00 on this computer
 🠉|--*/
 //--|🠋 Packages 🠋|--\\
 const fs = require('fs');
@@ -30,10 +31,10 @@ const owner = 'TertiusRoach';
 //--|🠋 Setup 🠋|--\\
 function setupFolder() {
   const { target, source } = readArguments();
-  if (source.kind === 'folder' && !source.folder) return stop('Name the folder to copy from: node setup.js <empty folder> --from <folder>');
-  if (!target) return stop('Name an empty folder: node setup.js <empty folder>');
+  if (source.kind === 'folder' && !source.folder) return stop('Name the folder to copy from: node source/index.js <empty folder> --from <folder>');
+  if (!target) return stop('Name an empty folder: node source/index.js <empty folder>');
   if (fs.existsSync(target) && fs.readdirSync(target).length > 0)
-    return stop(`${target} isn't empty. setup.js only builds into an empty folder, so it can never overwrite work`);
+    return stop(`${target} isn't empty. source/index.js only builds into an empty folder, so it can never overwrite work`);
   fs.mkdirSync(target, { recursive: true });
 
   //--|🠊 1 and 2: clone each repository and give it its files 🠈|--\\
@@ -93,7 +94,7 @@ function setupFolder() {
     warn(
       `origin is the folder it was copied from, not GitHub. To fetch from GitHub instead, run inside it: git remote set-url origin <the GitHub address>, then the same with --git-dir=.backend.git`,
     );
-  say(`Done. Open ${target} in VS Code, or run: cd ${target} && npm run app`);
+  say(`Done. Open ${target} in VS Code, or run: cd ${target} && npm run launch`); //--|🠈 AI Code: Review Please 2026-11-24 · npm run app is now npm run launch 🠈|--\\
 }
 
 //--|🠋 Working Repository 🠋|--\\
@@ -151,10 +152,10 @@ var run = (folder, command, words) => {
 };
 
 //--|🠋 Messages 🠋|--\\
-var say = (text) => console.log(`|--🠊 Guidance: ${text}, setup.js 🠈--|`);
-var warn = (text) => console.log(`|--🠊 Warning: ${text}, setup.js 🠈--|`);
+var say = (text) => console.log(`|--🠊 Guidance: ${text}, source/index.js 🠈--|`);
+var warn = (text) => console.log(`|--🠊 Warning: ${text}, source/index.js 🠈--|`);
 var stop = (text) => {
-  console.log(`|--🠊 Error: ${text}, setup.js 🠈--|`);
+  console.log(`|--🠊 Error: ${text}, source/index.js 🠈--|`);
   process.exitCode = 1;
 };
 
