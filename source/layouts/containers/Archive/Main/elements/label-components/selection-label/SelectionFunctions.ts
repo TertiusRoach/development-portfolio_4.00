@@ -45,7 +45,7 @@ export const typePlaceholder = (type: '{select}' | '{combo}' | '{number}'): stri
   return placeholderMap[type];
 };
 //--|🠋 Colour Switching 🠋|--\\
-//--|🠊 AI Code: Review Please 2026-11-03 · One copy per <Label> page, written line for line alike: no .ts file in label-components/ yet (RULEBOOK § Functions Files) 🠈|--\\
+//--|🠊 One copy per <Label> page, written line for line alike: no .ts file in label-components/ yet (FRONT-END.md, Functions Files) 🠈|--\\
 export const switchColors = (choice: string, labelName: 'switching' | 'textarea' | 'selection'): void => {
   //--|🠊 The colour {select} gives '(red)', the classes need 'red' 🠈|--\\
   const colorMap: Record<string, string> = {

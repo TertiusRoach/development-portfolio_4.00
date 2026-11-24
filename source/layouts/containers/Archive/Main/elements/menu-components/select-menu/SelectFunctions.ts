@@ -1806,7 +1806,7 @@ async function copyCode(button: HTMLButtonElement): Promise<string> {
     await navigator.clipboard.writeText(textToCopy);
     return textToCopy as string;
   } catch (err) {
-    console.error('|🠊 Failed to copy:', err, ' 🠈|');
+    console.error(`|--🠊 Warning: the code couldn't be copied (${err}), select-menu/SelectFunctions.ts 🠈--|`);
     return '|🠊 Failed to copy code 🠈|';
   }
 }

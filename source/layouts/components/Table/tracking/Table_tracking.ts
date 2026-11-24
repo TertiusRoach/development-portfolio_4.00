@@ -23,11 +23,5 @@ export function scrollTable(blockAction: 'go-up' | 'scroll-down') {
   //--|🠊 (6) Apply the new class (remove old roman state classes, then add next) 🠈|--\\
   tableWeek.classList.remove(...romanNumerals);
   tableWeek.classList.add(nextRoman);
-
-  //--|🠊 (7) Optional: If you need a numeric position for other logic 🠈|--\\
-  const position1Based = nextIndex + 1;
-
-  //--|🠊 (8) Logging / side effects go here (NOT needed for the class switching itself) 🠈|--\\
-  console.log(`//--|🠊 Scroll: ${blockAction}, ${currentRoman} to ${nextRoman} (week ${position1Based}) 🠈|--\\\\`); //--|🠈 AI Code: Review Please 2026-11-12 · Three debug lines in one 🠈|--\\
 }
 export default scrollTable;

@@ -136,7 +136,7 @@ export function LabelSelection({ info, style, cases, onChange }: TheseProps) {
 const markKeyboard = (event: React.FocusEvent<HTMLSelectElement>, pointerRef: React.MutableRefObject<boolean>): void => {
   //--|🠊 Chrome counts a clicked <select> as :focus-visible, so the script tells the keyboard from the mouse itself 🠈|--\\
   if (!pointerRef.current) {
-    event.currentTarget.parentElement?.classList.add('highlight'); //--|🠈 .highlight swaps to the opposite shade (RULEBOOK, State Classes) 🠈|--\\
+    event.currentTarget.parentElement?.classList.add('highlight'); //--|🠈 .highlight swaps to the opposite shade (FRONT-END.md, State Classes) 🠈|--\\
   }
 };
 const clearKeyboard = (event: React.FocusEvent<HTMLSelectElement>, pointerRef: React.MutableRefObject<boolean>): void => {

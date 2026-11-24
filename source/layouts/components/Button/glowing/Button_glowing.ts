@@ -65,7 +65,7 @@ export const trackGlow = (event: MouseEvent<HTMLButtonElement>): void => {
   const backLayer = event.currentTarget.querySelector("div[class='back']") as HTMLDivElement;
   const backBox = backLayer.getBoundingClientRect();
 
-  //--|🠊 A runtime pointer position, the one inline style RULEBOOK § No Inline Styles allows 🠈|--\\
+  //--|🠊 A runtime pointer position, the one inline style FRONT-END.md, No Inline Styles, allows 🠈|--\\
   backLayer.style.setProperty('--x', `${event.clientX - backBox.left}px`);
   backLayer.style.setProperty('--y', `${event.clientY - backBox.top}px`);
 };

@@ -64,13 +64,13 @@ const containerPreview = (
   let slides = carousel.querySelector(`:scope > div[class="${labelName}-main_container"]`) as HTMLDivElement | null;
   switch (true) {
     case !slides:
-      console.log(`|🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is 🠈|`);
+      console.log(`|--🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is, Main/ArchiveFunctions.ts 🠈--|`);
       return;
     case preview === 0:
       showSlide = 0 as number;
       break;
     case preview < 0:
-      console.log(`|🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O) 🠈|`);
+      console.log(`|--🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O), Main/ArchiveFunctions.ts 🠈--|`);
       showSlide = 0 as number;
       break;
     case preview > (slides as HTMLDivElement).children.length:

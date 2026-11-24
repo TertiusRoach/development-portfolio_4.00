@@ -144,7 +144,7 @@ export const propelParticles = (canvas: HTMLCanvasElement, image: string, still:
           break; //--|🠈 The mouse left while it decoded: the template waits for the next hover 🠈|--\\
       }
     } catch {
-      console.log(`|🠊 Warning: <CanvasParticles> couldn't break ${image} into dots, components/Canvas/particles/Canvas_particles.ts 🠈|`);
+      console.log(`|--🠊 Warning: <CanvasParticles> couldn't break ${image} into dots, Canvas/particles/Canvas_particles.ts 🠈--|`);
     }
   };
   let drawFrame = (time: number): void => {
@@ -305,16 +305,16 @@ let loadPicture = async (image: string, still: string): Promise<Picture | null> 
       case extension === 'gif' && canDecode:
         return await loadFrames(image);
       case extension === 'gif' && still !== '':
-        console.log(`|🠊 Warning: this browser can't read a .gif frame by frame, so <CanvasParticles> shows cases.still instead 🠈|`);
+        console.log(`|--🠊 Warning: this browser can't read a .gif frame by frame, so <CanvasParticles> shows cases.still instead, Canvas/particles/Canvas_particles.ts 🠈--|`);
         return await loadPicture(still, '');
       case extension === 'gif':
-        console.log(`|🠊 Warning: this browser can't read a .gif frame by frame, and <CanvasParticles> has no cases.still to fall back on 🠈|`);
+        console.log(`|--🠊 Warning: this browser can't read a .gif frame by frame, and <CanvasParticles> has no cases.still to fall back on, Canvas/particles/Canvas_particles.ts 🠈--|`);
         return null;
       default:
         return await loadImage(image);
     }
   } catch {
-    console.log(`|🠊 Warning: <CanvasParticles> couldn't read ${image}, components/Canvas/particles/Canvas_particles.ts 🠈|`);
+    console.log(`|--🠊 Warning: <CanvasParticles> couldn't read ${image}, Canvas/particles/Canvas_particles.ts 🠈--|`);
     return null;
   }
 };

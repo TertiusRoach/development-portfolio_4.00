@@ -90,7 +90,7 @@ export function freezeFooters(pageName: 'hyperlink', styleView: 'bot-rig') {
 }
 //--|===|--\\
 const selectCharacter = (thisItem: HTMLElement, pageName: string, blockName: string): void => {
-  console.log(`//--|🠊 Select Profile: #${pageName}-${blockName} 🠈|--\\\\`); //--|🠈 AI Code: Review Please 2026-11-12 · Was 'Select Profile...' 🠈|--\\
+  //--|🠊 Not built yet: picking a profile here does nothing so far 🠈|--\\
 };
 let sequencedDemonstration = (profile: string): string => {
   switch (profile) {

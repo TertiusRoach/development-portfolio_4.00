@@ -1,6 +1,6 @@
 # CLAUDE.md: Front End
 
-The rules for `source/layouts/` and everything else the front end owns (development-portfolio_4.00, public). The shared baseline, with the safety rules and "teach by default", is the root [CLAUDE.md](../../CLAUDE.md); read it first.
+The rules for `source/layouts/` and everything else the front end owns (front-end, private; only `public/` reaches the live site). The shared baseline, with the safety rules and "teach by default", is the root [CLAUDE.md](../../CLAUDE.md); read it first.
 
 ## Read the Documents First
 
@@ -19,7 +19,7 @@ All of them are in `source/utilities/documents/`.
 4. **Visible components scale through `desktop-landscape`, `mobile-portrait` and `tablet-squaring`.** `<section>`, `<div>` and `<nav>` may merge into one set of rules when every orientation behaves the same. See FRONT-END.md, Scaling Pattern.
 5. **No inline styles.** Use SASS and state classes; never `element.style.*` or a `style="…"` attribute unless truly necessary. See FRONT-END.md, No Inline Styles.
 6. **Don't "fix" deliberate design.** Check FRONT-END.md, Deliberate Choices, and compare sizes with `styles/Mixins.scss` before calling anything a bug.
-7. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation with the owner. When a rule is unclear, it leans toward the worker.
+7. **Don't change GUIDELINES.md rules on your own.** New rules come from a conversation between both owners. When a rule is unclear, it leans toward the worker.
 
 ## Commands
 

@@ -37,13 +37,13 @@ const containerPreview = (
   let slides = carousel.querySelector(`:scope > div[class^="${labelName}-main_container"]`) as HTMLDivElement | null; //--|🠊 ^= because a sweeping's container ends in its view (-bot-) 🠈|--\\
   switch (true) {
     case !slides:
-      console.log(`|🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is 🠈|`);
+      console.log(`|--🠊 Warning: ${element} has no ${labelName}-main_container, so its preview stays where it is, Main/OvertimeFunctions.ts 🠈--|`);
       return;
     case preview === 0: //--|🠊 Deliberate: 0 shows nothing (O), no warning 🠈|--\\
       showSlide = 0 as number;
       break;
     case preview < 0: //--|🠊 Only a negative is a mistake now 🠈|--\\
-      console.log(`|🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O) 🠈|`);
+      console.log(`|--🠊 Warning: ${element} has no preview ${preview}, so nothing shows (O), Main/OvertimeFunctions.ts 🠈--|`);
       showSlide = 0 as number;
       break;
     case preview > (slides as HTMLDivElement).children.length: //--|🠊 Safe: !slides returned above 🠈|--\\
@@ -97,7 +97,7 @@ let findTags = async (labelName: string): Promise<Array<HTMLLIElement>> => {
     )) as HTMLLIElement;
     return [fullscreen, carousel] as Array<HTMLLIElement>;
   } catch {
-    console.log(`|🠊 Warning: ${labelName} never showed up in #overtime-main, so its preview stays where it is 🠈|`);
+    console.log(`|--🠊 Warning: ${labelName} never showed up in #overtime-main, so its preview stays where it is, Main/OvertimeFunctions.ts 🠈--|`);
     return [] as Array<HTMLLIElement>;
   }
 };
