@@ -4,7 +4,7 @@
 
 Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a Link**, that tilt every unclear rule toward the worker. Built by hand with React, TypeScript, SCSS and Webpack on the front end, and Express with MongoDB on the back end.
 
-**[Open the Apps](https://tertiusroach.github.io/development-portfolio_4.00/index.html)** | [View Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) | [Source Code](https://github.com/TertiusRoach/development-portfolio_4.00)
+**[Open the Apps](https://tralogfin.github.io/index.html)** | [Source Code](https://github.com/TraLogFin/front-end) (private)
 
 ---
 
@@ -13,7 +13,7 @@ Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a L
 
 1. [Install and Sync](#install-and-sync)
    - [1. Install the Front End and Back End](#1-install-the-front-end-and-back-end)
-   - [2. Install Git, Node.js and the GitHub CLI](#2-install-git-nodejs-and-the-github-cli)
+   - [2. Install the Tools](#2-install-the-tools)
    - [3. Create a GitHub Account with Two-Factor Sign-In](#3-create-a-github-account-with-two-factor-sign-in)
    - [4. Sign In from the Terminal](#4-sign-in-from-the-terminal)
    - [5. Sync](#5-sync)
@@ -32,9 +32,10 @@ Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a L
 6. [Documentation](#documentation)
 7. [Roadmap](#roadmap)
 8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact](#contact)
-11. [Acknowledgments](#acknowledgments)
+9. [Security](#security)
+10. [License](#license)
+11. [Contact](#contact)
+12. [Acknowledgments](#acknowledgments)
 
 </details>
 
@@ -42,57 +43,42 @@ Uhm, three office applications, **Track a Day**, **Log a Ticket** and **Find a L
 
 ## Install and Sync
 
-TraLogFin lives in one folder, `tralogfin_1.00`, tracked by two repositories at once:
+TraLogFin lives in one folder, `tralogfin_1.00`, tracked by two repositories at once. Both are private, in the [TraLogFin organization](https://github.com/TraLogFin):
 
-| Repository                     | Visibility | Holds                                                                                                         |
-| ------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------- |
-| **development-portfolio_4.00** | Public     | The front end: `source/layouts/`, the front-end documents, images, fonts and media, `public/`                 |
-| **backend-architecture_2.00**  | Private    | The back end: `source/modules/` (the server, the data, the guards), the back-end documents, the study library |
+| Repository    | Holds                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| **front-end** | `source/layouts/`, the front-end documents, images, fonts and media, `public/`                                |
+| **back-end**  | `source/modules/` (the server, the data, the guards), the back-end documents, the study library                |
 
-Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.json`, `source/index.js`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
+Two more are written by GitHub only: **building** (both halves together) and **TraLogFin.github.io** (the live site, the only public one). [CONTRIBUTING.md](CONTRIBUTING.md#1-four-repositories) explains all four.
 
-> **The back end is private.** Without access to backend-architecture_2.00 you get the front end only: every design and every line of page code, but it won't build without `source/modules/`. The full setup is for the owner and the collaborators the owner invites. Links in these documents that lead into the private half are marked **(private)**.
+Both track the shared files: this README, `CLAUDE.md`, `LICENSE`, `CODEOWNERS`, `CONTRIBUTING.md`, `.gitignore`, `.gitattributes`, `.nvmrc`, `package.json`, `source/index.js`, `source/guards/`, `.github/`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
 
-On a new computer, do steps 2 to 4 first, then step 1.
+> **Access decides the setup.** With front-end only you get every design and every line of page code, running on the development server; logging in and saving data need the back end. Links in these documents that lead into back-end are marked **(private)**.
+
+On a new computer, do steps 2 to 4 first (tools, account, sign-in), then step 1.
 
 ### 1. Install the Front End and Back End
 
-Pick the setup that matches your access. Both need the tools from steps 2 to 4.
+One script downloads the repositories you have access to into one folder and sets them up.
 
-#### Front End Only (anyone)
-
-The public repository on its own: every page, design and component, running on the development server. Logging in and saving data need the back end, so those parts won't answer.
-
-```bash
-git clone https://github.com/TertiusRoach/development-portfolio_4.00.git
-cd development-portfolio_4.00
-npm install --no-save
-npm run launch
-```
-
-`--no-save` keeps `package-lock.json` as it is. The app opens on `http://localhost:8080`.
-
-#### Front End and Back End (the owner and invited collaborators)
-
-One script downloads both repositories into one folder and sets them up.
-
-1. On this repository's GitHub page, click the green **`<> Code`** button, then **Download ZIP**, and unpack it anywhere.
+1. On front-end's GitHub page, click the green **`<> Code`** button, then **Download ZIP**, and unpack it anywhere.
 2. Open a terminal inside the unpacked folder and run:
 
    ```bash
    node source/index.js ~/Documents/Develop/tralogfin_1.00
    ```
 
-   On Windows (PowerShell): `node source/index.js $HOME\Documents\Develop\tralogfin_1.00`. Add `--https` at the end if you signed in with HTTPS in step 4.
+   On Windows (PowerShell): `node source/index.js $HOME\Documents\Develop\tralogfin_1.00`. Add `--https` at the end if you signed in with HTTPS in step 4. It checks out your own branch on the newest version, such as `1.01-<your GitHub name>`, asking `gh` who you are; add `--user <your GitHub name>` if it can't.
 
 3. `source/index.js` tells you what it does at each step:
    - it downloads both repositories into the empty folder;
-   - it puts each one on its current branch;
+   - it puts each one on your own branch, made from the shared one if it's new;
    - it gives each one its list of files to leave alone;
-   - it installs the guards that stop private files and secrets from reaching the public repository;
+   - it installs the guards that stop secrets, and files from the wrong side, from being committed or pushed;
    - it runs `npm install`, once, for both sides.
 
-   It only ever builds into an empty folder, so it can't overwrite anything. Without access to the private repository, it says so and sets up the front end alone.
+   It only ever builds into an empty folder, so it can't overwrite anything. Without access to back-end, it says so and sets up the front end alone.
 
 4. Start the front end, then delete the unpacked zip:
 
@@ -119,17 +105,65 @@ One script downloads both repositories into one folder and sets them up.
 
    Landing's server answers on `http://localhost:4000`; Overtime, Ticketing and Hyperlink have their own on 4001 to 4003. If it can't reach the database, it says so ([MODULES.md § 7](source/utilities/documents/back-end/MODULES.md#7-run-the-server) (private)).
 
-### 2. Install Git, Node.js and the GitHub CLI
+### 2. Install the Tools
 
-**Git** keeps the history of every file. **Node.js** runs the tools and the server. The **GitHub CLI** (`gh`) signs you in to GitHub from the terminal.
+**What you need:** Git (the history of every file), Node.js 24 (runs the tools and the server), the GitHub CLI `gh` (signs you in to GitHub), VS Code (the editor) and, for the back end, MongoDB (the database).
 
-| System                     | Git                              | GitHub CLI                                      |
-| -------------------------- | -------------------------------- | ----------------------------------------------- |
-| Linux (Ubuntu, Linux Mint) | `sudo apt install git`           | `sudo apt install gh`                           |
-| macOS                      | `xcode-select --install`         | `brew install gh` ([Homebrew](https://brew.sh)) |
-| Windows (PowerShell)       | `winget install --id Git.Git -e` | `winget install --id GitHub.cli`                |
+#### Windows (PowerShell)
 
-**Node.js**, through nvm, which lets you switch versions later. On Linux and macOS:
+Open **PowerShell** and paste the whole box. Each line installs one tool; `winget` comes with Windows 10 and 11.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id GitHub.cli -e
+winget install --id Microsoft.VisualStudioCode -e
+winget install --id CoreyButler.NVMforWindows -e
+winget install --id MongoDB.Server -e
+```
+
+The last line is for the back end only; leave it out if you work on the front end alone.
+
+Close PowerShell. Open it again **as administrator** (right-click → **Run as administrator**), once, and paste:
+
+```powershell
+nvm install 24
+nvm use 24
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+git config --global core.longpaths true
+```
+
+| Line | Why |
+| ---- | --- |
+| `nvm install 24`, `nvm use 24` | Node.js 24, the version the project is built and tested on. `nvm use` needs administrator rights on Windows; it's the only step that does |
+| `Set-ExecutionPolicy …` | Lets PowerShell run `npm`. Without it, every `npm` command stops with "running scripts is disabled on this system" |
+| `git config --global core.longpaths true` | Some paths here are longer than Windows' old 260-character limit; without it Git stops with "Filename too long" |
+
+Close it and open a normal PowerShell for everything after this.
+
+#### macOS
+
+```bash
+xcode-select --install
+```
+
+Then, with [Homebrew](https://brew.sh):
+
+```bash
+brew install gh
+brew install --cask visual-studio-code
+```
+
+MongoDB: [MODULES.md § 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private). Node.js comes through nvm, below.
+
+#### Linux (Ubuntu, Linux Mint)
+
+```bash
+sudo apt install git gh
+```
+
+VS Code: the `.deb` from [code.visualstudio.com](https://code.visualstudio.com). MongoDB: [MODULES.md § 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private).
+
+**Node.js on macOS and Linux,** through nvm:
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -138,18 +172,29 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 Close and reopen the terminal, then:
 
 ```bash
-nvm install --lts
+nvm install 24
 ```
 
-On Windows: `winget install CoreyButler.NVMforWindows`, reopen the terminal, then `nvm install lts` and `nvm use lts`.
+#### Check Everything
 
-**Check all three,** in a new terminal:
+In a **new** terminal (a terminal only sees tools installed before it opened):
 
 ```bash
 git --version
 node --version
 gh --version
+code --version
 ```
+
+`node --version` should say `v24.…`.
+
+**What goes wrong:**
+
+- **"winget is not recognized":** install **App Installer** from the Microsoft Store, then open a new PowerShell.
+- **A tool "is not recognized" right after installing it:** the terminal is older than the tool. Close it and open a new one.
+- **`nvm use` says "exit status 1" or "5":** that PowerShell isn't running as administrator.
+- **"running scripts is disabled on this system":** the `Set-ExecutionPolicy` line was skipped.
+- **"Filename too long" during a download:** the `core.longpaths` line was skipped. Run it, delete the half-made folder, and start step 1 again.
 
 **Tell Git who you are.** Every commit carries this name and email:
 
@@ -167,7 +212,7 @@ git config --global user.email "you@example.com"
    3. Choose **Authenticator app**, and scan the QR code with Google Authenticator.
    4. Type the 6-digit code the app shows. A new code appears every 30 seconds.
    5. **Save the recovery codes somewhere safe,** such as a password manager or a printed page in a drawer. If your phone is lost, they're the only way back into your account.
-3. To work on the private back end, ask the owner to invite you. You'll get an email; accept the invitation on GitHub.
+3. To work on the private back end, ask one of the owners to invite you. You'll get an email; accept the invitation on GitHub.
 
 ### 4. Sign In from the Terminal
 
@@ -201,7 +246,7 @@ npm run sync:frontend -w source/layouts -- "Describe the change"
 npm run sync:backend -w source/modules -- "Describe the change"
 ```
 
-The round: pull the other side, check, commit your side, put it on top of anything new on GitHub, push it. When both of you changed the same lines it stops and explains, and never overwrites. Leave out the message and it asks for one. A change on both sides takes both commands.
+The round: pull the other side, check, commit your side on your own branch (`1.01-<your GitHub name>`), bring in anything new, push it and open or update your pull request for the other owner ([CONTRIBUTING.md](CONTRIBUTING.md#2-branches)). When both of you changed the same lines it stops and explains, and never overwrites. Leave out the message and it asks for one. A change on both sides takes both commands.
 
 **What each sync checks before it commits:**
 
@@ -309,7 +354,7 @@ ${PageName}/${BlockName}/${PageName}${BlockName}.tsx → *.scss · *Functions.ts
 source/layouts/components/${Element}/${variant}/${Element}.${variant}.tsx → pipeline/*.scss
 ```
 
-**[View the Entry Point](https://github.com/TertiusRoach/development-portfolio_4.00/blob/main/source/index.tsx)**
+**[View the Entry Point](source/index.tsx)**
 
 ### Testing
 
@@ -380,8 +425,8 @@ All of it, with examples, is in the **[FRONT-END rulebook](source/utilities/docu
 
 ```
 tralogfin_1.00/
-├── .frontend.git/                   # This repository (public)
-├── .backend.git/                    # backend-architecture_2.00 (private)
+├── .frontend.git/                   # front-end
+├── .backend.git/                    # back-end (private)
 ├── .vscode/
 │   ├── launch.json                  # Run Application (Webpack + Chrome)
 │   ├── settings.json
@@ -442,7 +487,7 @@ All authored code and assets. This is the only place you should be editing durin
 
 #### `source/assets/`
 
-Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse. Images, fonts and media belong to this repository; the documents (`md`, `txt`, `zip`, `pdf`, `ods`, `odt`) are the owner's study library and belong to the private back end.
+Typed asset storage. Keeping formats separated avoids build edge cases and reduces accidental misuse. Images, fonts and media belong to this repository; the documents (`md`, `txt`, `zip`, `pdf`, `ods`, `odt`) are the owners' study library and belong to the private back end.
 
 | Directory    | Purpose                                                           |
 | ------------ | ----------------------------------------------------------------- |
@@ -507,13 +552,12 @@ The UI system. This is where the application becomes readable. The split between
 
 #### `source/modules/`
 
-The back end, in the private repository. Setup is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private), and how data travels is in [DATA.md](source/utilities/documents/back-end/DATA.md) (private).
+The back end, in back-end. Setup is in [MODULES.md](source/utilities/documents/back-end/MODULES.md) (private), and how data travels is in [DATA.md](source/utilities/documents/back-end/DATA.md) (private).
 
 | Folder        | Purpose                                                                     |
 | ------------- | --------------------------------------------------------------------------- |
 | `components/` | The `.jsx` twins of `layouts/components/`                                   |
 | `containers/` | One route file per page, one file per block, and the `.jsx` twins           |
-| `context/`    | React context for email and password state                                  |
 | `guards/`     | The structure guard, and the leak guards that keep the private half private |
 | `routes/`     | One file per application (reserved)                                         |
 | `scripts/`    | The back half of each block pair                                            |
@@ -570,8 +614,9 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 | **[CONTAINERS.md](source/utilities/documents/back-end/CONTAINERS.md)** (private) | What each page and block asks of the server                             |
 | **[DATA.md](source/utilities/documents/back-end/DATA.md)** (private)             | How data travels, MongoDB-to-MySQL rules, offline storage               |
 | **[MODULES.md](source/utilities/documents/back-end/MODULES.md)** (private)       | Database, secrets, test emails and server setup on any OS               |
-| **[OPERATIONS.md](source/utilities/documents/back-end/OPERATIONS.md)** (private) | The machines: shares, the host server, backups, the phone               |
-| **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)** (private)         | Machine setup, releases, tags, the two repositories, fixing Git trouble |
+| **[SECURITY.md](source/utilities/documents/back-end/SECURITY.md)** (private)     | Accounts, keys, secrets, computers, backups, the host's rules           |
+| **[MISCELLANEOUS.md](source/utilities/documents/back-end/MISCELLANEOUS.md)** (private) | Loose notes: starting by itself, the copier, the phone, the Diary |
+| **[GITHUB.md](source/utilities/documents/back-end/GITHUB.md)** (private)         | Syncing, publishing, finishing a version, fixing Git trouble            |
 | **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md)** (private)         | VS Code shortcuts, `.vscode/`, keeping the Explorer readable            |
 | **[REFERENCE.md](source/utilities/documents/back-end/REFERENCE.md)** (private)   | The template this README follows                                        |
 
@@ -592,7 +637,7 @@ Everything lives in **`source/utilities/documents/`**, split three ways: shared 
 - [ ] A data layer that can switch from MongoDB to MySQL
 - [ ] Unpaid-solutions record for freelancers
 
-The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/back-end/GITHUB.md#10-status-log) (private).
+The full list of decisions waiting to be built is in the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md#10-parked-for-later), and every release so far is in the [status log](source/utilities/documents/back-end/GITHUB.md#9-status-log) (private).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -600,12 +645,27 @@ The full list of decisions waiting to be built is in the [FRONT-END rulebook](so
 
 ## Contributing
 
-Contributions are welcome, as long as they keep the project readable. Before you change anything:
+TraLogFin has two owners, and every change reaches the shared branch through a pull request the other owner approves. **[CONTRIBUTING.md](CONTRIBUTING.md)** has the whole workflow: branches, pull requests, finishing a version, releases and secrets. Before you change anything:
 
 1. **Read the [FRONT-END rulebook](source/utilities/documents/front-end/FRONT-END.md).** Readability beats brevity, match what's already there, one step at a time.
 2. **Check [GUIDELINES.md](source/utilities/documents/GUIDELINES.md)** before touching anything that changes what a user is allowed to do.
-3. **Follow the Git naming:** branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and tags are the archive. Each release goes Confirm → Tag → Publish to main → Next branch → Delete old branch. The commands are in [GITHUB.md](source/utilities/documents/back-end/GITHUB.md#4-finish-a-version-and-start-the-next) (private).
+3. **Follow the Git naming:** the shared branch is `1.##` (`1.01`), yours is `1.##-<your GitHub name>` (`1.01-TertiusRoach`), and finished versions become tags (`v1.01`), the archive ([CONTRIBUTING.md, Branches](CONTRIBUTING.md#2-branches)).
 4. **Using an AI assistant?** Point it at [CLAUDE.md](CLAUDE.md) first.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+## Security
+
+The short version, for everyone with a clone:
+
+- **Two-factor sign-in** on GitHub and every account that touches TraLogFin, with an authenticator app.
+- **One SSH key per computer,** with a passphrase. A lost computer is one key to remove, the same day.
+- **Secrets never go in a commit, a chat or `public/`.** The guards check every commit and push; never skip them with `--no-verify`.
+- **Found a problem?** Tell the owners directly, never in an Issue or a pull request, where every collaborator reads it.
+
+The whole guide (accounts, keys, the computer, shared computers, backups, the host server, a lost device) is in **[SECURITY.md](source/utilities/documents/back-end/SECURITY.md)** (private: back-end only).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -613,7 +673,7 @@ Contributions are welcome, as long as they keep the project readable. Before you
 
 ## License
 
-Distributed under the ISC License, as declared in `package.json`.
+Proprietary. Copyright © 2026 Tertius Roach and Johann Schoeman, all rights reserved: see [LICENSE](LICENSE). Every `package.json` says `"license": "UNLICENSED"`, npm's word for "not open source".
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -623,7 +683,7 @@ Distributed under the ISC License, as declared in `package.json`.
 
 **Tertius Roach**: [Portfolio](https://tertiusroach.github.io/development-portfolio_4.00/public/index.html) · [GitHub](https://github.com/TertiusRoach) · [tertius.roach@gmail.com](mailto:tertius.roach@gmail.com)
 
-Project link: [github.com/TertiusRoach/development-portfolio_4.00](https://github.com/TertiusRoach/development-portfolio_4.00)
+Project link: [github.com/TraLogFin](https://github.com/TraLogFin)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -649,7 +709,7 @@ _Good software should protect users from the worst day they are having, not ampl
 
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 ![Version](https://img.shields.io/badge/version-4.7-blue.svg)
-![License](https://img.shields.io/badge/license-ISC-blue.svg)
+![License](https://img.shields.io/badge/license-proprietary-lightgrey.svg)
 
 </div>
 

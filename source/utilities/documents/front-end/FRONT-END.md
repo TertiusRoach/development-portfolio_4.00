@@ -42,7 +42,7 @@ How code is written in this repository. Every rule here exists because breaking 
 
 Every document lives in `source/utilities/documents/`. If you're unsure about anything, look here first.
 
-**Front end**, in `documents/front-end/`. Public, in development-portfolio_4.00:
+**Front end**, in `documents/front-end/`, in front-end:
 
 | Document                          | What it answers                                                                                     |
 | --------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -60,7 +60,7 @@ Every document lives in `source/utilities/documents/`. If you're unsure about an
 | [GUIDELINES.md](../GUIDELINES.md) | What the application allows: roles, permissions, clock-ins, overtime, ghost hours, offline mode     |
 | [CHARACTERS.md](../CHARACTERS.md) | The 18 test characters, their facts, their psychology and the rules they test                       |
 
-**Back end**, in `documents/back-end/`. Private, in backend-architecture_2.00. These links only open where both repositories are merged into one folder:
+**Back end**, in `documents/back-end/`, in back-end (private). These links only open where both repositories share one folder:
 
 | Document                                 | What it answers                                                                         |
 | ---------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -68,7 +68,10 @@ Every document lives in `source/utilities/documents/`. If you're unsure about an
 | [DATA.md](../back-end/DATA.md) (private)           | How data travels, MongoDB-to-MySQL rules, offline storage                               |
 | [MODULES.md](../back-end/MODULES.md) (private)     | Setting up the database, secrets, test emails and the server on any OS                  |
 | [SERVER.md](../back-end/SERVER.md) (private)       | How `source/modules` is organised, the shared contexts, and where the server code is headed |
-| [GITHUB.md](../back-end/GITHUB.md) (private)       | Machine setup, the release cycle, tags, syncing machines, fixing Git trouble            |
+| [GITHUB.md](../back-end/GITHUB.md) (private)       | Syncing, publishing, finishing a version, fixing Git trouble, a new computer            |
+| [PIPELINE.md](../back-end/PIPELINE.md) (private)   | How secrets are kept, locked and guarded                                                |
+| [SECURITY.md](../back-end/SECURITY.md) (private)   | Accounts, keys, computers and backups                                                   |
+| [MISCELLANEOUS.md](../back-end/MISCELLANEOUS.md) (private) | The host, the copier, the phone and other loose notes                           |
 | [EDITOR.md](../back-end/EDITOR.md) (private)       | VS Code shortcuts, what `.vscode/` does, keeping the Explorer readable                  |
 | [REFERENCE.md](../back-end/REFERENCE.md) (private) | The template the main `README.md` follows                                               |
 
@@ -172,8 +175,10 @@ Every image lives in `source/assets/`, one folder per file type (`svg-files`, `p
 loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|🠈 svg-files/tralogfin-application/track-a-day/primary-medium.svg 🠈|--\\
 ```
 
-- **It reads GitHub, not the disk.** `loadAsset()` builds a `raw.githubusercontent.com` link on `refs/heads/main`. A new or moved image only shows once it's pushed to `main`, and a moved folder breaks every caller without an error: an `<img>` shows its alt text, a mask shows nothing.
-- **Always through `loadAsset()`.** Never paste a GitHub link by hand, and never one pinned to a commit (`…/b345dfe…/source/assets/…`): it stops following `main` and quietly goes out of date. Every image now goes through it, the loading GIFs in `Article_loading.ts` and the ones `<CanvasParticles>` is given included.
+- **The live site serves its own images.** `loadAsset()` returns `./assets/…`, beside `index.html`. The build (`LiveAssets` in `webpack.config.js`) finds every `loadAsset()` call with a written-out path and copies that file to `public/assets/` at the same path: 86 files, about 3 MB of the 284 MB in `source/assets/`. Since front-end is private, a GitHub link to an image no longer works on the site.
+- **Write the path out.** `loadAsset('-svg-', '/a/b')` is found by the build; a path put together while the page runs (`` `/character-testing/original/${profile}` ``) isn't, so it goes in `builtAtRuntime` at the top of `webpack.config.js`, a file or a whole folder. The tab icon in `source/index.html` is listed there too.
+- **A missing image stops the build.** A moved or misspelled file is an error in `npm run launch` and `npm run deploy`, naming the file, instead of an empty spot on the live site.
+- **Always through `loadAsset()`.** Never paste a GitHub link by hand. Every image goes through it, the loading GIFs in `Article_loading.ts` and the ones `<CanvasParticles>` is given included.
 - **A runtime SVG is a mask, set inline.** A silhouette from `loadAsset()` goes on the element as `maskImage` / `WebkitMaskImage`, never as a URL in SCSS. It's the one inline style the [No Inline Styles](#no-inline-styles) rule allows, because the path only exists at runtime.
 
 | Folder                                                       | Holds                                                                                                                                                             | Example path                                                |
@@ -187,17 +192,17 @@ loadAsset('-svg-', '/tralogfin-application/track-a-day/primary-medium'); //--|�
 | `png-files/tralogfin-application/${version}/`                | App pictures, by release (`1.0.0`, `4.4.0`)                                                                                                                       |                                                             |
 | `gif-files/`                                                 | The loading animations (`signature`, `trinity-apps`)                                                                                                              |                                                             |
 
-**Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owner. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
+**Icons come from FontAwesome Free 7.3.1:** `solid/`, `regular/` and `brands/` only. The `5.13.0` and `6.5.1` folders are older; `6.5.1` is Pro (commercial licence) and is being phased out. Before using an icon, check its file exists in `7.3.1/${style}/`; a Pro-only icon has no Free file and needs a Free replacement chosen by the owners. Still on `6.5.1` while that choice is open: `messages-dollar` (Track a Day's Freelancing toggle), `user-helmet-safety` (Log a Ticket's Employee toggle), and `head-side`, `left-to-line`, `right-to-line` in `<DivisionTesting>`. The 7.x icons sit on a 640 × 640 canvas with built-in padding, so with `mask-size: contain` they read a little smaller than 6.5.1 did in the same box.
 
 ### Which Repository Holds What
 
 Each document goes where its subject lives. One question settles it: **what does the page explain?**
 
-- **How `source/layouts/` is written, looks or behaves → front end.** Anyone who likes the designs may read it, so it names nothing private.
-- **How data moves, is stored or is kept safe, or how the owner's own machines and tools work → back end.** That repository is private on purpose: it's the study library where the secrets can be explained in full.
+- **How `source/layouts/` is written, looks or behaves → front end.** A front-end developer may have no back-end access, so it names nothing private.
+- **How data moves, is stored or is kept safe, or how the owners' machines and tools work → back end.** That repository is private on purpose: it's the study library where the secrets can be explained in full.
 - **A rule both sides obey or test against → shared.** Both repositories track it, so neither can fall behind.
 
-**When a page could go either way,** follow the reader, not the code. CONTEXTS.md stays in the front end although the contexts live in `source/modules/context/`, because it explains how the `<Form>`s use them. DATA.md is in the back end although `<Table>` shows its data, because it explains how the data travels; TABLE.md, how the table shows it, stays here.
+**When a page could go either way,** follow the reader, not the code. CONTEXTS.md stays in the front end because it explains how the `<Form>`s use the contexts. DATA.md is in the back end although `<Table>` shows its data, because it explains how the data travels; TABLE.md, how the table shows it, stays here.
 
 | Document      | Side      | Why                                                                                                   |
 | ------------- | --------- | ----------------------------------------------------------------------------------------------------- |
@@ -213,9 +218,12 @@ Each document goes where its subject lives. One question settles it: **what does
 | DATA.md       | Back end  | How data travels and is stored                                                                        |
 | MODULES.md    | Back end  | Setting up databases and secrets                                                                      |
 | SERVER.md     | Back end  | How `source/modules/` is organised                                                                    |
-| GITHUB.md     | Back end  | The owner's machines, keys and release cycle across both repositories                                 |
-| EDITOR.md     | Back end  | The owner's editor setup                                                                              |
-| REFERENCE.md  | Back end  | The owner's template for `README.md`                                                                  |
+| GITHUB.md     | Back end  | Syncing, publishing and finishing a version across the repositories                                   |
+| PIPELINE.md   | Back end  | How secrets are kept, locked and guarded                                                              |
+| SECURITY.md   | Back end  | Accounts, keys, computers and backups; the shared README has its short version                        |
+| MISCELLANEOUS.md | Back end | The loose notes: the host, the copier, the phone                                                     |
+| EDITOR.md     | Back end  | The editor setup both owners use                                                                      |
+| REFERENCE.md  | Back end  | The template for `README.md`                                                                          |
 
 **`md-files/` holds drafts, not images.** The synchronization thesis and one file per application (`track-a-day.md`, `log-a-ticket.md`, `find-a-link.md`) live there until their edge cases are worked out, then move to `source/utilities/documents/back-end/`. Like every document-type asset (`.md`, `.txt`, `.zip`, `.pdf`, `.ods`, `.odt`), they belong to the back end. Images, fonts, audio, video, `.xcf` and `.psd` belong to the front end. Nothing loads them.
 
@@ -223,7 +231,7 @@ Each document goes where its subject lives. One question settles it: **what does
 
 ### Git
 
-Branches are `#.##` (`4.09`), tags are `v#.##` (`v4.09`), and a release published while the branch stays open is a patch tag, `v#.##.#` (`v4.09.1`). Branches up to `4.8` kept the old `#.#` names. The full rules are in [GITHUB.md](../back-end/GITHUB.md#9-names-and-numbers) (private).
+The shared branch is `#.##` (`1.01`) and yours is `#.##-<GitHub name>` (`1.01-TertiusRoach`); a finished version is tagged `v#.##` (`v1.01`), and a publish of the live site `v#.##.#` (`v1.01.0`). A pull request stays inside its number ([CONTRIBUTING.md](../../../../CONTRIBUTING.md#2-branches)). The full rules are in [GITHUB.md](../back-end/GITHUB.md#8-names-and-numbers) (private).
 
 ---
 
@@ -561,7 +569,7 @@ export default DefaultButton;
 
 ### Functions Files
 
-The sibling `.ts` file (`${Name}Functions.ts`) follows [Declaration Order](#declaration-order) too. `DefaultFunctions.ts`, `TextareaFunctions.ts` and `SelectionFunctions.ts` are the references. A page whose only function is a shared one still gets its own `*Functions.ts` (`SwitchingFunctions.ts` holds just `switchColors`, so it has no `export default`). **A function lives in the folder of the page that uses it.** A function that reads, returns or changes what's rendered under `source/layouts/containers/[pageName]/<blockName>/elements/` goes in that page's own `${Name}Functions.ts`. When sibling pages need the same one, each keeps its own copy, written line for line alike (`switchColors` in `SwitchingFunctions.ts`, `TextareaFunctions.ts` and `SelectionFunctions.ts`). Their parent folder (`label-components/`) holds no `.ts` file until the owner decides otherwise. It never moves up to `layouts/tools/`, which holds what the whole project shares (`checkScreen` is called from those same pages but doesn't belong to them: it listens to the screen's orientation and resets whichever page is active, so it works the same everywhere. `switchColors` finds one page's own `<Label>`s by their class, so it only works there).
+The sibling `.ts` file (`${Name}Functions.ts`) follows [Declaration Order](#declaration-order) too. `DefaultFunctions.ts`, `TextareaFunctions.ts` and `SelectionFunctions.ts` are the references. A page whose only function is a shared one still gets its own `*Functions.ts` (`SwitchingFunctions.ts` holds just `switchColors`, so it has no `export default`). **A function lives in the folder of the page that uses it.** A function that reads, returns or changes what's rendered under `source/layouts/containers/[pageName]/<blockName>/elements/` goes in that page's own `${Name}Functions.ts`. When sibling pages need the same one, each keeps its own copy, written line for line alike (`switchColors` in `SwitchingFunctions.ts`, `TextareaFunctions.ts` and `SelectionFunctions.ts`). Their parent folder (`label-components/`) holds no `.ts` file until the owners decide otherwise. It never moves up to `layouts/tools/`, which holds what the whole project shares (`checkScreen` is called from those same pages but doesn't belong to them: it listens to the screen's orientation and resets whichever page is active, so it works the same everywhere. `switchColors` finds one page's own `<Label>`s by their class, so it only works there).
 
 **Three homes for shared code:**
 
@@ -575,7 +583,7 @@ Callers import straight from the file that holds the function; there's no barrel
 
 - **One plain `function` per file**, declared first and repeated as `export default` on the last line. Everything else the `.tsx` imports is an `export const` arrow, and the helpers those call are file-level `let`s. Never several `export function`s side by side. The `.tsx` imports both kinds in one line: `import listCharacters, { typePlaceholder } from './SelectionFunctions';`. A file with no main function of its own (`RoutingFunctions.ts`, `ProfileFunctions.ts`) has no `export default`: only its `export const`s and their `let`s.
 - **The exception is a page's Header and Footer pair.** In `Header/${PageName}Functions.ts` and `Footer/${PageName}Functions.ts` on Track a Day, Log a Ticket and Find a Link, the main function (`previewProfile`) is followed straight away by the container states the `.tsx` imports, written as `export function`s under `//--|🠋 Container States 🠋|--\\`: `unfoldHeaders`, `expandHeaders`, `squareHeaders`, `freezeHeaders` (or the `Footers` four). A `//--|===|--\\` closes the group, then come `previewProfile`'s own helpers (`const selectCharacter`, `let sequencedDemonstration`), and a last `//--|===|--\\` sits above `export default previewProfile;`. The group reads as a set of switches the container flips, so it stays together right under the function that runs the demonstration.
-- **A pair's two files are written line for line alike.** `Header/${PageName}Functions.ts` and `Footer/${PageName}Functions.ts` differ only in the pair's names: `header` / `footer`, `leftbar` / `rightbar`, `'horizontal'` / `'vertical'`, `'top-lef'` / `'bot-rig'`. Comment flags count too: an `AI Code: Review Please` on one file's line goes on the same line in the other. After changing one, `diff` the two: anything else that shows up is a step the other one still needs.
+- **A pair's two files are written line for line alike.** `Header/${PageName}Functions.ts` and `Footer/${PageName}Functions.ts` differ only in the pair's names: `header` / `footer`, `leftbar` / `rightbar`, `'horizontal'` / `'vertical'`, `'top-lef'` / `'bot-rig'`. Comment flags count too: a comment on one file's line goes on the same line in the other. After changing one, `diff` the two: anything else that shows up is a step the other one still needs.
 - **`<main>`'s file toggles previews, nothing more, nothing less.** `Main/${PageName}Functions.ts` has the same job on every application (`[archive]`, `[overtime]`, `[ticketing]`, `[hyperlink]`, `[landing]`). Its `export default` is `startingPreview(element, preview)`, and it only reaches elements inside its own `<main>`: `#components-main` on `[archive]`, and `#overtime-main`, `#ticketing-main`, `#hyperlink-main` and `#landing-main` on the others. That id is written into the selector, never passed in. It doesn't matter who calls it (the `[overtime]` demo buttons sit in the header and footer): what it touches stays inside `<main>`. If `<main>` ever needs more, the job can be merged and expanded upon in this same file; until then it holds nothing else. `Main/ArchiveFunctions.ts` is the reference:
   - **It works on two levels.** `fullscreen` is the outer `<li>`, written out in full (`elements-main_fullscreen-default`), and it picks the group through `switch (element)`, one case per group, each written out. `carousel` is the `<li>` of the group inside it (`${labelName}-main_fullscreen-default`), and it picks the page (`preview`). `[archive]` lists its cases in alphabetical order, because it's an archive; the applications list theirs in page order (`[overtime]`: `(established)` I, `(vocation)` II, `(freelancing)` III).
   - **The axes are flipped between `[archive]` and the applications.** `[archive]`'s outer is `[y]` with `[x]` groups inside, so its path steps down `> ol > li` then `> ul > li`. `[overtime]`, `[ticketing]` and `[hyperlink]` slide their outer on `[x]`, with `[y]` pages inside, in both orientations: `> ul > li` then `> ol > li`. An application's page may be a `<DivisionSweeping>` instead of a `<DivisionFullscreen>` (`[overtime]`'s `(vocation)` sweeps), so its `findTags` accepts either `${labelName}-main_fullscreen-default` or `${labelName}-main_sweeping-default`, and `containerPreview` finds the container with `^=`, because a sweeping's container ends in its view (`vocation-main_container-bot`). Nothing else in the function changes.
@@ -716,7 +724,7 @@ There are two shades, `~dark~` and `~light~`; there's no `~medium~`. A `<Button>
 - **A grid parent is a grid in every orientation.** `grid-area` does nothing unless the parent says `display: grid`. If only the desktop block says it, the mobile children fall back to block flow and stack one under the other: two full-page cards become two pages, and the second spills onto the next Archive page. Check the Inspector for the `grid` badge on the parent in each orientation.
 - **A tablet rule carries the same selector weight as the rule it overrides.** The tablet mixin comes last, but order only breaks a tie: a mobile rule inside `&[class*='-X-']` beats a tablet rule without it, whatever the order. Wrap the tablet value in the same `&[class*='…']` steps as its desktop and mobile twins. When a tablet value seems ignored, look for the struck-through rule in the Rules pane and compare the selectors, not the line numbers.
 
-**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split. **A component never merges only part of a file:** every rule sits in the three mixins, or none does. A container (a scope above the components) may merge part of a file, but only after it's been agreed in a Q&A with the owner. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
+**Merging `<section>`, `<div>` and `<nav>`:** when `desktop-landscape` and `mobile-portrait` would hold identical values, write the rules once with no orientation media queries. If even one value differs between orientations, keep the full split. **A component never merges only part of a file:** every rule sits in the three mixins, or none does. A container (a scope above the components) may merge part of a file, but only after both owners have agreed to it. A merged file starts with a `//--|🠋 Shared (Name) 🠋|--\\` flag so it's clear the merge is deliberate.
 
 Sass can't `@extend` a placeholder from outside the `@media` block it sits in, so a merge means removing the orientation queries, not sharing placeholders across them.
 
@@ -914,7 +922,7 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 
 - The server's `.js` files and anything in a `REVIEW/` folder still end comments in `|--//`; they're older code and change only when they're rewritten.
 - Every file starts with its own name: `//--|🠊 Aside.characters.scss 🠈|--\\`.
-- `AI Code: Review Please`, with the date and the local time it was written, marks a line an AI assistant added or changed, so the owner can find and review it: `//--|🠈 AI Code: Review Please 2026-11-21 14:21 🠈|--\\`. A copied or generated block gets one flag on its first line, not one per line. The owner removes it once the line is understood and kept. Reordering code (moving parameters, arguments, union values or lines without changing them) doesn't get a flag, unless it obviously breaks something.
+- **No flag marks AI-written code** (since 2026-11-24). The pull request is the review, and a commit an assistant wrote or helped write ends with a `Co-Authored-By:` trailer naming it ([CONTRIBUTING.md, Code Written with an AI Assistant](../../../../CONTRIBUTING.md#7-code-written-with-an-ai-assistant)). The old `AI Code: Review Please` flags were all reviewed and removed.
 - A commented-out line with `!important` is a test switch, not dead code: `//--|🠊 background: rgba(darkgreen, 0.25) !important; 🠈|--\\`. Uncomment it to see what a selector reaches, and comment it back before committing (see [Test Tools](#test-tools)).
 - `Warning:` marks code that works today but can break something elsewhere, and says what: `//--|🠊 Warning: @at-root reaches every <footer>, not only #overtime-footer. Review Please 🠈|--\\`. It stays until the code is changed; that one went when the block was scoped to `footer[id*='overtime']`.
 - `Used in` is a back-reference: it names who calls a state handler in `layouts/scripts/` (`Head_Foot.ts`, `Left_Right.ts`, `Main_Over.ts`). Those handlers are never called by name. `blockViews()` reaches them through `blockHandlers`, a lookup table keyed by `blockName` and `alterAction` (a dispatch table), so the editor's Find All References can't trace them. Keep the trail by hand: when a container starts calling `blockViews()` with a pair, add the caller to the block comment at the end of the handler that pair reaches, one caller per line as `<Container> · function();`, indented one step inside the block:
@@ -937,14 +945,14 @@ Arrows mark comments so the structure of a file reads at a glance. They wrap eve
 
 ### The Pipeline
 
-Work moves through the applications in phases, and a phase only opens when the owner gives the go-ahead:
+Work moves through the applications in phases, and a phase only opens when both owners agree:
 
 1. **`[archive]` first.** Every component is stress-tested here until it behaves correctly.
 2. **`[overtime]` second.** The application skeleton is built here, going back and forth with `[archive]` whenever a component needs fixing. This is the flip-flop.
 3. **`[ticketing]` and `[hyperlink]` next.** Once the skeleton is confirmed, its patterns are copied over, and the flip-flop moves between `[overtime]`, `[ticketing]` and `[hyperlink]`. `[archive]` comes back only to fix a bad mistake or confirm a complicated component. **This is the current phase** (started 2026-11-01). The first full copy to both was finished the same day, so from here on a change in `[overtime]` is copied over with the method below.
 4. **`[landing]` waits.** It stays untouched until the character demo in `[overtime]` (`previewProfile()`, `sequencedDemonstration()`) is complete with all 18 characters. Whether the demo then moves to `[landing]` hasn't been decided yet.
 
-**Change only the application you're working in.** A change made in `[overtime]` doesn't go to `[ticketing]` or `[hyperlink]` until the owner asks. Note where it will be needed later, and confirm the instructions before copying it, so it's duplicated correctly. **Shared files are the exception:** `containers/containers.ts`, `layouts/scripts/`, `layouts/tools/` and everything in `components/` run for every application, so a change there reaches all of them at once. Check that the others still behave before calling it done. A component's prop type is the easy one to miss: when `<MenuToggle>`'s `cases.task` became `{ click, enter }` objects, only `[overtime]`'s callers were updated, and `[ticketing]` and `[hyperlink]` crashed on the first hover (`cases.task[0].enter is not a function`). When a component's `TheseProps` changes shape, search for every `<ComponentName` in `source/` and update each caller in the same step.
+**Change only the application you're working in.** A change made in `[overtime]` doesn't go to `[ticketing]` or `[hyperlink]` until an owner asks. Note where it will be needed later, and confirm the instructions before copying it, so it's duplicated correctly. **Shared files are the exception:** `containers/containers.ts`, `layouts/scripts/`, `layouts/tools/` and everything in `components/` run for every application, so a change there reaches all of them at once. Check that the others still behave before calling it done. A component's prop type is the easy one to miss: when `<MenuToggle>`'s `cases.task` became `{ click, enter }` objects, only `[overtime]`'s callers were updated, and `[ticketing]` and `[hyperlink]` crashed on the first hover (`cases.task[0].enter is not a function`). When a component's `TheseProps` changes shape, search for every `<ComponentName` in `source/` and update each caller in the same step.
 
 **What a copy keeps per application.** `[overtime]` is the skeleton: a copy takes its structure, classes, SCSS and functions line for line, and changes only these:
 
@@ -967,10 +975,10 @@ diff <(sed 's/Overtime/Ticketing/g; s/overtime/ticketing/g' Overtime/Header/Over
 
 Every line the `diff` shows is either a row of the table, which the copy keeps, or something to copy over from `[overtime]`. When the copy is done, only the table's rows are left, and a file the table doesn't mention comes out identical. If a line fits neither group, or something in `[overtime]` looks wrong, stop and ask before copying it.
 
-- **Flags come over as they are.** A line copied from `[overtime]` keeps its comment flags, dates included; a line written new for the copy gets `AI Code: Review Please` with today's date.
+- **Flags come over as they are.** A line copied from `[overtime]` keeps its comment flags, dates included.
 - **The shared `Used in...` notes grow with the copy.** Once a copy's `previewProfile()` squares through `blockViews()`, add its `<${PageName}Header>` and `<${PageName}Footer>` to the notes of `squaringHeader` and `squaringFooter` in `layouts/scripts/Head_Foot.ts` (see [Comment Flags](#8-comment-flags)).
 - **Afterwards, run the checks:** `npx sass` on every changed SCSS file, the `tsc` error count, the `diff` above, and the pair `diff` of the Header and Footer `*Functions.ts` (see [Functions Files](#functions-files)).
-- **A copy from `[overtime]` to `[ticketing]` and `[hyperlink]` gets a full scan, unless the owner says otherwise.** Before calling it done, list every file the change touches and every caller of every component, function and prop type it changed, across all five applications, and read each one against the new shape. A change to `[archive]` alone doesn't need this; a copy does, because a missed caller is a bug duplicated into two more applications.
+- **A copy from `[overtime]` to `[ticketing]` and `[hyperlink]` gets a full scan, unless the owner you're working with says otherwise.** Before calling it done, list every file the change touches and every caller of every component, function and prop type it changed, across all five applications, and read each one against the new shape. A change to `[archive]` alone doesn't need this; a copy does, because a missed caller is a bug duplicated into two more applications.
 - **The editor's Problems panel is not a full check.** VS Code only analyses the files it has open, so an unopened file reports no problems whether it has them or not, and it can miss a wrong shape even in an open file. `npx tsc --noEmit -p tsconfig.json` is the only check that covers every file. If it can't be run (an AI assistant's terminal may be blocked), say so plainly and list which files were read by hand, so the owner knows what still needs checking.
 
 ### Visual Tests
