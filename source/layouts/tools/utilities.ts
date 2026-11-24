@@ -1,7 +1,7 @@
 //--|🠊 layouts/tools/utilities.ts 🠈|--\\
 export const loadAsset = (type: '-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', path: string): string => {
   //--|🠊 Finds path for file extension 🠈|--\\
-  const assetSource: string = 'https://raw.githubusercontent.com/TertiusRoach/development-portfolio_4.00/refs/heads/main/source/assets';
+  const assetSource: string = './assets'; //--|🠈 Beside index.html: the build copies each image it finds here into public/assets/ (FRONT-END.md, Images & Assets) 🠈|--\\
 
   //--|🠊 Build URL string 🠈|--\\
   let filePath: Record<'-gif-' | '-ico-' | '-jpg-' | '-pdf-' | '-png-' | '-svg-', [string, string]> = {
