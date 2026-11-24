@@ -15,7 +15,7 @@ TraLogFin: three office applications (Track a Day, Log a Ticket, Find a Link) bu
 | `.frontend.git` | TraLogFin/front-end  | Private    | `source/layouts/`, `documents/front-end/`, images, fonts and media, `public/`, `.vscode/`, the build files |
 | `.backend.git`  | TraLogFin/back-end   | Private    | `source/modules/`, `documents/back-end/`, the study library (`md txt zip pdf ods odt`) |
 
-Two more repositories are written by automation only, never cloned here: **building** (private, both halves together) and **TraLogFin.github.io** (public, only the live site, built from `public/`). Until the move (2026-11), the old pair development-portfolio_4.00 (public, tagged `v4.09.1`) and backend-architecture_2.00 (tagged `v2.01.1`) stay as they were.
+Two more repositories are written by automation only, never cloned here: **building** (private, both halves together) and **TraLogFin.github.io** (public, only the live site, built from `public/`). Until the move (2026-11), the old pair development-portfolio_4.00 (public, last tag `v4.09.2`) and backend-architecture_2.00 (last tag `v2.01.2`) stay as they were.
 
 **Both track** `README.md`, this file, `LICENSE`, `CODEOWNERS`, `CONTRIBUTING.md`, `.gitignore`, `.gitattributes`, `.nvmrc`, `package.json`, `GUIDELINES.md`, `CHARACTERS.md`, `source/index.js`, `source/guards/` (the shared guards, sync, the copy into building and the version steps) and `.github/` (the workflows). The exact lists are `frontend.gitignore` (what the front end leaves to the back end) and `backend.gitignore` (the other way round). **A file that fits neither: stop and ask the owner.** Don't guess a side; a new side for a file is a change for both owners.
 
