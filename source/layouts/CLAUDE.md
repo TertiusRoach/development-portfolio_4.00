@@ -24,9 +24,9 @@ All of them are in `source/utilities/documents/`.
 ## Commands
 
 ```bash
-npm run app        # Development server on http://localhost:8080
+npm run launch     # Development server on http://localhost:8080
 npm run deploy     # Production build into public/
-npm run stop       # Free port 8080
+npm run abort      # Free port 8080 (and the servers' 4000–4003)
 npx sass --no-source-map path/to/file.scss > /dev/null   # Check that SCSS compiles
 npx tsc --noEmit -p tsconfig.json                        # Type-check (0 errors; the two read-only originals in vendors/ are excluded; keep it at 0)
 ```

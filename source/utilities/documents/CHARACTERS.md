@@ -48,6 +48,8 @@ The love triangles and side plots (Kady, Conrad and Dimitri; Malik, Alaric and D
 
 **The facts** come straight from [character-testing.pdf](../../assets/pdf-files/character-testing.pdf) (private), and `source/modules/server/MongoDB/testing/TraLogFin.json` holds the same data for the code. If the two ever disagree, the PDF wins.
 
+**This file and `TraLogFin.json` change together.** Any change to a character here (a name, a field, an email, a new or removed person) goes into `TraLogFin.json` in the same step, so the test data never falls behind this document.
+
 - **Bureau** is a job title the person chose. It gives no permissions.
 - **Status** (Enabled, Pending, Blocked, Deleted) is only there to test the login screen. It has nothing to do with the three apps.
 - **Email** is made up: the first name, a dot, the rest of the name, then `@tralogfin` and the ending companies use in that person's country (`.co.za`, `.ae`, `.com` for the United States). Some of those domains may belong to real people, so test emails only ever go to Mailtrap, never to a real inbox.

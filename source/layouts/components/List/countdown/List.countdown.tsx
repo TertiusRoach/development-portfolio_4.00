@@ -112,7 +112,7 @@ const loadTimer = (setTime: React.Dispatch<React.SetStateAction<Counters>>) => {
           /*--|🠋 Countdown request: commented out so the <List> is visual-only, it comes back through scripts/Footer.ts and PickPage (SERVER.md §5) 🠉|--*/
           /*
           let route = 'blocked';
-          let link = 'http://localhost:3000';
+          let link = 'http://localhost:4000'; //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
           axios
             .post(`${link}/users/${route}`, { email: emailInput.value })
             .then((response) => {

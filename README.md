@@ -49,7 +49,7 @@ TraLogFin lives in one folder, `tralogfin_1.00`, tracked by two repositories at 
 | **development-portfolio_4.00** | Public     | The front end: `source/layouts/`, the front-end documents, images, fonts and media, `public/`                 |
 | **backend-architecture_2.00**  | Private    | The back end: `source/modules/` (the server, the data, the guards), the back-end documents, the study library |
 
-Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.json`, `setup.js`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
+Both track the shared files: this README, `CLAUDE.md`, `.gitignore`, `package.json`, `source/index.js`, `GUIDELINES.md` and `CHARACTERS.md`. Which file belongs where is listed in `frontend.gitignore` and `backend.gitignore` at the root.
 
 > **The back end is private.** Without access to backend-architecture_2.00 you get the front end only: every design and every line of page code, but it won't build without `source/modules/`. The full setup is for the owner and the collaborators the owner invites. Links in these documents that lead into the private half are marked **(private)**.
 
@@ -67,7 +67,7 @@ The public repository on its own: every page, design and component, running on t
 git clone https://github.com/TertiusRoach/development-portfolio_4.00.git
 cd development-portfolio_4.00
 npm install --no-save
-npm run app
+npm run launch
 ```
 
 `--no-save` keeps `package-lock.json` as it is. The app opens on `http://localhost:8080`.
@@ -80,12 +80,12 @@ One script downloads both repositories into one folder and sets them up.
 2. Open a terminal inside the unpacked folder and run:
 
    ```bash
-   node setup.js ~/Documents/Develop/tralogfin_1.00
+   node source/index.js ~/Documents/Develop/tralogfin_1.00
    ```
 
-   On Windows (PowerShell): `node setup.js $HOME\Documents\Develop\tralogfin_1.00`. Add `--https` at the end if you signed in with HTTPS in step 4.
+   On Windows (PowerShell): `node source/index.js $HOME\Documents\Develop\tralogfin_1.00`. Add `--https` at the end if you signed in with HTTPS in step 4.
 
-3. `setup.js` tells you what it does at each step:
+3. `source/index.js` tells you what it does at each step:
    - it downloads both repositories into the empty folder;
    - it puts each one on its current branch;
    - it gives each one its list of files to leave alone;
@@ -98,7 +98,7 @@ One script downloads both repositories into one folder and sets them up.
 
    ```bash
    cd ~/Documents/Develop/tralogfin_1.00
-   npm run app
+   npm run launch
    ```
 
    The app opens on `http://localhost:8080`. From now on, opening the folder in VS Code does this for you (step 5).
@@ -108,16 +108,16 @@ One script downloads both repositories into one folder and sets them up.
    | Step                                            | Where                                                                                                                                                                 |
    | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | Install MongoDB (and MySQL, if needed)          | [§ 2](source/utilities/documents/back-end/MODULES.md#2-install-mongodb) (private) and [§ 3](source/utilities/documents/back-end/MODULES.md#3-install-mysql) (private) |
-   | Unlock `.env` from `.env.age` with your age key | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env`                                                               |
+   | Unlock `build/.env` with `npm run guard:secret` | [§ 4](source/utilities/documents/back-end/MODULES.md#4-the-secrets-file) (private). Never commit `.env`                                                               |
    | Build the four collections                      | [§ 5](source/utilities/documents/back-end/MODULES.md#5-install-the-schemas) (private)                                                                                 |
 
-6. Start the server in a second terminal, next to the app:
+6. Start an app's server in a second terminal, next to the front end:
 
    ```bash
-   npm run server
+   npm run server:picking
    ```
 
-   It answers on `http://localhost:3000/api`. If it can't reach the database, it says so ([MODULES.md § 7](source/utilities/documents/back-end/MODULES.md#7-run-the-server) (private)).
+   Landing's server answers on `http://localhost:4000`; Overtime, Ticketing and Hyperlink have their own on 4001 to 4003. If it can't reach the database, it says so ([MODULES.md § 7](source/utilities/documents/back-end/MODULES.md#7-run-the-server) (private)).
 
 ### 2. Install Git, Node.js and the GitHub CLI
 
@@ -185,17 +185,17 @@ Check it worked:
 ssh -T git@github.com
 ```
 
-You should see: `Hi <your name>! You've successfully authenticated…`. If SSH is blocked on your network, run `gh auth login` again and choose **HTTPS** instead, then use `--https` with `setup.js` in step 1.
+You should see: `Hi <your name>! You've successfully authenticated…`. If SSH is blocked on your network, run `gh auth login` again and choose **HTTPS** instead, then use `--https` with `source/index.js` in step 1.
 
 ### 5. Sync
 
 **Opening the folder in VS Code** pulls both repositories, but only when nothing here would be overwritten (fast-forward only). It then shows where each one stands and starts the app. It never commits or pushes: that's always your decision.
 
-| Command                                 | What it does                                                                                |
-| --------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `npm run status`                        | Each repository's branch, how far ahead or behind GitHub, and what changed. Changes nothing |
-| `npm run pull`                          | Pulls both, fast-forward only, then the status                                              |
-| `npm run sync -- "Describe the change"` | The whole round: pull both, check, commit both with one message, push both                  |
+```bash
+npm run sync -- "Describe the change"
+```
+
+The whole round: pull both, check, commit both with one message, push both. Leave out the message and it asks for one.
 
 **What `npm run sync` checks before it commits:**
 
@@ -263,29 +263,30 @@ Designed in Figma first, then built by hand.
 Open VS Code and press **Ctrl + `** to open the terminal. Then:
 
 ```bash
-# Launch the front end (webpack-dev-server on http://localhost:8080)
-npm run app
-
-# Close the development server (frees port 8080)
-npm run stop
+# The front end, on http://localhost:8080 (VS Code starts it when the folder opens)
+npm run launch
 
 # Compile the project into public/
 npm run deploy
 
-# Both repositories: where they stand, pull, or the whole sync round (Install and Sync, step 5)
-npm run status
-npm run pull
+# Pull, check, commit and push both repositories (Install and Sync, step 5)
 npm run sync -- "Describe what changed"
 
-# The back end (needs the private half): the new server on http://localhost:3000/api
-npm run server
+# The back end (needs the private half): one server per app
+npm run server:picking      # Landing,   http://localhost:4000
+npm run server:tracking     # Overtime,  http://localhost:4001
+npm run server:logging      # Ticketing, http://localhost:4002
+npm run server:hyperlink    # Hyperlink, http://localhost:4003
 
-# The old login server on port 3000
-cd source/modules/server/MongoDB
-npx nodemon landing
+# The guards (need the private half)
+npm run guard:secret        # lock a copy of the secrets file
+npm run guard:verify        # check the front end and the back end still line up
+
+# The brakes: stop everything on 8080 and 4000 to 4003
+npm run abort
 ```
 
-> **Tip:** `npm run app` is an alias for `npm run launch`. VS Code runs `npm run pull` and then `npm run app` automatically when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md) (private)**.
+> **Tip:** every port is 400#: 40 for this portfolio, 4.00, and the last digit for the app. VS Code pulls both repositories and runs `npm run launch` when you open the folder, through `.vscode/tasks.json`. More shortcuts and editor setup are in **[EDITOR.md](source/utilities/documents/back-end/EDITOR.md) (private)**.
 
 ### Application Flow
 
@@ -377,7 +378,7 @@ tralogfin_1.00/
 ├── .vscode/
 │   ├── launch.json                  # Run Application (Webpack + Chrome)
 │   ├── settings.json
-│   └── tasks.json                   # Pulls both repositories, then runs `npm run app`, on folder open
+│   └── tasks.json                   # Pulls both repositories, then runs `npm run launch`, on folder open
 ├── build/                           # Local only, holds .env (ignored by both)
 ├── public/                          # Final product for users (compiled)
 ├── source/
@@ -399,6 +400,7 @@ tralogfin_1.00/
 │   │   │   └── GUIDELINES.md        # Shared by both sides
 │   │   └── vendors/
 │   ├── index.html
+│   ├── index.js                     # Shared: builds this folder on a new machine
 │   ├── index.scss
 │   ├── index.tsx
 │   └── types.d.ts
@@ -409,7 +411,6 @@ tralogfin_1.00/
 ├── README.md
 ├── package.json                     # Shared: the scripts and the two workspaces
 ├── package-lock.json
-├── setup.js                         # Shared: builds this folder on a new machine
 ├── tsconfig.json
 └── webpack.config.js
 ```

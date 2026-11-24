@@ -2,15 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "npm run pull",
-      "detail": "Pulls both repositories, fast-forward only, and shows where each stands. Never commits or pushes. A failed pull (offline, or a change in the way) only warns, so the app still starts.",
+      "label": "Pull both repositories",
+      "detail": "AI Code: Review Please 2026-11-24 · sync.js pull, called directly because it is not on the npm menu. Pulls both repositories, fast-forward only, and shows where each stands. Never commits or pushes. A failed pull (offline, or a change in the way) only warns, so the app still starts.",
       "type": "shell",
-      "command": "npm run pull",
+      "command": "node source/modules/guards/sync.js pull",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "linux": {
-        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run pull; true",
+        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && node source/modules/guards/sync.js pull; true",
         "options": {
           "shell": {
             "executable": "/bin/bash",
@@ -19,7 +19,7 @@
         }
       },
       "windows": {
-        "command": "npm run pull & exit /b 0",
+        "command": "node source/modules/guards/sync.js pull & exit /b 0",
         "options": {
           "shell": {
             "executable": "cmd.exe",
@@ -28,7 +28,7 @@
         }
       },
       "osx": {
-        "command": "npm run pull; true"
+        "command": "node source/modules/guards/sync.js pull; true"
       },
       "presentation": {
         "reveal": "always",
@@ -37,15 +37,15 @@
       "problemMatcher": []
     },
     {
-      "label": "npm run app",
+      "label": "npm run launch",
       "type": "shell",
-      "command": "npm run app",
-      "dependsOn": "npm run pull",
+      "command": "npm run launch",
+      "dependsOn": "Pull both repositories",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "linux": {
-        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run app",
+        "command": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && npm run launch",
         "options": {
           "shell": {
             "executable": "/bin/bash",
@@ -54,7 +54,7 @@
         }
       },
       "windows": {
-        "command": "npm run app",
+        "command": "npm run launch",
         "options": {
           "shell": {
             "executable": "cmd.exe",

@@ -103,7 +103,7 @@ source/
 
 ## 7. Checking It
 
-The rules are checked, not only written down. A gulp `guard` task (planned, not built yet) stops with an error when:
+The rules are checked, not only written down. `npm run guard:verify` stops with an error when:
 
 - a `.jsx` has no `.tsx` twin, or a `.tsx` has no `.jsx` twin;
 - any file imports from the other language;

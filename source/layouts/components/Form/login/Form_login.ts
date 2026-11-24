@@ -79,11 +79,11 @@ export function axiosError(error: unknown) {
 }
 export function retrieveEndpoint(
   route: 'register' | 'login' | 'password' | 'verify' | 'reset',
-  address: 'http://localhost:3000' | string,
+  address: 'http://localhost:4000' | string, //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
 ) {
   //--|🠊 URL: Uniform Resource Locator 🠈|--\\
   //--|🠋 Important: React only recognizes environment variables that start with REACT_APP_. 🠋|--\\
-  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 Replace 'http://localhost:3000' with your server's domain: 'https://api.myapp.com' 🠈|--\\
+  const BASE_URL = process.env.REACT_APP_BASE_URL || address; //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) · Replace 'http://localhost:4000' with your server's domain: 'https://api.myapp.com' 🠈|--\\
   return `${BASE_URL}/users/${route}`;
 }
 */

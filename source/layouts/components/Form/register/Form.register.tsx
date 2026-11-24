@@ -164,7 +164,7 @@ const handleRegister = async (event: React.FormEvent) => {
   event.preventDefault();
   setSubmit(true);
   try {
-    const endpoint = retrieveEndpoint('register', 'http://localhost:3000');
+    const endpoint = retrieveEndpoint('register', 'http://localhost:4000'); //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
     const response = await axios.post(endpoint, {
       firstName,
       lastName,

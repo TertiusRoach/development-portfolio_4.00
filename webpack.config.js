@@ -68,7 +68,7 @@ module.exports = {
       systemvars: true, // Load system environment variables as well
     }),
     new webpack.DefinePlugin({
-      'process.env.REACT_APP_BASE_URL': JSON.stringify(process.env.REACT_APP_BASE_URL || 'http://localhost:3000'),
+      'process.env.REACT_APP_BASE_URL': JSON.stringify(process.env.REACT_APP_BASE_URL || 'http://localhost:4000'), // AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports)
     }),
   ],
   devServer: {

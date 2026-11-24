@@ -130,7 +130,7 @@ const handleLogin = async (event: React.FormEvent) => {
   event.preventDefault();
   setSubmit(true);
   try {
-    const endpoint = retrieveEndpoint('login', 'http://localhost:3000');
+    const endpoint = retrieveEndpoint('login', 'http://localhost:4000'); //--|🠈 AI Code: Review Please 2026-11-24 · Landing's server moved to 4000 (SERVER.md, Ports) 🠈|--\\
     const response = await axios.post(endpoint, {
       email,
       password: password, //--|🠈 Formerly called passwordHash: it carries the plain password, and a name that says 'hash' makes it look safe to log, store or send over plain HTTP. 🠈|--\\
