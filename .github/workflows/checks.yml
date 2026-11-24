@@ -1,0 +1,105 @@
+# SHARED by front-end and back-end: the checks every pull request must pass (CONTRIBUTING.md, Pull Requests).
+# The guards on a computer can be skipped (--no-verify, a computer without hooks); these can't.
+#   version     the version guard: into its own shared branch, the same number in all three repositories
+#   files       the commit and push guards over the pull request, and names that differ only in capitals
+#   types       front-end only: the type check, and a production build (which also checks every image the site loads)
+#   structure   guard:verify over both halves. It reports only, until its known problems are tickets it can read
+name: Checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    if: github.repository == 'TraLogFin/front-end' || github.repository == 'TraLogFin/back-end'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: The same version
+        env:
+          INTO: ${{ github.base_ref }} # passed as variables, never pasted into the script: a branch name is text anyone can choose
+          FROM: ${{ github.head_ref }}
+        run: node source/guards/version.js check "$INTO" "$FROM"
+      - name: The same number in all three repositories
+        env:
+          INTO: ${{ github.base_ref }}
+          GH_TOKEN: ${{ secrets.TRALOGFIN_READ_TOKEN }} # read-only access to front-end, back-end and building; GitHub's own token sees only this repository
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "The TRALOGFIN_READ_TOKEN secret is missing (GITHUB.md, The Live Site)"; exit 1; fi
+          node source/guards/version.js same "$INTO"
+
+  files:
+    if: github.repository == 'TraLogFin/front-end' || github.repository == 'TraLogFin/back-end'
+    runs-on: ubuntu-latest
+    env:
+      INTO: ${{ github.base_ref }}
+      SIDE: ${{ github.repository == 'TraLogFin/front-end' && 'front' || 'back' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }} # the pull request's own commits, not GitHub's trial merge
+          fetch-depth: 0
+      - name: Lay the Git folder out the way a computer has it
+        run: |
+          # The guards name their Git folder (.frontend.git or .backend.git), as in the TraLogFin folder.
+          mv .git ".${SIDE}end.git"
+          echo "GIT_DIR=$PWD/.${SIDE}end.git" >> "$GITHUB_ENV"
+          # Only the shared branch stays as GitHub's copy, so "not on GitHub yet" means "in this pull request".
+          GIT_DIR=".${SIDE}end.git" git for-each-ref --format='%(refname)' refs/remotes | while read -r ref; do GIT_DIR=".${SIDE}end.git" git update-ref -d "$ref"; done
+          GIT_DIR=".${SIDE}end.git" git fetch --no-tags --quiet origin "+refs/heads/$INTO:refs/remotes/origin/$INTO"
+      - name: Nothing shaped like a secret in any commit
+        run: echo "HEAD $(git rev-parse HEAD) refs/heads/pull 0000000000000000000000000000000000000000" | node source/guards/push.js "$SIDE"
+      - name: Every changed file belongs to this side, and none is a secret
+        run: |
+          # The whole pull request, staged as one change on top of where it branched off: what the commit guard reads.
+          git reset --soft --quiet "$(git merge-base HEAD "origin/$INTO")"
+          node source/guards/commit.js "$SIDE"
+      - name: No two names that differ only in capitals
+        run: |
+          clashes=$(git ls-files | awk -F/ '{p=""; for (i = 1; i <= NF; i++) { p = (i > 1 ? p "/" : "") $i; print p } }' | sort -u | awk '{ print tolower($0) }' | sort | uniq -d)
+          if [ -n "$clashes" ]; then echo "Windows and macOS see these as one name:"; echo "$clashes"; exit 1; fi
+          echo "No names that differ only in capitals"
+
+  types:
+    if: github.repository == 'TraLogFin/front-end'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install
+        run: npm ci --ignore-scripts --no-audit --no-fund # --ignore-scripts: no Git hooks to install here
+      - name: The type check
+        run: npx tsc --noEmit -p tsconfig.json
+      - name: A production build, beside the checkout
+        run: npx webpack --mode production --output-path "$RUNNER_TEMP/site"
+
+  structure:
+    if: github.repository == 'TraLogFin/front-end' || github.repository == 'TraLogFin/back-end'
+    runs-on: ubuntu-latest
+    env:
+      INTO: ${{ github.base_ref }}
+      SIDE: ${{ github.repository == 'TraLogFin/front-end' && 'front' || 'back' }}
+      OTHER: ${{ github.repository == 'TraLogFin/front-end' && 'back' || 'front' }}
+      GH_TOKEN: ${{ secrets.TRALOGFIN_READ_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0 # the copies check compares each twin with the front end's history
+      - name: Both halves in one folder, the way a computer has them
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "The TRALOGFIN_READ_TOKEN secret is missing (GITHUB.md, The Live Site)"; exit 1; fi
+          mv .git ".${SIDE}end.git"
+          login=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c http.extraHeader="Authorization: basic $login" clone --quiet --bare --single-branch --branch "$INTO" "https://github.com/TraLogFin/${OTHER}-end.git" ".${OTHER}end.git"
+          git --git-dir=".${OTHER}end.git" config core.bare false
+          git --git-dir=".${OTHER}end.git" --work-tree=. reset --quiet --hard "$INTO"
+      - name: guard:verify
+        continue-on-error: true # reports only, until the known problems are tickets guard:verify reads (GITHUB.md, The Live Site)
+        run: node source/modules/guards/guard.js

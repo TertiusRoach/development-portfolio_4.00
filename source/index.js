@@ -1,36 +1,41 @@
 //--|🠊 index.js 🠈|--\\
-//--|🠊 Was setup.js in the root; moved here by the owner to reduce clutter 🠈|--\\
-//--|🠊 Builds the TraLogFin folder on a new machine (GITHUB.md, Set Up a New Computer, Step 5) 🠈|--\\
+//--|🠊 Was setup.js in the root; moved here by Tertius to reduce clutter 🠈|--\\
+//--|🠊 Builds the TraLogFin folder on a new machine (GITHUB.md, Set Up a New Computer) 🠈|--\\
 /*--|🠋
-  One folder, two repositories. This does in one command what GITHUB.md § 7 Step 5 does by hand:
+  One folder, two repositories. This does in one command what GITHUB.md, Set Up a New Computer, Step 5, does by hand:
     1. clones both repositories, bare, into an empty folder: .frontend.git and .backend.git;
-    2. turns each into a working repository on its branch (the Branches table below);
+    2. turns each into a working repository on YOUR branch, #.##-<your GitHub name> (CONTRIBUTING.md, Branches),
+       where #.## is the newest shared branch on GitHub, made from it if it isn't on GitHub yet;
     3. gives each its list of files to leave alone (frontend.gitignore, backend.gitignore → info/exclude);
-    4. writes the .git file, so plain git and VS Code see the front end, and installs the guards;
-    5. runs npm install.
+    4. writes the .git file, so plain git and VS Code see the front end;
+    5. runs npm install, which installs the guards on its own (prepare, in package.json).
   It never deletes anything, and it refuses a folder that isn't empty.
-  Without access to the private back end, it carries on with the front end only.
+  Without access to the back end, it carries on with the front end only.
 
   Run it with:
-    node source/index.js <empty folder>                  over SSH (GITHUB.md § 7, Step 3)
+    node source/index.js <empty folder>                  over SSH (GITHUB.md, Set Up a New Computer, Step 3)
     node source/index.js <empty folder> --https          over HTTPS, signed in with gh auth login
     node source/index.js <empty folder> --from <folder>  copies an existing tralogfin_1.00 on this computer
+    … --user <GitHub name>                                names your branch; without it, gh says who is signed in
 🠉|--*/
 //--|🠋 Packages 🠋|--\\
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
-//--|🠋 Branches: change these when a version is finished (GITHUB.md, Branches and Tags Go in Pairs) 🠋|--\\
+//--|🠋 Repositories: no version number here; the newest #.## on GitHub is the one in use (GITHUB.md, Names and Numbers) 🠋|--\\
 const repositories = [
-  { folder: '.frontend.git', name: 'development-portfolio_4.00', branch: '4.09', ignoreList: 'frontend.gitignore', private: false },
-  { folder: '.backend.git', name: 'backend-architecture_2.00', branch: '2.01', ignoreList: 'backend.gitignore', private: true },
+  { folder: '.frontend.git', name: 'front-end', ignoreList: 'frontend.gitignore', required: true },
+  { folder: '.backend.git', name: 'back-end', ignoreList: 'backend.gitignore', required: false }, //--|🠈 A front-end developer may not have access to it 🠈|--\\
 ];
-const owner = 'TertiusRoach';
+const owner = 'TraLogFin'; //--|🠈 The organization; building and TraLogFin.github.io are written by automation, never cloned here 🠈|--\\
 
 //--|🠋 Setup 🠋|--\\
 function setupFolder() {
-  const { target, source } = readArguments();
+  const { target, source, user } = readArguments();
+  let person = user;
+  if (person === '') person = gitHubName();
+  if (person === '') warn('No GitHub name (sign in with gh auth login, or add --user <name>), so the shared branch is checked out. Sync makes your own branch the first time'); //--|🠈 Nothing is ever committed on the shared branch, so this is safe 🠈|--\\
   if (source.kind === 'folder' && !source.folder) return stop('Name the folder to copy from: node source/index.js <empty folder> --from <folder>');
   if (!target) return stop('Name an empty folder: node source/index.js <empty folder>');
   if (fs.existsSync(target) && fs.readdirSync(target).length > 0)
@@ -43,16 +48,19 @@ function setupFolder() {
     say(`Cloning ${repository.name} into ${repository.folder}`);
     const cloned = run(target, 'git', ['clone', '--bare', addressOf(repository, source), repository.folder]);
     if (cloned === false) {
-      if (repository.private === true) {
-        warn(`${repository.name} is private and couldn't be cloned. Carrying on with the front end only: the designs work, the server doesn't`);
+      if (repository.required === false) {
+        warn(`${repository.name} couldn't be cloned (no access, or no internet). Carrying on with the front end only: the designs work, the server doesn't`);
         continue;
       } else {
-        return stop(`${repository.name} couldn't be cloned. Check the internet connection and the sign-in (GITHUB.md § 7, Step 3)`);
+        return stop(`${repository.name} couldn't be cloned. Check the internet connection and the sign-in (GITHUB.md, Set Up a New Computer, Step 3)`);
       }
     }
-    if (makeWorking(target, repository) === false)
-      return stop(`${repository.name} couldn't check out ${repository.branch}. Is that branch on GitHub?`);
-    ready.push(repository);
+    const branch = makeWorking(target, repository, person);
+    if (branch === '') return stop(`${repository.name} couldn't check out its newest #.## branch. Is there one on GitHub?`);
+    ready.push({ ...repository, branch });
+  }
+  if (new Set(ready.map((repository) => repository.branch.replace(/-.*$/, ''))).size > 1) {
+    warn(`The repositories are on different versions (${ready.map((repository) => `${repository.name} ${repository.branch}`).join(', ')}). Ask the other owner: a finished version is finished in all of them the same day`);
   }
 
   //--|🠊 3: each repository's list of files to leave alone 🠈|--\\
@@ -68,13 +76,6 @@ function setupFolder() {
   //--|🠊 4: plain git and VS Code see the front end 🠈|--\\
   fs.writeFileSync(path.join(target, '.git'), 'gitdir: .frontend.git\n');
 
-  //--|🠊 The guards: hooks are never cloned, so they're written here (PIPELINE.md, The Guards) 🠈|--\\
-  if (fs.existsSync(path.join(target, 'source', 'guards', 'install.js'))) {
-    run(target, 'node', ['source/guards/install.js']); //--|🠈 source/guards/ is shared, so a front-end-only folder gets its guards too 🠈|--\\
-  } else {
-    warn('source/guards/ is missing: commits and pushes from this folder are not checked');
-  }
-
   //--|🠊 5: one node_modules for both sides 🠈|--\\
   say('Installing the packages (npm install)');
   let install = ['install', '--no-fund'];
@@ -84,11 +85,11 @@ function setupFolder() {
     install = ['install', '--no-fund'];
   }
   if (run(target, 'npm', install) === false) {
-    warn('npm install failed. Run it again inside the folder once the problem is fixed (GITHUB.md, npm or nvm "command not found")');
+    warn('npm install failed, so the guards are not installed yet. Run it again inside the folder once the problem is fixed (GITHUB.md, npm or nvm "command not found")'); //--|🠈 The guards come with npm install now (prepare) 🠈|--\\
   }
 
   for (const repository of ready) {
-    say(`${repository.name}: on ${repository.branch}, following origin/${repository.branch}`);
+    say(`${repository.name}: on ${repository.branch}`);
   }
   if (source.kind === 'folder')
     warn(
@@ -98,22 +99,48 @@ function setupFolder() {
 }
 
 //--|🠋 Working Repository 🠋|--\\
-let makeWorking = (target, repository) => {
+let makeWorking = (target, repository, person) => {
   const git = ['--git-dir', repository.folder];
-  const steps = [
+  const first = [
     ['config', 'core.bare', 'false'], //--|🠈 A download-only copy becomes one that works on files 🠈|--\\
     ['config', 'core.worktree', '..'], //--|🠈 Its files are the folder around it 🠈|--\\
     ['config', 'remote.origin.fetch', '+refs/heads/*:refs/remotes/origin/*'], //--|🠈 So it can see GitHub's branches 🠈|--\\
     ['fetch', 'origin'],
-    ['symbolic-ref', 'HEAD', `refs/heads/${repository.branch}`], //--|🠈 Pick the branch 🠈|--\\
+  ];
+  for (const step of first) {
+    if (run(target, 'git', [...git, ...step]) === false) return '';
+  }
+
+  //--|🠊 The shared branch: the newest #.## on GitHub. 🠈|--\\
+  const names = read(target, [...git, 'for-each-ref', '--format=%(refname:lstrip=3)', 'refs/remotes/origin/']).split('\n');
+  const shared = names.filter((name) => /^\d+\.\d\d$/.test(name)).sort((a, b) => {
+    const [aMajor, aMinor] = a.split('.').map(Number);
+    const [bMajor, bMinor] = b.split('.').map(Number);
+    return aMajor - bMajor || aMinor - bMinor;
+  });
+  if (shared.length === 0) return '';
+  const newest = shared[shared.length - 1];
+
+  //--|🠊 Your own branch: GitHub's copy when another computer made it, otherwise a new one from the shared branch 🠈|--\\
+  let branch = newest;
+  if (person !== '') branch = `${newest}-${person}`;
+  const onGitHub = check(target, [...git, 'rev-parse', '--verify', '--quiet', `refs/remotes/origin/${branch}`]);
+  const here = check(target, [...git, 'rev-parse', '--verify', '--quiet', `refs/heads/${branch}`]);
+  if (here === false) {
+    if (run(target, 'git', [...git, 'branch', branch, `origin/${newest}`]) === false) return '';
+    say(`${repository.name}: your branch ${branch} starts from ${newest}`);
+  }
+
+  const steps = [
+    ['symbolic-ref', 'HEAD', `refs/heads/${branch}`], //--|🠈 Pick the branch 🠈|--\\
     ['reset', '--quiet'], //--|🠈 Load it without touching any file; --quiet, or it lists every file as deleted for a moment 🠈|--\\
     ['checkout', '--', '.'], //--|🠈 Write the files; a plain checkout refuses once the shared files exist 🠈|--\\
-    ['branch', '-u', `origin/${repository.branch}`], //--|🠈 Link the branch to GitHub's 🠈|--\\
   ];
+  if (onGitHub === true) steps.push(['branch', '-u', `origin/${branch}`]); //--|🠈 Link the branch to GitHub's; a new one is linked by its first sync 🠈|--\\
   for (const step of steps) {
-    if (run(target, 'git', [...git, ...step]) === false) return false;
+    if (run(target, 'git', [...git, ...step]) === false) return '';
   }
-  return true;
+  return branch;
 };
 
 //--|🠋 Addresses 🠋|--\\
@@ -132,9 +159,13 @@ let readArguments = () => {
   const words = process.argv.slice(2);
   let target = null;
   let source = { kind: 'ssh' };
+  let user = '';
   for (let index = 0; index < words.length; index++) {
     if (words[index] === '--https') {
       source = { kind: 'https' };
+    } else if (words[index] === '--user') {
+      user = words[index + 1] || '';
+      index++;
     } else if (words[index] === '--from') {
       source = { kind: 'folder', folder: words[index + 1] };
       index++;
@@ -142,13 +173,21 @@ let readArguments = () => {
       target = path.resolve(words[index]);
     }
   }
-  return { target, source };
+  return { target, source, user };
 };
 
 //--|🠋 Commands 🠋|--\\
 var run = (folder, command, words) => {
   const result = spawnSync(command, words, { cwd: folder, stdio: 'inherit', shell: process.platform === 'win32' }); //--|🠈 Windows finds npm.cmd only through a shell 🠈|--\\
   return result.status === 0;
+};
+
+var read = (folder, words) => (spawnSync('git', words, { cwd: folder, encoding: 'utf8' }).stdout || '').trim();
+var check = (folder, words) => spawnSync('git', words, { cwd: folder, stdio: 'ignore' }).status === 0; //--|🠈 A yes-or-no question to git, printing nothing 🠈|--\\
+var gitHubName = () => {
+  const result = spawnSync('gh', ['api', 'user', '--jq', '.login'], { encoding: 'utf8' });
+  if (result.error !== undefined || result.status !== 0) return '';
+  return (result.stdout || '').trim();
 };
 
 //--|🠋 Messages 🠋|--\\

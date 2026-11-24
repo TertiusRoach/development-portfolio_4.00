@@ -1,0 +1,47 @@
+# SHARED by front-end and back-end, runs only in building (GITHUB.md, The Live Site).
+# A release tag on building (v1.01.0, or a patch like v1.01.1) publishes building's public/ to
+# TraLogFin/TraLogFin.github.io, the live site. Archive tags (v1.01) have one dot, so they never match.
+name: Publish the live site
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'TraLogFin/building'
+    runs-on: ubuntu-latest
+    steps:
+      - name: building at the tag
+        uses: actions/checkout@v4
+        with:
+          path: building
+      - name: The live site
+        uses: actions/checkout@v4
+        with:
+          repository: TraLogFin/TraLogFin.github.io
+          ssh-key: ${{ secrets.SITE_DEPLOY_KEY }} # a write deploy key on TraLogFin.github.io; its private half is building's secret
+          ref: main
+          path: site
+      - name: Replace the site with public/
+        run: |
+          test -f building/public/index.html || { echo "building/public/index.html is missing at ${{ github.ref_name }}. Nothing was published"; exit 1; }
+          find site -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a building/public/. site/
+          touch site/.nojekyll
+      - name: Publish
+        working-directory: site
+        run: |
+          git config user.name "TraLogFin deploy"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "The live site already matches ${{ github.ref_name }}"; exit 0; fi
+          git commit -m "TraLogFin ${{ github.ref_name }}"
+          git push origin HEAD:main

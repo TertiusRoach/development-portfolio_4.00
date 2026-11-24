@@ -1,0 +1,44 @@
+# SHARED by front-end and back-end (GITHUB.md, The Live Site).
+# After a pull request lands on a shared branch (1.01, never 1.01-<name>), this side's files are
+# copied into TraLogFin/building on the same branch by source/guards/building.js.
+# building carries this file too (it holds both halves), but it never runs there.
+name: Copy into building
+
+on:
+  push:
+    branches: ['*.[0-9][0-9]'] # 1.01, 1.02 … personal branches end in a name, so they never match
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: building-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  copy:
+    if: github.repository == 'TraLogFin/front-end' || github.repository == 'TraLogFin/back-end'
+    runs-on: ubuntu-latest
+    steps:
+      - name: This side
+        uses: actions/checkout@v4
+        with:
+          path: side
+      - name: building
+        uses: actions/checkout@v4
+        with:
+          repository: TraLogFin/building
+          ssh-key: ${{ secrets.BUILDING_DEPLOY_KEY }} # a write deploy key on building; its private half is this repository's secret
+          fetch-depth: 0
+          path: building
+      - name: Node from .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: side/.nvmrc
+      - name: Copy
+        run: |
+          git config --global user.name "TraLogFin deploy"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${{ github.repository }}" = "TraLogFin/front-end" ]; then side=frontend; else side=backend; fi
+          node side/source/guards/building.js "$side" building

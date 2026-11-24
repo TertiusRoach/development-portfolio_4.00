@@ -3,8 +3,8 @@
 /*--|🠋
   Runs before every push, in both repositories. It reads every line the push would add and
   stops when one looks like a secret: a private key, an age key, a GitHub token, a connection
-  string with a login, or a password written next to its value. For the public front end it
-  also stops on a home-network address (192.168.…, 10.…, 172.16–31.…).
+  string with a login, or a password written next to its value. In public/, the only folder that
+  reaches the public (the live site), it also stops on a home-network address (192.168.…, 10.…, 172.16–31.…).
 
   It looks for the shapes secrets take, not for your secrets: it can't know them. Examples in
   the documents are written so they don't match (AGE-SECRET-KEY-…, user:pass, <placeholders>).
@@ -18,8 +18,8 @@ const { execFileSync } = require('child_process');
 
 //--|🠋 Sides 🠋|--\\
 const sides = {
-  front: { gitDir: '.frontend.git', name: 'development-portfolio_4.00', isPublic: true },
-  back: { gitDir: '.backend.git', name: 'backend-architecture_2.00', isPublic: false },
+  front: { gitDir: '.frontend.git', name: 'front-end' },
+  back: { gitDir: '.backend.git', name: 'back-end' },
 };
 
 //--|🠋 Shapes 🠋|--\\
@@ -36,7 +36,8 @@ const shapes = [
 const lanAddress = {
   name: 'a home-network address',
   pattern: /(?<![\w.-])(?:192\.168|10\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01]))\.\d{1,3}\.\d{1,3}(?![\w.-])/, //--|🠈 Standing alone, so drawing paths like a10.6.3.3 don't count 🠈|--\\
-  skips: /\.svg$|\.min\.js$|^source\/utilities\/vendors\//, //--|🠈 Drawings, minified scripts and third-party code are full of numbers like these 🠈|--\\
+  only: /^public\//, //--|🠈 Only public/ is public: both repositories are private, the live site is built from public/ 🠈|--\\
+  skips: /\.svg$|\.min\.js$/, //--|🠈 Drawings and minified scripts are full of numbers like these 🠈|--\\
 };
 
 //--|🠋 Guard 🠋|--\\
@@ -54,9 +55,10 @@ function guardPush() {
 
   const findings = [];
   for (const line of lines) {
-    for (const shape of shapesFor(side)) {
+    for (const shape of [...shapes, lanAddress]) {
       const match = line.text.match(shape.pattern);
       if (match === null) continue;
+      if (shape.only !== undefined && !shape.only.test(line.file)) continue;
       if (shape.skips !== undefined && shape.skips.test(line.file)) continue;
       if (shape.check !== undefined && shape.check(match) === false) continue;
       findings.push(`${line.file}: ${shape.name}: ${line.text.trim().slice(0, 120)}`);
@@ -111,13 +113,6 @@ let readTree = (side) => {
 };
 
 //--|🠋 Helpers 🠋|--\\
-let shapesFor = (side) => {
-  if (side.isPublic === true) {
-    return [...shapes, lanAddress];
-  } else {
-    return shapes;
-  }
-};
 let isReal = (value) => {
   if (placeholders.includes(value.toLowerCase())) return false;
   if (/^[<${(%]/.test(value)) return false; //--|🠈 <placeholder>, ${variable}, $2b$ hash prefix, {template}, (example), %ENV% 🠈|--\\

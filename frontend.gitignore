@@ -1,4 +1,4 @@
-# FRONT END (.frontend.git, public) ignores everything the BACK END owns.
+# FRONT END (.frontend.git → TraLogFin/front-end, private) ignores everything the BACK END owns.
 # Copied into .frontend.git/info/exclude by source/index.js and the commit guard (source/guards/commit.js).
 # The map behind it: README.md, "Which Repository Holds What".
 

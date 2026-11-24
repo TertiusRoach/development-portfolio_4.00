@@ -18,8 +18,8 @@ const { execFileSync } = require('child_process');
 
 //--|🠋 Sides 🠋|--\\
 const sides = {
-  front: { gitDir: '.frontend.git', name: 'development-portfolio_4.00', ignoreList: 'frontend.gitignore', other: 'the back end' },
-  back: { gitDir: '.backend.git', name: 'backend-architecture_2.00', ignoreList: 'backend.gitignore', other: 'the front end' },
+  front: { gitDir: '.frontend.git', name: 'front-end', ignoreList: 'frontend.gitignore', other: 'the back end' },
+  back: { gitDir: '.backend.git', name: 'back-end', ignoreList: 'backend.gitignore', other: 'the front end' },
 };
 
 //--|🠋 Secrets by Name 🠋|--\\
@@ -28,7 +28,7 @@ let isSecret = (sideName, file) => {
   const name = path.basename(file);
   if (keyFile.test(file)) return true;
   if (sideName === 'front') {
-    if (name.startsWith('.env') || name.endsWith('.age')) return true; //--|🠈 The public side holds no .env file at all, not even the example 🠈|--\\
+    if (name.startsWith('.env') || name.endsWith('.age')) return true; //--|🠈 Every secret belongs to the back end, so the front end holds no .env file at all, not even the example 🠈|--\\
     return false;
   } else {
     if (name === '.env.example' || name === '.env.age') return false; //--|🠈 Names only, and the locked copy 🠈|--\\

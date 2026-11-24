@@ -12,7 +12,8 @@
   Each hook is a few lines of shell that hand over to the guard, so the real check lives in the
   repository and travels with it. A hook that isn't ours is never overwritten.
 
-  Run it from the folder's root with:   node source/guards/install.js
+  Runs on its own after every npm install (the prepare script in the root package.json), so no
+  computer can commit without the guards. By hand:   node source/guards/install.js
 🠉|--*/
 //--|🠋 Packages 🠋|--\\
 const fs = require('fs');
@@ -32,6 +33,7 @@ const hooks = [
 
 //--|🠋 Install 🠋|--\\
 function installHooks() {
+  process.chdir(path.resolve(__dirname, '../..')); //--|🠈 The TraLogFin folder: two levels up from source/guards/ 🠈|--\\
   const hooksPath = spawnSync('git', ['config', '--get', 'core.hooksPath'], { encoding: 'utf8' }).stdout.trim();
   if (hooksPath !== '') warn(`Git is set to look for hooks in ${hooksPath} instead (core.hooksPath), so these won't run until that setting is removed`);
 
@@ -46,7 +48,9 @@ function installHooks() {
         warn(`${file} already exists and isn't ours, so it was left alone`);
         continue;
       }
-      fs.writeFileSync(file, writeHook(side.name, guard));
+      const wanted = writeHook(side.name, guard);
+      if (fs.existsSync(file) && fs.readFileSync(file, 'utf8') === wanted) continue; //--|🠈 Already current: stays quiet on every npm install 🠈|--\\
+      fs.writeFileSync(file, wanted);
       fs.chmodSync(file, 0o755); //--|🠈 Git only runs a hook it may execute 🠈|--\\
       say(`${file} runs ${guard} ${side.name}`);
     }
